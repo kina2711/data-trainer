@@ -1,0 +1,19 @@
+{
+  "task_id": "de-l381-l400-note-promotion",
+  "status": "pass",
+  "requested_range": [381, 400],
+  "execution_batches": [[381, 385], [386, 390], [391, 395], [396, 400]],
+  "affected_artifacts": {
+    "curriculum_notes": 40,
+    "reference_notes": 20,
+    "wiki_notes": 20,
+    "new_source_records": 5,
+    "batch_writers": 4,
+    "shared_specs_added": 1,
+    "shared_writer_extended": 1,
+    "validators_added": 5
+  },
+  "unrelated_worktree_changes_modified": false,
+  "deletions_performed": false,
+  "scope_finding": "All written artifacts trace to lessons 381-400, their official source lineage, deterministic validation, or required release evidence."
+}

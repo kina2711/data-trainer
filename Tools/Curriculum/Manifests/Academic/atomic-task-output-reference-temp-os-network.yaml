@@ -1,0 +1,34 @@
+task_id: reference-temp-os-network-source-notes-2026-09-27
+atomic_task: book-build-progressive-chapter-pack
+state: in-progress
+profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G4-test
+primary_deliverable: Tools/Curriculum/Manifests/Academic/reference-temp-os-network-progress.json
+evidence:
+  acquisition_manifest: Tools/Curriculum/Manifests/Academic/source-acquisition-v2.json
+  objectives: Tools/Curriculum/Manifests/Academic/objectives.json
+  linux_note: Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-02.md
+  networking_note: Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-03.md
+tests:
+  - source_id_and_sha256_reconciliation
+  - objective_id_foreign_key_validation
+  - extraction_boundary_sampling
+  - locator_and_limitation_review
+  - changed-scenario_transfer_checks
+  - copyright_and_visibility_review
+progress:
+  source_count: 2
+  structured_deep_read_in_progress: 2
+  unread: 0
+approval:
+  academic_source_acceptance: granted-by-owner
+  pack_baseline: pending-owner-review
+  public_distribution: not-authorized
+residual_risks:
+  - Linux examples target the 2010 kernel and userland context; version-sensitive claims need current official documentation.
+  - The networking book's TLS discussion predates TLS 1.3 practice and must not be used as a current configuration guide.
+  - External Wireshark labs and current-RFC reconciliation remain unfinished.
+next_task: Build the current-document companion pack for Linux, HTTP, DNS, TCP, TLS, and proxy/load-balancer operations before marking either source complete.
+owner: Codex prepares private source notes; repository owner approves the baseline and any publication.

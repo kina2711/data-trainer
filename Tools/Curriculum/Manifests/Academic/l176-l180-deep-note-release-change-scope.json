@@ -1,0 +1,20 @@
+{
+  "contract_id": "de-l176-l180-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_176-query-compilation-internals",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_177-testing-a-semantic-layer-definition-and-static-tests",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_178-correctness-tests-and-reconciliation-against-hand-written-sql",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_179-serving-caching-and-performance",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_180-access-control-at-the-semantic-layer",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-DBT-SEMANTIC-MODELS.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-POSTGRESQL-17-ROW-SECURITY.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-OWASP-AUTHORIZATION-CHEAT-SHEET.md",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l176_l180_notes.py",
+    "Tools/Curriculum/Build/validate_l176_l180_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": ["**/quiz.md", "**/homework.md", "**/slides.md", "**/lesson.yaml", "Material/DA/**"]
+}

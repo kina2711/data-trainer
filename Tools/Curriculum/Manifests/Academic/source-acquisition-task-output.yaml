@@ -1,0 +1,24 @@
+task_id: academy-audit-curriculum-quality
+profile: learning
+risk_tier: R1-reviewed
+execution_path: standard-path
+phase_reached: handoff
+primary_deliverable: source-acquisition reconciliation
+evidence:
+  - Material/Reference_temp
+  - Material/DE/Reference/Library/Computer Science
+  - Material/DE/Reference/Library/knowledge
+  - Material/DE/Reference/Library/book
+  - Tools/Curriculum/Manifests/Academic/source-acquisition-v2.json
+validation:
+  reference_temp_pdf_parse: 35/35 pass
+  supporting_zip_integrity: pass
+  required_purchase_books: 32/32 acquired
+approval:
+  academic_suitability: owner-approved for all provided books
+  redistribution_rights: not confirmed
+  acquisition_gate: complete
+open_risks:
+  - Supplemental collections are not yet mapped to objectives or read.
+next_owner: repository owner
+next_task: confirm remaining open-document downloads and Coursera access before deep reading

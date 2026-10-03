@@ -1,0 +1,36 @@
+task_id: "brain-build-atomic-knowledge-note"
+status: "complete"
+lifecycle_profile: "build-change"
+risk_tier: "R2-standard"
+execution_path: "standard-path"
+phase_reached: "release-handoff"
+primary_deliverable: "A remediated 645-note Second Brain corpus meeting the atomic, depth, example, code/contract and Mermaid standard"
+evidence:
+  - "Docs/Second-Brain/second-brain-manifest.json version 1.0.140"
+  - "Tools/Curriculum/Build/enrich_all_atomic_notes.py"
+  - "Tools/Curriculum/Build/validate_all_atomic_notes.py"
+  - "Tools/Curriculum/Manifests/Academic/all-note-quality-upgrade-core-audit-change-scope.json"
+  - "Tools/Curriculum/Manifests/Academic/all-note-quality-upgrade-core-verify-deliverable.json"
+test_results:
+  - "645/645 atomic, deep, source-linked and example-backed"
+  - "645/645 include code or executable contract and at least one Mermaid diagram"
+  - "626 generated code/contracts compiled, parsed or executed with 0 failures"
+  - "663 Mermaid diagrams structurally valid; all legacy diagrams and all generated domain templates rendered"
+  - "644/644 mirrors byte-identical; 0 long cross-note paragraph repeats"
+  - "1340 formatter and 645 source-coverage checks passed"
+gate_results:
+  - "G0-G4 pass"
+  - "G5 owner semantic review pending"
+  - "G6 private handoff ready"
+approval_status: "owner-review-pending"
+assumptions:
+  - "All notes means the 645 Wiki notes registered in the Second Brain manifest."
+  - "For non-programming concepts, a validated YAML decision contract is the appropriate code-like executable artifact."
+limitations:
+  - "Nineteen legacy code examples with external dependencies were not run against production systems."
+  - "No 3_Toi experience or public publishing authority was inferred."
+residual_risks:
+  - "Owner/domain experts should spot-check semantic fidelity before promoting review notes to canonical."
+next_task: "owner-semantic-review-all-atomic-notes"
+next_owner: "Second Brain owner"
+artifact_fingerprint_sha256: "32390ad08ca140ad15380d6d2153c43cad7988bdb95996341ad1e7b16004e530"

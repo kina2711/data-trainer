@@ -1,0 +1,22 @@
+task_id: http-foundations-note-2026-09-27
+task_type: book-build-second-brain-pack
+objective: Convert Kurose and Ross section 2.2 into one detailed, humanized Vietnamese reference and Obsidian Wiki note about HTTP messages, connection lifecycle, state, cookies, caching, and safe diagnostic boundaries.
+source:
+  source_id: PACK-OS_NETWORK-BOOK-03
+  scope: section 2.2, printed pages 125-146, PDF pages 127-148
+  rights: private-owner-provided-no-public-redistribution
+success_criteria:
+  - Cover request-response flow, message anatomy, methods, status, persistent connections, cookies, cache, conditional requests, and proxy boundaries.
+  - Separate HTTP semantics from transport delivery and application side effects.
+  - Treat retry safety as an explicit source gap rather than inventing policy from method names alone.
+  - Mark version-sensitive HTTP/1.x material and require current RFCs for HTTP/2, HTTP/3, caching, and semantics.
+  - Pass Vietnamese Humanizer, lineage, retrieval, and byte-identity checks.
+validation:
+  - Source hash matches the registered source.
+  - All 22 PDF pages in scope contain extractable text.
+  - Frontmatter, IDs, claim types, locators, links, manifest counts, and fences validate.
+  - Retrieval tests cover transport versus HTTP status, persistent connections, cookies, cache validation, and ambiguous retry.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

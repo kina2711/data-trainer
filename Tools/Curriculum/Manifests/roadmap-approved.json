@@ -1,0 +1,22 @@
+[
+  {
+    "approval_id": "roadmap-da-002",
+    "task_id": "orchestrator-manage-approval-ledger",
+    "scope": [
+      "Material/DA/Roadmap/roadmap.md"
+    ],
+    "artifact_version": "5.0",
+    "artifact_sha256": "64391070c20b3ae21c5c6c5124ccd216a1987121d376b9b0f565f4f19ba14801",
+    "risk_tier": "R1-reviewed",
+    "approver": "kina2711",
+    "authority": "tác giả chương trình",
+    "decision": "approved",
+    "conditions": [
+      "Chặng 1 và 2 không chạy lại trừ khi được yêu cầu",
+      "11 roadmap module sinh bằng Tools/Curriculum/Generators/gen_module_roadmaps.py",
+      "Thay bản ghi roadmap-da-001 (v4.0), bản đó đã bỏ"
+    ],
+    "decided_at": "2026-09-20T00:00:00Z",
+    "expires_at": "2027-09-20T00:00:00Z"
+  }
+]

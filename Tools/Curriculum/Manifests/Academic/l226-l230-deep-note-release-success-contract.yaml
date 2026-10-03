@@ -1,0 +1,21 @@
+contract_id: de-l226-l230-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+owner: kina2711
+consumer: Data Analytics Engineer trainer
+scope: {lessons: [226, 227, 228, 229, 230], phases: [6], modules: [15]}
+baseline:
+  formatter: checked=420 failed=0
+  whole_vault_coverage: checked=148 failed=0
+  second_brain_manifest: version=1.0.44 sources=122 notes=148 retrieval_tests=491
+acceptance:
+  - five Vietnamese knowledge notes each contain at least 2200 words
+  - commit visibility, optimistic concurrency, evolution and maintenance mechanisms are distinguished
+  - L230 gate integrates metadata lineage, concurrent write, compatibility and engine evidence
+  - Reference and Wiki copies are byte-identical
+  - generator, validator, formatter and coverage checks pass
+  - Obsidian sync is checksum-verified without deleting destination-only files
+forbidden:
+  - changing quiz.md, homework.md, slides.md, lesson.yaml, diagrams or Material/DA
+  - claiming live Iceberg execution without evidence
+approval: owner-semantic-review-pending

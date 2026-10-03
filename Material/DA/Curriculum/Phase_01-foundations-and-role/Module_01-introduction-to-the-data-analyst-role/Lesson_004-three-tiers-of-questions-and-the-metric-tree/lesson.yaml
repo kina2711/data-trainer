@@ -1,0 +1,103 @@
+schema_version: 2
+lesson_id: DA-L004
+title: Three tiers of questions and the metric tree
+status: ready-for-owner-review
+lifecycle_profile: learning
+risk_tier: R2-standard
+target_level: Foundation
+duration_minutes_estimate: 120
+central_question: Làm sao đi từ outcome biến động tới driver có owner và hành động?
+objective: Dựng metric tree cân bằng số học, nối descriptive-diagnostic-prescriptive questions và bảo vệ driver
+  bằng owner cùng lever.
+prerequisites:
+- 'DA-L003: grain và additivity của measure.'
+learner_memory:
+  resolved: false
+  assumption: No prior mastery claimed; teach and assess the named prerequisites.
+scenes:
+- id: S01
+  type: explain
+  minutes: 10
+  claim: Revenue giảm 8%. Chia theo mọi dimension tạo 40 biểu đồ nhưng không cho biết driver nào có thể can thiệp.
+  source_span: note.md — heading 'Nỗi Đau & Động Lực'
+  misconception_displaced: Có thể bắt đầu bằng công cụ/output trước khi khóa câu hỏi và boundary.
+- id: S02
+  type: explain
+  minutes: 18
+  claim: 'Metric tree là mô hình giả thuyết định lượng: outcome được phân rã thành driver có thể đo, có owner và
+    lever; ba tầng câu hỏi dẫn từ quan sát tới quyết định.'
+  source_span: note.md — heading 'Cơ Chế Tác Động'
+  misconception_displaced: Cây chỉ là taxonomy đẹp, lá không có owner, hoặc diễn giải tương quan như nguyên nhân.
+- id: S03
+  type: check
+  minutes: 7
+  question: Ba tầng câu hỏi là gì?
+  answer: 'Descriptive: chuyện gì; diagnostic: vì sao; prescriptive: nên làm gì.'
+  wrong_answer_reveals: Người học nhớ từ khóa nhưng chưa nắm claim trung tâm.
+  source_span: note.md — heading 'Cơ Chế Tác Động'
+- id: S04
+  type: practice
+  minutes: 18
+  task: Dựng cây revenue cho marketplace từ GMV tới traffic, conversion, orders, AOV, take rate và refunds; đánh
+    dấu stock/flow/rate.
+  success_condition: Cây cân bằng trên số mẫu, không double count, mọi lá có owner và ít nhất một lever kiểm được.
+  source_span: UNSOURCED — guided practice synthesized from the lesson objective and source-backed mechanism
+- id: S05
+  type: explain
+  minutes: 15
+  claim: Chỉ đưa driver vào nhánh hành động khi definition và grain ổn định, có owner/lever, và contribution đủ
+    lớn so với uncertainty và cost can thiệp.
+  source_span: note.md — heading 'Bản Đồ Quyết Định'
+  misconception_displaced: Một rule hoặc tool luôn đúng bất kể changed constraint.
+- id: S06
+  type: decide
+  minutes: 12
+  situation: Nếu margin thay revenue làm outcome, discount có thể đổi từ lever tích cực thành driver phá giá trị;
+    cây phải được dựng lại theo decision.
+  trade_off: Metric tree biểu diễn giả thuyết và identity; nó không chứng minh quan hệ nhân quả chỉ vì các nhánh
+    cộng đúng.
+  defensible_choices: Lựa chọn phải giữ hard constraints, nêu evidence và reversal trigger.
+  source_span: UNSOURCED — changed-constraint decision scenario synthesized for transfer
+- id: S07
+  type: explain
+  minutes: 15
+  claim: 'Worked example: Revenue = Orders × Average Order Value. Orders = Traffic × Conversion Rate; AOV = Items/Order
+    × Price/Item. Đối chiếu đóng góp driver với mức giảm 8% và giữ interaction/residual. Chọn lever checkout conversion
+    vì có owner, đủ volume và cost thử nghiệm thấp hơn giảm giá toàn site.'
+  source_span: 'note.md — heading ''Case Study Thực Chiến: một chỉ số bán hàng đổi nghĩa giữa đường'''
+  misconception_displaced: Một case thành công tự chứng minh cơ chế tổng quát.
+- id: S08
+  type: apply
+  minutes: 18
+  task: Conversion giảm nhưng revenue tăng do AOV. Quyết định ưu tiên driver nào khi mục tiêu đổi từ tăng trưởng
+    sang contribution margin?
+  assumes:
+  - S02
+  - S04
+  - S05
+  - S06
+  - S07
+  success_condition: Artifact nêu boundary, evidence, lựa chọn, rejected alternative và condition làm quyết định
+    đảo.
+  source_span: UNSOURCED — curriculum transfer scenario synthesized from the lesson contract
+- id: S09
+  type: check
+  minutes: 7
+  question: Một metric tree cộng đúng đã đủ để kết luận nguyên nhân chưa?
+  answer: Chưa. Identity mô tả đóng góp số học; causal claim cần thiết kế bằng chứng riêng và loại trừ confounder.
+  wrong_answer_reveals: Người học chưa chuyển mental model sang tình huống mới.
+  source_span: note.md — heading 'Góc Khuất & Ngộ Nhận'
+assessment:
+  formative: quiz.md — 10 questions, pass >= 8/10; failed concepts receive targeted remediation and one retest.
+  authentic: homework.md — artifact scored on a 100-point analytic rubric; pass >= 75 and no critical failure.
+  mastery_claim: None. Package readiness and learner mastery are separate evidence states.
+publish:
+  note: true
+  slides: true
+  quiz: true
+  homework: true
+  after_note: true
+  answer_key: true
+unused_source_spans:
+- Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension/remediation; the 120-minute session
+  samples rather than recites every probe.

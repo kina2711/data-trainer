@@ -1,0 +1,18 @@
+{
+  "contract_id": "de-l161-l165-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/Lesson_161-domain-modelling-bounded-context-and-the-canonical-model-trap",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/Lesson_162-late-arriving-data-early-arriving-facts-and-the-unknown-member",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/Lesson_163-modelling-for-handover-what-the-consumer-needs",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/Lesson_164-modelling-project-four-models-one-decision-matrix",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_165-the-layers-that-must-be-distinguished",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l161_l165_notes.py",
+    "Tools/Curriculum/Build/validate_l161_l165_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": ["**/quiz.md", "**/homework.md", "**/slides.md", "**/lesson.yaml", "Material/DA/**"]
+}

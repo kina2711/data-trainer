@@ -1,0 +1,31 @@
+task_id: "academy-build-note-module"
+status: "complete"
+lifecycle_profile: "learning"
+risk_tier: "R2-standard"
+execution_path: "standard-path"
+phase_reached: "release-handoff"
+primary_deliverable: "Data Analyst lesson note batches 006-080"
+evidence:
+  - "Material/DA/Curriculum lessons 006-080"
+  - "Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM-01"
+  - "Docs/Second-Brain/second-brain-manifest.json version 1.0.120"
+test_results:
+  - "15/15 deterministic five-lesson batches passed"
+  - "75/75 humanized-v3 and Wiki parity passed"
+  - "1191 formatter checks passed"
+  - "532 source coverage checks passed"
+gate_results:
+  - "G0-G4 pass"
+  - "G5 owner review pending"
+  - "G6 handoff ready"
+approval_status: "owner-review-pending"
+assumptions:
+  - "The accepted DA roadmap and existing learner baseline remain the spec of record."
+limitations:
+  - "Written notes are not evidence of learner mastery."
+  - "Concept keys are proposed, not registered."
+residual_risks:
+  - "Lessons 081-085 remain skeletons."
+  - "Final book/source audit is intentionally deferred until DA reaches 85/85."
+next_task: "academy-build-note-module for DA lessons 081-085"
+next_owner: "Codex with owner review"

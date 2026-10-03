@@ -1,0 +1,31 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 191-195
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l191-l195-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l191-l195-release-audit.md
+  fingerprint: ce47a54854b4da9259b769490d54cbddfcbc03a0ef2d5a68c19dc8dee0029c75
+tests:
+  core_audit_change_scope: pass
+  core_verify_deliverable: pass
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  documentation_findability_usability_labs: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-source-tree-no-diff
+residual_risks:
+  - documentation and findability targets remain protocols until tested with representative users
+  - self-service classification requires the receiving team's task and risk context
+  - five-person rounds do not establish population-level metric improvement
+  - recordings and participant data require a separate consent and retention process
+owner: kina2711
+next_task: owner reviews L191-L195, then continue the next requested lesson batch

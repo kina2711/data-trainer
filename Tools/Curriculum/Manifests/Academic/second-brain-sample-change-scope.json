@@ -1,0 +1,17 @@
+{
+  "task_id": "second-brain-sample-chapter-2026-09-27",
+  "allowed_paths": [
+    "Tools/Curriculum/Manifests/Academic/second-brain-sample-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/second-brain-sample-change-scope.json",
+    "Tools/Curriculum/Manifests/Academic/atomic-task-output-second-brain-sample.yaml",
+    "Docs/Second-Brain/**"
+  ],
+  "forbidden_paths": [
+    "Material/Reference_temp/**",
+    "Material/**/Curriculum/**",
+    "Material/**/Roadmap/**",
+    "Web/**",
+    "Artifact/**"
+  ],
+  "declared_effect": "Create a project-local Obsidian sample vault with one source record and one detailed Vietnamese Wiki chapter."
+}

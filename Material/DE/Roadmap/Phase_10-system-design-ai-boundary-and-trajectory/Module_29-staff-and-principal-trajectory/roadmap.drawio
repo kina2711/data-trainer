@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="M29 · Staff and Principal Trajectory" id="rm">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" page="1" pageWidth="1600" pageHeight="512" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" value="M29 · Staff and Principal Trajectory" style="text;html=1;fontSize=22;fontStyle=1;align=left;fontColor=#1A1A1A;" vertex="1" parent="1">
+          <mxGeometry x="40" y="36" width="1200" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" value="10 lessons · 21 giờ trên lớp  —  Data Engineer" style="text;html=1;fontSize=13;align=left;fontColor=#6B6B6B;" vertex="1" parent="1">
+          <mxGeometry x="40" y="74" width="1200" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="lg0" value="Theory" style="rounded=1;html=1;fillColor=#EAF2FB;strokeColor=#4A7EBB;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="lg1" value="Practice" style="rounded=1;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="140" y="100" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="lg2" value="Project" style="rounded=1;html=1;fillColor=#E8F6EC;strokeColor=#3F8F5B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="100" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="lg3" value="Assessment" style="rounded=1;html=1;fillColor=#FDE9E9;strokeColor=#C0392B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="100" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="l431" value="&lt;b&gt;Lesson 431&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;LT&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;The competency ladder and what evidence means&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2FB;strokeColor=#4A7EBB;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l432" value="&lt;b&gt;Lesson 432&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Problem framing on one page&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="140" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l433" value="&lt;b&gt;Lesson 433&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;The RFC with three real options&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="140" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l434" value="&lt;b&gt;Lesson 434&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Architecture decision records for irreversible choices&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="140" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l435" value="&lt;b&gt;Lesson 435&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Migration playbook with consumer inventory&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="244" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l436" value="&lt;b&gt;Lesson 436&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Platform as product - paved road, guardrails, adoption&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="244" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l437" value="&lt;b&gt;Lesson 437&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Strategy memo - diagnosis, bets, sequence, revisit signals&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="244" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l438" value="&lt;b&gt;Lesson 438&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;LT&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Influence, review and the bottleneck anti-pattern&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2FB;strokeColor=#4A7EBB;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="244" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l439" value="&lt;b&gt;Lesson 439&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;The evidence dossier - baseline, decision, outcome, limits&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="348" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l440" value="&lt;b&gt;Lesson 440&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;KT&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Graduation defence - one design, three audiences&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDE9E9;strokeColor=#C0392B;strokeWidth=2.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="348" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l431" target="l432">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l432" target="l433">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l433" target="l434">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l434" target="l435">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l435" target="l436">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l436" target="l437">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l437" target="l438">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l438" target="l439">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l439" target="l440">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,53 @@
+{
+  "batch": "L161-L165",
+  "read_on": "2026-10-01",
+  "method": "pdftotext -layout with bounded PDF page ranges plus official-web documentation inspected by section",
+  "sources": [
+    {
+      "source_id": "src.book.boyle-ddd-golang.1e",
+      "pdf_pages": "30-42",
+      "topics": ["domain", "ubiquitous language", "bounded context"]
+    },
+    {
+      "source_id": "src.book.stopford-designing-event-driven-systems",
+      "pdf_pages": "46-59, 108-112",
+      "topics": ["service boundary", "domain model", "bounded context", "schema compatibility"]
+    },
+    {
+      "source_id": "src.web.fowler-bounded-context",
+      "locator": "Bounded Context article, context boundaries and mappings",
+      "topics": ["model boundary", "context map", "different meanings across contexts"]
+    },
+    {
+      "source_id": "src.book.kimball-ross-data-warehouse-toolkit.3e",
+      "pdf_pages": "280-291",
+      "topics": ["late-arriving facts", "late-arriving dimensions", "historical surrogate lookup", "relinking"]
+    },
+    {
+      "source_id": "src.book.adamson-star-schema-complete-reference",
+      "pdf_pages": "156-166",
+      "topics": ["NULL foreign keys", "special-case rows", "invalid and unknown members", "late-arriving data"]
+    },
+    {
+      "source_id": "src.book.silberschatz-database-system-concepts.7e",
+      "pdf_pages": "1144-1157, 1464-1478, 1565-1572",
+      "topics": ["integrity", "temporal semantics", "warehouse schemas"]
+    },
+    {
+      "source_id": "src.book.reis-housley-fundamentals-data-engineering",
+      "pdf_pages": "264-273, 429-451, 473-491",
+      "topics": ["data contracts", "data modeling", "wide tables", "data products", "consumer responsibility"]
+    },
+    {
+      "source_id": "src.web.dbt-semantic-models",
+      "locator": "Semantic models; staging structure; semantic structure, inspected 2026-10-01",
+      "topics": ["entities", "dimensions", "measures and metrics", "semantic project structure"]
+    }
+  ],
+  "limitations": [
+    "No modeling lab, handover usability test, benchmark or semantic migration was executed",
+    "The six-part handover pack and four-by-four decision matrix are curriculum synthesis, not verbatim structures from a source",
+    "dbt documentation is version-sensitive and is used as an implementation example, not as the definition of semantic layer",
+    "No Coursera material was accessed in this batch"
+  ]
+}

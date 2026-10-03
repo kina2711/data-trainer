@@ -1,0 +1,141 @@
+# -*- coding: utf-8 -*-
+"""DE M9 — SQL from zero to advanced."""
+
+M9 = ("SQL from Zero to Advanced", 92, 107, """| | |
+|---|---|
+| **Objective cấp module** | Viết truy vấn nhiều bảng trên lược đồ chưa từng thấy và chứng minh bằng phép đếm rằng kết quả không mất dòng và không nhân dòng |
+| **Tiền đề** | M7 |
+| **Exit criterion** | Thư viện 30 truy vấn trên tập đơn hàng ít nhất 1 triệu dòng, mỗi truy vấn có phép kiểm chứng độc lập kèm theo |
+| **Kỹ năng SFIA** | `DBAD` mức 3 · `PROG` mức 3 |
+| **Chế độ hỏng** | Viết được truy vấn ra số rồi tin luôn, không kiểm chứng, nên số sai đi tiếp xuống hạ nguồn mà không ai biết |""",
+"Module dạy SQL như ngôn ngữ sản xuất chứ không như công cụ khám phá. Nguyên tắc xuyên suốt: mọi truy vấn phải có một cách kiểm chứng độc lập, thường là phép đếm trước và sau. Tám bài đầu là nền, bốn bài giữa là kết và cửa sổ, bốn bài cuối là giao dịch, ghi bất biến và nhận diện mẫu sai.")
+
+L9 = [
+(92,"The relational model and relational algebra","LT","Module 9: M7",
+"Quan hệ là một tập bộ, và hệ quả của việc nó là tập: không có thứ tự và không có phần tử trùng, trong khi bảng SQL thật thì có cả hai, nên SQL là xấp xỉ của mô hình quan hệ chứ không phải hiện thân của nó. Sáu phép toán đại số quan hệ nền: chọn, chiếu, tích, hợp, hiệu, đổi tên, và cách mọi truy vấn phức tạp phân rã về chúng. Phép kết là tích cộng phép chọn, một cách trình bày giải thích được số dòng kết quả trước khi chạy, nối lại lesson 44. Khoá chính, khoá ngoại, khoá phức hợp, và khoá nghiệp vụ so với khoá thay thế. Bản số quan hệ một một, một nhiều, nhiều nhiều và bảng trung gian. Toàn vẹn thực thể và toàn vẹn tham chiếu như ràng buộc do hệ quản trị giữ chứ không do ứng dụng giữ. Vì sao đại số quan hệ đáng học: bộ tối ưu hoá viết lại truy vấn dựa trên các luật tương đương của nó, nội dung của lesson 112.",
+"Phân rã một truy vấn SQL cho trước thành chuỗi phép toán đại số quan hệ, và dự đoán số dòng kết quả từ bản số quan hệ.",
+"Tầng *phân tích*. Objective là phân rã và suy luận, không phải viết truy vấn. Kiểm bằng năm truy vấn: phân rã đúng và dự đoán số dòng sai không quá 10% so với kết quả chạy thật cho ít nhất bốn trên năm.",
+"Nhận lược đồ đơn hàng năm bảng có khai báo bản số. Với năm truy vấn cho trước, phân rã thành phép toán đại số và dự đoán số dòng trước khi chạy. Chạy, so sánh, giải thích chênh lệch. Tìm một cặp bảng nhiều nhiều và chỉ bảng trung gian.",
+"Dự đoán số dòng bằng cách nhân số dòng hai bảng · coi bảng SQL là tập nên bỏ qua dòng trùng · giả định khoá ngoại luôn có ràng buộc khai báo.",
+"Phân rã đúng và dự đoán số dòng sai không quá 10% cho ít nhất bốn trên năm truy vấn."),
+
+(93,"DDL - tables, types, keys and constraints","TH","Lesson 92",
+"Chọn kiểu dữ liệu là quyết định khó đổi về sau và ảnh hưởng cả dung lượng lẫn tính đúng đắn. Ba quy tắc rút từ chặng 1: tiền dùng kiểu thập phân có khai báo độ chính xác chứ không dấu phẩy động, nối lại lesson 7; dấu thời gian luôn kèm múi giờ, nối lại lesson 9; mã định danh có số 0 đầu là chuỗi chứ không phải số, nối lại lesson 69. Chuỗi độ dài cố định so với độ dài thay đổi và chi phí thật của từng loại. Kiểu liệt kê và đánh đổi khi giá trị mới xuất hiện. Năm loại ràng buộc và cái mỗi loại bảo vệ: khoá chính, duy nhất, khoá ngoại, kiểm tra giá trị, không rỗng. Ràng buộc đặt ở cơ sở dữ liệu chứ không ở ứng dụng, vì ứng dụng có nhiều bản còn cơ sở dữ liệu chỉ có một. Hành vi khi xoá bản ghi cha: chặn, xoá lan, hay đặt rỗng, và hệ quả nghiệp vụ của từng cái. Giá trị mặc định và cột sinh tự động.",
+"Thiết kế và cài đặt lược đồ cho một mô tả nghiệp vụ, và chứng minh ràng buộc chặn được năm loại dữ liệu sai.",
+"Tầng *áp dụng*. Objective có tiêu chí kiểm bằng chạy thật. Đạt khi năm lệnh chèn dữ liệu sai đều bị từ chối bởi đúng ràng buộc tương ứng, và khi ba lựa chọn kiểu dữ liệu nhạy cảm được biện minh bằng bài học ở chặng 1.",
+"Nhận mô tả nghiệp vụ bán hàng. Viết lệnh tạo bảng đủ năm loại ràng buộc. Thử chèn năm bản ghi sai: trùng khoá, khoá ngoại không tồn tại, tiền âm, ngày kết thúc trước ngày bắt đầu, cột bắt buộc rỗng. Xác nhận từng cái bị chặn bởi ràng buộc nào.",
+"Dùng dấu phẩy động cho tiền · để ràng buộc ở tầng ứng dụng cho linh hoạt · dùng xoá lan cho bảng giao dịch rồi mất dữ liệu lịch sử.",
+"Năm lệnh chèn sai đều bị đúng ràng buộc từ chối, và ba lựa chọn kiểu nhạy cảm đều có lý do."),
+
+(94,"SELECT, WHERE and logical execution order","TH","Lesson 93",
+"Sáu mệnh đề và thứ tự thực thi logic, khác hẳn thứ tự viết. Thứ tự này suy ra gần như mọi quy tắc còn lại của SQL, nên học nó một lần thì không phải nhớ các quy tắc rời rạc. Hai hệ quả trực tiếp: bí danh cột dùng được trong mệnh đề sắp xếp nhưng không dùng được trong mệnh đề lọc, và mệnh đề lọc chạy trước phép gộp còn mệnh đề lọc nhóm chạy sau. Toán tử so sánh, khoảng, tập, và khớp mẫu. Khớp mẫu có ký tự đại diện ở đầu không dùng được chỉ mục, nối tới lesson 113. Giới hạn số dòng và phân trang theo độ lệch: vì sao độ lệch lớn chậm dần và cách thay bằng phân trang theo con trỏ, nối lại lesson 35. Lấy giá trị phân biệt và vì sao cần nó thường là dấu hiệu phép kết đang nhân dòng chứ không phải yêu cầu nghiệp vụ. Dự đoán số dòng trả về trước khi chạy như một thói quen bắt buộc.",
+"Dự đoán số dòng trả về của một truy vấn lọc trước khi chạy, và giải thích sai lệch giữa dự đoán và kết quả bằng thứ tự thực thi logic.",
+"Tầng *áp dụng*. Objective đòi dự đoán trước rồi đối chứng, đây là thói quen module muốn hình thành. Kiểm bằng tám truy vấn; đạt khi dự đoán đúng ít nhất sáu, và khi hai lần sai đều giải thích được bằng thứ tự thực thi chứ không bằng đoán.",
+"Nhận tám truy vấn trên tập 1 triệu dòng. Dự đoán số dòng từng truy vấn trước khi chạy, ghi lại. Chạy, đối chiếu. Với mỗi lần sai, truy về mệnh đề nào gây ra. Thử dùng bí danh trong mệnh đề lọc và quan sát lỗi. Đo thời gian phân trang ở độ lệch 100 và 1 triệu.",
+"Dùng bí danh cột trong mệnh đề lọc · thêm lấy giá trị phân biệt để chữa nhân dòng thay vì sửa phép kết · phân trang bằng độ lệch lớn.",
+"Dự đoán đúng ít nhất sáu trên tám, và hai lần sai đều truy được về mệnh đề gây ra."),
+
+(95,"NULL and three-valued logic","TH","Lesson 94",
+"Giá trị rỗng biểu thị sự vắng mặt của giá trị chứ không phải một giá trị, nên mọi phép so sánh với nó cho kết quả không xác định chứ không cho đúng hay sai. Logic ba trạng thái và bảng chân trị của ba phép nối. Hành vi của giá trị rỗng trong số học, so sánh, nối chuỗi, kiểm tra thuộc tập, hàm gộp, gộp nhóm và sắp xếp, mỗi chỗ một quy tắc riêng. Cơ chế khiến mệnh đề lọc khác một giá trị loại luôn các dòng rỗng, lỗi âm thầm vì kết quả vẫn trông hợp lý. Kiểm tra thuộc tập với tập con chứa giá trị rỗng và lý do phép phủ định cho tập rỗng. Các hàm xử lý: thay giá trị rỗng, biến giá trị thành rỗng, và so sánh coi rỗng bằng rỗng. Ba nghĩa nghiệp vụ khác nhau bị gộp chung vào một biểu diễn: chưa nhập, không áp dụng, và bằng không; phân biệt ba nghĩa này là việc thiết kế chứ không phải việc truy vấn.",
+"Dự đoán đúng giá trị của biểu thức chứa giá trị rỗng, và chọn cách xử lý khớp với nghĩa nghiệp vụ trong ba nghĩa.",
+"Tầng *áp dụng*. Objective gồm dự đoán có đáp án và một quyết định ngữ nghĩa. Đạt khi dự đoán đúng ít nhất 10 trên 12 biểu thức, và khi ba tình huống nghiệp vụ được xử lý đúng theo nghĩa của từng cái, có nêu lý do.",
+"Dự đoán kết quả 12 biểu thức chứa giá trị rỗng trước khi chạy. Chạy đối chiếu. Nhận ba tình huống: cột chiết khấu chưa nhập, cột ngày huỷ không áp dụng, cột số lượng bằng không bị lưu thành rỗng. Xử lý từng cái và nêu lý do.",
+"So sánh với giá trị rỗng bằng dấu bằng · dùng phủ định thuộc tập khi tập con có thể chứa rỗng · thay mọi giá trị rỗng bằng không cho tiện."
+,"Dự đoán đúng ít nhất 10 trên 12 biểu thức, và ba tình huống nghiệp vụ được xử lý đúng theo nghĩa kèm lý do."),
+
+(96,"Functions, casting and the errors they hide","TH","Lesson 95",
+"Hàm chuỗi, hàm số, hàm ngày, và điểm chung cần chú ý: hàm bọc quanh cột làm chỉ mục trên cột đó vô hiệu, nối tới lesson 113. Ép kiểu ngầm và bảng ưu tiên kiểu: khi so sánh chuỗi với số, hệ quản trị tự ép một bên, và lựa chọn đó quyết định cả kết quả lẫn khả năng dùng chỉ mục. Ép kiểu tường minh và biến thể có bắt lỗi trả về rỗng thay vì dừng truy vấn. Hàm ngày và cắt về mốc thời gian; trích xuất thành phần ngày. Chênh lệch hai dấu thời gian trả về kiểu khoảng chứ không phải số, và cách chuyển. Múi giờ trong hàm ngày, nối lại lesson 9: cùng một hàm cho hai kết quả khác nhau tuỳ cấu hình phiên. Chia nguyên và chia thực, và lỗi mất phần lẻ khi cả hai vế là số nguyên. Làm tròn và thứ tự làm tròn với phép cộng, nối lại lesson 7. Hàm riêng của từng hệ quản trị và chi phí khi chuyển hệ.",
+"Chuẩn hoá dữ liệu bẩn ngay trong truy vấn, và chỉ ra ba chỗ ép kiểu ngầm đang làm chỉ mục vô hiệu hoặc làm sai kết quả.",
+"Tầng *phân tích*. Objective gồm một sản phẩm và một phép truy lỗi ẩn. Đạt khi kết quả chuẩn hoá khớp bản đối chứng, và khi định vị đúng cả ba chỗ ép kiểu ngầm, mỗi chỗ dẫn được bằng chứng từ kế hoạch thực thi hoặc từ kết quả sai.",
+"Chuẩn hoá một bảng có cột ngày dạng chuỗi ba định dạng, cột tiền có dấu phân cách, và cột mã có khoảng trắng thừa. Đối chiếu bản đối chứng. Sau đó đọc ba truy vấn có ép kiểu ngầm, định vị và sửa. Đo thời gian trước sau.",
+"Bọc hàm quanh cột trong mệnh đề lọc · chia hai số nguyên rồi mất phần lẻ · làm tròn từng dòng trước khi cộng.",
+"Kết quả chuẩn hoá khớp bản đối chứng, và ba chỗ ép kiểu ngầm được định vị có bằng chứng."),
+
+(97,"CASE and conditional classification","TH","Lesson 96",
+"Dạng đơn giản và dạng tìm kiếm của biểu thức điều kiện. Cơ chế dừng ở nhánh khớp đầu tiên và hệ quả: thứ tự nhánh quyết định kết quả, nên hai truy vấn cùng tập nhánh nhưng khác thứ tự cho hai kết quả khác nhau. Thiếu nhánh mặc định sinh ra giá trị rỗng, nối lại lesson 95, và đây là nguồn lỗi âm thầm khi phân nhóm vì bản ghi rơi ra ngoài mọi nhóm. Bốn ứng dụng: phân nhóm nghiệp vụ, sắp xếp tuỳ biến, gộp có điều kiện, và xoay bảng thủ công. Gộp có điều kiện là mẫu quan trọng nhất: nó biến nhiều lần quét thành một lần quét, nối tới lesson 107. Biểu thức điều kiện lồng nhau và ngưỡng mà nó hết đọc được, cùng cách thay bằng bảng ánh xạ. Kiểm chứng bắt buộc sau mọi phép phân nhóm: tổng theo nhóm phải bằng tổng toàn bộ, phép kiểm rẻ và bắt được cả lỗi thiếu nhánh mặc định lẫn lỗi nhánh chồng lấn.",
+"Phân loại bản ghi thành nhóm nghiệp vụ và chứng minh bằng phép cộng rằng không bản ghi nào rơi ra ngoài hoặc bị đếm hai lần.",
+"Tầng *áp dụng*. Objective có phép kiểm chứng tuyệt đối đi kèm. Đạt khi tổng theo nhóm bằng đúng tổng toàn bộ trên tập 1 triệu dòng, và khi người học phát hiện được lỗi cài sẵn về thứ tự nhánh bằng chính phép kiểm đó.",
+"Phân loại 1 triệu đơn hàng thành sáu nhóm giá trị. Kiểm bằng phép cộng. Nhận một truy vấn phân nhóm cài sẵn hai lỗi: thiếu nhánh mặc định và hai nhánh chồng lấn. Dùng phép kiểm phát hiện cả hai. Viết lại bằng gộp có điều kiện một lần quét và đo thời gian so với nhiều lần quét.",
+"Bỏ nhánh mặc định vì nghĩ đã phủ hết · đặt nhánh rộng trước nhánh hẹp · quét nhiều lần thay vì gộp có điều kiện.",
+"Tổng theo nhóm bằng tổng toàn bộ trên 1 triệu dòng, và phát hiện được cả hai lỗi cài sẵn bằng phép kiểm."),
+
+(98,"GROUP BY as a grain transformation","TH","Lesson 97",
+"Gộp nhóm là một phép biến đổi hạt: đầu vào một hạt, đầu ra một hạt khác, và phát biểu được hai hạt đó là cách hiểu đúng mệnh đề này. Từ cách trình bày đó suy ra quy tắc mọi cột trong danh sách chọn phải nằm trong mệnh đề gộp hoặc trong hàm gộp, thay vì phải nhớ nó như một điều luật. Ba biến thể đếm và tập bản ghi mỗi biến thể tính: đếm toàn bộ dòng, đếm giá trị khác rỗng trong một cột, và đếm giá trị phân biệt. Cách hàm gộp bỏ qua giá trị rỗng và hệ quả lên trung bình: trung bình bỏ qua rỗng nhưng tính cả số không, hai thứ khác nhau. Lọc trước gộp so với lọc sau gộp và chi phí khác nhau của hai chỗ. Gộp trên biểu thức. Tập gộp nhiều chiều và gộp cuộn ở mức nhận biết. Phát biểu hạt trước và sau mỗi phép gộp như một thói quen bắt buộc của module.",
+"Phát biểu hạt trước và sau mỗi phép gộp trong một chuỗi truy vấn, và chọn đúng biến thể đếm theo câu hỏi nghiệp vụ.",
+"Tầng *áp dụng*. Objective gồm một phát biểu kiểm được và một lựa chọn có đáp án. Đạt khi phát biểu hạt đúng cho cả bốn bước của chuỗi, kiểm chứng bằng phép đếm, và khi chọn đúng biến thể đếm cho sáu câu hỏi nghiệp vụ.",
+"Nhận chuỗi bốn phép gộp lồng nhau. Phát biểu hạt trước và sau từng bước bằng một câu, kiểm chứng mỗi phát biểu bằng phép đếm. Trả lời sáu câu hỏi nghiệp vụ, mỗi câu chọn một biến thể đếm và nêu lý do. So kết quả ba biến thể trên cùng cột có giá trị rỗng và trùng.",
+"Dùng đếm toàn bộ dòng khi câu hỏi là đếm khách hàng phân biệt · lọc sau gộp khi lọc trước gộp làm được · quên rằng trung bình bỏ qua rỗng nhưng tính số không.",
+"Phát biểu hạt đúng cho cả bốn bước có phép đếm kiểm chứng, và chọn đúng biến thể đếm cho sáu câu hỏi."),
+
+(99,"JOIN - the mechanism and cardinality","LT","Lesson 98",
+"Phép kết trình bày như tích Descartes cộng một điều kiện lọc, nối lại lesson 92, và kết chéo là trường hợp không có điều kiện. Bốn kiểu kết đối chiếu trên một cặp bảng bốn nhân ba tính bằng tay, vì tính tay một lần thì không phải nhớ bảng quy tắc. Bản số quan hệ quyết định số dòng kết quả, và công thức ước lượng cho ba trường hợp một một, một nhiều, nhiều nhiều. Kết bán phần và kết loại trừ diễn đạt bằng kiểm tra tồn tại, và vì sao chúng khác kết thường ở chỗ không nhân dòng. Đọc sơ đồ quan hệ để chọn đường kết. Tự kết cho quan hệ phân cấp. Điều kiện kết đặt ở mệnh đề kết so với ở mệnh đề lọc: với kết trong thì tương đương, với kết ngoài thì không, và đây là một trong những lỗi SQL tốn kém nhất vì nó âm thầm biến kết ngoài thành kết trong. Dự đoán số dòng trước khi chạy.",
+"Suy ra kiểu kết cần dùng từ một phát biểu nghiệp vụ, và dự đoán số dòng kết quả trước khi chạy từ bản số quan hệ.",
+"Tầng *phân tích*. Objective đòi suy luận từ nghiệp vụ sang cấu trúc và ước lượng định lượng. Đạt khi chọn đúng kiểu kết cho sáu phát biểu và dự đoán số dòng sai không quá 10% cho ít nhất năm trên sáu.",
+"Tính bằng tay bốn kiểu kết trên cặp bảng bốn nhân ba, đối chiếu với kết quả chạy. Nhận sáu phát biểu nghiệp vụ, chọn kiểu kết và dự đoán số dòng. Chạy đối chiếu. Đặt điều kiện bảng phải ở mệnh đề lọc trên một kết ngoài và quan sát nó thành kết trong.",
+"Đặt điều kiện bảng phải vào mệnh đề lọc của kết ngoài · dự đoán số dòng bằng số dòng bảng lớn hơn · dùng kết thường khi chỉ cần kiểm tra tồn tại.",
+"Chọn đúng kiểu kết cho sáu phát biểu, và dự đoán số dòng sai không quá 10% cho ít nhất năm."),
+
+(100,"JOIN - fan-out, multi-table and verification by counting","TH","Lesson 99",
+"Nhân bản dòng là chế độ hỏng nguy hiểm nhất của phép kết vì kết quả vẫn trông hợp lý: bảng bên phải có nhiều dòng khớp làm mỗi dòng bên trái nhân lên, nên mọi phép tổng sau đó bị thổi phồng. Ba cách phát hiện: đếm dòng trước và sau mỗi phép kết, kiểm tính duy nhất của khoá kết ở bên phải, và so tổng một cột không nên đổi. Ba cách xử lý: gộp trước khi kết, dùng kết bán phần khi chỉ cần kiểm tồn tại, và sửa khoá kết khi nó không đúng hạt. Kết ba bảng trở lên và thứ tự đọc: mỗi phép kết sinh ra một kết quả trung gian có hạt riêng, nên phải phát biểu hạt sau từng bước như lesson 98. Bản ghi mồ côi và toàn vẹn tham chiếu khi ràng buộc không được khai báo. Quy trình kiểm chứng bắt buộc của module: đếm dòng trước và sau mỗi phép kết, và không truy vấn nào được nộp nếu thiếu phép đếm đó.",
+"Viết truy vấn kết nhiều bảng và chứng minh bằng phép đếm rằng kết quả không mất dòng và không nhân dòng.",
+"Tầng *áp dụng*. Objective có tiêu chí chứng minh tuyệt đối. Đạt khi truy vấn năm bảng cho kết quả đúng đáp án và khi nộp kèm phép đếm cho từng bước kết. Kết quả đúng mà không có phép đếm thì không đạt, vì module tồn tại để hình thành thói quen đó.",
+"Viết truy vấn kết năm bảng trên tập 1 triệu dòng, trong đó hai bảng có quan hệ nhiều nhiều. Nộp kèm phép đếm sau từng bước. Nhận ba truy vấn cài sẵn nhân dòng, phát hiện và sửa bằng ba cách khác nhau. Tìm bản ghi mồ côi trong một bảng không có ràng buộc khai báo.",
+"Tin kết quả vì nó trông hợp lý · chữa nhân dòng bằng lấy giá trị phân biệt · kết trên cột không phải khoá ở hạt bên phải.",
+"Truy vấn năm bảng đúng đáp án và có phép đếm kèm cho từng bước kết."),
+
+(101,"Subqueries, CTEs and recursive CTEs","TH","Lesson 100",
+"Ba vị trí đặt truy vấn con và ý nghĩa khác nhau của từng vị trí. Truy vấn con tương quan chạy lại cho mỗi dòng ngoài, nên chi phí nhân lên theo số dòng, và đây là một trong bốn mẫu sai ở lesson 107. Khác biệt ngữ nghĩa giữa kiểm tra tồn tại, kiểm tra thuộc tập, và phép kết khi tập con chứa giá trị rỗng, nối lại lesson 95. Biểu thức bảng chung đặt tên cho một bước và cho phép xâu chuỗi nhiều bước, làm truy vấn đọc được theo trình tự suy nghĩ. Quy ước đặt tên theo hạt của kết quả thay vì theo thao tác, vì tên nói hạt thì người đọc kiểm được ngay. Biểu thức bảng chung không phải bảng tạm: nó có thể được nội tuyến vào truy vấn chính và tính lại nhiều lần, hoặc được vật chất hoá, tuỳ hệ quản trị và tuỳ phiên bản, nên phải đọc kế hoạch thực thi để biết. Biểu thức bảng chung đệ quy cho cây phân cấp và điều kiện dừng.",
+"Tái cấu trúc một truy vấn lồng nhiều tầng thành chuỗi biểu thức bảng chung đặt tên theo hạt, giữ nguyên kết quả và đạt rà soát chéo về độ đọc được.",
+"Tầng *áp dụng*. Objective gồm một phép tái cấu trúc có tiêu chí kết quả không đổi và một tiêu chí do người khác chấm. Đạt khi kết quả khớp từng dòng với bản gốc và khi một học viên khác đọc bản mới giải thích lại được mục đích từng bước mà không hỏi.",
+"Nhận truy vấn lồng bốn tầng 150 dòng. Tái cấu trúc thành chuỗi biểu thức bảng chung đặt tên theo hạt. Đối chiếu kết quả từng dòng. Đổi bài chéo để người khác giải thích lại. Đọc kế hoạch thực thi xem biểu thức bảng chung được nội tuyến hay vật chất hoá. Viết một truy vấn đệ quy cho cây danh mục.",
+"Đặt tên biểu thức bảng chung theo thao tác thay vì theo hạt · dùng truy vấn con tương quan trên bảng lớn · viết đệ quy không có điều kiện dừng.",
+"Kết quả khớp từng dòng với bản gốc, và học viên khác giải thích lại được từng bước mà không hỏi."),
+
+(102,"Window functions - ranking and positioning","TH","Lesson 101",
+"Khác biệt nền tảng với gộp nhóm: gộp nhóm thu gọn số dòng, hàm cửa sổ giữ nguyên số dòng và thêm cột tính trên một nhóm dòng liên quan. Cấu trúc mệnh đề cửa sổ với phân vùng và sắp xếp, và ý nghĩa của từng phần. Bốn hàm xếp hạng và khác biệt chỉ biểu hiện khi có giá trị trùng: đánh số liên tục, xếp hạng có nhảy bậc, xếp hạng không nhảy bậc, và chia phân vị. Chọn hàm nào là quyết định nghiệp vụ về cách xử lý giá trị trùng chứ không phải lựa chọn kỹ thuật. Mẫu lấy N dòng đầu mỗi nhóm, bài toán xuất hiện liên tục trong công việc dữ liệu. Hàm cửa sổ không dùng được trong mệnh đề lọc vì nó chạy sau bước lọc trong thứ tự thực thi logic ở lesson 94, và đường vòng là bọc trong biểu thức bảng chung. Khử trùng bằng đánh số và câu hỏi giữ dòng nào, một quyết định nghiệp vụ phải khai báo rõ.",
+"Giải bài toán lấy N dòng đầu theo nhóm, và chọn giữa bốn hàm xếp hạng theo yêu cầu nghiệp vụ về xử lý giá trị trùng.",
+"Tầng *áp dụng*. Objective gồm một cài đặt và một lựa chọn có đáp án phụ thuộc yêu cầu. Đạt khi kết quả lấy N dòng đầu khớp đáp án, và khi bốn tình huống trùng giá trị được gán đúng hàm xếp hạng kèm lý do nghiệp vụ.",
+"Lấy 5 đơn hàng lớn nhất mỗi khách trên 1 triệu dòng. Nhận bốn tình huống có giá trị trùng, chọn hàm xếp hạng cho từng cái và nêu lý do. Thử dùng hàm cửa sổ trong mệnh đề lọc, quan sát lỗi, rồi vòng qua bằng biểu thức bảng chung. Khử trùng và khai báo rõ quy tắc giữ dòng.",
+"Dùng đánh số liên tục khi nghiệp vụ cần giữ cả các dòng bằng điểm · đặt hàm cửa sổ trong mệnh đề lọc · khử trùng mà không khai báo giữ dòng nào.",
+"Kết quả lấy N dòng đầu khớp đáp án, và bốn tình huống trùng được gán đúng hàm kèm lý do nghiệp vụ."),
+
+(103,"Window functions - frames, running totals and period comparison","TH","Lesson 102",
+"Mệnh đề khung xác định tập dòng mà hàm tính trên đó, và phần lớn người dùng không biết nó tồn tại vì có khung mặc định. Khung mặc định khi có sắp xếp là từ đầu phân vùng tới dòng hiện tại, nên tổng luỹ kế chạy đúng mà không khai báo gì, nhưng giá trị cuối thì sai vì khung dừng ở dòng hiện tại. Đếm theo dòng so với đếm theo giá trị: hai cách cho kết quả khác nhau khi có giá trị trùng ở cột sắp xếp, và ví dụ định lượng cho khác biệt đó. Hàm lấy dòng trước và dòng sau cho so kỳ trước và cùng kỳ năm trước. Tổng luỹ kế và trung bình trượt. Vấn đề kỳ khuyết: tháng không có giao dịch biến mất khỏi kết quả nên mọi phép so kỳ lệch một bậc, và cách xử lý bằng bảng lịch nối trái. Đây là lỗi hay gặp nhất trong báo cáo theo thời gian và nó không có tín hiệu kỹ thuật nào.",
+"Dựng báo cáo có tăng trưởng so kỳ, luỹ kế và trung bình trượt, cho kết quả đúng cả ở những kỳ không có giao dịch.",
+"Tầng *áp dụng*. Objective có tiêu chí đúng sai tuyệt đối trên một ca khó. Đạt khi kết quả khớp bản đối chứng ở mọi kỳ, gồm cả ba kỳ khuyết dữ liệu cố ý. Báo cáo đúng ở kỳ có dữ liệu mà lệch ở kỳ khuyết là không đạt.",
+"Dựng báo cáo doanh thu 36 tháng trong đó ba tháng không có giao dịch. Tính tăng trưởng so kỳ trước, so cùng kỳ năm trước, luỹ kế và trung bình trượt ba tháng. Đối chiếu bản đối chứng. So kết quả đếm theo dòng với đếm theo giá trị trên cột có giá trị trùng.",
+"Không nối bảng lịch nên kỳ khuyết biến mất · tin khung mặc định mà không khai báo · dùng đếm theo giá trị khi cần đếm theo dòng.",
+"Kết quả khớp bản đối chứng ở mọi kỳ, gồm cả ba kỳ khuyết dữ liệu."),
+
+(104,"Set operations and data quality queries","TH","Lesson 103",
+"Phép hợp có khử trùng so với phép hợp giữ nguyên, và chi phí ẩn của việc khử trùng trên tập lớn. Phép giao và phép hiệu dùng để đối chiếu hai nguồn, công cụ chính khi đối soát ở chặng 4. Ba loại trùng lặp và cách phát hiện từng loại: trùng toàn bộ cột, trùng khoá nghiệp vụ, và trùng mờ do khác biểu diễn chuỗi, nối lại lesson 8 về chuẩn hoá Unicode. Sáu chiều chất lượng dữ liệu và một truy vấn đo cho từng chiều: đầy đủ, duy nhất, hợp lệ, nhất quán, chính xác, kịp thời. Chiều chính xác là chiều duy nhất không đo được bằng quy tắc nội bộ, nó cần một nguồn đối chứng độc lập, và đây là điều phải nói rõ thay vì giả vờ đo được. Bản ghi mồ côi và toàn vẹn tham chiếu khi không có ràng buộc khai báo. Bộ truy vấn kiểm chất lượng viết một lần dùng lại được cho bảng bất kỳ.",
+"Lập báo cáo chất lượng định lượng trên sáu chiều cho một bảng chưa từng thấy, và nói rõ chiều nào không đo được bằng quy tắc nội bộ.",
+"Tầng *phân tích*. Objective gồm đo và một phán đoán về giới hạn của phép đo. Đạt khi sáu chiều đều có số, khi định vị đúng loại lỗi cài sẵn trong bảng, và khi nêu rõ chiều chính xác cần nguồn đối chứng. Báo cáo đủ sáu số mà không nêu giới hạn thì thiếu phần quan trọng nhất.",
+"Nhận bảng 2 triệu dòng cài sẵn bốn loại lỗi. Viết bộ truy vấn đo sáu chiều. Chạy và lập báo cáo có số. Định vị bốn loại lỗi. Dùng phép hiệu đối chiếu với một bảng nguồn độc lập cho chiều chính xác. Đóng gói bộ truy vấn thành dùng lại được cho bảng khác.",
+"Báo cáo chiều chính xác bằng quy tắc nội bộ · dùng phép hợp có khử trùng khi không cần khử · bỏ qua trùng mờ vì trùng khoá đã bằng không.",
+"Sáu chiều đều có số, bốn loại lỗi cài sẵn được định vị, và giới hạn của chiều chính xác được nêu rõ."),
+
+(105,"Transactions, isolation levels and the three read phenomena","TH","Lesson 104",
+"Giao dịch là đơn vị nguyên tử: hoặc mọi thay đổi có hiệu lực hoặc không thay đổi nào có hiệu lực. Bốn đảm bảo và ví dụ phản chứng cho từng cái bằng một giao dịch chuyển tiền bị ngắt giữa chừng. Ba hiện tượng đọc và điều kiện xuất hiện: đọc bẩn khi đọc được thay đổi chưa xác nhận, đọc không lặp lại khi cùng truy vấn cho hai kết quả trong một giao dịch, và đọc ảo khi tập dòng thoả điều kiện thay đổi. Bốn mức cô lập và hiện tượng nào bị chặn ở mức nào; mức mặc định khác nhau giữa các hệ quản trị và đây là chỗ giả định sai gây lỗi khi chuyển hệ. Cô lập cao hơn không miễn phí: nó đổi bằng tranh chấp khoá và tỉ lệ giao dịch bị huỷ, nối lại lesson 52. Giao dịch dài giữ khoá lâu và chặn người khác, một nguyên nhân phổ biến của hệ thống trông như treo. Chế độ tự xác nhận và vì sao nó làm ghi theo lô mất ý nghĩa, nối lại lesson 72.",
+"Tái hiện ba hiện tượng đọc bằng hai phiên chạy song song, và chỉ ra mức cô lập nào chặn được hiện tượng nào.",
+"Tầng *phân tích*. Objective đòi dựng được điều kiện xuất hiện chứ không chỉ nhớ bảng. Đạt khi tái hiện được cả ba hiện tượng bằng hai phiên, và khi bảng đối chiếu bốn mức cô lập nhân ba hiện tượng được điền đúng bằng thực nghiệm chứ không bằng tài liệu.",
+"Mở hai phiên song song. Dựng kịch bản cho từng hiện tượng ở mức cô lập thấp nhất. Nâng dần mức và ghi lại hiện tượng nào biến mất. Điền bảng bốn nhân ba bằng kết quả quan sát. Đo tỉ lệ giao dịch bị huỷ ở mức cao nhất dưới tải song song.",
+"Tin mức cô lập mặc định giống nhau giữa các hệ · đặt mức cao nhất cho an toàn mà không đo tỉ lệ huỷ · giữ giao dịch mở trong lúc gọi mạng.",
+"Tái hiện được cả ba hiện tượng, và bảng bốn nhân ba được điền bằng kết quả thực nghiệm."),
+
+(106,"Upsert, merge and idempotent writes","TH","Lesson 105",
+"Ghi bất biến khi chạy lại là yêu cầu của mọi pipeline, nối lại lesson 74 của chặng 1, và ở tầng SQL nó có ba cách cài đặt. Chèn có xử lý xung đột: chèn nếu chưa có, cập nhật hoặc bỏ qua nếu đã có, và điều kiện bắt buộc là phải có ràng buộc duy nhất trên khoá, nếu không thì hệ quản trị không biết thế nào là xung đột. Trộn theo khoá cho cả chèn, cập nhật và xoá trong một câu lệnh, cùng cạm bẫy khi nguồn có dòng trùng khoá: một số hệ báo lỗi, một số chọn tuỳ ý, nên phải khử trùng nguồn trước. Xoá theo khoảng rồi chèn lại cho phân vùng, và điều kiện nguyên tử: hai câu lệnh trong một giao dịch, nếu không thì có cửa sổ bảng rỗng. Chọn cách nào theo ba yếu tố: có khoá duy nhất không, tỉ lệ dòng thay đổi, và có cần xử lý xoá không. Kiểm chứng bắt buộc: chạy hai lần và so từng dòng.",
+"Cài ghi bất biến bằng ba cách, và chứng minh bằng đối chiếu từng dòng rằng chạy hai lần cho kết quả bằng chạy một lần.",
+"Tầng *áp dụng*. Objective có tiêu chí đối chứng tuyệt đối và ba cài đặt để so. Đạt khi cả ba cách đều qua phép chạy hai lần, và khi người học chọn được cách phù hợp cho ba tình huống có ràng buộc khác nhau kèm lý do.",
+"Cài ba cách ghi bất biến cho bảng đích 5 triệu dòng. Chạy mỗi cách hai lần, đối chiếu từng dòng. Cố ý đưa nguồn có dòng trùng khoá vào phép trộn và quan sát hành vi. Bỏ giao dịch quanh xoá rồi chèn và quan sát cửa sổ bảng rỗng. Chọn cách cho ba tình huống.",
+"Dùng chèn có xử lý xung đột khi chưa có ràng buộc duy nhất · trộn từ nguồn chưa khử trùng · xoá rồi chèn ngoài giao dịch.",
+"Cả ba cách qua phép chạy hai lần đối chiếu từng dòng, và ba tình huống được chọn cách phù hợp kèm lý do."),
+
+(107,"Query anti-patterns and how to recognise them","TH","Lesson 106",
+"Sáu mẫu sai phổ biến, mỗi mẫu kèm triệu chứng, cơ chế, và cách sửa. Truy vấn một cộng n: lấy danh sách rồi lặp gọi truy vấn cho từng phần tử, thường phát sinh từ mã ứng dụng chứ không từ SQL, và cách phát hiện là đếm số truy vấn trong một lần chạy. Chọn mọi cột khi chỉ cần vài cột: tốn băng thông, chặn chỉ mục chỉ phủ, và làm mã vỡ khi lược đồ thêm cột. Thiếu bộ lọc hoặc bộ lọc không dùng được chỉ mục do bọc hàm quanh cột, nối lại lesson 96. Phân trang theo độ lệch lớn, nối lại lesson 94. Phép kết nổ bản số do khoá kết sai hạt, nối lại lesson 100. Truy vấn con tương quan trên bảng lớn, nối lại lesson 101. Quy trình nhận diện: đọc mã trước, rồi đo, rồi đọc kế hoạch thực thi ở lesson 113. Nguyên tắc không tối ưu khi chưa đo, nối lại lesson 17 và 40.",
+"Nhận diện sáu mẫu sai trong một kho mã cho trước và sửa chúng, chứng minh cải thiện bằng số đo trước và sau.",
+"Tầng *phân tích*. Objective là truy lỗi hiệu năng về đúng mẫu rồi sửa có đối chứng. Đạt khi tìm được ít nhất năm trên sáu mẫu cài sẵn, và khi mỗi bản sửa có số đo trước sau cho thấy cải thiện. Sửa mà không đo thì không tính, kể cả khi sửa đúng.",
+"Nhận một kho mã cài sẵn sáu mẫu, trong đó mẫu một cộng n nằm ở tầng ứng dụng. Đếm số truy vấn mỗi lần chạy để phát hiện nó. Sửa từng mẫu, đo trước sau. Lập bảng sáu dòng: mẫu, triệu chứng, cách phát hiện, cách sửa, cải thiện đo được.",
+"Sửa theo cảm nhận mà không đo · thêm chỉ mục cho mọi cột trong mệnh đề lọc · chọn mọi cột rồi lọc cột ở tầng ứng dụng.",
+"Tìm ít nhất năm trên sáu mẫu, và mỗi bản sửa có số đo trước sau cho thấy cải thiện."),
+]

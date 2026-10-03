@@ -1,0 +1,18 @@
+{
+  "contract_id": "de-l140-l144-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_140-locking-two-phase-locking-and-deadlock-detection",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_141-mvcc-snapshots-and-vacuum",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_142-isolation-levels-chosen-by-anomaly-not-by-name",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_143-replication-lag-failover-and-split-brain",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_144-partitioning-against-sharding",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l140_l144_notes.py",
+    "Tools/Curriculum/Build/validate_l140_l144_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": ["**/quiz.md", "**/homework.md", "**/slides.md", "**/lesson.yaml", "Material/DA/**"]
+}

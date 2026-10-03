@@ -1,0 +1,29 @@
+contract_id: de-l221-l225-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+owner: kina2711
+consumer: Data Analytics Engineer trainer
+scope:
+  lessons: [221, 222, 223, 224, 225]
+  phases: [6]
+  modules: [15]
+baseline:
+  formatter: checked=407 failed=0
+  whole_vault_coverage: checked=143 failed=0
+  second_brain_manifest: version=1.0.43 sources=119 notes=143 retrieval_tests=476
+acceptance:
+  - five Vietnamese knowledge notes each contain at least 2200 words
+  - L221 distinguishes Parquet file, row group, column chunk and page using real footer metadata
+  - L222 separates projection pushdown, row-group pruning and page-level skipping
+  - L223 specifies cross-engine nested, timestamp and decimal round-trip oracles
+  - L224 separates object storage, file format and table format without using ACID as a substitute for mechanism
+  - L225 traces metadata JSON to snapshot, manifest list, manifest and data file
+  - source facts have stable IDs, locators, rights and evidence boundaries
+  - Reference and Wiki copies are byte-identical
+  - generator, batch validator, formatter and whole-vault coverage checks pass
+  - canonical Obsidian sync is checksum-verified without deleting destination-only files
+forbidden:
+  - changing quiz.md, homework.md, slides.md, lesson.yaml or diagram files
+  - modifying Data Analyst curriculum
+  - claiming live Parquet or Iceberg lab execution without evidence
+approval: owner-semantic-review-pending

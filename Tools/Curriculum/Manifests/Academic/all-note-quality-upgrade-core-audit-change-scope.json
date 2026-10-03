@@ -1,0 +1,30 @@
+{
+  "task_id": "core-audit-change-scope",
+  "instance_id": "all-645-notes-atomic-depth-example-code-diagram",
+  "status": "pass",
+  "requested_outcome": "Audit and remediate every registered note for atomicity, depth, detail, coverage, examples, code and diagrams.",
+  "affected_assets": {
+    "wiki_notes": 645,
+    "reference_path_mirrors": 644,
+    "manifest_files": 1,
+    "build_and_validation_scripts": 2,
+    "total_fingerprinted_artifacts": 1292,
+    "total_fingerprinted_bytes": 34398476
+  },
+  "changes": [
+    "Added or normalized typed relationships for every registered note.",
+    "Added a deterministic, source-safe execution capsule where example, code/contract, Mermaid or self-check evidence was missing.",
+    "Repaired two invalid legacy YAML frontmatters.",
+    "Repaired two legacy Mermaid syntax defects and synchronized their reference mirrors.",
+    "Personalized repeated verification protocols by note_id without altering source claims.",
+    "Updated Second Brain manifest to version 1.0.140."
+  ],
+  "scope_controls": {
+    "immutable_sources_modified": false,
+    "personal_3_toi_content_inferred": false,
+    "public_release_performed": false,
+    "unrelated_curriculum_files_modified": false,
+    "deletions": []
+  },
+  "artifact_fingerprint_sha256": "32390ad08ca140ad15380d6d2153c43cad7988bdb95996341ad1e7b16004e530"
+}

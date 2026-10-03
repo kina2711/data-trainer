@@ -1,0 +1,32 @@
+{
+  "task_id": "core-pre-change-scope",
+  "instance_id": "all-645-notes-atomic-depth-example-code-diagram",
+  "status": "pass",
+  "baseline": {
+    "manifest_version": "1.0.139",
+    "registered_notes": 645,
+    "missing_note_files": 0,
+    "notes_with_examples": 572,
+    "notes_with_code": 19,
+    "notes_with_detected_diagrams": 60,
+    "notes_with_mermaid": 23,
+    "minimum_word_count": 1731
+  },
+  "allowed_paths": [
+    "Docs/Second-Brain/2_Wiki/**/*.md",
+    "each registered note's frontmatter reference_path target",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/enrich_all_atomic_notes.py",
+    "Tools/Curriculum/Build/validate_all_atomic_notes.py",
+    "Tools/Curriculum/Manifests/Academic/all-note-quality-upgrade-*.json",
+    "Tools/Curriculum/Manifests/Academic/all-note-quality-upgrade-*.yaml"
+  ],
+  "forbidden_paths": [
+    "Material/Reference_temp/**",
+    "Docs/Second-Brain/1_Nguon/**",
+    "Docs/Second-Brain/3_Toi/**",
+    "unrelated curriculum lesson, slide, quiz and homework files"
+  ],
+  "expected_mutation": "Append or replace a deterministic note-specific execution capsule in registered Wiki notes and their reference_path mirrors; preserve existing prose and source claims.",
+  "deletions": []
+}

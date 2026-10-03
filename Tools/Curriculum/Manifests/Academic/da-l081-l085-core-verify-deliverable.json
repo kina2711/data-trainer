@@ -1,0 +1,21 @@
+{
+  "task_id": "core-verify-deliverable",
+  "instance_id": "data-analyst-l081-l085",
+  "status": "pass",
+  "manifest": {"version": "1.0.121", "sources": 204, "notes": 537, "retrieval_cases": 1658},
+  "tests": [
+    {"name": "batch_determinism_and_contract", "result": "1/1 batch pass; 5/5 lessons; 20 generated artifacts"},
+    {"name": "humanizer", "result": "5 checked; within-note repeats 0; cross-note repeats 0; prose tells 0"},
+    {"name": "full_da_humanizer", "result": "80 lessons 006-085 checked; repeats 0"},
+    {"name": "markdown_formatter", "result": "1196 checked; 0 failed"},
+    {"name": "global_source_coverage", "result": "537 checked; 0 failed"},
+    {"name": "wiki_parity", "result": "5/5 byte-identical"},
+    {"name": "relationship_graph", "result": "002-085 unresolved edges 0"},
+    {"name": "da_skeleton_scan", "result": "85 complete; 0 pending"}
+  ],
+  "approval": "owner review pending",
+  "limitations": [
+    "Concept keys remain proposed and do not count as canonical registry coverage.",
+    "Capstone protocols and written notes are not evidence of learner mastery or certification."
+  ]
+}

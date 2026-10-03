@@ -1,0 +1,26 @@
+schema_version: 1
+kind: module
+id: DE-M04
+parent: DE-P02
+version: 0.1.0-preview
+status: draft
+owner: kina2711
+document: roadmap.md
+children:
+  - DE-L045
+  - DE-L046
+  - DE-L047
+  - DE-L048
+  - DE-L049
+  - DE-L050
+  - DE-L051
+  - DE-L052
+  - DE-L053
+  - DE-L054
+  - DE-L055
+  - DE-L056
+  - DE-L057
+  - DE-L058
+  - DE-L059
+  - DE-L060
+approval_ref: null

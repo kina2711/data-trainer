@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="M22 · Change Data Capture Internals" id="rm">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" page="1" pageWidth="1600" pageHeight="512" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" value="M22 · Change Data Capture Internals" style="text;html=1;fontSize=22;fontStyle=1;align=left;fontColor=#1A1A1A;" vertex="1" parent="1">
+          <mxGeometry x="40" y="36" width="1200" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" value="10 lessons · 20 giờ trên lớp  —  Data Engineer" style="text;html=1;fontSize=13;align=left;fontColor=#6B6B6B;" vertex="1" parent="1">
+          <mxGeometry x="40" y="74" width="1200" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="lg0" value="Theory" style="rounded=1;html=1;fillColor=#EAF2FB;strokeColor=#4A7EBB;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="lg1" value="Practice" style="rounded=1;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="140" y="100" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="lg2" value="Project" style="rounded=1;html=1;fillColor=#E8F6EC;strokeColor=#3F8F5B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="100" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="lg3" value="Assessment" style="rounded=1;html=1;fillColor=#FDE9E9;strokeColor=#C0392B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="100" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="l335" value="&lt;b&gt;Lesson 335&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;LT&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Three ways to capture change and their cost&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2FB;strokeColor=#4A7EBB;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l336" value="&lt;b&gt;Lesson 336&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Inside the transaction log - WAL, logical decoding and the replication slot&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="140" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l337" value="&lt;b&gt;Lesson 337&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;The consistent bootstrap - snapshot interleaved with the live log&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="140" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l338" value="&lt;b&gt;Lesson 338&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;The event envelope - before, after, op and source metadata&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="140" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l339" value="&lt;b&gt;Lesson 339&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Ordering scope and the multi-table transaction limit&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="244" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l340" value="&lt;b&gt;Lesson 340&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Position, offset and checkpoint - three different things&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="244" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l341" value="&lt;b&gt;Lesson 341&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Deletes, truncates, primary key updates and tombstones&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="244" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l342" value="&lt;b&gt;Lesson 342&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Schema change, schema history and quarantine&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="244" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l343" value="&lt;b&gt;Lesson 343&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Slot retention, lag and the source disk risk&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="348" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l344" value="&lt;b&gt;Lesson 344&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;DA&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;CDC project - reconcile after repeated crashes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F6EC;strokeColor=#3F8F5B;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="348" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l335" target="l336">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l336" target="l337">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l337" target="l338">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l338" target="l339">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l339" target="l340">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l340" target="l341">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l341" target="l342">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l342" target="l343">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l343" target="l344">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

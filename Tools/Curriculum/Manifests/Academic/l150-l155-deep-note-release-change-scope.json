@@ -1,0 +1,19 @@
+{
+  "contract_id": "de-l150-l155-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/Lesson_150-declaring-the-grain-before-the-columns",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/Lesson_151-conceptual-logical-and-physical-models",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/Lesson_152-keys-natural-surrogate-and-identity-over-time",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/Lesson_153-dimensional-modelling-facts-dimensions-and-the-bus-matrix",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/Lesson_154-fact-types-transaction-periodic-and-accumulating-snapshot",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/Lesson_155-additivity-additive-semi-additive-and-non-additive-measures",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l150_l155_notes.py",
+    "Tools/Curriculum/Build/validate_l150_l155_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": ["**/quiz.md", "**/homework.md", "**/slides.md", "**/lesson.yaml", "Material/DA/**"]
+}

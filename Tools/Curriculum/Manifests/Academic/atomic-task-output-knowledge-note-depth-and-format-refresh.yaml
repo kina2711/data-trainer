@@ -1,0 +1,121 @@
+task_id: knowledge-note-depth-and-format-refresh-2026-09-28
+status: completed-awaiting-owner-review
+completed_at: 2026-09-28T18:00:00+07:00
+
+scope:
+  format:
+    - Docs/Second-Brain/**/*.md
+    - Material/DE/Reference/Library/Knowledge-Notes/**/*.md
+  depth_refresh:
+    - DE-L095
+    - DE-L096
+    - DE-L097
+    - DE-L098
+  new_notes:
+    - DE-L099
+    - DE-L100
+    - DE-L101
+    - DE-L102
+
+format_contract:
+  standard: Docs/Standards/KNOWLEDGE-NOTE-STYLE.md
+  formatter: Tools/Curriculum/Build/format_knowledge_notes.py
+  prose_paragraph: one-physical-markdown-line
+  list_item: one-item-per-line
+  display_math: double-dollar-delimiters
+  forbidden_display_math: ["\\[", "\\]"]
+  required_knowledge_note_sections:
+    - "## Key takeaways"
+    - "## Reference"
+  note_language: vi
+  file_and_folder_language: en
+
+corpus_result:
+  markdown_files_checked: 69
+  second_brain_markdown_files: 45
+  wiki_notes: 25
+  reference_notes: 24
+  wiki_word_tokens: 82615
+  reference_word_tokens: 78784
+  reference_staging_pairs_byte_identical: 24
+  staging_only_notes:
+    - wiki.linux.file-descriptor-universal-io
+  unresolved_wikilinks: 0
+  legacy_display_math_delimiters: 0
+  formatter_lint_failures: 0
+
+refreshed_notes:
+  - lesson: DE-L095
+    note_id: wiki.software-engineering.behavior-preserving-refactoring
+    words_wc: 2657
+  - lesson: DE-L096
+    note_id: wiki.software-engineering.automated-code-and-supply-chain-checks
+    words_wc: 2486
+  - lesson: DE-L097
+    note_id: wiki.software-engineering.release-artifacts-versioning-compatible-migrations
+    words_wc: 2465
+  - lesson: DE-L098
+    note_id: wiki.software-engineering.deployment-strategies-and-rollback
+    words_wc: 2445
+
+new_note_outputs:
+  - lesson: DE-L099
+    note_id: wiki.software-engineering.monolith-modular-monolith-cost-of-splitting
+    reference_path: Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/11-monolith-modular-monolith-and-cost-of-splitting.md
+    staging_path: Docs/Second-Brain/2_Wiki/Software-Engineering/Monolith Modular Monolith and the Cost of Splitting.md
+    words_wc: 2257
+    lines: 267
+    sha256: 9f9195bd92c3a32c8875a0baf310a49b98210181b9303c9a0eb7d931df73964a
+  - lesson: DE-L100
+    note_id: wiki.software-engineering.delivery-project-modular-package-release-path
+    reference_path: Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/12-delivery-project-modular-package-release-path.md
+    staging_path: Docs/Second-Brain/2_Wiki/Software-Engineering/Delivery Project - Modular Package with a Release Path.md
+    words_wc: 1832
+    lines: 294
+    sha256: 3a1e8e8e8d6a4e2d04ba8c36696221965480b416c0d0d09d450303168f565c59
+  - lesson: DE-L101
+    note_id: wiki.backend.request-lifecycle-end-to-end
+    reference_path: Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/13-request-lifecycle-end-to-end.md
+    staging_path: Docs/Second-Brain/2_Wiki/Backend-Engineering/The Request Lifecycle End to End.md
+    words_wc: 2059
+    lines: 291
+    sha256: c9deab9b765685453ab915d685772cbaa715c77fe808015672a91178decbcafe
+  - lesson: DE-L102
+    note_id: wiki.backend.api-contract-resources-errors-versioning
+    reference_path: Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/14-api-contract-resources-errors-versioning.md
+    staging_path: Docs/Second-Brain/2_Wiki/Backend-Engineering/API Contracts - Resources Errors and Versioning.md
+    words_wc: 2207
+    lines: 353
+    sha256: 0d1f67e917053490e929835ed8b8e88cc74003944eebce56cb81e1c951ab3bdd
+
+manifest_result:
+  version: 1.0.17
+  source_registry_count: 17
+  note_registry_count: 25
+  retrieval_test_count: 122
+  unknown_source_ids: 0
+  unknown_note_ids_in_retrieval_tests: 0
+
+canonical_sync:
+  root: /media/kina2711/DATA/2026/Second_Brain
+  method: rsync-without-delete
+  staged_files_verified: 47
+  canonical_wiki_notes: 25
+  sha256_mismatches: 0
+  manifest_version: 1.0.17
+
+verification:
+  - command: python3 Tools/Curriculum/Build/format_knowledge_notes.py --check
+    result: pass
+  - command: python3 json-registry-and-link-validation
+    result: pass
+  - command: sha256sum reference-and-staging-pairs
+    result: pass
+  - command: git diff --check
+    result: pass
+
+limitations:
+  - Các lab, benchmark, deployment và rollback drill trong note chưa được chạy; note chỉ mô tả protocol cùng evidence bắt buộc.
+  - Việc khẳng định tính hiện hành của API hoặc runtime cần đối chiếu tài liệu đúng version trước khi dùng cho production.
+  - Note Linux hiện chỉ có trong Second Brain staging và chưa có bản đối ứng trong Knowledge-Notes; trạng thái này được giữ nguyên, không tự tạo lineage mới.
+  - Trạng thái review chưa được nâng lên evergreen trước khi chủ sở hữu duyệt nội dung.

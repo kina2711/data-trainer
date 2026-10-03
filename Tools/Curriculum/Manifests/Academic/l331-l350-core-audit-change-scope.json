@@ -1,0 +1,18 @@
+{
+  "task_id": "de-l331-l350-note-promotion",
+  "status": "pass",
+  "requested_range": [331, 350],
+  "execution_batches": [[331, 335], [336, 340], [341, 345], [346, 350]],
+  "affected_artifacts": {
+    "curriculum_notes": 40,
+    "reference_notes": 20,
+    "wiki_notes": 20,
+    "new_source_records": 5,
+    "batch_writers": 4,
+    "shared_writer_extended": 1,
+    "validators_added": 5
+  },
+  "unrelated_worktree_changes_modified": false,
+  "deletions_performed": false,
+  "scope_finding": "All written artifacts trace to lessons 331-350, their official source lineage, deterministic validation, or required release evidence."
+}

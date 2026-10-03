@@ -1,0 +1,35 @@
+batch_id: software-design-l091-l094-2026-09-28
+task_type: book-build-second-brain-pack
+objective: Convert bounded offline sources into four detailed, humanized Vietnamese reference and Obsidian Wiki notes for DE-L091 through DE-L094.
+deliverables:
+  - lesson: DE-L091
+    note_id: wiki.software-engineering.ports-adapters-data-pipeline
+    acceptance:
+      - Separate domain, application, inbound adapter, outbound adapter, port ownership, and composition root.
+      - Show a CSV-to-PostgreSQL adapter replacement with unchanged core tests and a leak-detection checklist.
+  - lesson: DE-L092
+    note_id: wiki.software-engineering.error-design-expected-failure-defect
+    acceptance:
+      - Classify at least ten failures on expected-versus-defect and transient-versus-permanent axes.
+      - Define retry, quarantine, stop, translation, context, and failure-atomicity behavior with limits.
+  - lesson: DE-L093
+    note_id: wiki.software-engineering.test-strategy-double-boundary
+    acceptance:
+      - Distinguish unit, integration, component, contract, and end-to-end scope and cost.
+      - Place doubles by owned versus external boundary and include a ten-scenario decision table.
+      - Demonstrate a behavior-preserving refactor whose tests remain unchanged.
+  - lesson: DE-L094
+    note_id: wiki.software-engineering.consumer-provider-contract-testing
+    acceptance:
+      - Explain consumer/provider ownership, two-sided verification, broker or artifact flow, and CI gates.
+      - Test optional-field addition, required-field removal, type change, and a two-stage migration.
+shared_acceptance:
+  - Preserve author qualifiers and distinguish source fact, synthesis, inference, and uncertainty.
+  - Record source edition, SHA-256, bounded page ranges, rights, and extraction coverage.
+  - Complete Vietnamese terminology and Humanizer review without translating searchable identifiers.
+  - Keep Reference, staging Wiki, and canonical Obsidian copies byte-identical for every note.
+  - Update source registry, note registry, home index, and representative retrieval tests.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

@@ -1,0 +1,34 @@
+{
+  "task_id": "core-pre-change-scope",
+  "instance_id": "da-de-first-5-runnable-lecture-pack",
+  "status": "pass",
+  "baseline": {
+    "target_lessons": 10,
+    "substantive_note_files": 10,
+    "placeholder_slides": 10,
+    "placeholder_quizzes": 10,
+    "placeholder_homework": 10,
+    "placeholder_after_notes": 10,
+    "lesson_blueprints_with_scenes": 0
+  },
+  "allowed_paths": [
+    "Material/DA/Curriculum/Phase_01-foundations-and-role/Module_01-introduction-to-the-data-analyst-role/Lesson_001-*/{lesson.yaml,slides.md,quiz.md,homework.md,after-note.md}",
+    "Material/DA/Curriculum/Phase_01-foundations-and-role/Module_01-introduction-to-the-data-analyst-role/Lesson_002-005*/{lesson.yaml,slides.md,quiz.md,homework.md,after-note.md}",
+    "Material/DE/Curriculum/Phase_01-engineering-foundation/Module_01-engineering-thinking-git-and-debugging/Lesson_001-005*/{lesson.yaml,slides.md,quiz.md,homework.md,after-note.md}",
+    "Tools/Curriculum/Build/build_da_de_first_5_lessons.py",
+    "Tools/Curriculum/Build/validate_da_de_first_5_lessons.py",
+    "Tools/Curriculum/Manifests/Academic/da-de-first-5-lecture-pack-*",
+    "Material/_shared/theme/volt.css",
+    "package.json",
+    "package-lock.json"
+  ],
+  "forbidden_paths": [
+    "Docs/Second-Brain/**",
+    "Material/DA/**/Lesson_006-* and later",
+    "Material/DE/**/Lesson_006-* and later",
+    "source books and PDFs",
+    "learner mastery or certification records"
+  ],
+  "recovery": "The builder is deterministic and only regenerates the five delivery assets in each target lesson; existing note.md remains untouched.",
+  "deletions": []
+}

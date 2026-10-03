@@ -1,0 +1,42 @@
+task_id: academy-build-skill-track-map
+status: approved
+lifecycle_profile: learning
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: approve
+primary_deliverable: Docs/Standards/Roadmap-Format-Proposal.md
+evidence:
+  - Material/DA/Roadmap/roadmap.md
+  - Material/DE/Roadmap/roadmap.md
+  - Material/DA/Roadmap/Phase_01-foundations-and-role/roadmap.yaml
+  - Material/DE/Roadmap/Phase_02-machine-operating-system-and-network/roadmap.yaml
+  - Material/DE/Roadmap/Phase_02-machine-operating-system-and-network/Module_04-computer-architecture-and-the-performance-model/roadmap.md
+  - Artifact/Rabbit-Data/roadmaps.html
+  - Artifact/Rabbit-Data/Roadmaps/manifest.json
+  - https://developers.google.com/style/highlights
+  - https://developers.google.com/style/headings
+  - https://developers.google.com/style/prescriptive-documentation
+  - https://google.github.io/styleguide/docguide/best_practices.html
+  - https://www.cmu.edu/teaching/assessment/basics/alignment.html
+test_results:
+  - mẫu bao phủ cấp chương trình, giai đoạn và mô-đun
+  - ma trận trách nhiệm ngăn lặp nội dung diễn giải giữa các cấp
+  - điều kiện bất biến giữa các cấp đã được nêu để tự động kiểm tra
+  - 56/56 roadmap có đúng một khối Mermaid và đã render thành SVG hợp lệ
+gate_results:
+  - "G0: passed"
+  - "G1: passed"
+  - "G2: passed"
+  - "G5: passed — owner approved the format on 2026-09-25"
+approval_status: approved
+assumptions:
+  - tiếng Việt là ngôn ngữ chính của phần diễn giải
+  - lịch giảng dạy nằm ngoài hợp đồng roadmap
+limitations:
+  - nội dung roadmap sau chuyển đổi chưa được chủ sở hữu duyệt theo từng chương trình
+  - chưa thử nghiệm với giảng viên hoặc người học
+residual_risks:
+  - mã băm trong sổ phê duyệt DA đã cũ và cần một quyết định phê duyệt riêng
+  - đầu ra các giai đoạn DA vẫn là nội dung giữ chỗ cho đến khi được rà soát
+next_task: academy-refresh-curriculum
+next_owner: kina2711

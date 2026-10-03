@@ -1,0 +1,18 @@
+{
+  "contract_id": "de-l145-l149-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_145-backup-pitr-and-what-a-backup-is-not",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_146-the-restore-drill",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_147-operating-a-database-day-to-day",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_148-gate-4-trace-a-write-and-defend-an-isolation-choice",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/Lesson_149-from-requirement-to-model-the-seven-step-protocol",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l145_l149_notes.py",
+    "Tools/Curriculum/Build/validate_l145_l149_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": ["**/quiz.md", "**/homework.md", "**/slides.md", "**/lesson.yaml", "Material/DA/**"]
+}

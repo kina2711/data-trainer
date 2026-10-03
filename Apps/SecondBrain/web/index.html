@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Private local-first reader for the canonical Second Brain.">
+  <title>Second Brain</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div id="app" class="app-shell" aria-busy="true">
+    <header class="topbar">
+      <button id="nav-toggle" class="icon-button nav-toggle" type="button" aria-label="Mở danh mục">☰</button>
+      <a class="brand" href="#" aria-label="Second Brain home">
+        <span class="brand-mark" aria-hidden="true">SB</span>
+        <span><strong>Second Brain</strong><small id="release-label">đang nạp…</small></span>
+      </a>
+      <label class="search-box" for="search-input">
+        <span aria-hidden="true">⌕</span>
+        <input id="search-input" type="search" autocomplete="off" placeholder="Tìm concept, câu hỏi, tag…" aria-label="Tìm kiếm toàn bộ note">
+        <kbd>Ctrl K</kbd>
+      </label>
+      <button id="theme-toggle" class="icon-button" type="button" aria-label="Đổi giao diện sáng tối">◐</button>
+    </header>
+
+    <aside id="sidebar" class="sidebar" aria-label="Bộ lọc và danh sách note">
+      <div class="sidebar-tabs" role="tablist" aria-label="Chế độ danh sách">
+        <button class="tab active" data-mode="all" role="tab">Tất cả</button>
+        <button class="tab" data-mode="favorites" role="tab">Đã lưu</button>
+        <button class="tab" data-mode="recent" role="tab">Gần đây</button>
+      </div>
+      <label class="filter-label" for="domain-select">Domain</label>
+      <select id="domain-select"><option value="">Tất cả domain</option></select>
+      <div class="result-summary"><span id="result-count">0 note</span><button id="clear-filters" type="button">Xóa lọc</button></div>
+      <div id="note-list" class="note-list" role="listbox" aria-label="Danh sách note"></div>
+    </aside>
+
+    <main class="reader-shell">
+      <section id="empty-state" class="empty-state">
+        <div class="empty-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+        <h1>Kho tri thức canonical</h1>
+        <p>Chọn một note hoặc bắt đầu tìm kiếm. Nhấn <kbd>/</kbd> để đi thẳng tới ô tìm kiếm.</p>
+        <div id="brain-stats" class="stats"></div>
+      </section>
+      <article id="reader" class="reader" hidden>
+        <header class="note-header">
+          <div>
+            <div class="eyebrow"><span id="note-domain"></span><span class="canonical-dot">Canonical</span></div>
+            <h1 id="note-title"></h1>
+            <p id="note-question" class="note-question"></p>
+          </div>
+          <button id="favorite-button" class="favorite-button" type="button" aria-label="Lưu note">☆</button>
+        </header>
+        <div id="note-meta" class="note-meta"></div>
+        <div id="note-body" class="prose"></div>
+      </article>
+    </main>
+
+    <aside id="context-panel" class="context-panel" aria-label="Mục lục và quan hệ" hidden>
+      <section><h2>Trong note</h2><nav id="outline"></nav></section>
+      <section><h2>Quan hệ</h2><div id="relationships"></div></section>
+      <section><h2>Nguồn</h2><div id="sources"></div></section>
+    </aside>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

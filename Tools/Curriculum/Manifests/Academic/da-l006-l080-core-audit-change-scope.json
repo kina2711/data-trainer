@@ -1,0 +1,24 @@
+{
+  "task_id": "core-audit-change-scope",
+  "instance_id": "data-analyst-l006-l080",
+  "status": "pass",
+  "requested_lessons": {"start": 6, "end": 80, "count": 75},
+  "batch_size": 5,
+  "batches": [
+    "006-010", "011-015", "016-020", "021-025", "026-030",
+    "031-035", "036-040", "041-045", "046-050", "051-055",
+    "056-060", "061-065", "066-070", "071-075", "076-080"
+  ],
+  "material_changes": [
+    "75 curriculum note.md files",
+    "75 curriculum after-note.md files",
+    "75 Reference knowledge notes",
+    "75 byte-identical Wiki mirrors",
+    "4 private book source records",
+    "Second Brain manifest",
+    "deterministic DA generator and validator",
+    "L005-L006 relationship boundary reconciliation"
+  ],
+  "unrelated_dirty_worktree_changes_modified": false,
+  "deletions": []
+}

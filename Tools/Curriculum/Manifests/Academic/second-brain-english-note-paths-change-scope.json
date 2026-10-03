@@ -1,0 +1,19 @@
+{
+  "task_id": "second-brain-english-note-paths-2026-09-28",
+  "allowed_paths": [
+    "Docs/Second-Brain/**",
+    "Material/DE/Reference/Library/Knowledge-Notes/**",
+    "Material/DE/Reference/Library/Source-Notes/**",
+    "Tools/Curriculum/Manifests/Academic/second-brain-english-note-paths-*",
+    "/media/kina2711/DATA/2026/Second_Brain/**"
+  ],
+  "forbidden_paths": [
+    "Material/Reference_temp/**",
+    "Material/DE/Reference/Library/knowledge/**",
+    "Material/DE/Reference/Library/Computer Science/**",
+    "Material/**/Curriculum/**",
+    "Material/**/Roadmap/**",
+    "Web/**",
+    "Artifact/**"
+  ]
+}

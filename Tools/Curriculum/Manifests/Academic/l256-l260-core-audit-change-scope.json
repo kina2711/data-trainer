@@ -1,0 +1,15 @@
+{
+  "control": "core-audit-change-scope",
+  "contract_id": "de-l256-l260-deep-note-release",
+  "executed_at": "2026-10-02T23:59:41+07:00",
+  "result": "pass",
+  "method": "explicit deterministic writer target audit in a repository with unrelated pre-existing changes",
+  "allowed_changes": {
+    "curriculum": ["L256-L260 note.md and after-note.md"],
+    "reference_notes": ["144-generic-tests-and-their-limits.md through 148-incremental-strategies-by-adapter.md"],
+    "second_brain": ["2 source records", "5 Wiki notes", "second-brain-manifest.json"],
+    "tooling_and_evidence": ["promote_l256_l260_notes.py", "validate_l256_l260_notes.py", "shared humanizer generator and prose gate", "L256-L260 contract and audit records"]
+  },
+  "forbidden_targets_written": [],
+  "notes": ["Writer targets only source records, Reference, Wiki, note.md, after-note.md and manifest.", "quiz.md, homework.md, slides.md, lesson.yaml, diagrams and Material/DA are not writer targets."]
+}

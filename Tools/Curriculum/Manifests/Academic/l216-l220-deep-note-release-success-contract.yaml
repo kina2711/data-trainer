@@ -1,0 +1,29 @@
+contract_id: de-l216-l220-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+owner: kina2711
+consumer: Data Analytics Engineer trainer
+scope:
+  lessons: [216, 217, 218, 219, 220]
+  phases: [6]
+  modules: [14, 15]
+baseline:
+  formatter: checked=388 failed=0
+  whole_vault_coverage: checked=138 failed=0
+  second_brain_manifest: version=1.0.42 sources=110 notes=138 retrieval_tests=461
+acceptance:
+  - five Vietnamese knowledge notes each contain at least 2200 words
+  - L216 produces an evidence-backed ADR across five engine archetypes with thresholds and reversal conditions
+  - L217 separates CSV conventions, JSON syntax, application schema and parser assumptions
+  - L218 implements writer-reader Avro resolution including defaults, aliases, promotions and semantic breaks
+  - L219 explains field-number identity, wire types, unknown fields and unsafe reuse in Protobuf
+  - L220 builds a four-cell, multi-version compatibility gate and derives deployment order from the selected contract
+  - source facts have stable IDs, locators, rights and evidence boundaries
+  - Reference and Wiki copies are byte-identical
+  - generator, batch validator, formatter and whole-vault coverage checks pass
+  - canonical Obsidian sync is checksum-verified without deleting destination-only files
+forbidden:
+  - changing quiz.md, homework.md, slides.md, lesson.yaml or diagram files
+  - modifying Data Analyst curriculum
+  - claiming live benchmark, schema-registry enforcement or production deployment without evidence
+approval: owner-semantic-review-pending

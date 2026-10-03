@@ -1,0 +1,18 @@
+{
+  "task_id": "reference-temp-os-network-source-notes-2026-09-27",
+  "allowed_paths": [
+    "Tools/Curriculum/Manifests/Academic/reference-temp-os-network-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/reference-temp-os-network-change-scope.json",
+    "Tools/Curriculum/Manifests/Academic/reference-temp-os-network-progress.json",
+    "Tools/Curriculum/Manifests/Academic/atomic-task-output-reference-temp-os-network.yaml",
+    "Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-*.md"
+  ],
+  "forbidden_paths": [
+    "Material/Reference_temp/**",
+    "Material/**/Curriculum/**",
+    "Material/**/Roadmap/**",
+    "Web/**",
+    "Artifact/**"
+  ],
+  "declared_effect": "Create private, source-linked reading notes only. Source files and teaching artifacts remain unchanged."
+}

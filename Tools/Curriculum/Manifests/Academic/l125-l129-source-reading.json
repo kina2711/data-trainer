@@ -1,0 +1,22 @@
+{
+  "batch": "DE-L125-L129",
+  "captured": "2026-09-29",
+  "offline_ranges": [
+    {"source_id": "src.manual.postgresql-17.10", "locator": "PDF 97-117, 147-153, 488-498, 559-580, 1356-1368, 2341-2347, 2643-2650", "pages_with_text": "89/89"},
+    {"source_id": "src.book.mastering-postgresql-17.6e", "locator": "PDF 87-112, 198-202, 223-270", "pages_with_text": "79/79"},
+    {"source_id": "src.book.rogov-postgresql-14-internals", "locator": "PDF 271-303, 330-407", "pages_with_text": "111/111"}
+  ],
+  "semantic_controls": [
+    "MERGE and ON CONFLICT are not called idempotent without source uniqueness and a business-key invariant",
+    "NOT VALID/VALIDATE CONSTRAINT is scoped to PostgreSQL behavior and does not imply zero locking",
+    "logical rewrite, plan generation and execution are separated; a bad plan is not attributed to one cause without evidence",
+    "planner costs are dimensionless estimates, not elapsed milliseconds",
+    "join algorithm heuristics are predictions, not universal winner rules",
+    "work_mem applies per eligible operation and can multiply under concurrency",
+    "selectivities are not blindly multiplied when columns are correlated; extended statistics limitations remain explicit",
+    "the multicolumn B-tree leftmost rule is stated with PostgreSQL 17 skip-scan nuance, not as an absolute cannot-use claim",
+    "index-only scan requires index coverage and heap-page visibility",
+    "zero idx_scan is not sufficient evidence to drop an index"
+  ],
+  "coursera": "not used; deferred to module construction by owner policy"
+}

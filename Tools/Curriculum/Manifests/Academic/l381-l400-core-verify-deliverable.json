@@ -1,0 +1,20 @@
+{
+  "task_id": "de-l381-l400-note-promotion",
+  "status": "pass-awaiting-owner-review",
+  "verified_at": "2026-10-02T23:59:59+07:00",
+  "batch_checks": {
+    "381-385": {"stale": 0, "lessons_passed": 5, "fingerprint": "f915eab7e83041c4f3e0743921d6233754347c6581ddb69cbea2ea4aa764c3bb"},
+    "386-390": {"stale": 0, "lessons_passed": 5, "fingerprint": "0b9a75fb4f5a25b1f6786f8f38f97ed8695eadb81236a2fc385f9cd53a7cdc4f"},
+    "391-395": {"stale": 0, "lessons_passed": 5, "fingerprint": "7fb0699d893584dc356017757687d3f2039ebe17a05dbee1ac555fbeec3eb03a"},
+    "396-400": {"stale": 0, "lessons_passed": 5, "fingerprint": "b648fadb921f8388b68dfeb57de92a17800c6615a092db0bbca2435cca8a0a17"}
+  },
+  "humanizer": {"checked": 20, "editorial": "humanized-v3", "within_note_repeats": 0, "cross_note_repeats": 0, "prose_tells": 0},
+  "formatter": {"checked": 831, "failed": 0},
+  "source_coverage": {"checked": 323, "failed": 0},
+  "wiki_parity": "20/20",
+  "obsidian_checksum": "no differences after non-deleting sync",
+  "word_range": [4110, 4647],
+  "manifest": {"version": "1.0.79", "sources": 183, "notes": 323, "retrieval_cases": 1016},
+  "deliverable_fingerprint": "79231755aa592b4106af7381afdca7f174431eabc1b1321ff6a2ce517a1ff9f4",
+  "unrun_checks": ["live Kubernetes/telemetry/DR/security labs", "owner semantic approval"]
+}

@@ -1,0 +1,12 @@
+{
+  "batch": "L261-L265",
+  "read_at": "2026-10-02",
+  "method": "bounded reading of official dbt snapshot, governance, version, documentation and exposure pages plus existing engineering sources",
+  "new_sources": [
+    {"source_id": "src.web.dbt-snapshots", "scope": ["snapshot SCD2 mechanism", "timestamp/check strategies", "hard deletes", "meta fields"]},
+    {"source_id": "src.web.dbt-model-contracts", "scope": ["enforced model shape", "column names/types", "constraints", "breaking changes"]},
+    {"source_id": "src.web.dbt-exposures", "scope": ["downstream uses", "owners", "depends_on", "selection and docs"]}
+  ],
+  "reused_sources": ["src.web.dbt-incremental-models", "src.web.dbt-model-versions", "src.web.dbt-documentation", "src.book.reis-housley-fundamentals-data-engineering", "src.book.kleppmann-ddia.1e"],
+  "limitations": ["No live adapter, snapshot, contract migration or docs site was executed", "Constraint enforcement and snapshot behavior remain platform/version dependent", "Lineage completeness outside declared dbt dependencies is not claimed"]
+}

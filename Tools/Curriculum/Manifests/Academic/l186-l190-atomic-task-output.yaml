@@ -1,0 +1,30 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 186-190
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l186-l190-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l186-l190-release-audit.md
+  fingerprint: a1dcf4f0639aa17bae270a85fd00135b5094c3ca952fa911d877febf8ccdabe2
+tests:
+  core_audit_change_scope: pass
+  core_verify_deliverable: pass
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  metric_trace_product_contract_labs: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-source-tree-no-diff
+residual_risks:
+  - causal, traceability and consumer-behavior claims remain protocols until run against real contexts
+  - product maturity and public-interface choices require consumer and owner review
+  - compatibility depends on consumer inventory completeness
+owner: kina2711
+next_task: owner reviews L186-L190, then continue the next requested lesson batch

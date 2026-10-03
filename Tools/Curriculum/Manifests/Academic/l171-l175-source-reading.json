@@ -1,0 +1,38 @@
+{
+  "batch": "L171-L175",
+  "read_on": "2026-10-01",
+  "method": "bounded local PDF reading plus current official dbt and PostgreSQL documentation",
+  "sources": [
+    {
+      "source_id": "src.book.kimball-ross-data-warehouse-toolkit.3e",
+      "pdf_pages": "78-90, 96-112, 178-188, 245-255",
+      "topics": ["grain", "fact/dimension joins", "bridges", "role-playing dimensions", "additivity", "control totals"]
+    },
+    {
+      "source_id": "src.book.reis-housley-fundamentals-data-engineering",
+      "pdf_pages": "429-451, 473-491",
+      "topics": ["analytical models", "semantic and metrics layers", "consumers", "data-product responsibility"]
+    },
+    {
+      "source_id": "src.web.dbt-semantic-models",
+      "locator": "About MetricFlow; Semantic models; MetricFlow commands; latest YAML spec, inspected 2026-10-01",
+      "topics": ["entity-based joins", "fanout/chasm avoidance", "queryable dimensions", "validation", "generated SQL", "current versus legacy spec"]
+    },
+    {
+      "source_id": "src.web.postgresql-17-query-expressions",
+      "locator": "PostgreSQL 17 query expressions, FROM/JOIN/WHERE/GROUP BY processing",
+      "topics": ["join rowsets", "filter placement", "grouping after joins", "subqueries"]
+    },
+    {
+      "source_id": "src.web.postgresql-17-aggregate-functions",
+      "locator": "PostgreSQL 17 aggregate functions",
+      "topics": ["sum", "count", "average", "empty-set behavior", "aggregation mechanics"]
+    }
+  ],
+  "limitations": [
+    "No MetricFlow command, warehouse query, fanout lab or execution plan was run",
+    "Compatibility matrix and fanout certification workflow are curriculum synthesis aligned to roadmap outcomes",
+    "MetricFlow commands differ across dbt platform v1/v2 and self-hosted environments; notes preserve this boundary",
+    "No Coursera material was accessed in this batch"
+  ]
+}

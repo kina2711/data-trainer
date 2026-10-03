@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "task_id": "module-07-l091-l098-curriculum-note-promotion",
+  "allowed_paths": [
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_091-ports-and-adapters-in-practice/note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_091-ports-and-adapters-in-practice/after-note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_092-error-design-expected-failure-against-defect/note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_092-error-design-expected-failure-against-defect/after-note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_093-the-test-pyramid-and-where-to-place-a-double/note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_093-the-test-pyramid-and-where-to-place-a-double/after-note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_094-contract-testing-between-a-producer-and-a-consumer/note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_094-contract-testing-between-a-producer-and-a-consumer/after-note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_095-refactoring-in-small-behaviour-preserving-steps/note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_095-refactoring-in-small-behaviour-preserving-steps/after-note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_096-static-analysis-dependency-and-security-scanning/note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_096-static-analysis-dependency-and-security-scanning/after-note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_097-release-artifacts-versions-and-migration-compatibility/note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_097-release-artifacts-versions-and-migration-compatibility/after-note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_098-deployment-strategies-and-rollback/note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_098-deployment-strategies-and-rollback/after-note.md",
+    "Tools/Curriculum/Build/promote_module07_notes.py",
+    "Tools/Curriculum/Build/validate_module07_curriculum_notes.py",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/10-deployment-strategies-and-rollback.md",
+    "Docs/Second-Brain/2_Wiki/Software-Engineering/Deployment Strategies and Rollback.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-KUBERNETES-DEPLOYMENTS.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-KUBERNETES-CONTAINER-PROBES.md",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Manifests/Academic/module-07-l091-l098-curriculum-note-promotion-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/module-07-l091-l098-curriculum-note-promotion-change-scope.json",
+    "Tools/Curriculum/Manifests/Academic/module-07-l091-l098-curriculum-note-promotion-audit.yaml"
+  ]
+}

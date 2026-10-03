@@ -1,0 +1,24 @@
+{
+  "contract_id": "de-l114-l119-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/Lesson_114-null-and-three-valued-logic",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/Lesson_115-relational-algebra-and-logical-equivalence",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/Lesson_116-er-modelling-and-what-the-database-should-enforce",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/Lesson_117-normalization-to-bcnf-and-deliberate-denormalization",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/Lesson_118-logical-query-processing-order",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/Lesson_119-joins-duplicate-multiplication-and-null-behaviour",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l114_l119_notes.py",
+    "Tools/Curriculum/Build/validate_l114_l119_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": [
+    "**/quiz.md",
+    "**/homework.md",
+    "**/slides.md",
+    "Material/DA/**"
+  ]
+}

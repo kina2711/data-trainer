@@ -1,0 +1,63 @@
+task_id: second-brain-sample-chapter-2026-09-27
+atomic_task: brain-distill-source-to-wiki-note
+state: awaiting-owner-review
+profile: build-change
+risk_class: R2
+verification_depth: standard
+phase: G4-test
+
+primary_deliverable:
+  path: Docs/Second-Brain/2_Wiki/He-dieu-hanh/Linux/File descriptor và mô hình I-O phổ quát trong Linux.md
+  canonical_vault_path: /media/kina2711/DATA/2026/Second_Brain/2_Wiki/He-dieu-hanh/Linux/File descriptor và mô hình I-O phổ quát trong Linux.md
+  language: vi
+  line_count: 485
+  word_count: 3860
+  editorial_pass: humanized-v1
+  status: review
+
+lineage:
+  source_record: Docs/Second-Brain/1_Nguon/Sach/SRC-TLPI-2010.md
+  source_note: Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-02.md
+  acquisition_manifest: Tools/Curriculum/Manifests/Academic/source-acquisition-v2.json
+  source_file: Material/Reference_temp/The_Linux_Programming_Interface_-_Michael_Kerrisk.pdf
+  source_sha256: 99df6ce877588872fa15b63a490b9857b00d2c7a2d5ae3ceb75b9a05ff324848
+
+verification:
+  frontmatter:
+    result: pass
+    evidence: 3 frontmatter blocks parsed as YAML
+  obsidian_links:
+    result: pass
+    evidence: 6 of 6 wikilinks resolve within the vault
+  stable_ids:
+    result: pass
+    evidence: 3 identifiers found, no duplicates
+  source_integrity:
+    result: pass
+    evidence: actual file SHA-256 matches source-acquisition-v2.json and the source record
+  claim_typing:
+    result: pass
+    evidence: 8 callouts distinguish source facts, synthesis, inference, and uncertainty
+  retrieval_smoke_test:
+    result: pass
+    queries:
+      - deleted-open file and du versus df
+      - fflush versus fdatasync versus fsync
+      - claims that cannot be concluded from this chapter
+  code_fences:
+    result: pass
+    evidence: 6 fence boundaries form 3 complete blocks
+
+approvals:
+  sample_format: pending-owner-review
+  public_distribution: not-authorized
+
+known_limits:
+  - The source is a 2010 edition; version-sensitive Linux behavior requires current official documentation.
+  - This sample chapter is grounded primarily in one book plus the existing project source note.
+  - The note is synchronized to the owner's canonical Obsidian vault; that vault's backup and restore workflow has not yet been verified.
+  - Related Wiki notes are named as planned topics but have not been created.
+
+next_task:
+  owner_action: Review depth, structure, Vietnamese terminology, and Obsidian usability.
+  continuation_rule: Do not apply the sample format to the remaining sources until the owner approves it.

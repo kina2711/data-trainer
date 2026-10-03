@@ -1,0 +1,43 @@
+{
+  "batch": "L166-L170",
+  "read_on": "2026-10-01",
+  "method": "pdftotext -layout with bounded PDF page ranges plus current official dbt and PostgreSQL documentation",
+  "sources": [
+    {
+      "source_id": "src.book.kimball-ross-data-warehouse-toolkit.3e",
+      "pdf_pages": "78-90, 96-112, 245-255",
+      "topics": ["grain", "ratios", "additivity", "dimensions", "bus architecture", "date and fiscal calendars"]
+    },
+    {
+      "source_id": "src.book.reis-housley-fundamentals-data-engineering",
+      "pdf_pages": "429-451, 473-491",
+      "topics": ["analytical modeling", "business definitions", "semantic and metrics layers", "consumers and data products"]
+    },
+    {
+      "source_id": "src.web.dbt-semantic-models",
+      "locator": "About MetricFlow; Semantic models; Derived metrics; Cumulative metrics; latest YAML spec, inspected 2026-10-01",
+      "topics": ["entities", "dimensions", "semantic graph", "simple ratio derived cumulative metrics", "time spine", "current versus legacy spec"]
+    },
+    {
+      "source_id": "src.web.postgresql-17-aggregate-functions",
+      "locator": "PostgreSQL 17 aggregate functions",
+      "topics": ["sum", "avg", "count", "empty-set behavior", "order-sensitive aggregates"]
+    },
+    {
+      "source_id": "src.web.postgresql-17-window-functions",
+      "locator": "PostgreSQL 17 window functions and frame semantics",
+      "topics": ["partition", "order", "frame", "lag", "running aggregates", "sparse-period limitation"]
+    },
+    {
+      "source_id": "src.web.postgresql-17-generate-series",
+      "locator": "PostgreSQL 17 series generating functions",
+      "topics": ["dense calendar scaffold", "timestamp with timezone series", "start stop step behavior"]
+    }
+  ],
+  "limitations": [
+    "No two-person implementation test, semantic graph planner, aggregation rejection or time-edge fixture was executed",
+    "The six-part metric contract is curriculum synthesis aligned to the roadmap outcome, not a verbatim framework from one source",
+    "Current dbt authoring syntax differs from legacy measure-based examples; notes explicitly preserve this version boundary",
+    "No Coursera material was accessed in this batch"
+  ]
+}

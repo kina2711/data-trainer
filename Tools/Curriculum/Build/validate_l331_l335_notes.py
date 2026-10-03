@@ -1,0 +1,3 @@
+#!/usr/bin/env python3
+from validate_l271_l300_batch import validate
+if __name__=="__main__": raise SystemExit(validate("promote_l331_l335_notes","kafka-schema-capacity-security-game-day"))

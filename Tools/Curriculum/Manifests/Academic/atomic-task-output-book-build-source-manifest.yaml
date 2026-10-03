@@ -1,0 +1,29 @@
+task_id: book-build-supplemental-source-manifest-2026-09-27
+atomic_task: book-build-source-manifest
+state: awaiting-owner-review
+profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G4-test
+primary_deliverable: Tools/Curriculum/Manifests/Academic/supplemental-source-manifest-v1.json
+evidence:
+  inventory: Tools/Curriculum/Manifests/Academic/supplemental-source-inventory-v1.json
+  pdf_structure: Tools/Curriculum/Manifests/Academic/supplemental-pdf-structure-v1.json
+  objectives: Tools/Curriculum/Manifests/Academic/objectives.json
+tests:
+  - unique_sha_identity_reconciliation
+  - canonical_and_alias_file_reconciliation
+  - module_id_foreign_key_validation
+  - processing_queue_exclusion_validation
+  - no_false_deep_read_or_rights_claims
+approval:
+  intake_authority: granted-by-user
+  baseline_approval: pending-owner-review
+  public_distribution: not-authorized
+residual_risks:
+  - Embedded PDF metadata and filename mappings require content verification.
+  - Twenty-nine canonical PDFs require OCR and thirty-five require hybrid extraction.
+  - Ten canonical sources have origin-risk markers and remain private-only.
+next_task: book-build-curriculum-pack for batch B01-DE-FOUNDATION
+owner: Codex prepares; repository owner approves the manifest baseline.
+

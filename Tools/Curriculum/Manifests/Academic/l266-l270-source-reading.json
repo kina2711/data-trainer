@@ -1,0 +1,13 @@
+{
+  "batch": "L266-L270",
+  "read_at": "2026-10-02",
+  "method": "bounded reading of official dbt artifact/state documentation and current Apache Airflow core, DagRun, template and timezone documentation",
+  "new_sources": [
+    {"source_id": "src.web.dbt-artifacts", "scope": ["manifest", "run_results", "catalog", "artifact metadata and schema versions"]},
+    {"source_id": "src.web.dbt-state-selection", "scope": ["state comparison", "state:modified", "defer", "logical/applied state separation"]},
+    {"source_id": "src.web.apache-airflow-dag-runs", "scope": ["DAG/task/run primitives", "data intervals", "logical date", "backfill and trigger rules"]},
+    {"source_id": "src.web.apache-airflow-timezones", "scope": ["timezone-aware schedules", "UTC context", "DST and interval boundaries"]}
+  ],
+  "reused_sources": ["src.book.reis-housley-fundamentals-data-engineering", "src.book.kleppmann-ddia.1e", "src.web.dbt-documentation"],
+  "limitations": ["No dbt invocation, warehouse query profile or Airflow DAG run was executed", "Artifact schemas and scheduler behavior remain version/configuration dependent", "Cost allocation requires platform billing/query metadata not present in this repository"]
+}

@@ -1,0 +1,27 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 150-155
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l150-l155-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l150-l155-release-audit.md
+  fingerprint: 947afb32131960b3e438349a545dad078092016aa9dc7c708e9c19393e3afbc2
+tests:
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  modeling_and_backfill_labs: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-12-of-12
+residual_risks:
+  - grain, identity and aggregation contracts have not been exercised against a lab dataset
+  - the conceptual-logical-physical mapping includes labelled curriculum synthesis and needs owner semantic review
+owner: kina2711
+next_task: owner reviews L150-L155, then continue the next requested lesson batch

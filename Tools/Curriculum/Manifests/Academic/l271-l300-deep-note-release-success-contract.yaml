@@ -1,0 +1,29 @@
+task_id: de-l271-l300-note-promotion
+profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+objective: Promote lessons 271-300 in six sequential batches of five lessons.
+consumer: Data Engineer curriculum learner and owner-reviewer
+owner: curriculum owner
+allowed_paths:
+  - Material/DE/Curriculum/Phase_07-ingestion-transformation-quality-and-governance/Module_17-elt-dbt-and-workflow-orchestration/Lesson_27*/note.md
+  - Material/DE/Curriculum/Phase_07-ingestion-transformation-quality-and-governance/Module_17-elt-dbt-and-workflow-orchestration/Lesson_27*/after-note.md
+  - Material/DE/Curriculum/Phase_07-ingestion-transformation-quality-and-governance/Module_18-data-quality-and-data-reliability-engineering/Lesson_*/note.md
+  - Material/DE/Curriculum/Phase_07-ingestion-transformation-quality-and-governance/Module_18-data-quality-and-data-reliability-engineering/Lesson_*/after-note.md
+  - Material/DE/Curriculum/Phase_07-ingestion-transformation-quality-and-governance/Module_19-metadata-engineering-catalog-lineage-and-governance/Lesson_*/note.md
+  - Material/DE/Curriculum/Phase_07-ingestion-transformation-quality-and-governance/Module_19-metadata-engineering-catalog-lineage-and-governance/Lesson_*/after-note.md
+  - Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01
+  - Docs/Second-Brain
+  - Tools/Curriculum/Build
+  - Tools/Curriculum/Manifests/Academic
+acceptance:
+  - exactly six batches, executed in ascending order
+  - five lessons pass deterministic and semantic checks before the next batch
+  - Reference and Wiki parity is exact for all thirty lessons
+  - every note has stable ID, official-source lineage, retrieval cases and limitations
+  - humanizer detects no repeated long paragraphs or canned prose tells
+  - full-corpus formatter and source-coverage validators pass
+non_goals:
+  - execute live Airflow, warehouse, GX, DataHub or OpenLineage labs
+  - claim owner approval or production readiness
+recovery: deterministic writers can regenerate the validated artifacts from the recorded lesson specifications

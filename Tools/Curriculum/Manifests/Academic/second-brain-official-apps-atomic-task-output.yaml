@@ -1,0 +1,37 @@
+task_id: second-brain-official-web-desktop-release
+selected_skill_tasks:
+  - brain-run-knowledge-review-cycle
+  - sites-building
+status: complete
+lifecycle_profile: build-change
+risk_tier: R2-standard
+phase_reached: release-handoff
+primary_deliverable: owner-approved canonical Second Brain with private local-first web and desktop applications
+artifacts:
+  canonical_notes: 645
+  reference_mirrors: 644
+  sources: 222
+  retrieval_cases: 1982
+  web_root: Apps/SecondBrain/web
+  desktop_root: Apps/SecondBrain/desktop
+  shared_index: Apps/SecondBrain/web/data/brain-index.json
+validation:
+  canonical_registry_and_parity: PASS
+  atomic_note_quality: 645/645 PASS
+  mermaid: 663 structural; 68 representative renders PASS
+  markdown_formatter: 1340/1340 PASS
+  source_coverage: 645/645 PASS
+  browser_interaction: PASS
+  desktop_smoke: PASS
+  application_tests: PASS
+  dependency_audit: 0 vulnerabilities
+privacy: private-local-first; no public hosting or external synchronization
+approval_status: owner-approved
+release_version: 2.0.0
+release_fingerprint_sha256: ca5810849e5b4fc9ef3bdc82e66d01e528e4fda5ec50a12c0b8dae24e5c35673
+limitations:
+  - canonical approval does not establish learner mastery
+  - external production services and datasets were not invoked for legacy examples
+  - lecture content is intentionally deferred
+next_owner: curriculum owner
+next_task: build-real-lecture-content

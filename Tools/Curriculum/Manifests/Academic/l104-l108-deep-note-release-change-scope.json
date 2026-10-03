@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "task_id": "l104-l108-deep-note-release",
+  "allowed_globs": [
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_08-backend-and-api-engineering/Lesson_10[4-8]-*/note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_08-backend-and-api-engineering/Lesson_10[4-8]-*/after-note.md",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/1[6-9]-*.md",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/20-*.md",
+    "Docs/Second-Brain/2_Wiki/Backend-Engineering/*.md",
+    "Docs/Second-Brain/2_Wiki/Security/*.md",
+    "Docs/Second-Brain/2_Wiki/Distributed-Systems/*.md",
+    "Docs/Second-Brain/1_Nguon/Books/SRC-GEEWAX-API-DESIGN-PATTERNS-1E.md",
+    "Docs/Second-Brain/1_Nguon/Books/SRC-MASTERING-POSTGRESQL-17-6E.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-POSTGRESQL-CONCURRENCY-CONTROL.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-RFC9110-HTTP-SEMANTICS.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-STRIPE-IDEMPOTENT-REQUESTS.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-OWASP-BOLA-2023.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-OWASP-AUTHORIZATION-CHEAT-SHEET.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-OAUTH-SECURITY-BCP.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-AWS-TIMEOUTS-RETRIES-BACKOFF.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-AZURE-BULKHEAD.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-OPENTELEMETRY-SIGNALS.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-PROMETHEUS-HISTOGRAMS.md",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l104_l108_notes.py",
+    "Tools/Curriculum/Build/validate_l104_l108_notes.py",
+    "Tools/Curriculum/Manifests/Academic/l104-l108-source-reading.yaml",
+    "Tools/Curriculum/Manifests/Academic/l104-l108-deep-note-release-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/l104-l108-deep-note-release-change-scope.json",
+    "Tools/Curriculum/Manifests/Academic/l104-l108-deep-note-release-audit.yaml"
+  ],
+  "forbidden": [
+    "quiz.md",
+    "slides.md",
+    "homework.md",
+    "lesson.yaml",
+    "Material/DA/**"
+  ]
+}

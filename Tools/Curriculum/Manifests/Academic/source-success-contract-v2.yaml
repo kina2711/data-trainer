@@ -1,0 +1,18 @@
+schema_version: 1
+task_id: academic-source-selection-v2
+status: selected-awaiting-owner-acquisition
+scope:
+  programmes: [DA, DE]
+  inheritance: module-source-pack-to-lessons
+success_criteria:
+  every_module_and_lesson:
+    books_minimum: 3
+    documents_minimum: 3
+    websites_minimum: 3
+    videos_minimum: 3
+    coursera_courses_minimum: 1
+  coursera_locator: course_module_or_week_path_required
+  reading_claims: forbidden_before_owner_confirms_acquisition
+  source_rights: publisher_author_official_or_owner_verified
+stop_condition: owner_reports_done_after_acquisition
+next_gate: deep_reading_and_atomic_reference_extraction

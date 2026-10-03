@@ -1,0 +1,56 @@
+task_id: tls-certificate-authentication-note-2026-09-27
+task_type: book-build-second-brain-pack
+status: completed-awaiting-owner-review
+completed_at: 2026-09-27T20:28:36+07:00
+source:
+  source_id: src.book.kurose-ross-networking.8e
+  title: "Computer Networking: A Top-Down Approach, Eighth Global Edition"
+  scope: "section 8.3.3 and public-key certification, section 8.4, and section 8.6; printed pages 658-668 and 674-680; PDF pages 660-670 and 676-682"
+  pages_expected: 18
+  pages_with_extractable_text: 18
+  sha256: ed41334ecf228e6733f4f50bb73fbcb0624145c6c2a51c8e779f2f65cfc01018
+artifacts:
+  reference_note: Material/DE/Reference/Library/Knowledge-Notes/PACK-OS_NETWORK-BOOK-03/06-tls-certificates-endpoint-authentication.md
+  staging_wiki_note: "Docs/Second-Brain/2_Wiki/Bao-mat/TLS certificate và xác thực endpoint.md"
+  canonical_wiki_note: "/media/kina2711/DATA/2026/Second_Brain/2_Wiki/Bao-mat/TLS certificate và xác thực endpoint.md"
+  note_sha256: 006cb9a458a478ccd774dd2c7aa93b9c755eaa2608b94458c760de55de4539a8
+metrics:
+  lines: 592
+  words: 4847
+  bytes: 31978
+  source_fact_callouts: 19
+  inference_callouts: 2
+  synthesis_callouts: 3
+  uncertainty_callouts: 3
+  diagrams: 3
+coverage:
+  - Signed hashes, verification assumptions, MAC versus signature, and confidentiality boundary
+  - Public-key ownership problem, CA trust, certificate binding, and selected X.509 fields
+  - Endpoint authentication progression from assertion and source IP through password, replay, and nonce challenge-response
+  - TLS security goals, layering, simplified handshake, key separation, records, sequence-bound integrity, and transcript protection
+  - Session replay versus record replay and authenticated closure versus TCP termination
+  - Certificate, key possession, peer identity, application authorization, and business-outcome boundaries
+  - Historical RFC 4346, RSA, HMAC-MD5/SHA-1, and CBC stop conditions
+  - Diagnostic workflow, failure matrix, changed scenarios, misconceptions, and review questions
+validation:
+  source_hash_registered: pass
+  page_coverage: pass
+  frontmatter_parse: pass
+  manifest_json_parse: pass
+  duplicate_registry_ids: pass
+  reference_staging_byte_identity: pass
+  wikilinks_resolve: pass
+  required_term_retrieval_smoke: pass
+  locator_and_historical_boundary_presence: pass
+  markdown_fences_balanced: pass
+  git_diff_check: pass
+  humanizer_pattern_scan: pass
+limits:
+  - No live TLS capture, certificate-chain verification, or library-specific test was executed.
+  - The detailed protocol flow in the source is based on RFC 4346-era TLS and is not current TLS 1.3 guidance.
+  - Current TLS, X.509 validation, revocation, cipher, mTLS, and implementation policy require primary standards and versioned vendor documentation.
+  - Canonical-vault backup and restore status is inherited and remains unverified.
+review_gate:
+  profile: R2-standard
+  quality_gate: G4
+  next_state: owner-review

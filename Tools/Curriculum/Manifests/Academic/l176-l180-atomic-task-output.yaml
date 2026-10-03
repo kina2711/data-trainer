@@ -1,0 +1,28 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 176-180
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l176-l180-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l176-l180-release-audit.md
+  fingerprint: caa60463ac1418f1580e8263a6a41332038f28173b295fcb2c0246ea60f4b84d
+tests:
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  semantic_layer_labs: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-source-tree-no-diff
+residual_risks:
+  - MetricFlow compilation and validation have not been executed in a pinned environment
+  - reconciliation, cache performance and authorization controls remain protocols rather than measured runtime behavior
+  - business metric semantics and policy choices require owner approval
+owner: kina2711
+next_task: owner reviews L176-L180, then continue the next requested lesson batch

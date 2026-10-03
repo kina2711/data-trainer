@@ -1,0 +1,22 @@
+{
+  "task_id": "de-l351-l380-note-promotion",
+  "status": "pass-awaiting-owner-review",
+  "verified_at": "2026-10-02T23:59:59+07:00",
+  "batch_checks": {
+    "351-355": {"stale": 0, "lessons_passed": 5, "fingerprint": "de529fac9287532b5eb460fc825df20a557fa6f2aa0b424345137e348d585ab0"},
+    "356-360": {"stale": 0, "lessons_passed": 5, "fingerprint": "850219838f33bb99c2c73d0168957261108a17340fde3aaca7a3300bc2831d05"},
+    "361-365": {"stale": 0, "lessons_passed": 5, "fingerprint": "3be7d943b2bb66a9f8967fa629f3505f7955d3bc24188a16107106dce67f31f9"},
+    "366-370": {"stale": 0, "lessons_passed": 5, "fingerprint": "ace96ff2ae88fa2e36a7bb02131751b137e6760fd6d18c5eba007be7b88c7a04"},
+    "371-375": {"stale": 0, "lessons_passed": 5, "fingerprint": "206cb34fdcb8b188f3b682b1a8a4ee75ab0551e38d6b175a4ff6002566c521ac"},
+    "376-380": {"stale": 0, "lessons_passed": 5, "fingerprint": "dead29f014b706508e399ace5d4f4f95a7341e16974d1e9e8705378536d6f659"}
+  },
+  "humanizer": {"checked": 30, "editorial": "humanized-v3", "within_note_repeats": 0, "cross_note_repeats": 0, "prose_tells": 0},
+  "formatter": {"checked": 786, "failed": 0},
+  "source_coverage": {"checked": 303, "failed": 0},
+  "wiki_parity": "30/30",
+  "obsidian_checksum": "no differences after non-deleting sync",
+  "word_range": [4091, 4830],
+  "manifest": {"version": "1.0.75", "sources": 178, "notes": 303, "retrieval_cases": 956},
+  "deliverable_fingerprint": "9b58cd611ae7a39d8f828abde7cf9adcac0d6739f1bfadddaf6ffc482c2dfccd",
+  "unrun_checks": ["live Spark/cloud/Docker/Terraform labs", "owner semantic approval"]
+}

@@ -1,0 +1,32 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 196-200
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l196-l200-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l196-l200-release-audit.md
+  fingerprint: 2f91383c24b0c66d4155e75e90e15a748a32a18c3359d55b8088f504694fcad8
+tests:
+  core_audit_change_scope: pass
+  core_verify_deliverable: pass
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  live_security_adoption_cost_reverse_etl_lifecycle_exercises: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-source-tree-no-diff
+residual_risks:
+  - authorization, workload and de-identification sections remain protocols until exercised on representative systems
+  - adoption instrumentation does not by itself establish causal business impact
+  - cost ranking remains sensitive to product boundary, shared-cost policy and missing labor evidence
+  - reverse-ETL purpose and legal basis require review in the applicable jurisdiction and deployment
+  - lifecycle gates require named operational owners and real consumer telemetry before release decisions
+owner: kina2711
+next_task: owner reviews L196-L200, then continue the next requested lesson batch

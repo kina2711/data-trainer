@@ -1,0 +1,43 @@
+task_id: network-delay-note-2026-09-27
+atomic_task: book-build-second-brain-pack
+state: awaiting-owner-review
+profile: build-change
+risk_class: R2-standard
+phase: G4-test
+primary_deliverable:
+  reference_path: Material/DE/Reference/Library/Knowledge-Notes/PACK-OS_NETWORK-BOOK-03/01-packet-switched-network-delay-loss-throughput.md
+  staging_wiki_path: Docs/Second-Brain/2_Wiki/Mang-may-tinh/Độ trễ mất gói và thông lượng trong mạng chuyển mạch gói.md
+  canonical_wiki_path: /media/kina2711/DATA/2026/Second_Brain/2_Wiki/Mang-may-tinh/Độ trễ mất gói và thông lượng trong mạng chuyển mạch gói.md
+  line_count: 285
+  word_count: 2497
+  editorial_pass: humanized-v1
+source_evidence:
+  source_id: PACK-OS_NETWORK-BOOK-03
+  scope: section 1.4, printed pages 65-76, PDF pages 67-78
+  pages_extracted: 12
+  empty_pages: 0
+  sha256: ed41334ecf228e6733f4f50bb73fbcb0624145c6c2a51c8e779f2f65cfc01018
+verification:
+  source_hash: pass
+  reference_wiki_identity: pass
+  frontmatter: pass
+  source_and_note_registry_counts: pass
+  obsidian_links: pass
+  required_topic_coverage: pass
+  claim_classification: pass
+  humanization_pattern_scan: pass
+  formula_recalculation: pass
+  retrieval_smoke_test: pass
+  manifest_patch_attempts:
+    - result: failed-and-corrected
+      detail: Initial registry patch placed objects at incorrect JSON levels; parsing and count reconciliation caught the defect before synchronization.
+approval:
+  content_status: review
+  public_distribution: not-authorized
+known_limits:
+  - No live Traceroute or packet-capture lab was run in this atomic task.
+  - Modern tool-specific behavior and routing asymmetry require current operational sources.
+  - The canonical vault backup and restore workflow remains unverified.
+next_task:
+  owner: codex
+  action: Continue with the next bounded concept from the approved source queue after this synchronization passes.

@@ -1,0 +1,18 @@
+{
+  "task_id": "b01-de-foundation-source-notes-2026-09-27",
+  "allowed_paths": [
+    "Tools/Curriculum/Manifests/Academic/b01-foundation-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/b01-foundation-change-scope.json",
+    "Tools/Curriculum/Manifests/Academic/b01-foundation-progress.json",
+    "Tools/Curriculum/Manifests/Academic/atomic-task-output-b01-foundation.yaml",
+    "Material/DE/Reference/Library/Source-Notes/SUP-*.md"
+  ],
+  "forbidden_paths": [
+    "Material/**/Curriculum/**",
+    "Material/**/Roadmap/**",
+    "Web/**",
+    "Artifact/**",
+    "/media/kina2711/DATA/**"
+  ],
+  "declared_effect": "Create private source notes and batch progress only; leave supplied source files and teaching materials unchanged."
+}

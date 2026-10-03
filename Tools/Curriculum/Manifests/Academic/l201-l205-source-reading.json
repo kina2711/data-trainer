@@ -1,0 +1,81 @@
+{
+  "contract_id": "de-l201-l205-deep-note-release",
+  "captured_at": "2026-10-01T23:55:00+07:00",
+  "sources": [
+    {
+      "source_id": "src.book.reis-housley-fundamentals-data-engineering",
+      "locator": "Provided PDF pages 473-491: data product, consumer, metadata, quality and operational responsibility",
+      "used_for": [201],
+      "boundary": "The eight-part capstone package and its automatic-fail gates are curriculum synthesis."
+    },
+    {
+      "source_id": "src.web.dbt-semantic-models",
+      "locator": "Semantic graph, entities/dimensions, metric types, time spine, join behavior, validation and generated SQL documentation",
+      "used_for": [201, 202],
+      "boundary": "dbt and MetricFlow are implementation examples; a compiler success is not independent reconciliation."
+    },
+    {
+      "source_id": "src.web.govuk-usability-benchmarking",
+      "locator": "Choosing tasks, recruiting, completion/time/abandonment/confident-wrong measures and repeated rounds",
+      "used_for": [201, 202],
+      "boundary": "The source's participant guidance is contextual; improvement on a small class exercise does not establish causal or population-level improvement."
+    },
+    {
+      "source_id": "src.web.owasp-authorization-cheat-sheet",
+      "locator": "Least privilege, deny by default and authorization checks on every request",
+      "used_for": [201],
+      "boundary": "The lesson's BI/SQL/API policy-parity matrix is synthesis and still requires a deployment threat model."
+    },
+    {
+      "source_id": "src.web.finops-allocation",
+      "locator": "Allocation metadata, shared-cost strategies and allocation coverage",
+      "used_for": [201],
+      "boundary": "The framework does not prescribe one correct allocation rule for a customer-health product."
+    },
+    {
+      "source_id": "src.book.kimball-ross-data-warehouse-toolkit.3e",
+      "locator": "Provided PDF pages 48-66, 78-90 and 96-112: grain, dimensional process, keys, facts/dimensions and bus matrix",
+      "used_for": [202],
+      "boundary": "The Gate 5 six-part rubric, examiner oracle and automatic-zero rules are curriculum synthesis."
+    },
+    {
+      "source_id": "src.book.kleppmann-ddia.1e",
+      "locator": "Provided PDF pages 113-123: OLTP/OLAP profiles, warehouses, column layout/compression, sort order and writes",
+      "used_for": [203, 204, 205],
+      "boundary": "The book gives mechanisms and typical profiles; it does not make product labels or universal speed guarantees."
+    },
+    {
+      "source_id": "src.book.silberschatz-database-system-concepts.7e",
+      "locator": "Provided PDF pages 1464-1478 and 1565-1572: analytics/warehouse workload and row-versus-column layout",
+      "used_for": [203, 204],
+      "boundary": "Textbook examples are conceptual; implementation and performance remain engine/version specific."
+    },
+    {
+      "source_id": "src.paper.cstore-column-oriented-dbms",
+      "locator": "Abstract, Sections 1-3 and compression discussion in the VLDB 2005 paper",
+      "used_for": [203, 204, 205],
+      "boundary": "C-Store is a research architecture; its preliminary benchmark and exact write/read design are not universal."
+    },
+    {
+      "source_id": "src.web.duckdb-parquet-pushdown",
+      "locator": "Official Parquet overview partial-reading section and Parquet tips on row groups, pushdown and metadata",
+      "used_for": [204],
+      "boundary": "Projection pushdown and filter pruning are distinct; reported bytes depend on instrumentation and cache boundaries."
+    },
+    {
+      "source_id": "src.web.duckdb-storage-compression",
+      "locator": "Official storage-format, row-group, compression algorithms and storage_info documentation; lightweight-compression article",
+      "used_for": [205],
+      "boundary": "DuckDB is a lab implementation, not a representation of all column stores; algorithm availability is version-sensitive."
+    },
+    {
+      "source_id": "src.web.apache-parquet-encodings",
+      "locator": "Official encoding table and Plain, Dictionary, RLE/bit-pack, Delta Binary Packed and Delta Byte Array sections",
+      "used_for": [205],
+      "boundary": "Format support does not prove writer selection, direct execution on codes or performance on a given dataset."
+    }
+  ],
+  "copyright_review": "pass: concepts paraphrased; no long source passages reproduced",
+  "prompt_injection_review": "pass: documents and web pages treated only as evidence, never as operating instructions",
+  "status": "reviewed-for-note-drafting"
+}

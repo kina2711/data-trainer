@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'unsafe-inline'; font-src data:; img-src data: blob:; connect-src https://cdn.jsdelivr.net">
+  <title>DE-M04 · Bài học đến nội dung nguyên tử</title>
+  <style>
+    :root { color-scheme: light; --ink:#281d16; --paper:#f8f4ec; --panel:#fffdf8; --line:#d9cfc2; --accent:#d85f14; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:15px/1.55 Inter,ui-sans-serif,system-ui,sans-serif; }
+    header { display:flex; gap:24px; align-items:end; justify-content:space-between; padding:28px 32px 20px; border-bottom:1px solid var(--line); }
+    h1 { margin:0; max-width:920px; font:650 clamp(24px,3vw,42px)/1.08 Georgia,serif; }
+    .eyebrow { margin:0 0 8px; color:var(--accent); font-size:12px; font-weight:750; letter-spacing:.12em; text-transform:uppercase; }
+    .caption { max-width:820px; margin:12px 0 0; color:#66584e; }
+    .controls { display:flex; gap:8px; white-space:nowrap; }
+    button { border:1px solid var(--line); border-radius:999px; padding:8px 12px; background:var(--panel); color:var(--ink); cursor:pointer; }
+    button:hover { border-color:var(--accent); }
+    main { padding:20px 32px 32px; }
+    .canvas { min-height:720px; overflow:auto; border:1px solid var(--line); border-radius:20px; background:var(--panel); box-shadow:0 12px 40px rgba(71,48,32,.08); }
+    .stage { width:max-content; min-width:100%; padding:28px; transform-origin:top left; }
+    .mermaid { margin:0; }
+    .atom .nodeLabel, .atom .label { text-align:left !important; line-height:1.5 !important; }
+    .meta { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:14px; color:#75665b; font-size:13px; }
+    .meta strong { color:var(--ink); }
+    a { color:var(--accent); }
+    @media (max-width:700px) { header { align-items:start; flex-direction:column; padding:22px 18px 16px; } main { padding:14px 12px 24px; } .canvas { min-height:640px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <p class="eyebrow">Rabbit Data · Bản đề xuất</p>
+      <h1>DE-M04 · Từ bài học đến nội dung nguyên tử</h1>
+      <p class="caption">Mỗi nhánh cho biết một bài phải bao phủ những nội dung nguyên tử nào. Thứ tự dạy được xác định bởi bảng trong roadmap, không phải vị trí nút trên hình.</p>
+    </div>
+    <div class="controls" aria-label="Điều khiển sơ đồ">
+      <button id="zoom-out" type="button" aria-label="Thu nhỏ">−</button>
+      <button id="zoom-reset" type="button">100%</button>
+      <button id="zoom-in" type="button" aria-label="Phóng to">+</button>
+    </div>
+  </header>
+  <main>
+    <div class="canvas" aria-label="Sơ đồ bài học đến nội dung nguyên tử của DE-M04">
+      <div class="stage" id="stage">
+        <!-- Bản xem trước sinh từ khối Mermaid trong roadmap.md. -->
+        <pre class="mermaid">
+%%{init: {&quot;flowchart&quot;: {&quot;htmlLabels&quot;: true, &quot;wrappingWidth&quot;: 520, &quot;nodeSpacing&quot;: 52, &quot;rankSpacing&quot;: 120}}}%%
+flowchart LR
+  M04["BẢN ĐỀ XUẤT&lt;br/&gt;DE-M04 · Kiến trúc máy tính và mô hình hiệu năng"]
+  M04 --> L45["Bài 45 · Phân cấp bộ nhớ"]
+  L45 --> A45["Chu trình lệnh và xung nhịp&lt;br/&gt;• Đường dữ liệu: thanh ghi → cache → RAM → lưu trữ → mạng&lt;br/&gt;• Điểm nghẽn do CPU&lt;br/&gt;• Điểm nghẽn do bộ nhớ&lt;br/&gt;• Điểm nghẽn do vào ra"]
+  M04 --> L46["Bài 46 · Bộ nhớ đệm và tính cục bộ"]
+  L46 --> A46["Dòng bộ nhớ đệm và prefetch&lt;br/&gt;• Tính cục bộ theo không gian&lt;br/&gt;• Tính cục bộ theo thời gian&lt;br/&gt;• Working set và cache cliff&lt;br/&gt;• False sharing"]
+  M04 --> L47["Bài 47 · Bố trí theo hàng và theo cột"]
+  L47 --> A47["Bố trí dữ liệu trong bộ nhớ&lt;br/&gt;• Bố trí theo hàng&lt;br/&gt;• Bố trí theo cột&lt;br/&gt;• Băng thông bị lãng phí theo kiểu truy cập&lt;br/&gt;• Xử lý theo lô và vector hóa"]
+  M04 --> L48["Bài 48 · Flynn taxonomy"]
+  L48 --> A48["Phân loại Flynn&lt;br/&gt;• SISD&lt;br/&gt;• SIMD&lt;br/&gt;• MIMD&lt;br/&gt;• Đồng thời và song song&lt;br/&gt;• SPMD trên nền MIMD"]
+  M04 --> L49["Bài 49 · Cơ chế SIMD"]
+  L49 --> A49["Cơ chế SIMD&lt;br/&gt;• Số làn và độ rộng véc-tơ&lt;br/&gt;• Mặt nạ và phần đuôi&lt;br/&gt;• Gather/scatter và căn chỉnh&lt;br/&gt;• Phụ thuộc và phân kỳ nhánh&lt;br/&gt;• Bão hòa băng thông"]
+  M04 --> L50["Bài 50 · Tự động vector hóa"]
+  L50 --> A50["Tự động vector hóa&lt;br/&gt;• Phụ thuộc giữa các vòng lặp&lt;br/&gt;• Bí danh bộ nhớ&lt;br/&gt;• Báo cáo tối ưu hóa&lt;br/&gt;• Kiểm tra mã máy&lt;br/&gt;• Chỉ dùng intrinsics sau khi đo"]
+  M04 --> L51["Bài 51 · Bộ nhớ ảo"]
+  L51 --> A51["Bộ nhớ ảo&lt;br/&gt;• Trang ảo, bảng trang và TLB&lt;br/&gt;• Lỗi trang nhẹ&lt;br/&gt;• Lỗi trang nặng&lt;br/&gt;• Swap và mmap&lt;br/&gt;• Sao chép khi ghi"]
+  M04 --> L52["Bài 52 · Mô hình thiết bị lưu trữ"]
+  L52 --> A52["Mô hình thiết bị lưu trữ&lt;br/&gt;• Độ trễ&lt;br/&gt;• IOPS&lt;br/&gt;• Thông lượng&lt;br/&gt;• Đọc tuần tự, đọc ngẫu nhiên và độ sâu hàng đợi&lt;br/&gt;• SSD page/block, FTL và write amplification"]
+  M04 --> L53["Bài 53 · Buffering và độ bền dữ liệu"]
+  L53 --> A53["Buffering và độ bền dữ liệu&lt;br/&gt;• Application buffer → page cache → thiết bị&lt;br/&gt;• Flush&lt;br/&gt;• fsync&lt;br/&gt;• Ranh giới bền vững khi mất điện"]
+  M04 --> L54["Bài 54 · Ranh giới nhân"]
+  L54 --> A54["Ranh giới nhân hệ điều hành&lt;br/&gt;• Chuyển đổi user/kernel&lt;br/&gt;• System call&lt;br/&gt;• Xử lý theo lô và kích thước khối&lt;br/&gt;• Chuyển ngữ cảnh&lt;br/&gt;• Quá nhiều luồng"]
+  M04 --> L55["Bài 55 · Giới hạn tăng tốc"]
+  L55 --> A55["Giới hạn tăng tốc&lt;br/&gt;• Định luật Amdahl&lt;br/&gt;• Góc nhìn Gustafson&lt;br/&gt;• Chờ vào ra&lt;br/&gt;• Bão hòa lõi và tranh khóa&lt;br/&gt;• Bão hòa băng thông bộ nhớ"]
+  M04 --> L56["Bài 56 · MIMD và SPMD"]
+  L56 --> A56["MIMD và SPMD&lt;br/&gt;• Bộ nhớ chung và cache coherence&lt;br/&gt;• NUMA&lt;br/&gt;• Bộ nhớ phân tán và truyền thông điệp&lt;br/&gt;• Tăng tốc&lt;br/&gt;• Hiệu suất song song"]
+  M04 --> L57["Bài 57 · Mô hình chi phí cơ sở dữ liệu"]
+  L57 --> A57["Mô hình chi phí cơ sở dữ liệu&lt;br/&gt;• Trang dữ liệu và buffer pool&lt;br/&gt;• Tra chỉ mục và quét tuần tự&lt;br/&gt;• Độ rẽ nhánh của B-tree&lt;br/&gt;• WAL và fsync"]
+  M04 --> L58["Bài 58 · Engine phân tán"]
+  L58 --> A58["Engine phân tán&lt;br/&gt;• Tuần tự hóa&lt;br/&gt;• Shuffle và spill&lt;br/&gt;• Áp lực bộ nhớ và garbage collection&lt;br/&gt;• MIMD worker → toán tử vector hóa → làn SIMD"]
+  M04 --> L59["Bài 59 · Báo cáo hiệu năng"]
+  L59 --> A59["Báo cáo hiệu năng&lt;br/&gt;• Khối lượng công việc và môi trường&lt;br/&gt;• Giả thuyết&lt;br/&gt;• Phương pháp, số lần lặp và phân bố&lt;br/&gt;• Kết quả và giới hạn&lt;br/&gt;• Khả năng tái hiện"]
+  M04 --> L60["Bài 60 · Dự án hiệu năng"]
+  L60 --> A60["Dự án hiệu năng&lt;br/&gt;• Dự đoán trước khi đo&lt;br/&gt;• Mỗi lần chỉ thay một biến&lt;br/&gt;• Đo lại sau mỗi thay đổi&lt;br/&gt;• Đối soát tính đúng&lt;br/&gt;• Nhật ký, báo cáo và sơ đồ đường đi"]
+  classDef module fill:#2b1b12,color:#fff4e8,stroke:#ff8a3d,stroke-width:2px;
+  classDef lesson fill:#fff4e8,color:#2b1b12,stroke:#c85e16,stroke-width:1.5px;
+  classDef atom fill:#fffdf8,color:#2b1b12,stroke:#b8a99a,stroke-width:1px,font-size:15px;
+  class M04 module;
+  class L45,L46,L47,L48,L49,L50,L51,L52,L53,L54,L55,L56,L57,L58,L59,L60 lesson;
+  class A45,A46,A47,A48,A49,A50,A51,A52,A53,A54,A55,A56,A57,A58,A59,A60 atom;
+        </pre>
+      </div>
+    </div>
+    <div class="meta">
+      <span><strong>Nguồn:</strong> <a href="roadmap.md">roadmap.md</a></span>
+      <span><strong>Ký hiệu:</strong> L = bài học, A = danh sách nội dung nguyên tử</span>
+      <span><strong>Renderer:</strong> Mermaid 11, security level strict</span>
+    </div>
+  </main>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, securityLevel: 'strict', theme: 'base', flowchart: { htmlLabels: true, curve: 'basis', useMaxWidth: false, wrappingWidth: 520, nodeSpacing: 52, rankSpacing: 120 } });
+    const stage = document.getElementById('stage');
+    const reset = document.getElementById('zoom-reset');
+    let scale = 1;
+    const applyZoom = () => { stage.style.transform = `scale(${scale})`; reset.textContent = `${Math.round(scale * 100)}%`; };
+    document.getElementById('zoom-in').addEventListener('click', () => { scale = Math.min(1.8, scale + .1); applyZoom(); });
+    document.getElementById('zoom-out').addEventListener('click', () => { scale = Math.max(.5, scale - .1); applyZoom(); });
+    reset.addEventListener('click', () => { scale = 1; applyZoom(); });
+  </script>
+</body>
+</html>

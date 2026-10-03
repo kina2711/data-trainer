@@ -1,0 +1,69 @@
+schema_version: 1
+task_id: l099-l103-deep-note-release
+completed_at: 2026-09-28
+result: pass-pending-owner-review
+selected_tasks:
+  source_conversion: book-fold-into-existing-system
+  second_brain: brain-build-atomic-knowledge-note
+profile: build-change
+risk_tier: R2-standard
+deliverables:
+  lessons_released: [99, 100, 101, 102, 103]
+  curriculum_files_written: 10
+  knowledge_notes_reused_after_validation: 4
+  knowledge_notes_created: 1
+  source_records_created: 4
+  source_records_extended: 2
+source_evidence:
+  - source: Mastering PostgreSQL 17
+    sha256: ee15cedfea766f282e6cf8aaeab4213d357f6b6dece287cb4e6077816f743be1
+    pages: [30-34, 49-62]
+    checked_pages: 19
+    empty_pages: 0
+  - source: Domain-Driven Design with Golang
+    sha256: cd192e3bf55b81ffee79b072ac4301fc57d5e7658c532af11dfacccc4347b37a
+    pages: [66-88]
+    checked_pages: 23
+    empty_pages: 1
+    note: PDF page 75 is a section divider without text.
+  - source: Microservices Patterns
+    sha256: 474a64084f202c57f361e72a1140f231c3ed8e884bcaa9ef274d5fe8551ebe5d
+    pages: [140-149]
+    checked_pages: 10
+    empty_pages: 0
+  - source: PostgreSQL Transactions
+    locator: https://www.postgresql.org/docs/current/tutorial-transactions.html
+    captured: 2026-09-28
+  - source: SQLAlchemy Session Basics
+    locator: https://docs.sqlalchemy.org/en/20/orm/session_basics.html
+    captured: 2026-09-28
+  - source: Fowler Unit of Work
+    locator: https://martinfowler.com/eaaCatalog/unitOfWork.html
+    captured: 2026-09-28
+checks:
+  generator_idempotence: "checked=10 stale=0"
+  curriculum_validator: "PASS lessons=5 files=10 knowledge_notes=5"
+  knowledge_note_formatter: "checked=77 failed=0"
+  source_coverage_validator: "checked=26 failed=0"
+  l103_reference_wiki_identity: pass
+word_counts:
+  L099: {note: 2268, after_note: 418}
+  L100: {note: 1823, after_note: 479}
+  L101: {note: 1962, after_note: 531}
+  L102: {note: 2269, after_note: 420}
+  L103: {note: 3216, after_note: 643}
+artifacts:
+  l103_note_sha256: 8e929fbb1f00ed30871041511e4860bc632e83bd2960f7daf4c7c40a4169b5bb
+  manifest_version: 1.0.20
+  manifest_sha256_before_vault_sync: 9fc4e698631d79e3d4909d0e9b58da226e91e81e6fde4716166f2b3b3f795ba3
+  source_count: 23
+  note_count: 26
+  retrieval_test_count: 125
+approval:
+  status: pending-owner-review
+limitations:
+  - Lab database, fault injection, query-count benchmark và pool-exhaustion experiment chưa được chạy; after-note quy định bằng chứng phải thu khi triển khai.
+  - Coursera không được truy cập trong lượt offline này theo workflow đã chốt.
+  - L099-L102 tái sử dụng knowledge note đã vượt coverage validator; lượt này không đọc lại toàn bộ nguồn ngoài phạm vi locator đã lưu.
+next_owner: project-owner
+next_task: Duyệt semantic content của L099-L103 trước khi đổi trạng thái review/draft.

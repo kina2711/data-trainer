@@ -1,0 +1,105 @@
+schema_version: 2
+lesson_id: DA-L001
+title: What a Data Analyst actually does all day
+status: ready-for-owner-review
+lifecycle_profile: learning
+risk_tier: R2-standard
+target_level: Foundation
+duration_minutes_estimate: 120
+central_question: Data Analyst tạo giá trị ở đâu trong vòng đời từ yêu cầu đến quyết định?
+objective: Phân loại nhiệm vụ theo sáu vai trò dữ liệu và bảo vệ ranh giới trách nhiệm bằng outcome, artifact và
+  consumer.
+prerequisites:
+- Không yêu cầu kỹ thuật; người học mang theo một ví dụ về quyết định từng thấy trong công việc hoặc đời sống.
+learner_memory:
+  resolved: false
+  assumption: No prior mastery claimed; teach and assess the named prerequisites.
+scenes:
+- id: S01
+  type: explain
+  minutes: 10
+  claim: Giám đốc nói doanh thu tháng 10 giảm 12% và hỏi vì sao. Một dashboard đẹp có thể vẫn hoàn toàn vô dụng
+    nếu mốc so sánh, dữ liệu thiếu và quyết định cần hỗ trợ chưa rõ.
+  source_span: note.md — heading 'II. Bối cảnh và vấn đề đặt ra'
+  misconception_displaced: Có thể bắt đầu bằng công cụ/output trước khi khóa câu hỏi và boundary.
+- id: S02
+  type: explain
+  minutes: 18
+  claim: DA không được định nghĩa bởi công cụ. DA biến một câu hỏi mơ hồ thành kết luận có kiểm chứng và hành động
+    có chủ sở hữu.
+  source_span: note.md — heading 'III. Cơ sở lý thuyết và cơ chế vận hành'
+  misconception_displaced: Gán vai theo công cụ, hoặc gửi output không nói quyết định nào sẽ thay đổi.
+- id: S03
+  type: check
+  minutes: 7
+  question: Phần giá trị cao nhất của DA là gì?
+  answer: Biến câu hỏi thành kết luận kiểm chứng được và hành động cụ thể.
+  wrong_answer_reveals: Người học nhớ từ khóa nhưng chưa nắm claim trung tâm.
+  source_span: note.md — heading 'III. Cơ sở lý thuyết và cơ chế vận hành'
+- id: S04
+  type: practice
+  minutes: 18
+  task: 'Phân loại tám thẻ việc: sửa pipeline mất dữ liệu, định nghĩa revenue, dashboard ngày, phân tích churn,
+    dự báo churn, đặc tả hoàn tiền, đối soát hai báo cáo, trình bày khuyến nghị.'
+  success_condition: Ít nhất 6/8 thẻ đúng và mỗi lý do gọi tên outcome hoặc artifact bàn giao.
+  source_span: UNSOURCED — guided practice synthesized from the lesson objective and source-backed mechanism
+- id: S05
+  type: explain
+  minutes: 15
+  claim: Nếu yêu cầu hỏi chuyện gì xảy ra, vì sao và nên làm gì thì DA sở hữu phân tích; nếu lỗi nằm ở ingestion,
+    định nghĩa dùng chung, theo dõi định kỳ, dự báo hoặc quy trình thì phải có vai tương ứng đồng sở hữu.
+  source_span: note.md — heading 'IV. Khung quyết định và tiêu chí lựa chọn'
+  misconception_displaced: Một rule hoặc tool luôn đúng bất kể changed constraint.
+- id: S06
+  type: decide
+  minutes: 12
+  situation: Nếu công ty chỉ có một người dữ liệu, phạm vi thực thi rộng lên nhưng tiêu chí bàn giao của từng vai
+    không biến mất.
+  trade_off: Ở công ty nhỏ một người có thể đội nhiều mũ; vẫn phải gọi đúng vai đang thực hiện để biết invariant
+    và bàn giao nào thuộc trách nhiệm đó.
+  defensible_choices: Lựa chọn phải giữ hard constraints, nêu evidence và reversal trigger.
+  source_span: UNSOURCED — changed-constraint decision scenario synthesized for transfer
+- id: S07
+  type: explain
+  minutes: 15
+  claim: 'Worked example: Chuẩn hóa doanh thu theo số ngày và phát hiện chi nhánh Đà Nẵng thiếu 11 ngày dữ liệu.
+    Tách mức giảm báo cáo 12% khỏi mức giảm thật 4% sau kiểm chứng. Xác định phần giảm tập trung ở khách mới, không
+    phải khách cũ. Khuyến nghị ngân sách có mục tiêu và mở incident dữ liệu riêng cho chi nhánh.'
+  source_span: 'note.md — heading ''V. Nghiên cứu tình huống: quay lại câu "doanh thu giảm 12%"'''
+  misconception_displaced: Một case thành công tự chứng minh cơ chế tổng quát.
+- id: S08
+  type: apply
+  minutes: 18
+  task: Một startup 20 người tuyển 'Data Analyst' nhưng JD gồm Airflow, dbt, Power BI và churn model. Hãy tách bốn
+    vai, rủi ro và thứ tự tuyển/bàn giao.
+  assumes:
+  - S02
+  - S04
+  - S05
+  - S06
+  - S07
+  success_condition: Artifact nêu boundary, evidence, lựa chọn, rejected alternative và condition làm quyết định
+    đảo.
+  source_span: UNSOURCED — curriculum transfer scenario synthesized from the lesson contract
+- id: S09
+  type: check
+  minutes: 7
+  question: Data Analyst khác Data Engineer ở đâu, và vì sao ranh giới vẫn có thể chồng lấn?
+  answer: DA sở hữu câu trả lời và khuyến nghị; DE sở hữu dòng dữ liệu tin cậy. Chồng lấn xuất hiện ở kiểm chứng
+    và lỗi dữ liệu, nên cần phân biệt lỗi hệ thống với logic nghiệp vụ.
+  wrong_answer_reveals: Người học chưa chuyển mental model sang tình huống mới.
+  source_span: note.md — heading 'VI. Giới hạn và ngộ nhận phổ biến'
+assessment:
+  formative: quiz.md — 10 questions, pass >= 8/10; failed concepts receive targeted remediation and one retest.
+  authentic: homework.md — artifact scored on a 100-point analytic rubric; pass >= 75 and no critical failure.
+  mastery_claim: None. Package readiness and learner mastery are separate evidence states.
+publish:
+  note: true
+  slides: true
+  quiz: true
+  homework: true
+  after_note: true
+  answer_key: true
+unused_source_spans:
+- Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension/remediation; the 120-minute session
+  samples rather than recites every probe.

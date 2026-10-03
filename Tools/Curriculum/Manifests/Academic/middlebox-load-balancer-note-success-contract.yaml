@@ -1,0 +1,25 @@
+task_id: middlebox-load-balancer-note-2026-09-27
+task_type: book-build-second-brain-pack
+objective: Convert Kurose and Ross sections 4.5 and 6.6.1 into one detailed, humanized Vietnamese reference and Obsidian Wiki note about proxy, middlebox, load balancer, connection boundaries, address translation, and observability limits.
+source:
+  source_id: PACK-OS_NETWORK-BOOK-03
+  scope: section 4.5, printed pages 390-393, PDF pages 392-395; section 6.6.1, printed pages 535-538, PDF pages 537-540
+  rights: private-owner-provided-no-public-redistribution
+success_criteria:
+  - Explain the middlebox definition, NAT, security, and performance-enhancement classes without treating all middleboxes as connection terminators.
+  - Explain the architectural tension with layering and the end-to-end argument, plus the NFV and cloud-outsourcing directions in the source.
+  - Explain public-IP to internal-host load balancing, reverse translation, hierarchy, redundancy, and oversubscription in the data-center example.
+  - Distinguish forwarding, translation, inspection, proxying, TCP splitting, and TLS termination as different connection and trust boundaries.
+  - Include request-path diagrams, evidence ownership, failure analysis, changed-scenario application, source gaps, and current-vendor-documentation stop conditions.
+  - Cross-link the existing HTTP proxy/cache, TCP, TLS, DNS, and delay notes rather than duplicating them.
+  - Preserve qualifiers and terminology through a Vietnamese Humanizer pass.
+  - Keep Reference, staging Wiki, and canonical Obsidian copies byte-identical.
+validation:
+  - Source hash matches the registered source.
+  - All 8 PDF pages in scope contain extractable text.
+  - Frontmatter, IDs, claim types, locators, links, manifest counts, required terms, and fences validate.
+  - Retrieval tests cover middlebox classes, connection termination, NAT identity limits, load-balancer public/internal addressing, two TLS legs, observability boundaries, and oversubscription.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

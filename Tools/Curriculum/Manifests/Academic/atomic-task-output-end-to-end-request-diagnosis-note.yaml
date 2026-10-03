@@ -1,0 +1,71 @@
+task_id: end-to-end-request-diagnosis-note-2026-09-28
+task_type: book-build-second-brain-pack
+status: completed-awaiting-owner-review
+completed_at: 2026-09-28T00:23:32+07:00
+sources:
+  - source_id: src.book.titmus-cloud-native-go.1e
+    title: "Cloud Native Go: Building Reliable Services in Unreliable Environments"
+    scope: "chapter 11 observability and tracing, metrics, and logging; printed pages 343-351, 369-371, and 387-390; PDF pages 365-373, 391-393, and 409-412"
+    pages_expected: 16
+    pages_with_extractable_text: 16
+    sha256: bba89fa1fa9092b9043634bef78f968d02723658ff4437d2da4a60c037dba777
+  - source_id: src.book.kurose-ross-networking.8e
+    title: "Computer Networking: A Top-Down Approach, Eighth Global Edition"
+    scope: "sections 1.4.1-1.4.3 on delay, queueing, loss, end-to-end delay, and Traceroute; printed pages 65-73; PDF pages 67-75"
+    pages_expected: 9
+    pages_with_extractable_text: 9
+    sha256: ed41334ecf228e6733f4f50bb73fbcb0624145c6c2a51c8e779f2f65cfc01018
+  - source_id: src.book.kleppmann-ddia.2e-early-release
+    title: "Designing Data-Intensive Applications, Second Edition, Early Release"
+    scope: "chapter 2 response time, service time, queueing, throughput, and latency; PDF pages 76-80"
+    pages_expected: 5
+    pages_with_extractable_text: 5
+    sha256: d6a347131facfb30ab9af40e08e279587e3637e1d1a6005045239103e6081328
+artifacts:
+  reference_note: Material/DE/Reference/Library/Knowledge-Notes/PACK-OS_NETWORK-BOOK-03/10-end-to-end-request-tracing-evidence-based-diagnosis.md
+  staging_wiki_note: "Docs/Second-Brain/2_Wiki/He-phan-tan/Truy vết request end-to-end và chẩn đoán bằng bằng chứng.md"
+  canonical_wiki_note: "/media/kina2711/DATA/2026/Second_Brain/2_Wiki/He-phan-tan/Truy vết request end-to-end và chẩn đoán bằng bằng chứng.md"
+  note_sha256: 4c0fd50cc99cb0ae3c627143689c252de33594739fce22d3d488189fa70d753c
+metrics:
+  lines: 811
+  words: 5544
+  bytes: 36559
+  source_fact_callouts: 10
+  inference_callouts: 3
+  synthesis_callouts: 8
+  uncertainty_callouts: 2
+  diagrams: 3
+coverage:
+  - Observability versus monitoring and telemetry-tool inventory
+  - Trace, root span, child span, trace ID, propagation, missing spans, and instrumentation boundaries
+  - Six-stage client-observed latency decomposition and explicit measurement boundaries
+  - Response time, service time, queueing delay, tail latency, percentile, and critical path
+  - Metric time series, histogram use, label cardinality, structured logs, privacy, and telemetry cost
+  - Trace, metric, log, packet, transport, application, and business-evidence boundaries
+  - Traceroute interpretation, request dossier, hypothesis ledger, and healthy-versus-failing comparison
+  - Four diagnostic scenarios, recovery verification, and the complete DE-L088 evidence pack
+validation:
+  all_source_hashes_registered: pass
+  page_coverage_30_of_30: pass
+  frontmatter_parse: pass
+  manifest_json_parse: pass
+  manifest_counts_4_sources_11_notes_62_tests: pass
+  duplicate_registry_ids: pass
+  reference_staging_byte_identity: pass
+  wikilinks_10_of_10_resolve: pass
+  required_term_retrieval_smoke: pass
+  markdown_fences_balanced: pass
+  git_diff_check: pass
+  humanizer_pattern_scan: pass
+  canonical_sync: pass
+limits:
+  - No live distributed trace, packet capture, telemetry backend, lab, or DE-L088 assessment was executed.
+  - OpenTelemetry code in the 2021 source uses version 0.17.0; the note retains concepts but does not treat those APIs as current implementation guidance.
+  - The DDIA source is a partial Early Release with unstable pagination and unverified distribution provenance, so it remains provisional.
+  - No collector, backend, sampling, cardinality, retention, or privacy policy has been selected or tested for a concrete deployment.
+  - Clock synchronization and one-way timing assumptions were not verified against a running environment.
+  - Canonical-vault backup and restore status is inherited and remains unverified.
+review_gate:
+  profile: R2-standard
+  quality_gate: G4
+  next_state: owner-review

@@ -1,0 +1,30 @@
+task_id: de-l331-l350-note-promotion
+selected_skill_tasks:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+status: completed-awaiting-owner-review
+profile: build-change
+risk_tier: R2-standard
+phase_reached: G4-tested
+primary_deliverable: governed fold-in release of lessons 331-350 and matching atomic knowledge notes
+artifacts:
+  curriculum_files: 40
+  reference_notes: 20
+  second_brain_notes: 20
+  source_records_added: 5
+validation:
+  content_drift: "four batches checked; stale=0"
+  batch_validators: "4/4 PASS"
+  humanizer: "20/20 humanized-v3; within-note repeats=0; cross-note repeats=0; prose tells=0"
+  formatter: "checked=714 failed=0"
+  source_coverage: "checked=273 failed=0"
+  reference_wiki_parity: "20/20"
+  obsidian_checksum: "no differences after non-deleting sync"
+manifest: {version: "1.0.69", sources: 166, notes: 273, retrieval_cases: 866}
+deliverable_fingerprint: "21a512d4bc734a25aa01d66ab4f8c1f244f9f39ee5461a95337ef349f6d70d2e"
+approval_status: owner semantic approval pending
+residual_risks:
+  - live Kafka, PostgreSQL CDC, Spark and Flink labs were not executed
+  - behavior remains engine, connector, version and configuration dependent
+next_owner: curriculum owner
+next_task: owner-semantic-review-l331-l350

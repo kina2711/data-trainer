@@ -1,0 +1,13 @@
+{
+  "batch": "L140-L144",
+  "read_on": "2026-10-01",
+  "method": "pdftotext -layout with bounded page ranges; headings and content manually inspected",
+  "sources": [
+    {"source_id":"src.book.petrov-database-internals.1e","pdf_pages":"124-145","topics":["serializability","anomalies","MVCC","deadlocks"]},
+    {"source_id":"src.book.silberschatz-database-system-concepts.7e","pdf_pages":"2240-2292, 2338-2365, 2600-2635","topics":["2PL","deadlock","snapshot isolation","partitioning"]},
+    {"source_id":"src.manual.postgresql-17.10","pdf_pages":"134-147, 543-555, 808-823, 830-850","topics":["partitioning","isolation and locks","vacuum","replication"]},
+    {"source_id":"src.book.rogov-postgresql-14-internals","pdf_pages":"37-141, 197-239","topics":["MVCC","vacuum","locks"]},
+    {"source_id":"src.book.kleppmann-ddia.1e","pdf_pages":"154-194, 220-270","topics":["replication lag","failover","partitioning","write skew"]}
+  ],
+  "limitations": ["No database lab or performance benchmark was executed", "PostgreSQL 14 internals was checked against the PostgreSQL 17.10 manual for current behavior"]
+}

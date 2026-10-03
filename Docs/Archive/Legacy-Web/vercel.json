@@ -1,0 +1,64 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "make web",
+  "outputDirectory": "Web/dist",
+  "installCommand": "echo 'khong can cai gi: pipeline chi dung thu vien chuan cua Python'",
+  "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/lo-trinh",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/lo-trinh/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/bai-giang",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/bai-giang/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/phu-luc",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/data.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ]
+}

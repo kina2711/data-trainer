@@ -1,0 +1,28 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 161-165
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l161-l165-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l161-l165-release-audit.md
+  fingerprint: cb050d9d62295372142faa8bec081039cbe3ae6efd0489ad2cfc346588cff978
+tests:
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  late_data_handover_benchmark_and_semantic_migration_labs: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-source-tree-no-diff
+residual_risks:
+  - late-data relinking and reconciliation have not been exercised against a lab dataset
+  - handover success has not been tested with an independent consumer
+  - model benchmark and semantic-definition migration remain protocols, not measured results
+owner: kina2711
+next_task: owner reviews L161-L165, then continue the next requested lesson batch

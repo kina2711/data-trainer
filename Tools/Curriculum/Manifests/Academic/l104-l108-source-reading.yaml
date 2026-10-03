@@ -1,0 +1,70 @@
+schema_version: 1
+batch: DE-L104-L108
+captured: 2026-09-28
+sources:
+  - source_id: src.book.mastering-postgresql-17.6e
+    locator: Chapter 2, PDF 49-62
+    used_for: [L104]
+    extracted_topics: [row-locks, select-for-update, nowait, skip-locked, deadlocks]
+  - source_id: src.web.postgresql-concurrency-control
+    locator: Transaction Isolation, Explicit Locking, SELECT locking clause
+    used_for: [L104]
+    extracted_topics: [isolation, lock-lifetime, serialization-failure]
+  - source_id: src.book.geewax-api-design-patterns.1e
+    locator: Chapter 26, PDF 712-733
+    used_for: [L105]
+    extracted_topics: [request-identifier, response-replay, fingerprint, collision, expiry]
+  - source_id: src.web.rfc9110-http-semantics
+    locator: section 9.2.2
+    used_for: [L105]
+    extracted_topics: [method-idempotence, retry-conditions]
+  - source_id: src.web.stripe-idempotent-requests
+    locator: complete page captured 2026-09-28
+    used_for: [L105]
+    extracted_topics: [first-result-replay, parameter-comparison, concurrent-conflict, retention]
+  - source_id: src.web.postgresql-transactions
+    locator: transaction block and savepoints
+    used_for: [L105]
+    extracted_topics: [local-atomic-boundary]
+  - source_id: src.web.owasp-bola-2023
+    locator: API1:2023
+    used_for: [L106]
+    extracted_topics: [object-level-authorization, identifier-limit]
+  - source_id: src.web.owasp-authorization-cheat-sheet
+    locator: deny-by-default and validate-every-request sections
+    used_for: [L106]
+    extracted_topics: [authn-authz-separation, least-privilege, server-side-enforcement]
+  - source_id: src.web.oauth-security-bcp
+    locator: RFC 9700 sections 2.2-2.3 and 4.14
+    used_for: [L106]
+    extracted_topics: [access-token-restriction, refresh-token-rotation, replay-detection]
+  - source_id: src.book.titmus-cloud-native-go.1e
+    locator: PDF 99-108, 290-303, 365-373, 391-393, 409-412
+    used_for: [L107, L108]
+    extracted_topics: [circuit-breaker, retry, timeout, overload, tracing, metrics, logging]
+  - source_id: src.book.newman-building-microservices.2e
+    locator: service-failure and isolation context in previously read scope
+    used_for: [L107]
+    extracted_topics: [failure-boundary, distributed-service-context]
+  - source_id: src.web.aws-timeouts-retries-backoff
+    locator: complete Builders Library article captured 2026-09-28
+    used_for: [L107]
+    extracted_topics: [false-timeout-budget, retry-amplification, capped-backoff, jitter, token-bucket]
+  - source_id: src.web.azure-bulkhead
+    locator: complete pattern page captured 2026-09-28
+    used_for: [L107]
+    extracted_topics: [resource-isolation, connection-pool, trade-offs]
+  - source_id: src.web.opentelemetry-signals
+    locator: Signals, Concepts, Observability Primer, Instrumentation
+    used_for: [L108]
+    extracted_topics: [traces, metrics, logs, baggage, context]
+  - source_id: src.web.prometheus-histograms
+    locator: complete practice page captured 2026-09-28
+    used_for: [L108]
+    extracted_topics: [histogram, summary, quantile, aggregation, buckets]
+editorial_controls:
+  - Vendor behavior is labeled as a case study, not a universal standard.
+  - Thresholds and time windows are workload decisions unless the source explicitly defines a protocol rule.
+  - Source facts, synthesis and inference remain visibly distinct.
+  - No source passage is reproduced at substantial length.
+

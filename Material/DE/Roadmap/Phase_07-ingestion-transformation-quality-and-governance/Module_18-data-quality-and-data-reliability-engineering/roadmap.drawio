@@ -1,0 +1,133 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="M18 · Data Quality and Data Reliability Engineering" id="rm">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" page="1" pageWidth="1600" pageHeight="720" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" value="M18 · Data Quality and Data Reliability Engineering" style="text;html=1;fontSize=22;fontStyle=1;align=left;fontColor=#1A1A1A;" vertex="1" parent="1">
+          <mxGeometry x="40" y="36" width="1200" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" value="18 lessons · 36 giờ trên lớp  —  Data Engineer" style="text;html=1;fontSize=13;align=left;fontColor=#6B6B6B;" vertex="1" parent="1">
+          <mxGeometry x="40" y="74" width="1200" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="lg0" value="Theory" style="rounded=1;html=1;fillColor=#EAF2FB;strokeColor=#4A7EBB;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="lg1" value="Practice" style="rounded=1;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="140" y="100" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="lg2" value="Project" style="rounded=1;html=1;fillColor=#E8F6EC;strokeColor=#3F8F5B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="100" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="lg3" value="Assessment" style="rounded=1;html=1;fillColor=#FDE9E9;strokeColor=#C0392B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="100" width="92" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="l275" value="&lt;b&gt;Lesson 275&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;LT&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Quality dimensions defined operationally&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2FB;strokeColor=#4A7EBB;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l276" value="&lt;b&gt;Lesson 276&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Rule anatomy - seven parts&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="140" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l277" value="&lt;b&gt;Lesson 277&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;LT&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Layered controls - where each check belongs&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2FB;strokeColor=#4A7EBB;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="140" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l278" value="&lt;b&gt;Lesson 278&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Schema and contract tests at the boundary&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="140" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l279" value="&lt;b&gt;Lesson 279&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Row, aggregate and relationship tests&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="244" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l280" value="&lt;b&gt;Lesson 280&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Temporal tests - late, out of order and overlap&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="244" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l281" value="&lt;b&gt;Lesson 281&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Metamorphic and property tests for pipelines&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="244" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l282" value="&lt;b&gt;Lesson 282&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Statistical anomaly detection and its cost&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="244" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l283" value="&lt;b&gt;Lesson 283&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Backtesting rules against known incidents&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="348" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l284" value="&lt;b&gt;Lesson 284&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;The reconciliation ladder - seven levels&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="348" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l285" value="&lt;b&gt;Lesson 285&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Normalization before comparison&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="348" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l286" value="&lt;b&gt;Lesson 286&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Data SLI and SLO design&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="348" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l287" value="&lt;b&gt;Lesson 287&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Low-noise alerting and the error budget&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="452" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l288" value="&lt;b&gt;Lesson 288&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;LT&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;The incident lifecycle - eight steps&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2FB;strokeColor=#4A7EBB;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="452" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l289" value="&lt;b&gt;Lesson 289&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Repair, backfill and restatement&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="452" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l290" value="&lt;b&gt;Lesson 290&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;False positives, coverage and quality debt&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="452" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l291" value="&lt;b&gt;Lesson 291&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;TH&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;The quality failure matrix&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8D6;strokeColor=#C9A200;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="556" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="l292" value="&lt;b&gt;Lesson 292&lt;/b&gt;  &lt;font style=&#x27;font-size:10px;color:#8A8A8A&#x27;&gt;DA&lt;/font&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11.5px&#x27;&gt;Reliability capstone - twenty seeded defects&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F6EC;strokeColor=#3F8F5B;strokeWidth=1.5;align=left;spacingLeft=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="420" y="556" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l275" target="l276">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l276" target="l277">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l277" target="l278">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l278" target="l279">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l279" target="l280">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l280" target="l281">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l281" target="l282">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l282" target="l283">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l283" target="l284">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l284" target="l285">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l285" target="l286">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l286" target="l287">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l287" target="l288">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l288" target="l289">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l289" target="l290">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l290" target="l291">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="l291" target="l292">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

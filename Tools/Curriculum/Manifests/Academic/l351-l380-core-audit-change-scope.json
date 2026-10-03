@@ -1,0 +1,20 @@
+{
+  "task_id": "de-l351-l380-note-promotion",
+  "status": "pass",
+  "requested_range": [351, 380],
+  "execution_batches": [[351, 355], [356, 360], [361, 365], [366, 370], [371, 375], [376, 380]],
+  "affected_artifacts": {
+    "curriculum_notes": 60,
+    "reference_notes": 30,
+    "wiki_notes": 30,
+    "new_source_records": 12,
+    "batch_writers": 6,
+    "shared_specs_added": 1,
+    "shared_writer_extended": 1,
+    "validators_added": 7,
+    "validator_extended": 1
+  },
+  "unrelated_worktree_changes_modified": false,
+  "deletions_performed": false,
+  "scope_finding": "All written artifacts trace to lessons 351-380, their official source lineage, deterministic validation, or required release evidence."
+}

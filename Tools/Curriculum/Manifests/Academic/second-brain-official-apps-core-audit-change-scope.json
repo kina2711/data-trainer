@@ -1,0 +1,29 @@
+{
+  "task_id": "core-audit-change-scope",
+  "instance_id": "second-brain-official-web-desktop-release",
+  "status": "pass",
+  "audited_at": "2026-10-03T01:30:00+07:00",
+  "authorized_change": "Owner-approved promotion of all registered notes to canonical plus private local-first web and desktop readers.",
+  "changed_scope": {
+    "wiki_notes": 645,
+    "reference_mirrors": 644,
+    "canonical_manifest": "Docs/Second-Brain/second-brain-manifest.json",
+    "application_root": "Apps/SecondBrain",
+    "promotion_and_validation_tools": 2,
+    "dependency_manifests": ["package.json", "package-lock.json"]
+  },
+  "scope_controls": {
+    "public_deployment": false,
+    "source_pdfs_embedded": false,
+    "personal_3_toi_content_embedded": false,
+    "curriculum_lessons_created": false,
+    "deletions_performed": false,
+    "unrelated_dirty_worktree_changes_modified": false
+  },
+  "release_fingerprint": {
+    "algorithm": "sha256 over relative path and bytes",
+    "files": 1502,
+    "value": "ca5810849e5b4fc9ef3bdc82e66d01e528e4fda5ec50a12c0b8dae24e5c35673"
+  },
+  "privacy": "private-local-first"
+}

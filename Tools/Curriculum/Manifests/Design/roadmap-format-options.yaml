@@ -1,0 +1,57 @@
+decision_id: roadmap-format-2026-09-25
+task_id: academy-build-skill-track-map
+deliverable: dinh-dang-roadmap-phan-cap
+constraints:
+  - văn phong kỹ thuật tiếng Việt, không dùng ngôn ngữ quảng bá
+  - cấu trúc chương trình-giai đoạn-mô-đun
+  - con người rà soát được và web được dựng theo quy tắc xác định
+  - không lặp nội dung diễn giải giữa các cấp
+options:
+  - option_id: monolith
+    approach: một-tài-liệu-chương-trình-đầy-đủ
+    defining_points:
+      - chương trình chứa đặc tả giai đoạn, mô-đun và bài học
+      - đọc và xuất bản bằng một tệp
+      - phần thay đổi lớn, trải qua nhiều cấp
+    optimizes_for: phân phối bằng một tệp
+    wrong_when: các mô-đun thay đổi độc lập hoặc web hiển thị nhiều cấp
+    evidence_refs:
+      - Material/DA/Roadmap/roadmap.md
+      - Material/DE/Roadmap/roadmap.md
+    decision: rejected
+    reason: lặp lại tình trạng trùng nội dung và không rõ nơi chịu trách nhiệm hiện nay
+  - option_id: hierarchical-contracts
+    approach: markdown-cho-người-đọc-kèm-siêu-dữ-liệu-tối-thiểu
+    defining_points:
+      - mỗi cấp sở hữu một nhóm quyết định riêng
+      - cấp cha tóm tắt cấp con bằng mã định danh ổn định
+      - YAML lưu định danh, thứ tự, phiên bản và trạng thái phê duyệt
+    optimizes_for: khả năng rà soát, truy vết và dựng web
+    wrong_when: sản phẩm duy nhất là một bản in bất biến
+    evidence_refs:
+      - Docs/Architecture/Repository-Structure.md
+      - Docs/Standards/Lesson-Format.md
+    decision: selected
+    reason: đáp ứng đồng thời việc rà soát của con người và dựng tự động mà không lặp nội dung
+  - option_id: typed-spec
+    approach: yaml-hoặc-json-làm-nguồn-chuẩn-duy-nhất
+    defining_points:
+      - kiểm tra dựa trên lược đồ
+      - phần diễn giải được sinh tự động
+      - lập luận bị giới hạn trong các trường có cấu trúc
+    optimizes_for: tự động hóa và tính nhất quán cấu trúc
+    wrong_when: người duyệt cần phản biện lập luận và giới hạn bằng chứng
+    evidence_refs: []
+    decision: rejected
+    reason: quá hạn chế đối với lập luận giáo dục và kỹ thuật
+selected_option_id: hierarchical-contracts
+selection_rationale: >-
+  Phân định trách nhiệm theo cấp giúp phần rà soát nhỏ và truy vết được; Markdown giữ phần lập luận,
+  còn YAML tối thiểu cung cấp định danh ổn định và quy tắc dựng xác định.
+eliminated_by_constraint: []
+reopen_signal:
+  - roadmap trở thành sản phẩm chỉ để in và không còn thay đổi
+  - yêu cầu kiểm tra lược đồ vượt quá khả năng biểu đạt của siêu dữ liệu tối thiểu
+structure_derived_from_selection: true
+owner: kina2711
+status: approved

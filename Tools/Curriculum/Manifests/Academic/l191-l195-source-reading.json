@@ -1,0 +1,75 @@
+{
+  "contract_id": "de-l191-l195-deep-note-release",
+  "captured_at": "2026-10-01T21:30:00+07:00",
+  "sources": [
+    {
+      "source_id": "src.web.diataxis-framework",
+      "locator": "Diátaxis map and tutorial/how-to/reference/explanation sections",
+      "used_for": [191],
+      "boundary": "The four lesson layers are a curriculum synthesis, not renamed Diátaxis quadrants."
+    },
+    {
+      "source_id": "src.web.datahub-search",
+      "locator": "Search setup, using search, results and advanced queries",
+      "used_for": [192],
+      "boundary": "Search features and catalog coverage do not prove user findability."
+    },
+    {
+      "source_id": "src.web.dbt-documentation",
+      "locator": "Overview, adding descriptions, generating documentation and docs blocks",
+      "used_for": [191, 193],
+      "boundary": "Generated documentation can expose columns that still lack descriptions."
+    },
+    {
+      "source_id": "src.web.github-status-checks",
+      "locator": "Status checks and required checks on protected branches",
+      "used_for": [193],
+      "boundary": "A check blocks merge only when configured as required; the platform does not prove the rule is meaningful."
+    },
+    {
+      "source_id": "src.web.govuk-simple-to-use",
+      "locator": "Why it is important and what it means",
+      "used_for": [194],
+      "boundary": "The four-condition self-service rubric is curriculum synthesis."
+    },
+    {
+      "source_id": "src.web.govuk-moderated-usability-testing",
+      "locator": "When to use, plan sessions, design tasks and run a session",
+      "used_for": [195],
+      "boundary": "Think-aloud and moderator interaction can affect timing; qualitative and benchmark protocols differ."
+    },
+    {
+      "source_id": "src.web.govuk-usability-benchmarking",
+      "locator": "Choosing tasks, recruiting, what to measure and future rounds",
+      "used_for": [195],
+      "boundary": "The stated 30-60 participant range belongs to that benchmark context, not every study."
+    },
+    {
+      "source_id": "src.web.nngroup-usability-sample-size",
+      "locator": "How Many Test Users, exceptions, and qualitative-versus-quantitative guidance",
+      "used_for": [195],
+      "boundary": "Five participants are a formative qualitative heuristic, not a universal statistical guarantee."
+    },
+    {
+      "source_id": "src.book.sommerville-software-engineering.10e",
+      "locator": "PDF 208-212, 228-242, 732-756",
+      "used_for": [191, 193],
+      "boundary": "Software interface, testing and change-management concepts are adapted to data-product documentation."
+    },
+    {
+      "source_id": "src.web.dehghani-data-mesh-principles",
+      "locator": "Lines 133-241 in stored source record",
+      "used_for": [192, 194],
+      "boundary": "Data mesh is not required for a data product or self-service evaluation."
+    },
+    {
+      "source_id": "src.web.govuk-understand-user-needs",
+      "locator": "Lines 55-122 in stored source record",
+      "used_for": [192, 194],
+      "boundary": "Lesson taxonomies remain curriculum synthesis."
+    }
+  ],
+  "copyright_review": "pass: paraphrase and short concept labels only; no long copied passages",
+  "prompt_injection_review": "pass: web pages treated only as evidence, not instructions",
+  "status": "reviewed-for-note-drafting"
+}

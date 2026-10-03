@@ -1,0 +1,31 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 211-215
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l211-l215-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l211-l215-release-audit.md
+  fingerprint: 024d641027b72933664fc90abd728df5bfd1364d9272af33128ed1697e818330
+tests:
+  core_audit_change_scope: pass
+  core_verify_deliverable: pass
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  live_scaling_join_cache_concurrency_cost_labs: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-source-tree-no-diff
+residual_risks:
+  - scaling conclusions remain protocols until cluster counters and binary/operator evidence exist
+  - join distribution and spill behavior remain engine, connector and version specific
+  - cold cache cannot be claimed without authority to create or verify the defined state
+  - cost conclusions require a current region and contract-specific rate card plus billing reconciliation
+owner: kina2711
+next_task: owner reviews L211-L215, then continue the next requested lesson batch

@@ -1,0 +1,12 @@
+{
+  "batch": "L251-L255",
+  "read_at": "2026-10-02",
+  "method": "bounded reading of official Apache Beam and dbt documentation plus existing offline book records",
+  "new_sources": [
+    {"source_id": "src.web.apache-beam-programming-guide", "scope": ["event time", "processing time", "watermarks", "triggers", "allowed lateness"]},
+    {"source_id": "src.web.dbt-command-reference", "scope": ["parse", "compile", "run", "build and command boundaries"]},
+    {"source_id": "src.web.dbt-materializations", "scope": ["view", "table", "incremental", "ephemeral", "adapter dependence"]}
+  ],
+  "reused_sources": ["src.book.reis-housley-fundamentals-data-engineering", "src.book.kleppmann-ddia.1e", "src.web.dbt-incremental-models"],
+  "limitations": ["No live dbt project, Beam runner, warehouse or scheduler was executed", "Tool behavior remains version, adapter and configuration dependent", "Backfill capacity and atomic publication are protocols, not observed production results"]
+}

@@ -1,0 +1,23 @@
+{
+  "task_id": "core-audit-change-scope",
+  "instance_id": "remaining-18-curated-book-packs",
+  "status": "pass",
+  "requested_books": 18,
+  "pack_design": {
+    "notes_per_book": 6,
+    "total_notes": 108,
+    "retrieval_cases_per_note": 3,
+    "risk_tier": "R2-standard",
+    "visibility": "private"
+  },
+  "material_changes": [
+    "18 source records under Docs/Second-Brain/1_Nguon/Books",
+    "108 detailed notes under Material/Shared/Knowledge-Notes/PACK-CURATED-BOOKS-01",
+    "108 byte-identical Wiki mirrors under Docs/Second-Brain/2_Wiki",
+    "18 output contracts under Docs/Second-Brain/4_Ket-Qua/Book-Packs",
+    "Second Brain source, note and retrieval registries",
+    "deterministic build and validation scripts"
+  ],
+  "unrelated_dirty_worktree_changes_modified": false,
+  "deletions": []
+}

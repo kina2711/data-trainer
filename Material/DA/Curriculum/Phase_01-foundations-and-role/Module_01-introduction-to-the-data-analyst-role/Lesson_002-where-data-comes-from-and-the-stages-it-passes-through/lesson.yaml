@@ -1,0 +1,105 @@
+schema_version: 2
+lesson_id: DA-L002
+title: Where data comes from and the stages it passes through
+status: ready-for-owner-review
+lifecycle_profile: learning
+risk_tier: R2-standard
+target_level: Foundation
+duration_minutes_estimate: 120
+central_question: Một con số đã bị biến đổi ở đâu từ sự kiện nghiệp vụ đến quyết định?
+objective: Tái dựng vòng đời bảy chặng và định vị cơ chế sai lệch cùng bằng chứng kiểm tra tại từng boundary.
+prerequisites:
+- 'DA-L001: phân biệt câu hỏi phân tích với trách nhiệm của các vai dữ liệu.'
+learner_memory:
+  resolved: false
+  assumption: No prior mastery claimed; teach and assess the named prerequisites.
+scenes:
+- id: S01
+  type: explain
+  minutes: 10
+  claim: Dashboard báo khách hoạt động giảm, nhưng source ghi đơn tạo, vận hành đếm đơn thanh toán còn CRM đếm phiên
+    truy cập. Ba số đúng theo code nhưng không cùng khái niệm.
+  source_span: note.md — heading 'Nỗi Đau & Động Lực'
+  misconception_displaced: Có thể bắt đầu bằng công cụ/output trước khi khóa câu hỏi và boundary.
+- id: S02
+  type: explain
+  minutes: 18
+  claim: Con số phân tích là một chuỗi biến đổi có lineage; muốn tin kết luận phải nối event, record, storage, transform,
+    metric, presentation và decision bằng các phép đối soát.
+  source_span: note.md — heading 'Cơ Chế Tác Động'
+  misconception_displaced: Dùng tên bảng như bằng chứng về nghĩa dữ liệu, hoặc sửa dashboard cho khớp một tổng không
+    độc lập.
+- id: S03
+  type: check
+  minutes: 7
+  question: Ba lớp nào dễ bị đánh đồng?
+  answer: Sự kiện nghiệp vụ, bản ghi nguồn và bảng phục vụ phân tích.
+  wrong_answer_reveals: Người học nhớ từ khóa nhưng chưa nắm claim trung tâm.
+  source_span: note.md — heading 'Cơ Chế Tác Động'
+- id: S04
+  type: practice
+  minutes: 18
+  task: 'Xếp 14 thẻ artifact vào bảy chặng và nối mỗi chặng với một failure mode: missing event, duplicate, timezone,
+    filter, join fan-out, stale cache, wrong action.'
+  success_condition: Đúng ≥ 12/14 thẻ và nêu được một phép kiểm độc lập tại ít nhất năm boundary.
+  source_span: UNSOURCED — guided practice synthesized from the lesson objective and source-backed mechanism
+- id: S05
+  type: explain
+  minutes: 15
+  claim: Khi hai số lệch, đi ngược lineage và kiểm boundary đầu tiên chúng bắt đầu khác; chỉ sửa downstream sau
+    khi cơ chế upstream đã được xác nhận.
+  source_span: note.md — heading 'Bản Đồ Quyết Định'
+  misconception_displaced: Một rule hoặc tool luôn đúng bất kể changed constraint.
+- id: S06
+  type: decide
+  minutes: 12
+  situation: Khi dữ liệu đến muộn, phải tách event time, processing time và cutoff; con số hôm nay có thể đúng theo
+    snapshot nhưng chưa final.
+  trade_off: Lineage mô tả đường đi và biến đổi; nó không tự chứng minh completeness nếu không có count, checksum
+    hoặc oracle độc lập.
+  defensible_choices: Lựa chọn phải giữ hard constraints, nêu evidence và reversal trigger.
+  source_span: UNSOURCED — changed-constraint decision scenario synthesized for transfer
+- id: S07
+  type: explain
+  minutes: 15
+  claim: 'Worked example: Đặt ba định nghĩa ''active customer'' cạnh nhau trên cùng snapshot. Theo một khách từ
+    click, order_created, payment_success tới mart và dashboard. So count và distinct identity sau mỗi join/filter
+    để tìm chặng làm mất tín hiệu. Đổi câu hỏi từ ''khách giảm'' thành ''conversion tạo đơn → thanh toán giảm ở
+    thiết bị nào''.'
+  source_span: 'note.md — heading ''Case Study Thực Chiến: một chỉ số bán hàng đổi nghĩa giữa đường'''
+  misconception_displaced: Một case thành công tự chứng minh cơ chế tổng quát.
+- id: S08
+  type: apply
+  minutes: 18
+  task: Dashboard retention giảm đúng ngày đổi SDK. Thiết kế thứ tự kiểm chứng để phân biệt hành vi thật, mất event
+    và đổi identity.
+  assumes:
+  - S02
+  - S04
+  - S05
+  - S06
+  - S07
+  success_condition: Artifact nêu boundary, evidence, lựa chọn, rejected alternative và condition làm quyết định
+    đảo.
+  source_span: UNSOURCED — curriculum transfer scenario synthesized from the lesson contract
+- id: S09
+  type: check
+  minutes: 7
+  question: Vì sao lineage không đồng nghĩa dữ liệu đúng?
+  answer: Lineage chỉ nói đường đi; correctness cần invariant và reconciliation độc lập tại boundary.
+  wrong_answer_reveals: Người học chưa chuyển mental model sang tình huống mới.
+  source_span: note.md — heading 'Góc Khuất & Ngộ Nhận'
+assessment:
+  formative: quiz.md — 10 questions, pass >= 8/10; failed concepts receive targeted remediation and one retest.
+  authentic: homework.md — artifact scored on a 100-point analytic rubric; pass >= 75 and no critical failure.
+  mastery_claim: None. Package readiness and learner mastery are separate evidence states.
+publish:
+  note: true
+  slides: true
+  quiz: true
+  homework: true
+  after_note: true
+  answer_key: true
+unused_source_spans:
+- Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension/remediation; the 120-minute session
+  samples rather than recites every probe.

@@ -1,0 +1,19 @@
+{
+  "control": "core-audit-change-scope",
+  "contract_id": "de-l191-l195-deep-note-release",
+  "executed_at": "2026-10-01T21:30:00+07:00",
+  "result": "pass",
+  "method": "explicit write-set audit against generator targets and apply_patch paths because the repository contains unrelated pre-existing changes",
+  "allowed_changes": {
+    "curriculum": ["L191 note.md/after-note.md", "L192 note.md/after-note.md", "L193 note.md/after-note.md", "L194 note.md/after-note.md", "L195 note.md/after-note.md"],
+    "reference_notes": ["79-documentation-hierarchy.md", "80-search-discovery-findability-test.md", "81-documentation-tests.md", "82-self-service-ux-enablement-boundary.md", "83-task-based-usability-testing.md"],
+    "second_brain": ["8 new source records", "5 Wiki notes", "3 existing source backlink updates", "second-brain-manifest.json"],
+    "tooling_and_evidence": ["promote_l191_l195_notes.py", "validate_l191_l195_notes.py", "L191-L195 contract and audit records"]
+  },
+  "forbidden_targets_written": [],
+  "notes": [
+    "Generator targets only Reference, Wiki, note.md, after-note.md and manifest.",
+    "quiz.md, homework.md, slides.md, lesson.yaml and Material/DA are not generator targets.",
+    "Repository-wide git cleanliness is not claimed because unrelated pre-existing work exists."
+  ]
+}

@@ -1,0 +1,32 @@
+task_id: cohesion-coupling-dependency-direction-note-2026-09-28
+task_type: book-build-second-brain-pack
+objective: Convert bounded modular-design sources into one detailed, humanized Vietnamese reference and Obsidian Wiki note for DE-L090.
+sources:
+  - source_id: src.book.newman-building-microservices.2e
+    scope: chapter 2 module boundaries, information hiding, cohesion, coupling, coupling interplay, and domain, temporal, pass-through, common, and content coupling; PDF pages 57-77
+    rights: private-owner-provided-no-public-redistribution
+  - source_id: src.book.hunt-thomas-pragmatic-programmer.20ae
+    scope: Topic 10 Orthogonality, definition, benefits, design, toolkits, coding, testing, and diagnostic questions; PDF pages 76-83
+    rights: private-owner-provided-no-public-redistribution
+  - source_id: src.book.sommerville-software-engineering.10e
+    scope: interface specification, information hiding through interfaces, Observer consequences, and minimal coupling; PDF pages 208-212
+    rights: private-owner-provided-no-public-redistribution
+success_criteria:
+  - Define cohesion as a change-together relationship inside a boundary and coupling as assumptions across boundaries, preserving source qualifiers.
+  - Distinguish dependency edge, runtime call, data-flow edge, ownership edge, and change-coupling evidence.
+  - Explain dependency direction from policy-owning core to abstractions it owns, with outer mechanisms implementing those abstractions, without presenting the rule as universally mandatory.
+  - Provide reproducible commands and a manual method to build an import dependency graph, detect cycles, and classify wrong-way edges.
+  - Define measurable proxies including afferent and efferent coupling, instability, change amplification, co-change, and files changed per replacement scenario, while stating their limits.
+  - Analyze two comparable repository designs and trace a database replacement through affected files.
+  - Provide a DE-L090 evidence pack with graph, edge ledger, changed-file count, review rubric, and explicit Done-when mapping.
+  - Preserve source qualifiers, mark synthesis, inference, and uncertainty, and complete a Vietnamese Humanizer pass.
+  - Keep Reference, staging Wiki, and canonical Obsidian copies byte-identical.
+validation:
+  - All three source hashes match registered records.
+  - All 34 PDF pages in declared scope contain extractable text.
+  - Frontmatter, IDs, claim types, locators, links, manifest counts, required terms, and Markdown fences validate.
+  - Retrieval tests cover information hiding, cohesion, coupling types, dependency graph direction, metrics, cycles, replacement analysis, and DE-L090 evidence.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

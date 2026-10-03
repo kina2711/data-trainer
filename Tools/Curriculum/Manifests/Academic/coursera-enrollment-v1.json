@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "task_id": "academy-coursera-enrollment-2026-09-27",
+  "observed_at": "2026-09-27",
+  "organization": "EmployNV",
+  "account_display_name": "Kiên Thái Trung",
+  "policy": {
+    "access_verified_does_not_mean_read": true,
+    "graded_assessments_performed": false,
+    "certificates_claimed": false,
+    "payments_or_subscription_changes": false,
+    "parent_programs_added_for_blocked_courses": false
+  },
+  "summary": {
+    "approved_coursera_sources": 23,
+    "access_verified": 19,
+    "standalone_enrollment_blocked": 4,
+    "deep_read": 0,
+    "completed": 0
+  },
+  "entries": [
+    {"source_id":"COURSE-C-DA-INTRO","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-EXCEL","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-SQL","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-DW","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-STATS","status":"access-verified","evidence":"Specialization enrollment redirected to the first course home page."},
+    {"source_id":"COURSE-C-PBI","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-PRODUCT","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-PYDATA","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-DA-CAP","status":"access-verified","evidence":"Course page displayed Enrolled and course home access was available."},
+    {"source_id":"COURSE-C-PYOS","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-ALGO","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-N2T","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-NET","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-SWARCH","status":"access-verified","evidence":"Specialization page displayed Go To Course."},
+    {"source_id":"COURSE-C-BACKEND","status":"standalone-enrollment-blocked","evidence":"No standalone enrollment control; direct course-home request redirected to the organization course page."},
+    {"source_id":"COURSE-C-DB","status":"standalone-enrollment-blocked","evidence":"No standalone enrollment control; direct course-home request did not resolve to a course home."},
+    {"source_id":"COURSE-C-DE-INTRO","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-ETL","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-SPARK","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-CLOUD","status":"standalone-enrollment-blocked","evidence":"No standalone enrollment control; direct course-home request did not resolve to a course home."},
+    {"source_id":"COURSE-C-K8S","status":"standalone-enrollment-blocked","evidence":"No standalone enrollment control; direct course-home request did not resolve to a course home."},
+    {"source_id":"COURSE-C-GENAI","status":"access-verified","evidence":"Course home page opened."},
+    {"source_id":"COURSE-C-LEAD","status":"access-verified","evidence":"Course home page opened."}
+  ]
+}

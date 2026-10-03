@@ -1,0 +1,17 @@
+{
+  "batch_id": "software-delivery-l095-l098-2026-09-28",
+  "allowed_write_roots": [
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01",
+    "Material/DE/Reference/Library/Source-Notes",
+    "Docs/Second-Brain",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden": [
+    "Material/DE/Curriculum",
+    "Material/DE/Roadmap",
+    "Web",
+    "Artifact"
+  ],
+  "canonical_sync_root": "/media/kina2711/DATA/2026/Second_Brain",
+  "destructive_operations": false
+}

@@ -1,0 +1,65 @@
+batch_id: software-delivery-l095-l098-2026-09-28
+task_type: book-build-second-brain-pack
+status: completed-awaiting-owner-review
+completed_at: 2026-09-28T16:30:00+07:00
+execution:
+  lifecycle_profile: build-change
+  risk_tier: R2-standard
+  quality_gate: G4
+sources:
+  registered_sources: 17
+  new_sources: 5
+  offline_pdf_hashes_verified: 2
+  official_web_sources_captured: 3
+artifacts:
+  - lesson: DE-L095
+    reference_note: Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/07-behavior-preserving-refactoring.md
+    staging_wiki_note: Docs/Second-Brain/2_Wiki/Software-Engineering/Behavior-Preserving Refactoring.md
+    canonical_wiki_note: /media/kina2711/DATA/2026/Second_Brain/2_Wiki/Software-Engineering/Behavior-Preserving Refactoring.md
+    sha256: a7d5e4a17bbb7efe7849741890514ca7b01af6ccd8c6a427cbef6d565551a562
+    lines: 188
+    words: 1380
+  - lesson: DE-L096
+    reference_note: Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/08-automated-code-and-supply-chain-checks.md
+    staging_wiki_note: Docs/Second-Brain/2_Wiki/Software-Engineering/Automated Code and Supply Chain Checks.md
+    canonical_wiki_note: /media/kina2711/DATA/2026/Second_Brain/2_Wiki/Software-Engineering/Automated Code and Supply Chain Checks.md
+    sha256: 671a1b249b3186823dff74a50bd41a532aaf577523247fee8dd77533d7984989
+    lines: 200
+    words: 1327
+  - lesson: DE-L097
+    reference_note: Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/09-release-artifacts-versioning-and-compatible-migrations.md
+    staging_wiki_note: Docs/Second-Brain/2_Wiki/Software-Engineering/Release Artifacts Versioning and Compatible Migrations.md
+    canonical_wiki_note: /media/kina2711/DATA/2026/Second_Brain/2_Wiki/Software-Engineering/Release Artifacts Versioning and Compatible Migrations.md
+    sha256: 973ff18661ba782d619404b21410b37e122ddc164652139447ad45e29b6c5034
+    lines: 191
+    words: 1190
+  - lesson: DE-L098
+    reference_note: Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/10-deployment-strategies-and-rollback.md
+    staging_wiki_note: Docs/Second-Brain/2_Wiki/Software-Engineering/Deployment Strategies and Rollback.md
+    canonical_wiki_note: /media/kina2711/DATA/2026/Second_Brain/2_Wiki/Software-Engineering/Deployment Strategies and Rollback.md
+    sha256: bb9ee66a1c3047756ec5089dd208b08d719451de45f6fb117ba1bc7e3d5dc0fc
+    lines: 189
+    words: 1260
+validation:
+  manifest_json_parse: pass
+  manifest_counts_17_sources_21_notes_110_tests: pass
+  duplicate_source_and_note_ids: pass
+  source_record_paths_exist: pass
+  wikilinks_188_resolve: pass
+  reference_staging_canonical_byte_identity_4_of_4: pass
+  markdown_fences_balanced: pass
+  humanizer_pattern_scan: pass
+  english_note_and_subject_paths: pass
+  canonical_sync: pass
+  git_diff_check: pass
+limits:
+  - Các lab DE-L095 đến DE-L098 chưa được thực thi; note mô tả protocol, evidence và failure modes.
+  - Ngưỡng scanner, canary và rollback không có giá trị phổ quát; phải hiệu chỉnh theo threat model, SLO và baseline.
+  - API Kubernetes trong sách năm 2018 có thể cũ; cần kiểm tài liệu phiên bản đang vận hành trước khi dùng lệnh.
+  - Ba nguồn web được chụp theo URL và ngày truy cập, không có content hash bất biến.
+  - Tính đồng nhất byte của các PDF thương mại với bản phát hành chính thức chưa được xác minh.
+approval:
+  owner: kina2711
+  state: awaiting-owner-review
+  public_distribution: not-authorized
+next_task: DE-L099 monolith modular monolith and the cost of splitting

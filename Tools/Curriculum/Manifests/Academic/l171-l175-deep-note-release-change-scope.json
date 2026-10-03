@@ -1,0 +1,18 @@
+{
+  "contract_id": "de-l171-l175-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_171-ambiguous-joins-and-the-chasm-trap",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_172-fanout-proving-a-metric-is-not-double-counted",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_173-the-compatibility-matrix-which-dimension-goes-with-which-metric",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_174-semantic-models-in-metricflow",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_175-defining-metrics-and-reading-the-generated-sql",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-DBT-SEMANTIC-MODELS.md",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l171_l175_notes.py",
+    "Tools/Curriculum/Build/validate_l171_l175_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": ["**/quiz.md", "**/homework.md", "**/slides.md", "**/lesson.yaml", "Material/DA/**"]
+}

@@ -1,0 +1,20 @@
+{
+  "task_id": "de-l331-l350-note-promotion",
+  "status": "pass-awaiting-owner-review",
+  "verified_at": "2026-10-02T23:59:59+07:00",
+  "batch_checks": {
+    "331-335": {"stale": 0, "lessons_passed": 5, "fingerprint": "446baf7ae4832bca087a09b689cf08c03aec94e8efe0636fc4953c1346d2dfb1"},
+    "336-340": {"stale": 0, "lessons_passed": 5, "fingerprint": "1cff310b93b2893ace9024270e9afdb745d5504e69769403e40fc7bca9361ccd"},
+    "341-345": {"stale": 0, "lessons_passed": 5, "fingerprint": "201fe5e1f170018b60d5b7d879211c07fcbace3fab2c48613e340dc70febfe47"},
+    "346-350": {"stale": 0, "lessons_passed": 5, "fingerprint": "edbd17c0b025c478cc12621db4f7c9b6ae5dbb9609241974a57d2cfef0eb726c"}
+  },
+  "humanizer": {"checked": 20, "editorial": "humanized-v3", "within_note_repeats": 0, "cross_note_repeats": 0, "prose_tells": 0},
+  "formatter": {"checked": 714, "failed": 0},
+  "source_coverage": {"checked": 273, "failed": 0},
+  "wiki_parity": "20/20",
+  "obsidian_checksum": "no differences after non-deleting sync",
+  "word_range": [3713, 4291],
+  "manifest": {"version": "1.0.69", "sources": 166, "notes": 273, "retrieval_cases": 866},
+  "deliverable_fingerprint": "21a512d4bc734a25aa01d66ab4f8c1f244f9f39ee5461a95337ef349f6d70d2e",
+  "unrun_checks": ["live Kafka/PostgreSQL CDC/Spark/Flink labs", "owner semantic approval"]
+}

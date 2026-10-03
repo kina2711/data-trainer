@@ -1,0 +1,29 @@
+task_id: de-l301-l330-note-promotion
+profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+objective: Promote lessons 301-330 in six sequential batches of five lessons.
+consumer: Data Engineer curriculum learner and owner-reviewer
+owner: curriculum owner
+allowed_paths:
+  - Material/DE/Curriculum/Phase_07-ingestion-transformation-quality-and-governance/Module_19-metadata-engineering-catalog-lineage-and-governance/Lesson_30*/note.md
+  - Material/DE/Curriculum/Phase_07-ingestion-transformation-quality-and-governance/Module_19-metadata-engineering-catalog-lineage-and-governance/Lesson_30*/after-note.md
+  - Material/DE/Curriculum/Phase_08-distributed-systems-streaming-and-compute/Module_20-distributed-systems-fundamentals/Lesson_*/note.md
+  - Material/DE/Curriculum/Phase_08-distributed-systems-streaming-and-compute/Module_20-distributed-systems-fundamentals/Lesson_*/after-note.md
+  - Material/DE/Curriculum/Phase_08-distributed-systems-streaming-and-compute/Module_21-kafka-and-event-streaming/Lesson_*/note.md
+  - Material/DE/Curriculum/Phase_08-distributed-systems-streaming-and-compute/Module_21-kafka-and-event-streaming/Lesson_*/after-note.md
+  - Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01
+  - Docs/Second-Brain
+  - Tools/Curriculum/Build
+  - Tools/Curriculum/Manifests/Academic
+acceptance:
+  - execute six ascending batches and stop on any failed gate
+  - deterministic writer and batch validator pass before the next batch
+  - exact Reference/Wiki parity for thirty lessons
+  - stable IDs, official-source lineage, retrieval cases and limitations are present
+  - humanizer reports zero repeated long paragraphs and zero canned prose tells
+  - full-corpus formatter and source-coverage checks pass
+non_goals:
+  - execute live catalog, distributed-cluster or Kafka failure labs
+  - claim owner approval or production guarantees
+recovery: deterministic writers preserve the roadmap contract and can regenerate the validated release

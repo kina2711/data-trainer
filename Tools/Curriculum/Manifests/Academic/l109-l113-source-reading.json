@@ -1,0 +1,25 @@
+{
+  "batch": "DE-L109-L113",
+  "captured": "2026-09-28",
+  "method": "bounded deep reading with provenance records",
+  "offline_ranges": [
+    {"source_id": "src.book.richardson-microservices-patterns.1e", "locator": "PDF 120-139", "pages_with_text": "20/20"},
+    {"source_id": "src.course.hcmut-relational-data-model", "locator": "PDF 4-28", "pages_with_text": "25/25"},
+    {"source_id": "src.course.hcmut-functional-dependencies", "locator": "PDF 5-37", "pages_with_text": "33/33"}
+  ],
+  "web_sources": [
+    "src.web.microservices-io-transactional-outbox",
+    "src.web.microservices-io-polling-publisher",
+    "src.web.google-sre-capacity-load-testing",
+    "src.web.grafana-k6-performance-testing",
+    "src.web.postgresql-17-constraints"
+  ],
+  "editorial_controls": [
+    "Vietnamese scientific prose",
+    "source fact separated from synthesis",
+    "sample uniqueness is not treated as proof of a key or FD",
+    "30-minute soak is not treated as proof of no long-term leak",
+    "outbox is not described as absolute exactly-once"
+  ],
+  "coursera": "not used; deferred to module construction by owner policy"
+}

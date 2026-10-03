@@ -1,0 +1,22 @@
+{
+  "task_id": "de-l301-l330-note-promotion",
+  "status": "pass-awaiting-owner-review",
+  "verified_at": "2026-10-02T23:59:59+07:00",
+  "batch_checks": {
+    "301-305": {"stale": 0, "lessons_passed": 5, "fingerprint": "4f5dba9ca22eac2d83f7835f0fd6b7ecbc86aa4427c4962b87148304cc19cf6d"},
+    "306-310": {"stale": 0, "lessons_passed": 5, "fingerprint": "6d1e36a2b966a967be131d94022f6590e7cc4f8ada7931585c3c2bc4623cef91"},
+    "311-315": {"stale": 0, "lessons_passed": 5, "fingerprint": "aedcad9861efe1c3d47f014c8e942bbc66ca76a64e5c57d39fdae301be3dcc74"},
+    "316-320": {"stale": 0, "lessons_passed": 5, "fingerprint": "6b06b7f23960284a5f4142857ba8461e2488723b44f3909e20c9a4f39cbe8dc6"},
+    "321-325": {"stale": 0, "lessons_passed": 5, "fingerprint": "3e72506691f4c09a1fdadc214a7c252bd71c04a7dbcef58bf5278e81c694b28b"},
+    "326-330": {"stale": 0, "lessons_passed": 5, "fingerprint": "45c5dcf04150c13a0e885e4cf22aa9315d23a051c4a8ed66752e1a3537eb6690"}
+  },
+  "humanizer": {"checked": 30, "editorial": "humanized-v3", "within_note_repeats": 0, "cross_note_repeats": 0, "prose_tells": 0},
+  "formatter": {"checked": 669, "failed": 0},
+  "source_coverage": {"checked": 253, "failed": 0},
+  "wiki_parity": "30/30",
+  "obsidian_checksum": "no differences after non-deleting sync",
+  "word_range": [3621, 4364],
+  "manifest": {"version": "1.0.65", "sources": 161, "notes": 253, "retrieval_cases": 806},
+  "deliverable_fingerprint": "34fcd801e81cae75d9161f5cd0860d7ce3d8c3869db83d6062dc40598fd87074",
+  "unrun_checks": ["live catalog/distributed-cluster/Kafka labs", "owner semantic approval"]
+}

@@ -1,0 +1,104 @@
+schema_version: 2
+lesson_id: DE-L005
+title: Branching, merge, rebase and commit identity
+status: ready-for-owner-review
+lifecycle_profile: learning
+risk_tier: R2-standard
+target_level: Foundation
+duration_minutes_estimate: 120
+central_question: Chọn merge, rebase, squash, revert hay reset dựa trên graph và blast radius thế nào?
+objective: Dự đoán graph/identity sau integration và chọn thao tác dựa trên history consumers, shared scope và recovery.
+prerequisites:
+- 'DE-L004: object graph, refs, HEAD, index và reachability.'
+learner_memory:
+  resolved: false
+  assumption: No prior mastery claimed; teach and assess the named prerequisites.
+scenes:
+- id: S01
+  type: explain
+  minutes: 10
+  claim: Rebase một branch đã chia sẻ làm nội dung nhìn giống nhưng commit identity đổi; clone cũ và remote giờ
+    kể hai lịch sử khác nhau.
+  source_span: note.md — heading '1. Branch là con trỏ, divergence nằm ở graph'
+  misconception_displaced: Có thể bắt đầu bằng công cụ/output trước khi khóa câu hỏi và boundary.
+- id: S02
+  type: explain
+  minutes: 18
+  claim: Integration là biến đổi commit graph. Merge giữ topology, rebase replay tạo identity mới, squash nén boundary;
+    revert tiến lịch sử còn reset di chuyển ref.
+  source_span: note.md — heading '2. Three-way merge và conflict'
+  misconception_displaced: Force-push chỉ để có graph đẹp, hoặc coi hết conflict marker là bằng chứng behavior đúng.
+- id: S03
+  type: check
+  minutes: 7
+  question: Fast-forward xảy ra khi nào?
+  answer: Tip hiện tại là ancestor của tip được hợp nhất nên ref chỉ cần di chuyển.
+  wrong_answer_reveals: Người học nhớ từ khóa nhưng chưa nắm claim trung tâm.
+  source_span: note.md — heading '2. Three-way merge và conflict'
+- id: S04
+  type: practice
+  minutes: 18
+  task: 'Bốn scenario card: branch riêng, shared branch, bad release, noisy fixups. Chọn operation, vẽ graph và
+    nêu affected users.'
+  success_condition: Đúng ≥3/4 lựa chọn; mỗi lựa chọn có merge base/OID reasoning, blast radius và recovery.
+  source_span: UNSOURCED — guided practice synthesized from the lesson objective and source-backed mechanism
+- id: S05
+  type: explain
+  minutes: 15
+  claim: Không rewrite identity đã chia sẻ nếu chưa có coordinated migration; dùng revert cho lịch sử công khai,
+    reset cho ref cục bộ/recovery có containment.
+  source_span: note.md — heading '3. Rebase phát lại thay đổi lên base mới'
+  misconception_displaced: Một rule hoặc tool luôn đúng bất kể changed constraint.
+- id: S06
+  type: decide
+  minutes: 12
+  situation: Nếu commit boundaries là deployment checkpoints, squash làm mất khả năng bisect/revert theo bước và
+    có thể không chấp nhận được.
+  trade_off: Lịch sử thẳng không đồng nghĩa lịch sử đúng; topology bị xóa có thể làm mất thông tin vận hành.
+  defensible_choices: Lựa chọn phải giữ hard constraints, nêu evidence và reversal trigger.
+  source_span: UNSOURCED — changed-constraint decision scenario synthesized for transfer
+- id: S07
+  type: explain
+  minutes: 15
+  claim: 'Worked example: Nhánh riêng chưa chia sẻ: rebase lên main để cập nhật base và giữ commits logic sạch.
+    Nhánh shared: merge để không đổi identity mà consumer đã dùng. Bad commit đã phát hành: revert tạo inverse commit,
+    giữ audit và tương thích clone. Conflict: đọc base/ours/theirs, dựng output theo invariant rồi chạy test; không
+    chọn nguyên một phía theo thói quen.'
+  source_span: note.md — heading '4. Merge, squash và thông tin bị giữ hoặc mất'
+  misconception_displaced: Một case thành công tự chứng minh cơ chế tổng quát.
+- id: S08
+  type: apply
+  minutes: 18
+  task: Pipeline pin commit SHA cũ trong khi team muốn rebase branch. Thiết kế migration hoặc chọn operation không
+    phá consumer.
+  assumes:
+  - S02
+  - S04
+  - S05
+  - S06
+  - S07
+  success_condition: Artifact nêu boundary, evidence, lựa chọn, rejected alternative và condition làm quyết định
+    đảo.
+  source_span: UNSOURCED — curriculum transfer scenario synthesized from the lesson contract
+- id: S09
+  type: check
+  minutes: 7
+  question: Revert khác reset ở outcome lịch sử và phạm vi ảnh hưởng thế nào?
+  answer: Revert thêm commit đảo thay đổi và an toàn hơn cho lịch sử shared; reset di chuyển ref và có thể làm commit
+    biến khỏi history hiện tại.
+  wrong_answer_reveals: Người học chưa chuyển mental model sang tình huống mới.
+  source_span: note.md — heading '5. Revert và reset giải hai bài toán khác'
+assessment:
+  formative: quiz.md — 10 questions, pass >= 8/10; failed concepts receive targeted remediation and one retest.
+  authentic: homework.md — artifact scored on a 100-point analytic rubric; pass >= 75 and no critical failure.
+  mastery_claim: None. Package readiness and learner mastery are separate evidence states.
+publish:
+  note: true
+  slides: true
+  quiz: true
+  homework: true
+  after_note: true
+  answer_key: true
+unused_source_spans:
+- Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension/remediation; the 120-minute session
+  samples rather than recites every probe.

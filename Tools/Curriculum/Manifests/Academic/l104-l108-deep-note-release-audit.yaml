@@ -1,0 +1,84 @@
+schema_version: 1
+task_id: l104-l108-deep-note-release
+completed_at: 2026-09-28
+result: pass-pending-owner-review
+selected_tasks:
+  source_conversion: book-fold-into-existing-system
+  second_brain: brain-build-atomic-knowledge-note
+profile: build-change
+risk_tier: R2-standard
+deliverables:
+  lessons_released: [104, 105, 106, 107, 108]
+  curriculum_files_written: 10
+  knowledge_notes_created: 5
+  web_source_records_created: 10
+  book_source_records_extended: 1
+source_evidence:
+  - source: Mastering PostgreSQL 17
+    sha256: ee15cedfea766f282e6cf8aaeab4213d357f6b6dece287cb4e6077816f743be1
+    pages: [49-62]
+    used_for: [L104]
+  - source: API Design Patterns
+    sha256: d3e249946160d18fc59e822edd3b0f68d7ce13921c6f196ae1774a8ac00e7952
+    pages: [712-733]
+    used_for: [L105]
+  - source: PostgreSQL current documentation
+    locator: https://www.postgresql.org/docs/current/mvcc.html
+    captured: 2026-09-28
+  - source: RFC 9110 section 9.2.2
+    locator: https://datatracker.ietf.org/doc/html/rfc9110
+    captured: 2026-09-28
+  - source: Stripe Idempotent Requests
+    locator: https://docs.stripe.com/api/idempotent_requests
+    captured: 2026-09-28
+  - source: OWASP API1:2023 BOLA and Authorization Cheat Sheet
+    locator: https://api-security.owasp.org/editions/2023/en/0xa1-broken-object-level-authorization/
+    captured: 2026-09-28
+  - source: RFC 9700 OAuth 2.0 Security BCP
+    locator: https://datatracker.ietf.org/doc/html/rfc9700
+    captured: 2026-09-28
+  - source: AWS Builders Library timeouts retries and backoff with jitter
+    locator: https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/
+    captured: 2026-09-28
+  - source: Azure Bulkhead Pattern
+    locator: https://learn.microsoft.com/azure/architecture/patterns/bulkhead
+    captured: 2026-09-28
+  - source: OpenTelemetry Signals and Prometheus Histograms
+    locator: https://opentelemetry.io/docs/concepts/signals/
+    captured: 2026-09-28
+checks:
+  generator_idempotence: "checked=10 stale=0"
+  curriculum_validator: "PASS lessons=5 files=10 knowledge_notes=5"
+  knowledge_note_formatter: "checked=97 failed=0"
+  source_coverage_validator: "checked=31 failed=0"
+  reference_wiki_identity: pass
+  manifest_json_parse: pass
+  canonical_vault_sync: pass
+  canonical_manifest_identity: pass
+word_counts:
+  L104: {note: 2447, after_note: 630, knowledge_note: 2788}
+  L105: {note: 2330, after_note: 636, knowledge_note: 2696}
+  L106: {note: 2100, after_note: 751, knowledge_note: 2555}
+  L107: {note: 2151, after_note: 646, knowledge_note: 2501}
+  L108: {note: 2366, after_note: 573, knowledge_note: 2633}
+artifacts:
+  manifest_version: 1.0.21
+  manifest_sha256_before_vault_sync: 513d9725c40e3eaa182cf27ac7145bc7627421ec02b63c91d8995937c4a6692a
+  source_count: 33
+  note_count: 31
+  retrieval_test_count: 140
+  note_sha256:
+    L104: d3a412c5f3fecd5c7f047be01ef54e1b6a177514a0fdad458886cff8c942
+    L105: a854b2bc1a6f2109676445fe496b98fc01e82ca61757dc33a0dbeb97857b7caa
+    L106: 35695a2b6d52e4a7b1abfb3d260da30a031d71e119f91d8608ddea4bce79d2c0
+    L107: 0148b3ef79524e319332c92c92dd5e7e21aa4442d284167f63562fa7e88ae68c
+    L108: 532bab4b02deac8c9f0cc8f90b6b7531b1402715c0c95632dd1f610c7f51ede6
+approval:
+  status: pending-owner-review
+limitations:
+  - Các lab concurrent database, crash injection, token revocation, downstream failure và telemetry backend chưa được chạy; after-note quy định bằng chứng phải thu khi triển khai.
+  - Coursera không được truy cập trong lượt offline này theo workflow đã chốt.
+  - Hành vi PostgreSQL, OAuth, Prometheus và OpenTelemetry phải ghim version khi bắt đầu cài lab thực tế.
+  - Không tuyên bố exactly-once, zero-loss hoặc universal timeout; note chỉ đặt invariant và phép kiểm trong phạm vi bài.
+next_owner: project-owner
+next_task: Duyệt semantic content của L104-L108 trước khi đổi trạng thái review/draft.

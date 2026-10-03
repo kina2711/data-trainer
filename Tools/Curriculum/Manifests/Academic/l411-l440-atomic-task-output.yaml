@@ -1,0 +1,24 @@
+task_id: de-l411-l440-note-promotion
+selected_skill_tasks: [book-fold-into-existing-system, brain-build-atomic-knowledge-note]
+status: completed-awaiting-owner-review
+profile: build-change
+risk_tier: R2-standard
+phase_reached: G4-tested
+primary_deliverable: governed fold-in release of lessons 411-440 and matching atomic knowledge notes
+artifacts: {curriculum_files: 60, reference_notes: 30, second_brain_notes: 30, source_records_added: 5}
+validation:
+  content_drift: "six batches checked; stale=0"
+  batch_validators: "6/6 PASS"
+  humanizer: "30/30 humanized-v3; within-note repeats=0; cross-note repeats=0; prose tells=0"
+  formatter: "checked=917 failed=0"
+  source_coverage: "checked=363 failed=0"
+  reference_wiki_parity: "30/30"
+  obsidian_checksum: "no differences after non-deleting sync"
+manifest: {version: "1.0.87", sources: 189, notes: 363, retrieval_cases: 1136}
+deliverable_fingerprint: "01eab292cfdf3e28e9559a48d2ddea032b8476d9a4d19a7fc9b900a736fc6d2b"
+approval_status: owner semantic approval pending
+residual_risks:
+  - live system-design, GenAI and career-review implementations were not executed
+  - learner mastery and production behavior were not inferred from written material
+next_owner: curriculum owner
+next_task: owner-semantic-review-l411-l440

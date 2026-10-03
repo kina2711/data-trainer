@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "task_id": "academic-source-selection-v2",
+  "allowed_changes": [
+    "Tools/Curriculum/Build/source_blueprint_v2.py",
+    "Tools/Curriculum/Build/build_source_plan.py",
+    "Tools/Curriculum/Build/reconcile_source_acquisition.py",
+    "Tools/Curriculum/Validators/validate_source_plan.py",
+    "Tools/Curriculum/Validators/validate_structure.py",
+    "Tools/Curriculum/Manifests/Academic/source-options-v2.yaml",
+    "Tools/Curriculum/Manifests/Academic/source-success-contract-v2.yaml",
+    "Tools/Curriculum/Manifests/Academic/source-change-scope-v2.json",
+    "Tools/Curriculum/Manifests/Academic/source-verification-v2.json",
+    "Tools/Curriculum/Manifests/Academic/source-acquisition-v2.json",
+    "Tools/Curriculum/Manifests/Academic/source-acquisition-task-output.yaml",
+    "Tools/Curriculum/Manifests/Academic/objectives.json",
+    "Tools/Curriculum/Manifests/Academic/reference-inventory.json",
+    "Tools/Curriculum/Manifests/Academic/source-catalog.json",
+    "Tools/Curriculum/Manifests/Academic/source-plan.json",
+    "Docs/Operations/SOURCE-REQUEST.md",
+    "Docs/Operations/SOURCE-ACQUISITION.md",
+    "Docs/Operations/Build-Curriculum.md",
+    "Makefile",
+    "README.md"
+  ],
+  "forbidden_changes": [
+    "Material/**/Curriculum/**/note.md",
+    "Material/**/Curriculum/**/after-note.md",
+    "Material/**/Roadmap/**",
+    "Web/**",
+    "Artifact/**"
+  ]
+}

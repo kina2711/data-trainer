@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-27",
+  "task_id": "academic-source-acquisition-reconciliation-v2",
+  "owner_approval": {
+    "academic_suitability": "accepted-all-provided-books",
+    "scope": [
+      "Material/Reference_temp",
+      "Material/DE/Reference/Library/Computer Science",
+      "Material/DE/Reference/Library/knowledge",
+      "Material/DE/Reference/Library/book"
+    ],
+    "redistribution_rights": "not-confirmed-by-this-approval"
+  },
+  "validation": {
+    "reference_temp_pdf_total": 35,
+    "reference_temp_pdf_parse_pass": 35,
+    "reference_temp_pdf_parse_failures": [],
+    "supporting_zip_integrity": "pass"
+  },
+  "required_purchase_sources": {
+    "counts": {
+      "acquired-owner-approved": 32
+    },
+    "records": [
+      {
+        "source_id": "SRC-KIMBALL",
+        "title": "The Data Warehouse Toolkit",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/The_Data_Warehouse_Toolkit_The_Definitive_Guide_to_Dimensional_Modeling_-_Ralph_Kimball.pdf",
+        "bytes": 1400775,
+        "sha256": "422e1a6070547f4dd62f29e1b1b635a158a0b5b30bee965de834ac3961ce9d9b",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "SRC-STORY",
+        "title": "Storytelling with Data",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Storytelling_with_Data_-_Cole_Nussbaumer_Knaflic.pdf",
+        "bytes": 7784511,
+        "sha256": "e87c92b0a9986433e747e72a245a82f13bdb7cadca782a26ae254dcbb25c4da0",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "SRC-TOCE",
+        "title": "Trustworthy Online Controlled Experiments",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Trustworthy_Online_Controlled_Experiments_-_Ron_Kohavi.pdf",
+        "bytes": 5355024,
+        "sha256": "edcd7c588a21d465e74e8538a8052edbb4bd86527ad59df70e9dab071ca7f949",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "SRC-DDIA",
+        "title": "Designing Data-Intensive Applications, Second Edition",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Designing_Data-Intensive_Apllications_2nd_Edition_-_Martin_Kleppmann.pdf",
+        "bytes": 6724236,
+        "sha256": "d6a347131facfb30ab9af40e08e279587e3637e1d1a6005045239103e6081328",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-DA_FOUNDATIONS-BOOK-01",
+        "title": "Data Science for Business",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Data_Science_for_Business_-_Foster_Provost.pdf",
+        "bytes": 13249236,
+        "sha256": "e2041ee24d7797985b1eda364f7f3e09f0b5a7c522002511739fed5fe8fbb181",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-DA_FOUNDATIONS-BOOK-02",
+        "title": "The Truthful Art",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/The_Truthful_Art_Data_Charts_and_Maps_for_Communication_-_Alberto_Cairo.pdf",
+        "bytes": 28670576,
+        "sha256": "1c03f0c7c80a15c7932c52e97044cf41305cedca2c0f4b03d78e6327ec10ab64",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-PRODUCT_ANALYTICS-BOOK-01",
+        "title": "Lean Analytics",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Lean_Analytics__Use_Data_to_Build_a_Better_-_Alistair_Croll.pdf",
+        "bytes": 9380147,
+        "sha256": "4be22a5bb125cc7f448c0d5d9692e6f2c1743eeca0d589a0b33650c1b2988696",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-PRODUCT_ANALYTICS-BOOK-02",
+        "title": "Product Analytics",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Product_Analytics__Applied_Data_Science_Te_-_Joanne_Rodrigues-Craig.pdf",
+        "bytes": 28250057,
+        "sha256": "7dcc3dd0c3272333951c83866883d6bbb3c116ea33cc09e35928431d6818ab39",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-EXCEL_BI-BOOK-01",
+        "title": "M Is for (Data) Monkey",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/M_Is_for_Data_Monkey_A_Guide_to_the_M_Language_in_Excel_Power_Query_-_Ken_Puls.pdf",
+        "bytes": 11186486,
+        "sha256": "7c67f191b1fc442a94adfa29ad411a0d4d12f9a5d014df6676319e94ab6d2d12",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-EXCEL_BI-BOOK-02",
+        "title": "The Definitive Guide to DAX",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/The_Definitive_Guide_to_DAX_3E_-_Alberto_Ferrari.pdf",
+        "bytes": 109007385,
+        "sha256": "47f03d37f26dc46cd155a1090c8950fd5580bb4bd1aa8b026906e86093bec217",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-EXCEL_BI-BOOK-03",
+        "title": "The Big Book of Dashboards",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/The_Big_Book_of_Dashboards_-_Steve_Wexler.pdf",
+        "bytes": 26728962,
+        "sha256": "63afa47b4121100e65fcd37015f74c8ce236493a6cd54a731726b37f7562b236",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-STATS_EXPERIMENT-BOOK-02",
+        "title": "Practical Statistics for Data Scientists",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Practical_Statistics_for_Data_Scientists_3E_ER_-_Peter_Bruce.pdf",
+        "bytes": 3125665,
+        "sha256": "a3fd301b47022df63d7caa970d26b8605d57918c4371911bc53e93bff8752821",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-PYTHON_ENGINEERING-BOOK-01",
+        "title": "Fluent Python, Second Edition",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Fluent_Python_-_Luciano_Ramalho.pdf",
+        "bytes": 7798830,
+        "sha256": "be24d1cf55a76c81e2d36f4dde0cf2c25b5e42b9c45ab1bc64d9179764a66edb",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-PYTHON_ENGINEERING-BOOK-02",
+        "title": "Effective Python, Third Edition",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Effective-Python-Brett-Slatkin.pdf",
+        "bytes": 12800688,
+        "sha256": "c6049c8b5985ef7449740fb4bc30f7a157dff1baef8feca2b7ad414734467de6",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-PYTHON_ENGINEERING-BOOK-03",
+        "title": "Python Concurrency with asyncio",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Python_Concurrency_with_asyncio_Matthew_Fowler.pdf",
+        "bytes": 6366622,
+        "sha256": "bed7ee24a00900019859c38694b0bbbc16a98f465f0718670d9e0344dbd9d371",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-ALGORITHMS_ARCH-BOOK-01",
+        "title": "Algorithms, Fourth Edition",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Algorithms_Fourth_Edition.pdf",
+        "bytes": 13474772,
+        "sha256": "960d9490a2b977a8f77871d154c8ddb1d4ad7b666341abcd7cb157922af28c5d",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-OS_NETWORK-BOOK-02",
+        "title": "The Linux Programming Interface",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/The_Linux_Programming_Interface_-_Michael_Kerrisk.pdf",
+        "bytes": 7260882,
+        "sha256": "99df6ce877588872fa15b63a490b9857b00d2c7a2d5ae3ceb75b9a05ff324848",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-OS_NETWORK-BOOK-03",
+        "title": "Computer Networking: A Top-Down Approach",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Computer_Networking_A_Top-Down_Approach_Global_Edition_8th_Edition_-_James_Kurose.pdf",
+        "bytes": 13047100,
+        "sha256": "ed41334ecf228e6733f4f50bb73fbcb0624145c6c2a51c8e779f2f65cfc01018",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-SOFTWARE_API-BOOK-02",
+        "title": "API Design Patterns",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/API_Design_Patterns_-_JJ_Geewax.pdf",
+        "bytes": 5772544,
+        "sha256": "d3e249946160d18fc59e822edd3b0f68d7ce13921c6f196ae1774a8ac00e7952",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-SOFTWARE_API-BOOK-03",
+        "title": "The Pragmatic Programmer, 20th Anniversary Edition",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/The_Pragmatic_Programmer_20th_Anniversary_-_Andrew_Hunt.pdf",
+        "bytes": 6153904,
+        "sha256": "dc729861322a545cc80886597c94638e6fa5d7264d5f6c9a61e71a008f972520",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-DATABASE_MODELING-BOOK-01",
+        "title": "Database System Concepts",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Database_System_Concepts_-_Abraham_Silberschatz.pdf",
+        "bytes": 11872600,
+        "sha256": "6757498cd254296fcdf24ef559b682308e7cb27bb332b8f8b6361b8c5baf6e46",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-DATABASE_MODELING-BOOK-02",
+        "title": "Database Internals",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Database_Internals_-_Alex_Petrov.pdf",
+        "bytes": 9189523,
+        "sha256": "0f23c5ecaffde9fdbc6e69f315c48f943429b0aa7e3ec2e92955f18ad353829f",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-OLAP_FORMATS-BOOK-03",
+        "title": "Fundamentals of Data Engineering",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Fundamentals_of_Data_Engineering_-_Joe_Reis.pdf",
+        "bytes": 6476653,
+        "sha256": "0189abd30d24db8faf9be5d195f7a9da60973a5f38f95497fbede80562c96eaf",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-PIPELINE_GOV-BOOK-02",
+        "title": "Data Pipelines Pocket Reference",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Data_Pipelines_Pocket_Reference_-_James_Densmore.pdf",
+        "bytes": 2556789,
+        "sha256": "c3d814ca0c04bd243a731cadcf3b8006b4b755e6efa45454ca6e0083d6393f60",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-PIPELINE_GOV-BOOK-03",
+        "title": "Data Quality Fundamentals",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Data_Quality_Fundamentals_-_Barr_Moses.pdf",
+        "bytes": 9308313,
+        "sha256": "810169a87c938e31ec2efa2c5434301583525547236afab7342a413a5ed12965",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-DISTRIBUTED_STREAM-BOOK-02",
+        "title": "Kafka: The Definitive Guide, Second Edition",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Kafka_-_Gwen_Shapira.pdf",
+        "bytes": 5148674,
+        "sha256": "0ef5f08ab4d50ba036c29f42ca46bb16237100b90802de4bc0f902878546ca4b",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-DISTRIBUTED_STREAM-BOOK-03",
+        "title": "Streaming Systems",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Streaming_Systems_-_Tyler_Akidau.pdf",
+        "bytes": 15432111,
+        "sha256": "4130edf3ce976f7df0041746f3c0a5f98edabd5a3154d536512dc4bd9669c80a",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-AI_ENGINEERING-BOOK-01",
+        "title": "AI Engineering",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/AI_Engineering_Building_Applications_-_Chip_Huyen.pdf",
+        "bytes": 31293058,
+        "sha256": "fb0915c2768d16bf146b730475e1fb3f4c0d942968705916fd614fee72c6ce03",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-AI_ENGINEERING-BOOK-02",
+        "title": "Designing Machine Learning Systems",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Designing_Machine_Learning_Systems_An_Iterative_Process_for_Production-Ready_Applications_-_Chip_Huyen.pdf",
+        "bytes": 10003687,
+        "sha256": "e3b542b0350a4c24f155fee8eb09df08e742a7fe7508873af48da11b3424fc70",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-AI_ENGINEERING-BOOK-03",
+        "title": "Hands-On Large Language Models",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Hands-On_Large_Language_Models_-_Jay_Alammar.pdf",
+        "bytes": 20984099,
+        "sha256": "781e82ac0fdd2e9876288a7ecc374bf10240387423eb196ca0b71ae6abf009f9",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-LEADERSHIP-BOOK-02",
+        "title": "The Staff Engineer's Path",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/The_Staff_Engineers_Path_-_Tanya_Reilly.pdf",
+        "bytes": 3873187,
+        "sha256": "62ae176867a2ad02fe5be46f11015a1d03e8bdc5012a9377e47f76fa26ed66a3",
+        "reading_status": "candidate-unread"
+      },
+      {
+        "source_id": "PACK-LEADERSHIP-BOOK-03",
+        "title": "Accelerate",
+        "status": "acquired-owner-approved",
+        "local_path": "Material/Reference_temp/Accelerate_-_Jez_Humble.pdf",
+        "bytes": 7616652,
+        "sha256": "45c9ef7c177e723a4a0eadd88266121cef73346af85bc31ab124df9ef8ed3aca",
+        "reading_status": "candidate-unread"
+      }
+    ]
+  },
+  "other_planned_sources_observed": [
+    {
+      "source_id": "SRC-OPENINTRO",
+      "title": "OpenIntro Statistics",
+      "status": "acquired-owner-approved",
+      "local_path": "Material/Reference_temp/OpenIntro_Statistics_4th_ed_-_Christopher_Barr.pdf",
+      "bytes": 20821559,
+      "sha256": "fbdb1a6a002c5e0383a557bce1ed59075523f7719f650571466faa1fe4191781",
+      "reading_status": "candidate-unread"
+    },
+    {
+      "source_id": "SRC-PROGIT",
+      "title": "Pro Git",
+      "status": "acquired-owner-approved",
+      "local_path": "Material/Reference_temp/Pro_Git_-_Scott_Chacon.pdf",
+      "bytes": 8010862,
+      "sha256": "fe6c23508d76a5e31a2022dd34bbb21005e194f168a4608f273099f3c3b4b3ab",
+      "reading_status": "candidate-unread"
+    },
+    {
+      "source_id": "SRC-COD",
+      "title": "Computer Organization and Design",
+      "status": "acquired-owner-approved",
+      "local_path": "Material/DE/Reference/Library/knowledge/hardware/Computer Organization and Design 5E - Patterson Hennessy - 0124077269.pdf",
+      "bytes": 30635804,
+      "sha256": "3a98e8f2cf41142cc11ca5ea63ff79d8be53e3bf631233af875a2b50e30e10d5",
+      "reading_status": "candidate-unread"
+    }
+  ],
+  "supplemental_roots": [
+    {
+      "local_path": "Material/DE/Reference/Library/Computer Science",
+      "owner_description": "Học liệu chương trình Computer Science tại HCMUT",
+      "academic_approval": "owner-accepted-as-supplemental-source",
+      "reading_status": "unread-as-a-collection",
+      "redistribution_status": "not-confirmed",
+      "file_count": 1787,
+      "extensions": {
+        ".pdf": 1403,
+        ".docx": 49,
+        ".pptx": 20,
+        ".txt": 9,
+        ".png": 103,
+        ".zip": 9,
+        ".c": 7,
+        ".h": 6,
+        ".ppt": 64,
+        ".xlsx": 10,
+        ".rar": 7,
+        ".jpg": 83,
+        ".xps": 3,
+        ".doc": 5,
+        ".ini": 6,
+        ".mp4": 2,
+        "<none>": 1
+      }
+    },
+    {
+      "local_path": "Material/DE/Reference/Library/knowledge",
+      "owner_description": "Học liệu do mentor cung cấp để học chương trình Data Engineer",
+      "academic_approval": "owner-accepted-as-supplemental-source",
+      "reading_status": "unread-as-a-collection",
+      "redistribution_status": "not-confirmed",
+      "file_count": 207,
+      "extensions": {
+        "<none>": 2,
+        ".md": 156,
+        ".pdf": 40,
+        ".yml": 2,
+        ".png": 1,
+        ".gif": 1,
+        ".html": 3,
+        ".go": 1,
+        ".mod": 1
+      }
+    },
+    {
+      "local_path": "Material/DE/Reference/Library/book",
+      "owner_description": "Sách do owner sưu tầm",
+      "academic_approval": "owner-accepted-as-supplemental-source",
+      "reading_status": "unread-as-a-collection",
+      "redistribution_status": "not-confirmed",
+      "file_count": 89,
+      "extensions": {
+        ".pdf": 44,
+        ".xlsx": 9,
+        ".drawio": 10,
+        ".txt": 2,
+        ".docx": 1,
+        ".png": 2,
+        ".mjs": 1,
+        ".json": 2,
+        ".md": 1,
+        "<none>": 2,
+        ".ts": 11,
+        ".zip": 3,
+        ".csv": 1
+      }
+    }
+  ],
+  "content_reading_started": false
+}

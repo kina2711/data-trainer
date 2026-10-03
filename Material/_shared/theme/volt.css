@@ -1,0 +1,70 @@
+/* @theme volt */
+@import "default";
+
+:root {
+  --ink: #eaf2ff;
+  --muted: #9bb0c8;
+  --cyan: #42d9c8;
+  --amber: #ffbd59;
+  --panel: #0d1b2c;
+  --background: #07101d;
+}
+
+section {
+  background: var(--background);
+  color: var(--ink);
+  font-family: "Inter", "Noto Sans", "DejaVu Sans", sans-serif;
+  font-size: 26px;
+  line-height: 1.28;
+  padding: 54px 66px 50px;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--ink);
+  font-weight: 750;
+  letter-spacing: -0.025em;
+}
+
+h1 { font-size: 50px; }
+h2 { font-size: 36px; margin-bottom: 24px; }
+h3 { font-size: 28px; }
+
+strong { color: var(--amber); }
+a { color: var(--cyan); }
+blockquote {
+  border-left: 7px solid var(--cyan);
+  color: var(--ink);
+  padding: 8px 0 8px 24px;
+}
+
+code {
+  background: var(--panel);
+  color: var(--cyan);
+}
+
+table {
+  font-size: 21px;
+}
+
+section.lead {
+  align-items: flex-start;
+  justify-content: center;
+}
+
+section.lead h1 {
+  color: var(--cyan);
+  font-size: 58px;
+  max-width: 980px;
+}
+
+header,
+footer {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.mermaid {
+  background: #f7fbff;
+}

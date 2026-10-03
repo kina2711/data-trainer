@@ -1,0 +1,66 @@
+const { app, BrowserWindow, ipcMain, shell } = require("electron");
+const fs = require("node:fs/promises");
+const path = require("node:path");
+const { pathToFileURL } = require("node:url");
+
+const appRoot = path.resolve(__dirname, "..");
+const webRoot = path.join(appRoot, "web");
+const indexPath = path.join(webRoot, "data", "brain-index.json");
+const appUrl = pathToFileURL(path.join(webRoot, "index.html")).href;
+const smokeMode = process.env.SECOND_BRAIN_SMOKE === "1";
+
+ipcMain.handle("brain:load-index", async () => JSON.parse(await fs.readFile(indexPath, "utf8")));
+
+function createWindow() {
+  const window = new BrowserWindow({
+    width: 1480,
+    height: 940,
+    minWidth: 960,
+    minHeight: 640,
+    backgroundColor: "#07101d",
+    title: "Second Brain",
+    autoHideMenuBar: true,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.cjs"),
+      contextIsolation: true,
+      nodeIntegration: false,
+      sandbox: true,
+      devTools: !app.isPackaged,
+    },
+  });
+  window.loadURL(appUrl);
+  window.webContents.setWindowOpenHandler(({ url }) => {
+    if (/^https?:\/\//i.test(url)) shell.openExternal(url);
+    return { action: "deny" };
+  });
+  window.webContents.on("will-navigate", (event, url) => {
+    if (url !== appUrl && !url.startsWith(`${appUrl}#`)) event.preventDefault();
+  });
+  if (smokeMode) {
+    window.webContents.once("did-finish-load", () => {
+      setTimeout(async () => {
+        try {
+          const result = await window.webContents.executeJavaScript(`({
+            busy: document.querySelector('#app').getAttribute('aria-busy'),
+            noteCount: document.querySelector('#result-count').textContent,
+            stats: document.querySelector('#brain-stats').textContent,
+            error: document.querySelector('#empty-state h1')?.textContent || ''
+          })`);
+          if (result.busy !== "false" || result.noteCount !== "645 note") throw new Error(JSON.stringify(result));
+          console.log(`SECOND_BRAIN_SMOKE ${JSON.stringify(result)}`);
+          app.exit(0);
+        } catch (error) {
+          console.error(`SECOND_BRAIN_SMOKE_FAILED ${error.stack || error}`);
+          app.exit(1);
+        }
+      }, 2200);
+    });
+  }
+}
+
+app.whenReady().then(() => {
+  createWindow();
+  app.on("activate", () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); });
+});
+
+app.on("window-all-closed", () => { if (process.platform !== "darwin") app.quit(); });

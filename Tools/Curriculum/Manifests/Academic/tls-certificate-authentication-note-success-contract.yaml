@@ -1,0 +1,25 @@
+task_id: tls-certificate-authentication-note-2026-09-27
+task_type: book-build-second-brain-pack
+objective: Convert the relevant Kurose and Ross sections on digital signatures, public-key certification, endpoint authentication, and TLS into one detailed, humanized Vietnamese reference and Obsidian Wiki note with explicit historical-version boundaries.
+source:
+  source_id: PACK-OS_NETWORK-BOOK-03
+  scope: section 8.3.3 and public-key certification, section 8.4, and section 8.6; printed pages 658-668 and 674-680; PDF pages 660-670 and 676-682
+  rights: private-owner-provided-no-public-redistribution
+success_criteria:
+  - Explain signed hashes, verification assumptions, MAC versus digital signature, CA trust, certificate binding, and selected certificate fields.
+  - Preserve the ap1.0-ap4.0 progression from assertion, source-address trust, clear/encrypted password, replay, nonce, and proof of liveness.
+  - Cover TLS security goals, layering, handshake, key derivation, record framing, sequence-bound integrity, transcript protection, replay defense, and authenticated closure.
+  - Separate certificate possession, private-key proof, endpoint identity, application authorization, and business outcome.
+  - Mark the RFC 4346, RSA key transport, HMAC-MD5/SHA-1, and CBC material as historical and unsuitable for current configuration guidance.
+  - Include trace-reading rules, failure analysis, changed-scenario application, source gaps, and a current-primary-documentation stop condition.
+  - Preserve qualifiers and terminology through a Vietnamese Humanizer pass.
+  - Keep Reference, staging Wiki, and canonical Obsidian copies byte-identical.
+validation:
+  - Source hash matches the registered source.
+  - All 18 PDF pages in scope contain extractable text.
+  - Frontmatter, IDs, claim types, locators, links, manifest counts, formulas, and fences validate.
+  - Retrieval tests cover certificate binding, signature assumptions, replay/nonce, TLS record framing, transcript integrity, authenticated closure, and the historical TLS boundary.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

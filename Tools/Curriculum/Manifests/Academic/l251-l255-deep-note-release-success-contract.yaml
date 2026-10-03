@@ -1,0 +1,9 @@
+contract_id: de-l251-l255-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+owner: kina2711
+scope: {lessons: [251,252,253,254,255], phase: 7, modules: [17]}
+baseline: {manifest: "expected-after-l246-l250: 1.0.49/134/173/566"}
+acceptance: ["five notes >=2200 words", "event time, backfill and dbt foundations are testable", "Reference-Wiki parity", "all validators pass"]
+forbidden: ["quiz/homework/slides/lesson.yaml/diagram changes", "Material/DA changes", "fabricated dbt, warehouse or scheduler results"]
+approval: owner-semantic-review-pending

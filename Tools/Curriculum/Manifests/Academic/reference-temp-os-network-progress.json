@@ -1,0 +1,31 @@
+{
+  "batch_id": "REFERENCE-TEMP-OS-NETWORK",
+  "updated_at": "2026-09-27",
+  "state": "in-progress",
+  "source_count": 2,
+  "states": {
+    "structured-deep-read-in-progress": 2,
+    "unread": 0
+  },
+  "sources": [
+    {
+      "source_id": "PACK-OS_NETWORK-BOOK-02",
+      "sha256": "99df6ce877588872fa15b63a490b9857b00d2c7a2d5ae3ceb75b9a05ff324848",
+      "state": "structured-deep-read-in-progress",
+      "note": "Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-02.md",
+      "next_scope": "Complete code/example verification for Chapters 35-39, 56-61, and Appendix A against a current Linux environment."
+    },
+    {
+      "source_id": "PACK-OS_NETWORK-BOOK-03",
+      "sha256": "ed41334ecf228e6733f4f50bb73fbcb0624145c6c2a51c8e779f2f65cfc01018",
+      "state": "structured-deep-read-in-progress",
+      "note": "Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-03.md",
+      "next_scope": "Run and verify HTTP, DNS, TCP, and TLS packet-capture labs; reconcile TLS and HTTP claims with current RFCs."
+    }
+  ],
+  "limitations": [
+    "The source pack is private and not authorized for public redistribution.",
+    "The Linux book is from 2010; version-sensitive claims require current official documentation.",
+    "The networking book's selected chapters are read, but the external Wireshark labs have not been run."
+  ]
+}

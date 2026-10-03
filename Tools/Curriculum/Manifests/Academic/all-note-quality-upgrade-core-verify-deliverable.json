@@ -1,0 +1,39 @@
+{
+  "task_id": "core-verify-deliverable",
+  "instance_id": "all-645-notes-atomic-depth-example-code-diagram",
+  "status": "pass",
+  "manifest": {
+    "version": "1.0.140",
+    "sources": 222,
+    "notes": 645,
+    "retrieval_cases": 1982
+  },
+  "quality_results": {
+    "atomic_notes": "645/645",
+    "stable_identity_and_primary_question": "645/645",
+    "typed_relationships_without_dangling_targets": "645/645",
+    "source_lineage_and_coverage": "645/645",
+    "word_depth": "minimum 1978; median 3191; maximum 5980",
+    "bounded_examples": "645/645",
+    "code_or_executable_contract": "645/645",
+    "mermaid_presence": "645/645 notes; 663 diagrams total",
+    "self_check": "645/645",
+    "wiki_reference_parity": "644/644; one canonical Wiki note intentionally has no reference_path",
+    "exact_long_cross_note_repeats": 0
+  },
+  "execution_results": [
+    "626 generated artifacts checked: 103 Python compiled, 158 YAML parsed, 365 SQL harnesses executed on SQLite; 0 failures.",
+    "663 Mermaid blocks passed structural validation.",
+    "41/41 legacy Mermaid blocks plus 27/27 generated domain templates rendered successfully in Chrome.",
+    "1340 Markdown formatter checks passed.",
+    "645 source-coverage checks passed.",
+    "645/645 notes retain registered retrieval cases; orphan expected_note_ids: 0.",
+    "Deterministic enrichment check reported no stale artifact."
+  ],
+  "approval": "owner semantic review pending",
+  "limitations": [
+    "Nineteen pre-existing code examples may depend on external engines, services or datasets and were not executed as production workloads.",
+    "Rendered generated Mermaid evidence covers one sanitized template instance per 27 Wiki domains; all 622 generated instances additionally passed structural validation.",
+    "Written material and passing examples do not prove learner mastery or production correctness."
+  ]
+}

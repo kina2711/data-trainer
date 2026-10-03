@@ -1,0 +1,24 @@
+task_id: knowledge-note-depth-and-format-refresh-2026-09-28
+task_type: governed-fold-in-release
+objective: Chuẩn hóa định dạng Markdown và nâng chiều sâu trình bày cho toàn bộ knowledge note hiện có, sau đó áp dụng cùng chuẩn cho DE-L099 đến DE-L102.
+acceptance:
+  - Mỗi đoạn văn xuôi là một dòng vật lý; không còn hard-wrap theo độ rộng cột.
+  - Mỗi bullet hoặc numbered item là một dòng, trừ code block, bảng và nội dung cấu trúc lồng nhau.
+  - Display math dùng cặp $$; inline math dùng cặp $; không còn delimiter \[ hoặc \].
+  - Không còn lệnh LaTeX nằm ngoài math delimiter.
+  - Mọi note có định nghĩa, cơ chế, điều kiện áp dụng, ví dụ hoặc tình huống, failure modes, giới hạn và Reference phù hợp với chủ đề.
+  - Note trình bày lại kiến thức bằng tiếng Việt; không phải chapter summary hoặc danh sách ý rời.
+  - Các claim quan trọng phân biệt source-fact, synthesis, inference và giới hạn.
+  - Tên file và thư mục note dùng tiếng Anh; nội dung dùng tiếng Việt.
+  - Reference, staging Wiki và canonical vault đồng nhất theo note_id.
+  - Formatter/linter có check mode và được chạy thành công trên toàn bộ corpus.
+  - DE-L099 đến DE-L102 ánh xạ đủ objective, practice, critical failure và done-when từ roadmap.
+non_goals:
+  - Không sửa roadmap hoặc curriculum lesson scaffold.
+  - Không chạy lab hoặc tuyên bố kết quả thực nghiệm chưa thực hiện.
+  - Không thay đổi stable note_id.
+approval:
+  owner: kina2711
+  state: requested-by-owner
+  public_distribution: not-authorized
+

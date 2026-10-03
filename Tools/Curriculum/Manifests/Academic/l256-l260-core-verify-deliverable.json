@@ -1,0 +1,17 @@
+{
+  "control": "core-verify-deliverable",
+  "contract_id": "de-l256-l260-deep-note-release",
+  "executed_at": "2026-10-02T23:59:42+07:00",
+  "result": "pass",
+  "checks": [
+    {"name": "generator_check", "command": "python3 Tools/Curriculum/Build/promote_l256_l260_notes.py --check", "result": "checked=22 stale=0"},
+    {"name": "batch_validator", "command": "python3 Tools/Curriculum/Build/validate_l256_l260_notes.py", "result": "PASS lessons=5 min_words=2200 wiki_parity=5/5 tests-macros-incremental-strategies=checked"},
+    {"name": "humanizer_gate", "command": "python3 Tools/Curriculum/Build/validate_l251_l270_prose.py", "result": "PASS for L256-L260: editorial=humanized-v3, within-note repeats=0, cross-note repeats=0, prose tells=0"},
+    {"name": "markdown_formatter", "command": "python3 Tools/Curriculum/Build/format_knowledge_notes.py --check", "result": "checked=507 failed=0"},
+    {"name": "whole_vault_coverage", "command": "python3 Tools/Curriculum/Build/validate_knowledge_note_coverage.py", "result": "checked=183 failed=0"},
+    {"name": "obsidian_checksum", "command": "rsync -ani --checksum Docs/Second-Brain/ /media/kina2711/DATA/2026/Second_Brain/", "result": "no output; source and destination have no checksum difference"}
+  ],
+  "manifest": {"version": "1.0.51", "sources": 139, "notes": 183, "retrieval_tests": 596},
+  "deliverable_fingerprint": "4b44141823ca7bd738aa4fcdf1183976aed1f3a5c408d34069b7c51062486681",
+  "unrun": ["dbt generic/singular mutation suite", "macro cross-adapter compile matrix", "incremental full-equivalence and kill-point matrix", "owner semantic review"]
+}

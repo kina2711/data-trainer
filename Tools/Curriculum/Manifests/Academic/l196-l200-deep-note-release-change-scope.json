@@ -1,0 +1,18 @@
+{
+  "contract_id": "de-l196-l200-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/Lesson_196-serving-access-and-security-for-consumers",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/Lesson_197-adoption-metrics-that-are-not-vanity",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/Lesson_198-cost-to-serve",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/Lesson_199-reverse-etl-and-the-shadow-operational-system",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/Lesson_200-lifecycle-and-the-operating-model",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l196_l200_notes.py",
+    "Tools/Curriculum/Build/validate_l196_l200_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": ["**/quiz.md", "**/homework.md", "**/slides.md", "**/lesson.yaml", "Material/DA/**"]
+}

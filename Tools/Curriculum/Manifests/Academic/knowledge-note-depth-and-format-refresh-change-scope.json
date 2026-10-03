@@ -1,0 +1,20 @@
+{
+  "task_id": "knowledge-note-depth-and-format-refresh-2026-09-28",
+  "allowed_write_roots": [
+    "Docs/Second-Brain",
+    "Docs/Standards",
+    "Material/DE/Reference/Library/Knowledge-Notes",
+    "Material/DE/Reference/Library/Source-Notes",
+    "Tools/Curriculum/Build",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "canonical_sync_root": "/media/kina2711/DATA/2026/Second_Brain",
+  "forbidden_write_roots": [
+    "Material/DE/Curriculum",
+    "Material/DE/Roadmap",
+    "Web",
+    "Artifact"
+  ],
+  "destructive_operations": false
+}
+

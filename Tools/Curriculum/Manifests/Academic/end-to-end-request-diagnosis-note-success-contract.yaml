@@ -1,0 +1,32 @@
+task_id: end-to-end-request-diagnosis-note-2026-09-28
+task_type: book-build-second-brain-pack
+objective: Convert bounded observability, tracing, metrics, logging, delay, queueing, and Traceroute sections into one detailed, humanized Vietnamese reference and Obsidian Wiki note for evidence-based end-to-end request diagnosis and DE-L088.
+sources:
+  - source_id: src.book.titmus-cloud-native-go.1e
+    scope: chapter 11 observability and tracing concepts, printed pages 343-351, PDF pages 365-373; metrics, printed pages 369-371, PDF pages 391-393; logging, printed pages 387-390, PDF pages 409-412
+    rights: private-owner-provided-no-public-redistribution
+  - source_id: src.book.kurose-ross-networking.8e
+    scope: sections 1.4.1-1.4.3 delay, queueing, loss, end-to-end delay, and Traceroute, printed pages 65-73, PDF pages 67-75
+    rights: private-owner-provided-no-public-redistribution
+  - source_id: src.book.kleppmann-ddia.2e-early-release
+    scope: chapter 2 throughput, response time, service time, queueing, and latency, PDF pages 76-80
+    rights: private-owner-provided-no-public-redistribution
+success_criteria:
+  - Define observability as an inferential system property and distinguish it from a tool inventory or known-failure monitoring.
+  - Explain trace, root span, child span, trace ID propagation, causal structure, missing spans, and cross-boundary correlation without relying on obsolete OpenTelemetry APIs.
+  - Separate packet, transport, telemetry, application, and business evidence and state what each can and cannot prove.
+  - Decompose client-observed request time into DNS, connection or TLS, proxy or queue, application, downstream, and response-transfer stages with explicit measurement boundaries.
+  - Explain metrics as time series, distribution and cardinality tradeoffs; reject average-only diagnosis and unbounded labels.
+  - Explain structured logging, correlation fields, clock limitations, sensitive-data controls, and logging resource cost.
+  - Provide a reproducible hypothesis ledger, evidence matrix, baseline-versus-fault comparison, recovery verification, and three-layer diagnostic scenarios for DE-L088.
+  - Preserve source qualifiers, mark synthesis, inference and uncertainty, and complete a Vietnamese Humanizer pass.
+  - Keep Reference, staging Wiki, and canonical Obsidian copies byte-identical.
+validation:
+  - All three source hashes match registered records.
+  - All 30 PDF pages in declared scope contain extractable text.
+  - Frontmatter, IDs, claim types, locators, links, manifest counts, required terms, and Markdown fences validate.
+  - Retrieval tests cover observability, trace/span relationships, evidence boundaries, latency decomposition, percentile diagnosis, structured logs, missing telemetry, and DE-L088 proof requirements.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

@@ -1,0 +1,58 @@
+{
+  "batch": "L181-L185",
+  "read_on": "2026-10-02",
+  "method": "bounded local PDF reading retained from the source pack plus current official product, government and SRE documentation",
+  "sources": [
+    {
+      "source_id": "src.book.reis-housley-fundamentals-data-engineering",
+      "pdf_pages": "429-451, 473-491",
+      "topics": ["analytical models", "wide tables", "data products", "consumer responsibility", "ownership"]
+    },
+    {
+      "source_id": "src.book.kimball-ross-data-warehouse-toolkit.3e",
+      "pdf_pages": "48-66, 78-112, 145-161, 178-188, 245-255, 280-291",
+      "topics": ["grain", "facts and dimensions", "additivity", "join safety", "late data", "control totals"]
+    },
+    {
+      "source_id": "src.book.geewax-api-design-patterns.1e",
+      "pdf_pages": "642-680",
+      "topics": ["compatibility", "semantic changes", "versioning", "deprecation"]
+    },
+    {
+      "source_id": "src.book.sommerville-software-engineering.10e",
+      "pdf_pages": "103-132, 255-270, 732-756",
+      "topics": ["requirements", "validation", "evolution", "configuration and change management", "release management"]
+    },
+    {
+      "source_id": "src.web.dbt-semantic-models",
+      "locator": "Semantic Layer overview, MetricFlow concepts, caching and administration pages inspected 2026-10-02",
+      "topics": ["headless semantic serving", "multi-consumer definitions", "validation", "cache and access boundaries"]
+    },
+    {
+      "source_id": "src.web.google-looker-lookml",
+      "locator": "Google Cloud LookML introduction lines 297-325, inspected 2026-10-02",
+      "topics": ["BI-native semantic model", "model and view files", "SQL generation", "Explore consumers"]
+    },
+    {
+      "source_id": "src.web.google-sre-postmortem-culture",
+      "locator": "Google SRE Postmortem Culture resource lines 97-116 and linked workbook chapter, inspected 2026-10-02",
+      "topics": ["learning from failure", "blameless analysis", "action items", "ownership"]
+    },
+    {
+      "source_id": "src.web.govuk-understand-user-needs",
+      "locator": "GOV.UK Service Standard lines 55-83 and 95-122, inspected 2026-10-02",
+      "topics": ["problem before solution", "full user context", "assumption testing", "success measures"]
+    },
+    {
+      "source_id": "src.web.govuk-data-analytics-tools-guidance",
+      "locator": "PDF pages 4-10 and 20-21, lines 69-225 and 492-512, inspected 2026-10-02",
+      "topics": ["decision points", "action after insight", "data maturity", "non-data alternatives", "user trust"]
+    }
+  ],
+  "limitations": [
+    "No architecture migration, metric parallel run, fault injection, capstone reconciliation or discovery interview was executed",
+    "Architecture scorecard, metric lifecycle, semantic failure matrix and four-part decision contract are curriculum syntheses",
+    "Product documentation describes capabilities, not organization-specific cost or suitability",
+    "No Coursera material was accessed in this batch"
+  ]
+}

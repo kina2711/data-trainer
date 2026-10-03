@@ -1,0 +1,25 @@
+{
+  "batch": "DE-L120-L124",
+  "captured": "2026-09-29",
+  "offline_ranges": [
+    {"source_id": "src.course.hcmut-sql", "locator": "PDF 69-79", "pages_with_text": "11/11"}
+  ],
+  "web_sources": [
+    "src.web.postgresql-17-aggregate-functions",
+    "src.web.postgresql-17-with-queries",
+    "src.web.postgresql-17-window-functions",
+    "src.web.postgresql-17-generate-series",
+    "src.web.postgresql-17-query-expressions",
+    "src.web.postgresql-17-null-comparison"
+  ],
+  "semantic_controls": [
+    "grain statement is a programme control, not a claim about mandatory SQL syntax",
+    "CTE materialization behaviour is pinned to PostgreSQL 17 and not generalized to every DBMS",
+    "recursive evaluation order is not confused with SEARCH output ordering",
+    "unsafe recursion is tested only under statement_timeout in an isolated transaction",
+    "ranking functions state tie semantics and deterministic tie breakers",
+    "lag on sparse periods is not called previous calendar period until a calendar scaffold is joined",
+    "default frame and ROWS/RANGE peer behaviour are made explicit"
+  ],
+  "coursera": "not used; deferred to module construction by owner policy"
+}

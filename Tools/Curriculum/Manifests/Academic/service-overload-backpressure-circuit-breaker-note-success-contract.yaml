@@ -1,0 +1,32 @@
+task_id: service-overload-backpressure-circuit-breaker-note-2026-09-27
+task_type: book-build-second-brain-pack
+objective: Convert bounded sections of Cloud Native Go, DDIA Second Edition Early Release, and Kurose-Ross into one detailed, humanized Vietnamese reference and Obsidian Wiki note about overload feedback, service rate limiting, backpressure, load shedding, circuit breakers, retry control, and evidence-driven degradation.
+sources:
+  - source_id: src.book.titmus-cloud-native-go.1e
+    scope: chapter 4 Circuit Breaker, printed pages 77-78, PDF pages 99-100; chapter 9, printed pages 268-281, PDF pages 290-303
+    rights: private-owner-provided-no-public-redistribution
+  - source_id: src.book.kleppmann-ddia.2e-early-release
+    scope: chapter 2 performance and overloaded-system section, PDF pages 76-80; early-release pagination has no stable printed-page locator
+    rights: private-owner-provided-no-public-redistribution
+  - source_id: src.book.kurose-ross-networking.8e
+    scope: section 3.5.5 flow control, printed pages 276-278, PDF pages 278-280
+    rights: private-owner-provided-no-public-redistribution
+success_criteria:
+  - Explain the positive-feedback path from queue growth to latency, timeout, retry amplification, capacity loss, and metastable overload.
+  - Distinguish TCP flow control, application backpressure, admission control or throttling, load shedding, concurrency limiting, and circuit breaking by signal, protected resource, and action.
+  - Explain token-bucket capacity and refill semantics without turning the illustrative source code into production guidance.
+  - Explain circuit-breaker closed and open behavior, failure classification, recovery probing, fallback limits, and the difference from rate limiting.
+  - Define bounded queues, deadlines, retry budgets, exponential backoff with jitter, and idempotency preconditions as one coordinated overload policy.
+  - Provide a controlled-overload experiment for DE-L087 proving that priority work remains served and doomed downstream calls stop.
+  - Preserve source qualifiers, mark synthesis and uncertainty, and complete a Vietnamese Humanizer pass.
+  - Register new sources with hashes, rights, authority, extraction limits, and stable source IDs.
+  - Keep Reference, staging Wiki, and canonical Obsidian copies byte-identical.
+validation:
+  - All three source hashes match the files read.
+  - All 24 PDF pages in declared scope contain extractable text.
+  - Frontmatter, IDs, claim types, locators, links, manifest counts, required terms, and Markdown fences validate.
+  - Retrieval tests cover feedback overload, backpressure versus throttling, load shedding, token buckets, circuit breakers, retry storms, and priority degradation.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

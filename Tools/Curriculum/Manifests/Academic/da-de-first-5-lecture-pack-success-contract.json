@@ -1,0 +1,25 @@
+{
+  "task_id": "da-de-first-5-runnable-lecture-pack",
+  "selected_atomic_task": "academy-build-scene-package",
+  "status": "ready-for-owner-review",
+  "requested_at": "2026-10-03",
+  "primary_deliverable": "Ten runnable Foundation lesson packages: DA lessons 001-005 and DE lessons 001-005.",
+  "acceptance": {
+    "lessons": 10,
+    "required_assets_per_lesson": ["note.md", "lesson.yaml", "slides.md", "quiz.md", "homework.md", "after-note.md"],
+    "scene_vocabulary": ["explain", "check", "practice", "decide", "apply"],
+    "source_traceability": "Every scene identifies an exact local note heading.",
+    "instructional_pattern": "prior knowledge, mental model, worked example, alternatives/failure modes, guided practice, independent practice, novel scenario, feedback and retest",
+    "assessment": "10-question formative quiz plus authentic homework with 100-point rubric and critical-failure rules",
+    "slides": "Runnable Marp deck with teaching prompts, practice timing and transfer challenge",
+    "placeholders": 0,
+    "validation": "deterministic structural, traceability, assessment and rendering checks"
+  },
+  "non_goals": [
+    "Claiming learner mastery or certification",
+    "Delivering the sessions to real learners",
+    "Changing the canonical Second Brain notes",
+    "Building lessons after 005 for either programme"
+  ],
+  "approval": "Curriculum-owner semantic review is required before teaching the exact package."
+}

@@ -1,0 +1,26 @@
+{
+  "task_id": "second-brain-official-web-desktop-release",
+  "status": "approved-by-owner",
+  "approved_at": "2026-10-03",
+  "approval_evidence": "User explicitly approved all notes and requested conversion into the official Second Brain, followed by web and desktop applications.",
+  "ordered_outcomes": [
+    "Promote all 645 registered notes and their registry entries to canonical.",
+    "Build a private local-first web application over the canonical corpus.",
+    "Build a private local-first desktop application sharing the same renderer and data index.",
+    "Run content, build, browser and desktop smoke tests before reporting done."
+  ],
+  "acceptance": {
+    "canonical_notes": "645/645",
+    "mirror_parity": "644/644",
+    "web": "full-text search, filters, note reader, Markdown, Mermaid, code, relationships, favorites and responsive layout",
+    "desktop": "secure Electron shell, local index loading, navigation protection and the same reader experience",
+    "privacy": "no public deployment and no remote source dependency",
+    "regression": "Second Brain validation, app tests and production build pass"
+  },
+  "non_goals": [
+    "Building lecture content",
+    "Publishing copyrighted books or note bodies to a public host",
+    "Adding authentication, synchronization or cloud persistence",
+    "Claiming production stability before owner use"
+  ]
+}

@@ -1,0 +1,31 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 206-210
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l206-l210-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l206-l210-release-audit.md
+  fingerprint: 6c6e271d8e1ebaa26a18c02c5e1b8822831b536662e311f6afeaaa1f23aebefb
+tests:
+  core_audit_change_scope: pass
+  core_verify_deliverable: pass
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  live_pruning_vectorization_layout_mpp_benchmarks: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-source-tree-no-diff
+residual_risks:
+  - pruning and dynamic-filter behaviors remain engine, connector and version specific
+  - compiler and SIMD conclusions remain protocols until binary and PMU evidence exists
+  - physical-layout conclusions remain protocols until measured with a controlled workload matrix
+  - MPP scaling and exchange conclusions remain protocols until measured on a real cluster
+owner: kina2711
+next_task: owner reviews L206-L210, then continue the next requested lesson batch

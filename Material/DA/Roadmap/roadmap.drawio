@@ -1,0 +1,88 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Roadmap — Data Analyst" id="rm">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" page="1" pageWidth="3072" pageHeight="600" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" value="Data Analyst — 85 lessons · 11 modules" style="text;html=1;fontSize=24;fontStyle=1;align=left;verticalAlign=middle;fontColor=#1A1A1A;" vertex="1" parent="1">
+          <mxGeometry x="40" y="36" width="900" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" value="Mũi tên = tiền đề bắt buộc.  Viền đỏ = module kết thúc bằng cổng kiểm tra." style="text;html=1;fontSize=13;align=left;fontColor=#6B6B6B;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="900" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="&lt;b&gt;M1 · Introduction to the Data Analyst Role&lt;/b&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11px;color:#6B6B6B&#x27;&gt;Lessons 1–5  ·  5 lessons  ·  10 h&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F8FD;strokeColor=#4A7EBB;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="130" width="300" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="&lt;b&gt;M2 · Excel for Data Analysis&lt;/b&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11px;color:#6B6B6B&#x27;&gt;Lessons 6–16  ·  11 lessons  ·  22 h  ·  GATE&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF2F2;strokeColor=#C0392B;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="414" y="130" width="300" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="m3" value="&lt;b&gt;M3 · SQL and Databases&lt;/b&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11px;color:#6B6B6B&#x27;&gt;Lessons 17–30  ·  14 lessons  ·  28 h  ·  GATE&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF2F2;strokeColor=#C0392B;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="788" y="130" width="300" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" value="&lt;b&gt;M4 · Data Modeling and Preparation&lt;/b&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11px;color:#6B6B6B&#x27;&gt;Lessons 31–37  ·  7 lessons  ·  14 h&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F8FD;strokeColor=#4A7EBB;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1162" y="130" width="300" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="m5" value="&lt;b&gt;M5 · Statistics for Data Analysts&lt;/b&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11px;color:#6B6B6B&#x27;&gt;Lessons 38–45  ·  8 lessons  ·  16 h&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F8FD;strokeColor=#4A7EBB;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1536" y="130" width="300" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="m6" value="&lt;b&gt;M6 · Visualization and Power BI&lt;/b&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11px;color:#6B6B6B&#x27;&gt;Lessons 46–54  ·  9 lessons  ·  18 h  ·  GATE&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF2F2;strokeColor=#C0392B;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1162" y="260" width="300" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="m7" value="&lt;b&gt;M7 · Product and Business Analytics&lt;/b&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11px;color:#6B6B6B&#x27;&gt;Lessons 55–63  ·  9 lessons  ·  18 h&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F8FD;strokeColor=#4A7EBB;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1910" y="130" width="300" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="m8" value="&lt;b&gt;M8 · A/B Testing&lt;/b&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11px;color:#6B6B6B&#x27;&gt;Lessons 64–68  ·  5 lessons  ·  10 h&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F8FD;strokeColor=#4A7EBB;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1910" y="260" width="300" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="m9" value="&lt;b&gt;M9 · Python for Data Analysts&lt;/b&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11px;color:#6B6B6B&#x27;&gt;Lessons 69–76  ·  8 lessons  ·  16 h&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F8FD;strokeColor=#4A7EBB;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1162" y="390" width="300" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="m10" value="&lt;b&gt;M10 · Communication and Career&lt;/b&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11px;color:#6B6B6B&#x27;&gt;Lessons 77–82  ·  6 lessons  ·  12 h&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F8FD;strokeColor=#4A7EBB;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2284" y="130" width="300" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="m11" value="&lt;b&gt;M11 · Capstone Project&lt;/b&gt;&lt;br&gt;&lt;font style=&#x27;font-size:11px;color:#6B6B6B&#x27;&gt;Lessons 83–85  ·  3 lessons  ·  6 h  ·  GATE&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF2F2;strokeColor=#C0392B;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="2658" y="130" width="300" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="m1" target="m2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="m2" target="m3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="m3" target="m4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="m4" target="m5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="m2" target="m6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="m3" target="m6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="m3" target="m7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="m5" target="m7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="m5" target="m8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="m3" target="m9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="m7" target="m10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="m1" target="m11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#8A8A8A;strokeWidth=1.5;" edge="1" parent="1" source="m10" target="m11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

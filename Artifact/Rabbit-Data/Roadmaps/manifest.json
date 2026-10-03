@@ -1,0 +1,455 @@
+{
+  "schema_version": 1,
+  "renderer": "@mermaid-js/mermaid-cli",
+  "diagram_count": 56,
+  "items": [
+    {
+      "programme": "DA",
+      "title": "Chương trình Data Analyst",
+      "source": "Material/DA/Roadmap/roadmap.md",
+      "source_sha256": "4aa0b799a31e56bf64d77ac6a43dc9cfa1818bf6496157d27aad9b9b7c979ed0",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/programme.svg",
+      "image_sha256": "77f4d1fa9c6417fcfba64b61488c548a67d1823cc1931c1e802046259d5e5fba"
+    },
+    {
+      "programme": "DA",
+      "title": "Giai đoạn 1: Nền tảng và vai trò Data Analyst",
+      "source": "Material/DA/Roadmap/Phase_01-foundations-and-role/roadmap.md",
+      "source_sha256": "da2376e5239b01e5531c932deb565cd122d55225fc3eb2aca6f61cedb9785b16",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_01-foundations-and-role/phase.svg",
+      "image_sha256": "84b5231ffff9d6fd5a979ce7b9f7669cc08f8e6a640def4ad20ddc072971833d"
+    },
+    {
+      "programme": "DA",
+      "title": "Mô-đun 1: Nhập môn vai trò Data Analyst",
+      "source": "Material/DA/Roadmap/Phase_01-foundations-and-role/Module_01-introduction-to-the-data-analyst-role/roadmap.md",
+      "source_sha256": "3009bf01b73cf8f0fbba668f86fc152cee070db08292cc0d91593b81e08b9a3d",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_01-foundations-and-role/Module_01-introduction-to-the-data-analyst-role/module.svg",
+      "image_sha256": "1a9d2c1851ea08e561d7ba46285ff6650eee33e5f5d975597ef3a5ee0204cf38"
+    },
+    {
+      "programme": "DA",
+      "title": "Mô-đun 2: Excel cho phân tích dữ liệu",
+      "source": "Material/DA/Roadmap/Phase_01-foundations-and-role/Module_02-excel-for-data-analysis/roadmap.md",
+      "source_sha256": "8a9302cafbbddd0d61db3856ca5628da56169a0da0f64e2686e4f353601a6e28",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_01-foundations-and-role/Module_02-excel-for-data-analysis/module.svg",
+      "image_sha256": "4938e66f84db130c2e7b258b1eb3413b5bd9a9388b3b4e26aab568f075a36348"
+    },
+    {
+      "programme": "DA",
+      "title": "Giai đoạn 2: SQL và truy cập dữ liệu",
+      "source": "Material/DA/Roadmap/Phase_02-sql-and-data-access/roadmap.md",
+      "source_sha256": "d211cd5f7c5c998e7104d15e77eb2ba4a1b68babb14f7525a0ae59e904929ab0",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_02-sql-and-data-access/phase.svg",
+      "image_sha256": "0eb38f5cae820ce70d1c734115963e891406e1d0bf6eb8d793f2689050a49864"
+    },
+    {
+      "programme": "DA",
+      "title": "Mô-đun 3: SQL và cơ sở dữ liệu",
+      "source": "Material/DA/Roadmap/Phase_02-sql-and-data-access/Module_03-sql-and-databases/roadmap.md",
+      "source_sha256": "49515ea543416fb52d1708c7208235a1ed0680c1dfb453286c3304669e51e360",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_02-sql-and-data-access/Module_03-sql-and-databases/module.svg",
+      "image_sha256": "9dfda091f2f4f879eb939a2887137102e34aafe04cb2f8716addddaaeaea1558"
+    },
+    {
+      "programme": "DA",
+      "title": "Giai đoạn 3: Nền tảng phân tích và BI",
+      "source": "Material/DA/Roadmap/Phase_03-analytical-foundations-and-bi/roadmap.md",
+      "source_sha256": "9dc10da10d473267b53150c7a7f67ddf18d3f0e80a62c77fb22077ea831fd2e2",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_03-analytical-foundations-and-bi/phase.svg",
+      "image_sha256": "b9180283c194dae192a34e1240bd0ceae8e605c8fa86fff5e556c7fa8495085a"
+    },
+    {
+      "programme": "DA",
+      "title": "Mô-đun 4: Mô hình hóa và chuẩn bị dữ liệu",
+      "source": "Material/DA/Roadmap/Phase_03-analytical-foundations-and-bi/Module_04-data-modeling-and-preparation/roadmap.md",
+      "source_sha256": "4a8609ae56e9a9744d5bbf3705a9683ba100a66dea9fa6b0337e405c4da4e134",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_03-analytical-foundations-and-bi/Module_04-data-modeling-and-preparation/module.svg",
+      "image_sha256": "5330f946b75499e5469002ca431716175ffd851ed9c8c8bb921ff86ddf510755"
+    },
+    {
+      "programme": "DA",
+      "title": "Mô-đun 5: Thống kê cho Data Analyst",
+      "source": "Material/DA/Roadmap/Phase_03-analytical-foundations-and-bi/Module_05-statistics-for-data-analysts/roadmap.md",
+      "source_sha256": "da585598fc9368d06bc20e0ea09897ee8034ab48d47be84a418c586af25a2f3f",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_03-analytical-foundations-and-bi/Module_05-statistics-for-data-analysts/module.svg",
+      "image_sha256": "ef004d4a35481756bcb5dfa664674db76462c9fd02203e1af72e87a3378bb35c"
+    },
+    {
+      "programme": "DA",
+      "title": "Mô-đun 6: Trực quan hóa và Power BI",
+      "source": "Material/DA/Roadmap/Phase_03-analytical-foundations-and-bi/Module_06-visualization-and-power-bi/roadmap.md",
+      "source_sha256": "25c120cba8e381484f8cac930a42700ae43b41a5c383521ac9a0a63d2b3ef575",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_03-analytical-foundations-and-bi/Module_06-visualization-and-power-bi/module.svg",
+      "image_sha256": "8990c65b12f1ff96d1d26a91ce9403fcf5f93a2624e11d7d7d960085d0898de4"
+    },
+    {
+      "programme": "DA",
+      "title": "Giai đoạn 4: Phân tích ứng dụng và capstone",
+      "source": "Material/DA/Roadmap/Phase_04-applied-analytics-and-capstone/roadmap.md",
+      "source_sha256": "05d001ee43bb909ecb7ca63721978e94c483acd28bcb1ab53b59cbf36fd11e9d",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_04-applied-analytics-and-capstone/phase.svg",
+      "image_sha256": "520eb64c7f468bf785e21bcf225115e91699727ee053e70c0150000081a45a77"
+    },
+    {
+      "programme": "DA",
+      "title": "Mô-đun 7: Phân tích sản phẩm và kinh doanh",
+      "source": "Material/DA/Roadmap/Phase_04-applied-analytics-and-capstone/Module_07-product-and-business-analytics/roadmap.md",
+      "source_sha256": "43572633decb4bfa2ddb3c34009bd889406de8dbf42793228735ef45a57b7ec1",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_07-product-and-business-analytics/module.svg",
+      "image_sha256": "c557dadb6cfc8050ed81de4569237a9b545ac6c84c0c8501b027cd38811ed1d7"
+    },
+    {
+      "programme": "DA",
+      "title": "Mô-đun 8: Thử nghiệm A/B",
+      "source": "Material/DA/Roadmap/Phase_04-applied-analytics-and-capstone/Module_08-a-b-testing/roadmap.md",
+      "source_sha256": "a5abdbc5ee8b7d6b38eb9d2dcba0b1b1e82457574f511ea2f0dc38b8d3960be2",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_08-a-b-testing/module.svg",
+      "image_sha256": "2f482bb548d9967290e3da3b8b21a5db2efcd458c6f7d0f7be3a31836a64b6b9"
+    },
+    {
+      "programme": "DA",
+      "title": "Mô-đun 9: Python cho Data Analyst",
+      "source": "Material/DA/Roadmap/Phase_04-applied-analytics-and-capstone/Module_09-python-for-data-analysts/roadmap.md",
+      "source_sha256": "b94e30f8dc602c16663866119779b77086aceae81e69dad426f32a2cab814179",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_09-python-for-data-analysts/module.svg",
+      "image_sha256": "f53e9d2cce6dced741fdaeaeec58edc5d652d20b8f8584da209fcfb78a3092e7"
+    },
+    {
+      "programme": "DA",
+      "title": "Mô-đun 10: Giao tiếp và phát triển nghề nghiệp",
+      "source": "Material/DA/Roadmap/Phase_04-applied-analytics-and-capstone/Module_10-communication-and-career/roadmap.md",
+      "source_sha256": "9a502b701ab1a9b613ada7dd443f509586d6add4f4441d0b40c553f26b87f72e",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_10-communication-and-career/module.svg",
+      "image_sha256": "5ffd428e1cce960590311972ba3ca96003d5ab3ed9f4ffd7d03f0da79833a5ff"
+    },
+    {
+      "programme": "DA",
+      "title": "Mô-đun 11: Dự án tốt nghiệp",
+      "source": "Material/DA/Roadmap/Phase_04-applied-analytics-and-capstone/Module_11-capstone-project/roadmap.md",
+      "source_sha256": "01c924eb69f4d7d3dea6cc9532438cabf4c42d71d7d36560f1296c9147eaf984",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_11-capstone-project/module.svg",
+      "image_sha256": "aeaa82df455142fbd084e9d6fd06d63ac7aca90253bcbbfc5ea1eefcd94d7e4a"
+    },
+    {
+      "programme": "DE",
+      "title": "Chương trình Data Engineer",
+      "source": "Material/DE/Roadmap/roadmap.md",
+      "source_sha256": "67d672491e8d59e4917605892457c1544488100f8002d6078baa444932a45e98",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/programme.svg",
+      "image_sha256": "1211a8dd4aeccef14b612722c2ecc30254c1a64981413880126347a1d1aab96a"
+    },
+    {
+      "programme": "DE",
+      "title": "Giai đoạn 1: Nền tảng kỹ thuật",
+      "source": "Material/DE/Roadmap/Phase_01-engineering-foundation/roadmap.md",
+      "source_sha256": "c95672bbb2ca0e8784e2adf9dbcc82dfecb8aac556a2e355d30ad559184c569e",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_01-engineering-foundation/phase.svg",
+      "image_sha256": "c78bf9980e68e00883d917607bd8dc4ee78cb78b81c196efde4e19260c18fae0"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 1: Tư duy kỹ thuật, Git và gỡ lỗi",
+      "source": "Material/DE/Roadmap/Phase_01-engineering-foundation/Module_01-engineering-thinking-git-and-debugging/roadmap.md",
+      "source_sha256": "af177303695494923896a28769adef808b177db8af5f112ef0d1e09d603e43f4",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_01-engineering-foundation/Module_01-engineering-thinking-git-and-debugging/module.svg",
+      "image_sha256": "5a9b32fd11cd726a7eb058605a2887f0098adafa6df0696adda067c0dbc51f36"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 2: Python cho môi trường vận hành",
+      "source": "Material/DE/Roadmap/Phase_01-engineering-foundation/Module_02-python-for-production/roadmap.md",
+      "source_sha256": "da9c0c30dd11c25a8786b53b3700c0e71857ed09120dd969a33fc1beb46fec7a",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_01-engineering-foundation/Module_02-python-for-production/module.svg",
+      "image_sha256": "6ce20bdd42e79252984c6fbe394aabe024ef4036f849df114646b34d7c0c9c79"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 3: Cấu trúc dữ liệu và thuật toán cho hệ thống",
+      "source": "Material/DE/Roadmap/Phase_01-engineering-foundation/Module_03-data-structures-and-algorithms-for-systems/roadmap.md",
+      "source_sha256": "ab0a264c2cdf1924ee7bf61d3cf507c54b6048f5383f2e6b64550d60a04ebbbb",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_01-engineering-foundation/Module_03-data-structures-and-algorithms-for-systems/module.svg",
+      "image_sha256": "98949a3ac9215b14357f8a9bc66feefa28757f62766515df89f2ebaf6de8530a"
+    },
+    {
+      "programme": "DE",
+      "title": "Giai đoạn 2: Máy tính, hệ điều hành và mạng",
+      "source": "Material/DE/Roadmap/Phase_02-machine-operating-system-and-network/roadmap.md",
+      "source_sha256": "cbabea00fefee4e33e6f4c689079a9fee2cbd8abeff6a61655c647736dfe6db4",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_02-machine-operating-system-and-network/phase.svg",
+      "image_sha256": "cb21baff65979c450b0e7b18ea5f7ce5725e09e269fe682d5cfea308e4d26b28"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 4: Kiến trúc máy tính và mô hình hiệu năng",
+      "source": "Material/DE/Roadmap/Phase_02-machine-operating-system-and-network/Module_04-computer-architecture-and-the-performance-model/roadmap.md",
+      "source_sha256": "d44cf4d5734e0e7c94e432743597b991607189445a28c27024c8a1ced9306cf2",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_02-machine-operating-system-and-network/Module_04-computer-architecture-and-the-performance-model/module.svg",
+      "image_sha256": "51722d2fb05cb996365cbf9e0769dec6d7e9eaff7eaed6e21a2dd1f0352ba224"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 5: Hệ điều hành, đồng thời và Linux",
+      "source": "Material/DE/Roadmap/Phase_02-machine-operating-system-and-network/Module_05-operating-systems-concurrency-and-linux/roadmap.md",
+      "source_sha256": "84c19977c8404518d90dfc042ec5fd51ef0c5d91f230191b0cbc8ba4b9f01195",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_02-machine-operating-system-and-network/Module_05-operating-systems-concurrency-and-linux/module.svg",
+      "image_sha256": "b79a587307a13f0cd1ced14fe5bc4b5d26cc71e8ccaf0ddcb96e6040fa318950"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 6: Mạng từ gói tin đến API",
+      "source": "Material/DE/Roadmap/Phase_02-machine-operating-system-and-network/Module_06-networking-from-packet-to-api/roadmap.md",
+      "source_sha256": "646fb93d13ed8401bb047c1c5201248bca5a533f785c45702301f50a69d2081b",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_02-machine-operating-system-and-network/Module_06-networking-from-packet-to-api/module.svg",
+      "image_sha256": "f66a332a1a58feec340e89b598c9fbd84152ac08c77d50c58d239c2af71f82a6"
+    },
+    {
+      "programme": "DE",
+      "title": "Giai đoạn 3: Kỹ nghệ phần mềm và backend",
+      "source": "Material/DE/Roadmap/Phase_03-software-and-backend-engineering/roadmap.md",
+      "source_sha256": "44560e7159357b704a9841c492b3f0115177d237bb6d9330e1dfe01edfb543c9",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_03-software-and-backend-engineering/phase.svg",
+      "image_sha256": "498647958069e05b7df3a4379cc2157e7f34207d0ede20673a059c0eb09a6244"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 7: Thiết kế và chuyển giao phần mềm",
+      "source": "Material/DE/Roadmap/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/roadmap.md",
+      "source_sha256": "36d0de26d2b6ea404dda2392fe3403074b64ce0bb66228c873cb42809ba994b2",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/module.svg",
+      "image_sha256": "188b0e9333c6aa47f02c483dd8ce08fe00f2f1e8647b4f9c1235c29d630950e7"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 8: Kỹ nghệ backend và API",
+      "source": "Material/DE/Roadmap/Phase_03-software-and-backend-engineering/Module_08-backend-and-api-engineering/roadmap.md",
+      "source_sha256": "58ec9bbc225afd35a16c150c7f06be985fd79bd27c655a28cc944faab8c3fc9b",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_03-software-and-backend-engineering/Module_08-backend-and-api-engineering/module.svg",
+      "image_sha256": "b7ee1b3e5e10e0b9f25bd50017ae5150107dd0838bb26b2dad39077f0da650db"
+    },
+    {
+      "programme": "DE",
+      "title": "Giai đoạn 4: SQL và nội tại cơ sở dữ liệu",
+      "source": "Material/DE/Roadmap/Phase_04-sql-and-database-internals/roadmap.md",
+      "source_sha256": "a81cda9e061ae0cfaf5366fdd57d10f8918c6be72d64a2a00a4414e7e90a1b5e",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_04-sql-and-database-internals/phase.svg",
+      "image_sha256": "2283ca08cacfc305fd7622328129821f64fbcad307200b2b4f0a5e0fde57cd15"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 9: Lý thuyết quan hệ và thực thi SQL",
+      "source": "Material/DE/Roadmap/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/roadmap.md",
+      "source_sha256": "fce5ba0317a05df0848ce0d2252b34d7bde2bb8a85e2829c3500c50ce64e9d0b",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/module.svg",
+      "image_sha256": "8a007411464a5e0e3ab9bd4d4910fdd06d173b8f42b41d64d06de03bc08f3b83"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 10: Storage engine và vận hành cơ sở dữ liệu",
+      "source": "Material/DE/Roadmap/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/roadmap.md",
+      "source_sha256": "e29cb41f377a92cb47dc423c1a9b0c4f7fe6496dd968017ffe9398c24929c00a",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/module.svg",
+      "image_sha256": "2ee2260c247403aaa0850d402057c42e1ea97436d2139153b68ebf33d817416f"
+    },
+    {
+      "programme": "DE",
+      "title": "Giai đoạn 5: Mô hình dữ liệu, semantic layer và sản phẩm phân tích",
+      "source": "Material/DE/Roadmap/Phase_05-modeling-semantics-and-analytical-product/roadmap.md",
+      "source_sha256": "3ff1ed49f03c26a92a67828258b4813d0c4b42a5ce32a0e94c5284b16df12579",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_05-modeling-semantics-and-analytical-product/phase.svg",
+      "image_sha256": "f86517ddb264afa73de034e719f4d19ee9d5a6438b81659477120246282e26b0"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 11: Mô hình dữ liệu giao dịch, phân tích và miền nghiệp vụ",
+      "source": "Material/DE/Roadmap/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/roadmap.md",
+      "source_sha256": "21f83b02a7cf40814b888b5c1b196dc9d4694d485ad2fa46ebee43eb1dffea95",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/module.svg",
+      "image_sha256": "bc1d485a907d52a0ab1786fc2f33ef5fc84ee04b6ab7f93d3cc987be0223cbd2"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 12: Semantic layer và kỹ nghệ chỉ số",
+      "source": "Material/DE/Roadmap/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/roadmap.md",
+      "source_sha256": "cfca6893c5011270f59ca3604822f1f9f004e9a9ac0fd9b6856c3dd5002d3528",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/module.svg",
+      "image_sha256": "4badf4106e8a7cfd7fc32cf64490e4d49338983ed309bb24f8a9e2f6945a515d"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 13: Sản phẩm dữ liệu phân tích và tự phục vụ",
+      "source": "Material/DE/Roadmap/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/roadmap.md",
+      "source_sha256": "d3f881df9d0dd6442cebfb6438561784f7ee5a535f37f61096b93f282b8cba56",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/module.svg",
+      "image_sha256": "802cf5556adcf9980725fd51d302f7bef7eea5dcf8a50343ab1938000ced7999"
+    },
+    {
+      "programme": "DE",
+      "title": "Giai đoạn 6: Lưu trữ phân tích và query engine",
+      "source": "Material/DE/Roadmap/Phase_06-analytical-storage-and-query-engines/roadmap.md",
+      "source_sha256": "0428e32f221cc8423bcfdc7bf64a1f9458599685450307891ee241aa8288fe8f",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_06-analytical-storage-and-query-engines/phase.svg",
+      "image_sha256": "2551bf21023f25cc3ff159757dc06c7885dc156f3ce61692d1cccdc36d0d36bb"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 14: Nội tại OLAP và analytical engine",
+      "source": "Material/DE/Roadmap/Phase_06-analytical-storage-and-query-engines/Module_14-olap-internals-and-analytical-engines/roadmap.md",
+      "source_sha256": "3e59bc49134d8ed4710645394ce0f68092ab8664491b3d76c463de2b20694531",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_06-analytical-storage-and-query-engines/Module_14-olap-internals-and-analytical-engines/module.svg",
+      "image_sha256": "e17a8d3618934213321139777c14171ae4660d8ff0bdcc19c3ef57c7f93f3f2d"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 15: Định dạng tệp, tuần tự hóa và open table format",
+      "source": "Material/DE/Roadmap/Phase_06-analytical-storage-and-query-engines/Module_15-file-serialization-and-open-table-formats/roadmap.md",
+      "source_sha256": "9ad5335155d7c7adc8fe9c9626cc1a9ecc629bb78f51c97b2aa171f3a7991665",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_06-analytical-storage-and-query-engines/Module_15-file-serialization-and-open-table-formats/module.svg",
+      "image_sha256": "9d85e7daca4aac90e4a2c9d463ac3066f6bdb7d41ee84fa9f6c045753216cfb4"
+    },
+    {
+      "programme": "DE",
+      "title": "Giai đoạn 7: Nạp, chuyển đổi, chất lượng và quản trị dữ liệu",
+      "source": "Material/DE/Roadmap/Phase_07-ingestion-transformation-quality-and-governance/roadmap.md",
+      "source_sha256": "6a66c9d03ccd1fd90e4417476548b967251c3eeb24302eb8703c28d6b2c726e1",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/phase.svg",
+      "image_sha256": "2fd0a26bf72b518e1d8be492be2578aff654853c74dd4dd1a049146e256eb387"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 16: Kỹ nghệ nạp và tích hợp dữ liệu",
+      "source": "Material/DE/Roadmap/Phase_07-ingestion-transformation-quality-and-governance/Module_16-data-ingestion-and-integration-engineering/roadmap.md",
+      "source_sha256": "3b74afbf5b36b5d708397a646d2132aa191496a7ef27eb3b1e22084e69cd1b5a",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/Module_16-data-ingestion-and-integration-engineering/module.svg",
+      "image_sha256": "bcfc2bdbc8a7f018c27f6d2510b70dc2eb180880d214e7b4ff502094b216ab5b"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 17: ELT, dbt và điều phối workflow",
+      "source": "Material/DE/Roadmap/Phase_07-ingestion-transformation-quality-and-governance/Module_17-elt-dbt-and-workflow-orchestration/roadmap.md",
+      "source_sha256": "44bf83b4eb1cee7ff03ab5027c136da23c2301b580055ee37f0fb6b7819b3db1",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/Module_17-elt-dbt-and-workflow-orchestration/module.svg",
+      "image_sha256": "42c994838806f4e421ef853bceae733307d620832447685356432b02bb5a9109"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 18: Chất lượng và độ tin cậy dữ liệu",
+      "source": "Material/DE/Roadmap/Phase_07-ingestion-transformation-quality-and-governance/Module_18-data-quality-and-data-reliability-engineering/roadmap.md",
+      "source_sha256": "a6a59a165e2dca27fd386ff34d4d640c4e39a5fb8564e1d26282cbc294d76572",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/Module_18-data-quality-and-data-reliability-engineering/module.svg",
+      "image_sha256": "59e3ff062d9b0d71b4d43567e6b770ac5d493dcf6e42bec58c6990f097a33d23"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 19: Metadata, catalog, lineage và quản trị",
+      "source": "Material/DE/Roadmap/Phase_07-ingestion-transformation-quality-and-governance/Module_19-metadata-engineering-catalog-lineage-and-governance/roadmap.md",
+      "source_sha256": "6d7740251e81639a47353beaa0bb78d0c2e4e0dc2548d04591ed9f5db4969443",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/Module_19-metadata-engineering-catalog-lineage-and-governance/module.svg",
+      "image_sha256": "fcf1e31a25741755a45169ca34aee1b794bea49fd1bbd77308b6d1abd74f95f6"
+    },
+    {
+      "programme": "DE",
+      "title": "Giai đoạn 8: Hệ phân tán, streaming và compute engine",
+      "source": "Material/DE/Roadmap/Phase_08-distributed-systems-streaming-and-compute/roadmap.md",
+      "source_sha256": "7e1d91dc02b9204d5dd38adc917f16516e08b31512e9e0fafcf6e62d1571b89c",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/phase.svg",
+      "image_sha256": "37151e162a5d677e7cd9ce590532bd10f606030474c58a0cf5e1ebcecf42f353"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 20: Nền tảng hệ phân tán",
+      "source": "Material/DE/Roadmap/Phase_08-distributed-systems-streaming-and-compute/Module_20-distributed-systems-fundamentals/roadmap.md",
+      "source_sha256": "873c8d95c7746030451204001b83810df6536c9080b68095cc731aea79c029dd",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/Module_20-distributed-systems-fundamentals/module.svg",
+      "image_sha256": "b44ed6f60a3862659aab4ea0af63cc0bb9569343a574181b7dd9b05c31cbd44d"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 21: Kafka và event streaming",
+      "source": "Material/DE/Roadmap/Phase_08-distributed-systems-streaming-and-compute/Module_21-kafka-and-event-streaming/roadmap.md",
+      "source_sha256": "cf5aa8cffecd16ec04130ff373a4c05d9a31d69faf24d1520be77d2a64abf65c",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/Module_21-kafka-and-event-streaming/module.svg",
+      "image_sha256": "5938eb9e90c0538822f4cfa8678089ee6a373a5eefcbd781a4f78e22e8210d40"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 22: Nội tại change data capture",
+      "source": "Material/DE/Roadmap/Phase_08-distributed-systems-streaming-and-compute/Module_22-change-data-capture-internals/roadmap.md",
+      "source_sha256": "dc482d743116044e53d1979aff3994b33a7e408e98e9b87a423ff0e5725e4e62",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/Module_22-change-data-capture-internals/module.svg",
+      "image_sha256": "97405b1c9651ba5697ea0db6ed68bd8d49913d0e65e2b45d32ad2a21ce4e2a91"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 23: Spark, Flink và distributed compute engine",
+      "source": "Material/DE/Roadmap/Phase_08-distributed-systems-streaming-and-compute/Module_23-spark-flink-and-distributed-compute-engines/roadmap.md",
+      "source_sha256": "ac7f96258b80617cd497f3aefc304fb8763853f8e6b439126f0ba21684e0c31c",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/Module_23-spark-flink-and-distributed-compute-engines/module.svg",
+      "image_sha256": "f1b93fed975701528efda100d0d936050772ad2d479e013e83b203d9eb702194"
+    },
+    {
+      "programme": "DE",
+      "title": "Giai đoạn 9: Cloud platform và vận hành production",
+      "source": "Material/DE/Roadmap/Phase_09-cloud-platform-and-production-operations/roadmap.md",
+      "source_sha256": "d57693b9de9df4e9b2793a3fd35efe21512f217fb8af558da5960f9a433fdf44",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_09-cloud-platform-and-production-operations/phase.svg",
+      "image_sha256": "38dc70124e9b3e78d57dd0efc4ade629112bbbb4b1e8392055ab48991a04561c"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 24: Trừu tượng cloud trước tên dịch vụ",
+      "source": "Material/DE/Roadmap/Phase_09-cloud-platform-and-production-operations/Module_24-cloud-abstractions-before-service-names/roadmap.md",
+      "source_sha256": "bed4864a5178fa58d9ca4fd4cfc4630a98dda6b1dc1e13939f4fc79e7c11cd98",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_09-cloud-platform-and-production-operations/Module_24-cloud-abstractions-before-service-names/module.svg",
+      "image_sha256": "72fee4b10fd4ffd2e0fcb864f2c13b9b6a8354f2e95ba745c92e98e9c46eeb56"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 25: Container, infrastructure as code và Kubernetes",
+      "source": "Material/DE/Roadmap/Phase_09-cloud-platform-and-production-operations/Module_25-containers-infrastructure-as-code-and-kubernetes/roadmap.md",
+      "source_sha256": "0c2ee43991dc75f55cf9b884cda3a3a7582d31fd0136a724b2f72f71bda5537d",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_09-cloud-platform-and-production-operations/Module_25-containers-infrastructure-as-code-and-kubernetes/module.svg",
+      "image_sha256": "335bae4beb108e0b069c200ab2ba9887bf58c9e4d5d5080fae4653041eaf302d"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 26: Observability, reliability và security",
+      "source": "Material/DE/Roadmap/Phase_09-cloud-platform-and-production-operations/Module_26-observability-reliability-and-security/roadmap.md",
+      "source_sha256": "e4082ffe1bdc2205bc44d7cb6307e03881d7058622fd4be964cb9af5282b3160",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_09-cloud-platform-and-production-operations/Module_26-observability-reliability-and-security/module.svg",
+      "image_sha256": "ceb76ceef34aed826f9d01720214a2c0793d04631f2da21676e9014fb696bb6d"
+    },
+    {
+      "programme": "DE",
+      "title": "Giai đoạn 10: Thiết kế hệ thống, ranh giới AI và lộ trình nghề nghiệp",
+      "source": "Material/DE/Roadmap/Phase_10-system-design-ai-boundary-and-trajectory/roadmap.md",
+      "source_sha256": "1ea5c02269a7107a8ee4a2bbd94282a66406173225c57771eccfebc9cef4ad54",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_10-system-design-ai-boundary-and-trajectory/phase.svg",
+      "image_sha256": "3df198f097d0fc6ff1de4ac97988bef7b3190ed811463c2616afc76c709739e3"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 27: Tiến trình thiết kế hệ thống",
+      "source": "Material/DE/Roadmap/Phase_10-system-design-ai-boundary-and-trajectory/Module_27-system-design-progression/roadmap.md",
+      "source_sha256": "cbd174d491ab0619fa8c3ee312b4cacf29ae67c08ce658e085643a5e406b350b",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_10-system-design-ai-boundary-and-trajectory/Module_27-system-design-progression/module.svg",
+      "image_sha256": "7fef326b5f68a36049f6adc15275b957a014b0924bd0e11d2cdecf497268f202"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 28: Kỹ nghệ AI có ranh giới",
+      "source": "Material/DE/Roadmap/Phase_10-system-design-ai-boundary-and-trajectory/Module_28-modern-ai-engineering-bounded/roadmap.md",
+      "source_sha256": "f639e334c14c95f1f1cee7bc6194522a5c3b90e1a5ded3628496d2014df859ae",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_10-system-design-ai-boundary-and-trajectory/Module_28-modern-ai-engineering-bounded/module.svg",
+      "image_sha256": "fed802ce2f7ac7eb872049fae0e64e69559c92bc20922196f1cd5b78c0322a88"
+    },
+    {
+      "programme": "DE",
+      "title": "Mô-đun 29: Lộ trình Staff và Principal",
+      "source": "Material/DE/Roadmap/Phase_10-system-design-ai-boundary-and-trajectory/Module_29-staff-and-principal-trajectory/roadmap.md",
+      "source_sha256": "25a968abdb5c2cec5bd5ebfd30711ce90027a9168cd13e678c232dd581c58d6a",
+      "image": "Artifact/Rabbit-Data/Roadmaps/DE/Phase_10-system-design-ai-boundary-and-trajectory/Module_29-staff-and-principal-trajectory/module.svg",
+      "image_sha256": "82ac5cc40d0ab1dcdfdb4cde68cc8d3ecc079e479ab867f762fc1c22aaba78c6"
+    }
+  ]
+}

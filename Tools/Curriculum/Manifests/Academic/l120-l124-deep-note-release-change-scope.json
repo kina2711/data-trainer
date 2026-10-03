@@ -1,0 +1,18 @@
+{
+  "contract_id": "de-l120-l124-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/Lesson_120-aggregation-having-and-the-grain-statement",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/Lesson_121-subqueries-ctes-and-the-materialization-caveat",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/Lesson_122-recursive-ctes-for-hierarchies-and-graphs",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/Lesson_123-window-functions-partition-order-and-frame",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/Lesson_124-frames-running-totals-and-period-comparison",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l120_l124_notes.py",
+    "Tools/Curriculum/Build/validate_l120_l124_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": ["**/quiz.md", "**/homework.md", "**/slides.md", "**/lesson.yaml", "Material/DA/**"]
+}

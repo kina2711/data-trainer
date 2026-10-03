@@ -1,0 +1,24 @@
+{
+  "batch": "DE-L130-L134",
+  "captured": "2026-10-01",
+  "offline_ranges": [
+    {"source_id": "src.manual.postgresql-17.10", "locator": "PDF 559-580, 2018-2030, 2623-2630, 2888-2910", "pages_with_text": "66/66"},
+    {"source_id": "src.book.mastering-postgresql-17.6e", "locator": "PDF 87-112, 198-202, 223-270", "pages_with_text": "79/79"},
+    {"source_id": "src.book.rogov-postgresql-14-internals", "locator": "PDF 60-82, 156-176, 330-458", "pages_with_text": "173/173"}
+  ],
+  "semantic_controls": [
+    "EXPLAIN ANALYZE executes the statement and instrumentation overhead is separated from server/client elapsed time",
+    "actual rows and actual time are interpreted per loop; parent inclusive timing is not summed naively",
+    "buffer hit does not mean zero physical I/O because PostgreSQL shared buffers and OS page cache are distinct layers",
+    "PostgreSQL prepared plans are described as custom-versus-generic selection, not SQL Server-style first-value plan freezing",
+    "parameterization remains mandatory for injection prevention even when plan specialization is needed",
+    "the tuning project requires multiset and schema parity, not only equal row counts",
+    "an 8 KiB page is the normal build default, not a universal database page size",
+    "pg_buffercache observations are snapshots and can be concurrently inconsistent",
+    "buffer hit ratio is not promoted to a universal top-level performance metric without workload and I/O context",
+    "monotonic inserts concentrate activity on the rightmost B-tree path but are not assumed slower than random inserts without measurement",
+    "B-tree height is measured with PostgreSQL level conventions rather than inferred only from row count",
+    "index bloat, fragmentation and free space are kept distinct"
+  ],
+  "coursera": "not used; deferred to module construction by owner policy"
+}

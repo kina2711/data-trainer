@@ -1,0 +1,18 @@
+{
+  "contract_id": "de-l221-l225-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_06-analytical-storage-and-query-engines/Module_15-file-serialization-and-open-table-formats/Lesson_221-parquet-internals-row-group-column-chunk-page",
+    "Material/DE/Curriculum/Phase_06-analytical-storage-and-query-engines/Module_15-file-serialization-and-open-table-formats/Lesson_222-encoding-choice-statistics-and-pushdown",
+    "Material/DE/Curriculum/Phase_06-analytical-storage-and-query-engines/Module_15-file-serialization-and-open-table-formats/Lesson_223-nested-schemas-timestamps-and-decimal-interoperability",
+    "Material/DE/Curriculum/Phase_06-analytical-storage-and-query-engines/Module_15-file-serialization-and-open-table-formats/Lesson_224-object-store-limits-and-why-a-table-format-exists",
+    "Material/DE/Curriculum/Phase_06-analytical-storage-and-query-engines/Module_15-file-serialization-and-open-table-formats/Lesson_225-the-metadata-tree-snapshot-manifest-list-manifest",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l221_l225_notes.py",
+    "Tools/Curriculum/Build/validate_l221_l225_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": ["**/quiz.md", "**/homework.md", "**/slides.md", "**/lesson.yaml", "**/*.drawio", "Material/DA/**"]
+}

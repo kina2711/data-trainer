@@ -1,0 +1,11 @@
+{
+  "batch": "L256-L260",
+  "read_at": "2026-10-02",
+  "method": "bounded reading of official dbt documentation plus existing offline book and source records",
+  "new_sources": [
+    {"source_id": "src.web.dbt-data-tests", "scope": ["generic tests", "singular tests", "failing-row semantics", "severity and placement"]},
+    {"source_id": "src.web.dbt-jinja-macros", "scope": ["Jinja expressions/statements", "macros", "compiled SQL", "readability guidance"]}
+  ],
+  "reused_sources": ["src.web.dbt-incremental-models", "src.web.dbt-materializations", "src.book.reis-housley-fundamentals-data-engineering", "src.book.kleppmann-ddia.1e"],
+  "limitations": ["No live dbt project or warehouse adapter matrix was executed", "Incremental strategy behavior remains adapter and platform dependent", "Mutation and equivalence labs are protocols, not observed results"]
+}

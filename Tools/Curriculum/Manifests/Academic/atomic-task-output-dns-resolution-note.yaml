@@ -1,0 +1,42 @@
+task_id: dns-resolution-note-2026-09-27
+atomic_task: book-build-second-brain-pack
+state: awaiting-owner-review
+profile: build-change
+risk_class: R2-standard
+phase: G4-test
+primary_deliverable:
+  reference_path: Material/DE/Reference/Library/Knowledge-Notes/PACK-OS_NETWORK-BOOK-03/02-dns-resolution-delegation-cache-ttl.md
+  staging_wiki_path: Docs/Second-Brain/2_Wiki/Mang-may-tinh/DNS resolution delegation cache và TTL.md
+  canonical_wiki_path: /media/kina2711/DATA/2026/Second_Brain/2_Wiki/Mang-may-tinh/DNS resolution delegation cache và TTL.md
+  line_count: 346
+  word_count: 2903
+  editorial_pass: humanized-v1
+source_evidence:
+  source_id: PACK-OS_NETWORK-BOOK-03
+  scope: section 2.4, printed pages 152-164, PDF pages 154-166
+  pages_extracted: 13
+  empty_pages: 0
+  sha256: ed41334ecf228e6733f4f50bb73fbcb0624145c6c2a51c8e779f2f65cfc01018
+verification:
+  source_hash: pass
+  reference_wiki_identity: pass
+  pdf_text_coverage: pass
+  frontmatter: pass
+  source_and_note_registry_counts: pass
+  stable_id_uniqueness: pass
+  obsidian_links: pass
+  required_topic_coverage: pass
+  claim_classification: pass
+  humanization_pattern_scan: pass
+  markdown_fences: pass
+  retrieval_smoke_test: pass
+approval:
+  content_status: review
+  public_distribution: not-authorized
+known_limits:
+  - No live dig, nslookup, or packet-capture lab was executed in this atomic task.
+  - DNSSEC, negative caching, DoH, DoT, split-horizon, serve-stale, and resolver-specific behavior require current primary sources.
+  - The canonical vault backup and restore workflow remains unverified.
+next_task:
+  owner: codex
+  action: Process HTTP request-response, connection lifecycle, caching, and safe retry boundaries from the approved source queue.

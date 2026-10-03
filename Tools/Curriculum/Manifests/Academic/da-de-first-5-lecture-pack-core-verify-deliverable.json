@@ -1,0 +1,34 @@
+{
+  "task_id": "core-verify-deliverable",
+  "instance_id": "da-de-first-5-runnable-lecture-pack",
+  "status": "pass-with-declared-dev-tool-risk",
+  "verified_at": "2026-10-03",
+  "structural_validation": {
+    "command": "npm run lectures:first10:test",
+    "result": "pass",
+    "lessons": 10,
+    "scenes": 90,
+    "slides": 170,
+    "quiz_questions": 100,
+    "homework_rubrics": 10,
+    "placeholders": 0
+  },
+  "render_validation": {
+    "html_decks_rendered": 10,
+    "pdf_decks_rendered": 10,
+    "pages_per_pdf": 17,
+    "visual_contact_sheets_reviewed": 2,
+    "obvious_overflow_or_clipping_found": 0
+  },
+  "dependency_validation": {
+    "production_audit": "pass: 0 vulnerabilities",
+    "development_audit": "1 moderate and 11 high advisories in transitive rendering dependencies",
+    "risk_boundary": "Use the rendering toolchain only with trusted local lesson sources. Do not process untrusted archives, XML or remote slide content.",
+    "forced_downgrade_or_breaking_fix_applied": false
+  },
+  "content_limits": [
+    "The package is ready for curriculum-owner semantic review, not yet approved for live delivery.",
+    "No learner attempt evidence exists, so no mastery or certification claim is made.",
+    "Timing is an estimate and must be calibrated after a pilot session."
+  ]
+}

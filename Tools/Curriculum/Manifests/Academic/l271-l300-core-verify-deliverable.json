@@ -1,0 +1,22 @@
+{
+  "task_id": "de-l271-l300-note-promotion",
+  "status": "pass-awaiting-owner-review",
+  "verified_at": "2026-10-02T23:59:59+07:00",
+  "batch_checks": {
+    "271-275": {"stale": 0, "lessons_passed": 5, "fingerprint": "20f9eb4d36d9ec938e9655b9d59d34d3eba2d2d43ff84280ef3ce9bfbcbe8117"},
+    "276-280": {"stale": 0, "lessons_passed": 5, "fingerprint": "1e72aaa3358a1dcadd8585a0b6d78753a0810880aa0c0130ee16676d791cae56"},
+    "281-285": {"stale": 0, "lessons_passed": 5, "fingerprint": "470a4e3ea34cab774afff81afb50cc5694df46086ad41944f75be7c3be206a74"},
+    "286-290": {"stale": 0, "lessons_passed": 5, "fingerprint": "a8b87aab21b8d573b9b18a49963067e7288ece60884fd0001d26fd86a754dfdb"},
+    "291-295": {"stale": 0, "lessons_passed": 5, "fingerprint": "8db789509a01d5a59f7347310f7f673650c77f93fbf5ea291519d8459948c2d1"},
+    "296-300": {"stale": 0, "lessons_passed": 5, "fingerprint": "a19a28adcdfe16995cd0e291d9c64a9a4373098ae7d0137669d3d78e275370bb"}
+  },
+  "humanizer": {"checked": 30, "editorial": "humanized-v3", "within_note_repeats": 0, "cross_note_repeats": 0, "prose_tells": 0},
+  "formatter": {"checked": 603, "failed": 0},
+  "source_coverage": {"checked": 223, "failed": 0},
+  "wiki_parity": "30/30",
+  "obsidian_checksum": "no differences after non-deleting sync",
+  "word_range": [3645, 4155],
+  "manifest": {"version": "1.0.59", "sources": 155, "notes": 223, "retrieval_cases": 716},
+  "deliverable_fingerprint": "1e6be288dc07d98e22239be0c3821db66246457c9461e4477a1a8ddf000c3c3d",
+  "unrun_checks": ["live Airflow/warehouse/GX/DataHub/OpenLineage labs", "owner semantic approval"]
+}

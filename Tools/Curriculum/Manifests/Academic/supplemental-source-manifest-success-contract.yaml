@@ -1,0 +1,25 @@
+task_id: book-build-supplemental-source-manifest-2026-09-27
+task_type: book-build-source-manifest
+profile: build-change
+risk_tier: R2-standard
+objective: Convert the supplemental file inventory into canonical source identities and controlled processing queues for the DA and DE curriculum.
+success_criteria:
+  - Exactly one canonical source entry exists for every unique SHA-256.
+  - Every inventoried file appears once as a canonical path or alias.
+  - Exact duplicates are collapsed without deleting source files.
+  - Extraction mode, rights status, integrity status and limitations are explicit.
+  - Candidate module mappings reference existing module objective IDs only.
+  - Filename, path and embedded PDF metadata mappings remain candidate mappings until deep reading.
+  - Corrupt, incomplete, runtime and temporary files cannot enter the deep-reading queue.
+validation:
+  - JSON and YAML parse.
+  - Counts, bytes, hashes and aliases reconcile with the inventory.
+  - Candidate module IDs reconcile with objectives.json.
+  - No source is marked deep-read or redistribution-approved.
+approval:
+  requested_by: user
+  authority: Process supplied offline sources into private curriculum references.
+release_gate:
+  owner_review_required_before_baseline: true
+  public_distribution_authorized: false
+

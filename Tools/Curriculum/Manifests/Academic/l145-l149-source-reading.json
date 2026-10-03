@@ -1,0 +1,14 @@
+{
+  "batch": "L145-L149",
+  "read_on": "2026-10-01",
+  "method": "pdftotext -layout with bounded PDF page ranges; headings and content manually inspected",
+  "sources": [
+    {"source_id":"src.manual.postgresql-17.10","pdf_pages":"818-920","topics":["backup","PITR","monitoring","disk usage"]},
+    {"source_id":"src.book.mastering-postgresql-17.6e","pdf_pages":"345-365, 385-398","topics":["logical backup","restore","replication","upgrade and operations"]},
+    {"source_id":"src.book.kimball-ross-data-warehouse-toolkit.3e","pdf_pages":"48-66, 280-291","topics":["four-step dimensional design","grain","late-arriving data"]},
+    {"source_id":"src.book.rogov-postgresql-14-internals","pdf_pages":"37-196, 197-239","topics":["MVCC","vacuum","WAL/recovery","locks"]},
+    {"source_id":"src.book.silberschatz-database-system-concepts.7e","pdf_pages":"2144-2192, 2240-2365, 2418-2462","topics":["transactions","concurrency","recovery","database design boundary"]},
+    {"source_id":"src.book.kleppmann-ddia.1e","pdf_pages":"49-106, 154-239","topics":["data models","storage","replication","partitioning"]}
+  ],
+  "limitations": ["No restore drill, benchmark, fault injection or database workload was executed", "The seven-step protocol is curriculum synthesis; Kimball and Ross define a four-step dimensional process"]
+}

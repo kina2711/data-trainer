@@ -1,0 +1,21 @@
+task_id: de-l251-l270-note-promotion
+status: completed-awaiting-owner-review
+profile: build-change
+risk_tier: R2-standard
+artifacts:
+  curriculum_notes: 40
+  reference_notes: 20
+  second_brain_notes: 20
+  source_records: 12
+validation:
+  content_drift: "4 batches checked; stale=0"
+  batch_validators: "4/4 PASS for L251-L270"
+  humanizer: "20/20 humanized-v3; within-note repeats=0; cross-note repeats=0; banned prose tells=0"
+  formatter: "checked=534 failed=0"
+  source_coverage: "checked=193 failed=0"
+  reference_wiki_parity: "20/20 for L251-L270"
+  obsidian_checksum: "no differences after non-deleting sync"
+manifest: {version: "1.0.53", sources: 146, notes: 193, retrieval_cases: 626}
+residual_risks: ["owner semantic approval pending", "live dbt, warehouse, Beam and Airflow labs not executed", "vendor behavior remains version, adapter and configuration dependent"]
+deliverable_fingerprint: "2379623d7765b7c0f8c5ba79378dbd3936ebac2ef279fb568d87f73a7ab35740"
+next_task: owner-semantic-review-l251-l270

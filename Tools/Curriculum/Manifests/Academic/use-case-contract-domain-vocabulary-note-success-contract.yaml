@@ -1,0 +1,32 @@
+task_id: use-case-contract-domain-vocabulary-note-2026-09-28
+task_type: book-build-second-brain-pack
+objective: Convert bounded DDD, requirements-engineering, and program-verification sources into one detailed, humanized Vietnamese reference and Obsidian Wiki note for DE-L089.
+sources:
+  - source_id: src.book.boyle-ddd-golang.1e
+    scope: chapter 2 introduction, domain and sub-domain, ubiquitous language, benefits, capture practice, warning, and bounded-context boundary; PDF pages 30-42
+    rights: private-owner-provided-no-public-redistribution
+  - source_id: src.book.sommerville-software-engineering.10e
+    scope: chapter 4 requirements definition and functional requirements, PDF pages 103-109; stories, scenarios, specification, structured specification, use cases, and validation, PDF pages 120-132
+    rights: private-owner-provided-no-public-redistribution
+  - source_id: src.course.hcmut-program-verification.2020
+    scope: Hoare assertions, precondition, postcondition, partial correctness, and total correctness, PDF pages 18-30
+    rights: private-owner-provided-no-public-redistribution
+success_criteria:
+  - Derive a domain glossary from stakeholder language while preserving context, definition, examples, counterexamples, source, owner, and review status.
+  - Distinguish story, scenario, use case, requirement, and code-level entry-point contract without claiming they are interchangeable.
+  - Define a four-part entry-point contract containing typed inputs and outputs, preconditions, postconditions including side effects, and an explicit error contract.
+  - Preserve the distinction between partial correctness and total correctness and avoid claiming that a precondition-postcondition pair proves termination.
+  - Show how normal flow, exception flow, business rejection, technical failure, and programming defect affect the error contract.
+  - Provide a reproducible workflow and five complete ordering-system entry-point contracts for DE-L089.
+  - Include review rubrics that detect duplicate names, hidden translations, unchecked preconditions, ambiguous postconditions, and missing error semantics.
+  - Preserve source qualifiers, mark synthesis, inference, and uncertainty, and complete a Vietnamese Humanizer pass.
+  - Keep Reference, staging Wiki, and canonical Obsidian copies byte-identical.
+validation:
+  - All three source hashes match registered records.
+  - All 46 PDF pages in declared scope contain extractable text.
+  - Frontmatter, IDs, claim types, locators, links, manifest counts, required terms, and Markdown fences validate.
+  - Retrieval tests cover domain vocabulary, bounded context, scenario, structured specification, precondition, postcondition, error contract, partial correctness, and DE-L089 evidence.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

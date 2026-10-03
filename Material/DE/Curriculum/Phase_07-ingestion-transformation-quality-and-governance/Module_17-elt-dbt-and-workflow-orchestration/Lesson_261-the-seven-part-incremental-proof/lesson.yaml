@@ -1,0 +1,6 @@
+schema_version: 1
+status: draft
+publish:
+  note: true
+  after_note: true
+  answer_key: false

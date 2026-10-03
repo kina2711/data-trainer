@@ -1,0 +1,9 @@
+contract_id: de-l236-l240-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+owner: kina2711
+scope: {lessons: [236,237,238,239,240], phase: 7, module: 16}
+baseline: {formatter: "checked=446 failed=0", coverage: "checked=158 failed=0", manifest: "1.0.46/128/158/521"}
+acceptance: ["five notes >=2200 words", "source protection, file delivery, snapshot extraction, landing envelope and checkpoint order are testable", "Reference-Wiki parity", "all validators pass", "Obsidian checksum verified"]
+forbidden: ["quiz/homework/slides/lesson.yaml/diagram changes", "Material/DA changes", "fabricated live lab results"]
+approval: owner-semantic-review-pending

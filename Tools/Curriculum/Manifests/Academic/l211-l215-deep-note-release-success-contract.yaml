@@ -1,0 +1,29 @@
+contract_id: de-l211-l215-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+owner: kina2711
+consumer: Data Analytics Engineer trainer
+scope:
+  lessons: [211, 212, 213, 214, 215]
+  phases: [6]
+  modules: [14]
+baseline:
+  formatter: checked=369 failed=0
+  whole_vault_coverage: checked=133 failed=0
+  second_brain_manifest: version=1.0.41 sources=101 notes=133 retrieval_tests=446
+acceptance:
+  - five Vietnamese knowledge notes each contain at least 2200 words
+  - L211 separates strong scaling from weak scaling and traces MIMD, SPMD, batch execution and SIMD without merging layers
+  - L212 distinguishes broadcast, repartition, skew and spill using plan plus runtime evidence
+  - L213 compares shared-nothing and shared-data architectures with controlled cold, warm and result-cache states
+  - L214 separates queue, planning, execution and client transfer time under concurrent load
+  - L215 builds workload-weighted TCO and identifies reversal points without hard-coding mutable vendor prices
+  - source facts have stable IDs, locators, rights and evidence boundaries
+  - Reference and Wiki copies are byte-identical
+  - generator, batch validator, formatter and whole-vault coverage checks pass
+  - canonical Obsidian sync is checksum-verified without deleting destination-only files
+forbidden:
+  - changing quiz.md, homework.md, slides.md, lesson.yaml or diagram files
+  - modifying Data Analyst curriculum
+  - claiming live benchmark, production cost, vendor superiority or owner approval without evidence
+approval: owner-semantic-review-pending

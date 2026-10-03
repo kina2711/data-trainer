@@ -1,0 +1,18 @@
+{
+  "contract_id": "de-l181-l185-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_181-architecture-alternatives-headless-bi-native-or-curated-marts",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_182-metric-lifecycle-propose-certify-version-deprecate",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_183-ownership-change-classification-and-the-failure-matrix",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/Lesson_184-capstone-a-governed-revenue-semantic-product",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/Lesson_185-decision-first-discovery",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l181_l185_notes.py",
+    "Tools/Curriculum/Build/validate_l181_l185_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": ["**/quiz.md", "**/homework.md", "**/slides.md", "**/lesson.yaml", "Material/DA/**"]
+}

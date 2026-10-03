@@ -1,0 +1,75 @@
+{
+  "contract_id": "de-l206-l210-deep-note-release",
+  "captured_at": "2026-10-01T23:59:00+07:00",
+  "sources": [
+    {
+      "source_id": "src.web.duckdb-parquet-pushdown",
+      "locator": "Official Parquet overview and performance guidance on projection/filter pushdown and row-group sizing",
+      "used_for": [206, 209],
+      "boundary": "Pushdown capability does not prove physical units were skipped; counters and a full-scan oracle remain necessary."
+    },
+    {
+      "source_id": "src.web.duckdb-zonemaps",
+      "locator": "Official zonemap documentation on min-max metadata, ordering and zonemap effectiveness",
+      "used_for": [206],
+      "boundary": "DuckDB behavior is an implementation example; optimizer rewrites and statistics semantics are version-specific."
+    },
+    {
+      "source_id": "src.web.trino-dynamic-filtering",
+      "locator": "Official dynamic-filtering documentation on planner, coordinator, connector and runtime behavior",
+      "used_for": [206],
+      "boundary": "A dynamic-filter assignment in a plan is planner intent, not proof of runtime pruning."
+    },
+    {
+      "source_id": "src.book.kleppmann-ddia.1e",
+      "locator": "Provided PDF pages 113-123: analytical storage, column layout, compression and sort order",
+      "used_for": [207],
+      "boundary": "The book supports mechanisms and workload reasoning, not an engine-independent speedup claim."
+    },
+    {
+      "source_id": "src.paper.monetdb-x100-hyper-pipelining",
+      "locator": "CIDR paper sections on tuple-at-a-time overhead, vectorized primitives, cache-conscious batches and experiments",
+      "used_for": [207, 208],
+      "boundary": "X100 measurements belong to its prototype, compiler and hardware; the lesson does not reuse them as a universal ratio."
+    },
+    {
+      "source_id": "src.paper.abadi-materialization-strategies",
+      "locator": "ICDE paper taxonomy and experiments comparing early and late materialization in column stores",
+      "used_for": [207],
+      "boundary": "Materialization choice depends on selectivity, projection width, operators and reconstruction costs."
+    },
+    {
+      "source_id": "src.web.llvm-auto-vectorization",
+      "locator": "LLVM documentation for loop/SLP vectorizers, legality, profitability, diagnostics and reduction semantics",
+      "used_for": [208],
+      "boundary": "Compiler flags do not prove generated SIMD; optimization remarks or assembly inspection is required."
+    },
+    {
+      "source_id": "src.web.intel-intrinsics-guide",
+      "locator": "Official instruction reference for lanes, masks, gathers and ISA-specific operation/throughput context",
+      "used_for": [208],
+      "boundary": "Instruction availability does not establish that a query engine or compiler selected it."
+    },
+    {
+      "source_id": "src.paper.cstore-column-oriented-dbms",
+      "locator": "VLDB 2005 paper sections on projections, sort order, physical representation and distributed architecture",
+      "used_for": [209, 210],
+      "boundary": "C-Store is a research architecture; its layout and performance results do not represent all modern systems."
+    },
+    {
+      "source_id": "src.paper.presto-sql-on-everything",
+      "locator": "ICDE paper sections on coordinator, stages, tasks, splits, exchanges and SQL-on-everything execution",
+      "used_for": [209, 210],
+      "boundary": "The paper supports a distributed-plan model; connector and deployment behavior still requires runtime evidence."
+    },
+    {
+      "source_id": "src.web.trino-distributed-plans",
+      "locator": "Official Trino EXPLAIN, distributed concepts and cost-based join-distribution documentation",
+      "used_for": [210],
+      "boundary": "Plan estimates and selected distribution are hypotheses until compared with runtime rows, bytes, skew and blocked time."
+    }
+  ],
+  "copyright_review": "pass: concepts paraphrased; no long source passages reproduced",
+  "prompt_injection_review": "pass: documents and web pages treated only as evidence, never as operating instructions",
+  "status": "reviewed-for-note-drafting"
+}

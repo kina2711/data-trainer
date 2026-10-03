@@ -1,0 +1,44 @@
+schema_version: 1
+task_id: module-07-l091-l098-curriculum-note-promotion
+completed_at: 2026-09-28
+result: pass
+scope:
+  lessons: [91, 92, 93, 94, 95, 96, 97, 98]
+  curriculum_files_written: 16
+  knowledge_note_updated: DE-L098
+  source_records_added: 2
+checks:
+  generator_idempotence:
+    command: python3 Tools/Curriculum/Build/promote_module07_notes.py --check
+    result: "checked=16 stale=0"
+  curriculum_validator:
+    command: python3 Tools/Curriculum/Build/validate_module07_curriculum_notes.py
+    result: "PASS lessons=8 files=16"
+  knowledge_note_formatter:
+    command: python3 Tools/Curriculum/Build/format_knowledge_notes.py --check
+    result: "checked=71 failed=0"
+  source_coverage_validator:
+    command: python3 Tools/Curriculum/Build/validate_knowledge_note_coverage.py
+    result: "checked=25 failed=0"
+  lesson_note_word_counts:
+    L091: 2129
+    L092: 2316
+    L093: 2159
+    L094: 2140
+    L095: 2399
+    L096: 2431
+    L097: 2319
+    L098: 2469
+  second_brain_sync:
+    result: pass
+    deployment_note_sha256: 5abf1c9d3b2c3e406eb919383cc5f4fd64506bdd14ea2bb923c635f199ba195b
+    manifest_sha256: e67184edbafc4e9b50743104de3e92512744453b5a8b60af3d22ff286020db67
+manifest:
+  version: 1.0.19
+  sources: 19
+  notes: 25
+  retrieval_tests: 122
+limitations:
+  - Các lab, fault injection, migration và rollback drill chưa được chạy trên một repository hoặc cluster mục tiêu; note chỉ định rõ artifact và phép đo cần nộp.
+  - Nội dung Coursera không được dùng trong đợt offline này, đúng với quyết định chỉ truy cập khóa học khi xây module tương ứng.
+  - Trạng thái review của knowledge note và draft của lesson.yaml được giữ nguyên cho tới khi chủ dự án duyệt; không tự nâng trạng thái xuất bản.

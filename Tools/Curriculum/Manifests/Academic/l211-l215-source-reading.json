@@ -1,0 +1,81 @@
+{
+  "contract_id": "de-l211-l215-deep-note-release",
+  "captured_at": "2026-10-01T23:59:00+07:00",
+  "sources": [
+    {
+      "source_id": "src.paper.amdahl-1967",
+      "locator": "AFIPS 1967 bibliographic record, abstract and serial-fraction argument",
+      "used_for": [211],
+      "boundary": "Amdahl supplies a theoretical fixed-work boundary, not a root-cause diagnosis for a modern MPP engine."
+    },
+    {
+      "source_id": "src.paper.gustafson-1988",
+      "locator": "CACM 1988 paper argument for scaled problems and scaled speedup",
+      "used_for": [211],
+      "boundary": "Scaled speedup answers a capacity question and does not replace fixed-work strong scaling."
+    },
+    {
+      "source_id": "src.paper.presto-sql-on-everything",
+      "locator": "ICDE paper sections on coordinator, stages, tasks, splits, exchanges and execution",
+      "used_for": [211, 213],
+      "boundary": "The paper provides a system model; actual scaling and storage behavior require versioned runtime counters."
+    },
+    {
+      "source_id": "src.web.trino-distributed-plans",
+      "locator": "Official EXPLAIN and distributed execution documentation",
+      "used_for": [211, 212, 213],
+      "boundary": "Plan structure and estimates are not runtime observations."
+    },
+    {
+      "source_id": "src.web.trino-join-distribution",
+      "locator": "Official cost-based optimization and join distribution documentation",
+      "used_for": [212],
+      "boundary": "Broadcast and partitioned behavior, caps and defaults are version-sensitive and statistics-dependent."
+    },
+    {
+      "source_id": "src.web.trino-spill",
+      "locator": "Official spill lifecycle, memory, disk, operator support and legacy-warning documentation",
+      "used_for": [212],
+      "boundary": "Spill can reduce peak memory for supported cases but cannot guarantee completion or a fixed slowdown factor."
+    },
+    {
+      "source_id": "src.paper.snowflake-elastic-data-warehouse",
+      "locator": "SIGMOD 2016 Sections 2-3 on shared-nothing, shared-data architecture, virtual warehouses and local cache",
+      "used_for": [213, 214],
+      "boundary": "The paper describes a 2016 system design and does not define all modern separated-storage services."
+    },
+    {
+      "source_id": "src.web.redshift-wlm-query-metrics",
+      "locator": "Official WLM metric definitions for queue, execution, CPU, temp blocks and skew",
+      "used_for": [214],
+      "boundary": "Field names and clock boundaries are Redshift contracts, not universal engine terminology."
+    },
+    {
+      "source_id": "src.web.redshift-concurrency-scaling",
+      "locator": "Official eligibility, routing, monitoring and usage documentation",
+      "used_for": [214],
+      "boundary": "Extra capacity only applies to eligible work and has configuration, startup and cost boundaries."
+    },
+    {
+      "source_id": "src.web.finops-data-cloud-platforms",
+      "locator": "FinOps Framework guidance on data-cloud allocation, TCO, unit economics and workload telemetry",
+      "used_for": [215],
+      "boundary": "The framework provides cost categories and governance, not one vendor-neutral rate formula."
+    },
+    {
+      "source_id": "src.web.finops-unit-economics",
+      "locator": "FinOps capability definition for technical and business unit metrics",
+      "used_for": [215],
+      "boundary": "A technical unit cost does not by itself establish business value."
+    },
+    {
+      "source_id": "src.web.bigquery-pricing-slots",
+      "locator": "Official on-demand bytes-processed, capacity slots, storage and transfer pricing categories",
+      "used_for": [215],
+      "boundary": "Rates, minimums, editions, regions, commitments and transfer rules must be snapshotted at decision time."
+    }
+  ],
+  "copyright_review": "pass: concepts paraphrased; no long source passages reproduced",
+  "prompt_injection_review": "pass: documents and web pages treated only as evidence, never as operating instructions",
+  "status": "reviewed-for-note-drafting"
+}

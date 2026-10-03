@@ -1,0 +1,19 @@
+{
+  "task_id": "de-l301-l330-note-promotion",
+  "status": "pass",
+  "requested_range": [301, 330],
+  "execution_batches": [[301, 305], [306, 310], [311, 315], [316, 320], [321, 325], [326, 330]],
+  "affected_artifacts": {
+    "curriculum_notes": 60,
+    "reference_notes": 30,
+    "wiki_notes": 30,
+    "new_source_records": 6,
+    "batch_writers": 6,
+    "shared_writer_extended": 1,
+    "validators_added": 7,
+    "validator_extended": 1
+  },
+  "unrelated_worktree_changes_modified": false,
+  "deletions_performed": false,
+  "scope_finding": "All written artifacts trace to lessons 301-330, their official/private-owner source lineage, deterministic validation, or required release evidence."
+}

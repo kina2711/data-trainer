@@ -1,0 +1,16 @@
+{
+  "task_id": "academy-coursera-enrollment-2026-09-27",
+  "allowed_paths": [
+    "Tools/Curriculum/Manifests/Academic/coursera-enrollment-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/coursera-enrollment-change-scope.json",
+    "Tools/Curriculum/Manifests/Academic/coursera-enrollment-v1.json"
+  ],
+  "forbidden_paths": [
+    "Material/**",
+    "Web/**",
+    "Artifact/**",
+    "Tools/Curriculum/Manifests/Academic/source-catalog.json",
+    "Tools/Curriculum/Manifests/Academic/source-plan.json"
+  ],
+  "declared_effect": "Add an access-status ledger only; do not alter curriculum, source selection, or learning-content files."
+}

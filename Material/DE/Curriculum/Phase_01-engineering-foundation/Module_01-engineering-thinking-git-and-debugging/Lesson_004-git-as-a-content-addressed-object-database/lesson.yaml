@@ -1,0 +1,103 @@
+schema_version: 2
+lesson_id: DE-L004
+title: Git as a content-addressed object database
+status: ready-for-owner-review
+lifecycle_profile: learning
+risk_tier: R2-standard
+target_level: Foundation
+duration_minutes_estimate: 120
+central_question: Object graph, index và refs giải thích Git như thế nào?
+objective: Dựng object graph và dự đoán thay đổi ở working tree, index, repository, HEAD và branch ref sau thao
+  tác Git.
+prerequisites:
+- 'DE-L003: reasoning bằng invariant và evidence; command-line cơ bản.'
+learner_memory:
+  resolved: false
+  assumption: No prior mastery claimed; teach and assess the named prerequisites.
+scenes:
+- id: S01
+  type: explain
+  minutes: 10
+  claim: Bạn git add file, sửa tiếp rồi git commit. Vì sao commit không chứa bản đang nhìn thấy trong editor?
+  source_span: note.md — heading '1. Git lưu snapshot qua object graph'
+  misconception_displaced: Có thể bắt đầu bằng công cụ/output trước khi khóa câu hỏi và boundary.
+- id: S02
+  type: explain
+  minutes: 18
+  claim: Git lưu immutable content-addressed objects; working tree, index và repository là ba trạng thái khác nhau,
+    còn refs đặt tên lên commit graph.
+  source_span: note.md — heading '2. Content-addressed identity'
+  misconception_displaced: Học thuộc lệnh reset mà không dự đoán ba cây, hoặc tin xóa branch đồng nghĩa object biến
+    mất ngay.
+- id: S03
+  type: check
+  minutes: 7
+  question: Blob lưu gì?
+  answer: Nội dung file; tên và mode nằm trong tree.
+  wrong_answer_reveals: Người học nhớ từ khóa nhưng chưa nắm claim trung tâm.
+  source_span: note.md — heading '2. Content-addressed identity'
+- id: S04
+  type: practice
+  minutes: 18
+  task: Trong repo sandbox, học viên dự đoán sáu trạng thái rồi chạy command để kiểm bằng object plumbing.
+  success_condition: Đúng ≥5/6 dự đoán, vẽ được blob-tree-commit graph và giải thích staged/unstaged bằng cặp trạng
+    thái.
+  source_span: UNSOURCED — guided practice synthesized from the lesson objective and source-backed mechanism
+- id: S05
+  type: explain
+  minutes: 15
+  claim: Trước reset/restore, gọi tên ref và ba trạng thái sẽ đổi; dùng mode nhỏ nhất đạt mục tiêu và bảo toàn evidence
+    cần giữ.
+  source_span: note.md — heading '3. Working tree, index và repository'
+  misconception_displaced: Một rule hoặc tool luôn đúng bất kể changed constraint.
+- id: S06
+  type: decide
+  minutes: 12
+  situation: Đổi commit message hoặc parent tạo commit ID mới dù tree giống, vì commit object content đã đổi.
+  trade_off: Content-addressing hỗ trợ integrity và dedup; nó không tự xác minh tác giả hay ý nghĩa nghiệp vụ của
+    thay đổi.
+  defensible_choices: Lựa chọn phải giữ hard constraints, nêu evidence và reversal trigger.
+  source_span: UNSOURCED — changed-constraint decision scenario synthesized for transfer
+- id: S07
+  type: explain
+  minutes: 15
+  claim: 'Worked example: Tạo file, hash-object để thấy blob identity, add và đọc index entry. Commit để tạo tree/commit;
+    cat-file -p lần theo parent và tree. Sửa file sau add để quan sát index khác working tree. Xóa branch rồi dùng
+    reflog tìm commit còn reachable và tạo rescue ref.'
+  source_span: note.md — heading '4. References làm graph có tên'
+  misconception_displaced: Một case thành công tự chứng minh cơ chế tổng quát.
+- id: S08
+  type: apply
+  minutes: 18
+  task: Một commit 'mất' sau reset nhưng còn trong reflog. Giải thích reachability, retention và cách tạo ref cứu
+    hộ trước thao tác khác.
+  assumes:
+  - S02
+  - S04
+  - S05
+  - S06
+  - S07
+  success_condition: Artifact nêu boundary, evidence, lựa chọn, rejected alternative và condition làm quyết định
+    đảo.
+  source_span: UNSOURCED — curriculum transfer scenario synthesized from the lesson contract
+- id: S09
+  type: check
+  minutes: 7
+  question: git diff và git diff --cached so những trạng thái nào?
+  answer: 'git diff: working tree với index; git diff --cached: index với HEAD.'
+  wrong_answer_reveals: Người học chưa chuyển mental model sang tình huống mới.
+  source_span: note.md — heading '5. Reset được suy từ ba cây'
+assessment:
+  formative: quiz.md — 10 questions, pass >= 8/10; failed concepts receive targeted remediation and one retest.
+  authentic: homework.md — artifact scored on a 100-point analytic rubric; pass >= 75 and no critical failure.
+  mastery_claim: None. Package readiness and learner mastery are separate evidence states.
+publish:
+  note: true
+  slides: true
+  quiz: true
+  homework: true
+  after_note: true
+  answer_key: true
+unused_source_spans:
+- Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension/remediation; the 120-minute session
+  samples rather than recites every probe.

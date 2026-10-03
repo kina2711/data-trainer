@@ -1,0 +1,29 @@
+{
+  "task_id": "book-audit-source-traceability",
+  "instance_id": "post-remaining-18-conversion",
+  "status": "pass-owner-review-pending",
+  "scope": {
+    "collection": "Tools/Curriculum/Manifests/Academic/source-acquisition-v2.json",
+    "curated_pdf_records": 35,
+    "manifest_sources": 222,
+    "manifest_notes": 645
+  },
+  "results": {
+    "new_books_integrated": 18,
+    "new_source_records": 18,
+    "new_detailed_notes": 108,
+    "new_wiki_mirrors": 108,
+    "new_retrieval_cases": 324,
+    "content_level_books_without_notes": 0,
+    "duplicate_or_alternate_copy_files": 1
+  },
+  "duplicate_or_alternate_copy": {
+    "title": "Computer Organization and Design",
+    "finding": "The extra file remains unregistered because another fifth-edition copy is already registered and cited by 14 notes; it is not a unique content gap."
+  },
+  "conclusion": "Every unique book identified as unnoted by the post-DA audit now has a governed private source record and a six-note detailed pack.",
+  "limitations": [
+    "This conclusion covers the curated 35-PDF acquisition collection, not every file in the supplemental inventory.",
+    "Registry coverage and written notes do not prove reader mastery or sentence-level fidelity without owner review."
+  ]
+}

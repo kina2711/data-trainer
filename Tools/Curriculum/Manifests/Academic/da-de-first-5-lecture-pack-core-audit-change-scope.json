@@ -1,0 +1,29 @@
+{
+  "task_id": "core-audit-change-scope",
+  "instance_id": "da-de-first-5-runnable-lecture-pack",
+  "status": "pass",
+  "audited_at": "2026-10-03",
+  "changes": {
+    "lesson_packages": 10,
+    "generated_delivery_assets": 50,
+    "shared_themes": 1,
+    "build_scripts": 1,
+    "validation_scripts": 1,
+    "package_scripts_added": 2,
+    "canonical_note_files_modified_by_builder": 0,
+    "deletions": 0
+  },
+  "scope_result": {
+    "allowed_paths_only": true,
+    "forbidden_paths_touched": false,
+    "lessons_after_005_touched": false,
+    "learner_records_touched": false
+  },
+  "recovery": {
+    "regenerate": "npm run lectures:first10:build",
+    "verify_without_writing": "npm run lectures:first10:test",
+    "asset_fingerprint": "09b6e0f990b2c61dd35967c8c4fffbe664ed7f1cfd59beb09004a0d774797c25",
+    "sha256_of_sorted_asset_hashes": "8dd0430bb957eed3ecabdf50f1599f35d174ced99139a494a36ad57de005e1fb"
+  },
+  "approval_boundary": "No teaching delivery, mastery update or certification action was performed."
+}

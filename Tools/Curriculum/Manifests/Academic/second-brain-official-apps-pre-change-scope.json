@@ -1,0 +1,33 @@
+{
+  "task_id": "core-pre-change-scope",
+  "instance_id": "second-brain-official-web-desktop-release",
+  "status": "pass",
+  "baseline": {
+    "manifest_version": "1.0.140",
+    "registered_notes": 645,
+    "note_status_review": 645,
+    "note_status_canonical": 0,
+    "sources": 222,
+    "retrieval_cases": 1982
+  },
+  "allowed_paths": [
+    "Docs/Second-Brain/2_Wiki/**/*.md",
+    "each registered note's reference_path mirror",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Apps/SecondBrain/**",
+    "Tools/Curriculum/Build/promote_second_brain_canonical.py",
+    "Tools/Curriculum/Build/validate_second_brain_canonical.py",
+    "Tools/Curriculum/Manifests/Academic/second-brain-official-apps-*",
+    "package.json",
+    "package-lock.json"
+  ],
+  "forbidden_paths": [
+    "Material/Reference_temp/**",
+    "Docs/Second-Brain/1_Nguon/**",
+    "Docs/Second-Brain/3_Toi/**",
+    "curriculum lesson, slide, quiz and homework content",
+    "public hosting or external synchronization"
+  ],
+  "recovery": "Promotion and app generation are deterministic; registered note bodies remain source-controlled and reference mirrors remain byte-identical.",
+  "deletions": []
+}

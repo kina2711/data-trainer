@@ -1,0 +1,22 @@
+task_id: dns-resolution-note-2026-09-27
+task_type: book-build-second-brain-pack
+objective: Convert Kurose and Ross section 2.4 into one detailed, humanized Vietnamese reference and Obsidian Wiki note about DNS resolution, delegation, records, caching, and operational limits.
+source:
+  source_id: PACK-OS_NETWORK-BOOK-03
+  scope: section 2.4, printed pages 152-164, PDF pages 154-166
+  rights: private-owner-provided-no-public-redistribution
+success_criteria:
+  - Cover DNS purpose, distributed hierarchy, recursive and iterative resolution, delegation, resource records, TTL, cache, authoritative data, and message structure.
+  - Separate textbook claims from operational synthesis and unsupported modern behavior.
+  - Include failure analysis, evidence checklist, misconceptions, limitations, and retrieval questions.
+  - Preserve qualifiers and technical terms through a Vietnamese Humanizer pass.
+  - Keep the project Reference, staging Wiki, and canonical Obsidian copy byte-identical.
+validation:
+  - Source hash matches the registered source.
+  - All 13 PDF pages in scope contain extractable text.
+  - Frontmatter, stable IDs, claim types, locators, internal links, manifest counts, and Markdown fences validate.
+  - Retrieval tests cover resolver path, delegation, TTL/cache divergence, and limits of one DNS observation.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "task_id": "academic-source-selection-v2",
+  "verified_on": "2026-09-27",
+  "commands": [
+    "python3 -m py_compile Tools/Curriculum/Build/source_blueprint_v2.py Tools/Curriculum/Build/build_source_plan.py Tools/Curriculum/Validators/validate_source_plan.py",
+    "make source-plan",
+    "make source-acquisition",
+    "make test"
+  ],
+  "results": {
+    "python_compile": "pass",
+    "source_plan": "pass",
+    "source_acquisition": "pass-32-of-32-books-acquired",
+    "repository_test": "pass-with-existing-warning"
+  },
+  "coverage": {
+    "catalog_entries": 230,
+    "programmes": 2,
+    "phases": 14,
+    "modules": 40,
+    "lessons": 525,
+    "minimum_per_module_and_lesson": {
+      "books": 3,
+      "documents": 3,
+      "websites": 3,
+      "videos": 3,
+      "coursera_course_paths": 1
+    }
+  },
+  "known_warning": "Material/DA/Roadmap/roadmap.md approval hash was already stale; repository structure remains internally consistent.",
+  "acquisition": {
+    "reference_temp_pdfs": 35,
+    "parseable_pdfs": 35,
+    "required_books_acquired": 32,
+    "required_books_missing": 0,
+    "required_book_supporting_code_only": 0,
+    "supplemental_de_library_files": 2083
+  },
+  "reading_started": false
+}

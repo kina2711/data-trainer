@@ -1,0 +1,48 @@
+{
+  "batch": "L176-L180",
+  "read_on": "2026-10-02",
+  "method": "bounded local PDF reading retained from the source pack plus current official dbt, PostgreSQL and OWASP documentation",
+  "sources": [
+    {
+      "source_id": "src.book.kimball-ross-data-warehouse-toolkit.3e",
+      "pdf_pages": "78-90, 96-112, 178-188, 245-255, 280-291",
+      "topics": ["grain", "fact/dimension joins", "additivity", "aggregate tables", "control totals"]
+    },
+    {
+      "source_id": "src.book.reis-housley-fundamentals-data-engineering",
+      "pdf_pages": "429-451, 473-491",
+      "topics": ["semantic and metrics layers", "serving", "consumers", "operational responsibility"]
+    },
+    {
+      "source_id": "src.web.dbt-semantic-models",
+      "locator": "Semantic Layer overview lines 85-122; cache page lines 88-201; administration page lines 87-203; MetricFlow concepts and commands, inspected 2026-10-02",
+      "topics": ["query compilation", "validation", "generated SQL", "result and declarative cache", "cache invalidation", "credentials", "API serving"]
+    },
+    {
+      "source_id": "src.web.postgresql-17-query-expressions",
+      "locator": "PostgreSQL 17 table-expression and SELECT logical processing",
+      "topics": ["joins", "filter scope", "grouping", "logical versus physical processing"]
+    },
+    {
+      "source_id": "src.web.postgresql-17-aggregate-functions",
+      "locator": "PostgreSQL 17 aggregate functions",
+      "topics": ["sum", "count", "average", "null and empty-set behavior"]
+    },
+    {
+      "source_id": "src.web.postgresql-17-row-security",
+      "locator": "PostgreSQL 17 Row Security Policies lines 20-57 and 156-185, inspected 2026-10-02",
+      "topics": ["default deny", "USING and WITH CHECK", "permissive and restrictive policies", "bypass roles", "silent row filtering", "covert channels"]
+    },
+    {
+      "source_id": "src.web.owasp-authorization-cheat-sheet",
+      "locator": "Authorization Cheat Sheet lines 194-240, inspected 2026-10-02",
+      "topics": ["authentication versus authorization", "least privilege", "deny by default", "validate every request", "defense in depth"]
+    }
+  ],
+  "limitations": [
+    "No MetricFlow command, warehouse query, execution plan, cache benchmark or access-control lab was run",
+    "Static-test, reconciliation, performance and authorization sections define executable protocols; they are not measured production results",
+    "Minimum group size is documented as a partial inference control, not a complete privacy guarantee",
+    "No Coursera material was accessed in this batch"
+  ]
+}

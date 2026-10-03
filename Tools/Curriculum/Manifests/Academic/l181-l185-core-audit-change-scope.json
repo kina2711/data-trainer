@@ -1,0 +1,27 @@
+{
+  "control": "core-audit-change-scope",
+  "contract_id": "de-l181-l185-deep-note-release",
+  "executed_at": "2026-10-02T03:10:00+07:00",
+  "method": "explicit write-set review against l181-l185-deep-note-release-change-scope.json",
+  "result": "pass",
+  "observed_write_classes": [
+    "L181-L185 note.md and after-note.md",
+    "knowledge notes 69-73",
+    "five byte-identical Wiki notes",
+    "four new source records and five backlink updates under Docs/Second-Brain/1_Nguon",
+    "Second Brain manifest",
+    "batch generator and validator",
+    "batch academic evidence manifests"
+  ],
+  "forbidden_write_checks": {
+    "quiz.md": "not targeted by generator or patches",
+    "homework.md": "not targeted by generator or patches",
+    "slides.md": "not targeted by generator or patches",
+    "lesson.yaml": "not targeted by generator or patches",
+    "Material/DA": "not targeted by generator or patches"
+  },
+  "limitations": [
+    "Repository already contained a large pre-existing migration diff, so repository-wide git diff cannot attribute changes to this batch",
+    "Audit therefore uses the batch's explicit write set and deterministic generator targets"
+  ]
+}

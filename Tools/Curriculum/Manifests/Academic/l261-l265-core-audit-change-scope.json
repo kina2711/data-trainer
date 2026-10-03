@@ -1,0 +1,15 @@
+{
+  "control": "core-audit-change-scope",
+  "contract_id": "de-l261-l265-deep-note-release",
+  "executed_at": "2026-10-02T23:59:51+07:00",
+  "result": "pass",
+  "method": "explicit deterministic writer target audit in a repository with unrelated pre-existing changes",
+  "allowed_changes": {
+    "curriculum": ["L261-L265 note.md and after-note.md"],
+    "reference_notes": ["149-seven-part-incremental-proof.md through 153-documentation-exposures-lineage-artifacts.md"],
+    "second_brain": ["3 source records", "5 Wiki notes", "second-brain-manifest.json"],
+    "tooling_and_evidence": ["promote_l261_l265_notes.py", "validate_l261_l265_notes.py", "shared humanizer generator and prose gate", "L261-L265 contract and audit records"]
+  },
+  "forbidden_targets_written": [],
+  "notes": ["Writer targets only source records, Reference, Wiki, note.md, after-note.md and manifest.", "quiz.md, homework.md, slides.md, lesson.yaml, diagrams and Material/DA are not writer targets."]
+}

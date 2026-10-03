@@ -1,0 +1,35 @@
+task_id: b01-de-foundation-source-notes-2026-09-27
+atomic_task: book-build-curriculum-pack
+state: in-progress
+profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G4-test
+primary_deliverable: Tools/Curriculum/Manifests/Academic/b01-foundation-progress.json
+evidence:
+  source_manifest: Tools/Curriculum/Manifests/Academic/supplemental-source-manifest-v1.json
+  objectives: Tools/Curriculum/Manifests/Academic/objectives.json
+  computer_architecture_note: Material/DE/Reference/Library/Source-Notes/SUP-958EE285975F3184.md
+  operating_system_note: Material/DE/Reference/Library/Source-Notes/SUP-E8CCE26D3340FE69.md
+  computer_network_note: Material/DE/Reference/Library/Source-Notes/SUP-9F9208D0D77C8CA7.md
+tests:
+  - batch_source_count_reconciliation
+  - source_id_foreign_key_validation
+  - source_file_sha256_validation
+  - objective_id_foreign_key_validation
+  - markdown_whitespace_validation
+progress:
+  source_count: 7
+  scoped_deep_read_complete: 3
+  unread: 3
+  ocr_required: 1
+approval:
+  intake_authority: granted-by-user
+  public_distribution: not-authorized
+residual_risks:
+  - Four B01 sources have not yet received scoped deep reading.
+  - The DSA source requires OCR before content mapping.
+  - Two completed notes use private copies carrying third-party sharing-site watermarks; redistribution rights are unverified.
+  - Older sources provide theory but require current official documentation and reproducible labs for operational objectives.
+next_task: Continue B01 with the relational database and distributed database sources, then the OOP source; OCR the DSA source separately.
+owner: Codex prepares source notes; repository owner controls baseline approval and publication.

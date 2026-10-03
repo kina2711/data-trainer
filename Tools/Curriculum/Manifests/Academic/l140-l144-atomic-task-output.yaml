@@ -1,0 +1,27 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 140-144
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l140-l144-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l140-l144-release-audit.md
+  fingerprint: 1a16ad3287a68429a7b74ed4337e0df779615569c5c71288065c72904d3f900e
+tests:
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  database_labs: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-11-of-11
+residual_risks:
+  - DBMS behavior outside PostgreSQL 17.10 requires dialect-specific verification
+  - no performance or failure-recovery claim has runtime evidence yet
+owner: kina2711
+next_task: owner reviews L140-L144 semantics, then continue the next requested lesson batch

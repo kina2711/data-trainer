@@ -1,0 +1,103 @@
+schema_version: 2
+lesson_id: DE-L001
+title: From a vague request to a testable contract
+status: ready-for-owner-review
+lifecycle_profile: learning
+risk_tier: R2-standard
+target_level: Foundation
+duration_minutes_estimate: 120
+central_question: Làm sao biến yêu cầu kỹ thuật mơ hồ thành behavior và acceptance check có thể tái hiện?
+objective: Viết testable contract khóa decision, boundary, input/output, invariants, failure behavior và evidence
+  trước mutation.
+prerequisites:
+- 'Foundation: đọc được pseudocode, bảng dữ liệu và command-line cơ bản; chưa giả định kinh nghiệm production.'
+learner_memory:
+  resolved: false
+  assumption: No prior mastery claimed; teach and assess the named prerequisites.
+scenes:
+- id: S01
+  type: explain
+  minutes: 10
+  claim: Yêu cầu 'đồng bộ orders nhanh và không trùng' không nói nhanh bao nhiêu, order nào, identity nào hay retry
+    sau timeout phải quan sát gì.
+  source_span: note.md — heading '1. Bắt đầu từ quyết định, không bắt đầu từ giải pháp'
+  misconception_displaced: Có thể bắt đầu bằng công cụ/output trước khi khóa câu hỏi và boundary.
+- id: S02
+  type: explain
+  minutes: 18
+  claim: Contract kiểm thử được mô tả behavior quan sát được trong boundary rõ, gồm precondition, input, transformation,
+    expected output, failure semantics và acceptance evidence.
+  source_span: note.md — heading '2. Sáu phần của một phát biểu kiểm thử được'
+  misconception_displaced: Viết acceptance bằng từ mơ hồ như nhanh/ổn định, hoặc để implementation tự quyết semantics.
+- id: S03
+  type: check
+  minutes: 7
+  question: Một expected output tốt phải có tính chất gì?
+  answer: Hai reviewer độc lập suy ra cùng kết quả từ cùng fixture.
+  wrong_answer_reveals: Người học nhớ từ khóa nhưng chưa nắm claim trung tâm.
+  source_span: note.md — heading '2. Sáu phần của một phát biểu kiểm thử được'
+- id: S04
+  type: practice
+  minutes: 18
+  task: Biến sáu câu requirement mơ hồ thành Given/When/Then có fixture, invariant và failure path.
+  success_condition: Mỗi check có input cụ thể, expected result duy nhất, oracle và requirement ID; không dùng từ
+    định tính chưa có threshold.
+  source_span: UNSOURCED — guided practice synthesized from the lesson objective and source-backed mechanism
+- id: S05
+  type: explain
+  minutes: 15
+  claim: Nếu thiếu identity, state transition hoặc failure semantics thì dừng; nếu chỉ thiếu threshold tối ưu có
+    thể pilot trong bounded range và giữ reversal trigger.
+  source_span: note.md — heading '3. Từ requirement tới acceptance check'
+  misconception_displaced: Một rule hoặc tool luôn đúng bất kể changed constraint.
+- id: S06
+  type: decide
+  minutes: 12
+  situation: Khi SLO từ 10 phút xuống 30 giây, contract buộc lộ thay đổi kiến trúc thay vì coi đây là tuning nhỏ.
+  trade_off: Contract tốt không thay thế thiết kế hay test runtime; nó định nghĩa điều các bước đó phải chứng minh.
+  defensible_choices: Lựa chọn phải giữ hard constraints, nêu evidence và reversal trigger.
+  source_span: UNSOURCED — changed-constraint decision scenario synthesized for transfer
+- id: S07
+  type: explain
+  minutes: 15
+  claim: 'Worked example: Định nghĩa order identity = source + order_id; event time và D+1 cutoff. Success: mỗi
+    identity xuất hiện đúng một lần ở curated table trong 10 phút. Timeout có outcome unknown; retry phải idempotent
+    và đối soát bằng run_id. Non-goal: không backfill trước ngày X; change request nếu stakeholder mở rộng.'
+  source_span: note.md — heading '6. Definition of Ready và điểm dừng'
+  misconception_displaced: Một case thành công tự chứng minh cơ chế tổng quát.
+- id: S08
+  type: apply
+  minutes: 18
+  task: API trả 202 nhưng commit outcome unknown. Định nghĩa behavior client, idempotency key và evidence phân biệt
+    accepted với completed.
+  assumes:
+  - S02
+  - S04
+  - S05
+  - S06
+  - S07
+  success_condition: Artifact nêu boundary, evidence, lựa chọn, rejected alternative và condition làm quyết định
+    đảo.
+  source_span: UNSOURCED — curriculum transfer scenario synthesized from the lesson contract
+- id: S09
+  type: check
+  minutes: 7
+  question: Vì sao 'pipeline không được trùng dữ liệu' chưa phải acceptance criterion?
+  answer: Chưa có identity, boundary, time, trạng thái và phép đếm/oracle nên không thể tạo expected output duy
+    nhất.
+  wrong_answer_reveals: Người học chưa chuyển mental model sang tình huống mới.
+  source_span: note.md — heading '8. Failure modes và ngộ nhận'
+assessment:
+  formative: quiz.md — 10 questions, pass >= 8/10; failed concepts receive targeted remediation and one retest.
+  authentic: homework.md — artifact scored on a 100-point analytic rubric; pass >= 75 and no critical failure.
+  mastery_claim: None. Package readiness and learner mastery are separate evidence states.
+publish:
+  note: true
+  slides: true
+  quiz: true
+  homework: true
+  after_note: true
+  answer_key: true
+unused_source_spans:
+- Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension/remediation; the 120-minute session
+  samples rather than recites every probe.

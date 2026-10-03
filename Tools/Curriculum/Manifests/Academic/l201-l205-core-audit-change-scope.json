@@ -1,0 +1,19 @@
+{
+  "control": "core-audit-change-scope",
+  "contract_id": "de-l201-l205-deep-note-release",
+  "executed_at": "2026-10-01T23:55:00+07:00",
+  "result": "pass",
+  "method": "explicit write-set audit against generator targets and apply_patch paths because unrelated pre-existing repository changes may exist",
+  "allowed_changes": {
+    "curriculum": ["L201 note.md/after-note.md", "L202 note.md/after-note.md", "L203 note.md/after-note.md", "L204 note.md/after-note.md", "L205 note.md/after-note.md"],
+    "reference_notes": ["89-capstone-governed-customer-health-data-product.md", "90-gate-5-metric-definition-self-service.md", "91-oltp-olap-workload-before-product-name.md", "92-row-column-layout-isolating-physical-layout.md", "93-encoding-compression-choosing-data-shape.md"],
+    "second_brain": ["4 new source records", "5 Wiki notes", "8 existing source backlink/locator updates", "second-brain-manifest.json"],
+    "tooling_and_evidence": ["promote_l201_l205_notes.py", "validate_l201_l205_notes.py", "L201-L205 contract and audit records"]
+  },
+  "forbidden_targets_written": [],
+  "notes": [
+    "Generator targets only Reference, Wiki, note.md, after-note.md and manifest.",
+    "quiz.md, homework.md, slides.md, lesson.yaml, diagrams and Material/DA are not generator targets.",
+    "The failed first validator run was caused by an invalid assumed diagram filename; no diagram was created, changed or removed."
+  ]
+}

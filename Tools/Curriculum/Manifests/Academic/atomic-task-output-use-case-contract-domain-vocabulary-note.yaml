@@ -1,0 +1,71 @@
+task_id: use-case-contract-domain-vocabulary-note-2026-09-28
+task_type: book-build-second-brain-pack
+status: completed-awaiting-owner-review
+completed_at: 2026-09-28T00:35:50+07:00
+sources:
+  - source_id: src.book.boyle-ddd-golang.1e
+    title: "Domain-Driven Design with Golang"
+    scope: "chapter 2 domain, sub-domain, ubiquitous language, capture practice, warning, and bounded-context boundary; PDF pages 30-42"
+    pages_expected: 13
+    pages_with_extractable_text: 13
+    sha256: cd192e3bf55b81ffee79b072ac4301fc57d5e7658c532af11dfacccc4347b37a
+  - source_id: src.book.sommerville-software-engineering.10e
+    title: "Software Engineering, Tenth Global Edition"
+    scope: "chapter 4 requirements and functional requirements, PDF pages 103-109; stories, scenarios, specification, use cases, and validation, PDF pages 120-132"
+    pages_expected: 20
+    pages_with_extractable_text: 20
+    sha256: 6ef529013a779267114ecfffe663a0f8807e642caaabd226c5f59b2dee69cfb4
+  - source_id: src.course.hcmut-program-verification.2020
+    title: "Program Verification, Mathematical Modeling CO2011"
+    scope: "assertions, Hoare triples, precondition, postcondition, partial correctness, and total correctness; PDF pages 18-30"
+    pages_expected: 13
+    pages_with_extractable_text: 13
+    sha256: a6a40298ede89e6489f2be0aac5d274037b412ac4f48c7109d361693dea08f6f
+artifacts:
+  reference_note: Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/01-use-case-entry-point-contract-domain-vocabulary.md
+  staging_wiki_note: "Docs/Second-Brain/2_Wiki/Ky-nghe-phan-mem/Từ use case đến hợp đồng điểm vào và từ vựng miền.md"
+  canonical_wiki_note: "/media/kina2711/DATA/2026/Second_Brain/2_Wiki/Ky-nghe-phan-mem/Từ use case đến hợp đồng điểm vào và từ vựng miền.md"
+  note_sha256: 27e54fd23ea6abbe0df41818bc5b6a9b1c8a0ec4dba815bf52bb474c2f7a5b5f
+metrics:
+  lines: 757
+  words: 6107
+  bytes: 39944
+  source_fact_callouts: 4
+  inference_callouts: 2
+  synthesis_callouts: 3
+  uncertainty_callouts: 1
+  diagrams: 3
+coverage:
+  - Story, scenario, use case, requirement, and entry-point-contract boundaries
+  - Domain, sub-domain, bounded context, ubiquitous language, and glossary lifecycle
+  - Four-part contract with typed input/output, preconditions, postconditions, side effects, and error semantics
+  - Hoare triples and the distinction between partial and total correctness
+  - Invariant, atomic versus eventual effects, idempotency, version conflict, and unknown outcome
+  - Five complete ordering-system entry-point contracts and a comparison matrix
+  - Ten-step DE-L089 workflow, cross-review rubric, misconceptions, limits, and review questions
+validation:
+  all_source_hashes_registered: pass
+  page_coverage_46_of_46: pass
+  frontmatter_parse: pass
+  manifest_json_parse: pass
+  manifest_counts_7_sources_12_notes_72_tests: pass
+  duplicate_registry_ids: pass
+  reference_staging_byte_identity: pass
+  wikilinks_5_of_5_resolve: pass
+  required_term_retrieval_smoke: pass
+  markdown_fences_balanced: pass
+  git_diff_check: pass
+  humanizer_pattern_scan: pass
+  canonical_sync: pass
+limits:
+  - The five ordering contracts are teaching specifications; no implementation or executable tests were run.
+  - No real domain expert validated the ordering vocabulary or policies.
+  - Error taxonomy is intentionally incomplete because expected failure versus defect is owned by DE-L092.
+  - The DDD book file path indicates unverified distribution provenance and is restricted to private use.
+  - The Sommerville PDF metadata shows post-publication PDF modification; checksum identifies the inspected file but does not prove byte identity with Pearson's original.
+  - Program Verification uses a simplified core language; its formal results are not directly generalized to networked and concurrent services.
+  - Canonical-vault backup and restore status is inherited and remains unverified.
+review_gate:
+  profile: R2-standard
+  quality_gate: G4
+  next_state: owner-review

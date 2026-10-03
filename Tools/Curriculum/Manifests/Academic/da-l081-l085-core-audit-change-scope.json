@@ -1,0 +1,18 @@
+{
+  "task_id": "core-audit-change-scope",
+  "instance_id": "data-analyst-l081-l085",
+  "status": "pass",
+  "requested_lessons": {"start": 81, "end": 85, "count": 5},
+  "batch_size": 5,
+  "batches": ["081-085"],
+  "material_changes": [
+    "5 curriculum note.md files",
+    "5 curriculum after-note.md files",
+    "5 Reference knowledge notes",
+    "5 byte-identical Wiki mirrors",
+    "Second Brain manifest",
+    "terminal prerequisite edge for L085"
+  ],
+  "unrelated_dirty_worktree_changes_modified": false,
+  "deletions": []
+}

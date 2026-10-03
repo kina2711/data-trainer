@@ -1,0 +1,22 @@
+task_id: tcp-reliability-note-2026-09-27
+task_type: book-build-second-brain-pack
+objective: Convert Kurose and Ross section 3.5 into one detailed, humanized Vietnamese reference and Obsidian Wiki note about TCP connection state, byte-stream sequencing, RTT/RTO, reliable transfer, flow control, and connection management.
+source:
+  source_id: PACK-OS_NETWORK-BOOK-03
+  scope: section 3.5, printed pages 257-284, PDF pages 259-286
+  rights: private-owner-provided-no-public-redistribution
+success_criteria:
+  - Cover full-duplex byte stream, socket endpoints, segment anatomy, sequence and ACK semantics, RTT estimation, timeout, retransmission, cumulative ACK, fast retransmit, receive window, handshake, and teardown.
+  - Keep flow control distinct from congestion control.
+  - Include packet-trace reading rules, failure analysis, operational limits, and explicit source gaps.
+  - Preserve formulas, qualifiers, and terminology through a Vietnamese Humanizer pass.
+  - Keep Reference, staging Wiki, and canonical Obsidian copies byte-identical.
+validation:
+  - Source hash matches the registered source.
+  - All 28 PDF pages in scope contain extractable text.
+  - Frontmatter, IDs, claim types, locators, links, manifest counts, formulas, and fences validate.
+  - Retrieval tests cover ACK meaning, RTT/RTO, retransmission ambiguity, flow-control stalls, and connection teardown.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

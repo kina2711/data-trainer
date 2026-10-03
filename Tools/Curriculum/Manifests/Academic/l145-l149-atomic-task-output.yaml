@@ -1,0 +1,27 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 145-149
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l145-l149-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l145-l149-release-audit.md
+  fingerprint: 6e19ef3f1f6b5686a8b86cf8f0d5a8ad80897e2b0cf289aa9267d4cd3d59734e
+tests:
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  restore_and_database_labs: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-12-of-12
+residual_risks:
+  - runtime RPO/RTO and operational thresholds have no lab evidence yet
+  - the seven-step protocol is curriculum synthesis and needs owner semantic review
+owner: kina2711
+next_task: owner reviews L145-L149, then continue the next requested lesson batch

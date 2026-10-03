@@ -1,0 +1,10 @@
+{
+  "batch": "L246-L250",
+  "read_at": "2026-10-02",
+  "method": "bounded deep reading of official documentation plus existing offline book records",
+  "new_sources": [
+    {"source_id": "src.web.dbt-incremental-models", "scope": ["incremental conditions", "unique_key", "adapter strategies", "full refresh and predicates"]}
+  ],
+  "reused_sources": ["src.book.reis-housley-fundamentals-data-engineering", "src.book.kleppmann-ddia.1e", "src.web.aws-timeouts-retries-backoff", "src.web.airbyte-schema-change-management", "src.web.postgresql-transactions", "src.web.apache-iceberg-reliability", "src.web.stripe-idempotent-requests", "src.web.google-sre-postmortem-culture"],
+  "limitations": ["No live game day or engine benchmark was executed", "Atomicity claims remain scoped to documented engine or catalog boundaries", "Adapter behavior must be verified against the selected warehouse version"]
+}

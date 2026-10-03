@@ -1,0 +1,47 @@
+{
+  "control": "core-verify-deliverable",
+  "contract_id": "de-l191-l195-deep-note-release",
+  "executed_at": "2026-10-01T21:40:00+07:00",
+  "result": "pass",
+  "checks": [
+    {
+      "name": "generator_check",
+      "command": "python3 Tools/Curriculum/Build/promote_l191_l195_notes.py --check",
+      "result": "checked=20 stale=0"
+    },
+    {
+      "name": "batch_validator",
+      "command": "python3 Tools/Curriculum/Build/validate_l191_l195_notes.py",
+      "result": "PASS lessons=5 curriculum_files=10 knowledge_notes=5 min_words=2200 wiki_parity=5/5"
+    },
+    {
+      "name": "markdown_formatter",
+      "command": "python3 Tools/Curriculum/Build/format_knowledge_notes.py --check",
+      "result": "checked=320 failed=0"
+    },
+    {
+      "name": "whole_vault_coverage",
+      "command": "python3 Tools/Curriculum/Build/validate_knowledge_note_coverage.py",
+      "result": "checked=118 failed=0"
+    },
+    {
+      "name": "obsidian_checksum",
+      "command": "rsync -ani --checksum Docs/Second-Brain/ /media/kina2711/DATA/2026/Second_Brain/",
+      "result": "no output; source and destination identical"
+    }
+  ],
+  "manifest": {
+    "version": "1.0.38",
+    "sources": 82,
+    "notes": 118,
+    "retrieval_tests": 401
+  },
+  "deliverable_fingerprint": "ce47a54854b4da9259b769490d54cbddfcbc03a0ef2d5a68c19dc8dee0029c75",
+  "unrun": [
+    "timed documentation consumer test",
+    "two-round catalog findability test",
+    "documentation mutation gate in a product repository",
+    "live support-boundary exercise",
+    "participant usability study"
+  ]
+}

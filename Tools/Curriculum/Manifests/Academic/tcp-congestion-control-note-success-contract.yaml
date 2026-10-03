@@ -1,0 +1,24 @@
+task_id: tcp-congestion-control-note-2026-09-27
+task_type: book-build-second-brain-pack
+objective: Convert Kurose and Ross sections 3.6-3.7 into one detailed, humanized Vietnamese reference and Obsidian Wiki note about congestion causes and costs, classic TCP congestion control, network-assisted control, throughput and fairness.
+source:
+  source_id: PACK-OS_NETWORK-BOOK-03
+  scope: sections 3.6-3.7, printed pages 285-309 up to the section 3.8 heading, PDF pages 287-311
+  rights: private-owner-provided-no-public-redistribution
+success_criteria:
+  - Explain the three congestion scenarios and retain their assumptions, formulas, costs, and limits.
+  - Distinguish end-to-end from network-assisted congestion control and flow control from congestion control.
+  - Cover cwnd, flight-size constraint, slow start, congestion avoidance, multiplicative decrease, fast recovery, timeout behavior, and throughput approximation.
+  - Cover ECN, delay-based control, fairness assumptions, RTT bias, parallel connections, and UDP qualification.
+  - Include trace-reading rules, operational failure analysis, changed-scenario application, and explicit source gaps.
+  - Preserve formulas, qualifiers, and terminology through a Vietnamese Humanizer pass.
+  - Keep Reference, staging Wiki, and canonical Obsidian copies byte-identical.
+validation:
+  - Source hash matches the registered source.
+  - All 25 PDF pages in scope contain extractable text.
+  - Frontmatter, IDs, claim types, locators, links, manifest counts, formulas, and fences validate.
+  - Retrieval tests cover offered load versus goodput, cwnd versus rwnd, slow start, AIMD, ECN, delay-based control, and fairness limits.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

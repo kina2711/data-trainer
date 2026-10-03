@@ -1,0 +1,53 @@
+task_id: tcp-reliability-note-2026-09-27
+task_type: book-build-second-brain-pack
+status: completed-awaiting-owner-review
+completed_at: 2026-09-27T20:05:30+07:00
+source:
+  source_id: src.book.kurose-ross-networking.8e
+  title: "Computer Networking: A Top-Down Approach, Eighth Global Edition"
+  scope: "section 3.5, printed pages 257-284, PDF pages 259-286"
+  pages_expected: 28
+  pages_with_extractable_text: 28
+  sha256: ed41334ecf228e6733f4f50bb73fbcb0624145c6c2a51c8e779f2f65cfc01018
+artifacts:
+  reference_note: Material/DE/Reference/Library/Knowledge-Notes/PACK-OS_NETWORK-BOOK-03/04-tcp-reliability-rtt-flow-control.md
+  staging_wiki_note: "Docs/Second-Brain/2_Wiki/Mang-may-tinh/TCP reliability RTT RTO và flow control.md"
+  canonical_wiki_note: "/media/kina2711/DATA/2026/Second_Brain/2_Wiki/Mang-may-tinh/TCP reliability RTT RTO và flow control.md"
+  note_sha256: 4faa40073acda7de19f7c683f60690dc9499527f407c94b7ac2ec229471af6cd
+metrics:
+  lines: 554
+  words: 4431
+  bytes: 28607
+  source_fact_callouts: 12
+  synthesis_callouts: 1
+  uncertainty_callouts: 1
+  diagrams: 2
+coverage:
+  - TCP connection, socket endpoints, full-duplex byte stream, send and receive buffers
+  - Segment anatomy, MSS versus MTU, sequence and cumulative ACK semantics
+  - SampleRTT, EstimatedRTT, DevRTT, RTO and exponential backoff
+  - Timeout recovery, duplicate ACK, fast retransmit and GBN/SR comparison
+  - Receive window, zero-window recovery and flow versus congestion control
+  - Three-way handshake, FIN teardown, TIME_WAIT, CLOSE_WAIT, RST and SYN flood
+  - Packet-trace reading workflow, failure matrix, misconceptions and review questions
+validation:
+  source_hash_registered: pass
+  page_coverage: pass
+  frontmatter_parse: pass
+  manifest_json_parse: pass
+  duplicate_registry_ids: pass
+  reference_staging_byte_identity: pass
+  wikilinks_resolve: pass
+  required_term_retrieval_smoke: pass
+  markdown_fences_balanced: pass
+  git_diff_check: pass
+  humanizer_pattern_scan: pass
+limits:
+  - No live packet capture or kernel-level lab was executed in this unit.
+  - Kernel-specific timer, option and SYN-cookie behavior requires current primary documentation.
+  - TCP congestion control is intentionally deferred to the next source unit, sections 3.6-3.7.
+  - Canonical-vault backup and restore status is inherited and remains unverified.
+review_gate:
+  profile: R2-standard
+  quality_gate: G4
+  next_state: owner-review

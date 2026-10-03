@@ -1,0 +1,24 @@
+task_id: book-inventory-supplemental-source-collection-2026-09-27
+task_type: book-inventory-source-collection
+profile: advisory-analysis
+risk_tier: R0-light
+objective: Inventory the eleven user-supplied offline source roots without modifying their contents.
+success_criteria:
+  - Every regular file below the supplied roots is represented or recorded as an inventory error.
+  - Each file records absolute path, source root, relative path, size, extension, modification time and SHA-256.
+  - Exact duplicate groups are identified by SHA-256.
+  - Academic documents, course media, transcripts, code/labs, companions and binary/runtime artifacts are distinguishable.
+  - Inventory status does not imply that content has been read, accepted, licensed for redistribution or mapped to an objective.
+validation:
+  - Manifest JSON parses.
+  - File and byte totals reconcile with a fresh filesystem walk.
+  - Duplicate groups contain only identical SHA-256 values.
+approval:
+  requested_by: user
+  authority: Read all supplied offline source directories and convert suitable material into references later.
+out_of_scope:
+  - Editing, moving or deleting source files.
+  - Content claims based only on filenames.
+  - Redistributing copyrighted files.
+  - Deep reading or curriculum mapping in this inventory task.
+

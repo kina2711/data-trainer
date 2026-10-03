@@ -1,0 +1,18 @@
+{
+  "contract_id": "de-l201-l205-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/Lesson_201-capstone-a-governed-customer-health-data-product",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/Lesson_202-gate-5-defend-a-metric-definition-and-prove-self-service",
+    "Material/DE/Curriculum/Phase_06-analytical-storage-and-query-engines/Module_14-olap-internals-and-analytical-engines/Lesson_203-oltp-against-olap-the-workload-is-the-difference",
+    "Material/DE/Curriculum/Phase_06-analytical-storage-and-query-engines/Module_14-olap-internals-and-analytical-engines/Lesson_204-row-and-column-layout",
+    "Material/DE/Curriculum/Phase_06-analytical-storage-and-query-engines/Module_14-olap-internals-and-analytical-engines/Lesson_205-encoding-and-compression",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l201_l205_notes.py",
+    "Tools/Curriculum/Build/validate_l201_l205_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": ["**/quiz.md", "**/homework.md", "**/slides.md", "**/lesson.yaml", "**/*.drawio", "Material/DA/**"]
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "de-l401-l410-note-promotion",
+  "status": "pass",
+  "requested_range": [401, 410],
+  "execution_batches": [[401, 405], [406, 410]],
+  "affected_artifacts": {"curriculum_notes": 20, "reference_notes": 10, "wiki_notes": 10, "new_source_records": 1, "batch_writers": 2, "shared_specs_added": 1, "shared_writer_extended": 1, "validators_added": 3, "validator_extended": 1},
+  "unrelated_worktree_changes_modified": false,
+  "deletions_performed": false,
+  "scope_finding": "All written artifacts trace to lessons 401-410, their official source lineage, deterministic validation, or required release evidence."
+}

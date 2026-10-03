@@ -1,0 +1,45 @@
+task_id: academy-build-scene-package
+instance_id: da-de-first-5-runnable-lecture-pack
+status: ready-for-owner-review
+learner_profile:
+  audience: Foundation learners entering Data Analyst or Data Engineer tracks
+  prior_mastery: unresolved
+  mastery_claimed: false
+inputs:
+  canonical_notes: 10
+  programmes:
+    - DA lessons 001-005
+    - DE lessons 001-005
+outputs:
+  lesson_packages: 10
+  lesson_blueprints: 10
+  scenes: 90
+  slide_decks: 10
+  slides: 170
+  quizzes: 10
+  quiz_questions: 100
+  authentic_homework_tasks: 10
+  after_lesson_guides: 10
+scene_contract:
+  vocabulary: [explain, check, practice, decide, apply]
+  duration_minutes_per_lesson: 120
+  source_traceability: exact local note heading or explicit UNSOURCED curriculum synthesis
+assessment_contract:
+  quiz_pass_threshold: 8/10
+  homework_pass_threshold: 75/100
+  critical_failure_rules: present
+  changed_constraint_transfer: present
+  remediation_and_retest: present
+validation:
+  deterministic_check: pass
+  marp_html_render: 10/10
+  marp_pdf_render: 10/10
+  visual_contact_sheet_review: pass
+approval:
+  current_gate: curriculum-owner semantic review
+  live_delivery_approved: false
+next_task: academy-review-and-approve-scene-package
+residual_risks:
+  - Timing needs calibration after the first facilitated pilot.
+  - Dev-only rendering dependencies currently report 1 moderate and 11 high transitive advisories.
+  - Rendering must remain limited to trusted local lesson sources until advisories are resolved upstream.

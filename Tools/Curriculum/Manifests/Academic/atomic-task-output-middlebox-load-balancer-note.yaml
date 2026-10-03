@@ -1,0 +1,56 @@
+task_id: middlebox-load-balancer-note-2026-09-27
+task_type: book-build-second-brain-pack
+status: completed-awaiting-owner-review
+completed_at: 2026-09-27T22:16:19+07:00
+source:
+  source_id: src.book.kurose-ross-networking.8e
+  title: "Computer Networking: A Top-Down Approach, Eighth Global Edition"
+  scope: "section 4.5, printed pages 390-393, PDF pages 392-395; section 6.6.1, printed pages 535-538, PDF pages 537-540"
+  pages_expected: 8
+  pages_with_extractable_text: 8
+  sha256: ed41334ecf228e6733f4f50bb73fbcb0624145c6c2a51c8e779f2f65cfc01018
+artifacts:
+  reference_note: Material/DE/Reference/Library/Knowledge-Notes/PACK-OS_NETWORK-BOOK-03/07-proxy-middlebox-load-balancer-boundaries.md
+  staging_wiki_note: "Docs/Second-Brain/2_Wiki/Mang-may-tinh/Proxy middlebox và load balancer - ranh giới kết nối.md"
+  canonical_wiki_note: "/media/kina2711/DATA/2026/Second_Brain/2_Wiki/Mang-may-tinh/Proxy middlebox và load balancer - ranh giới kết nối.md"
+  note_sha256: a61bc04da18b3d6359f3d74a006a605548d7eac5439c6820b4d829a9477a451b
+metrics:
+  lines: 527
+  words: 4291
+  bytes: 28401
+  source_fact_callouts: 12
+  inference_callouts: 2
+  synthesis_callouts: 5
+  uncertainty_callouts: 3
+  diagrams: 2
+coverage:
+  - Middlebox definition and NAT, security, and performance-enhancement classes
+  - Forward, translate, filter, inspect, terminate, and re-originate behavior taxonomy
+  - Architectural layering, end-to-end argument, NFV, and source boundaries
+  - Data-center external and internal traffic, public-to-internal load balancing, and reverse translation
+  - Layer-4 ambiguity, TCP splitting, TLS termination, connection tables, and identity boundaries
+  - Hierarchy, oversubscription, redundancy, path diversity, and failure-domain questions
+  - Timeout and retry ownership, health-check limits, observability workflow, and failure matrix
+  - Changed scenarios, misconceptions, review questions, and vendor-documentation stop conditions
+validation:
+  source_hash_registered: pass
+  page_coverage: pass
+  frontmatter_parse: pass
+  manifest_json_parse: pass
+  duplicate_registry_ids: pass
+  reference_staging_byte_identity: pass
+  wikilinks_resolve: pass
+  required_term_retrieval_smoke: pass
+  locator_and_boundary_stop_condition_presence: pass
+  markdown_fences_balanced: pass
+  git_diff_check: pass
+  humanizer_pattern_scan: pass
+limits:
+  - No live proxy, NAT, firewall, load-balancer, packet-trace, or failover experiment was executed.
+  - The source does not specify forwarding mode, health checks, scheduling, affinity, retry, timeout, draining, client-IP trust, or TLS configuration for a current product.
+  - Production guidance requires configuration and official documentation for the deployed proxy or load balancer.
+  - Canonical-vault backup and restore status is inherited and remains unverified.
+review_gate:
+  profile: R2-standard
+  quality_gate: G4
+  next_state: owner-review

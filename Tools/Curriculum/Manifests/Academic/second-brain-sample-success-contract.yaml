@@ -1,0 +1,17 @@
+task_id: second-brain-sample-chapter-2026-09-27
+task_type: brain-distill-source-to-wiki-note
+objective: Create one detailed Vietnamese, source-grounded Obsidian Wiki chapter for owner review.
+success_criteria:
+  - The vault preserves the four-layer Second Brain boundary.
+  - The source record contains a stable ID, exact SHA-256, rights, edition, canonical path, extraction method, and limitations.
+  - The Wiki note has one primary concept, a stable note ID, typed links, claim classifications, page locators, and explicit uncertainty.
+  - The chapter is detailed enough to support retrieval and operational application without copying substantial source text.
+  - No curriculum lesson, roadmap, source PDF, web, or artifact is modified.
+validation:
+  - Obsidian links resolve within the sample vault.
+  - Source and note identifiers are unique.
+  - SHA-256 reconciles with source-acquisition-v2.json and the source file.
+  - Representative retrieval and abstention questions are answered by the note.
+approval:
+  sample_format: pending-owner-review
+  public_distribution: not-authorized

@@ -1,0 +1,25 @@
+{
+  "batch": "DE-L135-L139",
+  "captured": "2026-10-01",
+  "offline_ranges": [
+    {"source_id": "src.book.petrov-database-internals.1e", "locator": "PDF 117-130, 167-210", "pages_with_text": "58/58"},
+    {"source_id": "src.book.kleppmann-ddia.1e", "locator": "PDF 94-106", "pages_with_text": "13/13"},
+    {"source_id": "src.book.silberschatz-database-system-concepts.7e", "locator": "PDF 2144-2192, 2418-2462, 2982-3002", "pages_with_text": "115/115"},
+    {"source_id": "src.manual.postgresql-17.10", "locator": "PDF 543-550, 918-926", "pages_with_text": "17/17"},
+    {"source_id": "src.book.rogov-postgresql-14-internals", "locator": "PDF 164-196", "pages_with_text": "33/33"}
+  ],
+  "semantic_controls": [
+    "sequential writes are treated as a workload and storage-layer property, not a universal guarantee of lower latency",
+    "memtable durability depends on WAL and flush publication ordering",
+    "tombstones cannot be dropped until older values can no longer be resurrected",
+    "read, write and space amplification are defined with explicit numerator and denominator rather than inferred from throughput",
+    "compaction debt, cache regime and background I/O are controlled during engine comparison",
+    "group commit amortizes sync cost but does not promise lower latency for every transaction",
+    "asynchronous commit risks bounded recent data loss but differs from disabling fsync, which can risk corruption",
+    "PostgreSQL crash recovery uses REDO and MVCC transaction status; it does not run an ARIES-style physical undo phase",
+    "PostgreSQL checkpoints are paced intervals over pages dirty at checkpoint start, not a single instantaneous global flush",
+    "ACID consistency is split between engine-enforced constraints and application-defined invariants",
+    "commit acknowledgement boundary is distinguished from partial commit and external side effects"
+  ],
+  "coursera": "not used; deferred to module construction by owner policy"
+}

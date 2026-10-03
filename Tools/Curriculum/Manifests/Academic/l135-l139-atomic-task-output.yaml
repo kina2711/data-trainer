@@ -1,0 +1,25 @@
+task_id: brain-build-atomic-knowledge-note
+companion_task_id: book-fold-into-existing-system
+profile: build-change
+risk_tier: R2-standard
+phase_reached: release-handoff-pending-owner-review
+primary_deliverable: five governed atomic knowledge notes for DE L135-L139
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l135-l139-source-reading.json
+  success_contract: Tools/Curriculum/Manifests/Academic/l135-l139-deep-note-release-success-contract.yaml
+  scope_contract: Tools/Curriculum/Manifests/Academic/l135-l139-deep-note-release-change-scope.json
+  audit: Tools/Curriculum/Manifests/Academic/l135-l139-release-audit.md
+validation:
+  formatter: pass
+  generator_freshness: pass
+  batch_validator: pass
+  whole_vault_coverage: pass
+  manifest_integrity: pass
+  obsidian_checksum_sync: 11/11
+approval: pending-owner-semantic-review
+residual_risks:
+  - database labs, crash injection and measurements are not executed
+  - the LSM benchmark engine and version remain to be selected for the lab
+  - Coursera material is deferred by owner policy
+next_owner: kina2711
+next_task: semantic review of L135-L139 or continue with the next lesson batch

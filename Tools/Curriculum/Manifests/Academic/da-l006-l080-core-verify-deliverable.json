@@ -1,0 +1,22 @@
+{
+  "task_id": "core-verify-deliverable",
+  "instance_id": "data-analyst-l006-l080",
+  "status": "pass",
+  "manifest": {"version": "1.0.120", "sources": 204, "notes": 532, "retrieval_cases": 1643},
+  "tests": [
+    {"name": "batch_determinism_and_contract", "result": "15/15 batches pass; 75/75 lessons; 300 generated artifacts"},
+    {"name": "humanizer", "result": "75 checked; within-note repeats 0; cross-note repeats 0; prose tells 0"},
+    {"name": "markdown_formatter", "result": "1191 checked; 0 failed"},
+    {"name": "global_source_coverage", "result": "532 checked; 0 failed"},
+    {"name": "wiki_parity", "result": "75/75 byte-identical"},
+    {"name": "relationship_graph", "result": "006-080 unresolved edges 0"},
+    {"name": "registry_integrity", "result": "204 sources; 532 unique note ids; duplicate note ids 0"},
+    {"name": "da_skeleton_scan", "result": "80 complete; 5 pending; next L081"}
+  ],
+  "approval": "owner review pending",
+  "limitations": [
+    "Concept keys remain proposed and do not count as canonical registry coverage.",
+    "Labs are curriculum protocols, not claims of production execution or learner mastery.",
+    "DA lessons 081-085 remain skeletons and the final book/source audit has not run."
+  ]
+}

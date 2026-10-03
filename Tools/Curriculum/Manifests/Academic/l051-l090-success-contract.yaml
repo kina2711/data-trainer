@@ -1,0 +1,31 @@
+task_id: academy-build-note-module
+instance_id: engineering-foundation-l051-l090
+profile: learning
+risk_tier: R2-standard
+execution_path: standard-path
+objective: Promote lessons 51 through 90 in sequential five-lesson batches.
+consumer: Data Engineer learner using the local curriculum and Second Brain.
+owner: repository owner
+baseline:
+  manifest_version: 1.0.97
+  source_count: 195
+  note_count: 413
+  retrieval_count: 1286
+allowed_scope:
+  - Material/DE/Curriculum/Phase_02-machine-operating-system-and-network
+  - Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_089-*
+  - Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_090-*
+  - Material/DE/Reference/Library/Knowledge-Notes/PACK-ENGINEERING-FOUNDATION-01
+  - Docs/Second-Brain
+  - Tools/Curriculum/Build/promote_l051_l090_*
+  - Tools/Curriculum/Build/promote_l0*_l0*_notes.py
+  - Tools/Curriculum/Build/validate_l051_l090_*
+acceptance:
+  - Eight batches run in order and each deterministic check passes before the next batch.
+  - Forty Reference notes have byte-identical Wiki mirrors and humanized-v3 metadata.
+  - Source lineage, coverage matrix, relationships and manifest retrieval entries validate.
+  - Full Markdown formatter and global note-coverage validator report zero failures.
+non_goals:
+  - No claim that labs ran in production.
+  - No learner mastery or certification update.
+  - Proposed concept keys do not count as registered coverage.

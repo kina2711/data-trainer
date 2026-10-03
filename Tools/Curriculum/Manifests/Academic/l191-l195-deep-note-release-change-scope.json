@@ -1,0 +1,18 @@
+{
+  "contract_id": "de-l191-l195-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/Lesson_191-the-documentation-hierarchy",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/Lesson_192-search-discovery-and-the-findability-test",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/Lesson_193-documentation-tests",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/Lesson_194-self-service-ux-and-the-enablement-boundary",
+    "Material/DE/Curriculum/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/Lesson_195-task-based-usability-testing",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon/Web",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l191_l195_notes.py",
+    "Tools/Curriculum/Build/validate_l191_l195_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": ["**/quiz.md", "**/homework.md", "**/slides.md", "**/lesson.yaml", "Material/DA/**"]
+}

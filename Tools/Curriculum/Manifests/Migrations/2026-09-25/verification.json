@@ -1,0 +1,23 @@
+{
+  "lesson": {
+    "before": 3150,
+    "after": 3150,
+    "identical": true,
+    "missing": 0,
+    "extra": 0
+  },
+  "reference": {
+    "before": 2037,
+    "after": 2037,
+    "identical": true,
+    "missing": 0,
+    "extra": 0
+  },
+  "roadmap": {
+    "before": 84,
+    "after": 84,
+    "identical": true,
+    "missing": 0,
+    "extra": 0
+  }
+}

@@ -1,0 +1,30 @@
+contract_id: de-l191-l195-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+owner: kina2711
+consumer: Data Analytics Engineer trainer
+scope:
+  lessons: [191, 192, 193, 194, 195]
+  phase: 5
+  modules: [13]
+baseline:
+  formatter: checked=302 failed=0
+  whole_vault_coverage: checked=113 failed=0
+  second_brain_manifest: version=1.0.37 sources=74 notes=113 retrieval_tests=386
+acceptance:
+  - five Vietnamese knowledge notes each contain at least 2200 words
+  - source facts have stable IDs and current official or identified practitioner-source locators
+  - documentation layers are separated by reader job and tested against observable tasks
+  - findability is measured through representative search tasks rather than catalog inventory
+  - documentation checks cover schema descriptions, executable examples, semantic references and freshness promises
+  - self-service boundaries distinguish discoverability, understandability, operability and trust
+  - usability tests separate qualitative issue discovery from quantitative benchmarking
+  - Reference and Wiki copies are byte-identical
+  - generator, batch validator, formatter and whole-vault coverage checks pass
+  - canonical Obsidian sync is checksum-verified without deleting destination-only files
+forbidden:
+  - changing quiz.md, homework.md, slides.md or lesson.yaml
+  - modifying Data Analyst curriculum
+  - presenting the five-user heuristic as a universal statistical guarantee
+  - claiming user-study results, lab results, Coursera completion or owner approval
+approval: owner-semantic-review-pending

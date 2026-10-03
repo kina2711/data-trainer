@@ -1,0 +1,15 @@
+{
+  "control": "core-verify-deliverable",
+  "contract_id": "de-l181-l185-deep-note-release",
+  "executed_at": "2026-10-02T03:10:00+07:00",
+  "result": "pass",
+  "checks": [
+    {"name": "generator_check", "command": "python3 Tools/Curriculum/Build/promote_l181_l185_notes.py --check", "result": "checked=20 stale=0"},
+    {"name": "batch_validator", "command": "python3 Tools/Curriculum/Build/validate_l181_l185_notes.py", "result": "PASS lessons=5 modules=2 curriculum_files=10 knowledge_notes=5 min_words=2200 wiki_parity=5/5"},
+    {"name": "markdown_formatter", "command": "python3 Tools/Curriculum/Build/format_knowledge_notes.py --check", "result": "checked=288 failed=0"},
+    {"name": "whole_vault_coverage", "command": "python3 Tools/Curriculum/Build/validate_knowledge_note_coverage.py", "result": "checked=108 failed=0"},
+    {"name": "obsidian_checksum", "command": "rsync -ani --checksum Docs/Second-Brain/ /media/kina2711/DATA/2026/Second_Brain/", "result": "no output; source and destination identical"}
+  ],
+  "manifest": {"version": "1.0.36", "sources": 70, "notes": 108, "retrieval_tests": 371},
+  "unrun": ["architecture migration", "metric parallel run", "fault injection", "capstone reconciliation", "real-user discovery interviews"]
+}

@@ -1,0 +1,21 @@
+{
+  "task_id": "tls-certificate-authentication-note-2026-09-27",
+  "allowed_paths": [
+    "Tools/Curriculum/Manifests/Academic/tls-certificate-authentication-note-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/tls-certificate-authentication-note-change-scope.json",
+    "Tools/Curriculum/Manifests/Academic/atomic-task-output-tls-certificate-authentication-note.yaml",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-OS_NETWORK-BOOK-03/**",
+    "Docs/Second-Brain/2_Wiki/Bao-mat/**",
+    "Docs/Second-Brain/_Trang-chu.md",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "/media/kina2711/DATA/2026/Second_Brain/**"
+  ],
+  "forbidden_paths": [
+    "Material/Reference_temp/**",
+    "Material/**/Curriculum/**",
+    "Material/**/Roadmap/**",
+    "Web/**",
+    "Artifact/**"
+  ],
+  "declared_effect": "Create and synchronize one source-grounded, humanized certificate, endpoint-authentication, and TLS Wiki note; no curriculum, roadmap, web, or source-file changes."
+}

@@ -1,0 +1,23 @@
+task_id: network-delay-note-2026-09-27
+task_type: book-build-second-brain-pack
+objective: Convert the verified delay, loss, and throughput scope from Kurose and Ross into one detailed Vietnamese reference note and one synchronized Obsidian Wiki note.
+source:
+  source_id: PACK-OS_NETWORK-BOOK-03
+  scope: Chapter 1 section 1.4, printed pages 65-76, PDF pages 67-78
+  rights: private-owner-provided-no-public-redistribution
+success_criteria:
+  - Every material source claim has a printed-page or section locator.
+  - Processing, queueing, transmission, propagation, loss, throughput, bottleneck, and Traceroute are covered.
+  - Formula variables, units, assumptions, counterexamples, and diagnostic applications are explicit.
+  - Source fact, synthesis, inference, uncertainty, and non-conclusions are distinguishable.
+  - The Vietnamese prose passes a humanization edit without weakening qualifiers or changing terms.
+  - Reference and Second Brain copies are byte-identical after synchronization.
+validation:
+  - Source SHA-256 matches the acquisition manifest.
+  - PDF page extraction covers the declared range without empty pages.
+  - Markdown frontmatter, fences, tables, stable IDs, locators, and Obsidian links validate.
+  - Retrieval tests cover delay decomposition, loss under load, bottleneck throughput, and Traceroute limits.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

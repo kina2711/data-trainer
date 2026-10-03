@@ -1,0 +1,18 @@
+{
+  "task_id": "de-l401-l410-note-promotion",
+  "status": "pass-awaiting-owner-review",
+  "verified_at": "2026-10-02T23:59:59+07:00",
+  "batch_checks": {
+    "401-405": {"stale": 0, "lessons_passed": 5, "fingerprint": "4dff0fca6c7d3407746915a3aa907b464cbaf9001e4e43bb28374b82e001ed55"},
+    "406-410": {"stale": 0, "lessons_passed": 5, "fingerprint": "e96e9ed98ee0c8a1273acf7c1fcc5c5d43063fe26fc5afe773134dccfa88f9ec"}
+  },
+  "humanizer": {"checked": 10, "editorial": "humanized-v3", "within_note_repeats": 0, "cross_note_repeats": 0, "prose_tells": 0},
+  "formatter": {"checked": 852, "failed": 0},
+  "source_coverage": {"checked": 333, "failed": 0},
+  "wiki_parity": "10/10",
+  "obsidian_checksum": "no differences after non-deleting sync",
+  "word_range": [4145, 4921],
+  "manifest": {"version": "1.0.81", "sources": 184, "notes": 333, "retrieval_cases": 1046},
+  "deliverable_fingerprint": "0010b079fe18247f8d326cd752613308ee54edfc9b4b3613f91e17189b21ed83",
+  "unrun_checks": ["live security/game-day/system-design implementations", "owner semantic approval"]
+}

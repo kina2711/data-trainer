@@ -1,0 +1,19 @@
+{
+  "task_id": "core-audit-change-scope",
+  "instance_id": "engineering-foundation-l051-l090",
+  "status": "pass",
+  "requested_lessons": {"start": 51, "end": 90, "count": 40},
+  "batch_size": 5,
+  "batches": ["051-055", "056-060", "061-065", "066-070", "071-075", "076-080", "081-085", "086-090"],
+  "material_changes": [
+    "40 curriculum note.md files",
+    "40 curriculum after-note.md files",
+    "40 Reference knowledge notes",
+    "40 byte-identical Wiki mirrors",
+    "5 source records and one extended TLPI source scope",
+    "Second Brain manifest",
+    "deterministic generators and validators"
+  ],
+  "unrelated_dirty_worktree_changes_modified": false,
+  "deletions": []
+}

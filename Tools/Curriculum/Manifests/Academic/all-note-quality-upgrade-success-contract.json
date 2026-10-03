@@ -1,0 +1,31 @@
+{
+  "task_id": "brain-build-atomic-knowledge-note",
+  "instance_id": "all-645-notes-atomic-depth-example-code-diagram",
+  "status": "accepted-by-user-request",
+  "consumer": "Second Brain owner",
+  "observable_outcome": "Every registered Wiki note is atomic, source-linked, deep, detailed, example-backed and contains a domain-appropriate implementation artifact plus a Mermaid mechanism diagram.",
+  "acceptance_checks": {
+    "registered_notes_present": "645/645",
+    "stable_identity": "note_id, primary_question, note_type and status on every note",
+    "lineage": "source_ids, Reference and Source coverage on every note",
+    "atomicity": "one primary question and one primary concept per note; no multi-concept title finding",
+    "depth": "at least 1700 words and required explanatory sections",
+    "example": "a bounded worked example with input, decision and observable outcome",
+    "code": "a fenced domain-appropriate executable example, contract or pseudocode artifact",
+    "diagram": "a valid Mermaid block tied to the note concept",
+    "self_check": "questions or verification checklist",
+    "mirror_parity": "every reference_path artifact and its Wiki mirror are byte-identical",
+    "global_regression": "formatter, source coverage, relationship and retrieval checks pass"
+  },
+  "non_goals": [
+    "Changing immutable source PDFs or source facts",
+    "Inventing personal experience in 3_Toi",
+    "Publishing copyrighted material",
+    "Claiming learner mastery or production validation"
+  ],
+  "stop_conditions": [
+    "A note cannot be mapped to its registered source or reference artifact",
+    "A generated artifact would misrepresent a source claim",
+    "A mandatory global validator fails after remediation"
+  ]
+}

@@ -1,0 +1,9 @@
+contract_id: de-l241-l245-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+owner: kina2711
+scope: {lessons: [241,242,243,244,245], phase: 7, module: 16}
+baseline: {formatter: "checked=459 failed=0", coverage: "checked=163 failed=0", manifest: "1.0.47/131/163/536"}
+acceptance: ["five notes >=2200 words", "schema drift, reconciliation, SLO/backfill, connector decision and capstone are testable", "Reference-Wiki parity", "all validators pass", "Obsidian checksum verified"]
+forbidden: ["quiz/homework/slides/lesson.yaml/diagram changes", "Material/DA changes", "fabricated live lab results"]
+approval: owner-semantic-review-pending

@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sơ đồ roadmap · Rabbit Data</title>
+  <style>
+    :root{--ink:#2b1b12;--paper:#fffdf8;--wash:#fff4e8;--line:#d9c8b8;--accent:#c85e16}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+    main{width:min(1500px,calc(100% - 32px));margin:0 auto;padding:48px 0 80px}
+    nav{margin-bottom:40px} a{color:var(--accent);text-underline-offset:4px}
+    h1{max-width:900px;margin:0;font-family:Georgia,serif;font-size:clamp(2.4rem,6vw,5.8rem);line-height:.94;letter-spacing:-.04em}
+    .intro{max-width:760px;margin:24px 0 48px;font-size:1.05rem;line-height:1.7}
+    .grid{display:grid;gap:28px}
+    .diagram{overflow:hidden;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:0 12px 36px rgba(43,27,18,.07)}
+    .diagram header{display:flex;gap:18px;align-items:baseline;padding:22px 24px;border-bottom:1px solid var(--line);background:var(--wash)}
+    .diagram header span{font:700 .75rem/1 ui-monospace,monospace;letter-spacing:.12em;color:var(--accent)}
+    .diagram h2{margin:0;font:600 1.15rem/1.3 Georgia,serif}
+    .diagram a{display:block;overflow:auto;padding:24px;background:#fff}
+    .diagram img{display:block;max-width:none;min-width:100%;height:auto;margin:auto}
+    .diagram p{margin:0;padding:14px 24px;border-top:1px solid var(--line);color:#6e5c4e;font-size:.78rem;overflow-wrap:anywhere}
+    @media(max-width:640px){main{width:min(100% - 20px,1500px);padding-top:28px}.diagram a{padding:12px}.diagram header{display:block}}
+  </style>
+</head>
+<body>
+<main>
+  <nav><a href="index.html">← Quay lại Artifact</a></nav>
+  <h1>Bản đồ chương trình, giai đoạn và mô-đun</h1>
+  <p class="intro">Toàn bộ sơ đồ dưới đây được render thành SVG từ đúng một khối Mermaid trong mỗi roadmap nguồn. Chọn một sơ đồ để mở ảnh ở kích thước đầy đủ.</p>
+  <section class="grid" aria-label="Sơ đồ roadmap">
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Chương trình Data Analyst</h2></header>
+  <a href="Roadmaps/DA/programme.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Chương trình Data Analyst ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/programme.svg" alt="Sơ đồ Chương trình Data Analyst" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Giai đoạn 1: Nền tảng và vai trò Data Analyst</h2></header>
+  <a href="Roadmaps/DA/Phase_01-foundations-and-role/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 1: Nền tảng và vai trò Data Analyst ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_01-foundations-and-role/phase.svg" alt="Sơ đồ Giai đoạn 1: Nền tảng và vai trò Data Analyst" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_01-foundations-and-role/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Mô-đun 1: Nhập môn vai trò Data Analyst</h2></header>
+  <a href="Roadmaps/DA/Phase_01-foundations-and-role/Module_01-introduction-to-the-data-analyst-role/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 1: Nhập môn vai trò Data Analyst ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_01-foundations-and-role/Module_01-introduction-to-the-data-analyst-role/module.svg" alt="Sơ đồ Mô-đun 1: Nhập môn vai trò Data Analyst" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_01-foundations-and-role/Module_01-introduction-to-the-data-analyst-role/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Mô-đun 2: Excel cho phân tích dữ liệu</h2></header>
+  <a href="Roadmaps/DA/Phase_01-foundations-and-role/Module_02-excel-for-data-analysis/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 2: Excel cho phân tích dữ liệu ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_01-foundations-and-role/Module_02-excel-for-data-analysis/module.svg" alt="Sơ đồ Mô-đun 2: Excel cho phân tích dữ liệu" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_01-foundations-and-role/Module_02-excel-for-data-analysis/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Giai đoạn 2: SQL và truy cập dữ liệu</h2></header>
+  <a href="Roadmaps/DA/Phase_02-sql-and-data-access/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 2: SQL và truy cập dữ liệu ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_02-sql-and-data-access/phase.svg" alt="Sơ đồ Giai đoạn 2: SQL và truy cập dữ liệu" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_02-sql-and-data-access/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Mô-đun 3: SQL và cơ sở dữ liệu</h2></header>
+  <a href="Roadmaps/DA/Phase_02-sql-and-data-access/Module_03-sql-and-databases/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 3: SQL và cơ sở dữ liệu ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_02-sql-and-data-access/Module_03-sql-and-databases/module.svg" alt="Sơ đồ Mô-đun 3: SQL và cơ sở dữ liệu" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_02-sql-and-data-access/Module_03-sql-and-databases/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Giai đoạn 3: Nền tảng phân tích và BI</h2></header>
+  <a href="Roadmaps/DA/Phase_03-analytical-foundations-and-bi/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 3: Nền tảng phân tích và BI ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_03-analytical-foundations-and-bi/phase.svg" alt="Sơ đồ Giai đoạn 3: Nền tảng phân tích và BI" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_03-analytical-foundations-and-bi/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Mô-đun 4: Mô hình hóa và chuẩn bị dữ liệu</h2></header>
+  <a href="Roadmaps/DA/Phase_03-analytical-foundations-and-bi/Module_04-data-modeling-and-preparation/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 4: Mô hình hóa và chuẩn bị dữ liệu ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_03-analytical-foundations-and-bi/Module_04-data-modeling-and-preparation/module.svg" alt="Sơ đồ Mô-đun 4: Mô hình hóa và chuẩn bị dữ liệu" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_03-analytical-foundations-and-bi/Module_04-data-modeling-and-preparation/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Mô-đun 5: Thống kê cho Data Analyst</h2></header>
+  <a href="Roadmaps/DA/Phase_03-analytical-foundations-and-bi/Module_05-statistics-for-data-analysts/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 5: Thống kê cho Data Analyst ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_03-analytical-foundations-and-bi/Module_05-statistics-for-data-analysts/module.svg" alt="Sơ đồ Mô-đun 5: Thống kê cho Data Analyst" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_03-analytical-foundations-and-bi/Module_05-statistics-for-data-analysts/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Mô-đun 6: Trực quan hóa và Power BI</h2></header>
+  <a href="Roadmaps/DA/Phase_03-analytical-foundations-and-bi/Module_06-visualization-and-power-bi/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 6: Trực quan hóa và Power BI ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_03-analytical-foundations-and-bi/Module_06-visualization-and-power-bi/module.svg" alt="Sơ đồ Mô-đun 6: Trực quan hóa và Power BI" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_03-analytical-foundations-and-bi/Module_06-visualization-and-power-bi/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Giai đoạn 4: Phân tích ứng dụng và capstone</h2></header>
+  <a href="Roadmaps/DA/Phase_04-applied-analytics-and-capstone/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 4: Phân tích ứng dụng và capstone ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_04-applied-analytics-and-capstone/phase.svg" alt="Sơ đồ Giai đoạn 4: Phân tích ứng dụng và capstone" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_04-applied-analytics-and-capstone/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Mô-đun 7: Phân tích sản phẩm và kinh doanh</h2></header>
+  <a href="Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_07-product-and-business-analytics/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 7: Phân tích sản phẩm và kinh doanh ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_07-product-and-business-analytics/module.svg" alt="Sơ đồ Mô-đun 7: Phân tích sản phẩm và kinh doanh" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_04-applied-analytics-and-capstone/Module_07-product-and-business-analytics/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Mô-đun 8: Thử nghiệm A/B</h2></header>
+  <a href="Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_08-a-b-testing/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 8: Thử nghiệm A/B ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_08-a-b-testing/module.svg" alt="Sơ đồ Mô-đun 8: Thử nghiệm A/B" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_04-applied-analytics-and-capstone/Module_08-a-b-testing/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Mô-đun 9: Python cho Data Analyst</h2></header>
+  <a href="Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_09-python-for-data-analysts/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 9: Python cho Data Analyst ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_09-python-for-data-analysts/module.svg" alt="Sơ đồ Mô-đun 9: Python cho Data Analyst" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_04-applied-analytics-and-capstone/Module_09-python-for-data-analysts/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Mô-đun 10: Giao tiếp và phát triển nghề nghiệp</h2></header>
+  <a href="Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_10-communication-and-career/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 10: Giao tiếp và phát triển nghề nghiệp ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_10-communication-and-career/module.svg" alt="Sơ đồ Mô-đun 10: Giao tiếp và phát triển nghề nghiệp" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_04-applied-analytics-and-capstone/Module_10-communication-and-career/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DA">
+  <header><span>DA</span><h2>Mô-đun 11: Dự án tốt nghiệp</h2></header>
+  <a href="Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_11-capstone-project/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 11: Dự án tốt nghiệp ở kích thước đầy đủ">
+    <img src="Roadmaps/DA/Phase_04-applied-analytics-and-capstone/Module_11-capstone-project/module.svg" alt="Sơ đồ Mô-đun 11: Dự án tốt nghiệp" loading="lazy">
+  </a>
+  <p><code>Material/DA/Roadmap/Phase_04-applied-analytics-and-capstone/Module_11-capstone-project/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Chương trình Data Engineer</h2></header>
+  <a href="Roadmaps/DE/programme.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Chương trình Data Engineer ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/programme.svg" alt="Sơ đồ Chương trình Data Engineer" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Giai đoạn 1: Nền tảng kỹ thuật</h2></header>
+  <a href="Roadmaps/DE/Phase_01-engineering-foundation/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 1: Nền tảng kỹ thuật ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_01-engineering-foundation/phase.svg" alt="Sơ đồ Giai đoạn 1: Nền tảng kỹ thuật" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_01-engineering-foundation/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 1: Tư duy kỹ thuật, Git và gỡ lỗi</h2></header>
+  <a href="Roadmaps/DE/Phase_01-engineering-foundation/Module_01-engineering-thinking-git-and-debugging/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 1: Tư duy kỹ thuật, Git và gỡ lỗi ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_01-engineering-foundation/Module_01-engineering-thinking-git-and-debugging/module.svg" alt="Sơ đồ Mô-đun 1: Tư duy kỹ thuật, Git và gỡ lỗi" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_01-engineering-foundation/Module_01-engineering-thinking-git-and-debugging/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 2: Python cho môi trường vận hành</h2></header>
+  <a href="Roadmaps/DE/Phase_01-engineering-foundation/Module_02-python-for-production/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 2: Python cho môi trường vận hành ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_01-engineering-foundation/Module_02-python-for-production/module.svg" alt="Sơ đồ Mô-đun 2: Python cho môi trường vận hành" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_01-engineering-foundation/Module_02-python-for-production/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 3: Cấu trúc dữ liệu và thuật toán cho hệ thống</h2></header>
+  <a href="Roadmaps/DE/Phase_01-engineering-foundation/Module_03-data-structures-and-algorithms-for-systems/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 3: Cấu trúc dữ liệu và thuật toán cho hệ thống ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_01-engineering-foundation/Module_03-data-structures-and-algorithms-for-systems/module.svg" alt="Sơ đồ Mô-đun 3: Cấu trúc dữ liệu và thuật toán cho hệ thống" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_01-engineering-foundation/Module_03-data-structures-and-algorithms-for-systems/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Giai đoạn 2: Máy tính, hệ điều hành và mạng</h2></header>
+  <a href="Roadmaps/DE/Phase_02-machine-operating-system-and-network/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 2: Máy tính, hệ điều hành và mạng ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_02-machine-operating-system-and-network/phase.svg" alt="Sơ đồ Giai đoạn 2: Máy tính, hệ điều hành và mạng" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_02-machine-operating-system-and-network/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 4: Kiến trúc máy tính và mô hình hiệu năng</h2></header>
+  <a href="Roadmaps/DE/Phase_02-machine-operating-system-and-network/Module_04-computer-architecture-and-the-performance-model/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 4: Kiến trúc máy tính và mô hình hiệu năng ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_02-machine-operating-system-and-network/Module_04-computer-architecture-and-the-performance-model/module.svg" alt="Sơ đồ Mô-đun 4: Kiến trúc máy tính và mô hình hiệu năng" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_02-machine-operating-system-and-network/Module_04-computer-architecture-and-the-performance-model/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 5: Hệ điều hành, đồng thời và Linux</h2></header>
+  <a href="Roadmaps/DE/Phase_02-machine-operating-system-and-network/Module_05-operating-systems-concurrency-and-linux/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 5: Hệ điều hành, đồng thời và Linux ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_02-machine-operating-system-and-network/Module_05-operating-systems-concurrency-and-linux/module.svg" alt="Sơ đồ Mô-đun 5: Hệ điều hành, đồng thời và Linux" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_02-machine-operating-system-and-network/Module_05-operating-systems-concurrency-and-linux/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 6: Mạng từ gói tin đến API</h2></header>
+  <a href="Roadmaps/DE/Phase_02-machine-operating-system-and-network/Module_06-networking-from-packet-to-api/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 6: Mạng từ gói tin đến API ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_02-machine-operating-system-and-network/Module_06-networking-from-packet-to-api/module.svg" alt="Sơ đồ Mô-đun 6: Mạng từ gói tin đến API" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_02-machine-operating-system-and-network/Module_06-networking-from-packet-to-api/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Giai đoạn 3: Kỹ nghệ phần mềm và backend</h2></header>
+  <a href="Roadmaps/DE/Phase_03-software-and-backend-engineering/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 3: Kỹ nghệ phần mềm và backend ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_03-software-and-backend-engineering/phase.svg" alt="Sơ đồ Giai đoạn 3: Kỹ nghệ phần mềm và backend" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_03-software-and-backend-engineering/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 7: Thiết kế và chuyển giao phần mềm</h2></header>
+  <a href="Roadmaps/DE/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 7: Thiết kế và chuyển giao phần mềm ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/module.svg" alt="Sơ đồ Mô-đun 7: Thiết kế và chuyển giao phần mềm" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 8: Kỹ nghệ backend và API</h2></header>
+  <a href="Roadmaps/DE/Phase_03-software-and-backend-engineering/Module_08-backend-and-api-engineering/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 8: Kỹ nghệ backend và API ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_03-software-and-backend-engineering/Module_08-backend-and-api-engineering/module.svg" alt="Sơ đồ Mô-đun 8: Kỹ nghệ backend và API" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_03-software-and-backend-engineering/Module_08-backend-and-api-engineering/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Giai đoạn 4: SQL và nội tại cơ sở dữ liệu</h2></header>
+  <a href="Roadmaps/DE/Phase_04-sql-and-database-internals/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 4: SQL và nội tại cơ sở dữ liệu ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_04-sql-and-database-internals/phase.svg" alt="Sơ đồ Giai đoạn 4: SQL và nội tại cơ sở dữ liệu" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_04-sql-and-database-internals/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 9: Lý thuyết quan hệ và thực thi SQL</h2></header>
+  <a href="Roadmaps/DE/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 9: Lý thuyết quan hệ và thực thi SQL ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/module.svg" alt="Sơ đồ Mô-đun 9: Lý thuyết quan hệ và thực thi SQL" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_04-sql-and-database-internals/Module_09-relational-theory-and-sql-execution/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 10: Storage engine và vận hành cơ sở dữ liệu</h2></header>
+  <a href="Roadmaps/DE/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 10: Storage engine và vận hành cơ sở dữ liệu ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/module.svg" alt="Sơ đồ Mô-đun 10: Storage engine và vận hành cơ sở dữ liệu" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Giai đoạn 5: Mô hình dữ liệu, semantic layer và sản phẩm phân tích</h2></header>
+  <a href="Roadmaps/DE/Phase_05-modeling-semantics-and-analytical-product/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 5: Mô hình dữ liệu, semantic layer và sản phẩm phân tích ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_05-modeling-semantics-and-analytical-product/phase.svg" alt="Sơ đồ Giai đoạn 5: Mô hình dữ liệu, semantic layer và sản phẩm phân tích" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_05-modeling-semantics-and-analytical-product/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 11: Mô hình dữ liệu giao dịch, phân tích và miền nghiệp vụ</h2></header>
+  <a href="Roadmaps/DE/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 11: Mô hình dữ liệu giao dịch, phân tích và miền nghiệp vụ ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/module.svg" alt="Sơ đồ Mô-đun 11: Mô hình dữ liệu giao dịch, phân tích và miền nghiệp vụ" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_05-modeling-semantics-and-analytical-product/Module_11-data-modeling-operational-analytical-and-domain/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 12: Semantic layer và kỹ nghệ chỉ số</h2></header>
+  <a href="Roadmaps/DE/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 12: Semantic layer và kỹ nghệ chỉ số ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/module.svg" alt="Sơ đồ Mô-đun 12: Semantic layer và kỹ nghệ chỉ số" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_05-modeling-semantics-and-analytical-product/Module_12-semantic-layer-and-metrics-engineering/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 13: Sản phẩm dữ liệu phân tích và tự phục vụ</h2></header>
+  <a href="Roadmaps/DE/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 13: Sản phẩm dữ liệu phân tích và tự phục vụ ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/module.svg" alt="Sơ đồ Mô-đun 13: Sản phẩm dữ liệu phân tích và tự phục vụ" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_05-modeling-semantics-and-analytical-product/Module_13-analytical-data-product-and-self-service/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Giai đoạn 6: Lưu trữ phân tích và query engine</h2></header>
+  <a href="Roadmaps/DE/Phase_06-analytical-storage-and-query-engines/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 6: Lưu trữ phân tích và query engine ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_06-analytical-storage-and-query-engines/phase.svg" alt="Sơ đồ Giai đoạn 6: Lưu trữ phân tích và query engine" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_06-analytical-storage-and-query-engines/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 14: Nội tại OLAP và analytical engine</h2></header>
+  <a href="Roadmaps/DE/Phase_06-analytical-storage-and-query-engines/Module_14-olap-internals-and-analytical-engines/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 14: Nội tại OLAP và analytical engine ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_06-analytical-storage-and-query-engines/Module_14-olap-internals-and-analytical-engines/module.svg" alt="Sơ đồ Mô-đun 14: Nội tại OLAP và analytical engine" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_06-analytical-storage-and-query-engines/Module_14-olap-internals-and-analytical-engines/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 15: Định dạng tệp, tuần tự hóa và open table format</h2></header>
+  <a href="Roadmaps/DE/Phase_06-analytical-storage-and-query-engines/Module_15-file-serialization-and-open-table-formats/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 15: Định dạng tệp, tuần tự hóa và open table format ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_06-analytical-storage-and-query-engines/Module_15-file-serialization-and-open-table-formats/module.svg" alt="Sơ đồ Mô-đun 15: Định dạng tệp, tuần tự hóa và open table format" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_06-analytical-storage-and-query-engines/Module_15-file-serialization-and-open-table-formats/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Giai đoạn 7: Nạp, chuyển đổi, chất lượng và quản trị dữ liệu</h2></header>
+  <a href="Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 7: Nạp, chuyển đổi, chất lượng và quản trị dữ liệu ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/phase.svg" alt="Sơ đồ Giai đoạn 7: Nạp, chuyển đổi, chất lượng và quản trị dữ liệu" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_07-ingestion-transformation-quality-and-governance/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 16: Kỹ nghệ nạp và tích hợp dữ liệu</h2></header>
+  <a href="Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/Module_16-data-ingestion-and-integration-engineering/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 16: Kỹ nghệ nạp và tích hợp dữ liệu ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/Module_16-data-ingestion-and-integration-engineering/module.svg" alt="Sơ đồ Mô-đun 16: Kỹ nghệ nạp và tích hợp dữ liệu" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_07-ingestion-transformation-quality-and-governance/Module_16-data-ingestion-and-integration-engineering/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 17: ELT, dbt và điều phối workflow</h2></header>
+  <a href="Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/Module_17-elt-dbt-and-workflow-orchestration/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 17: ELT, dbt và điều phối workflow ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/Module_17-elt-dbt-and-workflow-orchestration/module.svg" alt="Sơ đồ Mô-đun 17: ELT, dbt và điều phối workflow" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_07-ingestion-transformation-quality-and-governance/Module_17-elt-dbt-and-workflow-orchestration/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 18: Chất lượng và độ tin cậy dữ liệu</h2></header>
+  <a href="Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/Module_18-data-quality-and-data-reliability-engineering/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 18: Chất lượng và độ tin cậy dữ liệu ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/Module_18-data-quality-and-data-reliability-engineering/module.svg" alt="Sơ đồ Mô-đun 18: Chất lượng và độ tin cậy dữ liệu" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_07-ingestion-transformation-quality-and-governance/Module_18-data-quality-and-data-reliability-engineering/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 19: Metadata, catalog, lineage và quản trị</h2></header>
+  <a href="Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/Module_19-metadata-engineering-catalog-lineage-and-governance/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 19: Metadata, catalog, lineage và quản trị ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_07-ingestion-transformation-quality-and-governance/Module_19-metadata-engineering-catalog-lineage-and-governance/module.svg" alt="Sơ đồ Mô-đun 19: Metadata, catalog, lineage và quản trị" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_07-ingestion-transformation-quality-and-governance/Module_19-metadata-engineering-catalog-lineage-and-governance/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Giai đoạn 8: Hệ phân tán, streaming và compute engine</h2></header>
+  <a href="Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 8: Hệ phân tán, streaming và compute engine ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/phase.svg" alt="Sơ đồ Giai đoạn 8: Hệ phân tán, streaming và compute engine" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_08-distributed-systems-streaming-and-compute/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 20: Nền tảng hệ phân tán</h2></header>
+  <a href="Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/Module_20-distributed-systems-fundamentals/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 20: Nền tảng hệ phân tán ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/Module_20-distributed-systems-fundamentals/module.svg" alt="Sơ đồ Mô-đun 20: Nền tảng hệ phân tán" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_08-distributed-systems-streaming-and-compute/Module_20-distributed-systems-fundamentals/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 21: Kafka và event streaming</h2></header>
+  <a href="Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/Module_21-kafka-and-event-streaming/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 21: Kafka và event streaming ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/Module_21-kafka-and-event-streaming/module.svg" alt="Sơ đồ Mô-đun 21: Kafka và event streaming" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_08-distributed-systems-streaming-and-compute/Module_21-kafka-and-event-streaming/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 22: Nội tại change data capture</h2></header>
+  <a href="Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/Module_22-change-data-capture-internals/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 22: Nội tại change data capture ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/Module_22-change-data-capture-internals/module.svg" alt="Sơ đồ Mô-đun 22: Nội tại change data capture" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_08-distributed-systems-streaming-and-compute/Module_22-change-data-capture-internals/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 23: Spark, Flink và distributed compute engine</h2></header>
+  <a href="Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/Module_23-spark-flink-and-distributed-compute-engines/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 23: Spark, Flink và distributed compute engine ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_08-distributed-systems-streaming-and-compute/Module_23-spark-flink-and-distributed-compute-engines/module.svg" alt="Sơ đồ Mô-đun 23: Spark, Flink và distributed compute engine" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_08-distributed-systems-streaming-and-compute/Module_23-spark-flink-and-distributed-compute-engines/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Giai đoạn 9: Cloud platform và vận hành production</h2></header>
+  <a href="Roadmaps/DE/Phase_09-cloud-platform-and-production-operations/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 9: Cloud platform và vận hành production ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_09-cloud-platform-and-production-operations/phase.svg" alt="Sơ đồ Giai đoạn 9: Cloud platform và vận hành production" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_09-cloud-platform-and-production-operations/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 24: Trừu tượng cloud trước tên dịch vụ</h2></header>
+  <a href="Roadmaps/DE/Phase_09-cloud-platform-and-production-operations/Module_24-cloud-abstractions-before-service-names/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 24: Trừu tượng cloud trước tên dịch vụ ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_09-cloud-platform-and-production-operations/Module_24-cloud-abstractions-before-service-names/module.svg" alt="Sơ đồ Mô-đun 24: Trừu tượng cloud trước tên dịch vụ" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_09-cloud-platform-and-production-operations/Module_24-cloud-abstractions-before-service-names/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 25: Container, infrastructure as code và Kubernetes</h2></header>
+  <a href="Roadmaps/DE/Phase_09-cloud-platform-and-production-operations/Module_25-containers-infrastructure-as-code-and-kubernetes/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 25: Container, infrastructure as code và Kubernetes ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_09-cloud-platform-and-production-operations/Module_25-containers-infrastructure-as-code-and-kubernetes/module.svg" alt="Sơ đồ Mô-đun 25: Container, infrastructure as code và Kubernetes" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_09-cloud-platform-and-production-operations/Module_25-containers-infrastructure-as-code-and-kubernetes/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 26: Observability, reliability và security</h2></header>
+  <a href="Roadmaps/DE/Phase_09-cloud-platform-and-production-operations/Module_26-observability-reliability-and-security/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 26: Observability, reliability và security ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_09-cloud-platform-and-production-operations/Module_26-observability-reliability-and-security/module.svg" alt="Sơ đồ Mô-đun 26: Observability, reliability và security" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_09-cloud-platform-and-production-operations/Module_26-observability-reliability-and-security/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Giai đoạn 10: Thiết kế hệ thống, ranh giới AI và lộ trình nghề nghiệp</h2></header>
+  <a href="Roadmaps/DE/Phase_10-system-design-ai-boundary-and-trajectory/phase.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Giai đoạn 10: Thiết kế hệ thống, ranh giới AI và lộ trình nghề nghiệp ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_10-system-design-ai-boundary-and-trajectory/phase.svg" alt="Sơ đồ Giai đoạn 10: Thiết kế hệ thống, ranh giới AI và lộ trình nghề nghiệp" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_10-system-design-ai-boundary-and-trajectory/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 27: Tiến trình thiết kế hệ thống</h2></header>
+  <a href="Roadmaps/DE/Phase_10-system-design-ai-boundary-and-trajectory/Module_27-system-design-progression/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 27: Tiến trình thiết kế hệ thống ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_10-system-design-ai-boundary-and-trajectory/Module_27-system-design-progression/module.svg" alt="Sơ đồ Mô-đun 27: Tiến trình thiết kế hệ thống" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_10-system-design-ai-boundary-and-trajectory/Module_27-system-design-progression/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 28: Kỹ nghệ AI có ranh giới</h2></header>
+  <a href="Roadmaps/DE/Phase_10-system-design-ai-boundary-and-trajectory/Module_28-modern-ai-engineering-bounded/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 28: Kỹ nghệ AI có ranh giới ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_10-system-design-ai-boundary-and-trajectory/Module_28-modern-ai-engineering-bounded/module.svg" alt="Sơ đồ Mô-đun 28: Kỹ nghệ AI có ranh giới" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_10-system-design-ai-boundary-and-trajectory/Module_28-modern-ai-engineering-bounded/roadmap.md</code></p>
+</article>
+<article class="diagram" data-programme="DE">
+  <header><span>DE</span><h2>Mô-đun 29: Lộ trình Staff và Principal</h2></header>
+  <a href="Roadmaps/DE/Phase_10-system-design-ai-boundary-and-trajectory/Module_29-staff-and-principal-trajectory/module.svg" target="_blank" rel="noopener" aria-label="Mở sơ đồ Mô-đun 29: Lộ trình Staff và Principal ở kích thước đầy đủ">
+    <img src="Roadmaps/DE/Phase_10-system-design-ai-boundary-and-trajectory/Module_29-staff-and-principal-trajectory/module.svg" alt="Sơ đồ Mô-đun 29: Lộ trình Staff và Principal" loading="lazy">
+  </a>
+  <p><code>Material/DE/Roadmap/Phase_10-system-design-ai-boundary-and-trajectory/Module_29-staff-and-principal-trajectory/roadmap.md</code></p>
+</article>
+  </section>
+</main>
+</body>
+</html>

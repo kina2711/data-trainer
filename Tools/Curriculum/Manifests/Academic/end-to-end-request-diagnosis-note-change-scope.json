@@ -1,0 +1,24 @@
+{
+  "task_id": "end-to-end-request-diagnosis-note-2026-09-28",
+  "allowed_paths": [
+    "Tools/Curriculum/Manifests/Academic/end-to-end-request-diagnosis-note-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/end-to-end-request-diagnosis-note-change-scope.json",
+    "Tools/Curriculum/Manifests/Academic/atomic-task-output-end-to-end-request-diagnosis-note.yaml",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-OS_NETWORK-BOOK-03/**",
+    "Material/DE/Reference/Library/Source-Notes/PACK-SERVICE-RESILIENCE-BOOK-01.md",
+    "Docs/Second-Brain/1_Nguon/Sach/SRC-TITMUS-CLOUD-NATIVE-GO-1E.md",
+    "Docs/Second-Brain/2_Wiki/He-phan-tan/**",
+    "Docs/Second-Brain/_Trang-chu.md",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "/media/kina2711/DATA/2026/Second_Brain/**"
+  ],
+  "forbidden_paths": [
+    "Material/Reference_temp/**",
+    "Material/DE/Reference/Library/knowledge/**",
+    "Material/**/Curriculum/**",
+    "Material/**/Roadmap/**",
+    "Web/**",
+    "Artifact/**"
+  ],
+  "declared_effect": "Extend one registered source record and create and synchronize one source-grounded, humanized end-to-end request tracing and evidence-based diagnosis Wiki note; no curriculum, roadmap, web, artifact, or source-file changes."
+}

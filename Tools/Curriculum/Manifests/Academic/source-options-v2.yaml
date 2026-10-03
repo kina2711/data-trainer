@@ -1,0 +1,42 @@
+decision_id: academic-source-plan-v2
+task_id: academy-design-learning-module
+deliverable: Kế hoạch nguồn học thuật cho 40 module và 525 bài
+constraints:
+  - Mỗi module và bài có ít nhất 3 book, 3 document, 3 website, 3 video.
+  - Mỗi module và bài có ít nhất 1 Coursera course với locator tới module hoặc week cụ thể.
+  - Chưa đọc sâu và không được ghi locator trang/chương chưa kiểm chứng.
+  - Không dùng nguồn chia sẻ lậu hoặc tệp local chưa rõ quyền.
+options:
+  - option_id: per-lesson-independent
+    approach: Tìm bộ nguồn hoàn toàn riêng cho từng bài.
+    defining_points: [Độ khớp cao nhất, 6825 lượt chọn tối thiểu, khó kiểm soát trùng và phiên bản]
+    optimizes_for: Độ đặc hiệu từng bài
+    wrong_when: Cần một lần khóa nguồn nhất quán cho toàn chương trình
+    evidence_refs: [Tools/Curriculum/Manifests/Academic/objectives.json]
+    decision: rejected
+    reason: Khối lượng kiểm chứng URL và quyền sử dụng không tỷ lệ với giá trị; tạo nhiều nguồn trùng.
+  - option_id: module-pack-inherited
+    approach: Bộ nguồn chuyên đề được duyệt ở module và thừa kế xuống bài, kèm locator bài khóa ở bước đọc sâu.
+    defining_points: [Đủ định lượng ở cả hai cấp, tái sử dụng có kiểm soát, validator tự động, locator chưa đọc giữ pending]
+    optimizes_for: Độ phủ, tính nhất quán và khả năng bảo trì
+    wrong_when: Một bài nằm ngoài hoàn toàn phạm vi chuyên đề của module
+    evidence_refs: [Tools/Curriculum/Manifests/Academic/objectives.json, Material/DA/Roadmap/roadmap.md, Material/DE/Roadmap/roadmap.md]
+    decision: selected
+    reason: "Đáp ứng định lượng cho 525 bài mà không giả vờ đã đọc; module giữ bộ nguồn cốt lõi, bước đọc sâu sẽ khóa chapter/page/video locator riêng cho từng bài."
+  - option_id: generic-role-library
+    approach: Dùng một thư viện nguồn chung cho toàn DA và một thư viện chung cho toàn DE.
+    defining_points: [Ít nguồn, dễ tải, độ khớp module thấp]
+    optimizes_for: Chi phí thu thập thấp
+    wrong_when: Yêu cầu nguồn gắn với nội dung từng module và bài
+    evidence_refs: [Docs/Operations/SOURCE-REQUEST.md]
+    decision: rejected
+    reason: Đủ số lượng hình thức nhưng không chứng minh được relevance theo module.
+selected_option_id: module-pack-inherited
+selection_rationale: "Chọn bộ nguồn chuyên đề theo module, kế thừa xuống bài và bắt buộc locator pending. Cách này phủ đủ 525 bài, giảm trùng, vẫn giữ cổng đọc sâu để xác minh phạm vi từng nguồn."
+eliminated_by_constraint: []
+reopen_signal:
+  - Một lesson objective không được bất kỳ nguồn nào trong module pack hỗ trợ sau khi đọc sâu.
+  - Coursera thay đổi hoặc gỡ course/module locator đã khóa.
+structure_derived_from_selection: true
+owner: curriculum-owner
+status: selected-awaiting-owner-review

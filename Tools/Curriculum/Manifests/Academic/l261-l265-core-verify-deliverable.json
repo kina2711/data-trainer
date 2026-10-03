@@ -1,0 +1,17 @@
+{
+  "control": "core-verify-deliverable",
+  "contract_id": "de-l261-l265-deep-note-release",
+  "executed_at": "2026-10-02T23:59:52+07:00",
+  "result": "pass",
+  "checks": [
+    {"name": "generator_check", "command": "python3 Tools/Curriculum/Build/promote_l261_l265_notes.py --check", "result": "checked=23 stale=0"},
+    {"name": "batch_validator", "command": "python3 Tools/Curriculum/Build/validate_l261_l265_notes.py", "result": "PASS lessons=5 min_words=2200 wiki_parity=5/5 incremental-proof-scd2-contracts-lineage=checked"},
+    {"name": "humanizer_gate", "command": "python3 Tools/Curriculum/Build/validate_l251_l270_prose.py", "result": "PASS for L251-L265 under final v3 gate; within-note repeats=0, cross-note repeats=0, prose tells=0"},
+    {"name": "markdown_formatter", "command": "python3 Tools/Curriculum/Build/format_knowledge_notes.py --check", "result": "checked=520 failed=0"},
+    {"name": "whole_vault_coverage", "command": "python3 Tools/Curriculum/Build/validate_knowledge_note_coverage.py", "result": "checked=188 failed=0"},
+    {"name": "obsidian_checksum", "command": "rsync -ani --checksum Docs/Second-Brain/ /media/kina2711/DATA/2026/Second_Brain/", "result": "no output; source and destination have no checksum difference"}
+  ],
+  "manifest": {"version": "1.0.52", "sources": 142, "notes": 188, "retrieval_tests": 611},
+  "deliverable_fingerprint": "011a7c7f19a2b3d82dd07dbfe3a5e351156253bd0c0036ec2307053f5f156dbd",
+  "unrun": ["incremental mutation/full-equivalence game day", "snapshot cross-adapter SCD2 fixture", "contract/version consumer migration rehearsal", "documentation retrieval study with real consumers", "owner semantic review"]
+}

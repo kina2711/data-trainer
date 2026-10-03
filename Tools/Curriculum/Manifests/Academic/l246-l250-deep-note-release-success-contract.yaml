@@ -1,0 +1,9 @@
+contract_id: de-l246-l250-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+owner: kina2711
+scope: {lessons: [246,247,248,249,250], phase: 7, modules: [16,17]}
+baseline: {manifest: "expected-after-l241-l245: 1.0.48/133/168/551"}
+acceptance: ["five notes >=2200 words", "game day, ETL/ELT, load semantics, atomic publish and idempotent batch are testable", "Reference-Wiki parity", "all validators pass", "Obsidian checksum verified"]
+forbidden: ["quiz/homework/slides/lesson.yaml/diagram changes", "Material/DA changes", "fabricated live lab results"]
+approval: owner-semantic-review-pending

@@ -1,0 +1,19 @@
+{
+  "batch": "DE-L114-L119",
+  "captured": "2026-09-29",
+  "offline_ranges": [
+    {"source_id": "src.course.hcmut-sql", "locator": "PDF 29-32, 49-50, 61-79", "pages_with_text": "33/33"},
+    {"source_id": "src.course.hcmut-relational-algebra", "locator": "PDF 4-50", "pages_with_text": "47/47"},
+    {"source_id": "src.course.hcmut-entity-relationship-model", "locator": "PDF 27-50", "pages_with_text": "24/24"},
+    {"source_id": "src.course.hcmut-functional-dependencies", "locator": "PDF 6-65", "pages_with_text": "60/60"}
+  ],
+  "web_sources": ["src.web.postgresql-17-null-comparison", "src.web.postgresql-17-query-expressions", "src.web.postgresql-17-constraints"],
+  "semantic_controls": [
+    "formal relational algebra is not silently equated with SQL bag and NULL semantics",
+    "logical processing order is not called physical execution order",
+    "sample data is not treated as proof of functional dependency",
+    "denormalization requires measured read benefit and an explicit synchronization writer",
+    "DISTINCT is not offered as a repair for wrong join grain"
+  ],
+  "coursera": "not used; deferred to module construction by owner policy"
+}

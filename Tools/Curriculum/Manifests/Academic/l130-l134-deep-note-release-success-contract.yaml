@@ -1,0 +1,27 @@
+contract_id: de-l130-l134-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+owner: kina2711
+consumer: Data Analytics Engineer trainer
+scope:
+  lessons: [130, 131, 132, 133, 134]
+  phase: 4
+  modules: [9, 10]
+deliverables:
+  - five Vietnamese deep knowledge notes with English filenames
+  - five byte-identical Wiki notes in Second Brain
+  - note.md and after-note.md for each lesson
+  - source reading manifest, generator, validator and audit record
+acceptance:
+  - every knowledge note passes the repository deep-review floor of 1800 words
+  - every source has a stable ID, exact locator, rights and checksum or canonical URL
+  - every note has Source coverage, limitations, self-check, Key takeaways and Reference
+  - Reference and Wiki copies are byte-identical
+  - generator check reports zero stale files
+  - formatting and whole-vault coverage validators pass
+  - canonical Obsidian sync is checksum-verified
+forbidden:
+  - changing quiz.md, homework.md, slides.md or lesson.yaml
+  - modifying Data Analyst curriculum
+  - claiming database lab execution, benchmark results, Coursera completion or owner approval
+approval: owner-semantic-review-pending

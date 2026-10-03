@@ -1,0 +1,31 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 201-205
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l201-l205-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l201-l205-release-audit.md
+  fingerprint: 7ba79a5eb2305dec39fda7f28ef919caf1590520cf22c17e2b5eedaffb95e498
+tests:
+  core_audit_change_scope: pass
+  core_verify_deliverable: pass
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  live_capstone_gate_and_storage_benchmarks: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-source-tree-no-diff
+residual_risks:
+  - customer-health semantics and score use boundary require domain-owner review
+  - Gate 5 rubric still needs examiner calibration on real submissions
+  - storage and encoding conclusions remain protocols until benchmarked with controlled versions and counters
+  - engine-specific behaviors can change with storage format, writer and reader versions
+owner: kina2711
+next_task: owner reviews L201-L205, then continue the next requested lesson batch

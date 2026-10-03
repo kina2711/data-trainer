@@ -1,0 +1,22 @@
+task_id: second-brain-english-note-paths-2026-09-28
+status: completed-awaiting-owner-review
+completed_at: 2026-09-28T16:20:00+07:00
+result:
+  wiki_note_files_renamed: 17
+  wiki_subject_folders_renamed: 5
+  source_category_folders_renamed: 2
+  legacy_reference_note_files_renamed: 1
+  home_note: _Home.md
+  stable_note_ids_changed: 0
+  legacy_paths_remaining_in_canonical: 0
+  wikilinks_resolved_at_migration_gate: 188
+preserved_contracts:
+  - 1_Nguon
+  - 2_Wiki
+  - 3_Toi
+  - 4_Ket-Qua
+  - .obsidian
+notes:
+  - Nội dung note vẫn là tiếng Việt; wikilink target là tiếng Anh và nhãn hiển thị là tiếng Việt.
+  - Bốn tên lớp được giữ vì là định danh kiến trúc của Second Brain, không phải thư mục chủ đề.
+  - Note Linux cũ chỉ có bản Second Brain; 16 note cũ còn lại có bản Reference đối chiếu byte.

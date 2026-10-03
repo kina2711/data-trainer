@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "task_id": "l099-l103-deep-note-release",
+  "allowed_globs": [
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_099-*/note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_099-*/after-note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_100-*/note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_07-software-design-and-delivery/Lesson_100-*/after-note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_08-backend-and-api-engineering/Lesson_10[1-3]-*/note.md",
+    "Material/DE/Curriculum/Phase_03-software-and-backend-engineering/Module_08-backend-and-api-engineering/Lesson_10[1-3]-*/after-note.md",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/15-transaction-boundaries-and-unit-of-work.md",
+    "Docs/Second-Brain/2_Wiki/Backend-Engineering/Transaction Boundaries and the Unit of Work.md",
+    "Docs/Second-Brain/1_Nguon/Books/SRC-MASTERING-POSTGRESQL-17-6E.md",
+    "Docs/Second-Brain/1_Nguon/Books/SRC-BOYLE-DDD-GOLANG-1E.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-POSTGRESQL-TRANSACTIONS.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-SQLALCHEMY-SESSION-BASICS.md",
+    "Docs/Second-Brain/1_Nguon/Web/SRC-FOWLER-UNIT-OF-WORK.md",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l099_l103_notes.py",
+    "Tools/Curriculum/Build/validate_l099_l103_notes.py",
+    "Tools/Curriculum/Manifests/Academic/l099-l103-source-reading.yaml",
+    "Tools/Curriculum/Manifests/Academic/l099-l103-deep-note-release-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/l099-l103-deep-note-release-change-scope.json",
+    "Tools/Curriculum/Manifests/Academic/l099-l103-deep-note-release-audit.yaml"
+  ],
+  "forbidden": [
+    "quiz.md",
+    "slides.md",
+    "homework.md",
+    "lesson.yaml",
+    "Material/DA/**"
+  ]
+}

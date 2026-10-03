@@ -1,0 +1,28 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 171-175
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l171-l175-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l171-l175-release-audit.md
+  fingerprint: 1f1a3e1a00fcbbfc1450daa767cb7d4db62fba89a0f2110cb26b1e26ba9b6b8c
+tests:
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  metricflow_and_fanout_labs: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-source-tree-no-diff
+residual_risks:
+  - MetricFlow validation and generated SQL have not been executed in a pinned environment
+  - fanout proof and compatibility enforcement remain protocols rather than measured tool behavior
+  - business-role join paths require owner approval
+owner: kina2711
+next_task: owner reviews L171-L175, then continue the next requested lesson batch

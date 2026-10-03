@@ -1,0 +1,67 @@
+{
+  "contract_id": "academic-objectives-da-de",
+  "task_id": "academy-define-role-learning-outcomes",
+  "requested_outcomes": [
+    "Objective cụ thể cho toàn bộ DA và DE ở cấp programme, phase, module và lesson",
+    "Registry dùng tiếp cho bước tìm nguồn"
+  ],
+  "baseline_commit": "HEAD",
+  "allowed_paths": [
+    "Material/DA/Roadmap/**",
+    "Material/DE/Roadmap/**",
+    "Tools/Curriculum/Build/build_academic_objectives.py",
+    "Tools/Curriculum/Validators/validate_objectives.py",
+    "Tools/Curriculum/Manifests/Academic/**",
+    "Docs/Operations/Build-Curriculum.md",
+    "Makefile",
+    "README.md"
+  ],
+  "forbidden_paths": [
+    "Material/DA/Curriculum/**",
+    "Material/DE/Curriculum/**",
+    "Material/DA/Reference/Library/**",
+    "Material/DE/Reference/Library/**",
+    "Artifact/**",
+    "Web/**"
+  ],
+  "generated_paths": [
+    "Tools/Curriculum/Manifests/Academic/objectives.json"
+  ],
+  "planned_deletions": [],
+  "task_to_paths": [
+    {
+      "outcome": "Objective registry và kiểm định",
+      "paths": [
+        "Tools/Curriculum/Build/build_academic_objectives.py",
+        "Tools/Curriculum/Validators/validate_objectives.py",
+        "Tools/Curriculum/Manifests/Academic/**"
+      ]
+    },
+    {
+      "outcome": "Quy trình chuẩn bị học thuật mới",
+      "paths": [
+        "Docs/Operations/Build-Curriculum.md",
+        "README.md",
+        "Makefile"
+      ]
+    }
+  ],
+  "dependency_checks": [
+    {
+      "name": "roadmap-structure",
+      "status": "pending",
+      "evidence": "make test",
+      "reason": "Registry phụ thuộc cấu trúc roadmap hiện tại"
+    }
+  ],
+  "orphan_checks": [
+    {
+      "name": "objective-parent-chain",
+      "status": "pending",
+      "evidence": "validate_objectives.py",
+      "reason": "Mọi lesson phải có module, phase và programme cha"
+    }
+  ],
+  "approved_by": "kina2711",
+  "approved_at": "2026-09-25"
+}

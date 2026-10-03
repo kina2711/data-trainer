@@ -1,0 +1,28 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 166-170
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l166-l170-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l166-l170-release-audit.md
+  fingerprint: 5a4821e794f61a3960055d5e5a86d2cbc1b04f65c1aeb6a7cbc2cc4e114b05da
+tests:
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  semantic_layer_labs: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-source-tree-no-diff
+residual_risks:
+  - two-person contract equivalence has not been exercised
+  - semantic graph and aggregation rejection remain test protocols, not measured engine behavior
+  - time comparison policies require business-owner approval
+owner: kina2711
+next_task: owner reviews L166-L170, then continue the next requested lesson batch

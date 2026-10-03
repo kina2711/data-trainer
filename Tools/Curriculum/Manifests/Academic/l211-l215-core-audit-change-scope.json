@@ -1,0 +1,18 @@
+{
+  "control": "core-audit-change-scope",
+  "contract_id": "de-l211-l215-deep-note-release",
+  "executed_at": "2026-10-01T23:59:00+07:00",
+  "result": "pass",
+  "method": "explicit write-set audit against generator targets and apply_patch paths because unrelated pre-existing repository changes may exist",
+  "allowed_changes": {
+    "curriculum": ["L211 note.md/after-note.md", "L212 note.md/after-note.md", "L213 note.md/after-note.md", "L214 note.md/after-note.md", "L215 note.md/after-note.md"],
+    "reference_notes": ["99-mpp-strong-scaling-mimd-spmd-batch-simd.md", "100-broadcast-repartition-skew-spill.md", "101-shared-nothing-separated-storage-compute.md", "102-workload-management-concurrency-cache.md", "103-analytical-engine-cost-model.md"],
+    "second_brain": ["9 new source records", "5 Wiki notes", "3 existing source backlink updates", "second-brain-manifest.json"],
+    "tooling_and_evidence": ["promote_l211_l215_notes.py", "validate_l211_l215_notes.py", "L211-L215 contract and audit records"]
+  },
+  "forbidden_targets_written": [],
+  "notes": [
+    "Generator targets only Reference, Wiki, note.md, after-note.md and manifest.",
+    "quiz.md, homework.md, slides.md, lesson.yaml, diagrams and Material/DA are not generator targets."
+  ]
+}

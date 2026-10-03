@@ -1,0 +1,15 @@
+{
+  "control": "core-audit-change-scope",
+  "contract_id": "de-l266-l270-deep-note-release",
+  "executed_at": "2026-10-02T23:59:59+07:00",
+  "result": "pass",
+  "method": "explicit deterministic writer target audit in a repository with unrelated pre-existing changes",
+  "allowed_changes": {
+    "curriculum": ["L266-L270 note.md and after-note.md"],
+    "reference_notes": ["154-dbt-artifacts-manifest-run-results-catalog.md through 158-logical-date-data-interval-timezone-traps.md"],
+    "second_brain": ["4 source records", "5 Wiki notes", "second-brain-manifest.json"],
+    "tooling_and_evidence": ["promote_l266_l270_notes.py", "validate_l266_l270_notes.py", "shared humanizer generator and prose gate", "L266-L270 contract and audit records"]
+  },
+  "forbidden_targets_written": [],
+  "notes": ["Writer targets only source records, Reference, Wiki, note.md, after-note.md and manifest.", "quiz.md, homework.md, slides.md, lesson.yaml, diagrams and Material/DA are not writer targets."]
+}

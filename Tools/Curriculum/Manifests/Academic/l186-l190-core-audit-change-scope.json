@@ -1,0 +1,10 @@
+{
+  "control": "core-audit-change-scope",
+  "contract_id": "de-l186-l190-deep-note-release",
+  "executed_at": "2026-10-02T04:25:00+07:00",
+  "method": "explicit write-set review against l186-l190-deep-note-release-change-scope.json",
+  "result": "pass",
+  "observed_write_classes": ["L186-L190 note.md and after-note.md", "knowledge notes 74-78", "five Wiki notes", "four new source records and five source backlink updates", "Second Brain manifest", "batch generator/validator", "batch evidence manifests"],
+  "forbidden_write_checks": {"quiz.md": "not targeted", "homework.md": "not targeted", "slides.md": "not targeted", "lesson.yaml": "not targeted", "Material/DA": "not targeted"},
+  "limitations": ["Repository contained a large pre-existing migration diff; attribution uses explicit batch write targets rather than repository-wide git diff"]
+}

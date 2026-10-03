@@ -1,0 +1,31 @@
+schema_version: 1
+task_id: l109-l113-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+objective: >-
+  Hoàn thiện liên tiếp DE-L109 đến DE-L113 theo chuỗi nguồn -> knowledge note -> Reference
+  -> Second Brain -> curriculum note/after-note; giữ đúng ranh giới Module 8/Phase 3 và Module 9/Phase 4.
+scope:
+  lessons: [109, 110, 111, 112, 113]
+  new_knowledge_notes: [109, 110, 111, 112, 113]
+acceptance_criteria:
+  - Mỗi lesson có knowledge note tiếng Việt, tên file tiếng Anh, stable note_id và source_ids có thật.
+  - Mỗi note trình bày cơ chế, ranh giới, failure modes, phép đo, giới hạn, Source coverage, Key takeaways và Reference.
+  - L111 là project blueprint tích hợp; L112 là assessment blueprint và không đưa thêm lý thuyết ngoài phạm vi Phase 3.
+  - L113 phân biệt relation schema với relation instance, superkey/candidate/primary key và functional dependency; dữ liệu mẫu không được dùng để khẳng định FD nghiệp vụ.
+  - Source fact, synthesis và inference được phân biệt; các phát biểu có locator tới phần nguồn thực sự đã đọc.
+  - Reference và bản 2_Wiki tương ứng giống từng byte.
+  - Mỗi curriculum note dùng format Phase -> Module -> Lesson, không front matter và không thời lượng giảng dạy.
+  - Thực hành, tự kiểm tra, rubric và bài sau buổi học nằm trong after-note.md.
+  - Mỗi đoạn prose nằm trên một dòng Markdown; display math dùng cặp dấu $$ nếu có.
+  - Generator tái lập được và toàn bộ validator bắt buộc đều đạt.
+non_goals:
+  - Không sửa quiz, slide, homework hoặc lesson.yaml.
+  - Không chạy broker, database benchmark, load generator hoặc bài thi thật trong lượt biên soạn nguồn.
+  - Không truy cập hoặc hoàn thành Coursera trong lượt offline này.
+verification:
+  - python3 Tools/Curriculum/Build/promote_l109_l113_notes.py --check
+  - python3 Tools/Curriculum/Build/validate_l109_l113_notes.py
+  - python3 Tools/Curriculum/Build/format_knowledge_notes.py --check
+  - python3 Tools/Curriculum/Build/validate_knowledge_note_coverage.py
+

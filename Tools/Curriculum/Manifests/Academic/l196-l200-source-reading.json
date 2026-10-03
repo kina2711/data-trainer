@@ -1,0 +1,99 @@
+{
+  "contract_id": "de-l196-l200-deep-note-release",
+  "captured_at": "2026-10-01T23:10:00+07:00",
+  "sources": [
+    {
+      "source_id": "src.web.owasp-authorization-cheat-sheet",
+      "locator": "Authentication/authorization distinction; least privilege; deny by default; permission checks on every request",
+      "used_for": [196],
+      "boundary": "OWASP supplies security guidance, not the lesson's three-surface policy matrix or a deployment-specific authorization design."
+    },
+    {
+      "source_id": "src.web.nist-sp-800-188-deidentification",
+      "locator": "NIST SP 800-188 final publication and de-identification governance/sharing-model sections",
+      "used_for": [196],
+      "boundary": "Removing direct identifiers does not establish an acceptably low re-identification risk; threat model and use context remain required."
+    },
+    {
+      "source_id": "src.web.grafana-k6-performance-testing",
+      "locator": "Automated performance testing and load-testing-websites guides: scenarios, metrics, thresholds and workload types",
+      "used_for": [196],
+      "boundary": "k6 is an implementation example; the lesson's BI, SQL and API parity protocol is curriculum synthesis."
+    },
+    {
+      "source_id": "src.paper.google-heart-ux-metrics",
+      "locator": "HEART dimensions and Goals-Signals-Metrics process on the official Google Research publication page/paper",
+      "used_for": [197],
+      "boundary": "HEART does not make activity counts evidence of value and does not prove causal business impact."
+    },
+    {
+      "source_id": "src.web.amplitude-north-star-framework",
+      "locator": "North Star outcome/input metric distinction and operational checklist",
+      "used_for": [197],
+      "boundary": "Vendor practitioner guidance is not empirical proof that one North Star Metric improves outcomes."
+    },
+    {
+      "source_id": "src.web.govuk-usability-benchmarking",
+      "locator": "Choosing tasks, recruiting participants, task success/time/abandonment/confident-wrong measures, future rounds",
+      "used_for": [197],
+      "boundary": "Benchmark sample-size guidance is contextual; adoption telemetry cannot substitute for task correctness."
+    },
+    {
+      "source_id": "src.web.finops-allocation",
+      "locator": "FinOps Allocation capability: accounts, tags/labels, derived metadata, shared-cost strategy and allocation coverage",
+      "used_for": [198],
+      "boundary": "The framework does not select one universally correct shared-cost allocation policy."
+    },
+    {
+      "source_id": "src.web.finops-unit-economics",
+      "locator": "FinOps Unit Economics capability: resource-efficiency units and business-value units",
+      "used_for": [198],
+      "boundary": "A denominator is useful only when it represents the product purpose and is guarded against quality loss or gaming."
+    },
+    {
+      "source_id": "src.book.reis-housley-fundamentals-data-engineering",
+      "locator": "Provided PDF pages 473-491: data products, serving users, metadata, quality and operational responsibility",
+      "used_for": [198],
+      "boundary": "The four-part cost model, allocation sensitivity test and retirement gate are curriculum synthesis."
+    },
+    {
+      "source_id": "src.web.hightouch-reverse-etl-syncs",
+      "locator": "Sync types/modes and CDC documentation: primary keys, add/change/remove behavior and synchronization modes",
+      "used_for": [199],
+      "boundary": "Hightouch behavior is a product example, not a universal reverse-ETL contract."
+    },
+    {
+      "source_id": "src.web.ico-purpose-limitation",
+      "locator": "UK GDPR purpose-limitation guidance: specified purposes and review of further processing",
+      "used_for": [199],
+      "boundary": "The lesson does not provide legal advice or determine lawful basis for a deployment."
+    },
+    {
+      "source_id": "src.web.stripe-idempotent-requests",
+      "locator": "Idempotency keys, replayed outcomes, parameter comparison, concurrency behavior and retention policy",
+      "used_for": [199],
+      "boundary": "Stripe's request semantics and retention window are a case study, not a universal destination guarantee."
+    },
+    {
+      "source_id": "src.web.backstage-software-catalog",
+      "locator": "Software Catalog overview, ownership/discovery role and relationship to authoritative external systems",
+      "used_for": [200],
+      "boundary": "A catalog entry or lifecycle label does not itself certify data correctness or operational readiness."
+    },
+    {
+      "source_id": "src.book.sommerville-software-engineering.10e",
+      "locator": "Provided PDF pages 208-212, 228-242 and 732-756: interfaces, testing, evolution and change management",
+      "used_for": [200],
+      "boundary": "The six-state data-product lifecycle and its exact evidence gates are curriculum synthesis."
+    },
+    {
+      "source_id": "src.web.google-sre-postmortem-culture",
+      "locator": "Postmortem Culture chapter and linked workbook structure: impact, timeline, contributing factors, lessons and actions",
+      "used_for": [200],
+      "boundary": "Blameless review does not remove accountability, evidence, ownership or due dates."
+    }
+  ],
+  "copyright_review": "pass: concepts paraphrased; no long passages reproduced",
+  "prompt_injection_review": "pass: external pages treated only as evidence and never as operating instructions",
+  "status": "reviewed-for-note-drafting"
+}

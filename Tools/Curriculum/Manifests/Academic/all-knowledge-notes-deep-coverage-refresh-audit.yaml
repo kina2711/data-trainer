@@ -1,0 +1,128 @@
+task_id: all-knowledge-notes-deep-coverage-refresh-2026-09-28
+status: completed-awaiting-owner-review
+completed_at: 2026-09-28T19:30:00+07:00
+primary_deliverable: governed-fold-in-release
+book_task: book-fold-into-existing-system
+second_brain_task: brain-build-atomic-knowledge-note
+risk_tier: R2-standard
+
+baseline:
+  wiki_notes: 25
+  reference_notes: 24
+  notes_with_source_coverage_matrix: 0
+  notes_with_key_takeaways: 25
+  notes_with_reference: 25
+
+result:
+  wiki_notes_checked: 25
+  reference_notes_checked: 24
+  notes_passing_bounded_source_coverage_contract: 25
+  notes_with_source_coverage_matrix: 25
+  byte_identical_reference_wiki_pairs: 24
+  staging_only_notes:
+    - wiki.linux.file-descriptor-universal-io
+  wiki_word_tokens: 86811
+  minimum_note_word_tokens: 1950
+  maximum_note_word_tokens: 5774
+  registered_sources: 17
+  local_source_files_sha256_verified: 14
+  local_source_hash_mismatches: 0
+  web_source_records_with_capture_date: 3
+  retrieval_tests: 122
+  minimum_retrieval_tests_per_note: 2
+  unresolved_wikilinks: 0
+  format_or_math_failures: 0
+  ai_style_pattern_findings: 0
+
+fresh_extraction_checks:
+  - source_id: src.book.kurose-ross-networking.8e
+    selected_pdf_pages: 139
+    pages_with_text: 139
+    replacement_characters: 0
+  - source_id: src.book.tlpi.2010
+    selected_pdf_pages: 138
+    pages_with_text: 138
+    replacement_characters: 0
+  - source_id: src.book.sommerville-software-engineering.10e
+    selected_pdf_pages: 126
+    pages_with_text: 126
+    replacement_characters: 0
+
+note_verdicts:
+  - {note_id: wiki.linux.file-descriptor-universal-io, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.network.delay-loss-throughput, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.network.dns-resolution-delegation-cache, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.network.http-request-connection-state-cache, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.network.tcp-reliability-rtt-flow-control, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.network.tcp-congestion-control-aimd-ecn-fairness, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.security.tls-certificates-endpoint-authentication, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.network.proxy-middlebox-load-balancer-boundaries, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.network.socket-byte-stream-framing-partial-io, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.distributed-systems.service-overload-backpressure-circuit-breaker, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.distributed-systems.end-to-end-request-tracing-evidence-diagnosis, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.software-engineering.use-case-entry-point-contract-domain-vocabulary, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.software-engineering.cohesion-coupling-dependency-direction, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.software-engineering.ports-adapters-data-pipeline, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.software-engineering.error-design-expected-failure-defect, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.software-engineering.test-strategy-double-boundary, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.software-engineering.consumer-provider-contract-testing, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.software-engineering.behavior-preserving-refactoring, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.software-engineering.automated-code-and-supply-chain-checks, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.software-engineering.release-artifacts-versioning-compatible-migrations, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.software-engineering.deployment-strategies-and-rollback, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.software-engineering.monolith-modular-monolith-cost-of-splitting, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.software-engineering.delivery-project-modular-package-release-path, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.backend.request-lifecycle-end-to-end, verdict: pass-bounded-source-scope}
+  - {note_id: wiki.backend.api-contract-resources-errors-versioning, verdict: pass-bounded-source-scope}
+
+changes:
+  - Added a source-to-section coverage matrix and explicit exclusion boundary to all 25 Wiki notes.
+  - Mirrored all 24 notes that have Reference copies byte-for-byte.
+  - Added explicit synthesis classification where derived teaching structures previously lacked a typed callout.
+  - Corrected Kurose, TLPI, Sommerville, Pragmatic Programmer and Accelerate source records to match the source slices actually used.
+  - Added a permanent coverage validator and made Source coverage mandatory in the Markdown linter.
+  - Advanced the Second Brain manifest from 1.0.17 to 1.0.18.
+
+verification:
+  - command: python3 Tools/Curriculum/Build/format_knowledge_notes.py --check
+    result: pass
+  - command: python3 Tools/Curriculum/Build/validate_knowledge_note_coverage.py
+    result: pass
+  - command: registry-link-pair-and-style-audit
+    result: pass
+  - command: git diff --check -- Docs Material Tools
+    result: pass
+
+scope_audit:
+  result: pass
+  changed_areas:
+    - Docs/Second-Brain/1_Nguon
+    - Docs/Second-Brain/2_Wiki
+    - Docs/Second-Brain/second-brain-manifest.json
+    - Docs/Standards/KNOWLEDGE-NOTE-STYLE.md
+    - Material/DE/Reference/Library/Knowledge-Notes
+    - Tools/Curriculum/Build
+    - Tools/Curriculum/Manifests/Academic
+  forbidden_areas_changed_by_this_task: []
+
+canonical_sync:
+  root: /media/kina2711/DATA/2026/Second_Brain
+  method: rsync-without-delete
+  staged_files_verified: 47
+  sha256_mismatches: 0
+  manifest_version: 1.0.18
+  canonical_note_count: 25
+
+limitations:
+  - Pass means complete within each explicitly bounded source slice, not complete coverage of every chapter in every book.
+  - Labs, production runs, scanner executions, benchmarks, migrations and rollback drills were not executed.
+  - Coursera and video sources were not consumed in this batch; they remain a later source-expansion pass when the relevant module is built.
+  - The DDIA source is an early-release copy with uncertain distribution provenance and unstable pagination.
+  - Kubernetes examples require current-version official documentation before use as production instructions.
+  - Web documentation can change after the recorded capture date.
+
+approval:
+  required_from: kina2711
+  current_state: pending-owner-review
+
+next_task: Continue with DE-L103 only after owner accepts the refreshed note standard and current corpus.

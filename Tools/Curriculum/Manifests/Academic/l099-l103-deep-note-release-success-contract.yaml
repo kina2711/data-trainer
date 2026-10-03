@@ -1,0 +1,31 @@
+schema_version: 1
+task_id: l099-l103-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+objective: >-
+  Hoàn thiện liên tiếp DE-L099 đến DE-L103 theo chuỗi nguồn -> knowledge note -> Reference
+  -> Second Brain -> curriculum note/after-note, không rút gọn thành bản tóm tắt.
+scope:
+  lessons: [99, 100, 101, 102, 103]
+  existing_knowledge_notes_to_verify: [99, 100, 101, 102]
+  new_knowledge_notes: [103]
+acceptance_criteria:
+  - Mỗi lesson có knowledge note tiếng Việt, tên file tiếng Anh, stable note_id và source_ids có thật.
+  - Mỗi knowledge note có một câu hỏi trung tâm, trình bày cơ chế, ranh giới, failure modes, giới hạn, Source coverage, Key takeaways và Reference.
+  - L103 có locator cụ thể đến phần nguồn đã đọc; source fact, synthesis và inference không bị trộn.
+  - Không chép dài nguồn; không suy đoán nội dung từ tên sách.
+  - Reference và bản 2_Wiki tương ứng giống từng byte.
+  - Mỗi curriculum note dùng format Phase -> Module -> Lesson, không front matter và không thời lượng giảng dạy.
+  - Thực hành, tự kiểm tra, rubric và bài sau buổi học nằm trong after-note.md.
+  - Mỗi đoạn prose nằm trên một dòng Markdown; display math dùng $$ nếu có.
+  - Generator tái lập được và toàn bộ validator bắt buộc đều đạt.
+non_goals:
+  - Không làm quiz, slide hoặc homework riêng.
+  - Không chạy lab trên database/cluster thật trong lượt biên soạn nguồn.
+  - Không truy cập hoặc hoàn thành Coursera trong lượt offline này.
+verification:
+  - python3 Tools/Curriculum/Build/promote_l099_l103_notes.py --check
+  - python3 Tools/Curriculum/Build/validate_l099_l103_notes.py
+  - python3 Tools/Curriculum/Build/format_knowledge_notes.py --check
+  - python3 Tools/Curriculum/Build/validate_knowledge_note_coverage.py
+

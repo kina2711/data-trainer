@@ -1,0 +1,17 @@
+task_id: reference-temp-os-network-source-notes-2026-09-27
+task_type: book-build-progressive-chapter-pack
+objective: Build evidence-traceable private source notes from the approved Reference_temp operating-system and networking books before lesson authoring.
+success_criteria:
+  - Every note records source ID, exact SHA-256, edition, reading scope, and stable page or chapter locators.
+  - Author claims, editor synthesis, curriculum application, limitations, and unsupported objectives remain distinct.
+  - Completion labels apply only to explicitly inspected chapters or page ranges.
+  - Quotations are bounded and copyrighted source text is not copied in bulk.
+  - No roadmap, lesson, web, artifact, or source PDF is modified.
+validation:
+  - Source IDs and hashes reconcile with source-acquisition-v2.json.
+  - Referenced objective IDs exist in objectives.json.
+  - Extraction is sampled at the beginning, middle, end, and selected chapter boundaries.
+approval:
+  academic_source_acceptance: granted-by-owner
+  public_distribution: not-authorized
+  final_pack_baseline: pending-owner-review

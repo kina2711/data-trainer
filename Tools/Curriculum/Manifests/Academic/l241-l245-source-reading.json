@@ -1,0 +1,11 @@
+{
+  "batch": "L241-L245",
+  "read_at": "2026-10-02",
+  "method": "bounded deep reading of official documentation plus existing offline book records",
+  "new_sources": [
+    {"source_id": "src.web.airbyte-schema-change-management", "scope": ["schema detection", "propagation modes", "breaking key/cursor changes", "backfill and connector upgrade"]},
+    {"source_id": "src.web.aws-dms-data-validation", "scope": ["row validation", "validation states", "failure records", "resource and key limitations"]}
+  ],
+  "reused_sources": ["src.book.reis-housley-fundamentals-data-engineering", "src.book.kleppmann-ddia.1e", "src.web.confluent-schema-evolution", "src.web.google-sre-capacity-load-testing", "src.web.madr-templates", "src.web.airbyte-incremental-append-deduped"],
+  "limitations": ["No production connector or source was mutated", "Capacity and failure results remain test protocols until executed", "Vendor behavior must be rechecked for the deployed version"]
+}

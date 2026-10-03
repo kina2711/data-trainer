@@ -1,0 +1,18 @@
+{
+  "contract_id": "de-l135-l139-deep-note-release",
+  "allowed_roots": [
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_135-lsm-trees-memtable-sstable-and-compaction",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_136-amplification-read-write-and-space",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_137-the-write-ahead-log-and-group-commit",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_138-crash-recovery-redo-undo-and-checkpoints",
+    "Material/DE/Curriculum/Phase_04-sql-and-database-internals/Module_10-storage-engine-and-database-operations/Lesson_139-acid-and-the-transaction-state-machine",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-DATABASE-MODELING-BOOK-01",
+    "Docs/Second-Brain/1_Nguon",
+    "Docs/Second-Brain/2_Wiki/Database-Systems",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "Tools/Curriculum/Build/promote_l135_l139_notes.py",
+    "Tools/Curriculum/Build/validate_l135_l139_notes.py",
+    "Tools/Curriculum/Manifests/Academic"
+  ],
+  "forbidden_globs": ["**/quiz.md", "**/homework.md", "**/slides.md", "**/lesson.yaml", "Material/DA/**"]
+}

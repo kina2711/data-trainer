@@ -1,0 +1,41 @@
+schema_version: 1
+task_id: l099-l103-deep-note-release
+captured: 2026-09-28
+lessons:
+  DE-L099:
+    status: reused-verified-note
+    knowledge_note: PACK-SOFTWARE-DESIGN-BOOK-01/11-monolith-modular-monolith-and-cost-of-splitting.md
+  DE-L100:
+    status: reused-verified-note
+    knowledge_note: PACK-SOFTWARE-DESIGN-BOOK-01/12-delivery-project-modular-package-release-path.md
+  DE-L101:
+    status: reused-verified-note
+    knowledge_note: PACK-SOFTWARE-DESIGN-BOOK-01/13-request-lifecycle-end-to-end.md
+  DE-L102:
+    status: reused-verified-note
+    knowledge_note: PACK-SOFTWARE-DESIGN-BOOK-01/14-api-contract-resources-errors-versioning.md
+  DE-L103:
+    status: deep-read
+    source_slices:
+      - source_id: src.book.boyle-ddd-golang.1e
+        locator: PDF 66-88; printed 49-71
+        coverage: aggregate transaction boundary, repository per aggregate, application service coordination
+      - source_id: src.book.mastering-postgresql-17.6e
+        locator: PDF 30-34 and 49-62; printed 1-5 and 19-32
+        coverage: transaction_timeout, transaction state, rollback, savepoint, locking
+      - source_id: src.book.richardson-microservices-patterns.1e
+        locator: PDF 140-149; printed 110-119
+        coverage: local ACID boundary, multi-service boundary, saga and compensation
+      - source_id: src.web.postgresql-transactions
+        locator: official current transaction tutorial; captured 2026-09-28
+        coverage: BEGIN, COMMIT, ROLLBACK, implicit transaction, savepoint
+      - source_id: src.web.sqlalchemy-session-basics
+        locator: Session Basics; captured 2026-09-28
+        coverage: identity map, flush, commit/rollback, transaction and pool lifecycle
+      - source_id: src.web.fowler-unit-of-work
+        locator: Unit of Work catalog entry; captured 2026-09-28
+        coverage: pattern definition and business-transaction scope
+    exclusions:
+      - Distributed outbox implementation is deferred to DE-L109; L103 only establishes why an external side effect is outside a local database rollback.
+      - Isolation anomalies and concurrency-control algorithms are deferred to DE-L104 and later database modules.
+      - Numeric pool and timeout thresholds are workload-specific and must be measured in the lab.

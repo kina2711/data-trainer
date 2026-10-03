@@ -1,0 +1,22 @@
+{
+  "task_id": "de-l411-l440-note-promotion",
+  "status": "pass-awaiting-owner-review",
+  "verified_at": "2026-10-02T23:59:59+07:00",
+  "batch_checks": {
+    "411-415": {"stale": 0, "lessons_passed": 5, "fingerprint": "03f313a9359178dcd6a953745377c3aa41e7cee8c84ea47c64607efe1b94171e"},
+    "416-420": {"stale": 0, "lessons_passed": 5, "fingerprint": "fa03696bb95fb0aaa49c436a630b497a4700a8aa966fe7e34b5fb3ee2bff8fab"},
+    "421-425": {"stale": 0, "lessons_passed": 5, "fingerprint": "9eaaada273791d628a8b21a571f7184e3bb0e9f815e2ade7f66a6647c94cc6f0"},
+    "426-430": {"stale": 0, "lessons_passed": 5, "fingerprint": "d58634ed049ef9c08f8c6084afbc59be774fcec9665dc0ba3477f3a6330be9d8"},
+    "431-435": {"stale": 0, "lessons_passed": 5, "fingerprint": "b916b9a65a659bce9ae4bc4a6ca10d682c60d1e816d1911e9136116e80a97eb2"},
+    "436-440": {"stale": 0, "lessons_passed": 5, "fingerprint": "e65d22575dd71c46e17da60c8f4778b3917e138e766fc384e863dacdb17951b9"}
+  },
+  "humanizer": {"checked": 30, "editorial": "humanized-v3", "within_note_repeats": 0, "cross_note_repeats": 0, "prose_tells": 0},
+  "formatter": {"checked": 917, "failed": 0},
+  "source_coverage": {"checked": 363, "failed": 0},
+  "wiki_parity": "30/30",
+  "obsidian_checksum": "no differences after non-deleting sync",
+  "word_range": [3922, 4676],
+  "manifest": {"version": "1.0.87", "sources": 189, "notes": 363, "retrieval_cases": 1136},
+  "deliverable_fingerprint": "01eab292cfdf3e28e9559a48d2ddea032b8476d9a4d19a7fc9b900a736fc6d2b",
+  "unrun_checks": ["live system-design/GenAI/career-review implementations", "owner semantic approval"]
+}

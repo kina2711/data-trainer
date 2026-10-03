@@ -1,0 +1,77 @@
+task_id: service-overload-backpressure-circuit-breaker-note-2026-09-27
+task_type: book-build-second-brain-pack
+status: completed-awaiting-owner-review
+completed_at: 2026-09-27T22:42:00+07:00
+sources:
+  - source_id: src.book.titmus-cloud-native-go.1e
+    title: "Cloud Native Go: Building Reliable Services in Unreliable Environments"
+    scope: "chapter 4 Circuit Breaker, printed pages 77-78, PDF pages 99-100; chapter 9, printed pages 268-281, PDF pages 290-303"
+    pages_expected: 16
+    pages_with_extractable_text: 16
+    sha256: bba89fa1fa9092b9043634bef78f968d02723658ff4437d2da4a60c037dba777
+  - source_id: src.book.kleppmann-ddia.2e-early-release
+    title: "Designing Data-Intensive Applications, Second Edition Early Release"
+    scope: "chapter 2 performance and overloaded-system section, PDF pages 76-80"
+    pages_expected: 5
+    pages_with_extractable_text: 5
+    sha256: d6a347131facfb30ab9af40e08e279587e3637e1d1a6005045239103e6081328
+  - source_id: src.book.kurose-ross-networking.8e
+    title: "Computer Networking: A Top-Down Approach, Eighth Global Edition"
+    scope: "section 3.5.5 flow control, printed pages 276-278, PDF pages 278-280"
+    pages_expected: 3
+    pages_with_extractable_text: 3
+    sha256: ed41334ecf228e6733f4f50bb73fbcb0624145c6c2a51c8e779f2f65cfc01018
+artifacts:
+  reference_note: Material/DE/Reference/Library/Knowledge-Notes/PACK-OS_NETWORK-BOOK-03/09-service-overload-backpressure-circuit-breaker.md
+  staging_wiki_note: "Docs/Second-Brain/2_Wiki/He-phan-tan/Rate limiting backpressure và circuit breaker giữa các dịch vụ.md"
+  canonical_wiki_note: "/media/kina2711/DATA/2026/Second_Brain/2_Wiki/He-phan-tan/Rate limiting backpressure và circuit breaker giữa các dịch vụ.md"
+  source_records:
+    - Docs/Second-Brain/1_Nguon/Sach/SRC-TITMUS-CLOUD-NATIVE-GO-1E.md
+    - Docs/Second-Brain/1_Nguon/Sach/SRC-KLEPPMANN-DDIA-2E-EARLY-RELEASE.md
+  source_notes:
+    - Material/DE/Reference/Library/Source-Notes/PACK-SERVICE-RESILIENCE-BOOK-01.md
+    - Material/DE/Reference/Library/Source-Notes/PACK-DATA-SYSTEMS-BOOK-01.md
+  note_sha256: 566bb8e89fc20ffff1c94eadeb61189c95834f43e7e9287e9fa9793188872747
+metrics:
+  lines: 716
+  words: 5408
+  bytes: 35408
+  source_fact_callouts: 15
+  inference_callouts: 4
+  synthesis_callouts: 9
+  uncertainty_callouts: 1
+  diagrams: 3
+coverage:
+  - Queueing, latency, retry-amplification, cascading-failure, and metastable-overload feedback
+  - TCP flow control versus service backpressure, throttling, concurrency limiting, load shedding, and circuit breaking
+  - Token-bucket burst and sustained-rate semantics, keying, fairness, state, and multi-replica limitations
+  - Bounded queues, admission policy, priority shedding, graceful degradation, and recovery control
+  - Circuit-breaker state, failure classification, probing, fallback risks, and throttle comparison
+  - Retry ownership, amplification, exponential backoff, jitter, budget, timeout, cancellation, and idempotency boundary
+  - Synchronous and asynchronous service paths, observability, failure matrix, and controlled-overload experiment for DE-L087
+  - Source-version uncertainty, production stop conditions, review questions, and curriculum links
+validation:
+  source_hashes_registered: pass
+  page_coverage_24_of_24: pass
+  source_records_created: pass
+  source_provenance_limits_recorded: pass
+  frontmatter_parse: pass
+  manifest_json_parse: pass
+  duplicate_registry_ids: pass
+  reference_staging_byte_identity: pass
+  canonical_sync_byte_identity: pass
+  wikilinks_resolve: pass
+  required_term_retrieval_smoke: pass
+  markdown_fences_balanced: pass
+  humanizer_pattern_scan: pass
+  change_scope_check: pass
+limits:
+  - No live rate limiter, circuit breaker, load test, chaos test, queue saturation, or recovery experiment was executed.
+  - No production threshold, bucket size, refill rate, concurrency limit, retry budget, or breaker policy was selected.
+  - DDIA is a partial Early Release with unverified distribution provenance and unstable pagination; it remains provisional.
+  - Asynchronous broker behavior, idempotency, distributed limiter consistency, and product-priority semantics require separate sources and tests.
+  - Canonical-vault backup and restore status is inherited and remains unverified.
+review_gate:
+  profile: R2-standard
+  quality_gate: G4
+  next_state: owner-review

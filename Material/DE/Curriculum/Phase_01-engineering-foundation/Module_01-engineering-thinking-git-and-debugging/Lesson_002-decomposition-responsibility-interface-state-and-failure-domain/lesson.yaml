@@ -1,0 +1,105 @@
+schema_version: 2
+lesson_id: DE-L002
+title: 'Decomposition: responsibility, interface, state and failure domain'
+status: ready-for-owner-review
+lifecycle_profile: learning
+risk_tier: R2-standard
+target_level: Foundation
+duration_minutes_estimate: 120
+central_question: Làm sao chia hệ thành boundary thay đổi và hỏng theo cách có thể kiểm chứng?
+objective: Phân rã hệ theo responsibility, interface, state, dependency direction và failure domain; kiểm bằng change/fault
+  scenarios.
+prerequisites:
+- 'DE-L001: testable contract và acceptance evidence.'
+learner_memory:
+  resolved: false
+  assumption: No prior mastery claimed; teach and assess the named prerequisites.
+scenes:
+- id: S01
+  type: explain
+  minutes: 10
+  claim: 'Tách monolith thành ba service nhưng cả ba dùng chung database và credential: network tăng, blast radius
+    không giảm.'
+  source_span: note.md — heading '1. Ranh giới bắt đầu từ responsibility'
+  misconception_displaced: Có thể bắt đầu bằng công cụ/output trước khi khóa câu hỏi và boundary.
+- id: S02
+  type: explain
+  minutes: 18
+  claim: Boundary tốt gom invariant và lý do thay đổi, thu hẹp interface, có owner state rõ và làm failure propagation
+    quan sát/kiểm soát được.
+  source_span: note.md — heading '2. Interface là lời hứa tối thiểu'
+  misconception_displaced: Chia theo folder/service aesthetic, để nhiều writer cho cùng state hoặc public interface
+    lộ storage detail.
+- id: S03
+  type: check
+  minutes: 7
+  question: Responsibility nên được tìm bằng gì?
+  answer: Invariant và lý do thay đổi nghiệp vụ/vận hành, không chỉ technical layer.
+  wrong_answer_reveals: Người học nhớ từ khóa nhưng chưa nắm claim trung tâm.
+  source_span: note.md — heading '2. Interface là lời hứa tối thiểu'
+- id: S04
+  type: practice
+  minutes: 18
+  task: Phân rã order-payment-fulfillment trên bốn trục; inject timeout payment và database outage rồi trace impact.
+  success_condition: Mỗi component có một responsibility, interface tối thiểu, state owner, dependencies không vòng
+    và failure trace tới recovery.
+  source_span: UNSOURCED — guided practice synthesized from the lesson objective and source-backed mechanism
+- id: S05
+  type: explain
+  minutes: 15
+  claim: Tách boundary khi change cadence, invariant/state ownership hoặc fault containment khác nhau và cost network/operation
+    được biện minh.
+  source_span: note.md — heading '3. State quyết định độ khó thay thế'
+  misconception_displaced: Một rule hoặc tool luôn đúng bất kể changed constraint.
+- id: S06
+  type: decide
+  minutes: 12
+  situation: Đổi database không được buộc domain import driver type; nếu có, dependency direction đang sai.
+  trade_off: Deployment unit không tự tạo failure isolation; shared database, queue hoặc credential vẫn có thể nối
+    blast radius.
+  defensible_choices: Lựa chọn phải giữ hard constraints, nêu evidence và reversal trigger.
+  source_span: UNSOURCED — changed-constraint decision scenario synthesized for transfer
+- id: S07
+  type: explain
+  minutes: 15
+  claim: 'Worked example: Tách order intent, payment adapter và fulfillment theo invariant/lifecycle. Order là authoritative
+    owner của state machine; payment trả outcome contract thay vì ORM object. Timeout payment không làm mất order
+    intent; retry dựa trên idempotency key. Dependency đi từ domain policy ra ports; adapter phụ thuộc contract,
+    không ngược lại.'
+  source_span: note.md — heading '4. Failure domain không đồng nghĩa deployment unit'
+  misconception_displaced: Một case thành công tự chứng minh cơ chế tổng quát.
+- id: S08
+  type: apply
+  minutes: 18
+  task: Hai team cần đổi schema với cadence khác nhưng dùng chung dedup ledger. Chọn tách ở đâu và ai sở hữu migration/recovery.
+  assumes:
+  - S02
+  - S04
+  - S05
+  - S06
+  - S07
+  success_condition: Artifact nêu boundary, evidence, lựa chọn, rejected alternative và condition làm quyết định
+    đảo.
+  source_span: UNSOURCED — curriculum transfer scenario synthesized from the lesson contract
+- id: S09
+  type: check
+  minutes: 7
+  question: Vì sao tách process chưa chắc giảm failure domain?
+  answer: Các process có thể vẫn chung dependency/state/credential; fault ở shared resource tiếp tục ảnh hưởng tất
+    cả.
+  wrong_answer_reveals: Người học chưa chuyển mental model sang tình huống mới.
+  source_span: note.md — heading '8. Failure modes và ngộ nhận'
+assessment:
+  formative: quiz.md — 10 questions, pass >= 8/10; failed concepts receive targeted remediation and one retest.
+  authentic: homework.md — artifact scored on a 100-point analytic rubric; pass >= 75 and no critical failure.
+  mastery_claim: None. Package readiness and learner mastery are separate evidence states.
+publish:
+  note: true
+  slides: true
+  quiz: true
+  homework: true
+  after_note: true
+  answer_key: true
+unused_source_spans:
+- Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension/remediation; the 120-minute session
+  samples rather than recites every probe.

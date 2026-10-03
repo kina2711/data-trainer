@@ -1,0 +1,27 @@
+{
+  "task_id": "core-verify-deliverable",
+  "instance_id": "remaining-18-curated-book-packs",
+  "status": "pass",
+  "manifest": {
+    "version": "1.0.139",
+    "sources": 222,
+    "notes": 645,
+    "retrieval_cases": 1982
+  },
+  "tests": [
+    {"name": "source_identity", "result": "18/18 PDFs matched the acquisition-manifest SHA-256"},
+    {"name": "determinism", "result": "18/18 packs reproduced with no stale artifact"},
+    {"name": "humanizer", "result": "108 notes checked; 2538-2854 words each; within-note repeats 0; cross-note repeats 0; canned prose tells 0"},
+    {"name": "markdown_formatter", "result": "1340 checked; 0 failed"},
+    {"name": "global_source_coverage", "result": "645 checked; 0 failed"},
+    {"name": "wiki_parity", "result": "108/108 byte-identical"},
+    {"name": "retrieval_registration", "result": "324/324 new retrieval cases registered"},
+    {"name": "curated_book_gap", "result": "18/18 previously unique unnoted books integrated; remaining unregistered PDF is an alternate copy of an already cited edition"}
+  ],
+  "approval": "owner semantic review pending",
+  "limitations": [
+    "Topic locators are bounded reading regions selected from full-text search; sentence-level quotation still requires opening the PDF.",
+    "The notes are Vietnamese synthesis for private use, not substitutes for the books and not licensed for redistribution.",
+    "Concept keys remain proposed; written material does not prove learner mastery or production correctness."
+  ]
+}

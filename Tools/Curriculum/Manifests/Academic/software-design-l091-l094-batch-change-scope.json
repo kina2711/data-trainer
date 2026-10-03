@@ -1,0 +1,25 @@
+{
+  "batch_id": "software-design-l091-l094-2026-09-28",
+  "allowed_paths": [
+    "Tools/Curriculum/Manifests/Academic/software-design-l091-l094-batch-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/software-design-l091-l094-batch-change-scope.json",
+    "Tools/Curriculum/Manifests/Academic/atomic-task-output-software-design-l09*.yaml",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/**",
+    "Material/DE/Reference/Library/Source-Notes/PACK-SOFTWARE-DESIGN-BOOK-01.md",
+    "Docs/Second-Brain/1_Nguon/Sach/**",
+    "Docs/Second-Brain/2_Wiki/Ky-nghe-phan-mem/**",
+    "Docs/Second-Brain/_Trang-chu.md",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "/media/kina2711/DATA/2026/Second_Brain/**"
+  ],
+  "forbidden_paths": [
+    "Material/Reference_temp/**",
+    "Material/DE/Reference/Library/knowledge/**",
+    "Material/DE/Reference/Library/Computer Science/**",
+    "Material/**/Curriculum/**",
+    "Material/**/Roadmap/**",
+    "Web/**",
+    "Artifact/**"
+  ],
+  "declared_effect": "Register three private offline sources, extend four existing source records, create four source-grounded DE-L091 through DE-L094 notes, validate them, and synchronize the Second Brain; no source, curriculum, roadmap, web, or artifact changes."
+}

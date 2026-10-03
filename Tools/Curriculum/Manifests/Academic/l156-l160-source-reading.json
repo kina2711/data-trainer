@@ -1,0 +1,48 @@
+{
+  "batch": "L156-L160",
+  "read_on": "2026-10-01",
+  "method": "pdftotext -layout with bounded PDF page ranges plus official-web documentation inspected by section",
+  "sources": [
+    {
+      "source_id": "src.book.kimball-ross-data-warehouse-toolkit.3e",
+      "pdf_pages": "115-139, 178-188, 245-255, 280-291",
+      "topics": ["SCD types", "degenerate dimension", "junk dimension", "bridge", "role-playing dimensions", "late-arriving corrections"]
+    },
+    {
+      "source_id": "src.book.adamson-star-schema-complete-reference",
+      "pdf_pages": "56-71, 134-154, 174-198, 220-260, 330-345",
+      "topics": ["dimension roles", "bridges", "snowflake and outriggers", "slow-change techniques", "hybrid responses"]
+    },
+    {
+      "source_id": "src.book.silberschatz-database-system-concepts.7e",
+      "pdf_pages": "1144-1157, 1464-1478, 1565-1572",
+      "topics": ["valid time", "temporal keys and joins", "warehouse schemas", "star and snowflake"]
+    },
+    {
+      "source_id": "src.web.microsoft-sql-server-temporal-tables",
+      "locator": "Temporal tables overview, how system time works, usage scenarios",
+      "topics": ["system time", "current and history tables", "FOR SYSTEM_TIME", "UTC transaction timestamp"]
+    },
+    {
+      "source_id": "src.web.google-bigquery-denormalization",
+      "locator": "Use nested and repeated fields; schema and data transfer overview#denormalization",
+      "topics": ["denormalization", "STRUCT and ARRAY", "join and shuffle trade-offs", "star and snowflake on BigQuery"]
+    },
+    {
+      "source_id": "src.web.data-vault-alliance-foundations",
+      "locator": "Agile Methodology lines 37-60; DV2.1 Applied Design sections 18-28",
+      "topics": ["Hub Link Satellite backbone", "Raw and Business Vault", "Information Mart", "relationship grain and historization"]
+    },
+    {
+      "source_id": "src.web.datavault-builder-main-documentation",
+      "locator": "Data Vault main documentation: model canvas and object descriptions",
+      "topics": ["Hub", "Link", "Satellite", "source-specific history", "model recognition"]
+    }
+  ],
+  "limitations": [
+    "No modeling lab, benchmark, late-data replay, restatement or reconciliation was executed",
+    "SCD numbering after Type 3 is not treated as universal; notes describe behavior as well as the number",
+    "BigQuery denormalization guidance is engine-specific and is not generalized into a universal one-big-table rule",
+    "Data Vault coverage is intentionally recognition-level and does not establish implementation competence"
+  ]
+}

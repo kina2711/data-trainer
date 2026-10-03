@@ -1,0 +1,48 @@
+task_id: academy-design-learning-module
+status: draft
+lifecycle_profile: learning
+risk_tier: R1-reviewed
+execution_path: standard-path
+phase_reached: test
+primary_deliverable: Artifact/Rabbit-Data/Previews/DE/Phase_02/Module_04/roadmap.md
+evidence:
+  - Material/DE/Roadmap/Phase_02-machine-operating-system-and-network/Module_04-computer-architecture-and-the-performance-model/roadmap.md
+  - /home/kina2711/PROJECT/roadmap-de/about me/06_LO_TRINH_CHI_TIET_THEO_MODULE/04_COMPUTER_ARCHITECTURE_PERFORMANCE.md
+  - Docs/Standards/Roadmap-Format-Proposal.md
+  - Artifact/Rabbit-Data/Previews/DE/Phase_02/Module_04/diagram-provenance.json
+test_results:
+  - bảng Các bài trong mô-đun liệt kê đủ 16 bài L45-L60 theo đúng thứ tự
+  - 16 mục Nội dung từng bài mô tả vấn đề, cơ chế và công việc người học phải thực hiện
+  - 16 mã bài trong roadmap.yaml khớp bản đồ bài học
+  - 6 tiêu chí hoàn thành có dòng tương ứng trong ma trận đánh giá
+  - 23 nhóm khái niệm trọng yếu của hợp đồng nguồn hiện diện trong bản thử
+  - không có tham chiếu tới Data Analyst hoặc Material/DA
+  - không phát hiện mẫu câu bị cấm trong quy chuẩn ngôn ngữ
+  - Mermaid có 33 nút và 32 quan hệ; kiểm tra cấu trúc và provenance thành công
+  - Artifact diagram.html chứa cùng nguồn Mermaid với roadmap.md, có điều khiển thu phóng và căn trái hộp nội dung
+  - 16 hộp nội dung dùng chiều rộng 520 px; mỗi nội dung nguyên tử nằm trên một dòng riêng
+  - make test thành công với cảnh báo mã băm phê duyệt DA đã tồn tại từ trước
+gate_results:
+  - "G0: passed"
+  - "G1: passed"
+  - "G2: passed"
+  - "G3: passed for Artifact preview only"
+  - "G4: passed"
+  - "G5: pending owner review"
+approval_status: pending
+assumptions:
+  - M04 là lát cắt thử nghiệm được chọn trong đề xuất định dạng đã duyệt
+  - giữ nguyên nội dung nghĩa là không xóa chủ đề, bài học, lab, tiêu chí hoặc lỗi loại trực tiếp của nguồn
+  - nội dung trùng giữa DA và DE vẫn thuộc từng chương trình riêng, không tạo mô-đun dùng chung
+limitations:
+  - đây là bản xem trước trong Artifact, chưa thay thế roadmap nguồn
+  - chưa có giảng viên hoặc chuyên gia phần cứng rà soát nội dung
+  - chưa kiểm chứng độc lập các phát biểu kỹ thuật bằng toàn văn tài liệu tham khảo
+  - chưa xác nhận render bằng mắt vì trình duyệt tự động bị chặn truy cập Artifact trên localhost
+  - Web chưa tồn tại; yêu cầu render Mermaid mới chỉ được ghi vào quy chuẩn xây Web
+residual_risks:
+  - ngưỡng tăng tốc một bậc độ lớn ở dự án cuối mô-đun có thể phụ thuộc mạnh vào chương trình đầu vào
+  - Artifact thử nghiệm tải Mermaid từ CDN; bản Web phát hành phải đóng gói phiên bản Mermaid đã ghim
+  - mã băm phê duyệt roadmap DA vẫn cũ và cần xử lý ở một quyết định riêng
+next_task: academy-design-learning-module
+next_owner: kina2711

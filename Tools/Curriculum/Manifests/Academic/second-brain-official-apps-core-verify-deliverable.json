@@ -1,0 +1,53 @@
+{
+  "task_id": "core-verify-deliverable",
+  "instance_id": "second-brain-official-web-desktop-release",
+  "status": "pass",
+  "verified_at": "2026-10-03T01:30:00+07:00",
+  "canonical_release": {
+    "version": "2.0.0",
+    "status": "active-canonical",
+    "visibility": "private-local-first",
+    "notes": "645/645",
+    "registry": "645/645",
+    "reference_parity": "644/644",
+    "sources": 222,
+    "retrieval_cases": 1982
+  },
+  "content_quality": {
+    "atomic_deep_example_code_mermaid_relationships_selfcheck": "645/645",
+    "word_depth": "minimum 1978; median 3200; maximum 5980",
+    "mermaid": "663 structural; 41 legacy and 27 generated domain templates rendered",
+    "formatter": "1340 checked; 0 failed",
+    "source_coverage": "645 checked; 0 failed",
+    "stale_proposed_canonical_statements": 0
+  },
+  "web_application": {
+    "index": "645 notes; 28 domains; 17,283,874 bytes",
+    "content_hash": "6f72e2b881b3a9ad199cdd15fd78a2b4004251967c52f393f27a08caf9130b42",
+    "features_verified": [
+      "Vietnamese diacritic-insensitive full-text search",
+      "domain, favorites and recent filters",
+      "canonical Markdown reader",
+      "Mermaid SVG rendering",
+      "non-empty code rendering",
+      "typed relationships, source identifiers and outline",
+      "responsive navigation and light/dark themes"
+    ],
+    "browser_qa": "RAG search returned one exact note; Vietnamese no-diacritic query returned the expected latency/loss/throughput note; favorite filtering retained the selected note; RAG note rendered one Mermaid SVG and one populated code block."
+  },
+  "desktop_application": {
+    "runtime": "Electron 44.5.1",
+    "security": "contextIsolation=true; nodeIntegration=false; sandbox=true; navigation allowlisted to the app document; new windows denied",
+    "smoke": "pass: busy=false, 645 note, canonical statistics loaded",
+    "shared_renderer_and_index": true
+  },
+  "dependency_audit": "0 vulnerabilities",
+  "automated_app_tests": "pass",
+  "release_fingerprint": "ca5810849e5b4fc9ef3bdc82e66d01e528e4fda5ec50a12c0b8dae24e5c35673",
+  "limitations": [
+    "The applications are intentionally local and private; no public deployment was performed.",
+    "Nineteen legacy examples requiring external engines, services or datasets remain outside local production execution.",
+    "Canonical approval establishes the official knowledge baseline; it does not prove learner mastery or production behavior.",
+    "Lecture, slide, quiz, lab and homework content is the explicitly deferred next phase."
+  ]
+}

@@ -1,0 +1,21 @@
+schema_version: 1
+task_id: module-07-l091-l098-curriculum-note-promotion
+objective: >-
+  Chuyển tám knowledge note đã kiểm chứng của DE-L091 đến DE-L098 thành bài giáo trình
+  đầy đủ, đồng thời tách hoạt động sau bài học khỏi phần trình bày kiến thức.
+scope:
+  lessons: [91, 92, 93, 94, 95, 96, 97, 98]
+  files_per_lesson: [note.md, after-note.md]
+acceptance_criteria:
+  - Mỗi note.md mở đầu bằng đúng ba heading Phase, Module và Lesson; không có YAML front matter.
+  - Không còn marker chua-viet, khung La Mã rỗng hoặc mô tả phân bổ thời lượng.
+  - Nội dung học thuật lấy từ knowledge note tương ứng; không rút gọn thành bản tóm tắt.
+  - Mỗi note.md có Mục tiêu bài học, Source coverage, Key takeaways và Reference.
+  - Câu hỏi tự kiểm tra, bằng chứng thực hành và tiêu chí hoàn thành nằm trong after-note.md.
+  - Mỗi after-note.md có Thực hành, Kiểm tra cuối bài, Tiêu chí hoàn thành, Bài làm sau buổi học và Reference.
+  - Mỗi đoạn văn prose nằm trên một dòng Markdown; không dùng delimiter toán học \\[ hoặc \\].
+  - Tám cặp tệp vượt qua validator chuyên biệt và không làm thay đổi file ngoài phạm vi.
+verification:
+  - python3 Tools/Curriculum/Build/promote_module07_notes.py --check
+  - python3 Tools/Curriculum/Build/validate_module07_curriculum_notes.py
+

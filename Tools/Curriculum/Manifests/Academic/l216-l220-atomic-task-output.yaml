@@ -1,0 +1,31 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 216-220
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l216-l220-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l216-l220-release-audit.md
+  fingerprint: 333657276c850b02ae16fa43dd69d31e5220aae444bcb9d897b53ed49f45f6b9
+tests:
+  core_audit_change_scope: pass
+  core_verify_deliverable: pass
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  live_engine_serialization_registry_labs: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-source-tree-no-diff
+residual_risks:
+  - engine recommendations remain protocols until representative workloads are benchmarked
+  - CSV and JSON behavior remains parser and configuration specific
+  - Avro aliases, Protobuf unknown-field preservation and generated APIs remain runtime/version specific
+  - registry acceptance does not establish semantic compatibility or prove deployment order
+owner: kina2711
+next_task: owner reviews L216-L220, then continue the next requested lesson batch

@@ -1,0 +1,17 @@
+task_id: second-brain-english-note-paths-2026-09-28
+task_type: brain-migration
+objective: Rename all existing Wiki note filenames, Wiki subject folders, and the home note to English while preserving Vietnamese note bodies, stable IDs, source lineage, hashes after rename, and Obsidian link integrity.
+acceptance:
+  - All 17 registered Wiki notes use English filenames.
+  - All subject folders below 2_Wiki use English names.
+  - The home note is named _Home.md.
+  - Stable note_id values and Vietnamese body content remain unchanged except mechanical wikilink target updates.
+  - Manifest paths and all internal wikilinks resolve after migration.
+  - Canonical Obsidian contains no legacy Vietnamese Wiki paths and preserves .obsidian plus user-owned Note.md.
+  - Migration is completed before DE-L095 through DE-L098 notes are added.
+constraints:
+  - Keep the four lifecycle layer identifiers 1_Nguon, 2_Wiki, 3_Toi, and 4_Ket-Qua unchanged because they are storage contracts rather than subject-note taxonomy.
+  - Do not modify curriculum, roadmap, web, artifact, or source PDFs.
+approval:
+  requested_by: user
+  public_distribution: not-authorized

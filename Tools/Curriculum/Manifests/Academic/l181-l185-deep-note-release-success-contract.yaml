@@ -1,0 +1,29 @@
+contract_id: de-l181-l185-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+owner: kina2711
+consumer: Data Analytics Engineer trainer
+scope:
+  lessons: [181, 182, 183, 184, 185]
+  phase: 5
+  modules: [12, 13]
+baseline:
+  formatter: checked=274 failed=0
+  whole_vault_coverage: checked=103 failed=0
+  second_brain_manifest: version=1.0.35 sources=66 notes=103 retrieval_tests=356
+acceptance:
+  - five Vietnamese knowledge notes each contain at least 2200 words
+  - source facts have stable IDs and exact PDF or current official-web locators
+  - architecture selection uses observable organizational constraints and reversal conditions
+  - metric lifecycle distinguishes semantic change, breaking compatibility and deprecation evidence
+  - ownership and failure analysis avoid person-blaming and assign testable controls
+  - capstone requirements remain traceable to lessons 161-183
+  - decision-first discovery distinguishes analytical, curiosity and operational requests
+  - Reference and Wiki copies are byte-identical
+  - generator, formatter and whole-vault coverage checks pass
+  - canonical Obsidian sync is checksum-verified without deleting destination-only files
+forbidden:
+  - changing quiz.md, homework.md, slides.md or lesson.yaml
+  - modifying Data Analyst curriculum
+  - claiming tool execution, lab results, Coursera completion or owner approval
+approval: owner-semantic-review-pending

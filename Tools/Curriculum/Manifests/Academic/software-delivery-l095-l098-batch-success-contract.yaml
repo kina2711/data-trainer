@@ -1,0 +1,34 @@
+batch_id: software-delivery-l095-l098-2026-09-28
+task_type: book-build-second-brain-pack
+objective: Chưng cất nguồn sách và tài liệu chính thức thành bốn note tiếng Việt cho DE-L095 đến DE-L098; tên file, thư mục và wikilink target dùng tiếng Anh.
+deliverables:
+  - lesson: DE-L095
+    note_id: wiki.software-engineering.behavior-preserving-refactoring
+    acceptance:
+      - Phân biệt refactor với sửa lỗi, thêm tính năng và rewrite.
+      - Mô tả safety net, chuỗi bước nhỏ, commit discipline và phép chứng minh hành vi không đổi.
+  - lesson: DE-L096
+    note_id: wiki.software-engineering.automated-code-and-supply-chain-checks
+    acceptance:
+      - Phân biệt formatter, static analysis, type checking, dependency scanning và secret scanning.
+      - Có policy ngưỡng chặn, triage false positive, quét lịch sử và SBOM ở mức vận hành.
+  - lesson: DE-L097
+    note_id: wiki.software-engineering.release-artifacts-versioning-and-compatible-migrations
+    acceptance:
+      - Giải thích build-once, immutable artifact, provenance, version và environment-specific configuration.
+      - Mô tả expand-migrate-contract cho thay đổi lược đồ với hai phiên bản chạy đồng thời.
+  - lesson: DE-L098
+    note_id: wiki.software-engineering.deployment-strategies-and-rollback
+    acceptance:
+      - So sánh recreate, rolling, blue-green, canary và feature flag theo blast radius, chi phí và khả năng quan sát.
+      - Có rollback decision tree, compatibility preconditions và cách diễn tập đo được.
+shared_acceptance:
+  - Nội dung tiếng Việt; tên file và thư mục note bằng tiếng Anh.
+  - Phân biệt source fact, synthesis, inference và giới hạn.
+  - Reference, staging Wiki và canonical Obsidian byte-identical cho cả bốn note.
+  - Mọi nguồn mới có provenance, ngày truy cập hoặc SHA-256 và quyền sử dụng.
+  - Manifest, home index và wikilinks được cập nhật và kiểm tra.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

@@ -1,0 +1,40 @@
+{
+  "batch_id": "B01-DE-FOUNDATION",
+  "updated_at": "2026-09-27",
+  "state": "in-progress",
+  "source_count": 7,
+  "states": {
+    "scoped-deep-read-complete": 3,
+    "unread": 3,
+    "ocr-required": 1
+  },
+  "sources": [
+    {
+      "source_id": "SUP-958EE285975F3184",
+      "state": "scoped-deep-read-complete",
+      "scope": "PDF pp. 1-15, 113-117, 132-154, 164-174",
+      "note": "Material/DE/Reference/Library/Source-Notes/SUP-958EE285975F3184.md"
+    },
+    {
+      "source_id": "SUP-E8CCE26D3340FE69",
+      "state": "scoped-deep-read-complete",
+      "scope": "PDF pp. 1-7, 39-66, 80-86, 91-131, 133-163",
+      "note": "Material/DE/Reference/Library/Source-Notes/SUP-E8CCE26D3340FE69.md"
+    },
+    {
+      "source_id": "SUP-9F9208D0D77C8CA7",
+      "state": "scoped-deep-read-complete",
+      "scope": "PDF pp. 1-3, 21-56, 135-152",
+      "note": "Material/DE/Reference/Library/Source-Notes/SUP-9F9208D0D77C8CA7.md"
+    },
+    {"source_id": "SUP-6AA1C15F38646CBF", "state": "ocr-required"},
+    {"source_id": "SUP-71640124F9951853", "state": "unread"},
+    {"source_id": "SUP-718521DFABA66510", "state": "unread"},
+    {"source_id": "SUP-DA30C25FED72B150", "state": "unread"}
+  ],
+  "limitations": [
+    "Batch is not complete.",
+    "The DSA source has no sampled text layer and requires OCR.",
+    "Completion labels apply only to explicitly recorded reading scopes."
+  ]
+}

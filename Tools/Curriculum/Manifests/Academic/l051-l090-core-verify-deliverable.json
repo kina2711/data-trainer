@@ -1,0 +1,20 @@
+{
+  "task_id": "core-verify-deliverable",
+  "instance_id": "engineering-foundation-l051-l090",
+  "status": "pass",
+  "manifest": {"version": "1.0.105", "sources": 200, "notes": 453, "retrieval_cases": 1406},
+  "tests": [
+    {"name": "batch_determinism_and_contract", "result": "8/8 batches pass; 40/40 lessons; 160 generated artifacts"},
+    {"name": "humanizer", "result": "40 checked; within-note repeats 0; cross-note repeats 0; prose tells 0"},
+    {"name": "markdown_formatter", "result": "1108 checked; 0 failed"},
+    {"name": "global_source_coverage", "result": "453 checked; 0 failed"},
+    {"name": "wiki_parity", "result": "40/40 byte-identical"},
+    {"name": "source_hashes", "result": "TLPI, Kurose, Patterson-Hennessy and Sommerville SHA-256 match source records"},
+    {"name": "skeleton_scan", "result": "remaining_skeletons_051_090=0"}
+  ],
+  "approval": "owner review pending",
+  "limitations": [
+    "Concept keys remain proposed and do not count as canonical registry coverage.",
+    "Labs are curriculum protocols, not claims of production execution or learner mastery."
+  ]
+}

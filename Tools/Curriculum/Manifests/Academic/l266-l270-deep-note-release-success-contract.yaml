@@ -1,0 +1,9 @@
+contract_id: de-l266-l270-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+owner: kina2711
+scope: {lessons: [266,267,268,269,270], phase: 7, modules: [17]}
+baseline: {manifest: "expected-after-l261-l265: 1.0.52/142/188/611"}
+acceptance: ["five notes >=2200 words", "artifacts, state CI, performance and orchestration time semantics are testable", "humanizer v2 passes", "Reference-Wiki parity", "all validators pass", "Obsidian checksum verified"]
+forbidden: ["quiz/homework/slides/lesson.yaml/diagram changes", "Material/DA changes", "fabricated dbt, warehouse or Airflow results"]
+approval: owner-semantic-review-pending

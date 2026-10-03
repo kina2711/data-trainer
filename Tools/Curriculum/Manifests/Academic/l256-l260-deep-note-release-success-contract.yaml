@@ -1,0 +1,9 @@
+contract_id: de-l256-l260-deep-note-release
+profile: build-change
+risk_tier: R2-standard
+owner: kina2711
+scope: {lessons: [256,257,258,259,260], phase: 7, modules: [17]}
+baseline: {manifest: "expected-after-l251-l255: 1.0.50/137/178/581"}
+acceptance: ["five notes >=2200 words", "generic/singular tests, macro boundaries and incremental strategies are testable", "humanizer v2 passes", "Reference-Wiki parity", "all validators pass"]
+forbidden: ["quiz/homework/slides/lesson.yaml/diagram changes", "Material/DA changes", "fabricated dbt or warehouse results"]
+approval: owner-semantic-review-pending

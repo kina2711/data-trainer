@@ -1,0 +1,203 @@
+# Phase 8: Distributed Systems, Streaming and Compute
+# Module 20: Distributed Systems Fundamentals
+# Lesson 317: Leases, fencing tokens and the returning old leader
+
+## Mục tiêu bài học
+
+**Năng lực cần chứng minh.** Tái hiện ca hai tiến trình cùng tưởng mình giữ khoá và chặn nó bằng thẻ chặn cưỡng chế ở đích.
+
+**Điều kiện hoàn thành.** Ca hai tiến trình cùng ghi được tái hiện kèm bằng chứng dữ liệu sai, và bản có thẻ chặn từ chối đúng 100% yêu cầu mang số cũ.
+
+> [!abstract] Câu hỏi trung tâm
+> Lease và fencing token ngăn old leader quay lại ghi side effect như thế nào, và phụ thuộc nào vẫn còn?
+
+## 1. Lease meaning
+
+Lease cấp quyền trong interval dưới clock/timing assumptions; client pause hoặc network delay có thể khiến holder tưởng còn quyền. Đừng bắt đầu bằng tên công cụ. Hãy bắt đầu bằng đối tượng được bảo vệ, boundary quan sát được và hậu quả nếu kết luận sai. Trong bài `Leases, fencing tokens and the returning old leader`, câu hỏi thực dụng là: Lease và fencing token ngăn old leader quay lại ghi side effect như thế nào, và phụ thuộc nào vẫn còn? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+
+## 2. Old leader hazard
+
+Process bị stop-the-world rồi quay lại có thể gửi write sau khi quyền đã chuyển cho leader mới. Điểm khó không nằm ở cú pháp mà ở identity và scope. Hai phép đo cùng tên vẫn có thể nói về hai population hoặc hai thời điểm khác nhau. Trong bài `Leases, fencing tokens and the returning old leader`, câu hỏi thực dụng là: Lease và fencing token ngăn old leader quay lại ghi side effect như thế nào, và phụ thuộc nào vẫn còn? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+
+## 3. Fencing token
+
+Mỗi grant có token đơn điệu; resource nhận side effect phải reject token nhỏ hơn highest seen. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Leases, fencing tokens and the returning old leader`, câu hỏi thực dụng là: Lease và fencing token ngăn old leader quay lại ghi side effect như thế nào, và phụ thuộc nào vẫn còn? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+
+## 4. Resource enforcement
+
+Nếu storage/API không kiểm token, fencing chỉ là metadata đẹp; mọi write path cần carry và validate token. Thiết kế tốt phải chịu được counterexample. Hãy chủ động tạo case sát boundary, case thiếu dữ liệu và case replay thay vì chỉ chạy happy path. Trong bài `Leases, fencing tokens and the returning old leader`, câu hỏi thực dụng là: Lease và fencing token ngăn old leader quay lại ghi side effect như thế nào, và phụ thuộc nào vẫn còn? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+
+## 5. Clock assumptions
+
+Expiry theo wall/monotonic clocks, drift bounds và delivery delay phải đủ; fencing giảm phụ thuộc thời gian cho side effects. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `Leases, fencing tokens and the returning old leader`, câu hỏi thực dụng là: Lease và fencing token ngăn old leader quay lại ghi side effect như thế nào, và phụ thuộc nào vẫn còn? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+
+## 6. Kill-pause test
+
+Pause holder qua lease expiry, elect new holder rồi resume old write; pass khi downstream reject old token. Kết luận cần có điều kiện đảo chiều. Khi volume, latency, nguồn thẩm quyền hoặc topology đổi, quyết định cũ phải được xem xét lại bằng cùng một oracle. Trong bài `Leases, fencing tokens and the returning old leader`, câu hỏi thực dụng là: Lease và fencing token ngăn old leader quay lại ghi side effect như thế nào, và phụ thuộc nào vẫn còn? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+
+## 7. Ma trận kiểm chứng từng mệnh đề
+
+Với `wiki.distributed.leases-fencing-old-leader`, command thành công không tự chứng minh dữ liệu đúng. Protocol riêng của bài là: Chạy bounded state/history fixture với deterministic fault schedule và kiểm counterexample bằng independent state-machine oracle. Mỗi probe dưới đây phải nối input boundary với failure signal và oracle có thể phản bác kết luận.
+
+### 7.1. Leases, fencing tokens and the returning old leader: kiểm `Lease meaning` bằng case 1, cụ thể lease cấp quyền trong interval dưới clock/timing assumptions; client pause hoặc network delay có thể khiến holder tưởng còn quyền
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Lease meaning` bằng case 1, cụ thể lease cấp quyền trong interval dưới clock/timing assumptions; client pause hoặc network delay có thể khiến holder tưởng còn quyền.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, tạo positive control và negative control chỉ khác đúng một điều kiện. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 1 của `Leases, fencing tokens and the returning old leader`, giữ fixture, raw failing rows và lệnh tái hiện. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.2. Leases, fencing tokens and the returning old leader: kiểm `Old leader hazard` bằng case 2, cụ thể process bị stop-the-world rồi quay lại có thể gửi write sau khi quyền đã chuyển cho leader mới
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Old leader hazard` bằng case 2, cụ thể process bị stop-the-world rồi quay lại có thể gửi write sau khi quyền đã chuyển cho leader mới.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, đổi grain nhưng giữ tổng số dòng để lộ phép đo sai cấp. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 2 của `Leases, fencing tokens and the returning old leader`, báo numerator, denominator và key set ở cả hai grain. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.3. Leases, fencing tokens and the returning old leader: kiểm `Fencing token` bằng case 3, cụ thể mỗi grant có token đơn điệu; resource nhận side effect phải reject token nhỏ hơn highest seen
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Fencing token` bằng case 3, cụ thể mỗi grant có token đơn điệu; resource nhận side effect phải reject token nhỏ hơn highest seen.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, đưa một giá trị tới đúng boundary và một giá trị vượt boundary. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 3 của `Leases, fencing tokens and the returning old leader`, lưu hai observed values cùng rule đã resolve. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.4. Leases, fencing tokens and the returning old leader: kiểm `Resource enforcement` bằng case 4, cụ thể nếu storage/api không kiểm token, fencing chỉ là metadata đẹp; mọi write path cần carry và validate token
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Resource enforcement` bằng case 4, cụ thể nếu storage/api không kiểm token, fencing chỉ là metadata đẹp; mọi write path cần carry và validate token.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, kill tiến trình ngay trước rồi ngay sau durable side effect. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 4 của `Leases, fencing tokens and the returning old leader`, lưu checkpoint, external ledger và trạng thái sau restart. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.5. Leases, fencing tokens and the returning old leader: kiểm `Clock assumptions` bằng case 5, cụ thể expiry theo wall/monotonic clocks, drift bounds và delivery delay phải đủ; fencing giảm phụ thuộc thời gian cho side effects
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Clock assumptions` bằng case 5, cụ thể expiry theo wall/monotonic clocks, drift bounds và delivery delay phải đủ; fencing giảm phụ thuộc thời gian cho side effects.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, đảo thứ tự input và concurrency nhưng giữ logical population. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 5 của `Leases, fencing tokens and the returning old leader`, so canonical hash và business totals giữa các thứ tự. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.6. Leases, fencing tokens and the returning old leader: kiểm `Kill-pause test` bằng case 6, cụ thể pause holder qua lease expiry, elect new holder rồi resume old write; pass khi downstream reject old token
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Kill-pause test` bằng case 6, cụ thể pause holder qua lease expiry, elect new holder rồi resume old write; pass khi downstream reject old token.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, replay cùng identity với payload giống rồi payload xung đột. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 6 của `Leases, fencing tokens and the returning old leader`, tách duplicate replay khỏi identity collision bằng reason code. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.7. Leases, fencing tokens and the returning old leader: kiểm `Lease meaning` bằng case 7, cụ thể lease cấp quyền trong interval dưới clock/timing assumptions; client pause hoặc network delay có thể khiến holder tưởng còn quyền
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Lease meaning` bằng case 7, cụ thể lease cấp quyền trong interval dưới clock/timing assumptions; client pause hoặc network delay có thể khiến holder tưởng còn quyền.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, thêm record tới trễ trong horizon và ngoài horizon. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 7 của `Leases, fencing tokens and the returning old leader`, báo accepted-late, rejected-late và oldest outstanding timestamp. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.8. Leases, fencing tokens and the returning old leader: kiểm `Old leader hazard` bằng case 8, cụ thể process bị stop-the-world rồi quay lại có thể gửi write sau khi quyền đã chuyển cho leader mới
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Old leader hazard` bằng case 8, cụ thể process bị stop-the-world rồi quay lại có thể gửi write sau khi quyền đã chuyển cho leader mới.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, đổi schema theo một cách tương thích rồi một cách phá vỡ semantics. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 8 của `Leases, fencing tokens and the returning old leader`, giữ schema diff, classification và consumer-visible result. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.9. Leases, fencing tokens and the returning old leader: kiểm `Fencing token` bằng case 9, cụ thể mỗi grant có token đơn điệu; resource nhận side effect phải reject token nhỏ hơn highest seen
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Fencing token` bằng case 9, cụ thể mỗi grant có token đơn điệu; resource nhận side effect phải reject token nhỏ hơn highest seen.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, tạo missing và duplicate bù nhau để count tổng không đổi. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 9 của `Leases, fencing tokens and the returning old leader`, so key multiset và typed hashes thay vì chỉ row count. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.10. Leases, fencing tokens and the returning old leader: kiểm `Resource enforcement` bằng case 10, cụ thể nếu storage/api không kiểm token, fencing chỉ là metadata đẹp; mọi write path cần carry và validate token
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Resource enforcement` bằng case 10, cụ thể nếu storage/api không kiểm token, fencing chỉ là metadata đẹp; mọi write path cần carry và validate token.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, cho reviewer tái hiện chỉ từ evidence package. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 10 của `Leases, fencing tokens and the returning old leader`, package phải đủ để người khác dựng lại decision và limitation. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.11. Leases, fencing tokens and the returning old leader: kiểm `Clock assumptions` bằng case 11, cụ thể expiry theo wall/monotonic clocks, drift bounds và delivery delay phải đủ; fencing giảm phụ thuộc thời gian cho side effects
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Clock assumptions` bằng case 11, cụ thể expiry theo wall/monotonic clocks, drift bounds và delivery delay phải đủ; fencing giảm phụ thuộc thời gian cho side effects.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, so với oracle độc lập không dùng chung query hoặc parser. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 11 của `Leases, fencing tokens and the returning old leader`, independent result phải khớp ở grain đã công bố. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.12. Leases, fencing tokens and the returning old leader: kiểm `Kill-pause test` bằng case 12, cụ thể pause holder qua lease expiry, elect new holder rồi resume old write; pass khi downstream reject old token
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Kill-pause test` bằng case 12, cụ thể pause holder qua lease expiry, elect new holder rồi resume old write; pass khi downstream reject old token.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, chạy scope hẹp và population đầy đủ rồi công bố phần bị loại. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 12 của `Leases, fencing tokens and the returning old leader`, coverage phải nêu rõ excluded nodes, partitions hoặc incidents. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.13. Leases, fencing tokens and the returning old leader: kiểm `Lease meaning` bằng case 13, cụ thể lease cấp quyền trong interval dưới clock/timing assumptions; client pause hoặc network delay có thể khiến holder tưởng còn quyền
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Lease meaning` bằng case 13, cụ thể lease cấp quyền trong interval dưới clock/timing assumptions; client pause hoặc network delay có thể khiến holder tưởng còn quyền.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, thử timezone, precision hoặc partition ở hai phía của ranh giới. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 13 của `Leases, fencing tokens and the returning old leader`, UTC/local interval và rounding policy phải hiện trong output. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.14. Leases, fencing tokens and the returning old leader: kiểm `Old leader hazard` bằng case 14, cụ thể process bị stop-the-world rồi quay lại có thể gửi write sau khi quyền đã chuyển cho leader mới
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Old leader hazard` bằng case 14, cụ thể process bị stop-the-world rồi quay lại có thể gửi write sau khi quyền đã chuyển cho leader mới.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, đổi constraint đủ lớn để quyết định phải đảo. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 14 của `Leases, fencing tokens and the returning old leader`, ADR phải lưu changed constraint và reversal threshold. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+### 7.15. Leases, fencing tokens and the returning old leader: kiểm `Fencing token` bằng case 15, cụ thể mỗi grant có token đơn điệu; resource nhận side effect phải reject token nhỏ hơn highest seen
+
+**Mệnh đề cần kiểm.** Leases, fencing tokens and the returning old leader: kiểm `Fencing token` bằng case 15, cụ thể mỗi grant có token đơn điệu; resource nhận side effect phải reject token nhỏ hơn highest seen.
+
+**Thiết kế phép thử.** Trong ngữ cảnh `wiki.distributed.leases-fencing-old-leader`, chạy lại từ môi trường sạch với versions và seed đã khóa. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Leases, fencing tokens and the returning old leader` công bố.
+
+**Bằng chứng cần giữ.** Đối với probe 15 của `Leases, fencing tokens and the returning old leader`, canonical result phải ổn định hoặc mọi nondeterminism phải được giải thích. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
+
+## 8. Quy trình phản biện
+
+1. Viết consumer-visible invariant cho `Leases, fencing tokens and the returning old leader` trước khi chọn query hoặc tool.
+2. Khóa grain, identity, population, time window và authoritative source.
+3. Phân biệt declared configuration, executed state và published state.
+4. Chạy negative control, replay hoặc changed-assumption case phù hợp.
+5. Đối soát bằng oracle độc lập; công bố coverage và phần không quan sát được.
+6. Gắn owner, hành động, reversal trigger và hạn review cho kết luận.
+
+## 9. Câu hỏi tự kiểm tra
+
+1. `Leases, fencing tokens and the returning old leader: kiểm `Lease meaning` bằng case 1, cụ thể lease cấp quyền trong interval dưới clock/timing assumptions; client pause hoặc network delay có thể khiến holder tưởng còn quyền` thất bại đầu tiên ở boundary nào?
+2. Artifact nào mạnh nhất để trả lời `Leases, fencing tokens and the returning old leader: kiểm `Fencing token` bằng case 3, cụ thể mỗi grant có token đơn điệu; resource nhận side effect phải reject token nhỏ hơn highest seen`?
+3. Counterexample nhỏ nhất cho `Leases, fencing tokens and the returning old leader: kiểm `Kill-pause test` bằng case 6, cụ thể pause holder qua lease expiry, elect new holder rồi resume old write; pass khi downstream reject old token` gồm những state nào?
+4. `Leases, fencing tokens and the returning old leader: kiểm `Fencing token` bằng case 9, cụ thể mỗi grant có token đơn điệu; resource nhận side effect phải reject token nhỏ hơn highest seen` có thể xanh giả ra sao?
+5. Constraint nào khiến quyết định ở `Leases, fencing tokens and the returning old leader: kiểm `Old leader hazard` bằng case 14, cụ thể process bị stop-the-world rồi quay lại có thể gửi write sau khi quyền đã chuyển cho leader mới` phải đảo?
+6. Phần nào của `Leases, fencing tokens and the returning old leader: kiểm `Fencing token` bằng case 15, cụ thể mỗi grant có token đơn điệu; resource nhận side effect phải reject token nhỏ hơn highest seen` mới là protocol, chưa phải observation?
+
+## 10. Giới hạn và điều chưa cho phép kết luận
+
+- Lab của `Leases, fencing tokens and the returning old leader` chưa chạy trên hệ thống production; nội dung là giáo trình và expected evidence.
+- Hành vi phụ thuộc phiên bản, connector, scheduler, warehouse và catalog configuration phải được kiểm lại.
+- Các ma trận, ladder và threshold do giáo trình tổng hợp không được gán nguyên văn cho vendor.
+- Note giữ trạng thái `review` cho tới khi owner duyệt semantics và learner artifact.
+
+## Reference
+1. [[SRC-KLEPPMANN-DDIA-1E]]
+2. [[SRC-RAFT-EXTENDED]]
+
+## Source coverage
+
+| Source slice | Nội dung sử dụng | Trạng thái |
+|---|---|---|
+| [[SRC-KLEPPMANN-DDIA-1E]] | Contract hoặc cơ chế liên quan trực tiếp tới `Leases, fencing tokens and the returning old leader` | Đã đọc locator; cần pin version khi chạy lab |
+| [[SRC-RAFT-EXTENDED]] | Contract hoặc cơ chế liên quan trực tiếp tới `Leases, fencing tokens and the returning old leader` | Đã đọc locator; cần pin version khi chạy lab |
+
+## Key takeaways
+- Lease không đủ nếu resource không reject stale fencing token.
+- Với `wiki.distributed.leases-fencing-old-leader`, quality của kết luận phụ thuộc identity, coverage và oracle chứ không phụ thuộc màu dashboard.
+- Câu hỏi `Lease và fencing token ngăn old leader quay lại ghi side effect như thế nào, và phụ thuộc nào vẫn còn?` chỉ được trả lời trong scope và version đã ghi.
+- Các source IDs `src.book.kleppmann-ddia.1e, src.paper.raft-extended` đặt ranh giới cho source fact; phần còn lại là synthesis có nhãn.
+- Trước khi lab chạy, đây là note đã kiểm cấu trúc và provenance, chưa phải chứng nhận production.

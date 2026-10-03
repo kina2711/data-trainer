@@ -1,0 +1,29 @@
+task_id: socket-framing-partial-io-note-2026-09-27
+task_type: book-build-second-brain-pack
+objective: Convert the socket-programming and stream-I/O sections of Kurose-Ross and TLPI into one detailed, humanized Vietnamese reference and Obsidian Wiki note about socket lifecycle, TCP byte streams, application framing, partial I/O, EOF, and bounded failure handling.
+sources:
+  - source_id: src.book.kurose-ross-networking.8e
+    scope: section 2.7, printed pages 182-194, PDF pages 184-196; sections 3.5.1-3.5.2, printed pages 257-264, PDF pages 259-266
+    rights: private-owner-provided-no-public-redistribution
+  - source_id: src.book.tlpi.2010
+    scope: sections 56.5-56.5.5, printed pages 1155-1159, PDF pages 1199-1203; sections 61.1-61.2, printed pages 1254-1257, PDF pages 1298-1301
+    rights: private-owner-provided-no-public-redistribution
+success_criteria:
+  - Explain client and server socket lifecycles, including the distinction between a listening socket and the connected socket returned by accept().
+  - Explain that TCP exposes an ordered byte stream without application-message boundaries and that send/write call boundaries need not match recv/read call boundaries.
+  - State the observable outcomes of read and write, including partial transfers, EOF, EINTR, nonblocking readiness, EPIPE, SIGPIPE, and half-close with appropriate qualifiers.
+  - Compare fixed-size, delimiter, length-prefix, and EOF-delimited framing, including their invariants and failure modes.
+  - Provide bounded read-exact and write-all algorithms plus a stateful frame decoder that does not allocate from an unvalidated peer length.
+  - Cover the three DE-L085 failure injections: disconnect mid-frame, slow sender, and oversized message, with evidence and pass criteria.
+  - Separate transport delivery, kernel-buffer acceptance, frame completion, parsing, and business acknowledgement.
+  - Preserve source claims and qualifiers, mark synthesis and uncertainty, and complete a Vietnamese Humanizer pass.
+  - Keep Reference, staging Wiki, and canonical Obsidian copies byte-identical.
+validation:
+  - Both source hashes match the registered sources.
+  - All 30 PDF pages in declared scope contain extractable text.
+  - Frontmatter, IDs, claim types, locators, links, manifest counts, required terms, and Markdown fences validate.
+  - Retrieval tests cover byte-stream boundaries, partial I/O, EOF, listening versus connected sockets, bounded length-prefix parsing, and the three injected failures.
+approval:
+  requested_by: user
+  public_distribution: not-authorized
+  note_status: review

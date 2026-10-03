@@ -1,0 +1,17 @@
+{
+  "task_id": "academic-deep-reading-corpus-2026-09-27",
+  "allowed_paths": [
+    "Tools/Curriculum/Manifests/Academic/deep-reading-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/deep-reading-change-scope.json",
+    "Material/DA/Reference/Library/Source-Notes/**",
+    "Material/DE/Reference/Library/Source-Notes/**"
+  ],
+  "forbidden_paths": [
+    "Material/**/Curriculum/**/note.md",
+    "Material/**/Curriculum/**/after-note.md",
+    "Material/**/Roadmap/**",
+    "Web/**",
+    "Artifact/**"
+  ],
+  "declared_effect": "Create source notes only. Reference distribution and lesson authoring remain later gates."
+}

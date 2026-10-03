@@ -1,0 +1,37 @@
+{
+  "batch": "L150-L155",
+  "read_on": "2026-10-01",
+  "method": "pdftotext -layout with bounded PDF page ranges; headings and content manually inspected",
+  "sources": [
+    {
+      "source_id": "src.book.kimball-ross-data-warehouse-toolkit.3e",
+      "pdf_pages": "48-66, 78-90, 96-112, 145-161, 280-291",
+      "topics": ["four-step dimensional design", "grain", "surrogate keys", "facts and dimensions", "bus matrix", "fact table types", "additivity", "late-arriving data"]
+    },
+    {
+      "source_id": "src.course.hcmut-entity-relationship-model",
+      "pdf_pages": "27-50",
+      "topics": ["entities", "attributes", "keys", "relationships", "cardinality", "weak entities"]
+    },
+    {
+      "source_id": "src.course.hcmut-system-modeling.2019",
+      "pdf_pages": "1-61",
+      "topics": ["model perspectives", "abstraction", "structural models", "CIM PIM PSM analogy"]
+    },
+    {
+      "source_id": "src.book.silberschatz-database-system-concepts.7e",
+      "pdf_pages": "871-920",
+      "topics": ["database design", "conceptual logical physical design", "entity relationship", "identifiers"]
+    },
+    {
+      "source_id": "src.book.kleppmann-ddia.1e",
+      "pdf_pages": "49-66, 94-106, 154-194, 220-270",
+      "topics": ["data-model boundaries", "workload trade-offs", "storage", "replication and partitioning context"]
+    }
+  ],
+  "limitations": [
+    "No profiling, merge/split, backfill, reconciliation or dimensional-query lab was executed",
+    "HCMUT System Modeling does not define the conceptual/logical/physical data-model triad verbatim; the mapping is labelled curriculum synthesis",
+    "Kimball and Ross are the primary source for dimensional-model taxonomy; DDIA and Silberschatz are used for data-model and database-design boundaries"
+  ]
+}

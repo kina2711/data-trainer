@@ -1,0 +1,22 @@
+{
+  "batch": "L186-L190",
+  "read_on": "2026-10-02",
+  "method": "bounded local PDF reading retained from the source pack plus current official/project and methodology-author documentation",
+  "sources": [
+    {"source_id": "src.book.reis-housley-fundamentals-data-engineering", "pdf_pages": "429-451, 473-491", "topics": ["analytical models", "data products", "consumers", "metadata", "operational responsibility"]},
+    {"source_id": "src.book.sommerville-software-engineering.10e", "pdf_pages": "103-132, 169-212, 255-270, 732-756", "topics": ["requirements traceability", "interface specification", "information hiding", "change and release management"]},
+    {"source_id": "src.book.geewax-api-design-patterns.1e", "pdf_pages": "642-680", "topics": ["consumer-observed compatibility", "semantic changes", "versioning", "deprecation"]},
+    {"source_id": "src.web.amplitude-north-star-framework", "locator": "North Star Playbook lines 417-480 and linked framework diagram, inspected 2026-10-02", "topics": ["outcome metric", "input metrics", "assumptions", "customer-product-business alignment"]},
+    {"source_id": "src.web.openlineage-overview", "locator": "OpenLineage overview lines 4-21 and job lineage facet, inspected 2026-10-02", "topics": ["datasets", "jobs", "runs", "technical lineage", "impact analysis"]},
+    {"source_id": "src.web.dehghani-data-mesh-principles", "locator": "Data Mesh Principles lines 78-107, 133-210 and 217-263, inspected 2026-10-02", "topics": ["data as a product", "domain ownership", "interfaces", "metadata", "self-service", "governance"]},
+    {"source_id": "src.web.dbt-model-versions", "locator": "dbt model versions lines 219-277, inspected 2026-10-02", "topics": ["versioned model contracts", "breaking schema changes", "additive changes", "CI detection"]},
+    {"source_id": "src.web.govuk-data-analytics-tools-guidance", "locator": "PDF pages 4-10, inspected 2026-10-02", "topics": ["decision and action", "user need", "data maturity", "analytics suitability"]},
+    {"source_id": "src.web.govuk-understand-user-needs", "locator": "Service Standard lines 55-83, inspected 2026-10-02", "topics": ["user problem", "full context", "solution avoidance", "assumption testing"]}
+  ],
+  "limitations": [
+    "No causal experiment, live traceability graph, consumer usability test or compatibility migration was run",
+    "Metric edge taxonomy, five-link decision traceability and eight-attribute product rubric are curriculum syntheses",
+    "dbt additive/breaking classification is a product schema check and is not treated as universal consumer compatibility",
+    "No Coursera material was accessed in this batch"
+  ]
+}

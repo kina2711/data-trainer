@@ -1,0 +1,20 @@
+task_id: b01-de-foundation-source-notes-2026-09-27
+task_type: book-build-curriculum-pack
+objective: Build evidence-traceable source notes for the B01-DE-FOUNDATION batch without authoring lesson content.
+success_criteria:
+  - Every source note records the canonical source ID, file SHA-256, reading scope, and stable page locators.
+  - Source claims, editor interpretation, limitations, and unsupported curriculum objectives are separated.
+  - A source is marked complete only for the explicitly reviewed scope.
+  - No copyrighted source text is copied in bulk.
+  - No curriculum note, roadmap, web, or artifact file is modified.
+validation:
+  - Source IDs and SHA-256 values reconcile with supplemental-source-manifest-v1.json.
+  - Referenced objective IDs exist in objectives.json.
+  - Batch progress distinguishes completed, in-progress, blocked, and unread sources.
+approval:
+  requested_by: user
+  scope: Convert user-provided offline sources into detailed reference notes.
+academic_integrity:
+  graded_assessments: user_only
+  certificates: user_only
+  allowed_support: reading, source notes, explanations, practice, and feedback

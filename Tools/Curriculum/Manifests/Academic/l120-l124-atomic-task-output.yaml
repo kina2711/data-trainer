@@ -1,0 +1,24 @@
+task_id: brain-build-atomic-knowledge-note
+companion_task_id: book-fold-into-existing-system
+profile: build-change
+risk_tier: R2-standard
+phase_reached: release-handoff-pending-owner-review
+primary_deliverable: five governed atomic knowledge notes for DE L120-L124
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l120-l124-source-reading.json
+  success_contract: Tools/Curriculum/Manifests/Academic/l120-l124-deep-note-release-success-contract.yaml
+  scope_contract: Tools/Curriculum/Manifests/Academic/l120-l124-deep-note-release-change-scope.json
+  audit: Tools/Curriculum/Manifests/Academic/l120-l124-release-audit.md
+validation:
+  formatter: pass
+  generator_freshness: pass
+  batch_validator: pass
+  whole_vault_coverage: pass
+  manifest_integrity: pass
+approval: pending-owner-semantic-review
+residual_risks:
+  - database labs and performance measurements are not executed
+  - DBMS portability beyond PostgreSQL 17 is not certified
+  - Coursera material is deferred by owner policy
+next_owner: kina2711
+next_task: semantic review of L120-L124 or continue with the next lesson batch

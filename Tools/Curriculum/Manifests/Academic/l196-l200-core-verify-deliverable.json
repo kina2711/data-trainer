@@ -1,0 +1,47 @@
+{
+  "control": "core-verify-deliverable",
+  "contract_id": "de-l196-l200-deep-note-release",
+  "executed_at": "2026-10-01T23:20:00+07:00",
+  "result": "pass",
+  "checks": [
+    {
+      "name": "generator_check",
+      "command": "python3 Tools/Curriculum/Build/promote_l196_l200_notes.py --check",
+      "result": "checked=20 stale=0"
+    },
+    {
+      "name": "batch_validator",
+      "command": "python3 Tools/Curriculum/Build/validate_l196_l200_notes.py",
+      "result": "PASS lessons=5 curriculum_files=10 knowledge_notes=5 min_words=2200 wiki_parity=5/5 serving-adoption-cost-reverse-etl-lifecycle=checked"
+    },
+    {
+      "name": "markdown_formatter",
+      "command": "python3 Tools/Curriculum/Build/format_knowledge_notes.py --check",
+      "result": "checked=337 failed=0"
+    },
+    {
+      "name": "whole_vault_coverage",
+      "command": "python3 Tools/Curriculum/Build/validate_knowledge_note_coverage.py",
+      "result": "checked=123 failed=0"
+    },
+    {
+      "name": "obsidian_checksum",
+      "command": "rsync -ani --checksum Docs/Second-Brain/ /media/kina2711/DATA/2026/Second_Brain/",
+      "result": "no output; source tree has no checksum difference from destination"
+    }
+  ],
+  "manifest": {
+    "version": "1.0.39",
+    "sources": 89,
+    "notes": 123,
+    "retrieval_tests": 416
+  },
+  "deliverable_fingerprint": "2f91383c24b0c66d4155e75e90e15a748a32a18c3359d55b8088f504694fcad8",
+  "unrun": [
+    "three-surface authorization and load/overload exercise",
+    "representative-user adoption instrumentation and causal outcome evaluation",
+    "real billing, labor and shared-cost allocation reconciliation",
+    "reverse-ETL destination fault injection and privacy/legal approval",
+    "team lifecycle, on-call, deprecation and hidden-consumer exercise"
+  ]
+}

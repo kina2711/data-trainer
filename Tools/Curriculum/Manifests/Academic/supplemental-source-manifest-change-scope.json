@@ -1,0 +1,21 @@
+{
+  "task_id": "book-build-supplemental-source-manifest-2026-09-27",
+  "allowed_paths": [
+    "Tools/Curriculum/build_supplemental_source_manifest.py",
+    "Tools/Curriculum/Manifests/Academic/supplemental-source-manifest-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/supplemental-source-manifest-change-scope.json",
+    "Tools/Curriculum/Manifests/Academic/supplemental-source-manifest-v1.json",
+    "Tools/Curriculum/Manifests/Academic/atomic-task-output-book-build-source-manifest.yaml",
+    "Docs/Operations/SUPPLEMENTAL-SOURCE-STATUS.md"
+  ],
+  "forbidden_paths": [
+    "/media/kina2711/DATA/**",
+    "Material/**/Curriculum/**",
+    "Material/**/Roadmap/**",
+    "Material/**/Reference/**",
+    "Web/**",
+    "Artifact/**"
+  ],
+  "declared_effect": "Add canonical source metadata and queues only; no deep-reading output or lesson/reference content."
+}
+

@@ -1,0 +1,58 @@
+decision_id: academic-objectives-2026-09-25
+task_id: academy-define-role-learning-outcomes
+deliverable: objective-registry-da-de
+constraints:
+  - roadmap là nguồn chuẩn về phạm vi và đầu ra
+  - không viết nội dung bài giảng trong chặng chuẩn bị học thuật
+  - objective không phụ thuộc thời lượng cố định
+  - toàn bộ DA và DE được xử lý trong một lượt
+options:
+  - option_id: rewrite-roadmaps
+    approach: Viết lại trực tiếp toàn bộ objective trong 56 roadmap
+    defining_points:
+      - objective chỉ tồn tại trong tài liệu đọc bởi con người
+      - mọi thay đổi đều tác động roadmap đã chuyển đổi
+      - khó dùng trực tiếp cho kiểm kê nguồn tự động
+    optimizes_for: số lượng loại tệp ít
+    wrong_when: cần ánh xạ 525 bài với nguồn và kiểm tra độ phủ bằng máy
+    evidence_refs:
+      - Material/DA/Roadmap/roadmap.md
+      - Material/DE/Roadmap/roadmap.md
+    decision: rejected
+    reason: tăng rủi ro trôi nội dung và không cung cấp registry máy đọc được cho bước tìm nguồn
+  - option_id: copy-to-lessons
+    approach: Chép objective vào note.md hoặc lesson.yaml của từng bài
+    defining_points:
+      - objective nằm gần nội dung bài giảng
+      - roadmap và curriculum cùng giữ một thông tin
+      - buộc sửa scaffold nội dung trước giai đoạn viết bài
+    optimizes_for: tiện đọc khi soạn từng bài
+    wrong_when: roadmap vẫn là hợp đồng đầu ra chính thức
+    evidence_refs:
+      - Docs/Standards/Lesson-Format.md
+    decision: rejected
+    reason: tạo hai nguồn sự thật và đi trước thứ tự công việc đã chốt
+  - option_id: derived-registry
+    approach: Sinh registry objective từ roadmap, gắn locator và SHA-256 của nguồn
+    defining_points:
+      - roadmap tiếp tục là nguồn chuẩn
+      - registry phục vụ kiểm định và ánh xạ nguồn
+      - mọi bản ghi truy được về tệp và heading nguồn
+      - thay đổi roadmap làm kiểm tra freshness thất bại
+    optimizes_for: truy vết, kiểm định tự động và chuẩn bị bước tìm nguồn
+    wrong_when: roadmap không còn là nguồn chuẩn
+    evidence_refs:
+      - Docs/Standards/Roadmap-Format-Proposal.md
+      - Material/DA/Roadmap/roadmap.md
+      - Material/DE/Roadmap/roadmap.md
+    decision: selected
+    reason: ""
+selected_option_id: derived-registry
+selection_rationale: Giữ một nguồn sự thật, cung cấp dữ liệu máy đọc được cho 581 cấp objective và phát hiện ngay khi roadmap nguồn thay đổi.
+eliminated_by_constraint: []
+reopen_signal:
+  - roadmap không còn là hợp đồng đầu ra chính thức
+  - Web cần chỉnh objective độc lập với roadmap
+structure_derived_from_selection: true
+owner: kina2711
+status: approved

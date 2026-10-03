@@ -1,0 +1,53 @@
+contract_id: academic-objectives-da-de
+version: 1.0.0
+objective: Chuẩn hóa và kiểm định objective cho toàn bộ DA và DE trước khi lập kế hoạch nguồn.
+consumer_and_decision: Chủ dự án dùng registry để duyệt objective và xác định nguồn cần thiết ở mọi cấp.
+observable_outcomes:
+  - Có objective truy vết được cho 2 chương trình, 14 phase, 40 module và 525 lesson.
+  - Mỗi lesson có hành động quan sát được, bằng chứng, ngưỡng đạt, điều kiện tiên quyết và tầng Bloom.
+  - Objective lesson truy được về module, phase và programme chứa nó.
+  - Roadmap thay đổi sau khi sinh registry được phát hiện bằng SHA-256.
+acceptance_checks:
+  - id: OBJ-COUNT
+    condition: Registry chứa đúng 2 programme, 14 phase, 40 module và 525 lesson.
+    method: Tools/Curriculum/Validators/validate_objectives.py
+    evidence: Báo cáo đếm theo kind và programme.
+    pass_rule: Mọi số đếm khớp và không trùng ID.
+  - id: OBJ-LESSON
+    condition: Mỗi lesson có outcome, evidence, threshold, prerequisites, Bloom và assessment.
+    method: Tools/Curriculum/Validators/validate_objectives.py
+    evidence: Danh sách trường thiếu theo lesson ID.
+    pass_rule: Không có trường bắt buộc rỗng.
+  - id: OBJ-OBSERVABLE
+    condition: Objective không mở đầu bằng động từ không quan sát được.
+    method: Kiểm tra từ khóa và rà soát mẫu theo từng module.
+    evidence: Báo cáo objective cần rà soát.
+    pass_rule: Không còn objective dùng hiểu, biết, nắm được hoặc làm quen làm hành động chính.
+  - id: OBJ-FRESHNESS
+    condition: Mọi bản ghi giữ đúng SHA-256 của roadmap nguồn.
+    method: Tools/Curriculum/Validators/validate_objectives.py
+    evidence: Đối chiếu hash tệp nguồn với registry.
+    pass_rule: Không có hash cũ hoặc locator mất.
+  - id: OBJ-SCOPE
+    condition: Không sửa Curriculum, Reference, Artifact hoặc Web trong bước objective.
+    method: Audit phạm vi thay đổi Git.
+    evidence: Change-scope ledger.
+    pass_rule: Không có thay đổi ngoài allowlist của bước này.
+non_goals:
+  - tìm hoặc tải nguồn
+  - đọc sâu PDF
+  - viết note.md, after-note.md hoặc slide
+  - xây Web
+  - chứng nhận chức danh hay kinh nghiệm nghề nghiệp
+assumptions:
+  - roadmap hiện tại là hợp đồng phạm vi được owner chọn làm cơ sở
+  - không suy ra năng lực sẵn có của người học từ lịch sử trò chuyện
+blocking_ambiguities: []
+stop_conditions:
+  - số bài hoặc quan hệ cha con không khớp cấu trúc Material
+  - objective không thể truy về roadmap nguồn
+  - cần thay đổi phạm vi nghề nghiệp thay vì chỉ làm objective cụ thể hơn
+owner: kina2711
+reviewed_by: Codex
+approved_at: ""
+status: active

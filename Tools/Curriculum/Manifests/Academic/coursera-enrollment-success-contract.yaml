@@ -1,0 +1,24 @@
+task_id: academy-coursera-enrollment-2026-09-27
+task_type: academy-plan-corpus-milestone
+objective: Record verified Coursera access for the approved academic source corpus without claiming that any course has been read or completed.
+success_criteria:
+  - All 23 approved Coursera entries have an observed access status.
+  - Accessible entries are verified by a course home page or a specialization "Go To Course" control.
+  - Unavailable standalone entries are identified explicitly.
+  - No graded assessment, certificate action, payment, subscription, or full parent-program enrollment is performed.
+evidence:
+  - Coursera UI state observed while signed in to the EmployNV organization account.
+  - Direct course home URLs checked for enrolled courses.
+  - Public course pages checked when direct course access redirected.
+validation:
+  - JSON parse validation for the enrollment manifest.
+  - Source IDs reconciled against source-catalog.json.
+approval:
+  requested_by: user
+  scope: Enroll in approved Coursera sources and begin read-only study/note preparation.
+out_of_scope:
+  - Graded quizzes, exams, peer reviews, or capstone submissions.
+  - Obtaining certificates on the user's behalf.
+  - Paid checkout or subscription changes.
+  - Enrolling complete Professional Certificates solely to unlock one unavailable course.
+

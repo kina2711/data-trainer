@@ -1,0 +1,27 @@
+task_ids:
+  - book-fold-into-existing-system
+  - brain-build-atomic-knowledge-note
+lifecycle_profile: build-change
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-release-handoff
+primary_deliverable: governed fold-in release for DE lessons 156-160
+evidence:
+  source_reading: Tools/Curriculum/Manifests/Academic/l156-l160-source-reading.json
+  audit: Tools/Curriculum/Manifests/Academic/l156-l160-release-audit.md
+  fingerprint: 028d297d3c97b1cb03916515f899d0c5c53859c9726ee08e942cf0734d4eec5b
+tests:
+  generator_check: pass
+  batch_validator: pass
+  markdown_formatter: pass
+  whole_vault_coverage: pass
+  modeling_temporal_and_benchmark_labs: not-run
+approval: owner-semantic-review-pending
+release:
+  repository_artifacts: built-and-tested
+  canonical_obsidian_sync: checksum-verified-13-of-13
+residual_risks:
+  - bridge allocation, SCD temporal invariants and layout trade-offs have not been exercised against a lab dataset
+  - Data Vault scope is recognition-only and must not be interpreted as implementation competence
+owner: kina2711
+next_task: owner reviews L156-L160, then continue the next requested lesson batch

@@ -1,0 +1,211 @@
+# Phase 6: Analytical Storage and Query Engines
+# Module 14: OLAP Internals and Analytical Engines
+# Lesson 203: OLTP and OLAP - Workload Before Product Name
+
+## Mục tiêu bài học
+
+**Năng lực cần chứng minh.** Phân loại khối lượng công việc theo năm chiều và suy ra hệ phù hợp kèm lý do cơ chế.
+
+**Điều kiện hoàn thành.** Phân đúng ≥ 5/6 khối lượng công việc, lý do dẫn về năm chiều, và có số đo chênh lệch giữa hai hệ.
+
+> [!abstract] Câu hỏi trung tâm
+> Phân loại OLTP, OLAP và vùng lai bằng workload shape như thế nào, rồi suy ra yêu cầu storage, execution và isolation mà không dựa vào nhãn sản phẩm?
+
+## 1. Workload là vector, không phải nhãn
+
+Ghi ít nhất năm chiều: rows touched/query, columns touched/query, read/write mix và mutation shape, latency/throughput target, concurrent sessions. Bổ sung history horizon, query predictability, consistency/freshness và burst pattern khi chúng đổi lựa chọn. OLTP điển hình point/range nhỏ, cập nhật từ user input, tail latency thấp và concurrency cao. OLAP điển hình quét/aggregate nhiều rows, projection hẹp, bulk/stream ingest và latency tính bằng giây. Đây là profiles, không phải luật: workload cụ thể có thể nằm giữa hoặc có nhiều classes đồng thời.
+
+## 2. Từ vector tới bottleneck
+
+Point lookup phụ thuộc index traversal, random access, latch/lock/MVCC và log durability; scan lớn phụ thuộc bytes read, sequential bandwidth, decompression, memory bandwidth, CPU cache và parallel aggregation. Rows và columns phải quy về byte/operation estimates: mười columns kiểu rộng có thể lớn hơn năm mươi boolean columns. Concurrency biến một query nhanh thành workload quá tải qua queueing. p50 không thay p95/p99; average bytes không cho thấy spill hoặc skew. Phân loại tốt dự đoán resource saturation, không chỉ gọi tên OLTP/OLAP.
+
+## 3. Hệ quả kiến trúc
+
+Workload point-update thường ưu tiên row locality, indexes, WAL, fine-grained concurrency và bounded transactions. Workload scan ưu tiên column projection, encoding/compression, vectorized operators, zone/partition pruning và batch writes. C-Store trình bày một thiết kế read-optimized với projections, compressed columns và tách write/read structures; đó là một kiến trúc cụ thể, không phải định nghĩa OLAP. SQL interface giống nhau không làm storage path giống nhau. Một engine có thể có row và column representations cho classes khác nhau.
+
+## 4. Tách tải và tính nhất quán
+
+Chạy analytic query trên primary có thể tranh CPU, memory, buffer cache, I/O và locks với transactions. Read replica tách một phần compute nhưng không tự xóa tác động: WAL generation/retention, replay lag, network, storage, failover readiness và long snapshots vẫn cần đo. Warehouse/lakehouse thêm ingestion lag và reconciliation boundary. Quyết định tách hệ ghi freshness tolerance, source impact, failure isolation, data contract và cost; không mặc định copy là miễn phí hoặc luôn cần.
+
+## 5. HTAP và vùng lai
+
+Hybrid transactional/analytical processing có thể dùng dual engines, column replicas, in-memory structures hoặc workload isolation. Hệ lai giảm movement/freshness gap trong một số cases nhưng vẫn có resource governance, update propagation, consistency và cost trade-offs. Một operational dashboard quét vài triệu rows mỗi phút có thể là analytical workload dù nằm trong ứng dụng. Một lookup trong warehouse vẫn là point query. Phân loại theo từng query class và service-level objective, không gán toàn database một nhãn duy nhất.
+
+## 6. Ba dấu hiệu đặt nhầm
+
+Dấu hiệu 1: query plan/read metrics cho thấy scan lớn trên hệ có tail-latency transaction đang tăng. Dấu hiệu 2: hàng nghìn point updates/upserts nhỏ vào cấu trúc tối ưu batch tạo write amplification/merge pressure và freshness queue. Dấu hiệu 3: một hệ phải đồng thời giữ p99 mili giây và phục vụ unbounded ad-hoc scans nhưng không có admission control/workload isolation. Triệu chứng chưa đủ kết luận; cần correlate query class với resource, lag, latency và business deadline.
+
+## 7. Bài phân loại có đối chứng
+
+Sáu cases gồm checkout write, account lookup, daily revenue scan, customer-360 interactive query, near-real-time anomaly aggregate và bulk correction. Mỗi case chấm năm chiều bằng range có unit, chỉ ra unknowns, chọn architecture và reversal conditions. Hai cases ranh giới phải có điều kiện đẩy sang mỗi phía. Benchmark dùng cùng logical dataset/query/answer, ghi engine/version, indexes/layout, cache state, concurrency và bytes read. Kết quả chỉ áp cho cấu hình đó; không biến một lần đo thành tuyên bố engine phổ quát.
+
+## 8. Ma trận kiểm chứng từng mệnh đề
+
+Mỗi kết luận cần input, observation và failure signal có thể lưu. Tên sản phẩm, file nhỏ, query nhanh hoặc presentation thuyết phục không tự chứng minh cơ chế hay năng lực.
+
+### 8.1. OLTP OLAP là workload profiles không phải product labels
+
+**Mệnh đề cần kiểm.** OLTP OLAP là workload profiles không phải product labels.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.2. rows touched cần đổi thành bytes và operations
+
+**Mệnh đề cần kiểm.** rows touched cần đổi thành bytes và operations.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.3. column width làm số cột không đủ dự đoán bytes
+
+**Mệnh đề cần kiểm.** column width làm số cột không đủ dự đoán bytes.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.4. tail latency và concurrency thuộc workload contract
+
+**Mệnh đề cần kiểm.** tail latency và concurrency thuộc workload contract.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.5. point lookup và scan lớn có bottleneck khác nhau
+
+**Mệnh đề cần kiểm.** point lookup và scan lớn có bottleneck khác nhau.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.6. SQL interface chung không chứng minh storage path chung
+
+**Mệnh đề cần kiểm.** SQL interface chung không chứng minh storage path chung.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.7. read replica chỉ tách một phần resource contention
+
+**Mệnh đề cần kiểm.** read replica chỉ tách một phần resource contention.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.8. replica lag và WAL retention vẫn là operational cost
+
+**Mệnh đề cần kiểm.** replica lag và WAL retention vẫn là operational cost.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.9. warehouse separation thêm freshness boundary
+
+**Mệnh đề cần kiểm.** warehouse separation thêm freshness boundary.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.10. HTAP không xóa isolation và propagation trade-offs
+
+**Mệnh đề cần kiểm.** HTAP không xóa isolation và propagation trade-offs.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.11. operational dashboard có thể mang analytical workload
+
+**Mệnh đề cần kiểm.** operational dashboard có thể mang analytical workload.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.12. point query trong warehouse không biến thành OLTP system
+
+**Mệnh đề cần kiểm.** point query trong warehouse không biến thành OLTP system.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.13. misplacement cần correlate query class với saturation
+
+**Mệnh đề cần kiểm.** misplacement cần correlate query class với saturation.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.14. benchmark phải khóa cache concurrency và physical design
+
+**Mệnh đề cần kiểm.** benchmark phải khóa cache concurrency và physical design.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+### 8.15. reversal conditions quan trọng hơn tên công nghệ
+
+**Mệnh đề cần kiểm.** reversal conditions quan trọng hơn tên công nghệ.
+
+**Cách kiểm.** Chấm workload vector có unit, đo plans/resources trên cùng logical case và thay concurrency, projection width hoặc freshness constraint. Ghi điều kiện làm architecture choice phải đảo. Với mệnh đề này, ghi dataset/contract version, environment, controlled variables, expected observation, failure signal và boundary làm kết luận mất hiệu lực.
+
+**Bằng chứng đạt.** Lưu fixture hoặc source slice, command/query/protocol, raw output, counters/diff, reviewer và artifact hash. Nếu lab chưa chạy trên môi trường được phép, chỉ ghi protocol và expected result; không viết như kết quả đã quan sát.
+
+## 9. Quy trình phản biện
+
+1. Chốt decision hoặc workload, grain, version và constraints trước khi chọn implementation.
+2. Tách logical semantics, physical mechanism, observed metric và business conclusion.
+3. Khóa controlled variables; ghi rõ confounders còn lại và instrumentation boundary.
+4. Kiểm correctness trước performance, đồng thời giữ negative và changed-constraint cases.
+5. Phân loại source fact, curriculum synthesis, engine-specific behavior và untested hypothesis.
+6. Dùng raw artifacts và independent oracle khi kết quả do chính implementation sinh ra.
+7. Chưa có execution evidence thì giữ trạng thái `review`.
+
+## 10. Câu hỏi tự kiểm tra
+
+1. Invariant, decision hoặc workload characteristic trung tâm là gì?
+2. Biến nào được giữ cố định và biến nào được thay đổi?
+3. Counter nào đo đúng mechanism thay vì chỉ đo wall-clock?
+4. Một kết quả xanh nhưng sai semantics có thể xuất hiện bằng cách nào?
+5. Điều kiện nào làm lựa chọn hiện tại phải đảo?
+6. Kết luận nào mới là protocol, chưa phải evidence quan sát được?
+
+## 11. Giới hạn và điều chưa cho phép kết luận
+
+- Chưa chạy capstone với người dùng thật, Gate 5 với hội đồng, benchmark engines hoặc compression matrix; note mô tả protocol và expected evidence.
+- Tài liệu web được kiểm ngày 2026-10-01; format, encoding support, storage version và engine behavior có thể đổi.
+- Rubric, tám hạng mục capstone và ma trận kiểm chứng là curriculum synthesis; không gán nguyên văn cho một nguồn.
+- Kết quả microbenchmark chỉ áp cho dataset, version, configuration, cache và workload đã ghi; không chứng minh ưu thế phổ quát.
+- Note giữ trạng thái `review` cho tới khi chủ dự án duyệt semantic meaning.
+
+## Reference
+1. [[SRC-KLEPPMANN-DDIA-1E]]
+2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]
+3. [[SRC-CSTORE-COLUMN-ORIENTED-DBMS]]
+
+## Source coverage
+
+| Source slice | Nội dung sử dụng | Trạng thái |
+|---|---|---|
+| [[SRC-KLEPPMANN-DDIA-1E]] | Khái niệm, mechanism hoặc evidence boundary liên quan | Đã đọc locator được ghi trong source record; không suy ngoài phạm vi |
+| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] | Khái niệm, mechanism hoặc evidence boundary liên quan | Đã đọc locator được ghi trong source record; không suy ngoài phạm vi |
+| [[SRC-CSTORE-COLUMN-ORIENTED-DBMS]] | Khái niệm, mechanism hoặc evidence boundary liên quan | Đã đọc locator được ghi trong source record; không suy ngoài phạm vi |
+
+## Key takeaways
+- OLTP và OLAP là workload profiles; architecture phải được suy từ rows, columns, mutations, latency và concurrency có unit.
+- Correctness, scope và exact version đi trước performance hoặc approval.
+- Một proxy dễ lấy không được dùng thay consumer outcome, physical counter hoặc independent reconciliation.
+- Counterexample và changed constraint phải làm kết luận đảo khi assumptions không còn đúng.
+- Chưa chạy lab thì artifact là giáo trình đã kiểm cấu trúc, không phải chứng nhận production hay benchmark result.

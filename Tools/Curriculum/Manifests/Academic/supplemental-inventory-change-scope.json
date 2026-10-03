@@ -1,0 +1,19 @@
+{
+  "task_id": "book-inventory-supplemental-source-collection-2026-09-27",
+  "allowed_paths": [
+    "Tools/Curriculum/inventory_supplemental_sources.py",
+    "Tools/Curriculum/inspect_supplemental_pdfs.py",
+    "Tools/Curriculum/Manifests/Academic/supplemental-inventory-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/supplemental-inventory-change-scope.json",
+    "Tools/Curriculum/Manifests/Academic/supplemental-source-inventory-v1.json",
+    "Tools/Curriculum/Manifests/Academic/supplemental-pdf-structure-v1.json"
+  ],
+  "forbidden_paths": [
+    "/media/kina2711/DATA/**",
+    "Material/**/Curriculum/**",
+    "Material/**/Roadmap/**",
+    "Web/**",
+    "Artifact/**"
+  ],
+  "declared_effect": "Add a reproducible read-only inventory tool and its generated manifest."
+}

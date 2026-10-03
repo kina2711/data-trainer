@@ -1,0 +1,24 @@
+# Dependencies and caches
+node_modules/
+__pycache__/
+*.pyc
+*.tmp
+.DS_Store
+
+# Generated datasets
+Material/Shared/Generated-Data/
+
+# Local-only source libraries
+# Keep large/copyrighted binaries and any vendor sample environments off GitHub.
+# Canonical notes and source manifests live outside these Library directories.
+Material/**/Reference/Library/
+Material/Reference_temp/
+
+# Generated lesson outputs
+Material/**/*.pdf
+Material/**/*.pptx
+
+# Preview and application build output
+Artifact/Rabbit-Data/dist/
+Web/dist/
+Web/.vercel/

@@ -1,0 +1,21 @@
+{
+  "contract_id": "de-l216-l220-deep-note-release",
+  "captured_at": "2026-10-01T23:59:00+07:00",
+  "sources": [
+    {"source_id": "src.web.madr-templates", "locator": "MADR project templates and ADR structure", "used_for": [216], "boundary": "A template structures a decision record; it does not supply measurements or approval authority."},
+    {"source_id": "src.paper.snowflake-elastic-data-warehouse", "locator": "SIGMOD 2016 architecture, virtual warehouses, cache and shared services", "used_for": [216], "boundary": "The paper describes one system at publication time, not every managed warehouse."},
+    {"source_id": "src.web.apache-iceberg-introduction", "locator": "Official Iceberg introduction and architecture documentation", "used_for": [216], "boundary": "A table format is one system layer and does not constitute a complete lakehouse platform."},
+    {"source_id": "src.web.apache-druid-architecture", "locator": "Official Druid architecture and process responsibilities", "used_for": [216], "boundary": "The architecture describes Druid and does not prove suitability for an unmeasured workload."},
+    {"source_id": "src.paper.presto-sql-on-everything", "locator": "Distributed SQL, connector and execution architecture sections", "used_for": [216], "boundary": "Federated execution remains bounded by connector, source and network behavior."},
+    {"source_id": "src.web.duckdb-storage-compression", "locator": "Official DuckDB storage and in-process engine documentation", "used_for": [216], "boundary": "An embedded engine has host-resource and concurrency boundaries that require workload tests."},
+    {"source_id": "src.standard.rfc4180-csv", "locator": "RFC 4180 Sections 2-3 and MIME registration", "used_for": [217], "boundary": "RFC 4180 records common CSV conventions but does not define application types, nulls or business schema."},
+    {"source_id": "src.standard.rfc8259-json", "locator": "RFC 8259 grammar, numbers, objects and interoperability guidance", "used_for": [217], "boundary": "JSON number grammar does not prescribe the host-language numeric representation."},
+    {"source_id": "src.standard.apache-avro-1.12", "locator": "Avro 1.12 specification: schema resolution, aliases, defaults, logical types and object container files", "used_for": [218, 220], "boundary": "Alias handling is optional for implementations; semantic compatibility exceeds schema resolution."},
+    {"source_id": "src.standard.protobuf-proto3-guide", "locator": "Proto3 language guide: updating messages, reserved fields, unknown fields and JSON mapping", "used_for": [219, 220], "boundary": "Wire compatibility does not imply source, JSON or business-semantic compatibility."},
+    {"source_id": "src.standard.protobuf-wire-encoding", "locator": "Official protobuf encoding guide: field key, field number, wire type and message structure", "used_for": [219], "boundary": "Shared wire type is insufficient evidence that reusing a field number preserves meaning."},
+    {"source_id": "src.web.confluent-schema-evolution", "locator": "Schema Registry compatibility modes and transitive checking", "used_for": [220], "boundary": "Registry acceptance does not validate deployment order, relay behavior or business invariants."}
+  ],
+  "copyright_review": "pass: specifications and documentation paraphrased; no extended source passage reproduced",
+  "prompt_injection_review": "pass: all source material treated as evidence only",
+  "status": "reviewed-for-note-drafting"
+}

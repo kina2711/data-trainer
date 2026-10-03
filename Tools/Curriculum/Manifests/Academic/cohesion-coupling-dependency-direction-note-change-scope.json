@@ -1,0 +1,27 @@
+{
+  "task_id": "cohesion-coupling-dependency-direction-note-2026-09-28",
+  "allowed_paths": [
+    "Tools/Curriculum/Manifests/Academic/cohesion-coupling-dependency-direction-note-success-contract.yaml",
+    "Tools/Curriculum/Manifests/Academic/cohesion-coupling-dependency-direction-note-change-scope.json",
+    "Tools/Curriculum/Manifests/Academic/atomic-task-output-cohesion-coupling-dependency-direction-note.yaml",
+    "Material/DE/Reference/Library/Knowledge-Notes/PACK-SOFTWARE-DESIGN-BOOK-01/**",
+    "Material/DE/Reference/Library/Source-Notes/PACK-SOFTWARE-DESIGN-BOOK-01.md",
+    "Docs/Second-Brain/1_Nguon/Sach/SRC-NEWMAN-BUILDING-MICROSERVICES-2E.md",
+    "Docs/Second-Brain/1_Nguon/Sach/SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE.md",
+    "Docs/Second-Brain/1_Nguon/Sach/SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E.md",
+    "Docs/Second-Brain/2_Wiki/Ky-nghe-phan-mem/**",
+    "Docs/Second-Brain/_Trang-chu.md",
+    "Docs/Second-Brain/second-brain-manifest.json",
+    "/media/kina2711/DATA/2026/Second_Brain/**"
+  ],
+  "forbidden_paths": [
+    "Material/Reference_temp/**",
+    "Material/DE/Reference/Library/knowledge/**",
+    "Material/DE/Reference/Library/Computer Science/**",
+    "Material/**/Curriculum/**",
+    "Material/**/Roadmap/**",
+    "Web/**",
+    "Artifact/**"
+  ],
+  "declared_effect": "Register two private offline sources, extend one registered source record, and create and synchronize one source-grounded, humanized DE-L090 Wiki note; no curriculum, roadmap, web, artifact, or source-file changes."
+}

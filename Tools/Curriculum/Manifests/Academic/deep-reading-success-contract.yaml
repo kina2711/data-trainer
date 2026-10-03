@@ -1,0 +1,20 @@
+task_id: academic-deep-reading-corpus-2026-09-27
+task_type: book-build-curriculum-pack
+objective: Read the approved corpus in bounded batches and create evidence-traceable source notes before reference distribution or lesson authoring.
+success_criteria:
+  - Each claim is attached to a stable locator and source ID.
+  - Source statements are separated from editor interpretation.
+  - Assumptions, limitations, and unsupported objectives are explicit.
+  - A source is not marked deep-read until its assigned scope has been reviewed.
+  - No final lesson note is authored during this stage.
+validation:
+  - Source-note metadata and objective IDs reconcile with the academic manifests.
+  - Web sources record access date; local files additionally record SHA-256.
+approval:
+  requested_by: user
+  scope: Deep-read approved books, web resources, documents, videos, and Coursera materials; create notes.
+academic_integrity:
+  graded_assessments: user_only
+  certificates: user_only
+  allowed_support: reading, source notes, explanations, practice, and feedback
+

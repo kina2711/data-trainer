@@ -1,0 +1,56 @@
+task_id: tcp-congestion-control-note-2026-09-27
+task_type: book-build-second-brain-pack
+status: completed-awaiting-owner-review
+completed_at: 2026-09-27T20:14:59+07:00
+source:
+  source_id: src.book.kurose-ross-networking.8e
+  title: "Computer Networking: A Top-Down Approach, Eighth Global Edition"
+  scope: "sections 3.6-3.7, printed pages 285-309 up to the section 3.8 heading, PDF pages 287-311"
+  pages_expected: 25
+  pages_with_extractable_text: 25
+  sha256: ed41334ecf228e6733f4f50bb73fbcb0624145c6c2a51c8e779f2f65cfc01018
+artifacts:
+  reference_note: Material/DE/Reference/Library/Knowledge-Notes/PACK-OS_NETWORK-BOOK-03/05-tcp-congestion-control-aimd-ecn-fairness.md
+  staging_wiki_note: "Docs/Second-Brain/2_Wiki/Mang-may-tinh/TCP congestion control AIMD ECN và fairness.md"
+  canonical_wiki_note: "/media/kina2711/DATA/2026/Second_Brain/2_Wiki/Mang-may-tinh/TCP congestion control AIMD ECN và fairness.md"
+  note_sha256: e0694c1f332f05237b2801fccd9c41ce40f18147e173eca8e91dae9ccea56541
+metrics:
+  lines: 534
+  words: 4616
+  bytes: 29972
+  source_fact_callouts: 18
+  inference_callouts: 1
+  uncertainty_callouts: 2
+  equations: 8
+  diagrams: 2
+coverage:
+  - Original load, offered load, throughput and the three congestion-cost scenarios
+  - End-to-end and network-assisted congestion feedback
+  - cwnd, rwnd, bytes in flight, ACK clocking and bandwidth probing
+  - Slow start, ssthresh, congestion avoidance, fast recovery, Tahoe, Reno and AIMD
+  - CUBIC probe behavior and idealized Reno throughput
+  - ECN, ECE, CWR, delay-based control, RTTmin and source-version boundaries
+  - Fairness assumptions, RTT bias, UDP and parallel TCP connections
+  - Packet-trace workflow, failure matrix, changed scenarios and review questions
+validation:
+  source_hash_registered: pass
+  page_coverage: pass
+  frontmatter_parse: pass
+  manifest_json_parse: pass
+  duplicate_registry_ids: pass
+  reference_staging_byte_identity: pass
+  wikilinks_resolve: pass
+  required_term_retrieval_smoke: pass
+  formula_and_locator_presence: pass
+  markdown_fences_balanced: pass
+  git_diff_check: pass
+  humanizer_pattern_scan: pass
+limits:
+  - No live packet capture, kernel metric collection, or congestion-control experiment was executed.
+  - Current kernel defaults and CUBIC, BBR, ECN, AQM, pacing, and loss-detection behavior require primary documentation for the deployed versions.
+  - Deployment and market-share statements from 2014-2016 are retained only as historical source context.
+  - Canonical-vault backup and restore status is inherited and remains unverified.
+review_gate:
+  profile: R2-standard
+  quality_gate: G4
+  next_state: owner-review

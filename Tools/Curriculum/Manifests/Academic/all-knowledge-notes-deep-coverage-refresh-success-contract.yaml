@@ -1,0 +1,33 @@
+task_id: all-knowledge-notes-deep-coverage-refresh-2026-09-28
+objective: Audit and remediate every current Vietnamese knowledge note so it presents the bounded source material in full depth rather than as a summary.
+owner: kina2711
+consumer: Data Analytics Engineer trainer curriculum and Obsidian Second Brain
+risk_tier: R2-standard
+status: ready
+
+scope:
+  wiki_notes: Docs/Second-Brain/2_Wiki/**/*.md
+  reference_notes: Material/DE/Reference/Library/Knowledge-Notes/**/*.md
+  source_records: Docs/Second-Brain/1_Nguon/**/*.md
+  registry: Docs/Second-Brain/second-brain-manifest.json
+  standards_and_validation:
+    - Docs/Standards/KNOWLEDGE-NOTE-STYLE.md
+    - Tools/Curriculum/Build/format_knowledge_notes.py
+
+acceptance:
+  - Every note states one primary question and preserves its stable note_id and source_ids.
+  - Every note contains definitions, mechanism, conditions, assumptions, examples, failure modes, limitations, self-check questions, Key takeaways and Reference when applicable to its topic.
+  - Every note contains a Source coverage matrix mapping each bounded source slice to note sections and explicitly records exclusions or source limits.
+  - Every selected source slice is represented by explanation, not merely a title or bullet copied from the source.
+  - Source facts, synthesis, inference and uncertainty are distinguishable; unsupported claims are removed or labelled.
+  - Reference locators resolve to registered source records; no source is inferred from a title alone.
+  - Wiki and Reference copies with the same note_id are byte-identical.
+  - Markdown wrapping, math delimiters, fences, wikilinks, registry IDs and retrieval targets pass automated checks.
+  - Staging is synchronized to the canonical Second Brain without deleting unrelated vault files.
+
+non_goals:
+  - Running labs, production deployments, benchmarks or rollback drills.
+  - Expanding a bounded lesson note into a reproduction of an entire copyrighted book.
+  - Adding personal claims to 3_Toi.
+
+completion_status: completed-awaiting-owner-review
