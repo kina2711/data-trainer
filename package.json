@@ -2,7 +2,7 @@
   "name": "rabbit-data-trainer",
   "version": "3.0.0",
   "private": true,
-  "description": "Rabbit Data curriculum source for Data Analyst and Data Engineer programmes",
+  "description": "Rabbit Data curriculum, Second Brain and governed learning portal",
   "scripts": {
     "test": "make test",
     "inventory": "make inventory",

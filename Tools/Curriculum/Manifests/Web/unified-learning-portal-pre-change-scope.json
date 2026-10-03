@@ -1,0 +1,33 @@
+{
+  "task_id": "core-pre-change-scope",
+  "instance_id": "unified-rabbit-data-learning-portal",
+  "status": "pass",
+  "baseline": {
+    "roadmap_markdown": 56,
+    "canonical_notes": 645,
+    "ready_lessons": 10,
+    "current_web_modes": 1,
+    "current_web_mode_names": ["Second Brain"]
+  },
+  "allowed_paths": [
+    "Apps/SecondBrain/tools/build_index.py",
+    "Apps/SecondBrain/web/**",
+    "Apps/SecondBrain/tests/app.test.mjs",
+    "Apps/SecondBrain/desktop/{main.cjs,preload.cjs}",
+    "Apps/SecondBrain/README.md",
+    "README.md",
+    "package.json",
+    "Tools/Curriculum/Manifests/Web/unified-learning-portal-*"
+  ],
+  "forbidden_mutations": [
+    "Docs/Second-Brain canonical note content",
+    "Material roadmap source content",
+    "Material lesson source content",
+    "Reference/Library",
+    "learner mastery records",
+    "Git history or remotes"
+  ],
+  "expected_generated_files": ["Apps/SecondBrain/web/data/brain-index.json", "Apps/SecondBrain/web/vendor/**"],
+  "deletions": [],
+  "rollback": "Restore the seven baseline application files by Git and regenerate the prior index; all curriculum and knowledge sources remain untouched."
+}

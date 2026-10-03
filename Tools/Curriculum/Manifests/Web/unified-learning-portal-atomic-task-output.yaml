@@ -1,0 +1,25 @@
+task_id: brain-build-domain-second-brain
+instance_id: unified-rabbit-data-learning-portal
+status: complete
+completed_at: 2026-10-03
+primary_deliverable: Apps/SecondBrain/web
+surfaces:
+  - id: roadmap
+    count: 56
+  - id: second-brain
+    count: 645
+  - id: lessons
+    count: 10
+tests:
+  brain_test: pass
+  lecture_validation: pass
+  desktop_smoke: pass
+  browser_visual_smoke: pass
+  publish_boundary_scan: pass
+approval:
+  content_state: ready-for-owner-review
+  public_release: pending-explicit-owner-approval
+risks:
+  - The generated JSON bundle is about 20.8 MB and may load slowly on weak mobile connections.
+  - A public Vercel deployment would expose all indexed canonical notes to anyone with the URL.
+owner_next_task: Commit and push the application changes, then redeploy the Vercel project with Apps/SecondBrain/web as its root directory.

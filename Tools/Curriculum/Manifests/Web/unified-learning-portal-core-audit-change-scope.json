@@ -1,0 +1,33 @@
+{
+  "task_id": "core-audit-change-scope",
+  "instance_id": "unified-rabbit-data-learning-portal",
+  "status": "pass",
+  "verified_at": "2026-10-03",
+  "result": {
+    "source_content_mutated": false,
+    "git_history_or_remote_mutated": false,
+    "deleted_files": 0,
+    "application_scope_only": true,
+    "generated_index": "Apps/SecondBrain/web/data/brain-index.json",
+    "generated_index_sha256": "237b6e5f4f78796967fc035818e4fbdf0447dd7acf6bfdf6c026abbaeaa22a4a"
+  },
+  "published_inventory": {
+    "roadmaps": 56,
+    "canonical_notes": 645,
+    "ready_lessons": 10,
+    "lesson_assets": 50
+  },
+  "exclusions_verified": {
+    "3_Toi": 0,
+    "Reference_temp": 0,
+    "absolute_user_paths": 0,
+    "pdf_paths": 0,
+    "recognized_secret_formats": 0,
+    "non_ready_lessons": 0
+  },
+  "scope_evidence": [
+    "git status --short",
+    "git diff --check",
+    "deterministic generated-index scan"
+  ]
+}

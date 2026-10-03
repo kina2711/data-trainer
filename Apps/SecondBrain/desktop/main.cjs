@@ -18,7 +18,7 @@ function createWindow() {
     minWidth: 960,
     minHeight: 640,
     backgroundColor: "#07101d",
-    title: "Second Brain",
+    title: "Rabbit Data Learning Portal",
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.cjs"),
@@ -42,11 +42,14 @@ function createWindow() {
         try {
           const result = await window.webContents.executeJavaScript(`({
             busy: document.querySelector('#app').getAttribute('aria-busy'),
-            noteCount: document.querySelector('#result-count').textContent,
-            stats: document.querySelector('#brain-stats').textContent,
+            itemCount: document.querySelector('#result-count').textContent,
+            stats: document.querySelector('#portal-stats').textContent,
+            activeSpace: document.querySelector('.space-button.active')?.dataset.space,
             error: document.querySelector('#empty-state h1')?.textContent || ''
           })`);
-          if (result.busy !== "false" || result.noteCount !== "645 note") throw new Error(JSON.stringify(result));
+          if (result.busy !== "false" || result.itemCount !== "56 mục" || result.activeSpace !== "roadmap") {
+            throw new Error(JSON.stringify(result));
+          }
           console.log(`SECOND_BRAIN_SMOKE ${JSON.stringify(result)}`);
           app.exit(0);
         } catch (error) {

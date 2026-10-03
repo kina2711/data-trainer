@@ -26,8 +26,8 @@ riêng. Chủ đề có thể xuất hiện ở cả hai chương trình nếu m
 | Roadmap | Roadmap chương trình, giai đoạn, mô-đun và metadata bài học | Xác định thứ tự học, đầu ra và cách đánh giá |
 | Reference | Thư viện nguồn cùng manifest truy vết đến từng bài | Làm căn cứ cho nội dung kỹ thuật |
 | Artifact | Bản xem trước roadmap, bài giảng, sơ đồ và giao diện Rabbit Data | Duyệt nội dung và trải nghiệm trước khi xây Web |
-| Apps/SecondBrain | Ứng dụng Web và Desktop đọc 645 note canonical | Tra cứu, tìm kiếm, liên kết và đọc Second Brain |
-| Web | Ứng dụng học giáo trình dành cho học viên | Chưa được xây lại trong cấu trúc mới |
+| Apps/SecondBrain | Learning Portal Web/Desktop: 56 roadmap, 645 note canonical và các bài giảng đã hoàn thiện | Đi theo lộ trình, tra cứu tri thức và học các lecture package đủ điều kiện xuất bản |
+| Web | Ứng dụng học tập đầy đủ có tài khoản, tiến độ và đánh giá | Chưa được xây; portal tĩnh hiện tại là lớp đọc nội dung đã quản trị |
 | Docs | Kiến trúc repository, quy chuẩn biên soạn, quyết định và báo cáo kiểm tra | Quản trị cách dự án được phát triển |
 | Tools | Script kiểm tra, generator, manifest, bản đồ và snapshot chuyển đổi | Tự động hóa nhưng không thay thế nguồn Markdown |
 
@@ -40,10 +40,10 @@ riêng. Chủ đề có thể xuất hiện ở cả hai chương trình nếu m
   không nhất quán.
 - Người phát triển sản phẩm dùng Artifact làm chuẩn đầu vào trước khi xây Web.
 
-Đây là kho nguồn đang trong giai đoạn chuẩn hóa. Cây mới đã chứa đủ 525 gói bài học và toàn bộ
-Second Brain canonical đã có ứng dụng đọc riêng; tuy nhiên phần lớn bài học vẫn ở trạng thái nháp và
-Web học giáo trình dành cho học viên chưa được phát hành. Mười bài đầu tiên của DA và DE đã được
-nâng thành lecture package để curriculum owner rà soát.
+Đây là kho nguồn đang trong giai đoạn chuẩn hóa. Cây mới đã chứa đủ 525 gói bài học. Learning
+Portal hiện xuất bản lớp đọc tĩnh cho toàn bộ roadmap, 645 note Second Brain canonical và mười bài
+đầu tiên của DA/DE đã được nâng thành lecture package để curriculum owner rà soát. Phần lớn bài học
+vẫn ở trạng thái nháp; các chức năng tài khoản, lưu tiến độ và đánh giá học viên chưa được xây.
 
 ## Nguyên tắc tổ chức
 
@@ -63,22 +63,23 @@ nâng thành lecture package để curriculum owner rà soát.
 ```text
 data-trainer/
 ├── Apps/
-│   └── SecondBrain/             Web app, desktop app và index canonical
+│   └── SecondBrain/           Learning Portal Web/Desktop và chỉ mục xuất bản
 ├── Material/                  nguồn đào tạo
 │   ├── DA/                    chương trình Data Analyst
 │   ├── DE/                    chương trình Data Engineer
 │   └── Shared/                tài nguyên kỹ thuật dùng chung, không phải bài học dùng chung
 ├── Artifact/                  bản xem trước để duyệt nội dung và giao diện
 │   └── Rabbit-Data/
-├── Web/                       ứng dụng chính thức; hiện chưa được tạo
+├── Web/                       ứng dụng học tập có tài khoản/tiến độ; hiện chưa được tạo
 ├── Docs/                      kiến trúc, quy chuẩn, quyết định và báo cáo rà soát
 ├── Tools/                     mã sinh, bản đồ, snapshot, manifest và bộ kiểm tra
 ├── Makefile
 └── package.json
 ```
 
-`Web/` chỉ xuất hiện sau khi Artifact vượt qua cổng duyệt. Không tạo bản Web tạm để thay thế bước
-duyệt Artifact.
+`Apps/SecondBrain/web/` là portal đọc nội dung đã qua cổng trạng thái; nó không thay thế ứng dụng
+học tập đầy đủ trong `Web/`. Thư mục `Web/` chỉ xuất hiện sau khi Artifact tương ứng vượt qua cổng
+duyệt.
 
 ## Cấu trúc đích của mỗi chương trình
 

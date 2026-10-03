@@ -1,0 +1,42 @@
+{
+  "task_id": "core-verify-deliverable",
+  "instance_id": "unified-rabbit-data-learning-portal",
+  "status": "pass",
+  "verified_at": "2026-10-03",
+  "checks": [
+    {
+      "name": "portal-unit-and-contract-tests",
+      "command": "npm run brain:test",
+      "status": "pass"
+    },
+    {
+      "name": "lecture-package-validation",
+      "command": "npm run lectures:first10:test",
+      "status": "pass",
+      "evidence": "10 lessons, 90 scenes, 170 slides, 100 quiz questions, 10 homework rubrics, 0 placeholders"
+    },
+    {
+      "name": "desktop-runtime-smoke",
+      "command": "SECOND_BRAIN_SMOKE=1 npm run brain:desktop",
+      "status": "pass",
+      "evidence": "aria-busy=false, 56 roadmap items, roadmap active"
+    },
+    {
+      "name": "browser-visual-smoke",
+      "status": "pass",
+      "evidence": "Roadmap, Second Brain, lesson home, lesson note and lesson slide rendered; browser console errors=0"
+    },
+    {
+      "name": "vercel-config-and-diff-validation",
+      "status": "pass",
+      "evidence": "vercel.json parses and git diff --check passes"
+    },
+    {
+      "name": "publish-boundary-scan",
+      "status": "pass",
+      "evidence": "raw/private layers, absolute paths, PDFs, recognized token formats and draft lessons excluded"
+    }
+  ],
+  "delivery_state": "ready-for-owner-release-review",
+  "release_blocker": "Do not treat a public Vercel deployment as approved until the owner accepts public exposure of the canonical Second Brain bundle."
+}

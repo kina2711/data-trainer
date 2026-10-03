@@ -1,0 +1,28 @@
+{
+  "task_id": "brain-build-domain-second-brain",
+  "instance_id": "unified-rabbit-data-learning-portal",
+  "status": "implemented-and-verified",
+  "requested_at": "2026-10-03",
+  "primary_deliverable": "A single static Web portal for Roadmap, canonical Second Brain and completed lecture packages.",
+  "consumers": ["curriculum owner", "learner", "knowledge worker"],
+  "acceptance": {
+    "roadmaps": 56,
+    "canonical_second_brain_notes": 645,
+    "published_lessons": 10,
+    "lesson_status_gate": "ready-for-owner-review",
+    "lesson_assets": ["note", "slides", "quiz", "homework", "after-note"],
+    "responsive": true,
+    "searchable": true,
+    "desktop_compatible": true,
+    "vercel_static_root": "Apps/SecondBrain/web",
+    "private_layers_excluded": ["1_Nguon raw files", "3_Toi", "credentials", "local absolute paths"]
+  },
+  "tests": [
+    "deterministic index counts and stable IDs",
+    "asset completeness and status-gate validation",
+    "browser interaction smoke test",
+    "desktop security regression test",
+    "secret and forbidden-source scan"
+  ],
+  "approval": "Owner review is required before treating the public Vercel deployment as an approved curriculum release."
+}
