@@ -24,7 +24,7 @@
     {
       "name": "browser-visual-smoke",
       "status": "pass",
-      "evidence": "Roadmap, Second Brain, lesson home, lesson note and lesson slide rendered; browser console errors=0"
+      "evidence": "Operational-workspace layout, Roadmap, Second Brain, lesson home, lesson note and lesson slide rendered at 1440x900, 768x900 and 390x844; horizontal overflow=false; browser console errors=0"
     },
     {
       "name": "vercel-config-and-diff-validation",

@@ -90,7 +90,7 @@ function statCards(items) {
 
 function renderHome() {
   elements.reader.hidden = true;
-  elements.context.hidden = true;
+  elements.context.hidden = false;
   elements.empty.hidden = false;
   if (state.space === "roadmap") {
     elements.homeKicker.textContent = "RABBIT DATA LEARNING OS";
@@ -108,6 +108,14 @@ function renderHome() {
     elements.homeDescription.textContent = "Mỗi bài có giáo trình, slide, quiz, bài tập và hướng dẫn sau buổi học. Bài nháp không xuất hiện ở đây.";
     statCards([[state.data.stats.lessons, "bài giảng"], [state.data.lessons.reduce((sum, item) => sum + item.sceneCount, 0), "learning scene"], [state.data.lessons.reduce((sum, item) => sum + item.durationMinutes, 0), "phút dự kiến"]]);
   }
+  elements.outline.innerHTML = `<p class="source-id">Chọn một mục trong sidebar để mở nội dung đầy đủ và mục lục theo ngữ cảnh.</p>`;
+  elements.connectionsTitle.textContent = "Phạm vi xuất bản";
+  elements.connections.innerHTML = [
+    [state.data.stats.roadmaps, "roadmap"],
+    [state.data.stats.notes, "note canonical"],
+    [state.data.stats.lessons, "bài giảng hoàn thiện"],
+  ].map(([value, label]) => `<p class="source-id"><strong>${Number(value).toLocaleString("vi-VN")}</strong> ${label}</p>`).join("");
+  elements.sources.innerHTML = `<p class="source-id">Schema v${state.data.schemaVersion}</p><p class="source-id">Brain v${escapeHtml(state.data.brainVersion)}</p><p class="source-id">Draft, raw source và 3_Toi bị loại khỏi index.</p>`;
   document.title = `${spaceLabel()} · Rabbit Data`;
 }
 

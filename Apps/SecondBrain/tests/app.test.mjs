@@ -74,6 +74,9 @@ test("web and desktop entrypoints exist with security controls", () => {
   assert.match(html, /data-space="roadmap"/);
   assert.match(html, /data-space="brain"/);
   assert.match(html, /data-space="lessons"/);
+  assert.match(html, /class="left-rail"/);
+  assert.match(html, /class="bottom-bar"/);
+  assert.match(html, /INSPECTOR/);
   assert.match(client, /typeof codeOrToken === "object"/);
   assert.match(client, /ready-for-owner-review/);
   assert.match(main, /contextIsolation:\s*true/);

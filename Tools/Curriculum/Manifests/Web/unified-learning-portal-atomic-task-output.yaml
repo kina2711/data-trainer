@@ -3,6 +3,7 @@ instance_id: unified-rabbit-data-learning-portal
 status: complete
 completed_at: 2026-10-03
 primary_deliverable: Apps/SecondBrain/web
+interface: left rail + content sidebar + tabbed workspace + contextual inspector + responsive bottom navigation
 surfaces:
   - id: roadmap
     count: 56

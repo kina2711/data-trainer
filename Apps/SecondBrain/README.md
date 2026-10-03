@@ -8,6 +8,14 @@ A static Web/Desktop portal for three governed surfaces:
 
 Draft lessons, raw reference files and `3_Toi` content are not indexed.
 
+## Interface direction
+
+The portal uses an operational-workspace layout: compact left rail, searchable
+content sidebar, tabbed reading canvas, contextual inspector and a status bar.
+The visual direction adapts the Dashboard/Cockpit guidance from
+[Prompt-Driven UI](https://github.com/vuhung16au/prompt-driven-ui) to the supplied
+Rabbit Data wireframe while retaining the existing static app and governed data.
+
 ## Build the shared index
 
 ```bash

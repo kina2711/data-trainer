@@ -12,23 +12,42 @@
 </head>
 <body>
   <div id="app" class="app-shell" aria-busy="true">
+    <aside class="left-rail" aria-label="Điều hướng nhanh">
+      <a id="brand-home" class="rail-brand" href="#" aria-label="Trang đầu Rabbit Data">RD</a>
+      <nav class="rail-nav" aria-label="Khu vực nội dung">
+        <button class="space-button active" data-space="roadmap" type="button" aria-label="Roadmap" data-tooltip="Roadmap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V7l5-3 6 3 5-3v12l-5 3-6-3-5 3Z"/><path d="M9 4v12M15 7v12"/></svg>
+        </button>
+        <button class="space-button" data-space="brain" type="button" aria-label="Second Brain" data-tooltip="Second Brain">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 4.5A3.5 3.5 0 0 0 6 8v1a3 3 0 0 0-1 5.83V16a4 4 0 0 0 4 4h1V5.5a1 1 0 0 0-.5-1ZM14.5 4.5A3.5 3.5 0 0 1 18 8v1a3 3 0 0 1 1 5.83V16a4 4 0 0 1-4 4h-1V5.5a1 1 0 0 1 .5-1Z"/></svg>
+        </button>
+        <button class="space-button" data-space="lessons" type="button" aria-label="Bài giảng" data-tooltip="Bài giảng">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11v16H6.5A2.5 2.5 0 0 0 4 21.5v-16ZM20 5.5A2.5 2.5 0 0 0 17.5 3H13v16h4.5a2.5 2.5 0 0 1 2.5 2.5v-16Z"/></svg>
+        </button>
+      </nav>
+      <div class="rail-tools">
+        <button id="theme-toggle" class="rail-button" type="button" aria-label="Đổi giao diện sáng tối" data-tooltip="Sáng / tối">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c-5 2-11-3-9-9Z"/></svg>
+        </button>
+        <span class="rail-avatar" aria-label="Rabbit Data">R</span>
+      </div>
+    </aside>
+
     <header class="topbar">
-      <button id="nav-toggle" class="icon-button nav-toggle" type="button" aria-label="Mở danh mục">☰</button>
-      <a id="brand-home" class="brand" href="#" aria-label="Rabbit Data home">
-        <span class="brand-mark" aria-hidden="true">RD</span>
-        <span><strong>Rabbit Data</strong><small id="release-label">đang nạp…</small></span>
-      </a>
-      <nav class="space-nav" aria-label="Khu vực nội dung">
-        <button class="space-button active" data-space="roadmap" type="button"><span aria-hidden="true">◇</span> Roadmap</button>
-        <button class="space-button" data-space="brain" type="button"><span aria-hidden="true">◎</span> Second Brain</button>
-        <button class="space-button" data-space="lessons" type="button"><span aria-hidden="true">▤</span> Bài giảng</button>
+      <button id="nav-toggle" class="icon-button nav-toggle" type="button" aria-label="Mở danh mục">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="top-tabs" aria-label="Khu vực đang làm việc">
+        <button class="space-button top-tab active" data-space="roadmap" type="button">Roadmap</button>
+        <button class="space-button top-tab" data-space="brain" type="button">Second Brain</button>
+        <button class="space-button top-tab" data-space="lessons" type="button">Bài giảng</button>
       </nav>
       <label class="search-box" for="search-input">
-        <span aria-hidden="true">⌕</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
         <input id="search-input" type="search" autocomplete="off" placeholder="Tìm trong Roadmap…" aria-label="Tìm kiếm nội dung">
         <kbd>Ctrl K</kbd>
       </label>
-      <button id="theme-toggle" class="icon-button" type="button" aria-label="Đổi giao diện sáng tối">◐</button>
+      <div class="topbar-status"><span class="live-dot" aria-hidden="true"></span><span>Governed content</span></div>
     </header>
 
     <aside id="sidebar" class="sidebar" aria-label="Bộ lọc và danh sách nội dung">
@@ -54,11 +73,14 @@
 
     <main class="reader-shell">
       <section id="empty-state" class="empty-state">
-        <div class="empty-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="home-signal" aria-hidden="true"><span>RD</span></div>
         <p id="home-kicker" class="home-kicker">RABBIT DATA LEARNING OS</p>
         <h1 id="home-title">Bắt đầu từ lộ trình</h1>
         <p id="home-description">Xem bức tranh năng lực từ chương trình đến từng mô-đun, rồi đi vào bài giảng đã sẵn sàng.</p>
         <div id="portal-stats" class="stats"></div>
+        <div class="home-flow" aria-label="Luồng học tập">
+          <span>01 · Chọn lộ trình</span><i></i><span>02 · Nạp tri thức</span><i></i><span>03 · Học qua bài giảng</span>
+        </div>
       </section>
 
       <article id="reader" class="reader" hidden>
@@ -76,11 +98,18 @@
       </article>
     </main>
 
-    <aside id="context-panel" class="context-panel" aria-label="Mục lục và quan hệ" hidden>
+    <aside id="context-panel" class="context-panel" aria-label="Mục lục và quan hệ">
+      <div class="inspector-heading"><span>INSPECTOR</span><strong>Ngữ cảnh</strong></div>
       <section><h2>Trong nội dung</h2><nav id="outline"></nav></section>
       <section id="connections-section"><h2 id="connections-title">Liên kết</h2><div id="connections"></div></section>
       <section id="sources-section"><h2>Nguồn / đường dẫn</h2><div id="sources"></div></section>
     </aside>
+
+    <footer class="bottom-bar">
+      <span><i class="live-dot" aria-hidden="true"></i> Local-first index</span>
+      <span id="release-label">đang nạp…</span>
+      <span>Roadmap · Brain · Lessons</span>
+    </footer>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script type="module" src="./app.js"></script>
