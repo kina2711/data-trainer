@@ -38,7 +38,7 @@ Unbounded queue đổi immediate rejection thành memory growth và stale work; 
 
 ## 3. Backpressure
 
-Consumer/downstream truyền capacity signal upstream qua demand, credits, lag hoặc blocking; signal chậm vẫn gây overshoot. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Overload, backpressure and cascading failure`, câu hỏi thực dụng là: Backpressure và admission control chặn overload biến thành cascading failure bằng cách nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Consumer/downstream truyền capacity signal upstream qua demand, credits, lag hoặc blocking; signal chậm vẫn gây overshoot. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Overload, backpressure and cascading failure`, câu hỏi thực dụng là: Backpressure và admission control chặn overload biến thành cascading failure bằng cách nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Load shedding
 
@@ -221,7 +221,7 @@ Với `wiki.distributed.overload-backpressure-cascade`, command thành công kh�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.distributed.overload-backpressure-cascade`
+## Execution capsule: kiểm chứng `wiki.distributed.overload-backpressure-cascade`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.distributed.overload-backpressure-cascade`, sơ đồ, ví dụ và artifact về **Overload, backpressure and cascading failure** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

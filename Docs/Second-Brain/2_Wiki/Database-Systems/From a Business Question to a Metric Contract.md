@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một câu hỏi nghiệp vụ phải được chốt thành sáu quyết định nào để hai người cài độc lập tạo cùng tập bản ghi và cùng con số?
 source_ids:
   - src.book.reis-housley-fundamentals-data-engineering
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Vì sao tên chỉ số chưa phải định nghĩa
 
-Câu “doanh thu tháng trước” còn thiếu đối tượng được tính, loại doanh thu, mốc thời gian, ranh giới kỳ, loại trừ, currency và cách gộp. Hai query đều đúng SQL có thể cho số khác mà không query nào tự báo lỗi. Metric contract biến tranh luận về con số thành sáu quyết định có owner và phép kiểm. Contract không phải đoạn mô tả marketing; nó phải đủ chính xác để người khác dựng executable logic mà không hỏi tác giả.
+Câu doanh thu tháng trước còn thiếu đối tượng được tính, loại doanh thu, mốc thời gian, ranh giới kỳ, loại trừ, currency và cách gộp. Hai query đều đúng SQL có thể cho số khác mà không query nào tự báo lỗi. Metric contract biến tranh luận về con số thành sáu quyết định có owner và phép kiểm. Contract không phải đoạn mô tả marketing; nó phải đủ chính xác để người khác dựng executable logic mà không hỏi tác giả.
 
 ## 2. Phần một: population
 
@@ -205,7 +205,7 @@ Các mệnh đề dưới đây phải được kiểm bằng fixture, invariant
 - Chưa chạy lab hai người, semantic graph planner, ratio rollup, aggregation rejection hoặc calendar fixture; note mô tả protocol cần thực thi.
 - dbt/MetricFlow là ví dụ sản phẩm được kiểm ngày 2026-10-01; syntax và availability có thể đổi theo version/tier.
 - PostgreSQL documentation mô tả SQL mechanics, không tự cung cấp business semantics hay metric governance.
-- Kimball–Ross hỗ trợ grain, additivity và calendar modeling; semantic-layer enforcement là phần tổng hợp có đối chiếu tài liệu hiện hành.
+- Kimball-Ross hỗ trợ grain, additivity và calendar modeling; semantic-layer enforcement là phần tổng hợp có đối chiếu tài liệu hiện hành.
 - Owner chưa phê duyệt meaning nên note giữ trạng thái `review`.
 
 ## Reference
@@ -230,7 +230,7 @@ Các mệnh đề dưới đây phải được kiểm bằng fixture, invariant
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.metric-contract`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.metric-contract`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.metric-contract`, sơ đồ, ví dụ và artifact về **From a Business Question to a Metric Contract** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

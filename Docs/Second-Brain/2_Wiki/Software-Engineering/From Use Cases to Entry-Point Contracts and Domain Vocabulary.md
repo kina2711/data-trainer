@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao chuyển một ca sử dụng nghiệp vụ thành hợp đồng điểm vào đủ rõ để người viết mã, người kiểm thử và người nghiệp vụ cùng phát hiện được chỗ hiểu khác nhau?
 source_ids:
   - src.book.boyle-ddd-golang.1e
@@ -37,7 +37,7 @@ relationships:
 # Từ use case đến hợp đồng điểm vào và từ vựng miền
 
 > [!abstract] Câu hỏi trung tâm
-> Một câu như “khách đặt hàng” chưa đủ để viết hàm. Chưa rõ `khách` là ai trong context này, đơn hàng bắt đầu ở trạng thái nào, dữ liệu nào hợp lệ, thành công làm thay đổi điều gì và người gọi phải xử lý những thất bại nào. Chương này xây một đường đi có kiểm soát từ lời kể nghiệp vụ tới hợp đồng điểm vào gồm input/output, precondition, postcondition và error contract.
+> Một câu như khách đặt hàng chưa đủ để viết hàm. Chưa rõ `khách` là ai trong context này, đơn hàng bắt đầu ở trạng thái nào, dữ liệu nào hợp lệ, thành công làm thay đổi điều gì và người gọi phải xử lý những thất bại nào. Chương này xây một đường đi có kiểm soát từ lời kể nghiệp vụ tới hợp đồng điểm vào gồm input/output, precondition, postcondition và error contract.
 
 ## 1. Lỗi bắt đầu từ một từ tưởng như ai cũng hiểu
 
@@ -88,7 +88,7 @@ Chuỗi này không bắt buộc tạo bảy tài liệu riêng. Với mô-đun 
 
 ### 3.1 Story
 
-Story kể bối cảnh ở mức cao: ai đang làm gì, vì sao và môi trường xung quanh ra sao. Nó giúp người đọc thấy “bức tranh lớn”, nhưng thường chưa đủ chi tiết để cài đặt một điểm vào.
+Story kể bối cảnh ở mức cao: ai đang làm gì, vì sao và môi trường xung quanh ra sao. Nó giúp người đọc thấy bức tranh lớn, nhưng thường chưa đủ chi tiết để cài đặt một điểm vào.
 
 ### 3.2 Scenario
 
@@ -101,7 +101,7 @@ Scenario mô tả một phiên tương tác cụ thể. Cấu trúc hữu ích g
 5. trạng thái hệ thống khi kết thúc.
 
 > [!source-fact]
-> Sommerville trình bày đúng năm thành phần trên ở Chapter 4, trang in 119–120, PDF 121–122. Ví dụ upload ảnh tách rõ initial assumption, normal flow, what can go wrong, other activities và system state on completion.
+> Sommerville trình bày đúng năm thành phần trên ở Chapter 4, trang in 119-120, PDF 121-122. Ví dụ upload ảnh tách rõ initial assumption, normal flow, what can go wrong, other activities và system state on completion.
 
 ### 3.3 Use case
 
@@ -124,7 +124,7 @@ Hợp đồng điểm vào quy định nghĩa của một lời gọi cụ thể
 - thất bại nào có thể quan sát và trạng thái còn lại ra sao.
 
 > [!synthesis]
-> “Hợp đồng bốn phần” trong chương này là cấu trúc phục vụ `DE-L089`, tổng hợp structured specification của Sommerville, pre/postcondition trong Hoare triple và nhu cầu định nghĩa failure của roadmap. Không nguồn nào trong ba nguồn đặt nguyên cụm này thành một framework có tên riêng.
+> Hợp đồng bốn phần trong chương này là cấu trúc phục vụ `DE-L089`, tổng hợp structured specification của Sommerville, pre/postcondition trong Hoare triple và nhu cầu định nghĩa failure của roadmap. Không nguồn nào trong ba nguồn đặt nguyên cụm này thành một framework có tên riêng.
 
 ## 4. Domain, sub-domain và bounded context
 
@@ -143,14 +143,14 @@ flowchart LR
   S2 -->|"mapping có quy tắc"| B1
 ```
 
-Một glossary không ghi context sẽ tạo ảo giác rằng tên đã thống nhất. Định nghĩa tốt phải trả lời “đúng ở đâu” bên cạnh “nghĩa là gì”.
+Một glossary không ghi context sẽ tạo ảo giác rằng tên đã thống nhất. Định nghĩa tốt phải trả lời đúng ở đâu bên cạnh nghĩa là gì.
 
 > [!source-fact]
-> Boyle mô tả ubiquitous language là phần giao giữa ngôn ngữ của chuyên gia miền và chuyên gia kỹ thuật; ngôn ngữ này riêng cho nhóm/context, cần được dùng trong requirement, thiết kế và source code, đồng thời phải tiến hóa theo hiểu biết mới. Chapter 2, trang in 16–21, PDF 33–38.
+> Boyle mô tả ubiquitous language là phần giao giữa ngôn ngữ của chuyên gia miền và chuyên gia kỹ thuật; ngôn ngữ này riêng cho nhóm/context, cần được dùng trong requirement, thiết kế và source code, đồng thời phải tiến hóa theo hiểu biết mới. Chapter 2, trang in 16-21, PDF 33-38.
 
 ## 5. Từ vựng miền là một tài sản có vòng đời
 
-Từ vựng miền không phải danh sách dịch Anh–Việt. Nó là tập quyết định về nghĩa.
+Từ vựng miền không phải danh sách dịch Anh-Việt. Nó là tập quyết định về nghĩa.
 
 Mỗi mục glossary nên có:
 
@@ -184,11 +184,11 @@ Ví dụ:
 6. Nếu một khái niệm có hai tên trong cùng context, chọn tên chuẩn và lập danh sách thay thế.
 
 > [!inference]
-> “Một khái niệm một tên” là kiểm tra tốt trong một bounded context. Áp nó trên toàn doanh nghiệp có thể phá đúng ranh giới mà DDD muốn giữ. Rubric `DE-L089` vì thế phải rà tên trong phạm vi mô-đun và glossary đã khai báo, không đòi mọi hệ thống dùng chung một model.
+> Một khái niệm một tên là kiểm tra tốt trong một bounded context. Áp nó trên toàn doanh nghiệp có thể phá đúng ranh giới mà DDD muốn giữ. Rubric `DE-L089` vì thế phải rà tên trong phạm vi mô-đun và glossary đã khai báo, không đòi mọi hệ thống dùng chung một model.
 
 ## 6. Từ lời kể tới scenario có cấu trúc
 
-Lời kể: “Khách chọn hàng, xác nhận rồi bên em thu tiền. Nếu hết hàng thì báo lại. Khách có thể hủy trước khi kho bắt đầu xử lý.”
+Lời kể: Khách chọn hàng, xác nhận rồi bên em thu tiền. Nếu hết hàng thì báo lại. Khách có thể hủy trước khi kho bắt đầu xử lý.
 
 Các từ cần hỏi lại: `khách`, `chọn`, `xác nhận`, `thu tiền`, `hết hàng`, `hủy`, `bắt đầu xử lý`.
 
@@ -236,7 +236,7 @@ Mục đích: <một kết quả nghiệp vụ>
 
 Tên điểm vào dùng động từ miền, chẳng hạn `ConfirmOrder`, thay cho động từ kỹ thuật chung như `Process`, `Handle` hoặc `UpdateData`. Tên không thay contract, nhưng tên sai làm caller bắt đầu bằng một mental model sai.
 
-## 8. Phần 1 — input và output
+## 8. Phần 1: input và output
 
 Kiểu dữ liệu không chỉ là `string` hay `int`:
 
@@ -257,9 +257,9 @@ Output phải nói nghĩa. Trả `Order` không rõ đó là snapshot trước h
 - Output nào là ổn định; field nào chỉ phục vụ nội bộ?
 - Dữ liệu nhạy cảm có vô tình thành output không?
 
-## 9. Phần 2 — precondition
+## 9. Phần 2: precondition
 
-Precondition là mệnh đề phải đúng trước khi thực hiện operation. Nó không được viết như lời chúc: “input hợp lệ”, “user đúng”, “order sẵn sàng”. Hãy viết điều có thể phân biệt đúng/sai:
+Precondition là mệnh đề phải đúng trước khi thực hiện operation. Nó không được viết như lời chúc: input hợp lệ, user đúng, order sẵn sàng. Hãy viết điều có thể phân biệt đúng/sai:
 
 - `quantity > 0`;
 - order tồn tại và `order.customer_id == command.customer_id`;
@@ -280,9 +280,9 @@ Mỗi precondition cần một nơi cưỡng chế:
 Nếu caller không thể bảo đảm precondition vì chỉ callee có dữ liệu, contract không nên giả vờ đẩy trách nhiệm sang caller. Callee kiểm và trả failure đã định nghĩa.
 
 > [!source-fact]
-> Handout Program Verification định nghĩa Hoare triple `{φ} P {ψ}`, trong đó `φ` là precondition và `ψ` là postcondition. Nếu bắt đầu ở state thỏa `φ`, state sau khi `P` thực thi phải thỏa `ψ` theo loại correctness đang xét. PDF 20–28.
+> Handout Program Verification định nghĩa Hoare triple `{φ} P {ψ}`, trong đó `φ` là precondition và `ψ` là postcondition. Nếu bắt đầu ở state thỏa `φ`, state sau khi `P` thực thi phải thỏa `ψ` theo loại correctness đang xét. PDF 20-28.
 
-## 10. Phần 3 — postcondition và side effect
+## 10. Phần 3: postcondition và side effect
 
 Postcondition mô tả điều được bảo đảm sau một lần thành công, không kể lại các dòng code. Với `ConfirmOrder`, postcondition tốt có thể là:
 
@@ -295,7 +295,7 @@ Postcondition mô tả điều được bảo đảm sau một lần thành côn
 
 Side effect phải được ghi riêng nếu caller quan sát hoặc vận hành phụ thuộc vào nó: ghi database, tạo event, giữ inventory, gửi email, gọi payment gateway. Phải nói side effect nào nằm trong transaction, side effect nào eventual và failure sau commit được phục hồi ra sao.
 
-“Gửi email xác nhận” không nên nằm trong postcondition đồng bộ nếu transaction đã commit rồi email được worker gửi sau. Contract đúng hơn là “outbox chứa notification intent”; delivery thuộc contract của worker khác.
+Gửi email xác nhận không nên nằm trong postcondition đồng bộ nếu transaction đã commit rồi email được worker gửi sau. Contract đúng hơn là outbox chứa notification intent; delivery thuộc contract của worker khác.
 
 ### Điều không được bảo đảm
 
@@ -306,7 +306,7 @@ Negative guarantee ngăn caller suy diễn quá mức:
 - output thành công không bảo đảm consumer downstream đã xử lý event;
 - timeout ở caller không chứng minh transaction chưa commit.
 
-## 11. Phần 4 — error contract
+## 11. Phần 4: error contract
 
 Error contract trả lời bốn câu:
 
@@ -329,10 +329,10 @@ Message cho người đọc có thể đổi; failure code cho máy đọc cần
 
 ### Error contract và exception flow
 
-Scenario đã hỏi “what can go wrong”; error contract đưa mỗi nhánh đó vào interface cụ thể. Nếu một failure có trong scenario nhưng không có trong contract, caller không biết xử lý. Nếu contract có mười failure chưa từng nối với scenario hoặc policy, có thể implementation detail đang rò ra ngoài.
+Scenario đã hỏi what can go wrong; error contract đưa mỗi nhánh đó vào interface cụ thể. Nếu một failure có trong scenario nhưng không có trong contract, caller không biết xử lý. Nếu contract có mười failure chưa từng nối với scenario hoặc policy, có thể implementation detail đang rò ra ngoài.
 
 > [!synthesis]
-> Sommerville yêu cầu functional system requirement mô tả input, output và exception chi tiết; mẫu structured specification thêm requires, precondition, postcondition và side effect, Chapter 4, trang in 123–124, PDF 125–126. Roadmap thêm yêu cầu error contract. Bảng trên biến các yếu tố đó thành interface mà caller có thể lập trình theo.
+> Sommerville yêu cầu functional system requirement mô tả input, output và exception chi tiết; mẫu structured specification thêm requires, precondition, postcondition và side effect, Chapter 4, trang in 123-124, PDF 125-126. Roadmap thêm yêu cầu error contract. Bảng trên biến các yếu tố đó thành interface mà caller có thể lập trình theo.
 
 ## 12. Partial correctness không phải total correctness
 
@@ -351,7 +351,7 @@ flowchart TD
 ```
 
 > [!source-fact]
-> Handout định nghĩa partial correctness với qualifier “provided that P terminates”, rồi dùng vòng lặp vô hạn làm phản ví dụ: triple có thể đúng một cách rỗng vì không có final state. Total correctness thêm bảo đảm termination. PDF 28–30.
+> Handout định nghĩa partial correctness với qualifier provided that P terminates, rồi dùng vòng lặp vô hạn làm phản ví dụ: triple có thể đúng một cách rỗng vì không có final state. Total correctness thêm bảo đảm termination. PDF 28-30.
 
 Hệ thống dịch vụ hiếm khi chứng minh termination theo nghĩa hình thức cho toàn bộ call graph. Thay vào đó, contract vận hành cần deadline, cancellation và failure semantics. Những cơ chế này tạo hành vi có giới hạn cho caller, nhưng không nên được gọi là proof of total correctness.
 
@@ -525,43 +525,43 @@ Ma trận chỉ kiểm sự hiện diện. Review nội dung vẫn phải hỏi 
 
 ## 16. Quy trình thực hiện DE-L089
 
-### Bước 1 — Chốt boundary
+### Bước 1: Chốt boundary
 
 Viết tên bounded context, actor, hệ ngoài và năm điểm vào dự kiến. Nếu chưa biết boundary, glossary sẽ liên tục tranh cãi vì các bên đang nói về model khác nhau.
 
-### Bước 2 — Thu lời nói thật
+### Bước 2: Thu lời nói thật
 
 Lấy mô tả nghiệp vụ, ghi nguyên các danh từ và động từ quan trọng. Đánh dấu từ mơ hồ, từ có nhiều nghĩa và thuật ngữ kỹ thuật người nghiệp vụ không dùng.
 
-### Bước 3 — Viết glossary có phản ví dụ
+### Bước 3: Viết glossary có phản ví dụ
 
 Mỗi term có definition, example, counterexample, context và owner. Gộp synonym trong cùng context; giữ riêng homonym ở context khác.
 
-### Bước 4 — Viết scenario
+### Bước 4: Viết scenario
 
 Ghi state đầu, normal flow, failure flow, concurrent activity và state cuối. Chưa chọn database hay framework.
 
-### Bước 5 — Chọn điểm vào
+### Bước 5: Chọn điểm vào
 
 Mỗi điểm vào hoàn thành một kết quả nghiệp vụ. Tránh một `ProcessOrder` làm mọi thứ hoặc CRUD method không lộ state transition.
 
-### Bước 6 — Viết input/output
+### Bước 6: Viết input/output
 
 Chốt identity, type, unit, optionality, authority, version và dữ liệu nhạy cảm.
 
-### Bước 7 — Viết pre/postcondition
+### Bước 7: Viết pre/postcondition
 
 Mỗi condition là mệnh đề có thể bác bỏ. Ghi nơi kiểm và atomic boundary. Tách guarantee đồng bộ khỏi eventual effect.
 
-### Bước 8 — Viết error contract từ failure flow
+### Bước 8: Viết error contract từ failure flow
 
 Mỗi failure có code, trigger, state sau failure và retry semantics. Loại lỗi thư viện khỏi public contract nếu caller không thể hành động dựa trên nó.
 
-### Bước 9 — Review chéo
+### Bước 9: Review chéo
 
 Người đóng vai nghiệp vụ đọc glossary, tên điểm vào, pre/postcondition bằng ngôn ngữ miền. Người kỹ thuật khác đóng vai caller và viết pseudo-code xử lý mọi output/failure mà không hỏi tác giả.
 
-### Bước 10 — Sinh test trước khi kết luận contract đủ
+### Bước 10: Sinh test trước khi kết luận contract đủ
 
 Tạo ít nhất một happy-path test, một test cho mỗi precondition boundary, một test state transition, một test idempotency/concurrency và một test cho mỗi failure mà caller phải phân nhánh.
 
@@ -573,12 +573,12 @@ Tạo ít nhất một happy-path test, một test cho mỗi precondition bounda
 | V2 | Mọi tên có định nghĩa và phản ví dụ? | định nghĩa vòng tròn hoặc chỉ dịch từ |
 | V3 | Tên trong code khớp glossary? | nghiệp vụ nói `confirm`, code nói `approve` không mapping |
 | C1 | Input/output có identity, unit, optionality và authority? | `string`, `number` không semantics |
-| C2 | Precondition có thể kiểm và có nơi cưỡng chế? | “dữ liệu hợp lệ” |
+| C2 | Precondition có thể kiểm và có nơi cưỡng chế? | dữ liệu hợp lệ |
 | C3 | Postcondition nói state/side effect quan sát được? | mô tả thuật toán nội bộ |
 | C4 | Atomic và eventual effect được tách? | hứa email đã gửi khi mới ghi outbox |
 | E1 | Mỗi failure có code và trigger? | caller parse message |
 | E2 | State sau failure rõ? | timeout nhưng không biết đã commit chưa |
-| E3 | Retry/idempotency rõ? | bảo “thử lại” không có key |
+| E3 | Retry/idempotency rõ? | bảo thử lại không có key |
 | P1 | Partial và total correctness không bị nhập một? | viết postcondition rồi tuyên bố hàm luôn kết thúc |
 | T1 | Có test hoặc review chứng minh từng mệnh đề? | contract chỉ được đọc bởi tác giả |
 
@@ -586,31 +586,31 @@ Tạo ít nhất một happy-path test, một test cho mỗi precondition bounda
 
 ## 18. Những cách làm sai thường gặp
 
-### “Đã có type hints nên đã có contract”
+### Đã có type hints nên đã có contract
 
 Type hints không nói state transition, side effect, idempotency hay failure semantics.
 
-### “Precondition là việc của caller”
+### Precondition là việc của caller
 
 Chỉ đúng khi caller có authority và dữ liệu để bảo đảm. Boundary công khai vẫn phải bảo vệ invariant.
 
-### “Exception nào cũng trả INTERNAL”
+### Exception nào cũng trả INTERNAL
 
 Caller mất khả năng phân biệt sửa input, refresh state, dừng hay retry. Ngược lại, phơi mọi exception class của database cũng làm implementation leak vào contract.
 
-### “Ubiquitous language nghĩa là cả công ty chỉ có một định nghĩa”
+### Ubiquitous language nghĩa là cả công ty chỉ có một định nghĩa
 
 Ngôn ngữ phải nhất quán trong bounded context. Cùng từ có thể mang model khác ở context khác; mapping giữa chúng cần được làm lộ.
 
-### “Use-case diagram đã mô tả đủ yêu cầu”
+### Use-case diagram đã mô tả đủ yêu cầu
 
 Hình chỉ nêu actor và interaction. Normal flow, exception flow, condition và state cuối vẫn cần văn bản.
 
-### “Postcondition chứng minh chương trình đúng”
+### Postcondition chứng minh chương trình đúng
 
 Postcondition là claim cần được kiểm hoặc chứng minh. Partial correctness còn giả định termination; test hữu hạn không chứng minh mọi state.
 
-### “Hợp đồng càng dài càng an toàn”
+### Hợp đồng càng dài càng an toàn
 
 Hợp đồng dài nhưng chứa implementation detail sẽ khó đổi và che mất guarantee. Chỉ công bố điều caller cần dựa vào và điều hệ thống thực sự cưỡng chế.
 
@@ -619,7 +619,7 @@ Hợp đồng dài nhưng chứa implementation detail sẽ khó đổi và che 
 1. Vì sao `customer` có thể hợp lệ với hai nghĩa ở hai bounded context nhưng không nên có hai nghĩa trong cùng một context?
 2. Story, scenario và use case khác nhau ở độ chi tiết và mục đích ra sao?
 3. Vì sao input `price` do client gửi không nên có cùng authority với price snapshot từ Catalog?
-4. Precondition “order hợp lệ” cần được viết lại thành những mệnh đề nào?
+4. Precondition order hợp lệ cần được viết lại thành những mệnh đề nào?
 5. Postcondition nào thuộc `ConfirmOrder`, điều nào phải chuyển sang contract của worker downstream?
 6. Timeout cần error contract bổ sung điều gì để caller không tạo duplicate?
 7. Partial correctness bỏ ngỏ câu hỏi nào?
@@ -631,11 +631,11 @@ Hợp đồng dài nhưng chứa implementation detail sẽ khó đổi và che 
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-BOYLE-DDD-GOLANG-1E]], Ch. 2 pp. 30–42 | domain, subdomain, bounded context và ubiquitous language | §§1–5 | Đã trình bày khái niệm cùng ranh giới dùng từ |
-| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], Ch. 4 pp. 103–109 | functional/non-functional requirement, scenario và use case | §§2–7 | Đã trình bày chuỗi từ lời kể tới scenario có cấu trúc |
-| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], Ch. 4 pp. 120–132 | structured specification, pre/postcondition và requirement validation | §§7–13 | Đã trình bày hợp đồng input/output/error/side effect |
-| [[SRC-HCMUT-PROGRAM-VERIFICATION-2020]], pp. 18–30 | predicate, Hoare triple, partial và total correctness | §§8–13 | Đã trình bày logic cần cho precondition, postcondition và termination boundary |
-| Tổng hợp bài DE-L089 | template bốn phần, năm hợp đồng, traceability matrix và review rubric | §§7–18 | Đã gắn `synthesis`/`inference`; không gán template này cho một tác giả |
+| [[SRC-BOYLE-DDD-GOLANG-1E]], Ch. 2 pp. 30-42 | domain, subdomain, bounded context và ubiquitous language | §§1-5 | Đã trình bày khái niệm cùng ranh giới dùng từ |
+| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], Ch. 4 pp. 103-109 | functional/non-functional requirement, scenario và use case | §§2-7 | Đã trình bày chuỗi từ lời kể tới scenario có cấu trúc |
+| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], Ch. 4 pp. 120-132 | structured specification, pre/postcondition và requirement validation | §§7-13 | Đã trình bày hợp đồng input/output/error/side effect |
+| [[SRC-HCMUT-PROGRAM-VERIFICATION-2020]], pp. 18-30 | predicate, Hoare triple, partial và total correctness | §§8-13 | Đã trình bày logic cần cho precondition, postcondition và termination boundary |
+| Tổng hợp bài DE-L089 | template bốn phần, năm hợp đồng, traceability matrix và review rubric | §§7-18 | Đã gắn `synthesis`/`inference`; không gán template này cho một tác giả |
 
 Error taxonomy đầy đủ và runtime exception handling được chuyển sang DE-L092 vì ba lát nguồn trên không đủ để đóng chủ đề đó.
 
@@ -665,9 +665,9 @@ Error taxonomy đầy đủ và runtime exception handling được chuyển san
 ## Reference
 ### Nguồn chính
 
-1. [[SRC-BOYLE-DDD-GOLANG-1E]] — Matthew Boyle, *Domain-Driven Design with Golang*, Chapter 2, PDF 30–42, trang in 13–25.
-2. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]] — Ian Sommerville, *Software Engineering*, 10th Global Edition, Chapter 4, PDF 103–109 và 120–132.
-3. [[SRC-HCMUT-PROGRAM-VERIFICATION-2020]] — Nguyen An Khuong, *Program Verification*, Mathematical Modeling CO2011, PDF 18–30.
+1. [[SRC-BOYLE-DDD-GOLANG-1E]]: Matthew Boyle, *Domain-Driven Design with Golang*, Chapter 2, PDF 30-42, trang in 13-25.
+2. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]]: Ian Sommerville, *Software Engineering*, 10th Global Edition, Chapter 4, PDF 103-109 và 120-132.
+3. [[SRC-HCMUT-PROGRAM-VERIFICATION-2020]]: Nguyen An Khuong, *Program Verification*, Mathematical Modeling CO2011, PDF 18-30.
 
 ### Phân loại claim
 
@@ -679,11 +679,11 @@ Error taxonomy đầy đủ và runtime exception handling được chuyển san
 
 | Ngày | Trạng thái | Thay đổi |
 |---|---|---|
-| 2026-09-28 | `review` | Đọc 46 trang từ ba nguồn; xây glossary, pipeline story–scenario–use case–contract, template bốn phần, năm contract hệ đặt hàng và rubric DE-L089; biên tập Humanizer tiếng Việt |
+| 2026-09-28 | `review` | Đọc 46 trang từ ba nguồn; xây glossary, pipeline story-scenario-use case-contract, template bốn phần, năm contract hệ đặt hàng và rubric DE-L089; biên tập Humanizer tiếng Việt |
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.software-engineering.use-case-entry-point-contract-domain-vocabulary`
+## Execution capsule: kiểm chứng `wiki.software-engineering.use-case-entry-point-contract-domain-vocabulary`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.software-engineering.use-case-entry-point-contract-domain-vocabulary`, sơ đồ, ví dụ và artifact về **Từ use case đến hợp đồng điểm vào và từ vựng miền** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

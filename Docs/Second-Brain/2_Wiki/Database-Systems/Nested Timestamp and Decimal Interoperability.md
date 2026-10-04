@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Round-trip nested data, timestamp và decimal qua nhiều engine thế nào để phát hiện sai nghĩa?
 source_ids:
   - src.spec.apache-parquet-file-format
@@ -223,7 +223,7 @@ Mỗi claim phải chỉ rõ metadata scope, writer/reader version, exact fixtur
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.storage.nested-timestamp-decimal-interoperability`
+## Execution capsule: kiểm chứng `wiki.storage.nested-timestamp-decimal-interoperability`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.storage.nested-timestamp-decimal-interoperability`, sơ đồ, ví dụ và artifact về **Nested Timestamp and Decimal Interoperability** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -245,7 +245,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Round-trip nested data, timestamp và decimal qua nhiều engine thế nào để phát hiện sai nghĩa?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Round-trip nested data, timestamp và decimal qua nhiều engine thế nào để phát hiện sai nghĩa? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Nested Timestamp and Decimal Interoperability** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

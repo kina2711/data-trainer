@@ -38,7 +38,7 @@ Guarantee của orchestration value và trường hợp simple deployment tốt 
 
 ## 3. Failure mode
 
-Phân tích orchestration value và trường hợp simple deployment tốt hơn cần tìm earliest observable failure, propagation path, blast radius và state còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Why orchestration, and when a simpler deployment wins`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành orchestration value và trường hợp simple deployment tốt hơn mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân tích orchestration value và trường hợp simple deployment tốt hơn cần tìm earliest observable failure, propagation path, blast radius và state còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Why orchestration, and when a simpler deployment wins`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành orchestration value và trường hợp simple deployment tốt hơn mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision rule
 
@@ -46,7 +46,7 @@ Quyết định về orchestration value và trường hợp simple deployment t
 
 ## 5. Evidence
 
-Bằng chứng cho orchestration value và trường hợp simple deployment tốt hơn gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `Why orchestration, and when a simpler deployment wins`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành orchestration value và trường hợp simple deployment tốt hơn mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Bằng chứng cho orchestration value và trường hợp simple deployment tốt hơn gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `Why orchestration, and when a simpler deployment wins`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành orchestration value và trường hợp simple deployment tốt hơn mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 6. Recovery lab
 
@@ -88,9 +88,9 @@ Với `wiki.kubernetes.orchestration-fit`, command thành công không tự ch�
 
 **Bằng chứng cần giữ.** Đối với probe 4 của `Why orchestration, and when a simpler deployment wins`, lưu checkpoint, external ledger và trạng thái sau restart. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
 
-### 7.5. Why orchestration, and when a simpler deployment wins: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho orchestration value và trường hợp simple deployment tốt hơn gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle
+### 7.5. Why orchestration, and when a simpler deployment wins: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho orchestration value và trường hợp simple deployment tốt hơn gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle
 
-**Mệnh đề cần kiểm.** Why orchestration, and when a simpler deployment wins: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho orchestration value và trường hợp simple deployment tốt hơn gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle.
+**Mệnh đề cần kiểm.** Why orchestration, and when a simpler deployment wins: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho orchestration value và trường hợp simple deployment tốt hơn gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle.
 
 **Thiết kế phép thử cho `wiki.kubernetes.orchestration-fit`.** Trong ngữ cảnh `wiki.kubernetes.orchestration-fit`, đảo thứ tự input và concurrency nhưng giữ logical population. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Why orchestration, and when a simpler deployment wins` công bố.
 
@@ -136,9 +136,9 @@ Với `wiki.kubernetes.orchestration-fit`, command thành công không tự ch�
 
 **Bằng chứng cần giữ.** Đối với probe 10 của `Why orchestration, and when a simpler deployment wins`, package phải đủ để người khác dựng lại decision và limitation. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
 
-### 7.11. Why orchestration, and when a simpler deployment wins: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho orchestration value và trường hợp simple deployment tốt hơn gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle
+### 7.11. Why orchestration, and when a simpler deployment wins: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho orchestration value và trường hợp simple deployment tốt hơn gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle
 
-**Mệnh đề cần kiểm.** Why orchestration, and when a simpler deployment wins: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho orchestration value và trường hợp simple deployment tốt hơn gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle.
+**Mệnh đề cần kiểm.** Why orchestration, and when a simpler deployment wins: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho orchestration value và trường hợp simple deployment tốt hơn gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle.
 
 **Thiết kế phép thử cho `wiki.kubernetes.orchestration-fit`.** Trong ngữ cảnh `wiki.kubernetes.orchestration-fit`, so với oracle độc lập không dùng chung query hoặc parser. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Why orchestration, and when a simpler deployment wins` công bố.
 
@@ -221,7 +221,7 @@ Với `wiki.kubernetes.orchestration-fit`, command thành công không tự ch�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.kubernetes.orchestration-fit`
+## Execution capsule: kiểm chứng `wiki.kubernetes.orchestration-fit`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.kubernetes.orchestration-fit`, sơ đồ, ví dụ và artifact về **Why orchestration, and when a simpler deployment wins** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

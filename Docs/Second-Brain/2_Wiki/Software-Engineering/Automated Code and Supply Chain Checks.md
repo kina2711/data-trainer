@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2026-12-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao dựng các gate tự động bắt lỗi mã, dependency và secret mà không tạo một pipeline quá ồn rồi bị vô hiệu hóa?
 source_ids:
   - src.book.sommerville-software-engineering.10e
@@ -32,7 +32,7 @@ relationships:
 # Kiểm tự động cho mã và chuỗi cung ứng phần mềm
 
 > [!abstract] Câu hỏi trung tâm
-> Gate tốt chặn lỗi có tín hiệu rõ trước review, nhưng vẫn cho biết vì sao bị chặn, ai sở hữu finding và ngoại lệ hết hạn khi nào. “Bật mọi rule” không phải một security programme.
+> Gate tốt chặn lỗi có tín hiệu rõ trước review, nhưng vẫn cho biết vì sao bị chặn, ai sở hữu finding và ngoại lệ hết hạn khi nào. Bật mọi rule không phải một security programme.
 
 ## 1. Sáu lớp kiểm không thay thế nhau
 
@@ -46,7 +46,7 @@ relationships:
 | Secret scanner | credential có nằm trong content/history? | token, private key | phát hiện không đồng nghĩa đã rotate |
 
 > [!source-fact]
-> Sommerville mô tả static analyzer là công cụ parse source để nhận diện anomaly và possible fault mà không chạy chương trình; kết quả phải được con người đánh giá vì có thể gồm false alarm. *Software Engineering*, 10e, PDF 359–364.
+> Sommerville mô tả static analyzer là công cụ parse source để nhận diện anomaly và possible fault mà không chạy chương trình; kết quả phải được con người đánh giá vì có thể gồm false alarm. *Software Engineering*, 10e, PDF 359-364.
 
 ## 2. Pipeline từ rẻ đến đắt
 
@@ -80,7 +80,7 @@ Quy trình tối thiểu:
 > [!source-fact]
 > OWASP Dependency-Check mô tả SCA là nhận diện dependency rồi đối chiếu với lỗ hổng đã công bố. Vì identification có thể dựa trên evidence và CPE mapping, report cần triage chứ không phải mọi match đều tự động là exploitable. Trang dự án OWASP, truy cập 2026-09-28.
 
-Một dependency “không có CVE” chỉ có nghĩa scanner chưa tìm thấy advisory phù hợp trong dữ liệu nó có; không chứng minh dependency an toàn.
+Một dependency không có CVE chỉ có nghĩa scanner chưa tìm thấy advisory phù hợp trong dữ liệu nó có; không chứng minh dependency an toàn.
 
 ## 4. Secret đã commit là sự cố credential
 
@@ -107,7 +107,7 @@ Một SBOM hữu dụng cần ít nhất:
 - schema/spec version;
 - provenance đủ để tái tạo.
 
-CycloneDX biểu diễn component và quan hệ của chúng, cùng metadata/provenance. SBOM giúp trả lời “artifact nào chứa component X?” khi advisory mới xuất hiện. Nó không tự kết luận vulnerability reachable và không thay dependency scanner.
+CycloneDX biểu diễn component và quan hệ của chúng, cùng metadata/provenance. SBOM giúp trả lời artifact nào chứa component X? khi advisory mới xuất hiện. Nó không tự kết luận vulnerability reachable và không thay dependency scanner.
 
 ## 6. Policy gate phải được viết trước finding
 
@@ -178,7 +178,7 @@ Ví dụ taint analysis cần ít nhất ba loại mô hình:
 - **sink:** thao tác nhạy cảm như SQL execution hoặc shell command;
 - **sanitizer:** phép biến đổi được chứng minh phù hợp với sink cụ thể.
 
-Nếu library wrapper không được model, analyzer có thể bỏ sót propagation hoặc báo sai. Finding phải giữ rule ID, path và đoạn trace; chỉ ghi “SAST failed” làm mất bằng chứng cần cho triage.
+Nếu library wrapper không được model, analyzer có thể bỏ sót propagation hoặc báo sai. Finding phải giữ rule ID, path và đoạn trace; chỉ ghi SAST failed làm mất bằng chứng cần cho triage.
 
 ## 11. Type checking và runtime validation
 
@@ -190,7 +190,7 @@ Ba lớp không đồng nhất:
 2. type checker kiểm chương trình sử dụng giá trị theo declaration;
 3. business validation kiểm invariant phụ thuộc trạng thái hoặc ngữ cảnh.
 
-Một object thỏa JSON Schema vẫn có thể vi phạm rule “ngày kết thúc phải sau ngày bắt đầu” hoặc “customer phải còn hoạt động”. Không dùng type-check pass làm bằng chứng dữ liệu hợp lệ.
+Một object thỏa JSON Schema vẫn có thể vi phạm rule ngày kết thúc phải sau ngày bắt đầu hoặc customer phải còn hoạt động. Không dùng type-check pass làm bằng chứng dữ liệu hợp lệ.
 
 ## 12. Dependency graph, lockfile và identity
 
@@ -226,7 +226,7 @@ Reachability analysis có thể giảm nhiễu nhưng cũng phụ thuộc call g
 
 Scanner có thể dùng prefix/pattern của provider, entropy hoặc custom regex. Pattern chặt giảm false positive nhưng bỏ sót secret nội bộ; entropy bắt chuỗi ngẫu nhiên nhưng dễ báo nhầm hash hoặc fixture.
 
-Triage phải tránh làm lộ lại secret trong log. Chỉ lưu fingerprint, location và provider metadata cần thiết. Nếu scanner hỗ trợ validity check, kết quả “không còn hợp lệ” không xóa sự kiện exposure; vẫn cần kiểm thời gian token còn hiệu lực và audit log.
+Triage phải tránh làm lộ lại secret trong log. Chỉ lưu fingerprint, location và provider metadata cần thiết. Nếu scanner hỗ trợ validity check, kết quả không còn hợp lệ không xóa sự kiện exposure; vẫn cần kiểm thời gian token còn hiệu lực và audit log.
 
 Test injection dùng token giả có prefix dành cho fixture. Không commit credential thật để chứng minh scanner hoạt động.
 
@@ -307,24 +307,24 @@ Scanner team sở hữu chất lượng rule và infrastructure; họ không th�
 - Bài kế tiếp dùng gate để tạo release candidate: [[Release Artifacts Versioning and Compatible Migrations|Artifact phát hành, phiên bản và di trú tương thích]].
 
 ## Reference
-1. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]] — static program analysis, PDF 359–364.
-2. [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]] — continuous delivery feedback và automation, PDF 74–81, 228–232.
-3. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — pipeline, static analysis và artifact traceability, PDF 257–261.
-4. [[SRC-OWASP-DEPENDENCY-CHECK]] — SCA và known-vulnerability matching, truy cập 2026-09-28.
-5. [[SRC-GITHUB-SECRET-SCANNING]] — history scanning và remediation qualifier, truy cập 2026-09-28.
-6. [[SRC-CYCLONEDX-SPEC-OVERVIEW]] — BOM structure và provenance, truy cập 2026-09-28.
+1. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]]: static program analysis, PDF 359-364.
+2. [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]]: continuous delivery feedback và automation, PDF 74-81, 228-232.
+3. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: pipeline, static analysis và artifact traceability, PDF 257-261.
+4. [[SRC-OWASP-DEPENDENCY-CHECK]]: SCA và known-vulnerability matching, truy cập 2026-09-28.
+5. [[SRC-GITHUB-SECRET-SCANNING]]: history scanning và remediation qualifier, truy cập 2026-09-28.
+6. [[SRC-CYCLONEDX-SPEC-OVERVIEW]]: BOM structure và provenance, truy cập 2026-09-28.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], pp. 359–364 | static program analysis và giới hạn của phân tích không thực thi | §§1–3, 10–11 | Đã trình bày syntax/control/data-flow model và boundary validation |
-| [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]], pp. 74–81, 228–232 | automation, fast feedback và delivery capability | §§2, 6–7, 16–17 | Đã trình bày pipeline order, rollout policy và reproducibility |
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 257–261 | pipeline và artifact traceability | §§2, 15, 17 | Đã trình bày chuỗi source–artifact–SBOM–scan |
-| [[SRC-OWASP-DEPENDENCY-CHECK]] | dependency identity và known-vulnerability matching | §§3, 12–13 | Đã trình bày SCA, reachability qualifier và gate decision |
+| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], pp. 359-364 | static program analysis và giới hạn của phân tích không thực thi | §§1-3, 10-11 | Đã trình bày syntax/control/data-flow model và boundary validation |
+| [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]], pp. 74-81, 228-232 | automation, fast feedback và delivery capability | §§2, 6-7, 16-17 | Đã trình bày pipeline order, rollout policy và reproducibility |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 257-261 | pipeline và artifact traceability | §§2, 15, 17 | Đã trình bày chuỗi source-artifact-SBOM-scan |
+| [[SRC-OWASP-DEPENDENCY-CHECK]] | dependency identity và known-vulnerability matching | §§3, 12-13 | Đã trình bày SCA, reachability qualifier và gate decision |
 | [[SRC-GITHUB-SECRET-SCANNING]] | history scanning và remediation | §§4, 14 | Đã trình bày rotation, history scope và safe fixture |
 | [[SRC-CYCLONEDX-SPEC-OVERVIEW]] | BOM structure, component identity và provenance | §§5, 15 | Đã trình bày SBOM gắn artifact digest và incident lookup |
-| Tổng hợp bài DE-L096 | bốn injection, triage state, ownership và baseline rollout | §§7–9, 16, 18 | Đã gắn `synthesis`; threshold cụ thể phải theo risk appetite |
+| Tổng hợp bài DE-L096 | bốn injection, triage state, ownership và baseline rollout | §§7-9, 16, 18 | Đã gắn `synthesis`; threshold cụ thể phải theo risk appetite |
 
 Scanner pass không chứng minh hệ thống an toàn. Tool version, ruleset và advisory database phải được pin khi biến note thành lab có kết quả tái hiện.
 
@@ -336,7 +336,7 @@ Scanner pass không chứng minh hệ thống an toàn. Tool version, ruleset v�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.software-engineering.automated-code-and-supply-chain-checks`
+## Execution capsule: kiểm chứng `wiki.software-engineering.automated-code-and-supply-chain-checks`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.software-engineering.automated-code-and-supply-chain-checks`, sơ đồ, ví dụ và artifact về **Kiểm tự động cho mã và chuỗi cung ứng phần mềm** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

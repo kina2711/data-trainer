@@ -32,19 +32,19 @@ reference_path: Material/DE/Reference/Library/Knowledge-Notes/PACK-ENGINEERING-F
 > [!abstract] Câu hỏi trung tâm
 > Làm thế nào mô hình, đo và ra quyết định đúng về Races, locks and deadlock at the OS level?
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 Thêm khoá bao quanh mọi thứ · tăng thời gian chờ khoá thay vì sửa thứ tự · kết luận treo do mạng mà chưa xem tiến trình đang chờ gì · không đo tranh chấp. Đây không phải danh sách lỗi cú pháp. Mỗi lỗi làm người vận hành chọn nhầm owner hoặc chữa symptom ở layer sau, khiến thời gian phục hồi tăng dù command vừa chạy trả về thành công.
 
 Năng lực cần giữ sau bài là: Chẩn đoán một khoá chết thật bằng công cụ hệ thống và sửa bằng cách phá đúng một trong bốn điều kiện. Nếu learner chỉ nhắc lại định nghĩa nhưng không phân biệt được hai state gần nhau trên số đo, bài chưa đạt.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Phần này lặp lại chủ đề của lesson 22 nhưng ở tầng hệ điều hành và với công cụ chẩn đoán thật. Ba tính chất phải phân biệt vì chúng hỏng theo ba cách khác nhau: tính nguyên tử, tính nhìn thấy được, và thứ tự. Ba nguyên hàm đồng bộ và khi nào dùng cái nào: khoá loại trừ, cờ hiệu đếm, và biến điều kiện. Bốn điều kiện cần cùng lúc để có khoá chết, và phá bất kỳ điều kiện nào là chặn được; cách phá thực dụng nhất là quy định thứ tự lấy khoá. Đói tài nguyên và khoá sống là hai chế độ hỏng khác khoá chết và cần cách chữa khác. Đo tranh chấp: thời gian tiến trình nằm chờ ở nguyên hàm đồng bộ quan sát được bằng công cụ theo dõi lời gọi hệ thống, nên tranh chấp là thứ đo được chứ đoán. Từ số đo đó suy ra phần song song thật, nối lại định luật ở lesson 55.
 
 Tách ba lớp khi đọc cơ chế `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`: declared state là điều cấu hình hoặc API yêu cầu; executed state là việc runtime thực sự làm; consumer-visible state là điều client hay operator quan sát. Ba lớp có thể lệch nhau vì cache, buffering, retry, scheduling, queue hoặc failure giữa hai transition. Evidence phải chỉ ra lớp nào đang được đo.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Bước | Câu hỏi phải khóa | Điều kiện đạt |
 |---|---|---|
@@ -55,15 +55,15 @@ Tách ba lớp khi đọc cơ chế `wiki.de-foundation.races-locks-and-deadlock
 
 Quy tắc mặc định là chọn phép giải thích đơn giản nhất qua được hard constraints, rồi viết trước reversal trigger. Với `Races, locks and deadlock at the OS level`, absence of error không phải pass; pass cần observation đúng grain, một oracle độc lập và changed-constraint case đủ làm model có cơ hội thất bại.
 
-## Case Study Thực Chiến: Races, locks and deadlock at the OS level
+## Worked Case: Races, locks and deadlock at the OS level
 
 Viết chương trình có hai khoá lấy theo thứ tự chéo nhau và làm nó treo. Dùng công cụ theo dõi lời gọi hệ thống để thấy cả hai luồng đang chờ ở đâu. Sửa bằng cách quy định thứ tự lấy khoá. Đo thời gian chờ ở nguyên hàm đồng bộ trước và sau khi giảm vùng tranh chấp.
 
-Trong case `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, learner ghi expected transition, input snapshot, version và giới hạn an toàn trước khi chạy. Sau execution, họ giữ raw counter, timestamp, exit status, state trước–sau và giải thích delta bằng mechanism ở trên. Đánh giá không cho phép sửa expected result sau khi nhìn output mà không ghi change record.
+Trong case `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, learner ghi expected transition, input snapshot, version và giới hạn an toàn trước khi chạy. Sau execution, họ giữ raw counter, timestamp, exit status, state trước-sau và giải thích delta bằng mechanism ở trên. Đánh giá không cho phép sửa expected result sau khi nhìn output mà không ghi change record.
 
 Biến thể khó hơn đổi một constraint có khả năng đảo kết luận: workload shape, memory pressure, connection reuse, retry budget, permission hoặc dependency direction. Tầng *phân tích*. Objective đòi truy từ hiện tượng treo về cấu trúc lấy khoá, dùng bằng chứng hệ thống. Kiểm bằng tình huống khoá chết tiêm sẵn tính giờ; đạt khi định vị đúng cặp khoá và nêu đúng điều kiện đã phá.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Thêm khoá bao quanh mọi thứ. **Thực tế:** tín hiệu chỉ chứng minh điều nó đo trong đúng scope; state ở layer khác vẫn có thể trái ngược. **Vì sao nghe hợp lý:** happy path nhỏ thường không chạm queue, cache, partial progress hoặc restart.
 
@@ -87,7 +87,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 **Thiết kế phép thử cho `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, tạo positive và negative control chỉ khác một điều kiện; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P1 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P1 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 2: identity, ownership và boundary
 
@@ -95,7 +95,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 **Thiết kế phép thử cho `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, tạo boundary case ngay trước và sau ngưỡng; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P2 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P2 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 3: failure path và recovery
 
@@ -103,7 +103,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 **Thiết kế phép thử cho `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, tạo replay cùng identity nhưng đổi state; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P3 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P3 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 4: decision trade-off và reversal trigger
 
@@ -111,7 +111,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 **Thiết kế phép thử cho `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, tạo failure inject trước và sau transition bền vững; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P4 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P4 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 5: evidence package và oracle
 
@@ -119,7 +119,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 **Thiết kế phép thử cho `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, tạo changed scale làm cost model đổi; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P5 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P5 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 6: changed-constraint transfer
 
@@ -127,7 +127,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 **Thiết kế phép thử cho `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, tạo adversarial order, skew hoặc packet timing; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P6 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P6 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 7: state transition và invariant
 
@@ -135,7 +135,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 **Thiết kế phép thử cho `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, tạo fresh environment không cache; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P7 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P7 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 8: identity, ownership và boundary
 
@@ -143,7 +143,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 **Thiết kế phép thử cho `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, tạo independent oracle không dùng chung implementation; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P8 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P8 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 9: failure path và recovery
 
@@ -151,7 +151,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 **Thiết kế phép thử cho `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, tạo partial progress rồi restart; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P9 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P9 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 10: decision trade-off và reversal trigger
 
@@ -159,7 +159,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 **Thiết kế phép thử cho `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, tạo missing evidence phải abstain; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P10 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P10 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 11: evidence package và oracle
 
@@ -167,7 +167,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 **Thiết kế phép thử cho `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, tạo reviewer tái hiện từ evidence package; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P11 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P11 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 12: changed-constraint transfer
 
@@ -175,7 +175,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 **Thiết kế phép thử cho `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, tạo constraint đổi đủ để quyết định đảo; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P12 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P12 cần giữ.** Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ## Tự Kiểm Tra Nhanh
 
@@ -206,7 +206,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-TLPI-2010]] — `src.book.tlpi.2010` | Chapters 4–39, 49–50, 61 và 63 theo scope record; PDF 113–1418 | mechanism và boundary liên quan trực tiếp tới `Races, locks and deadlock at the OS level` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L070 |
+| [[SRC-TLPI-2010]]: `src.book.tlpi.2010` | Chapters 4-39, 49-50, 61 và 63 theo scope record; PDF 113-1418 | mechanism và boundary liên quan trực tiếp tới `Races, locks and deadlock at the OS level` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L070 |
 
 ## Key takeaways
 - Chẩn đoán một khoá chết thật bằng công cụ hệ thống và sửa bằng cách phá đúng một trong bốn điều kiện.
@@ -216,7 +216,7 @@ Protocol riêng của `Races, locks and deadlock at the OS level` dùng điều 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`
+## Execution capsule: kiểm chứng `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.de-foundation.races-locks-and-deadlock-at-the-os-level`, sơ đồ, ví dụ và artifact về **Races, locks and deadlock at the OS level** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

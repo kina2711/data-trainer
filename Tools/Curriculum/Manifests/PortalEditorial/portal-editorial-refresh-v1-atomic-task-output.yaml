@@ -1,0 +1,38 @@
+task_id: portal-editorial-refresh-v1
+status: complete
+completed_at: 2026-10-04
+owner: kina2711
+result:
+  roadmap:
+    count: 56
+    course_timing_removed: true
+    second_brain_links: true
+  lessons:
+    count: 10
+    asset_tabs:
+      - Curriculum
+      - Teaching Guide
+      - Slides
+      - Quiz
+      - Assignment
+      - Post-Lesson
+    course_timing_removed: true
+    second_brain_links: true
+  second_brain:
+    count: 645
+    minimum_prose_words: 1800
+    diagrams_required: true
+    humanizer_pass: humanized-v3
+    direct_book_controls: true
+  portal:
+    title_language: English
+    academic_content_language: Vietnamese
+    lesson_note_book_navigation: verified
+quality_gates:
+  automated_tests: pass
+  browser_smoke_test: pass
+  scope_audit: pass
+  deliverable_verification: pass
+approval:
+  requested_scope_authorized: true
+  exact_release_acceptance: pending-owner-review

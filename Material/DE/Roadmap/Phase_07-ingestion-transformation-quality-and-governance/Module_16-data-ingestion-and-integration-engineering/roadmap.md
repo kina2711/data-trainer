@@ -45,7 +45,7 @@ Nếu chưa có bằng chứng đầu vào, người học phải hoàn thành l
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L231 · Source discovery and the extraction contract | LT | Nộp hợp đồng trích xuất đủ tám nhóm cho một nguồn thật và chỉ ra rủi ro của từng nhóm còn trống. | ≥ 6/8 nhóm có câu trả lời cụ thể, giá trị canh chừng được dò bằng thống kê thật, và mọi nhóm trống kèm chế độ hỏng dự đoán. | M16: M15 |
+| L231 · [[wiki.ingestion.source-discovery-extraction-contract|Source discovery and the extraction contract]]| LT | Nộp hợp đồng trích xuất đủ tám nhóm cho một nguồn thật và chỉ ra rủi ro của từng nhóm còn trống. | ≥ 6/8 nhóm có câu trả lời cụ thể, giá trị canh chừng được dò bằng thống kê thật, và mọi nhóm trống kèm chế độ hỏng dự đoán. | M16: M15 |
 | L232 · Change semantics - insert, update, delete and soft delete | TH | Xác định ngữ nghĩa thay đổi của bốn thực thể bằng thực nghiệm và suy ra yêu cầu kỹ thuật kéo theo. | Bốn thực thể có kết luận dựa trên bằng chứng thực nghiệm, và ít nhất một chỗ tài liệu sai được phát hiện. | L231 |
 | L233 · Choosing an extraction pattern | TH | Chọn mẫu trích xuất cho bốn nguồn và nêu rõ giả định phải đúng để mẫu đó cho kết quả đầy đủ. | Chọn đúng ≥ 3/4 nguồn, mỗi lựa chọn kèm danh sách giả định, và mỗi giả định có một phép kiểm cụ thể. | L232 |
 | L234 · High watermark - the five assumptions it needs | TH | Cài trích xuất theo mốc tiến độ vượt qua cả năm giả định và chứng minh không mất cũng không trùng. | Số dòng, tổng và tập khoá khớp nguồn ở cả năm ca biên, và độ rộng cửa sổ chồng lấn dẫn được từ độ trễ đo được. | L233 |
@@ -64,7 +64,7 @@ Nếu chưa có bằng chứng đầu vào, người học phải hoàn thành l
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M16 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M16 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -111,7 +111,7 @@ flowchart LR
   class A231,A232,A233,A234,A235,A236,A237,A238,A239,A240,A241,A242,A243,A244,A245,A246 atom;
 ```
 
-### Bài 231: Source discovery and the extraction contract
+### Lesson 231: Source discovery and the extraction contract
 
 Trước khi viết dòng mã nào, tám nhóm thông tin phải chốt với chủ hệ nguồn, và thiếu nhóm nào thì một chế độ hỏng cụ thể sẽ xuất hiện sau. Ai sở hữu hệ, ai sở hữu giao diện, ai sở hữu dữ liệu về mặt nghiệp vụ, và cửa sổ thời gian được phép trích xuất. Danh sách thực thể cùng khoá, quan hệ, hạt và khối lượng. Ngữ nghĩa thay đổi của từng thực thể. Ngữ nghĩa dấu thời gian gồm múi giờ nguồn, độ phân giải và tính đơn điệu. Lược đồ cùng kiểu, giá trị rỗng và những giá trị canh chừng không có trong tài liệu như ngày 1900-01-01 nghĩa là chưa biết. Thông lượng, hạn mức và thời hạn giữ dữ liệu ở nguồn. Phân loại dữ liệu cá nhân, nơi lưu trú và người được phép dùng. Số liệu cơ sở để đối soát về sau. Hợp đồng trích xuất là đầu ra của bài, và nó là tài liệu được hai bên ký chứ ghi chú riêng.
 
@@ -119,7 +119,7 @@ Người học phải nộp hợp đồng trích xuất đủ tám nhóm cho m�
 
 Cách đánh giá: Tầng *áp dụng*. Bài mở module, áp một danh mục phỏng vấn vào nguồn thật. Kiểm bằng rà soát tám nhóm; đạt khi ít nhất sáu nhóm có câu trả lời cụ thể và mỗi nhóm trống kèm một chế độ hỏng dự đoán được.
 
-### Bài 232: Change semantics - insert, update, delete and soft delete
+### Lesson 232: Change semantics - insert, update, delete and soft delete
 
 Cách nguồn thay đổi quyết định mọi lựa chọn còn lại, nên bài này đặt trước bài chọn mẫu trích xuất. Bốn câu hỏi phải trả lời cho từng thực thể: bản ghi có được sửa sau khi tạo không, có bị xoá cứng không, xoá mềm được đánh dấu bằng gì, và thứ tự thay đổi có quan sát được không. Xoá cứng là chế độ hỏng nặng nhất của mọi phương pháp tăng dần, vì một dòng biến mất khỏi nguồn không để lại dấu vết nào cho truy vấn theo dấu thời gian; ba cách phát hiện và chi phí từng cách. Lịch sử có thể thay đổi: khi nguồn sửa cả bản ghi cũ, mọi kỳ đã nạp đều có thể sai, nên cần đối soát định kỳ chứ chỉ nạp tiếp. Giao dịch và thứ tự: hai bản ghi cùng giao dịch phải cùng xuất hiện, nếu không thì đích có trạng thái không nhất quán tạm thời. Ánh xạ bốn câu trả lời sang yêu cầu kỹ thuật.
 
@@ -127,7 +127,7 @@ Người học phải xác định ngữ nghĩa thay đổi của bốn thực t
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi kiểm chứng bằng dữ liệu thay vì tin tài liệu. Kiểm bằng phép dò thực nghiệm; đạt khi bốn thực thể có kết luận dựa trên bằng chứng và phát hiện được ít nhất một chỗ tài liệu sai.
 
-### Bài 233: Choosing an extraction pattern
+### Lesson 233: Choosing an extraction pattern
 
 Tám mẫu trích xuất, mỗi mẫu có điều kiện thắng và rủi ro chính, và chọn theo ngữ nghĩa thay đổi ở bài trước chứ theo thói quen. Chụp toàn bộ đọc hết trạng thái: đơn giản và phục hồi dễ, nhưng tốn nguồn và không giữ thứ tự thay đổi. Mốc tiến độ theo dấu thời gian: rẻ, đòi một trường thay đổi đơn điệu tin cậy. Tăng dần theo khoá có thứ tự: phân trang được ở quy mô lớn, đòi khoá ổn định và có thứ tự toàn phần. Con trỏ do nhà cung cấp cấp: ổn định cho giao diện lập trình, rủi ro là con trỏ hết hạn tạo lỗ hổng. Thả tệp: hợp cho trao đổi khối lượng lớn, rủi ro là tải lên dở dang và trùng tên. Trích xuất bằng truy vấn giới hạn: kiểm soát được tập con, rủi ro là khoá và tải lên nguồn. Bắt thay đổi từ nhật ký giao dịch, học sâu ở M22. Nguồn tự phát sự kiện: bên sản xuất sở hữu ý định.
 
@@ -135,7 +135,7 @@ Người học phải chọn mẫu trích xuất cho bốn nguồn và nêu rõ 
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi nêu giả định chứ chỉ chọn. Kiểm bằng bốn nguồn có ngữ nghĩa khác nhau; đạt khi chọn đúng ít nhất ba và mỗi lựa chọn kèm danh sách giả định kiểm được.
 
-### Bài 234: High watermark - the five assumptions it needs
+### Lesson 234: High watermark - the five assumptions it needs
 
 Mẫu phổ biến nhất và cũng bị cài sai nhiều nhất, nên nó có một bài riêng. Điều kiện lọc theo mốc lớn hơn giá trị lớn nhất đã nạp chỉ đầy đủ khi năm giả định cùng đúng: đồng hồ nguồn không lùi; trường mốc được cập nhật ở mọi lần sửa; không có hai bản ghi cùng giá trị mốc nằm hai bên ranh giới; xoá được theo dõi bằng cơ chế khác; và đích rỗng được xử lý đúng. Vi phạm giả định thứ ba là lỗi âm thầm phổ biến nhất: dùng dấu lớn hơn thì mất bản ghi trùng giá trị, dùng lớn hơn hoặc bằng thì trùng lặp, nên lời giải đúng là cửa sổ chồng lấn cộng khử trùng có quy tắc chọn thắng xác định. Độ rộng cửa sổ chồng lấn tính từ độ trễ tối đa quan sát được chứ đoán. Cập nhật tới muộn và giao dịch mở lâu làm bản ghi xuất hiện với mốc cũ hơn thời điểm nhìn thấy.
 
@@ -143,7 +143,7 @@ Người học phải cài trích xuất theo mốc tiến độ vượt qua c�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là đối soát khớp tuyệt đối qua các ca biên. Kiểm bằng năm ca biên tiêm; đạt khi số dòng và tổng khớp nguồn ở cả năm và quy tắc chọn thắng xác định.
 
-### Bài 235: API pagination - offset, keyset and cursor
+### Lesson 235: API pagination - offset, keyset and cursor
 
 Ba cách phân trang cho ba mức bảo đảm khác nhau, và chọn sai gây mất hoặc trùng bản ghi mà không báo lỗi. Phân trang theo độ lệch đơn giản nhưng hỏng khi tập dữ liệu thay đổi giữa các trang: thêm một bản ghi ở đầu làm mọi trang sau lệch một, nên vừa trùng vừa sót. Phân trang theo khoá dùng giá trị của bản ghi cuối làm điểm bắt đầu, nên ổn định trước việc thêm bản ghi, với điều kiện khoá sắp thứ tự toàn phần và không đổi. Con trỏ do nhà cung cấp cấp có thể ghim một ảnh chụp hoặc không, và tài liệu thường không nói rõ, nên phải kiểm bằng thực nghiệm. Ba chế độ hỏng bắt buộc xử lý: con trỏ hết hạn giữa chừng, phản hồi mã thành công nhưng thân chứa lỗi nghiệp vụ, và thứ tự trả về không ổn định. Điểm dừng phân trang phải tường minh chứ dựa vào trang rỗng.
 
@@ -151,7 +151,7 @@ Người học phải cài trích xuất phân trang chịu được thay đổi
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là đối soát tập khoá dưới nhiễu. Kiểm bằng phép thử chèn giữa chừng; đạt khi tập khoá thu được khớp tập khoá nguồn tại ranh giới đã chốt, ở cả ba cách phân trang được so.
 
-### Bài 236: Rate limits, retry budget and source protection
+### Lesson 236: Rate limits, retry budget and source protection
 
 Bên trích xuất là khách của hệ nguồn, nên bảo vệ nguồn là một yêu cầu chức năng chứ phép lịch sự. Đọc tín hiệu hạn mức từ tiêu đề phản hồi và tôn trọng chỉ dẫn chờ; ba cách hiểu sai đồng hồ đặt lại hạn mức, gồm cả lệch múi giờ. Phân loại lỗi tạm thời và lỗi vĩnh viễn theo Bài 107, vì thử lại một lỗi vĩnh viễn chỉ làm nguồn tệ hơn. Ngân sách thử lại có giới hạn cùng lùi dần theo cấp số nhân có nhiễu ngẫu nhiên, để tránh cả đoàn khách cùng quay lại một lúc. Thử lại một yêu cầu ghi có thể nhân đôi tác dụng phụ khi phản hồi thất lạc, nên cần khoá chống trùng theo Bài 105. Điều chỉnh mức đồng thời theo phản hồi của nguồn thay vì đặt cố định. Nạp bù là mối nguy lớn nhất với nguồn, nên nó phải có hạn mức riêng và cửa sổ riêng, quy tắc được cưỡng chế ở Bài 243.
 
@@ -159,7 +159,7 @@ Người học phải cài lớp gọi có ngân sách thử lại và điều c
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu đo được ở phía nguồn. Kiểm bằng phép thử tải; đạt khi không lần nào vượt hạn mức, số lần thử lại nằm trong ngân sách, và không có tác dụng phụ trùng lặp.
 
-### Bài 237: File drop - the delivery protocol and arrival completeness
+### Lesson 237: File drop - the delivery protocol and arrival completeness
 
 Trao đổi bằng tệp trông đơn giản và hỏng theo những cách rất đặc trưng. Giao thức giao nhận đúng có bốn bước: ghi bằng tên tạm, kiểm tổng kiểm tra, ghi tệp kê khai hoặc dấu hiệu hoàn tất, rồi mới đổi sang tên chính thức bất biến; đọc tệp trước khi thấy dấu hiệu hoàn tất là nguyên nhân số một của dữ liệu cụt. Danh tính tệp để khử trùng gồm nguồn, đường dẫn, băm nội dung, kích thước và siêu dữ liệu sửa đổi, vì tên tệp có thể bị dùng lại. Tính đầy đủ của lô là một khái niệm khác với sự kiện tệp tới: biết tệp nào đã tới không trả lời được câu đã tới đủ chưa, nên cần danh sách tệp kỳ vọng hoặc tổng kiểm soát trong kê khai. Tệp hỏng, cụt hoặc mã hoá đi vùng cách ly kèm chủ sở hữu, không bị bỏ im lặng. Sự kiện từ kho đối tượng thường là ít nhất một lần và có thể chạy đua với thao tác liệt kê.
 
@@ -167,7 +167,7 @@ Người học phải cài giao thức bốn bước và chứng minh phát hi�
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi phân biệt tệp đã tới với lô đã đủ. Kiểm bằng bốn ca hỏng tiêm; đạt khi cả bốn bị phát hiện, không ca nào bị bỏ im lặng, và lô thiếu tệp không được công bố.
 
-### Bài 238: Database extraction - snapshot, chunking and replica lag
+### Lesson 238: Database extraction - snapshot, chunking and replica lag
 
 Trích xuất từ cơ sở dữ liệu giao dịch đụng thẳng vào nội dung M10, nên bài này dùng lại kiến thức đó ở vai người gọi. Ảnh chụp nhất quán: một truy vấn dài giữ một giao dịch mở, và giao dịch mở lâu cản việc thu dọn phiên bản cũ theo Bài 141, nên trích xuất nặng có thể làm phình cơ sở dữ liệu nguồn. Chia lô theo khoá có chỉ mục và ổn định, kích thước lô điều chỉnh theo thời gian phản hồi; chia theo độ lệch làm truy vấn chậm dần. Trích xuất từ bản sao đọc giảm tải cho bản chính nhưng đưa vào độ trễ sao chép, nên ranh giới trích xuất phải tính theo trạng thái bản sao chứ theo đồng hồ; chuyển đổi dự phòng làm điểm cuối đổi giữa chừng. Phát hiện thay đổi cấu trúc ở nguồn trước khi nó làm hỏng lần chạy. Theo dõi tác động lên nguồn bằng số đo của nguồn chứ bằng cảm nhận.
 
@@ -175,7 +175,7 @@ Người học phải trích xuất bảng lớn theo lô mà không vượt ng�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có hai ràng buộc: đúng dữ liệu và không hại nguồn. Kiểm bằng cặp số đo; đạt khi đối soát khớp nguồn tại ranh giới đã chốt và mọi số đo tác động nằm dưới ngưỡng thoả thuận.
 
-### Bài 239: The landing zone - fidelity, envelope and required metadata
+### Lesson 239: The landing zone - fidelity, envelope and required metadata
 
 Vùng thô có một nhiệm vụ: giữ đúng những gì nguồn đã nói, để mọi biến đổi sau này chạy lại được. Trung thực với nguồn nghĩa là lưu tải trọng gốc chưa diễn giải, kèm một phong bì siêu dữ liệu. Sáu trường siêu dữ liệu bắt buộc: định danh nguồn, định danh lần chạy trích xuất, vị trí của bản ghi trong nguồn, thời điểm nạp, phiên bản lược đồ, và tổng kiểm tra. Thiếu trường thứ ba thì không chạy lại từ một điểm được; thiếu trường thứ năm thì không giải thích được vì sao hai lô cùng nguồn có hình dạng khác nhau. Trung thực với nguồn không có nghĩa lưu mọi dữ liệu nhạy cảm vô thời hạn: phân loại, mã hoá, thời hạn giữ và đường lan truyền lệnh xoá vẫn áp dụng ở vùng thô, và đây là chỗ hay bị bỏ qua nhất. Vùng cách ly tách khỏi vùng thô đã nhận. Đăng ký danh mục và phát tín hiệu dòng dõi ngay khi công bố chứ suy lại sau nhiều tháng.
 
@@ -183,7 +183,7 @@ Người học phải thiết kế phong bì vùng thô đủ sáu trường và
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết đặt chuẩn cho hai bài thực hành sau. Kiểm bằng bài thiết kế cộng bài lập luận; đạt khi sáu trường có mặt và mỗi trường kèm một câu hỏi vận hành nó trả lời được.
 
-### Bài 240: Atomic landing and the checkpoint ordering rule
+### Lesson 240: Atomic landing and the checkpoint ordering rule
 
 Bài cưỡng chế nguyên tắc trung tâm của module bằng thực nghiệm. Thứ tự bắt buộc gồm bốn bước: ghi dữ liệu ra vị trí tạm, xác nhận đã bền vững, công bố nguyên tử, rồi mới đẩy mốc tiến độ. Đảo hai bước cuối tạo ra mất dữ liệu im lặng: tiến trình chết sau khi đẩy mốc nhưng trước khi công bố, và lần chạy sau bắt đầu từ mốc mới nên khoảng dữ liệu ở giữa không bao giờ được nạp, không có lỗi nào được ghi lại và chỉ đối soát mới phát hiện ra. Công bố nguyên tử trên kho đối tượng dùng giao thức chốt ở Bài 226. Trạng thái điểm kiểm tra gồm những gì, ai sở hữu nó, và nó phải bền vững cùng lúc hay sau dữ liệu. Thực thi ít nhất một lần cộng tác dụng phụ luỹ đẳng là mô hình thực tế; tuyên bố đúng một lần mà không nêu ranh giới là tuyên bố rỗng. Chạy lại vào đích cách ly để so trước khi hoán đổi.
 
@@ -191,7 +191,7 @@ Người học phải chứng minh bằng thực nghiệm rằng hỏng ở mọ
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu bằng thí nghiệm hỏng tại từng ranh giới. Kiểm bằng phép thử giết tiến trình; đạt khi mọi ranh giới cho kết quả đối soát khớp sau khi chạy lại, và ranh giới đảo thứ tự bị chứng minh là mất dữ liệu.
 
-### Bài 241: Schema drift - detect, classify, quarantine
+### Lesson 241: Schema drift - detect, classify, quarantine
 
 Lược đồ nguồn đổi mà không báo trước là chuyện thường, nên đường nạp phải coi đó là trạng thái bình thường chứ sự cố. Phát hiện bằng cách so lược đồ quan sát được của lô hiện tại với lược đồ đã đăng ký, chứ đợi bước biến đổi báo lỗi. Phân loại ba mức theo đúng ma trận ở Bài 220: thay đổi tương thích thì nạp tiếp và ghi nhận; thay đổi làm đổi nghĩa thì cảnh báo và chặn bước hạ nguồn; thay đổi phá vỡ thì đưa cả lô vào vùng cách ly kèm chủ sở hữu. Cột mới xuất hiện không phải lý do dừng đường nạp, còn cột đổi kiểu thu hẹp thì phải dừng. Phiên bản lược đồ ghi trong phong bì nên truy được lô nào theo lược đồ nào. Đường phục hồi sau khi sửa: nạp lại từ vùng cách ly chứ bỏ. Ba cách trình kết nối có sẵn xử lý việc này và vì sao phải kiểm chứ tin.
 
@@ -199,7 +199,7 @@ Người học phải cài phát hiện và phân loại lệch lược đồ ba
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu bằng phép thử tiêm ba mức. Kiểm bằng sáu thay đổi tiêm; đạt khi phân loại đúng ít nhất năm và không lô nào bị bỏ im lặng.
 
-### Bài 242: Reconciliation from source to landing
+### Lesson 242: Reconciliation from source to landing
 
 Đối soát là bằng chứng duy nhất cho tính đầy đủ, và mọi thứ khác chỉ là dấu hiệu. Thang đối soát bốn bậc theo chi phí tăng dần: tổng kiểm soát gồm số dòng, tổng, nhỏ nhất và lớn nhất theo phân vùng; so tập khoá để biết thiếu, thừa hay trùng cụ thể; băm dòng trên giá trị đã chuẩn hoá; và bất biến nghiệp vụ xuyên bảng. Chuẩn hoá trước khi băm là bước quyết định: thời gian, số thập phân, giá trị rỗng và thứ tự cột phải quy về một dạng, nếu không thì hai bên đúng vẫn cho hai băm khác nhau, đúng vấn đề đã gặp ở Bài 223. Ranh giới trích xuất phải bất biến khi đối soát, nếu không thì nguồn đã đổi giữa hai lần đếm và chênh lệch là giả. Lấy mẫu không chứng minh được tính đầy đủ và nhầm lẫn này là lỗi lập luận chính của bài. Ngân sách chênh lệch được chấp nhận phải có người duyệt chứ do kỹ thuật tự đặt.
 
@@ -207,7 +207,7 @@ Người học phải chạy đủ bốn bậc đối soát cho ba nguồn và g
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi chứng minh tính đầy đủ chứ đưa dấu hiệu. Kiểm bằng bốn bậc cho ba nguồn; đạt khi bậc hai chỉ đúng khoá lệch, và mọi chênh lệch còn lại có nguyên nhân được nêu tên chứ bỏ qua.
 
-### Bài 243: Ingestion SLO and the backfill isolation rule
+### Lesson 243: Ingestion SLO and the backfill isolation rule
 
 Đường nạp là dịch vụ, nên nó có chỉ số và cam kết. Bảy chỉ số phải đo: độ trễ trích xuất, độ tươi của vùng thô, tỉ lệ lần chạy thành công, số dòng và số byte, số lỗi lược đồ, tải đặt lên nguồn, và chênh lệch đối soát. Chỉ số cuối là chỉ số duy nhất nói về tính đúng, và sáu chỉ số kia đều xanh mà nó đỏ là tình huống phải nhận ra. Đặt cam kết theo nhu cầu của quyết định hạ nguồn theo Bài 185, chứ theo năng lực hiện có. Định tuyến cảnh báo theo chủ sở hữu và mức nghiêm trọng, tránh cảnh báo không hành động được. Nạp bù phải cách ly khỏi lần chạy hằng ngày: hạn mức riêng, hàng đợi riêng, cửa sổ riêng, và ngưỡng dừng; chạy chung là một trong những chế độ hỏng bị liệt vào danh sách tự động chưa đạt. Tiến độ từng phần và điểm kiểm tra cho nạp bù dài, để dừng giữa chừng không mất công đã làm.
 
@@ -215,7 +215,7 @@ Người học phải dựng bộ bảy chỉ số cùng cam kết, và chứng 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là cam kết hằng ngày giữ được trong lúc nạp bù. Kiểm bằng thí nghiệm chạy song song; đạt khi độ tươi hằng ngày trong cam kết suốt thời gian nạp bù và nguồn không vượt hạn mức.
 
-### Bài 244: Connector landscape - build, adopt or buy
+### Lesson 244: Connector landscape - build, adopt or buy
 
 Năm nhóm công cụ và tiêu chí chọn, với một ranh giới trách nhiệm phải nói rõ. Dịch vụ nạp được quản lý: nhanh để có kết quả, chi phí theo lượng dữ liệu, và hành vi xử lý lệch lược đồ cùng thử lại phải kiểm chứ đọc trang giới thiệu. Trình kết nối mã nguồn mở: kiểm soát được, đổi lại phải tự vận hành. Bắt thay đổi từ nhật ký giao dịch, học sâu ở M22. Dịch vụ truyền dữ liệu của nhà cung cấp đám mây. Tự viết: bắt buộc cho nguồn không ai hỗ trợ hoặc nguồn trọng yếu. Mười tiêu chí chọn gồm ngữ nghĩa nguồn được hỗ trợ, xử lý xoá và lịch sử, lệch lược đồ, ai giữ trạng thái, hạn mức và nạp bù, bảo mật, khả năng quan sát, chi phí, khả năng mở rộng, và đường phục hồi. Có trình kết nối không chứng minh ngữ nghĩa đúng: công cụ chuyển giao trách nhiệm vận hành, không chuyển giao trách nhiệm về tính đúng, nên đối soát vẫn là của ta.
 
@@ -223,7 +223,7 @@ Người học phải chọn nhóm công cụ cho ba nguồn theo mười tiêu 
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi phân biệt trách nhiệm vận hành với trách nhiệm về tính đúng. Kiểm bằng bản ghi quyết định ba nguồn; đạt khi mỗi lựa chọn có ít nhất năm tiêu chí được kiểm bằng thực nghiệm chứ bằng tài liệu.
 
-### Bài 245: Ingestion capstone - three sources into one raw zone
+### Lesson 245: Ingestion capstone - three sources into one raw zone
 
 Bài dự án tổng hợp module, lấy đúng yêu cầu capstone của hợp đồng nguồn. Nạp ba loại nguồn vào một vùng thô trên kho đối tượng: một cơ sở dữ liệu quan hệ, một giao diện lập trình có phân trang, và tệp đối tác giao hằng ngày. Ba chế độ vận hành phải chạy được: khởi tạo ban đầu, tăng dần hằng ngày, và nạp bù 90 ngày. Yêu cầu bắt buộc: chạy lại luỹ đẳng, hạ cánh nguyên tử theo Bài 240, hợp đồng lược đồ có phiên bản và vùng cách ly, bảo vệ nguồn cùng quản lý thông tin xác thực, phát tín hiệu danh mục và dòng dõi khi công bố, và bộ chỉ số cùng bảng theo dõi cùng sổ tay vận hành. Đối soát độc lập từ nguồn tới vùng thô cho cả ba nguồn là tiêu chí nghiệm thu chính, chứ số lần chạy thành công.
 
@@ -231,7 +231,7 @@ Người học phải nộp hệ nạp ba nguồn chạy được cả ba chế 
 
 Cách đánh giá: Tầng *sáng tạo*. Bài tổng hợp toàn module thành một hệ vận hành được. Kiểm bằng đối soát độc lập cộng rà soát sổ tay; đạt khi ba nguồn đối soát khớp trong ngân sách chênh lệch đã duyệt và mọi chế độ chạy lại được.
 
-### Bài 246: Game day - provider throttling, cursor expiry and duplicate delivery
+### Lesson 246: Game day - provider throttling, cursor expiry and duplicate delivery
 
 Bài diễn tập sự cố khép module, chạy trên chính hệ đã dựng ở bài trước. Sáu tình huống bắt buộc, mỗi tình huống có một hành vi kỳ vọng ghi trước: nhà cung cấp trả mã từ chối vì vượt hạn mức trong lúc nạp bù; nhà cung cấp trả lỗi máy chủ ngẫu nhiên; con trỏ phân trang hết hạn giữa chừng; bản sao cơ sở dữ liệu trễ bất thường; tệp đối tác giao thiếu một phần; và cùng một lô được giao hai lần. Với mỗi tình huống, ba câu hỏi phải trả lời bằng bằng chứng: hệ có phát hiện không, ảnh hưởng có bị chặn trong phạm vi không, và phục hồi mất bao lâu. Hành vi kỳ vọng phải viết trước khi chạy, vì viết sau thì luôn khớp. Kết quả diễn tập là đầu vào sửa sổ tay vận hành chứ một buổi biểu diễn.
 

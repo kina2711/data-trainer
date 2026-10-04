@@ -37,7 +37,7 @@ Runs, freshness, volume, usage và failures là observations theo time window, k
 
 ## 3. Business metadata
 
-Definitions, grain, approved terms và policy cần accountable human authority và effective dates. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Metadata taxonomy - seven types and their authority`, câu hỏi thực dụng là: Bảy loại metadata có authority, freshness và conflict policy khác nhau như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Definitions, grain, approved terms và policy cần accountable human authority và effective dates. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Metadata taxonomy - seven types and their authority`, câu hỏi thực dụng là: Bảy loại metadata có authority, freshness và conflict policy khác nhau như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Ownership and stewardship
 
@@ -218,7 +218,7 @@ Với `wiki.metadata.taxonomy-authority`, command thành công không tự chứ
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.metadata.taxonomy-authority`
+## Execution capsule: kiểm chứng `wiki.metadata.taxonomy-authority`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.metadata.taxonomy-authority`, sơ đồ, ví dụ và artifact về **Metadata taxonomy - seven types and their authority** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

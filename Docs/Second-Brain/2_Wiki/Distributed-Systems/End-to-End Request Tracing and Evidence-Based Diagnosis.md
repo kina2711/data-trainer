@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao theo một request qua DNS, transport, TLS, proxy, application và dependency, rồi kết luận chặng hỏng bằng số đo, packet, trace và log thay vì suy đoán từ một triệu chứng?
 source_ids:
   - src.book.titmus-cloud-native-go.1e
@@ -45,10 +45,10 @@ Observability nói về khả năng suy ra trạng thái bên trong từ output 
 
 Monitoring truyền thống thường bắt đầu từ failure mode đã biết: CPU cao, error rate vượt ngưỡng, disk gần đầy. Cách đó vẫn cần thiết. Nó yếu khi lỗi chỉ xuất hiện do tổ hợp nhiều thành phần hoặc khi câu hỏi mới cần một chiều dữ liệu chưa từng được nối.
 
-Cài collector, dashboard và tracing SDK chưa tự làm hệ observable. Telemetry phải mang đủ context, được liên kết qua boundary và giữ semantics nhất quán thì mới trả lời được “vì sao”.
+Cài collector, dashboard và tracing SDK chưa tự làm hệ observable. Telemetry phải mang đủ context, được liên kết qua boundary và giữ semantics nhất quán thì mới trả lời được vì sao.
 
 > [!source-fact]
-> Cloud Native Go định nghĩa observability là system property phản ánh khả năng suy ra internal state từ external outputs, và nhấn mạnh tool không tự tạo ra property đó; Chapter 11, trang in 343–347, PDF 365–369.
+> Cloud Native Go định nghĩa observability là system property phản ánh khả năng suy ra internal state từ external outputs, và nhấn mạnh tool không tự tạo ra property đó; Chapter 11, trang in 343-347, PDF 365-369.
 
 ## 2. Chẩn đoán là một chuỗi phát biểu có bằng chứng
 
@@ -68,7 +68,7 @@ Client p95 tăng từ 120 ms lên 2,4 s
 → bottleneck nằm trước handler trong instance được trace, không quy cho network
 ```
 
-Phần “có phạm vi” quan trọng: một trace chứng minh request đó; một capture chứng minh traffic tại capture point; một time series mô tả series có label ấy. Không nâng một mẫu thành kết luận toàn hệ khi chưa có sampling và coverage phù hợp.
+Phần có phạm vi quan trọng: một trace chứng minh request đó; một capture chứng minh traffic tại capture point; một time series mô tả series có label ấy. Không nâng một mẫu thành kết luận toàn hệ khi chưa có sampling và coverage phù hợp.
 
 > [!synthesis]
 > Chuỗi năm bước là khung biên tập nối observability với execution discipline. Nguồn không đặt tên đây là một framework.
@@ -132,7 +132,7 @@ T_client
 Không cộng mù toàn bộ child-span duration: các call song song chồng thời gian. Chỉ critical path đóng góp trực tiếp vào wall-clock total; các span khác vẫn tiêu tài nguyên nhưng không cộng tuyến tính.
 
 > [!synthesis]
-> Phân rã sáu chặng phục vụ DE-L086/L088, tổng hợp từ delay components của Kurose–Ross, response/ service/queueing time trong DDIA và trace/span model của Cloud Native Go. Không phải công thức chuẩn của một tác giả.
+> Phân rã sáu chặng phục vụ DE-L086/L088, tổng hợp từ delay components của Kurose-Ross, response/ service/queueing time trong DDIA và trace/span model của Cloud Native Go. Không phải công thức chuẩn của một tác giả.
 
 ## 5. Response time, service time và queueing time
 
@@ -141,24 +141,24 @@ Response time là thời gian client quan sát từ lúc gửi yêu cầu đến
 Hai request cùng service time có thể có response time rất khác nếu một request chờ queue. Khi load gần capacity, queueing delay tăng nhanh; dùng CPU trung bình thấp để bác bỏ queueing là không đủ vì queue có thể nằm ở connection pool, lock, partition hoặc downstream.
 
 > [!source-fact]
-> DDIA Early Release phân biệt response time, service time, queueing delay và network latency; đồng thời mô tả queueing tăng mạnh khi throughput tiến gần capacity, Chapter 2, PDF 76–80.
+> DDIA Early Release phân biệt response time, service time, queueing delay và network latency; đồng thời mô tả queueing tăng mạnh khi throughput tiến gần capacity, Chapter 2, PDF 76-80.
 
 > [!uncertainty]
 > DDIA trong kho là Early Release chưa hoàn chỉnh. Khái niệm được dùng ở mức nguyên lý; locator và wording phải đối chiếu lại khi bản phát hành cuối được thêm vào kho.
 
 ## 6. Network delay cũng có nhiều thành phần
 
-Tại một node, Kurose–Ross tách:
+Tại một node, Kurose-Ross tách:
 
 - processing delay;
 - queueing delay;
 - transmission delay `L/R`;
 - propagation delay.
 
-End-to-end network delay tích lũy qua nhiều node. Ngoài mạng còn có endpoint/application delay. Vì vậy “network mất 800 ms” chỉ hợp lệ khi boundary đo loại trừ được DNS, TLS, proxy queue và application.
+End-to-end network delay tích lũy qua nhiều node. Ngoài mạng còn có endpoint/application delay. Vì vậy network mất 800 ms chỉ hợp lệ khi boundary đo loại trừ được DNS, TLS, proxy queue và application.
 
 > [!source-fact]
-> Bốn loại nodal delay, phép cộng end-to-end và endpoint/application delay được trình bày tại Kurose–Ross §§1.4.1–1.4.3, trang in 65–73, PDF 67–75.
+> Bốn loại nodal delay, phép cộng end-to-end và endpoint/application delay được trình bày tại Kurose-Ross §§1.4.1-1.4.3, trang in 65-73, PDF 67-75.
 
 ## 7. Trace là đồ thị công việc của một request
 
@@ -181,7 +181,7 @@ flowchart LR
 ```
 
 > [!source-fact]
-> Span, trace-as-DAG, root span, globally unique trace ID và propagation qua hop nằm tại Cloud Native Go, trang in 350–351, PDF 372–373.
+> Span, trace-as-DAG, root span, globally unique trace ID và propagation qua hop nằm tại Cloud Native Go, trang in 350-351, PDF 372-373.
 
 ## 8. Trace context phải vượt đúng boundary
 
@@ -213,10 +213,10 @@ Span vắng có thể do:
 - clock/query window sai;
 - lookup dùng nhầm trace ID.
 
-Khi backend không có span, đối chiếu access log, packet, queue record và collector health trước khi kết luận request dừng ở hop trước. “Không thấy” là observation về telemetry path, chưa chắc là observation về request path.
+Khi backend không có span, đối chiếu access log, packet, queue record và collector health trước khi kết luận request dừng ở hop trước. Không thấy là observation về telemetry path, chưa chắc là observation về request path.
 
 > [!inference]
-> Đây là giới hạn suy luận từ kiến trúc instrumentation–SDK–exporter–collector mà Cloud Native Go mô tả tại trang in 347–349. Nguồn không cung cấp ma trận missing-span này.
+> Đây là giới hạn suy luận từ kiến trúc instrumentation-SDK-exporter-collector mà Cloud Native Go mô tả tại trang in 347-349. Nguồn không cung cấp ma trận missing-span này.
 
 ## 10. Duration của span phụ thuộc boundary instrumentation
 
@@ -244,7 +244,7 @@ Khi tìm bottleneck latency:
 2. đọc khoảng trống chưa instrument giữa spans;
 3. kiểm wait time trước span;
 4. tách child retries thành attempts;
-5. xem fan-out tail—parent chờ child chậm nhất hay quorum nào.
+5. xem fan-out tail:parent chờ child chậm nhất hay quorum nào.
 
 > [!synthesis]
 > Critical-path interpretation là cách áp dụng trace-as-DAG. Ví dụ số là minh họa tự xây, không phải benchmark từ nguồn.
@@ -265,7 +265,7 @@ Khi ghép timeline:
 > [!inference]
 > Nguồn nhấn mạnh timestamp trong metric/log/span nhưng không cung cấp clock-correction protocol. Đây là stop condition: one-way timing đa host cần clock-quality evidence riêng.
 
-## 13. Metric trả lời “bao nhiêu” và “khi nào”
+## 13. Metric trả lời bao nhiêu và khi nào
 
 Metric là numerical observation theo thời gian. Sample thường có name, value, timestamp và labels; các sample cùng identity tạo time series. Time series cho phép thấy xu hướng, anomaly và tương quan giữa load, latency, queue, error.
 
@@ -279,7 +279,7 @@ Nhóm metric tối thiểu cho request path:
 - correctness/business: records processed, commit/reconciliation result.
 
 > [!source-fact]
-> Định nghĩa metric, sample, timestamp, labels và time series được trình bày tại Cloud Native Go, trang in 369–371, PDF 391–393.
+> Định nghĩa metric, sample, timestamp, labels và time series được trình bày tại Cloud Native Go, trang in 369-371, PDF 391-393.
 
 ## 14. Average che tail latency
 
@@ -307,7 +307,7 @@ Label nhiều giá trị giúp đặt câu hỏi chi tiết nhưng tạo nhiều
 Metric label nên là chiều hữu hạn và có quyết định rõ: service, operation, status class, region, dependency, failure class. Nếu cần đi từ anomaly tới request cụ thể, dùng exemplar hoặc liên kết tới trace khi stack hỗ trợ, thay vì biến mọi request thành series.
 
 > [!source-fact]
-> Cloud Native Go mô tả monitoring cardinality là số tổ hợp metric name và dimensions, đồng thời nêu high cardinality tăng số cách truy vấn; trang in 369–370, PDF 391–392.
+> Cloud Native Go mô tả monitoring cardinality là số tổ hợp metric name và dimensions, đồng thời nêu high cardinality tăng số cách truy vấn; trang in 369-370, PDF 391-392.
 
 > [!inference]
 > Cấm request/user ID làm label là guardrail về resource/privacy. Limit cụ thể phụ thuộc backend và retention; nguồn không cung cấp cardinality budget production.
@@ -330,7 +330,7 @@ Log hiệu quả là record của event có schema, không phải câu văn tùy
 Structured log giảm chi phí parse và cho phép filter/aggregate nhất quán. Message vẫn hữu ích cho người đọc, nhưng không nên là nơi duy nhất chứa field cần truy vấn.
 
 > [!source-fact]
-> Cloud Native Go đối chiếu unstructured string với structured event và nhấn mạnh timestamp, level, contextual fields; trang in 387–390, PDF 409–412.
+> Cloud Native Go đối chiếu unstructured string với structured event và nhấn mạnh timestamp, level, contextual fields; trang in 387-390, PDF 409-412.
 
 ## 17. Log có chi phí và privacy boundary
 
@@ -339,7 +339,7 @@ Log volume tiêu disk, network, indexing và retention. Khi load tăng, log per-
 Không ghi credential, token, raw authorization header, secret, payload chứa PII hoặc dữ liệu nghiệp vụ nhạy cảm. Hash hoặc redact chỉ an toàn khi threat model cho phép; correlation ID nên là opaque identifier, không nhúng user data.
 
 > [!source-fact]
-> Cloud Native Go cảnh báo verbose logs gây áp lực disk/network, chi phí vận hành và không ghi sensitive business data hay PII; trang in 387–390, PDF 409–412.
+> Cloud Native Go cảnh báo verbose logs gây áp lực disk/network, chi phí vận hành và không ghi sensitive business data hay PII; trang in 387-390, PDF 409-412.
 
 ## 18. Trace, metric và log phải nối được nhau
 
@@ -358,10 +358,10 @@ flowchart TD
     P --> C
 ```
 
-Metric tìm cửa sổ và nhóm bị ảnh hưởng. Trace chỉ chặng. Log giải thích state/decision. Packet kiểm hành vi wire. Configuration cho biết behavior đáng lẽ phải xảy ra. Nếu các lớp không chia sẻ time, identity hoặc version, việc “có đủ ba pillar” vẫn không tạo được diagnosis.
+Metric tìm cửa sổ và nhóm bị ảnh hưởng. Trace chỉ chặng. Log giải thích state/decision. Packet kiểm hành vi wire. Configuration cho biết behavior đáng lẽ phải xảy ra. Nếu các lớp không chia sẻ time, identity hoặc version, việc có đủ ba pillar vẫn không tạo được diagnosis.
 
 > [!source-fact]
-> Cloud Native Go nêu metrics có thể dẫn tới subset trace bất thường, trace dẫn tới logs, và ba cách quan sát cần được interweave; trang in 346–347, PDF 368–369.
+> Cloud Native Go nêu metrics có thể dẫn tới subset trace bất thường, trace dẫn tới logs, và ba cách quan sát cần được interweave; trang in 346-347, PDF 368-369.
 
 ## 19. Packet capture chứng minh điều gì
 
@@ -385,7 +385,7 @@ Nó không tự chứng minh:
 Capture point, interface, direction, filter, snap length, offload và clock phải được ghi cùng artifact.
 
 > [!synthesis]
-> Bảng giới hạn nối packet-level material của Kurose–Ross với các note TCP/TLS/proxy đã chưng cất. Nguồn không cung cấp một forensic checklist hoàn chỉnh.
+> Bảng giới hạn nối packet-level material của Kurose-Ross với các note TCP/TLS/proxy đã chưng cất. Nguồn không cung cấp một forensic checklist hoàn chỉnh.
 
 ## 20. Traceroute không định vị application bottleneck
 
@@ -394,13 +394,13 @@ Traceroute dùng probe với hop limit tăng để thu response và round-trip d
 Traceroute hữu ích để quan sát route và RTT pattern. Nó không đo DNS, TLS, proxy queue, server processing hoặc one-way latency chính xác.
 
 > [!source-fact]
-> Cơ chế Traceroute, ba probe mỗi hop, RTT biến động và ví dụ hop sau có RTT thấp hơn nằm tại Kurose–Ross §1.4.3, trang in 71–73, PDF 73–75.
+> Cơ chế Traceroute, ba probe mỗi hop, RTT biến động và ví dụ hop sau có RTT thấp hơn nằm tại Kurose-Ross §1.4.3, trang in 71-73, PDF 73-75.
 
 ## 21. Evidence theo từng tầng
 
 | Tầng/chặng | Bằng chứng mạnh | Bằng chứng chưa đủ |
 |---|---|---|
-| DNS | resolver, answer, TTL, authoritative comparison | “Máy tôi phân giải được” |
+| DNS | resolver, answer, TTL, authoritative comparison | Máy tôi phân giải được |
 | TCP connect | packet hai chiều, socket state, connect timing | application log vắng |
 | TLS | certificate chain, verification result, alert, handshake timing | chỉ thấy port mở |
 | HTTP | request/response metadata, status, byte count | TCP ACK |
@@ -500,7 +500,7 @@ Diff theo stage:
 
 So sánh chỉ có giá trị khi boundary và unit giống nhau.
 
-## 26. Tình huống A — lỗi DNS bị gọi nhầm là lỗi mạng
+## 26. Tình huống A: lỗi DNS bị gọi nhầm là lỗi mạng
 
 ### Dấu hiệu
 
@@ -516,11 +516,11 @@ Một nhóm client timeout; nhóm khác gọi bình thường. Backend mới kh�
 
 ### Kết luận hợp lệ
 
-“Resolver X còn trả address A với TTL Y trong lần đo; authoritative trả B. Client lỗi kết nối tới A.” Không viết “DNS toàn hệ bị hỏng” nếu chỉ một resolver/cache stale.
+Resolver X còn trả address A với TTL Y trong lần đo; authoritative trả B. Client lỗi kết nối tới A. Không viết DNS toàn hệ bị hỏng nếu chỉ một resolver/cache stale.
 
-## 27. Tình huống B — network, transport hay application error
+## 27. Tình huống B: network, transport hay application error
 
-Ba case có triệu chứng “request thất bại”:
+Ba case có triệu chứng request thất bại:
 
 | Case | Packet | Telemetry | Kết luận |
 |---|---|---|---|
@@ -528,9 +528,9 @@ Ba case có triệu chứng “request thất bại”:
 | Packet loss/retransmission | sequence gap, retransmission/ACK pattern | span có thể dài hoặc thiếu | transport phục hồi/chờ; root physical cause cần thêm evidence |
 | Application 5xx | handshake và byte transfer hoàn tất | server span/log trả error | lỗi ở app/protocol, không phải connect failure |
 
-Packet number phải được ghi trong câu trả lời L088. “Wireshark cho thấy lỗi” không phải locator.
+Packet number phải được ghi trong câu trả lời L088. Wireshark cho thấy lỗi không phải locator.
 
-## 28. Tình huống C — client chậm nhưng handler nhanh
+## 28. Tình huống C: client chậm nhưng handler nhanh
 
 Observation:
 
@@ -546,7 +546,7 @@ Kết luận: phần lớn latency ở queue trước handler cho request này. 
 > [!synthesis]
 > Số liệu tình huống là fixture giảng dạy tự tạo để luyện phân rã, không phải số đo từ sách hay hệ thật.
 
-## 29. Tình huống D — trace cho thấy backend nhanh nhưng client vẫn timeout
+## 29. Tình huống D: trace cho thấy backend nhanh nhưng client vẫn timeout
 
 Khả năng cần tách:
 
@@ -571,18 +571,18 @@ Sửa cấu hình hoặc restart chưa phải bằng chứng hồi phục. Kiể
 6. tải tăng lại có kiểm soát không tái tạo lỗi;
 7. không mất correctness/business outcome.
 
-Nếu chỉ client call thành công một lần, status là “một probe thành công”, chưa phải “hệ đã ổn định”.
+Nếu chỉ client call thành công một lần, status là một probe thành công, chưa phải hệ đã ổn định.
 
 ## 31. Gói bằng chứng cho DE-L088
 
-### A — Phân loại tải bằng chỉ số hệ thống
+### A: Phân loại tải bằng chỉ số hệ thống
 
 - workload và time window;
 - CPU, memory, disk/network I/O, run queue hoặc metric phù hợp;
 - unit và sampling interval;
 - kết luận loại tải, kèm số đo loại trừ ít nhất một khả năng khác.
 
-### B — Chẩn đoán mạng bằng packet
+### B: Chẩn đoán mạng bằng packet
 
 - capture point, filter và clock;
 - flow/connection identity;
@@ -590,7 +590,7 @@ Nếu chỉ client call thành công một lần, status là “một probe thà
 - handshake/retransmission/RST/response evidence;
 - giới hạn suy luận của capture.
 
-### C — Giải thích hiệu năng bằng cost model
+### C: Giải thích hiệu năng bằng cost model
 
 - công thức/quan hệ dùng;
 - input do người học đo;
@@ -598,21 +598,21 @@ Nếu chỉ client call thành công một lần, status là “một probe thà
 - predicted và observed result;
 - phần chênh lệch chưa giải thích.
 
-### D — Sửa và xác nhận
+### D: Sửa và xác nhận
 
 - thay đổi chính xác;
 - reproduction trước/sau;
 - symptom và cause evidence;
 - rollback hoặc tác động phụ.
 
-### E — Timeline chẩn đoán
+### E: Timeline chẩn đoán
 
 - observations theo thời gian;
 - giả thuyết đúng và sai;
 - phép kiểm làm bác bỏ;
 - thời điểm có thay đổi trạng thái hệ.
 
-### F — Báo cáo hiệu năng sáu phần
+### F: Báo cáo hiệu năng sáu phần
 
 1. câu hỏi;
 2. môi trường/workload;
@@ -629,13 +629,13 @@ Một phân bổ khả thi:
 
 | Khoảng | Công việc |
 |---:|---|
-| 0–8 phút | Chụp trạng thái, đọc symptom, không restart |
-| 8–18 phút | Vẽ path và lập request identity |
-| 18–35 phút | Thu system metrics và phân loại tải |
-| 35–50 phút | Đọc packet capture, ghi packet locator |
-| 50–62 phút | Trace/log, giả thuyết và phép kiểm |
-| 62–70 phút | Sửa, chạy lại, xác nhận recovery |
-| 70–75 phút | Hoàn thiện timeline và giới hạn kết luận |
+| 0-8 phút | Chụp trạng thái, đọc symptom, không restart |
+| 8-18 phút | Vẽ path và lập request identity |
+| 18-35 phút | Thu system metrics và phân loại tải |
+| 35-50 phút | Đọc packet capture, ghi packet locator |
+| 50-62 phút | Trace/log, giả thuyết và phép kiểm |
+| 62-70 phút | Sửa, chạy lại, xác nhận recovery |
+| 70-75 phút | Hoàn thiện timeline và giới hạn kết luận |
 
 Đây là chiến lược thời gian, không phải thay đổi rubric. Nếu case yêu cầu capture lâu, phải ưu tiên bằng chứng bắt buộc A/B trước phần trình bày.
 
@@ -700,7 +700,7 @@ Chương này chưa đủ để:
 
 - Nguồn: [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], [[SRC-KUROSE-ROSS-NETWORKING-8E]], [[SRC-KLEPPMANN-DDIA-2E-EARLY-RELEASE]].
 - Bài áp dụng trực tiếp: `DE-L086`, `DE-L088`.
-- Bài nền: `DE-L074`, `DE-L077`–`DE-L085`, `DE-L087`.
+- Bài nền: `DE-L074`, `DE-L077`-`DE-L085`, `DE-L087`.
 - Bài dùng lại: `DE-L101`, các module ingestion, streaming, distributed systems, observability và incident diagnosis.
 - Liên quan: [[Packet-Switched Network Delay Loss and Throughput|Độ trễ mất gói và thông lượng trong mạng chuyển mạch gói]], [[DNS Resolution Delegation Caching and TTL|DNS resolution delegation cache và TTL]], [[TCP Reliability RTT RTO and Flow Control|TCP reliability RTT RTO và flow control]], [[TLS Certificates and Endpoint Authentication|TLS certificate và xác thực endpoint]], [[HTTP Requests Connection State and Caching|HTTP request connection state và cache]], [[Proxies Middleboxes and Load Balancer Connection Boundaries|Proxy middlebox và load balancer - ranh giới kết nối]], [[Rate Limiting Backpressure and Circuit Breakers Between Services|Rate limiting backpressure và circuit breaker giữa các dịch vụ]].
 - Nguồn phải bổ sung trước implementation: OpenTelemetry specification/docs đúng version, telemetry backend docs, runtime instrumentation docs, privacy policy, clock-sync evidence và lab topology.
@@ -709,11 +709,11 @@ Chương này chưa đủ để:
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], Ch. 11 pp. 365–373 | observability, trace, span và context propagation | §§1–12 | Đã trình bày trace graph, missing span, critical path và clock limitation |
-| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], pp. 391–393, 409–412 | metrics và structured logging | §§13–18 | Đã trình bày distribution, cardinality, privacy và correlation |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§1.4.1–1.4.3 | processing, queueing, transmission, propagation và Traceroute | §§4–6, 19–20 | Đã phân rã network evidence và giới hạn điểm quan sát |
-| [[SRC-KLEPPMANN-DDIA-2E-EARLY-RELEASE]], Ch. 2 pp. 76–80 | partial failure và uncertainty qua boundary | §§21–30 | Đã trình bày với qualifier early-release |
-| Tổng hợp chẩn đoán | evidence matrix, hypothesis ledger, recovery verification và bài DE-L088 | §§21–32 | Đã gắn `synthesis`; đây là workflow tổng hợp, không phải framework được một tác giả đặt tên |
+| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], Ch. 11 pp. 365-373 | observability, trace, span và context propagation | §§1-12 | Đã trình bày trace graph, missing span, critical path và clock limitation |
+| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], pp. 391-393, 409-412 | metrics và structured logging | §§13-18 | Đã trình bày distribution, cardinality, privacy và correlation |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§1.4.1-1.4.3 | processing, queueing, transmission, propagation và Traceroute | §§4-6, 19-20 | Đã phân rã network evidence và giới hạn điểm quan sát |
+| [[SRC-KLEPPMANN-DDIA-2E-EARLY-RELEASE]], Ch. 2 pp. 76-80 | partial failure và uncertainty qua boundary | §§21-30 | Đã trình bày với qualifier early-release |
+| Tổng hợp chẩn đoán | evidence matrix, hypothesis ledger, recovery verification và bài DE-L088 | §§21-32 | Đã gắn `synthesis`; đây là workflow tổng hợp, không phải framework được một tác giả đặt tên |
 
 OpenTelemetry schema và backend query language theo version không nằm trong lát nguồn. Note chỉ nêu contract cần có và yêu cầu đối chiếu tài liệu chính thức trước implementation.
 
@@ -725,9 +725,9 @@ OpenTelemetry schema và backend query language theo version không nằm trong 
 - Mọi kết luận cần ghi hypothesis, evidence ủng hộ, evidence phản bác và phép thử tiếp theo; recovery chỉ được xác nhận khi symptom và cause signal cùng trở về trạng thái chấp nhận được.
 
 ## Reference
-1. Matthew A. Titmus, *Cloud Native Go: Building Reliable Services in Unreliable Environments*, First Edition, O'Reilly Media, 2021, Chapter 11: observability and tracing concepts, printed pp. 343–351, PDF pp. 365–373; metrics, printed pp. 369–371, PDF pp. 391–393; logging, printed pp. 387–390, PDF pp. 409–412.
-2. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §§1.4.1–1.4.3, printed pp. 65–73, PDF pp. 67–75.
-3. Martin Kleppmann, *Designing Data-Intensive Applications*, Second Edition Early Release, O'Reilly Media, provisional/partial source, Chapter 2, PDF pp. 76–80.
+1. Matthew A. Titmus, *Cloud Native Go: Building Reliable Services in Unreliable Environments*, First Edition, O'Reilly Media, 2021, Chapter 11: observability and tracing concepts, printed pp. 343-351, PDF pp. 365-373; metrics, printed pp. 369-371, PDF pp. 391-393; logging, printed pp. 387-390, PDF pp. 409-412.
+2. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §§1.4.1-1.4.3, printed pp. 65-73, PDF pp. 67-75.
+3. Martin Kleppmann, *Designing Data-Intensive Applications*, Second Edition Early Release, O'Reilly Media, provisional/partial source, Chapter 2, PDF pp. 76-80.
 4. Hồ sơ nguồn: [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], [[SRC-KUROSE-ROSS-NETWORKING-8E]], [[SRC-KLEPPMANN-DDIA-2E-EARLY-RELEASE]].
 5. Source notes: `Material/DE/Reference/Library/Source-Notes/PACK-SERVICE-RESILIENCE-BOOK-01.md`, `Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-03.md` và `Material/DE/Reference/Library/Source-Notes/PACK-DATA-SYSTEMS-BOOK-01.md`.
 
@@ -739,7 +739,7 @@ OpenTelemetry schema và backend query language theo version không nằm trong 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.distributed-systems.end-to-end-request-tracing-evidence-diagnosis`
+## Execution capsule: kiểm chứng `wiki.distributed-systems.end-to-end-request-tracing-evidence-diagnosis`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.distributed-systems.end-to-end-request-tracing-evidence-diagnosis`, sơ đồ, ví dụ và artifact về **Truy vết request end-to-end và chẩn đoán bằng bằng chứng** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

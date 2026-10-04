@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Ba dự án portfolio và năng lực mỗi dự án chứng minh: một dự án dữ liệu có lỗi chứng minh kỷ luật kiểm chứng, một dự án dashboard chứng minh trình bày, một dự án điều tra chứng minh tư duy phân tích. Cấu trúc README cho dự án portfolio: mở đầu bằng bài toán nghiệp vụ và quyết định mà kết quả phục vụ. Lý do dự án dùng bộ dữ liệu phổ biến trên các nền tảng công khai ít có giá trị phân biệt. CV cho vị trí Data Analyst: viết thành tích có số đo thay vì liệt kê công cụ. Hồ sơ LinkedIn và GitHub. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L081 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Portfolio and CV**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Đóng gói ba dự án đã làm trong chương trình thành portfolio có README theo cấu trúc, và viết một CV một trang gửi được ngay. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Ba dự án portfolio và năng lực mỗi dự án chứng minh: một dự án dữ liệu có lỗi chứng minh kỷ luật kiểm chứng, một dự án dashboard chứng minh trình bày, một dự án điều tra chứng minh tư duy phân tích. Cấu trúc README cho dự án portfolio: mở đầu bằng bài toán nghiệp vụ và quyết định mà kết quả phục vụ. Lý do dự án dùng bộ dữ liệu phổ biến trên các nền tảng công khai ít có giá trị phân biệt. CV cho vị trí Data Analyst: viết thành tích có số đo thay vì liệt kê công cụ. Hồ sơ LinkedIn và GitHub.
 
@@ -44,7 +44,7 @@ Cơ chế của `portfolio-and-cv` được kiểm qua năm lớp: input và pop
 
 Lỗi cần loại trừ trong bài này là: README mở đầu bằng danh sách thư viện đã dùng · CV liệt kê công cụ mà không có thành tích đo được · dùng bộ dữ liệu phổ biến mà không đặt câu hỏi mới. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: README mở đầu bằng danh sá
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L081: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Ba README đều mở đầu bằng bài toán nghiệp vụ và quyết định phục vụ, và người chấm chéo nêu đúng năng lực ứng viên sau 30 giây đọc CV.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L081: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Ba README đều mở đầu bằng bài toán nghiệp vụ và quyết định phục vụ, và người chấm chéo nêu đúng năng lực ứng viên sau 30 giây đọc CV.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Portfolio and CV
+## Worked Case: Portfolio and CV
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Đóng gói ba dự án đã làm trong khoá thành portfolio. Viết CV một trang. Chấm chéo theo góc nhìn nhà tuyển dụng, với giới hạn 30 giây đọc CV.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Portfolio and CV`, learner ghi expected result, grai
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L081 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Portfolio and CV` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L081 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Ba dự án portfolio và năng lực mỗi dự án chứng minh: một dự án dữ liệu có lỗi chứng minh kỷ luật kiểm chứng, một dự án dashboard chứng minh trình bày, một dự án điều tra chứng minh tư duy phân tích. Cấu trúc README cho dự án portfolio: mở đầu bằng bài toán nghiệp vụ và quyết định mà kết quả phục vụ. Lý do dự án dùng bộ dữ liệu phổ biến trên các nền tảng công khai ít có giá trị phân biệt. CV cho vị trí Data Analyst: viết thành tích có số đo thay vì liệt kê công cụ. Hồ sơ LinkedIn và GitHub.
+**Mệnh đề của probe 1: `population`.** Ba dự án portfolio và năng lực mỗi dự án chứng minh: một dự án dữ liệu có lỗi chứng minh kỷ luật kiểm chứng, một dự án dashboard chứng minh trình bày, một dự án điều tra chứng minh tư duy phân tích. Cấu trúc README cho dự án portfolio: mở đầu bằng bài toán nghiệp vụ và quyết định mà kết quả phục vụ. Lý do dự án dùng bộ dữ liệu phổ biến trên các nền tảng công khai ít có giá trị phân biệt. CV cho vị trí Data Analyst: viết thành tích có số đo thay vì liệt kê công cụ. Hồ sơ LinkedIn và GitHub.
 
 **Thiết kế.** Probe 1 của L081 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L081 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Đóng gói ba dự án đã làm trong chương trình thành portfolio có README theo cấu trúc, và viết một CV một trang gửi được ngay.
+**Mệnh đề của probe 2: `grain`.** Đóng gói ba dự án đã làm trong chương trình thành portfolio có README theo cấu trúc, và viết một CV một trang gửi được ngay.
 
 **Thiết kế.** Probe 2 của L081 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L081 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** README mở đầu bằng danh sách thư viện đã dùng · CV liệt kê công cụ mà không có thành tích đo được · dùng bộ dữ liệu phổ biến mà không đặt câu hỏi mới.
+**Mệnh đề của probe 3: `identity`.** README mở đầu bằng danh sách thư viện đã dùng · CV liệt kê công cụ mà không có thành tích đo được · dùng bộ dữ liệu phổ biến mà không đặt câu hỏi mới.
 
 **Thiết kế.** Probe 3 của L081 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L081 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Ba README đều mở đầu bằng bài toán nghiệp vụ và quyết định phục vụ, và người chấm chéo nêu đúng năng lực ứng viên sau 30 giây đọc CV.
+**Mệnh đề của probe 4: `time cutoff`.** Ba README đều mở đầu bằng bài toán nghiệp vụ và quyết định phục vụ, và người chấm chéo nêu đúng năng lực ứng viên sau 30 giây đọc CV.
 
 **Thiết kế.** Probe 4 của L081 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L081 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Ba dự án portfolio và năng lực mỗi dự án chứng minh: một dự án dữ liệu có lỗi chứng minh kỷ luật kiểm chứng, một dự án dashboard chứng minh trình bày, một dự án điều tra chứng minh tư duy phân tích. Cấu trúc README cho dự án portfolio: mở đầu bằng bài toán nghiệp vụ và quyết định mà kết quả phục vụ. Lý do dự án dùng bộ dữ liệu phổ biến trên các nền tảng công khai ít có giá trị phân biệt. CV cho vị trí Data Analyst: viết thành tích có số đo thay vì liệt kê công cụ. Hồ sơ LinkedIn và GitHub.
+**Mệnh đề của probe 5: `missing versus zero`.** Ba dự án portfolio và năng lực mỗi dự án chứng minh: một dự án dữ liệu có lỗi chứng minh kỷ luật kiểm chứng, một dự án dashboard chứng minh trình bày, một dự án điều tra chứng minh tư duy phân tích. Cấu trúc README cho dự án portfolio: mở đầu bằng bài toán nghiệp vụ và quyết định mà kết quả phục vụ. Lý do dự án dùng bộ dữ liệu phổ biến trên các nền tảng công khai ít có giá trị phân biệt. CV cho vị trí Data Analyst: viết thành tích có số đo thay vì liệt kê công cụ. Hồ sơ LinkedIn và GitHub.
 
 **Thiết kế.** Probe 5 của L081 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L081 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Đóng gói ba dự án đã làm trong chương trình thành portfolio có README theo cấu trúc, và viết một CV một trang gửi được ngay.
+**Mệnh đề của probe 6: `duplicate`.** Đóng gói ba dự án đã làm trong chương trình thành portfolio có README theo cấu trúc, và viết một CV một trang gửi được ngay.
 
 **Thiết kế.** Probe 6 của L081 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L081 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** README mở đầu bằng danh sách thư viện đã dùng · CV liệt kê công cụ mà không có thành tích đo được · dùng bộ dữ liệu phổ biến mà không đặt câu hỏi mới.
+**Mệnh đề của probe 7: `join fan-out`.** README mở đầu bằng danh sách thư viện đã dùng · CV liệt kê công cụ mà không có thành tích đo được · dùng bộ dữ liệu phổ biến mà không đặt câu hỏi mới.
 
 **Thiết kế.** Probe 7 của L081 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L081 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Ba README đều mở đầu bằng bài toán nghiệp vụ và quyết định phục vụ, và người chấm chéo nêu đúng năng lực ứng viên sau 30 giây đọc CV.
+**Mệnh đề của probe 8: `changed definition`.** Ba README đều mở đầu bằng bài toán nghiệp vụ và quyết định phục vụ, và người chấm chéo nêu đúng năng lực ứng viên sau 30 giây đọc CV.
 
 **Thiết kế.** Probe 8 của L081 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L081 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Ba dự án portfolio và năng lực mỗi dự án chứng minh: một dự án dữ liệu có lỗi chứng minh kỷ luật kiểm chứng, một dự án dashboard chứng minh trình bày, một dự án điều tra chứng minh tư duy phân tích. Cấu trúc README cho dự án portfolio: mở đầu bằng bài toán nghiệp vụ và quyết định mà kết quả phục vụ. Lý do dự án dùng bộ dữ liệu phổ biến trên các nền tảng công khai ít có giá trị phân biệt. CV cho vị trí Data Analyst: viết thành tích có số đo thay vì liệt kê công cụ. Hồ sơ LinkedIn và GitHub.
+**Mệnh đề của probe 9: `independent oracle`.** Ba dự án portfolio và năng lực mỗi dự án chứng minh: một dự án dữ liệu có lỗi chứng minh kỷ luật kiểm chứng, một dự án dashboard chứng minh trình bày, một dự án điều tra chứng minh tư duy phân tích. Cấu trúc README cho dự án portfolio: mở đầu bằng bài toán nghiệp vụ và quyết định mà kết quả phục vụ. Lý do dự án dùng bộ dữ liệu phổ biến trên các nền tảng công khai ít có giá trị phân biệt. CV cho vị trí Data Analyst: viết thành tích có số đo thay vì liệt kê công cụ. Hồ sơ LinkedIn và GitHub.
 
 **Thiết kế.** Probe 9 của L081 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L081 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Đóng gói ba dự án đã làm trong chương trình thành portfolio có README theo cấu trúc, và viết một CV một trang gửi được ngay.
+**Mệnh đề của probe 10: `replay`.** Đóng gói ba dự án đã làm trong chương trình thành portfolio có README theo cấu trúc, và viết một CV một trang gửi được ngay.
 
 **Thiết kế.** Probe 10 của L081 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L081 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** README mở đầu bằng danh sách thư viện đã dùng · CV liệt kê công cụ mà không có thành tích đo được · dùng bộ dữ liệu phổ biến mà không đặt câu hỏi mới.
+**Mệnh đề của probe 11: `fresh snapshot`.** README mở đầu bằng danh sách thư viện đã dùng · CV liệt kê công cụ mà không có thành tích đo được · dùng bộ dữ liệu phổ biến mà không đặt câu hỏi mới.
 
 **Thiết kế.** Probe 11 của L081 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L081 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Ba README đều mở đầu bằng bài toán nghiệp vụ và quyết định phục vụ, và người chấm chéo nêu đúng năng lực ứng viên sau 30 giây đọc CV.
+**Mệnh đề của probe 12: `novel scenario`.** Ba README đều mở đầu bằng bài toán nghiệp vụ và quyết định phục vụ, và người chấm chéo nêu đúng năng lực ứng viên sau 30 giây đọc CV.
 
 **Thiết kế.** Probe 12 của L081 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Ba README đều mở đầu bằng bài toán nghiệp vụ và quyết định
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-STORYTELLING-WITH-DATA]] — `src.book.knaflic-storytelling-with-data.1e`
-2. [[SRC-GOVUK-UNDERSTAND-USER-NEEDS]] — `src.web.govuk-understand-user-needs`
+1. [[SRC-STORYTELLING-WITH-DATA]]: `src.book.knaflic-storytelling-with-data.1e`
+2. [[SRC-GOVUK-UNDERSTAND-USER-NEEDS]]: `src.web.govuk-understand-user-needs`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-STORYTELLING-WITH-DATA]] — `src.book.knaflic-storytelling-with-data.1e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Portfolio and CV | các mục cơ chế, case và probe | Đã phủ | ngoài objective L081 |
-| [[SRC-GOVUK-UNDERSTAND-USER-NEEDS]] — `src.web.govuk-understand-user-needs` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Portfolio and CV | các mục cơ chế, case và probe | Đã phủ | ngoài objective L081 |
+| [[SRC-STORYTELLING-WITH-DATA]]: `src.book.knaflic-storytelling-with-data.1e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Portfolio and CV | các mục cơ chế, case và probe | Đã phủ | ngoài objective L081 |
+| [[SRC-GOVUK-UNDERSTAND-USER-NEEDS]]: `src.web.govuk-understand-user-needs` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Portfolio and CV | các mục cơ chế, case và probe | Đã phủ | ngoài objective L081 |
 
 ## Key takeaways
 - Đóng gói ba dự án đã làm trong chương trình thành portfolio có README theo cấu trúc, và viết một CV một trang gửi được ngay.
@@ -226,7 +226,7 @@ Ba README đều mở đầu bằng bài toán nghiệp vụ và quyết định
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.portfolio-and-cv`
+## Execution capsule: kiểm chứng `wiki.da.portfolio-and-cv`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.portfolio-and-cv`, sơ đồ, ví dụ và artifact về **Portfolio and CV** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

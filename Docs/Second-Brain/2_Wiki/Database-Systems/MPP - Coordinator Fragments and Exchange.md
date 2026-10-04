@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Đọc distributed plan từ coordinator qua fragments/tasks/exchanges như thế nào để dự đoán network, skew, critical path và hiệu ứng tăng số worker?
 source_ids:
   - src.paper.presto-sql-on-everything
@@ -234,7 +234,7 @@ Mỗi mệnh đề hiệu năng cần counterfactual, correctness oracle và cou
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.olap.mpp-fragments-exchange`
+## Execution capsule: kiểm chứng `wiki.olap.mpp-fragments-exchange`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.olap.mpp-fragments-exchange`, sơ đồ, ví dụ và artifact về **MPP - Coordinator Fragments and Exchange** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -256,7 +256,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Đọc distributed plan từ coordinator qua fragments/tasks/exchanges như thế nào để dự đoán network, skew, critical path và hiệu ứng tăng số worker?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Đọc distributed plan từ coordinator qua fragments/tasks/exchanges như thế nào để dự đoán network, skew, critical path và hiệu ứng tăng số worker? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **MPP - Coordinator Fragments and Exchange** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

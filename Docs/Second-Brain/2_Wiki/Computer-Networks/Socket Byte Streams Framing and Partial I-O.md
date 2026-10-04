@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-27
 last_verified: 2026-09-27
 review_after: 2027-03-27
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: TCP chỉ cung cấp dòng byte có thứ tự; vậy chương trình phải tổ chức socket, vòng lặp đọc ghi và application framing thế nào để không hỏng dữ liệu khi read hoặc write chỉ hoàn tất một phần?
 source_ids:
   - src.book.kurose-ross-networking.8e
@@ -36,7 +36,7 @@ relationships:
 # Socket, dòng byte TCP và đóng khung thông điệp
 
 > [!abstract] Câu hỏi trung tâm
-> TCP chuyển một dòng byte có thứ tự giữa hai tiến trình. Nó không giữ ranh giới giữa các lần `send()` và cũng không biết “một thông điệp” của ứng dụng dài bao nhiêu. Vì thế application protocol phải tự định nghĩa framing; chương trình phải chịu được partial read, partial write, EOF giữa frame, client gửi chậm và length field độc hại. Đúng ở tầng TCP chưa đồng nghĩa frame, request hay giao dịch nghiệp vụ đã hoàn tất.
+> TCP chuyển một dòng byte có thứ tự giữa hai tiến trình. Nó không giữ ranh giới giữa các lần `send()` và cũng không biết một thông điệp của ứng dụng dài bao nhiêu. Vì thế application protocol phải tự định nghĩa framing; chương trình phải chịu được partial read, partial write, EOF giữa frame, client gửi chậm và length field độc hại. Đúng ở tầng TCP chưa đồng nghĩa frame, request hay giao dịch nghiệp vụ đã hoàn tất.
 
 ## 1. Socket là cửa giao tiếp, không phải thông điệp
 
@@ -50,7 +50,7 @@ Hai hệ quả thường bị bỏ qua:
 TCP đánh số byte trong một dòng liên tục. Một frame 20 KiB có thể đi qua nhiều segment; nhiều frame nhỏ có thể cùng nằm trong một lần `read()`. Packet capture hữu ích để xem transport, nhưng parser không được dựa vào cách packet tình cờ bị chia trong một lần chạy.
 
 > [!source-fact]
-> Socket như giao diện process–transport, send/receive buffer và TCP nhìn dữ liệu như dòng byte không cấu trúc nhưng có thứ tự được trình bày tại Kurose–Ross §§2.7 và 3.5.1–3.5.2, trang in 182–194 và 257–264.
+> Socket như giao diện process-transport, send/receive buffer và TCP nhìn dữ liệu như dòng byte không cấu trúc nhưng có thứ tự được trình bày tại Kurose-Ross §§2.7 và 3.5.1-3.5.2, trang in 182-194 và 257-264.
 
 ## 2. Vòng đời socket phía server và client
 
@@ -80,7 +80,7 @@ Server đi qua bốn bước khác chức năng:
 Client tạo socket rồi gọi `connect()` tới địa chỉ server. Sau khi kết nối được thiết lập, hai phía đều có thể đọc và ghi; stream socket là kênh hai chiều.
 
 > [!source-fact]
-> Chuỗi `socket`–`bind`–`listen`–`accept`, phía client `socket`–`connect`, và I/O hai chiều bằng `read`/`write` hoặc `send`/`recv` nằm tại TLPI §56.5, trang in 1155–1159.
+> Chuỗi `socket`-`bind`-`listen`-`accept`, phía client `socket`-`connect`, và I/O hai chiều bằng `read`/`write` hoặc `send`/`recv` nằm tại TLPI §56.5, trang in 1155-1159.
 
 ## 3. Listening socket và connected socket là hai vai trò khác nhau
 
@@ -93,10 +93,10 @@ listening_fd
   └── accept() → client_C_fd
 ```
 
-Sai lầm phổ biến là đóng nhầm listening descriptor, đọc request trên nó, hoặc dùng chung state parser cho nhiều connected socket. Mỗi connection cần receive buffer và decoder state riêng. Nếu multiplex nhiều connection trong một event loop, khóa tra cứu phải là connection identity, không phải “server socket”.
+Sai lầm phổ biến là đóng nhầm listening descriptor, đọc request trên nó, hoặc dùng chung state parser cho nhiều connected socket. Mỗi connection cần receive buffer và decoder state riêng. Nếu multiplex nhiều connection trong một event loop, khóa tra cứu phải là connection identity, không phải server socket.
 
 > [!source-fact]
-> TLPI §56.5.2 nhấn mạnh `accept()` tạo socket mới nối với peer, còn listening socket vẫn mở để nhận kết nối tiếp theo, trang in 1157–1158.
+> TLPI §56.5.2 nhấn mạnh `accept()` tạo socket mới nối với peer, còn listening socket vẫn mở để nhận kết nối tiếp theo, trang in 1157-1158.
 
 ## 4. Một lần ghi không ánh xạ thành một lần đọc
 
@@ -121,7 +121,7 @@ read() → "ABCDE"
 read() → "FG"
 ```
 
-hoặc một lần đọc đủ `"ABCDEFG"`. TCP chỉ giữ thứ tự byte. Nó không chuyển metadata “đây là lần write thứ nhất” sang receiver. Kích thước buffer, timing, congestion, scheduling và lượng byte đã có sẵn đều có thể làm kết quả từng lần đọc thay đổi.
+hoặc một lần đọc đủ `"ABCDEFG"`. TCP chỉ giữ thứ tự byte. Nó không chuyển metadata đây là lần write thứ nhất sang receiver. Kích thước buffer, timing, congestion, scheduling và lượng byte đã có sẵn đều có thể làm kết quả từng lần đọc thay đổi.
 
 > [!synthesis]
 > Các phép chia ở ví dụ là những kết quả phù hợp với byte-stream semantics và partial transfer; hai sách không hứa một pattern chia cụ thể cho các chuỗi trên.
@@ -138,10 +138,10 @@ Ba nhóm kết quả cần xử lý:
 | `0` | EOF sau khi dữ liệu đã buffer được đọc hết | Phân biệt kết thúc hợp lệ với frame bị cắt |
 | `-1` | Lỗi; xem `errno` | Retry `EINTR`; phân loại lỗi khác |
 
-Nếu frame khai báo 1.024 byte mà đã đọc 600 byte rồi gặp EOF, đây không phải “message 600 byte”. Đó là frame bị truncate, trừ khi protocol có quy tắc khác được viết rõ.
+Nếu frame khai báo 1.024 byte mà đã đọc 600 byte rồi gặp EOF, đây không phải message 600 byte. Đó là frame bị truncate, trừ khi protocol có quy tắc khác được viết rõ.
 
 > [!source-fact]
-> Partial read xảy ra khi số byte sẵn có ít hơn số được yêu cầu; `readn()` lặp cho tới đủ, lỗi hoặc EOF được mô tả tại TLPI §61.1, trang in 1254–1255.
+> Partial read xảy ra khi số byte sẵn có ít hơn số được yêu cầu; `readn()` lặp cho tới đủ, lỗi hoặc EOF được mô tả tại TLPI §61.1, trang in 1254-1255.
 
 ## 6. Partial write cũng phải được coi là bình thường
 
@@ -164,7 +164,7 @@ while written < total:
 Với nonblocking I/O, `EAGAIN`/`EWOULDBLOCK` không có nghĩa connection hỏng. Nó có nghĩa hiện giờ thao tác sẽ block; event loop phải chờ readiness rồi tiếp tục từ offset cũ. Không được quay vòng nóng.
 
 > [!source-fact]
-> Các nguyên nhân partial write và vòng lặp `writen()` nằm tại TLPI §61.1, trang in 1254–1255.
+> Các nguyên nhân partial write và vòng lặp `writen()` nằm tại TLPI §61.1, trang in 1254-1255.
 
 > [!synthesis]
 > Nhánh readiness cho nonblocking I/O là cách đưa semantics nguồn vào event-loop design. Đoạn `writen()` của sách là mẫu blocking và không tự xử lý `EAGAIN`.
@@ -194,7 +194,7 @@ TLPI lưu ý rằng sau khi local side đóng connection, peer vẫn có thể c
 | Request được xử lý | Parser/handler log outcome | Side effect bền vững nếu chưa commit |
 | Nghiệp vụ xác nhận | Response/ack có correlation ID | Caller đã nhận nếu chưa có ack ngược |
 
-TCP reliability giải quyết dòng byte giữa transport endpoints, không giải quyết transaction semantics. Thiết kế protocol phải chọn mốc nào là “success” và ghi nó vào response, retry policy cùng log.
+TCP reliability giải quyết dòng byte giữa transport endpoints, không giải quyết transaction semantics. Thiết kế protocol phải chọn mốc nào là success và ghi nó vào response, retry policy cùng log.
 
 > [!synthesis]
 > Bảng năm mốc là mô hình chẩn đoán tổng hợp từ socket/TCP semantics và yêu cầu acknowledgement của TLPI; đây không phải taxonomy được hai sách đặt tên.
@@ -285,10 +285,10 @@ Không được tin length do peer cung cấp rồi cấp phát ngay. `length = 
 
 EOF có thể làm delimiter nếu protocol quy định một message chiếm toàn bộ phần còn lại của connection. Nhưng đổi lại không thể gửi message tiếp theo trên cùng chiều stream mà không mở connection mới hoặc thêm framing khác.
 
-`shutdown(fd, SHUT_WR)` đóng nửa ghi: sau khi peer đọc hết byte còn tồn, peer thấy EOF; local process vẫn có thể đọc response. Đây là cách báo “tôi đã gửi hết request” trong protocol phù hợp mà không đóng cả socket descriptor ngay.
+`shutdown(fd, SHUT_WR)` đóng nửa ghi: sau khi peer đọc hết byte còn tồn, peer thấy EOF; local process vẫn có thể đọc response. Đây là cách báo tôi đã gửi hết request trong protocol phù hợp mà không đóng cả socket descriptor ngay.
 
 > [!source-fact]
-> `shutdown()`, đặc biệt `SHUT_WR`, cho phép báo EOF cho peer trong khi vẫn đọc chiều ngược lại; nó khác `close()` khi descriptor được duplicate. TLPI §61.2, trang in 1256–1257.
+> `shutdown()`, đặc biệt `SHUT_WR`, cho phép báo EOF cho peer trong khi vẫn đọc chiều ngược lại; nó khác `close()` khi descriptor được duplicate. TLPI §61.2, trang in 1256-1257.
 
 > [!uncertainty]
 > Không dùng EOF framing mặc định cho protocol cần connection pooling hoặc nhiều request trên một connection. Lựa chọn phụ thuộc application protocol và timeout contract.
@@ -316,7 +316,7 @@ read_exact(fd, target, deadline):
     return COMPLETE
 ```
 
-`CLEAN_EOF` chỉ “sạch” tại ranh giới mà protocol cho phép đóng. Nếu decoder đang đợi payload hoặc header đã bắt đầu, EOF là truncation. Caller phải biết parser state; một helper chỉ trả byte count mà không mang context có thể khiến hai trường hợp bị gộp.
+`CLEAN_EOF` chỉ sạch tại ranh giới mà protocol cho phép đóng. Nếu decoder đang đợi payload hoặc header đã bắt đầu, EOF là truncation. Caller phải biết parser state; một helper chỉ trả byte count mà không mang context có thể khiến hai trường hợp bị gộp.
 
 > [!synthesis]
 > Pseudocode mở rộng vòng lặp `readn()` của TLPI bằng deadline, nonblocking readiness và trạng thái protocol. Đây là thiết kế tham khảo, không phải code chép từ sách.
@@ -345,13 +345,13 @@ Kết quả được đặt tên `ACCEPTED_BY_LOCAL_KERNEL`, không phải `DELI
 Nếu peer đã đóng chiều đọc, local write có thể phát `SIGPIPE` và thất bại với `EPIPE`. Process phải có chiến lược xử lý signal phù hợp rồi phân loại error; bỏ qua return value là bỏ qua connection failure.
 
 > [!source-fact]
-> EOF sau khi buffer cạn, `SIGPIPE`/`EPIPE` khi ghi vào stream socket đã bị peer đóng, và giới hạn của `close()` được TLPI mô tả tại §§56.5.4–56.5.5, trang in 1159.
+> EOF sau khi buffer cạn, `SIGPIPE`/`EPIPE` khi ghi vào stream socket đã bị peer đóng, và giới hạn của `close()` được TLPI mô tả tại §§56.5.4-56.5.5, trang in 1159.
 
 ## 16. Blocking, nonblocking và readiness
 
 Blocking API có thể làm một worker đứng chờ khi peer gửi quá chậm. Nonblocking API tránh chặn thread, nhưng chuyển nghĩa vụ sang state machine: giữ offset, đăng ký interest, xử lý readiness và deadline.
 
-Readiness không đồng nghĩa “đủ một frame”. Nó chỉ nói lời gọi hiện tại có thể tiến thêm mà không block. Sau khi đọc một phần, decoder có thể lại quay về `NEED_HEADER` hoặc `NEED_PAYLOAD`.
+Readiness không đồng nghĩa đủ một frame. Nó chỉ nói lời gọi hiện tại có thể tiến thêm mà không block. Sau khi đọc một phần, decoder có thể lại quay về `NEED_HEADER` hoặc `NEED_PAYLOAD`.
 
 Trong edge-triggered event loop, thông thường phải drain tới `EAGAIN`; trong level-triggered loop, readiness còn được báo khi dữ liệu vẫn còn. Chi tiết API (`epoll`, `kqueue`, `select`, async runtime) không nằm trong phạm vi hai phần nguồn này và cần tài liệu riêng.
 
@@ -360,7 +360,7 @@ Trong edge-triggered event loop, thông thường phải drain tới `EAGAIN`; t
 
 ## 17. Backpressure bắt đầu từ việc đặt giới hạn
 
-Nếu producer nhanh hơn consumer, byte tích ở application queue, socket buffer hoặc cả hai. “Đọc hết rồi để đó” chỉ chuyển áp lực vào RAM. Một connection phải có ít nhất:
+Nếu producer nhanh hơn consumer, byte tích ở application queue, socket buffer hoặc cả hai. Đọc hết rồi để đó chỉ chuyển áp lực vào RAM. Một connection phải có ít nhất:
 
 - `MAX_FRAME_SIZE`;
 - giới hạn buffered bytes;
@@ -421,7 +421,7 @@ Server đạt yêu cầu khi:
 - peak memory không tăng theo advertised length;
 - metric ghi declared length, limit và action nhưng không log payload nhạy cảm.
 
-Không nên cố drain một payload hàng gigabyte chỉ để “giữ connection sạch” nếu điều đó cho attacker chiếm bandwidth và worker. Policy close sau protocol violation thường dễ chứng minh hơn.
+Không nên cố drain một payload hàng gigabyte chỉ để giữ connection sạch nếu điều đó cho attacker chiếm bandwidth và worker. Policy close sau protocol violation thường dễ chứng minh hơn.
 
 ## 21. Ma trận trạng thái decoder
 
@@ -444,7 +444,7 @@ Sau khi emit một frame, buffer có thể đã chứa đầu hoặc toàn bộ 
 
 Length prefix nhiều byte cần một byte order thống nhất. Internet protocols thường dùng network byte order; implementation phải encode/decode rõ ràng, không cast struct theo native layout rồi gửi thẳng. Padding, alignment và endianness có thể khác giữa máy.
 
-Version và message type nên nằm trong phần header có kích thước ổn định. Unknown version/type phải có policy: reject, negotiate hoặc skip khi length đã đáng tin. “Cố parse theo version gần nhất” làm lỗi schema biến thành dữ liệu hợp lệ giả.
+Version và message type nên nằm trong phần header có kích thước ổn định. Unknown version/type phải có policy: reject, negotiate hoặc skip khi length đã đáng tin. Cố parse theo version gần nhất làm lỗi schema biến thành dữ liệu hợp lệ giả.
 
 > [!synthesis]
 > Đây là checklist interoperability cho length-prefix protocol. Phạm vi nguồn xác lập byte-stream và socket API; wire schema cụ thể phải có specification riêng.
@@ -542,7 +542,7 @@ Chương này chưa đủ để:
 ## 28. Liên kết chương trình
 
 - Nguồn: [[SRC-KUROSE-ROSS-NETWORKING-8E]], [[SRC-TLPI-2010]].
-- Bài áp dụng trực tiếp: `DE-L085` — Building a TCP protocol with framing.
+- Bài áp dụng trực tiếp: `DE-L085`: Building a TCP protocol with framing.
 - Bài nền: `DE-L079`, `DE-L080`, `DE-L081`, `DE-L084`.
 - Bài dùng lại: `DE-L086`, `DE-L101`, các bài ingestion/API và distributed-system diagnostics.
 - Liên quan: [[File Descriptors and the Universal I-O Model in Linux|File descriptor và mô hình I-O phổ quát trong Linux]], [[TCP Reliability RTT RTO and Flow Control|TCP reliability RTT RTO và flow control]], [[TCP Congestion Control AIMD ECN and Fairness|TCP congestion control AIMD ECN và fairness]], [[HTTP Requests Connection State and Caching|HTTP request connection state và cache]], [[Proxies Middleboxes and Load Balancer Connection Boundaries|Proxy middlebox và load balancer - ranh giới kết nối]].
@@ -552,11 +552,11 @@ Chương này chưa đủ để:
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.7 | socket programming, client/server lifecycle và application message design | §§1–3, 9–13 | Đã trình bày với framing alternatives |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§3.5.1–3.5.2 | TCP byte-stream semantics và segment boundary | §§3–8 | Đã trình bày; không ánh xạ `write` thành `read` |
-| [[SRC-TLPI-2010]], §§56.5–56.5.5 | stream socket lifecycle, half-close và EOF | §§2–3, 13 | Đã trình bày hai vai trò socket và shutdown semantics |
-| [[SRC-TLPI-2010]], §§61.1–61.2 | partial I/O, blocking và readiness | §§4–8, 14–17 | Đã trình bày bằng `read_exact`, `write_all`, deadline và backpressure |
-| Tổng hợp giao thức | decoder state, failure injection, giới hạn frame và observability | §§18–24 | Đã gắn `synthesis`; đây là thiết kế giảng dạy từ các primitive nguồn |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.7 | socket programming, client/server lifecycle và application message design | §§1-3, 9-13 | Đã trình bày với framing alternatives |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§3.5.1-3.5.2 | TCP byte-stream semantics và segment boundary | §§3-8 | Đã trình bày; không ánh xạ `write` thành `read` |
+| [[SRC-TLPI-2010]], §§56.5-56.5.5 | stream socket lifecycle, half-close và EOF | §§2-3, 13 | Đã trình bày hai vai trò socket và shutdown semantics |
+| [[SRC-TLPI-2010]], §§61.1-61.2 | partial I/O, blocking và readiness | §§4-8, 14-17 | Đã trình bày bằng `read_exact`, `write_all`, deadline và backpressure |
+| Tổng hợp giao thức | decoder state, failure injection, giới hạn frame và observability | §§18-24 | Đã gắn `synthesis`; đây là thiết kế giảng dạy từ các primitive nguồn |
 
 API async theo runtime, wire-security và production retry policy nằm ngoài các lát nguồn. Chúng được ghi thành đầu vào bắt buộc trước implementation thật.
 
@@ -568,8 +568,8 @@ API async theo runtime, wire-security và production retry policy nằm ngoài c
 - Backpressure cần bounded buffer, deadline và phản ứng khi consumer chậm. Readiness cho biết thao tác có thể tiến triển, không phải toàn bộ operation đã hoàn tất.
 
 ## Reference
-1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §2.7, printed pp. 182–194, PDF pp. 184–196; §§3.5.1–3.5.2, printed pp. 257–264, PDF pp. 259–266.
-2. Michael Kerrisk, *The Linux Programming Interface*, No Starch Press, 2010, §§56.5–56.5.5, printed pp. 1155–1159, PDF pp. 1199–1203; §§61.1–61.2, printed pp. 1254–1257, PDF pp. 1298–1301.
+1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §2.7, printed pp. 182-194, PDF pp. 184-196; §§3.5.1-3.5.2, printed pp. 257-264, PDF pp. 259-266.
+2. Michael Kerrisk, *The Linux Programming Interface*, No Starch Press, 2010, §§56.5-56.5.5, printed pp. 1155-1159, PDF pp. 1199-1203; §§61.1-61.2, printed pp. 1254-1257, PDF pp. 1298-1301.
 3. Hồ sơ nguồn: [[SRC-KUROSE-ROSS-NETWORKING-8E]], [[SRC-TLPI-2010]].
 4. Source notes: `Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-03.md` và `Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-02.md`.
 
@@ -581,7 +581,7 @@ API async theo runtime, wire-security và production retry policy nằm ngoài c
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.network.socket-byte-stream-framing-partial-io`
+## Execution capsule: kiểm chứng `wiki.network.socket-byte-stream-framing-partial-io`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.network.socket-byte-stream-framing-partial-io`, sơ đồ, ví dụ và artifact về **Socket, dòng byte TCP và đóng khung thông điệp** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

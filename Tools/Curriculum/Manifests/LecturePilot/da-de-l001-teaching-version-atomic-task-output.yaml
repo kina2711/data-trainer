@@ -1,0 +1,34 @@
+task_id: academy-build-scene-package
+contract_version: "3.0"
+lifecycle_profile: learning
+risk_tier: R2-standard
+execution_path: standard-path
+phase_reached: G6-Release
+status: complete
+primary_deliverable: two spoken-teaching versions for DA-L001 and DE-L001
+evidence_links:
+  - Material/DA/Curriculum/Phase_01-foundations-and-role/Module_01-introduction-to-the-data-analyst-role/Lesson_001-what-a-data-analyst-actually-does-all-day/teaching.md
+  - Material/DE/Curriculum/Phase_01-engineering-foundation/Module_01-engineering-thinking-git-and-debugging/Lesson_001-from-a-vague-request-to-a-testable-contract/teaching.md
+validation:
+  content_and_editorial: pass
+  humanizer_blader_v3_1_0: pass
+  portal_index_and_tests: pass
+  lecture_package_regression: pass
+  browser_render: pass
+  desktop_smoke: pass
+approval:
+  required: true
+  status: approved
+  approved_by: kina2711
+  approved_at: 2026-10-04
+assumptions:
+  - No learner mastery is inferred from reading or rendering the teaching version.
+  - Teaching language targets a true beginner while technical invariants remain unchanged.
+residual_risks:
+  - Spoken delivery has not yet been calibrated with a real learner.
+affected_assets:
+  - DA-L001 teaching.md and lesson.yaml
+  - DE-L001 teaching.md and lesson.yaml
+  - Second Brain index builder, generated index, validator and tests
+owner: kina2711
+next_task: Author DA-L002 and DE-L002 teaching versions under lesson-authoring-v1

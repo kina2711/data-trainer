@@ -45,26 +45,26 @@ Dùng bằng chứng từ Linux để chẩn đoán tiến trình, bộ nhớ, h
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L061 · User mode, kernel mode and the process lifecycle | LT | Đọc trạng thái của một tiến trình và suy ra nó đang chờ cái gì, phân biệt được chờ vào ra với chờ CPU. | Phân loại đúng ≥ 4/5 trạng thái, và nhận ra đúng tiến trình đang chờ vào ra không ngắt được. | M05: M02 · M04 |
-| L062 · Scheduling, priority and load average | TH | Phân biệt máy nghẽn CPU với máy nghẽn vào ra chỉ bằng chỉ số hệ thống, không cần đọc mã. | Phân loại đúng ≥ 3/4 tình huống, và chỉ ra đúng tình huống tải trung bình cao trong khi CPU rảnh. | L061 |
-| L063 · Memory - virtual, resident, shared and OOM | TH | Chọn đúng chỉ số để trả lời câu hỏi một tiến trình dùng bao nhiêu bộ nhớ, và đọc được bản ghi của bộ giết khi cạn bộ nhớ. | Chọn đúng chỉ số cho cả ba tiến trình kèm giải thích chênh lệch, và đọc đúng nạn nhân cùng lý do từ nhật ký nhân. | L062 |
-| L064 · Filesystems, inodes, file descriptors and leaks | TH | Tìm được nguyên nhân đĩa đầy mà không thấy tệp, và định vị một rò rỉ mô tả tệp về đúng đoạn mã. | Tìm đúng tiến trình giữ tệp đã xoá, và sau khi sửa thì số mô tả tệp ổn định qua 10.000 yêu cầu. | L063 |
-| L065 · Non-blocking descriptors, select, poll and epoll | TH | Viết một máy chủ một luồng theo dõi nhiều kết nối và đo chi phí của hai cơ chế theo dõi khi số kết nối tăng. | Hai đường chi phí tách nhau rõ ở 10.000 kết nối, và ca treo do báo theo sườn được tái hiện rồi sửa. | L064 |
-| L066 · Readiness against completion - partial I/O, cancellation and io_uring awareness | TH | Xử lý đúng đọc thiếu và ghi thiếu dưới tải, và nêu ranh giới mà huỷ bỏ không hoàn tác được. | Không thông điệp nào bị cắt hay ghép sai qua 10.000 lượt, và hậu quả của huỷ giữa chừng được mô tả đúng ở phía bên kia. | L065 |
-| L067 · Signals, exit codes and graceful shutdown | TH | Cài đặt tắt có kiểm soát cho một tiến trình xử lý và chứng minh không mất việc đang dở khi nhận tín hiệu dừng. | 20 lần gửi tín hiệu dừng đều không mất việc đang dở, và mã thoát đúng ở cả ba trường hợp. | L066 |
-| L068 · Shell scripting that fails loudly | TH | Viết script vận hành dừng đúng lúc lỗi, dọn dẹp khi thoát, và trả mã thoát đúng trong mọi nhánh. | Năm lỗi đều làm script dừng với mã thoát khác không, và thư mục tạm được dọn trong cả năm trường hợp. | L067 |
-| L069 · Services with systemd and the journal | TH | Chạy một dịch vụ dữ liệu dưới trình quản lý dịch vụ với chính sách khởi động lại đúng và nhật ký đọc được tập trung. | Dịch vụ tự khởi động lại sau khi bị giết, vòng lặp khởi động bị chặn theo giới hạn, và nhật ký lọc được theo mã theo dõi. | L068 |
-| L070 · Races, locks and deadlock at the OS level | TH | Chẩn đoán một khoá chết thật bằng công cụ hệ thống và sửa bằng cách phá đúng một trong bốn điều kiện. | Định vị đúng cặp khoá gây treo bằng bằng chứng hệ thống, sửa xong chương trình không treo qua 1000 lần chạy, và có số đo tranh chấp trước sau. | L069 |
-| L071 · Tracing a program with strace and perf | TH | Chọn đúng công cụ cho một triệu chứng cho trước và định vị nguyên nhân từ kết quả của nó. | Chọn đúng công cụ ≥ 2/3 trường hợp và định vị đúng nguyên nhân, kể cả chỉ ra lời gọi mà chương trình treo đang chờ. | L070 |
-| L072 · Distinguishing four kinds of system pressure | TH | Chẩn đoán đúng loại tải trong bốn loại chỉ bằng chỉ số hệ thống, trong giới hạn thời gian. | Chẩn đoán đúng ≥ 3/4 tình huống trong giới hạn thời gian, mỗi lần dẫn được hai chỉ số nhất quán. | L071 |
-| L073 · Permissions, users and the least-privilege habit | TH | Đặt quyền tối thiểu cho một dịch vụ và chứng minh bằng phép thử rằng tài khoản khác không đọc hay ghi được. | Ba phép thử truy cập trái phép đều bị từ chối, dịch vụ vẫn chạy đúng, và tệp mới sinh ra có quyền đúng theo mặt nạ. | L072 |
-| L074 · Networking from the command line | TH | Chẩn đoán một lỗi kết nối về đúng một trong ba loại thất bại, theo đúng thứ tự năm bước. | Phân loại đúng ≥ 2/3 lỗi và chỉ ra đúng bước phát hiện, kèm bảng socket đang mở có đọc trạng thái. | L073 |
-| L075 · A diagnosis runbook for a data service | TH | Viết sổ tay năm mục mà một người khác dùng được để chẩn đoán và khắc phục, không cần hỏi. | Người ngoài xử lý được ≥ 3/5 tình huống chỉ bằng sổ tay, và bản sửa sau đó giảm được số câu phải hỏi. | L074 |
-| L076 · Linux diagnosis project | DA | Đưa một máy có ba vấn đề về trạng thái khoẻ mạnh, mỗi kết luận dẫn được về số đo, và xác nhận được đã hồi phục. | Cả ba vấn đề được sửa và xác nhận hồi phục, mỗi kết luận dẫn được về số đo, và dòng thời gian có ghi nhánh sai đã thử. | L075 |
+| L061 · [[wiki.de-foundation.user-mode-kernel-mode-and-the-process-lifecycle|User mode, kernel mode and the process lifecycle]]| LT | Đọc trạng thái của một tiến trình và suy ra nó đang chờ cái gì, phân biệt được chờ vào ra với chờ CPU. | Phân loại đúng ≥ 4/5 trạng thái, và nhận ra đúng tiến trình đang chờ vào ra không ngắt được. | M05: M02 · M04 |
+| L062 · [[wiki.de-foundation.scheduling-priority-and-load-average|Scheduling, priority and load average]]| TH | Phân biệt máy nghẽn CPU với máy nghẽn vào ra chỉ bằng chỉ số hệ thống, không cần đọc mã. | Phân loại đúng ≥ 3/4 tình huống, và chỉ ra đúng tình huống tải trung bình cao trong khi CPU rảnh. | L061 |
+| L063 · [[wiki.de-foundation.memory-virtual-resident-shared-and-oom|Memory - virtual, resident, shared and OOM]]| TH | Chọn đúng chỉ số để trả lời câu hỏi một tiến trình dùng bao nhiêu bộ nhớ, và đọc được bản ghi của bộ giết khi cạn bộ nhớ. | Chọn đúng chỉ số cho cả ba tiến trình kèm giải thích chênh lệch, và đọc đúng nạn nhân cùng lý do từ nhật ký nhân. | L062 |
+| L064 · [[wiki.de-foundation.filesystems-inodes-file-descriptors-and-leaks|Filesystems, inodes, file descriptors and leaks]]| TH | Tìm được nguyên nhân đĩa đầy mà không thấy tệp, và định vị một rò rỉ mô tả tệp về đúng đoạn mã. | Tìm đúng tiến trình giữ tệp đã xoá, và sau khi sửa thì số mô tả tệp ổn định qua 10.000 yêu cầu. | L063 |
+| L065 · [[wiki.de-foundation.non-blocking-descriptors-select-poll-and-epoll|Non-blocking descriptors, select, poll and epoll]]| TH | Viết một máy chủ một luồng theo dõi nhiều kết nối và đo chi phí của hai cơ chế theo dõi khi số kết nối tăng. | Hai đường chi phí tách nhau rõ ở 10.000 kết nối, và ca treo do báo theo sườn được tái hiện rồi sửa. | L064 |
+| L066 · [[wiki.de-foundation.readiness-against-completion-partial-i-o-cancellation-and-io-uring-awareness|Readiness against completion - partial I/O, cancellation and io_uring awareness]]| TH | Xử lý đúng đọc thiếu và ghi thiếu dưới tải, và nêu ranh giới mà huỷ bỏ không hoàn tác được. | Không thông điệp nào bị cắt hay ghép sai qua 10.000 lượt, và hậu quả của huỷ giữa chừng được mô tả đúng ở phía bên kia. | L065 |
+| L067 · [[wiki.de-foundation.signals-exit-codes-and-graceful-shutdown|Signals, exit codes and graceful shutdown]]| TH | Cài đặt tắt có kiểm soát cho một tiến trình xử lý và chứng minh không mất việc đang dở khi nhận tín hiệu dừng. | 20 lần gửi tín hiệu dừng đều không mất việc đang dở, và mã thoát đúng ở cả ba trường hợp. | L066 |
+| L068 · [[wiki.de-foundation.shell-scripting-that-fails-loudly|Shell scripting that fails loudly]]| TH | Viết script vận hành dừng đúng lúc lỗi, dọn dẹp khi thoát, và trả mã thoát đúng trong mọi nhánh. | Năm lỗi đều làm script dừng với mã thoát khác không, và thư mục tạm được dọn trong cả năm trường hợp. | L067 |
+| L069 · [[wiki.de-foundation.services-with-systemd-and-the-journal|Services with systemd and the journal]]| TH | Chạy một dịch vụ dữ liệu dưới trình quản lý dịch vụ với chính sách khởi động lại đúng và nhật ký đọc được tập trung. | Dịch vụ tự khởi động lại sau khi bị giết, vòng lặp khởi động bị chặn theo giới hạn, và nhật ký lọc được theo mã theo dõi. | L068 |
+| L070 · [[wiki.de-foundation.races-locks-and-deadlock-at-the-os-level|Races, locks and deadlock at the OS level]]| TH | Chẩn đoán một khoá chết thật bằng công cụ hệ thống và sửa bằng cách phá đúng một trong bốn điều kiện. | Định vị đúng cặp khoá gây treo bằng bằng chứng hệ thống, sửa xong chương trình không treo qua 1000 lần chạy, và có số đo tranh chấp trước sau. | L069 |
+| L071 · [[wiki.de-foundation.tracing-a-program-with-strace-and-perf|Tracing a program with strace and perf]]| TH | Chọn đúng công cụ cho một triệu chứng cho trước và định vị nguyên nhân từ kết quả của nó. | Chọn đúng công cụ ≥ 2/3 trường hợp và định vị đúng nguyên nhân, kể cả chỉ ra lời gọi mà chương trình treo đang chờ. | L070 |
+| L072 · [[wiki.de-foundation.distinguishing-four-kinds-of-system-pressure|Distinguishing four kinds of system pressure]]| TH | Chẩn đoán đúng loại tải trong bốn loại chỉ bằng chỉ số hệ thống, trong giới hạn thời gian. | Chẩn đoán đúng ≥ 3/4 tình huống trong giới hạn thời gian, mỗi lần dẫn được hai chỉ số nhất quán. | L071 |
+| L073 · [[wiki.de-foundation.permissions-users-and-the-least-privilege-habit|Permissions, users and the least-privilege habit]]| TH | Đặt quyền tối thiểu cho một dịch vụ và chứng minh bằng phép thử rằng tài khoản khác không đọc hay ghi được. | Ba phép thử truy cập trái phép đều bị từ chối, dịch vụ vẫn chạy đúng, và tệp mới sinh ra có quyền đúng theo mặt nạ. | L072 |
+| L074 · [[wiki.de-foundation.networking-from-the-command-line|Networking from the command line]]| TH | Chẩn đoán một lỗi kết nối về đúng một trong ba loại thất bại, theo đúng thứ tự năm bước. | Phân loại đúng ≥ 2/3 lỗi và chỉ ra đúng bước phát hiện, kèm bảng socket đang mở có đọc trạng thái. | L073 |
+| L075 · [[wiki.de-foundation.a-diagnosis-runbook-for-a-data-service|A diagnosis runbook for a data service]]| TH | Viết sổ tay năm mục mà một người khác dùng được để chẩn đoán và khắc phục, không cần hỏi. | Người ngoài xử lý được ≥ 3/5 tình huống chỉ bằng sổ tay, và bản sửa sau đó giảm được số câu phải hỏi. | L074 |
+| L076 · [[wiki.de-foundation.linux-diagnosis-project|Linux diagnosis project]]| DA | Đưa một máy có ba vấn đề về trạng thái khoẻ mạnh, mỗi kết luận dẫn được về số đo, và xác nhận được đã hồi phục. | Cả ba vấn đề được sửa và xác nhận hồi phục, mỗi kết luận dẫn được về số đo, và dòng thời gian có ghi nhánh sai đã thử. | L075 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M05 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M05 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -111,7 +111,7 @@ flowchart LR
   class A061,A062,A063,A064,A065,A066,A067,A068,A069,A070,A071,A072,A073,A074,A075,A076 atom;
 ```
 
-### Bài 61: User mode, kernel mode and the process lifecycle
+### Lesson 61: User mode, kernel mode and the process lifecycle
 
 Hai chế độ thực thi và ranh giới giữa chúng là thứ đã gặp ở Bài 54 dưới góc chi phí; bài này nhìn từ góc cơ chế. Chương trình chạy ở chế độ người dùng và không đụng trực tiếp vào phần cứng; mọi yêu cầu đều qua lời gọi hệ thống. Ngắt và bẫy là hai đường vào nhân khác nhau. Vòng đời tiến trình: tạo bằng nhân bản rồi thay thế ảnh chương trình, và vì sao hai bước đó tách rời lại hữu dụng. Các trạng thái của tiến trình và ý nghĩa vận hành của từng trạng thái, đặc biệt trạng thái chờ vào ra không ngắt được vì nó là dấu hiệu đĩa hoặc mạng có vấn đề. Tiến trình xác sống và tiến trình mồ côi, cùng cách chúng phát sinh; nối lại vấn đề tiến trình con mồ côi đã gặp ở Bài 23. Tiến trình so với luồng ở mức nhân: khác nhau ở chỗ chia sẻ không gian địa chỉ hay không, và mọi hệ quả suy ra từ đó.
 
@@ -119,7 +119,7 @@ Người học phải đọc trạng thái của một tiến trình và suy ra 
 
 Cách đánh giá: Tầng *hiểu*. Bài mở module, đặt từ vựng cho phần chẩn đoán sau. Kiểm bằng bài đọc trạng thái trên năm tiến trình thật; đạt khi phân loại đúng ít nhất bốn và nhận ra đúng tiến trình đang ở trạng thái chờ vào ra không ngắt được.
 
-### Bài 62: Scheduling, priority and load average
+### Lesson 62: Scheduling, priority and load average
 
 Bộ lập lịch quyết định tiến trình nào chạy khi nào, và hiểu nó giải thích vài chỉ số hay bị đọc sai. Lát thời gian và tính công bằng; độ ưu tiên và giá trị nhường. Chỉ số tải trung bình là chỉ số bị hiểu sai nhiều nhất trên Linux: nó đếm cả tiến trình đang chạy lẫn tiến trình đang chờ vào ra không ngắt được, nên tải trung bình cao không đồng nghĩa CPU bận; một máy đĩa hỏng có tải trung bình rất cao trong khi CPU rảnh. Cách đọc đúng: so tải trung bình với số lõi, rồi đối chiếu với tỉ lệ CPU chờ vào ra để biết đang nghẽn ở đâu. Mức dùng CPU chia theo loại và ý nghĩa của từng loại, đặc biệt phần chờ vào ra và phần bị đánh cắp trên máy ảo. Độ dài hàng đợi chạy. Ba tình huống mà thêm tiến trình làm mọi thứ chậm đi thay vì nhanh lên.
 
@@ -127,7 +127,7 @@ Người học phải phân biệt máy nghẽn CPU với máy nghẽn vào ra c
 
 Cách đánh giá: Tầng *phân tích*. Objective là đọc và diễn giải chỉ số đúng, kỹ năng dùng trực tiếp khi trực. Kiểm bằng bốn máy mô phỏng; đạt khi phân loại đúng ít nhất ba và mỗi lần dẫn được chỉ số phân biệt chứ chỉ tải trung bình.
 
-### Bài 63: Memory - virtual, resident, shared and OOM
+### Lesson 63: Memory - virtual, resident, shared and OOM
 
 Câu hỏi tiến trình này dùng bao nhiêu bộ nhớ không có một câu trả lời duy nhất, và chọn sai chỉ số dẫn tới kết luận sai. Bốn chỉ số và ý nghĩa: bộ nhớ ảo là không gian địa chỉ đã đăng ký và thường lớn vô lý nên gần như vô dụng để đánh giá; bộ nhớ thường trú là phần thật đang trong RAM; bộ nhớ chia sẻ bị đếm nhiều lần khi cộng các tiến trình; và kích thước tập làm việc là phần thật sự đang được dùng. Bộ nhớ khả dụng khác bộ nhớ trống: phần bộ đệm trang tính là dùng nhưng giải phóng được ngay, nên bộ nhớ trống thấp không phải vấn đề, và đây là báo động giả phổ biến nhất. Bộ giết khi cạn bộ nhớ: khi nào kích hoạt, chọn nạn nhân theo điểm số nào, và cách đọc bản ghi của nó trong nhật ký nhân; nối lại tình huống tác vụ bị giết ở tầng container sẽ gặp ở M25.
 
@@ -135,7 +135,7 @@ Người học phải chọn đúng chỉ số để trả lời câu hỏi mộ
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi chọn đúng công cụ đo cho câu hỏi, chỗ rất dễ kết luận sai. Kiểm bằng bài đo cộng thí nghiệm cạn bộ nhớ; đạt khi chọn đúng chỉ số và đọc đúng nguyên nhân từ nhật ký nhân.
 
-### Bài 64: Filesystems, inodes, file descriptors and leaks
+### Lesson 64: Filesystems, inodes, file descriptors and leaks
 
 Hệ tệp tách tên khỏi nội dung: nút chỉ mục giữ siêu dữ liệu và con trỏ tới khối, còn thư mục chỉ là ánh xạ tên sang nút chỉ mục. Từ đó suy ra ba điều hay gây ngạc nhiên: liên kết cứng là hai tên trỏ cùng nút chỉ mục nên xoá một tên không xoá dữ liệu; xoá một tệp đang được tiến trình mở thì dung lượng không được giải phóng cho tới khi tiến trình đóng, và đây là nguyên nhân kinh điển của việc đĩa đầy mà tìm không ra tệp nào; và đổi tên trong cùng hệ tệp là thao tác rẻ vì chỉ đổi mục thư mục. Mô tả tệp là chỉ số trỏ vào bảng của tiến trình, và giới hạn số mô tả tệp là giới hạn hay chạm trong dịch vụ dữ liệu. Rò rỉ mô tả tệp: triệu chứng, cách tìm bằng hệ tệp ảo của nhân, và cách sửa bằng trình quản lý ngữ cảnh ở Bài 15. Hai lệnh đo dung lượng cho kết quả khác nhau và lý do.
 
@@ -143,7 +143,7 @@ Người học phải tìm được nguyên nhân đĩa đầy mà không thấy
 
 Cách đánh giá: Tầng *phân tích*. Objective là hai chẩn đoán cụ thể mà người mới gần như luôn bế tắc. Kiểm bằng hai tình huống tiêm sẵn tính giờ; đạt khi tìm ra nguyên nhân cả hai và sửa được rò rỉ có bằng chứng số mô tả tệp không tăng.
 
-### Bài 65: Non-blocking descriptors, select, poll and epoll
+### Lesson 65: Non-blocking descriptors, select, poll and epoll
 
 Bài giải thích cơ chế dưới mọi vòng lặp sự kiện, nên nó là nền của phần bất đồng bộ đã học ở M2. Bộ mô tả chặn làm luồng gọi ngủ tới khi thao tác xong; bộ mô tả không chặn trả về ngay một trạng thái chưa sẵn sàng thay vì chờ, nên một luồng theo dõi được nhiều kết nối. Ba thế hệ cơ chế theo dõi và khác biệt về chi phí: hai cơ chế cũ quét toàn bộ tập bộ mô tả mỗi lần gọi nên chi phí tăng theo số kết nối; cơ chế mới giữ sẵn tập quan tâm và chỉ trả về phần đã sẵn sàng, nên chi phí không tăng theo số kết nối đang mở. Hai chế độ báo: báo theo mức lặp lại trạng thái tới khi được xử lý, báo theo sườn chỉ báo một lần khi trạng thái đổi; chế độ báo theo sườn bắt buộc đọc tới khi hết dữ liệu, và bỏ quy tắc đó làm treo kết nối mà không có lỗi nào. Tệp thường không có ngữ nghĩa sẵn sàng hữu ích như ổ cắm.
 
@@ -151,7 +151,7 @@ Người học phải viết một máy chủ một luồng theo dõi nhiều k�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là đường chi phí theo số kết nối. Kiểm bằng phép đo thay đổi quy mô; đạt khi hai đường chi phí tách nhau rõ ở 10.000 kết nối và ca báo theo sườn bị treo được tái hiện rồi sửa.
 
-### Bài 66: Readiness against completion - partial I/O, cancellation and io_uring awareness
+### Lesson 66: Readiness against completion - partial I/O, cancellation and io_uring awareness
 
 Hai mô hình vào ra khác nhau ở chỗ hệ điều hành báo gì cho ứng dụng. Mô hình sẵn sàng báo rằng thao tác có thể tiến triển, còn ứng dụng tự gọi đọc hoặc ghi; mô hình hoàn tất nhận yêu cầu rồi báo khi đã xong. Hệ quả quan trọng nhất của mô hình sẵn sàng và là lỗi hay gặp: sẵn sàng không bảo đảm đọc hoặc ghi được trọn vẹn thông điệp, nên mọi lời gọi phải xử lý đọc thiếu và ghi thiếu, và ứng dụng phải tự đóng khung thông điệp. Huỷ bỏ ở tầng ứng dụng không tự hoàn tác một lời gọi hệ thống đã phát ra hay một tác dụng phụ đã xảy ra ở bên kia, nên ranh giới sở hữu, dọn dẹp và công bố phải do mã định nghĩa, đúng nguyên tắc ở Bài 27. Giao diện gửi và nhận theo hàng đợi ở mức nhận biết: nó giảm số lời gọi hệ thống và chi phí chuyển ngữ cảnh, và không dùng chỉ vì nó mới khi khối lượng công việc và môi trường chạy chưa hưởng lợi.
 
@@ -159,7 +159,7 @@ Người học phải xử lý đúng đọc thiếu và ghi thiếu dưới t�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có một ca hỏng đặc trưng chỉ lộ ra dưới tải. Kiểm bằng phép thử thông điệp lớn; đạt khi không thông điệp nào bị cắt hay ghép sai qua 10.000 lượt và ca huỷ giữa chừng được mô tả đúng hậu quả.
 
-### Bài 67: Signals, exit codes and graceful shutdown
+### Lesson 67: Signals, exit codes and graceful shutdown
 
 Tín hiệu là cách nhân và các tiến trình báo cho nhau, và xử lý sai tín hiệu là nguyên nhân mất dữ liệu khi triển khai. Phân biệt hai tín hiệu dừng: một cái bắt được và cho phép dọn dẹp, một cái không bắt được và giết ngay. Quy trình tắt đúng của một tiến trình xử lý dữ liệu: nhận tín hiệu, ngừng nhận việc mới, hoàn tất việc đang dở trong hạn, đẩy dữ liệu xuống đĩa, rồi thoát với mã đúng. Thời gian chờ trước khi bị giết cứng là hữu hạn nên phần dọn dẹp phải nằm trong hạn đó, và đây là ràng buộc sẽ gặp lại ở M25. Mã thoát và quy ước: không là thành công, khác không là thất bại, và bị tín hiệu giết thì mã thoát mã hoá số hiệu tín hiệu. Vì sao mã thoát đúng quan trọng: hệ điều phối ở M17 và hệ chạy container ở M25 đều dựa vào nó để biết việc thành công hay thất bại.
 
@@ -167,7 +167,7 @@ Người học phải cài đặt tắt có kiểm soát cho một tiến trình
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cơ chế kiểm được bằng thí nghiệm dừng. Kiểm bằng 20 lần gửi tín hiệu ở thời điểm ngẫu nhiên; đạt khi không lần nào mất việc và mã thoát đúng ở mọi trường hợp.
 
-### Bài 68: Shell scripting that fails loudly
+### Lesson 68: Shell scripting that fails loudly
 
 Shell là keo dán của mọi hệ vận hành, và script shell viết ẩu là nguồn sự cố âm thầm vì mặc định của shell là chạy tiếp khi có lỗi. Ba tuỳ chọn nghiêm ngặt và tác dụng từng cái: dừng khi một lệnh lỗi, coi biến chưa đặt là lỗi, và cho lỗi trong đường ống lan ra. Kèm theo là cảnh báo về các trường hợp tuỳ chọn dừng khi lỗi không kích hoạt, vì tin tưởng mù vào nó cũng nguy hiểm. Trích dẫn và khai triển: quên ngoặc kép quanh biến là nguồn lỗi số một khi tên tệp có dấu cách. Bẫy để dọn dẹp khi thoát, tương đương trình quản lý ngữ cảnh ở Bài 15. Mã thoát và cách kiểm tra từng bước theo Bài 67. Khi nào nên dừng viết shell và chuyển sang Python: ba dấu hiệu cụ thể, thường là khi cần cấu trúc dữ liệu, cần xử lý lỗi phân tầng, hoặc script vượt khoảng một trăm dòng.
 
@@ -175,7 +175,7 @@ Người học phải viết script vận hành dừng đúng lúc lỗi, dọn 
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một tập quy tắc kiểm được bằng thí nghiệm tiêm lỗi. Kiểm bằng năm lỗi tiêm; đạt khi cả năm đều làm script dừng với mã thoát khác không và tài nguyên tạm được dọn.
 
-### Bài 69: Services with systemd and the journal
+### Lesson 69: Services with systemd and the journal
 
 Chạy một tiến trình lâu dài bằng cách mở terminal rồi để đó không phải cách vận hành, và trình quản lý dịch vụ giải bốn việc: khởi động cùng máy, khởi động lại khi chết, thu thập nhật ký, và quản lý phụ thuộc giữa các dịch vụ. Tệp định nghĩa dịch vụ và các trường quan trọng: lệnh chạy, người dùng chạy, chính sách khởi động lại, biến môi trường, và giới hạn tài nguyên. Chính sách khởi động lại và bẫy vòng lặp: dịch vụ chết ngay khi khởi động cộng với chính sách luôn khởi động lại cho ra vòng lặp khởi động liên tục, nên phải đặt giới hạn số lần trong một khoảng. Nhật ký tập trung: đọc theo dịch vụ, theo thời gian, theo mức, và vì sao ghi ra luồng chuẩn tiện hơn tự ghi tệp, nối lại nguyên tắc ở Bài 20. Ranh giới bí mật: biến môi trường trong tệp định nghĩa đọc được bởi ai, và cách đưa bí mật vào đúng cách.
 
@@ -183,7 +183,7 @@ Người học phải chạy một dịch vụ dữ liệu dưới trình quản
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cấu hình vận hành kiểm được bằng thí nghiệm giết tiến trình. Kiểm bằng ba phép thử; đạt khi dịch vụ tự khởi động lại, vòng lặp khởi động bị chặn, và nhật ký truy được theo mã theo dõi.
 
-### Bài 70: Races, locks and deadlock at the OS level
+### Lesson 70: Races, locks and deadlock at the OS level
 
 Phần này lặp lại chủ đề của Bài 22 nhưng ở tầng hệ điều hành và với công cụ chẩn đoán thật. Ba tính chất phải phân biệt vì chúng hỏng theo ba cách khác nhau: tính nguyên tử, tính nhìn thấy được, và thứ tự. Ba nguyên hàm đồng bộ và khi nào dùng cái nào: khoá loại trừ, cờ hiệu đếm, và biến điều kiện. Bốn điều kiện cần cùng lúc để có khoá chết, và phá bất kỳ điều kiện nào là chặn được; cách phá thực dụng nhất là quy định thứ tự lấy khoá. Đói tài nguyên và khoá sống là hai chế độ hỏng khác khoá chết và cần cách chữa khác. Đo tranh chấp: thời gian tiến trình nằm chờ ở nguyên hàm đồng bộ quan sát được bằng công cụ theo dõi lời gọi hệ thống, nên tranh chấp là thứ đo được chứ đoán. Từ số đo đó suy ra phần song song thật, nối lại định luật ở Bài 55.
 
@@ -191,7 +191,7 @@ Người học phải chẩn đoán một khoá chết thật bằng công cụ 
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi truy từ hiện tượng treo về cấu trúc lấy khoá, dùng bằng chứng hệ thống. Kiểm bằng tình huống khoá chết tiêm sẵn tính giờ; đạt khi định vị đúng cặp khoá và nêu đúng điều kiện đã phá.
 
-### Bài 71: Tracing a program with strace and perf
+### Lesson 71: Tracing a program with strace and perf
 
 Hai công cụ trả lời hai câu hỏi khác nhau, và biết dùng cái nào cho câu nào tiết kiệm rất nhiều thời gian. Theo dõi lời gọi hệ thống trả lời chương trình đang nói gì với nhân: mở tệp nào, kết nối tới đâu, chờ ở đâu; rất hữu dụng khi chương trình treo hoặc khi không rõ nó đọc tệp cấu hình nào. Nhược điểm là làm chương trình chậm đáng kể nên không dùng trong sản xuất khi tải cao. Lấy mẫu hiệu năng trả lời thời gian CPU tiêu ở hàm nào, nhẹ nên dùng được trong sản xuất, nhưng không thấy phần chờ. Từ đó rút ra quy tắc chọn: chương trình bận CPU thì lấy mẫu hiệu năng, chương trình treo hoặc chờ thì theo dõi lời gọi hệ thống. Cách đọc kết quả: đếm theo lời gọi để thấy cái nào nhiều, và xem thời gian nằm trong lời gọi nào để thấy chờ ở đâu. Nối tới M26: đây là hai công cụ của bước chẩn đoán trong quy trình xử lý sự cố.
 
@@ -199,7 +199,7 @@ Người học phải chọn đúng công cụ cho một triệu chứng cho tr�
 
 Cách đánh giá: Tầng *phân tích*. Objective là chọn công cụ theo câu hỏi rồi đọc kết quả, kỹ năng dùng lại suốt phần vận hành. Kiểm bằng ba chương trình có ba triệu chứng; đạt khi chọn đúng công cụ ít nhất hai và định vị đúng nguyên nhân.
 
-### Bài 72: Distinguishing four kinds of system pressure
+### Lesson 72: Distinguishing four kinds of system pressure
 
 Bài tổng hợp phần chẩn đoán, và nó là thứ dùng nhiều nhất khi trực. Bốn loại tải và bộ chỉ số phân biệt từng loại. Bão hoà CPU: mức dùng cao ở phần người dùng hoặc phần nhân, hàng đợi chạy dài, chờ vào ra thấp. Nghẽn vào ra: chờ vào ra cao, độ sâu hàng đợi thiết bị cao, thời gian phục vụ cao, trong khi CPU rảnh. Áp lực bộ nhớ: lỗi trang nặng tăng, hoạt động hoán đổi, bộ nhớ khả dụng thấp; phân biệt với bộ nhớ trống thấp theo Bài 63. Đĩa đầy: khác ba loại trên vì nó làm thao tác ghi thất bại chứ chỉ chậm, và có thể do tệp đã xoá còn mở theo Bài 64. Quy trình chẩn đoán bốn bước theo thứ tự cố định để không bỏ sót. Nguyên tắc: kết luận phải dẫn được về ít nhất hai chỉ số nhất quán với nhau, vì một chỉ số đơn lẻ dễ dẫn tới kết luận sai.
 
@@ -207,7 +207,7 @@ Người học phải chẩn đoán đúng loại tải trong bốn loại chỉ
 
 Cách đánh giá: Tầng *phân tích*. Objective là chẩn đoán dưới áp lực thời gian, đúng điều kiện khi trực. Kiểm bằng bốn tình huống tiêm sẵn, mỗi tình huống 8 phút; đạt khi chẩn đoán đúng ít nhất ba và mỗi lần dẫn được hai chỉ số nhất quán.
 
-### Bài 73: Permissions, users and the least-privilege habit
+### Lesson 73: Permissions, users and the least-privilege habit
 
 Quyền trên Linux là tầng phòng vệ đầu tiên và cũng là tầng hay bị vô hiệu hoá vì tiện. Ba nhóm quyền và ba loại quyền, cùng cách đọc và đặt. Mặt nạ tạo tệp quyết định quyền mặc định của tệp mới và là nguồn lỗi hay gặp khi một dịch vụ ghi tệp mà dịch vụ khác không đọc được. Quyền trên thư mục có nghĩa khác quyền trên tệp và đây là chỗ hay nhầm: quyền thực thi trên thư mục nghĩa là đi vào được. Chạy dịch vụ bằng người dùng riêng có quyền tối thiểu thay vì quyền quản trị: lý do không phải hình thức mà là phạm vi thiệt hại khi dịch vụ bị lợi dụng. Chủ sở hữu tệp giữa tiến trình trong container và tiến trình trên máy chủ, một vấn đề sẽ gặp lại ở M25. Ba phép thử truy cập trái phép phải chạy sau khi đặt quyền, vì đặt quyền mà không thử là không biết nó có tác dụng không.
 
@@ -215,7 +215,7 @@ Người học phải đặt quyền tối thiểu cho một dịch vụ và ch�
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cấu hình bảo mật kiểm được bằng phép thử phủ định. Kiểm bằng ba phép thử truy cập trái phép; đạt khi cả ba bị từ chối và dịch vụ vẫn chạy đúng.
 
-### Bài 74: Networking from the command line
+### Lesson 74: Networking from the command line
 
 Bộ công cụ tối thiểu để trả lời câu hỏi vì sao không kết nối được, và bài này chuẩn bị trực tiếp cho M6. Năm câu hỏi theo thứ tự chẩn đoán và công cụ tương ứng cho từng câu: tên miền phân giải ra địa chỉ nào, máy có đường đi tới địa chỉ đó không, cổng có mở và có ai đang nghe không, bắt tay có thành công không, và ứng dụng trả lời gì. Đi theo thứ tự này tránh được việc đoán lung tung. Phân biệt ba loại thất bại có triệu chứng giống nhau nhưng nguyên nhân khác hẳn: không phân giải được tên, kết nối bị từ chối, và kết nối hết giờ; loại thứ ba thường là tường lửa chặn im lặng. Xem socket đang mở và trạng thái của chúng, đặc biệt trạng thái chờ đóng tích tụ nhiều là dấu hiệu cạn cổng tạm. Bắt gói ở mức đủ để xác nhận gói có đi ra không, chưa cần phân tích sâu vì phần đó ở M6.
 
@@ -223,7 +223,7 @@ Người học phải chẩn đoán một lỗi kết nối về đúng một tr
 
 Cách đánh giá: Tầng *phân tích*. Objective là một quy trình chẩn đoán có thứ tự, chuẩn bị cho M6. Kiểm bằng ba lỗi kết nối tiêm sẵn; đạt khi phân loại đúng ít nhất hai và chỉ ra bước nào trong năm bước phát hiện ra.
 
-### Bài 75: A diagnosis runbook for a data service
+### Lesson 75: A diagnosis runbook for a data service
 
 Bài ghép: biến mọi kỹ năng chẩn đoán trong module thành một sổ tay dùng được lúc ba giờ sáng. Cấu trúc sổ tay theo đúng trình tự người trực cần, đã đặt ở Bài 10: triệu chứng nào, ảnh hưởng ra sao, chẩn đoán theo bước nào, giảm nhẹ thế nào, leo thang cho ai, và xác nhận đã hồi phục bằng gì. Năm mục bắt buộc cho một dịch vụ dữ liệu, mỗi mục tương ứng một bài đã học: dịch vụ không khởi động, dịch vụ chậm bất thường, đĩa đầy, rò rỉ mô tả tệp, và không kết nối được tới nguồn. Nguyên tắc viết: mỗi bước là một lệnh chạy được kèm cái cần nhìn trong kết quả, chứ một lời khuyên chung. Ngưỡng phải là số chứ tính từ. Phép thử của một sổ tay tốt là người chưa từng chạm vào hệ làm theo được, và đó chính là cách bài này chấm điểm.
 
@@ -231,7 +231,7 @@ Người học phải viết sổ tay năm mục mà một người khác dùng 
 
 Cách đánh giá: Tầng *đánh giá*. Objective đo chất lượng sổ tay bằng kết quả của người dùng nó chứ bằng độ dày. Kiểm bằng phép thử với người ngoài; đạt khi họ xử lý được ít nhất ba trong năm tình huống mà không phải hỏi.
 
-### Bài 76: Linux diagnosis project
+### Lesson 76: Linux diagnosis project
 
 Bài dự án khép module. Nhận một máy có dịch vụ dữ liệu đang chạy sai theo nhiều cách cùng lúc, và nhiệm vụ là đưa nó về trạng thái khoẻ mạnh với bằng chứng cho từng bước. Ba loại vấn đề cài sẵn, mỗi loại thuộc một nhóm đã học: một vấn đề tài nguyên, một vấn đề cấu hình dịch vụ, và một vấn đề quyền hoặc kết nối. Yêu cầu nộp: dòng thời gian chẩn đoán ghi theo thứ tự thật gồm cả nhánh sai đã thử, bằng chứng số đo cho từng kết luận, thay đổi đã thực hiện, và cách xác nhận đã hồi phục. Chấm nặng phần lập luận: một chẩn đoán đúng do đoán trúng được ít điểm hơn một chẩn đoán có ba giả thuyết bị bác bỏ bằng bằng chứng, theo đúng kỷ luật đặt ở Bài 8. Cấm khởi động lại máy như bước đầu tiên, vì nó xoá mất bằng chứng.
 

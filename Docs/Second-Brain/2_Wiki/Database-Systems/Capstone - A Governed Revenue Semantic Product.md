@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một governed revenue semantic product cần những artifacts, proofs và adversarial checks nào để chứng minh 15 metrics có thể được dùng và thay đổi an toàn?
 source_ids:
   - src.web.dbt-semantic-models
@@ -230,7 +230,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.governed-revenue-capstone`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.governed-revenue-capstone`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.governed-revenue-capstone`, sơ đồ, ví dụ và artifact về **Capstone - A Governed Revenue Semantic Product** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

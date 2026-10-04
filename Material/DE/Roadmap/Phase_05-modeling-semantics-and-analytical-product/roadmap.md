@@ -1,6 +1,6 @@
 # Giai đoạn 5: Mô hình dữ liệu, semantic layer và sản phẩm phân tích
 
-Giai đoạn này kết hợp M11–M13. Người học chuyển từ `Bằng chứng hoàn thành Giai đoạn 4` sang khả năng tạo và bảo vệ bằng chứng tích hợp ở L202.
+Giai đoạn này kết hợp M11-M13. Người học chuyển từ `Bằng chứng hoàn thành Giai đoạn 4` sang khả năng tạo và bảo vệ bằng chứng tích hợp ở L202.
 
 ## Điều kiện đầu vào
 
@@ -52,13 +52,13 @@ flowchart LR
 
 ### Nhiệm vụ
 
-Buổi 120 phút: 75 phút làm bài độc lập, 45 phút chữa bài. Bài chấm sáu phần: A (20đ) phát biểu hạt cho mọi bảng và chứng minh bằng phép đếm · B (25đ) hợp đồng sáu phần cho ba chỉ số, và đối soát với truy vấn do hội đồng viết từ hợp đồng, khớp ở ba mức gộp · C (20đ) chứng minh không đếm trùng bằng bốn bước, gồm một chỉ số có bẫy vực cài sẵn · D (15đ) ma trận tương thích chỉ số nhân chiều, cưỡng chế được bằng máy · E (15đ) bằng chứng thử khả dụng theo tác vụ với bốn số đo · F (5đ) truy ngược một chỉ số bất kỳ về quyết định nghiệp vụ.
+Bài chấm sáu phần: A (20đ) phát biểu hạt cho mọi bảng và chứng minh bằng phép đếm · B (25đ) hợp đồng sáu phần cho ba chỉ số, và đối soát với truy vấn do hội đồng viết từ hợp đồng, khớp ở ba mức gộp · C (20đ) chứng minh không đếm trùng bằng bốn bước, gồm một chỉ số có bẫy vực cài sẵn · D (15đ) ma trận tương thích chỉ số nhân chiều, cưỡng chế được bằng máy · E (15đ) bằng chứng thử khả dụng theo tác vụ với bốn số đo · F (5đ) truy ngược một chỉ số bất kỳ về quyết định nghiệp vụ.
 
 ### Cách đánh giá
 
 | Tiêu chí | Bằng chứng | Ngưỡng đạt | Lỗi loại trực tiếp |
 |---|---|---|---|
-| Bảo vệ một định nghĩa chỉ số trước chất vấn, chứng minh nó không đếm trùng, và trình ra bằng chứng người khác dùng được sản phẩm. | Buổi 120 phút: 75 phút làm bài độc lập, 45 phút chữa bài. Bài chấm sáu phần: A (20đ) phát biểu hạt cho mọi bảng và chứng minh bằng phép đếm · B (25đ) hợp đồng sáu phần cho ba chỉ số, và đối soát với truy vấn do hội đồng viết từ hợp đồng, khớp ở ba mức gộp · C (20đ) chứng minh không đếm trùng bằng bốn bước, gồm một chỉ số có bẫy vực cài sẵn · D (15đ) ma trận tương thích chỉ số nhân chiều, cưỡng chế được bằng máy · E (15đ) bằng chứng thử khả dụng theo tác vụ với bốn số đo · F (5đ) truy ngược một chỉ số bất kỳ về quyết định nghiệp vụ. | Đạt ≥ 70/100, phần B và C đều ≥ 60%. Chỉ số nào không khớp đối soát của hội đồng thì phần B của chỉ số đó bằng không; bằng chứng tự phục vụ bằng chỉ số phù phiếm thì phần E bằng không. | Dùng số dashboard làm bằng chứng tự phục vụ · đối soát bằng truy vấn do chính mình viết · bỏ phần truy ngược vì hết giờ · khai báo chỉ số theo cột có sẵn. |
+| Bảo vệ một định nghĩa chỉ số trước chất vấn, chứng minh nó không đếm trùng, và trình ra bằng chứng người khác dùng được sản phẩm. | Bài chấm sáu phần: A (20đ) phát biểu hạt cho mọi bảng và chứng minh bằng phép đếm · B (25đ) hợp đồng sáu phần cho ba chỉ số, và đối soát với truy vấn do hội đồng viết từ hợp đồng, khớp ở ba mức gộp · C (20đ) chứng minh không đếm trùng bằng bốn bước, gồm một chỉ số có bẫy vực cài sẵn · D (15đ) ma trận tương thích chỉ số nhân chiều, cưỡng chế được bằng máy · E (15đ) bằng chứng thử khả dụng theo tác vụ với bốn số đo · F (5đ) truy ngược một chỉ số bất kỳ về quyết định nghiệp vụ. | Đạt ≥ 70/100, phần B và C đều ≥ 60%. Chỉ số nào không khớp đối soát của hội đồng thì phần B của chỉ số đó bằng không; bằng chứng tự phục vụ bằng chỉ số phù phiếm thì phần E bằng không. | Dùng số dashboard làm bằng chứng tự phục vụ · đối soát bằng truy vấn do chính mình viết · bỏ phần truy ngược vì hết giờ · khai báo chỉ số theo cột có sẵn. |
 
 ## Điểm tích hợp
 

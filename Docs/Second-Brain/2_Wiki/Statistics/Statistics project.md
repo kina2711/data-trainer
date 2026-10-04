@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Không có nội dung mới. Dự án gộp toàn bộ M4 và M5 vào một sản phẩm duy nhất. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L045 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Statistics project**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Chuyển một câu hỏi nghiệp vụ mơ hồ thành một phân tích hoàn chỉnh có kết luận định lượng, khoảng không chắc chắn, và phần giả định giới hạn, trên dữ liệu chưa từng xem. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Không có nội dung mới. Dự án gộp toàn bộ M4 và M5 vào một sản phẩm duy nhất.
 
@@ -44,7 +44,7 @@ Cơ chế của `statistics-project` được kiểm qua năm lớp: input và p
 
 Lỗi cần loại trừ trong bài này là: Bỏ bước kiểm tra chất lượng dữ liệu · phát biểu kết luận chắc chắn hơn mức dữ liệu cho phép · viết phần giới hạn tách rời khỏi kết luận. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Bỏ bước kiểm tra chất lư
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L045: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Nộp đủ năm đầu ra, đạt ≥ 70/100 theo rubric, kết luận được chứng minh bằng hai đường độc lập, và một học viên khác chạy lại được theo tài liệu mà không đặt câu hỏi. Đây là exit criterion của Module 5.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L045: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Nộp đủ năm đầu ra, đạt ≥ 70/100 theo rubric, kết luận được chứng minh bằng hai đường độc lập, và một học viên khác chạy lại được theo tài liệu mà không đặt câu hỏi. Đây là exit criterion của Module 5.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Statistics project
+## Worked Case: Statistics project
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Nhận một bộ dữ liệu kinh doanh và một câu hỏi mơ hồ. Nộp: bản đặc tả câu hỏi theo sáu bước của lesson 5, báo cáo chất lượng dữ liệu, phân tích khảo sát có nhật ký giả thuyết, kết luận kèm khoảng không chắc chắn, phần giả định và giới hạn.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Statistics project`, learner ghi expected result, gr
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L045 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Statistics project` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L045 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Không có nội dung mới. Dự án gộp toàn bộ M4 và M5 vào một sản phẩm duy nhất.
+**Mệnh đề của probe 1: `population`.** Không có nội dung mới. Dự án gộp toàn bộ M4 và M5 vào một sản phẩm duy nhất.
 
 **Thiết kế.** Probe 1 của L045 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L045 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Chuyển một câu hỏi nghiệp vụ mơ hồ thành một phân tích hoàn chỉnh có kết luận định lượng, khoảng không chắc chắn, và phần giả định giới hạn, trên dữ liệu chưa từng xem.
+**Mệnh đề của probe 2: `grain`.** Chuyển một câu hỏi nghiệp vụ mơ hồ thành một phân tích hoàn chỉnh có kết luận định lượng, khoảng không chắc chắn, và phần giả định giới hạn, trên dữ liệu chưa từng xem.
 
 **Thiết kế.** Probe 2 của L045 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L045 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Bỏ bước kiểm tra chất lượng dữ liệu · phát biểu kết luận chắc chắn hơn mức dữ liệu cho phép · viết phần giới hạn tách rời khỏi kết luận.
+**Mệnh đề của probe 3: `identity`.** Bỏ bước kiểm tra chất lượng dữ liệu · phát biểu kết luận chắc chắn hơn mức dữ liệu cho phép · viết phần giới hạn tách rời khỏi kết luận.
 
 **Thiết kế.** Probe 3 của L045 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L045 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Nộp đủ năm đầu ra, đạt ≥ 70/100 theo rubric, kết luận được chứng minh bằng hai đường độc lập, và một học viên khác chạy lại được theo tài liệu mà không đặt câu hỏi. Đây là exit criterion của Module 5.
+**Mệnh đề của probe 4: `time cutoff`.** Nộp đủ năm đầu ra, đạt ≥ 70/100 theo rubric, kết luận được chứng minh bằng hai đường độc lập, và một học viên khác chạy lại được theo tài liệu mà không đặt câu hỏi. Đây là exit criterion của Module 5.
 
 **Thiết kế.** Probe 4 của L045 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L045 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Không có nội dung mới. Dự án gộp toàn bộ M4 và M5 vào một sản phẩm duy nhất.
+**Mệnh đề của probe 5: `missing versus zero`.** Không có nội dung mới. Dự án gộp toàn bộ M4 và M5 vào một sản phẩm duy nhất.
 
 **Thiết kế.** Probe 5 của L045 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L045 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Chuyển một câu hỏi nghiệp vụ mơ hồ thành một phân tích hoàn chỉnh có kết luận định lượng, khoảng không chắc chắn, và phần giả định giới hạn, trên dữ liệu chưa từng xem.
+**Mệnh đề của probe 6: `duplicate`.** Chuyển một câu hỏi nghiệp vụ mơ hồ thành một phân tích hoàn chỉnh có kết luận định lượng, khoảng không chắc chắn, và phần giả định giới hạn, trên dữ liệu chưa từng xem.
 
 **Thiết kế.** Probe 6 của L045 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L045 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Bỏ bước kiểm tra chất lượng dữ liệu · phát biểu kết luận chắc chắn hơn mức dữ liệu cho phép · viết phần giới hạn tách rời khỏi kết luận.
+**Mệnh đề của probe 7: `join fan-out`.** Bỏ bước kiểm tra chất lượng dữ liệu · phát biểu kết luận chắc chắn hơn mức dữ liệu cho phép · viết phần giới hạn tách rời khỏi kết luận.
 
 **Thiết kế.** Probe 7 của L045 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L045 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Nộp đủ năm đầu ra, đạt ≥ 70/100 theo rubric, kết luận được chứng minh bằng hai đường độc lập, và một học viên khác chạy lại được theo tài liệu mà không đặt câu hỏi. Đây là exit criterion của Module 5.
+**Mệnh đề của probe 8: `changed definition`.** Nộp đủ năm đầu ra, đạt ≥ 70/100 theo rubric, kết luận được chứng minh bằng hai đường độc lập, và một học viên khác chạy lại được theo tài liệu mà không đặt câu hỏi. Đây là exit criterion của Module 5.
 
 **Thiết kế.** Probe 8 của L045 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L045 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Không có nội dung mới. Dự án gộp toàn bộ M4 và M5 vào một sản phẩm duy nhất.
+**Mệnh đề của probe 9: `independent oracle`.** Không có nội dung mới. Dự án gộp toàn bộ M4 và M5 vào một sản phẩm duy nhất.
 
 **Thiết kế.** Probe 9 của L045 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L045 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Chuyển một câu hỏi nghiệp vụ mơ hồ thành một phân tích hoàn chỉnh có kết luận định lượng, khoảng không chắc chắn, và phần giả định giới hạn, trên dữ liệu chưa từng xem.
+**Mệnh đề của probe 10: `replay`.** Chuyển một câu hỏi nghiệp vụ mơ hồ thành một phân tích hoàn chỉnh có kết luận định lượng, khoảng không chắc chắn, và phần giả định giới hạn, trên dữ liệu chưa từng xem.
 
 **Thiết kế.** Probe 10 của L045 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L045 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Bỏ bước kiểm tra chất lượng dữ liệu · phát biểu kết luận chắc chắn hơn mức dữ liệu cho phép · viết phần giới hạn tách rời khỏi kết luận.
+**Mệnh đề của probe 11: `fresh snapshot`.** Bỏ bước kiểm tra chất lượng dữ liệu · phát biểu kết luận chắc chắn hơn mức dữ liệu cho phép · viết phần giới hạn tách rời khỏi kết luận.
 
 **Thiết kế.** Probe 11 của L045 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L045 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Nộp đủ năm đầu ra, đạt ≥ 70/100 theo rubric, kết luận được chứng minh bằng hai đường độc lập, và một học viên khác chạy lại được theo tài liệu mà không đặt câu hỏi. Đây là exit criterion của Module 5.
+**Mệnh đề của probe 12: `novel scenario`.** Nộp đủ năm đầu ra, đạt ≥ 70/100 theo rubric, kết luận được chứng minh bằng hai đường độc lập, và một học viên khác chạy lại được theo tài liệu mà không đặt câu hỏi. Đây là exit criterion của Module 5.
 
 **Thiết kế.** Probe 12 của L045 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Nộp đủ năm đầu ra, đạt ≥ 70/100 theo rubric, kết luận được
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-OPENINTRO-STATISTICS-4E]] — `src.book.openintro-statistics.4e`
-2. [[SRC-GOOGLE-HEART-UX-METRICS]] — `src.paper.google-heart-ux-metrics`
+1. [[SRC-OPENINTRO-STATISTICS-4E]]: `src.book.openintro-statistics.4e`
+2. [[SRC-GOOGLE-HEART-UX-METRICS]]: `src.paper.google-heart-ux-metrics`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-OPENINTRO-STATISTICS-4E]] — `src.book.openintro-statistics.4e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Statistics project | các mục cơ chế, case và probe | Đã phủ | ngoài objective L045 |
-| [[SRC-GOOGLE-HEART-UX-METRICS]] — `src.paper.google-heart-ux-metrics` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Statistics project | các mục cơ chế, case và probe | Đã phủ | ngoài objective L045 |
+| [[SRC-OPENINTRO-STATISTICS-4E]]: `src.book.openintro-statistics.4e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Statistics project | các mục cơ chế, case và probe | Đã phủ | ngoài objective L045 |
+| [[SRC-GOOGLE-HEART-UX-METRICS]]: `src.paper.google-heart-ux-metrics` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Statistics project | các mục cơ chế, case và probe | Đã phủ | ngoài objective L045 |
 
 ## Key takeaways
 - Chuyển một câu hỏi nghiệp vụ mơ hồ thành một phân tích hoàn chỉnh có kết luận định lượng, khoảng không chắc chắn, và phần giả định giới hạn, trên dữ liệu chưa từng xem.
@@ -226,7 +226,7 @@ Nộp đủ năm đầu ra, đạt ≥ 70/100 theo rubric, kết luận được
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.statistics-project`
+## Execution capsule: kiểm chứng `wiki.da.statistics-project`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.statistics-project`, sơ đồ, ví dụ và artifact về **Statistics project** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

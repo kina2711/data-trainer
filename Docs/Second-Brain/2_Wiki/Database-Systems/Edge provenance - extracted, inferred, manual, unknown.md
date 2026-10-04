@@ -39,7 +39,7 @@ Parser, name match hoặc query analysis tạo hypothesis; confidence và unsupp
 
 ## 3. Manual edge
 
-Human assertion cần author, rationale, scope, effective/review dates và conflict policy với automation. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Edge provenance - extracted, inferred, manual, unknown`, câu hỏi thực dụng là: Mỗi lineage edge phải mang provenance và confidence nào để người dùng phân biệt extracted, inferred, manual và unknown? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Human assertion cần author, rationale, scope, effective/review dates và conflict policy với automation. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Edge provenance - extracted, inferred, manual, unknown`, câu hỏi thực dụng là: Mỗi lineage edge phải mang provenance và confidence nào để người dùng phân biệt extracted, inferred, manual và unknown? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Unknown state
 
@@ -224,7 +224,7 @@ Với `wiki.metadata.edge-provenance-confidence`, command thành công không t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.metadata.edge-provenance-confidence`
+## Execution capsule: kiểm chứng `wiki.metadata.edge-provenance-confidence`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.metadata.edge-provenance-confidence`, sơ đồ, ví dụ và artifact về **Edge provenance - extracted, inferred, manual, unknown** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

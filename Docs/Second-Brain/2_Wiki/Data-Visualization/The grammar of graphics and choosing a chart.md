@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Các kênh mã hoá thị giác: vị trí, chiều dài, góc, diện tích, màu, hình dạng, kèm thứ tự độ chính xác mà mắt người giải mã từng kênh. Hệ quả trực tiếp: biểu đồ tròn mã hoá bằng góc và diện tích nên đọc kém chính xác hơn biểu đồ cột mã hoá bằng chiều dài. Tỉ lệ mực trên dữ liệu. Bảy loại so sánh và biểu đồ tương ứng: theo thời gian, giữa hạng mục, thành phần trong tổng, phân bố, tương quan, không gian, luồng. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L046 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **The grammar of graphics and choosing a chart**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Chọn biểu đồ cho một loại so sánh và biện minh lựa chọn bằng kênh mã hoá thị giác, không bằng sở thích. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Các kênh mã hoá thị giác: vị trí, chiều dài, góc, diện tích, màu, hình dạng, kèm thứ tự độ chính xác mà mắt người giải mã từng kênh. Hệ quả trực tiếp: biểu đồ tròn mã hoá bằng góc và diện tích nên đọc kém chính xác hơn biểu đồ cột mã hoá bằng chiều dài. Tỉ lệ mực trên dữ liệu. Bảy loại so sánh và biểu đồ tương ứng: theo thời gian, giữa hạng mục, thành phần trong tổng, phân bố, tương quan, không gian, luồng.
 
@@ -44,7 +44,7 @@ Cơ chế của `the-grammar-of-graphics-and-choosing-a-chart` được kiểm q
 
 Lỗi cần loại trừ trong bài này là: Chọn biểu đồ theo thói quen của công cụ · dùng diện tích để mã hoá đại lượng cần so sánh chính xác · trộn hai loại so sánh trong một biểu đồ. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Chọn biểu đồ theo thói que
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L046: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Nộp bảng chọn biểu đồ tự lập, và áp đúng cho ≥ 10/12 tình huống với lý do nhất quán theo kênh mã hoá.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L046: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Nộp bảng chọn biểu đồ tự lập, và áp đúng cho ≥ 10/12 tình huống với lý do nhất quán theo kênh mã hoá.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: The grammar of graphics and choosing a chart
+## Worked Case: The grammar of graphics and choosing a chart
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Lập bảng chọn biểu đồ của riêng mình, mỗi dòng ghi loại so sánh, kênh mã hoá và biểu đồ. Áp bảng đó cho 12 tình huống nghiệp vụ.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `The grammar of graphics and choosing a chart`, learn
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L046 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `The grammar of graphics and choosing a chart` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L046 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Các kênh mã hoá thị giác: vị trí, chiều dài, góc, diện tích, màu, hình dạng, kèm thứ tự độ chính xác mà mắt người giải mã từng kênh. Hệ quả trực tiếp: biểu đồ tròn mã hoá bằng góc và diện tích nên đọc kém chính xác hơn biểu đồ cột mã hoá bằng chiều dài. Tỉ lệ mực trên dữ liệu. Bảy loại so sánh và biểu đồ tương ứng: theo thời gian, giữa hạng mục, thành phần trong tổng, phân bố, tương quan, không gian, luồng.
+**Mệnh đề của probe 1: `population`.** Các kênh mã hoá thị giác: vị trí, chiều dài, góc, diện tích, màu, hình dạng, kèm thứ tự độ chính xác mà mắt người giải mã từng kênh. Hệ quả trực tiếp: biểu đồ tròn mã hoá bằng góc và diện tích nên đọc kém chính xác hơn biểu đồ cột mã hoá bằng chiều dài. Tỉ lệ mực trên dữ liệu. Bảy loại so sánh và biểu đồ tương ứng: theo thời gian, giữa hạng mục, thành phần trong tổng, phân bố, tương quan, không gian, luồng.
 
 **Thiết kế.** Probe 1 của L046 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L046 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Chọn biểu đồ cho một loại so sánh và biện minh lựa chọn bằng kênh mã hoá thị giác, không bằng sở thích.
+**Mệnh đề của probe 2: `grain`.** Chọn biểu đồ cho một loại so sánh và biện minh lựa chọn bằng kênh mã hoá thị giác, không bằng sở thích.
 
 **Thiết kế.** Probe 2 của L046 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L046 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Chọn biểu đồ theo thói quen của công cụ · dùng diện tích để mã hoá đại lượng cần so sánh chính xác · trộn hai loại so sánh trong một biểu đồ.
+**Mệnh đề của probe 3: `identity`.** Chọn biểu đồ theo thói quen của công cụ · dùng diện tích để mã hoá đại lượng cần so sánh chính xác · trộn hai loại so sánh trong một biểu đồ.
 
 **Thiết kế.** Probe 3 của L046 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L046 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Nộp bảng chọn biểu đồ tự lập, và áp đúng cho ≥ 10/12 tình huống với lý do nhất quán theo kênh mã hoá.
+**Mệnh đề của probe 4: `time cutoff`.** Nộp bảng chọn biểu đồ tự lập, và áp đúng cho ≥ 10/12 tình huống với lý do nhất quán theo kênh mã hoá.
 
 **Thiết kế.** Probe 4 của L046 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L046 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Các kênh mã hoá thị giác: vị trí, chiều dài, góc, diện tích, màu, hình dạng, kèm thứ tự độ chính xác mà mắt người giải mã từng kênh. Hệ quả trực tiếp: biểu đồ tròn mã hoá bằng góc và diện tích nên đọc kém chính xác hơn biểu đồ cột mã hoá bằng chiều dài. Tỉ lệ mực trên dữ liệu. Bảy loại so sánh và biểu đồ tương ứng: theo thời gian, giữa hạng mục, thành phần trong tổng, phân bố, tương quan, không gian, luồng.
+**Mệnh đề của probe 5: `missing versus zero`.** Các kênh mã hoá thị giác: vị trí, chiều dài, góc, diện tích, màu, hình dạng, kèm thứ tự độ chính xác mà mắt người giải mã từng kênh. Hệ quả trực tiếp: biểu đồ tròn mã hoá bằng góc và diện tích nên đọc kém chính xác hơn biểu đồ cột mã hoá bằng chiều dài. Tỉ lệ mực trên dữ liệu. Bảy loại so sánh và biểu đồ tương ứng: theo thời gian, giữa hạng mục, thành phần trong tổng, phân bố, tương quan, không gian, luồng.
 
 **Thiết kế.** Probe 5 của L046 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L046 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Chọn biểu đồ cho một loại so sánh và biện minh lựa chọn bằng kênh mã hoá thị giác, không bằng sở thích.
+**Mệnh đề của probe 6: `duplicate`.** Chọn biểu đồ cho một loại so sánh và biện minh lựa chọn bằng kênh mã hoá thị giác, không bằng sở thích.
 
 **Thiết kế.** Probe 6 của L046 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L046 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Chọn biểu đồ theo thói quen của công cụ · dùng diện tích để mã hoá đại lượng cần so sánh chính xác · trộn hai loại so sánh trong một biểu đồ.
+**Mệnh đề của probe 7: `join fan-out`.** Chọn biểu đồ theo thói quen của công cụ · dùng diện tích để mã hoá đại lượng cần so sánh chính xác · trộn hai loại so sánh trong một biểu đồ.
 
 **Thiết kế.** Probe 7 của L046 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L046 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Nộp bảng chọn biểu đồ tự lập, và áp đúng cho ≥ 10/12 tình huống với lý do nhất quán theo kênh mã hoá.
+**Mệnh đề của probe 8: `changed definition`.** Nộp bảng chọn biểu đồ tự lập, và áp đúng cho ≥ 10/12 tình huống với lý do nhất quán theo kênh mã hoá.
 
 **Thiết kế.** Probe 8 của L046 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L046 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Các kênh mã hoá thị giác: vị trí, chiều dài, góc, diện tích, màu, hình dạng, kèm thứ tự độ chính xác mà mắt người giải mã từng kênh. Hệ quả trực tiếp: biểu đồ tròn mã hoá bằng góc và diện tích nên đọc kém chính xác hơn biểu đồ cột mã hoá bằng chiều dài. Tỉ lệ mực trên dữ liệu. Bảy loại so sánh và biểu đồ tương ứng: theo thời gian, giữa hạng mục, thành phần trong tổng, phân bố, tương quan, không gian, luồng.
+**Mệnh đề của probe 9: `independent oracle`.** Các kênh mã hoá thị giác: vị trí, chiều dài, góc, diện tích, màu, hình dạng, kèm thứ tự độ chính xác mà mắt người giải mã từng kênh. Hệ quả trực tiếp: biểu đồ tròn mã hoá bằng góc và diện tích nên đọc kém chính xác hơn biểu đồ cột mã hoá bằng chiều dài. Tỉ lệ mực trên dữ liệu. Bảy loại so sánh và biểu đồ tương ứng: theo thời gian, giữa hạng mục, thành phần trong tổng, phân bố, tương quan, không gian, luồng.
 
 **Thiết kế.** Probe 9 của L046 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L046 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Chọn biểu đồ cho một loại so sánh và biện minh lựa chọn bằng kênh mã hoá thị giác, không bằng sở thích.
+**Mệnh đề của probe 10: `replay`.** Chọn biểu đồ cho một loại so sánh và biện minh lựa chọn bằng kênh mã hoá thị giác, không bằng sở thích.
 
 **Thiết kế.** Probe 10 của L046 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L046 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Chọn biểu đồ theo thói quen của công cụ · dùng diện tích để mã hoá đại lượng cần so sánh chính xác · trộn hai loại so sánh trong một biểu đồ.
+**Mệnh đề của probe 11: `fresh snapshot`.** Chọn biểu đồ theo thói quen của công cụ · dùng diện tích để mã hoá đại lượng cần so sánh chính xác · trộn hai loại so sánh trong một biểu đồ.
 
 **Thiết kế.** Probe 11 của L046 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L046 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Nộp bảng chọn biểu đồ tự lập, và áp đúng cho ≥ 10/12 tình huống với lý do nhất quán theo kênh mã hoá.
+**Mệnh đề của probe 12: `novel scenario`.** Nộp bảng chọn biểu đồ tự lập, và áp đúng cho ≥ 10/12 tình huống với lý do nhất quán theo kênh mã hoá.
 
 **Thiết kế.** Probe 12 của L046 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Nộp bảng chọn biểu đồ tự lập, và áp đúng cho ≥ 10/12 tình 
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-STORYTELLING-WITH-DATA]] — `src.book.knaflic-storytelling-with-data.1e`
-2. [[SRC-DEFINITIVE-GUIDE-DAX-3E]] — `src.book.ferrari-russo-definitive-guide-dax.3e`
+1. [[SRC-STORYTELLING-WITH-DATA]]: `src.book.knaflic-storytelling-with-data.1e`
+2. [[SRC-DEFINITIVE-GUIDE-DAX-3E]]: `src.book.ferrari-russo-definitive-guide-dax.3e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-STORYTELLING-WITH-DATA]] — `src.book.knaflic-storytelling-with-data.1e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới The grammar of graphics and choosing a chart | các mục cơ chế, case và probe | Đã phủ | ngoài objective L046 |
-| [[SRC-DEFINITIVE-GUIDE-DAX-3E]] — `src.book.ferrari-russo-definitive-guide-dax.3e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới The grammar of graphics and choosing a chart | các mục cơ chế, case và probe | Đã phủ | ngoài objective L046 |
+| [[SRC-STORYTELLING-WITH-DATA]]: `src.book.knaflic-storytelling-with-data.1e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới The grammar of graphics and choosing a chart | các mục cơ chế, case và probe | Đã phủ | ngoài objective L046 |
+| [[SRC-DEFINITIVE-GUIDE-DAX-3E]]: `src.book.ferrari-russo-definitive-guide-dax.3e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới The grammar of graphics and choosing a chart | các mục cơ chế, case và probe | Đã phủ | ngoài objective L046 |
 
 ## Key takeaways
 - Chọn biểu đồ cho một loại so sánh và biện minh lựa chọn bằng kênh mã hoá thị giác, không bằng sở thích.
@@ -226,7 +226,7 @@ Nộp bảng chọn biểu đồ tự lập, và áp đúng cho ≥ 10/12 tình 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.the-grammar-of-graphics-and-choosing-a-chart`
+## Execution capsule: kiểm chứng `wiki.da.the-grammar-of-graphics-and-choosing-a-chart`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.the-grammar-of-graphics-and-choosing-a-chart`, sơ đồ, ví dụ và artifact về **The grammar of graphics and choosing a chart** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

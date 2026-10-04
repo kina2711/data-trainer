@@ -1,6 +1,6 @@
 # Mô-đun 8: Thử nghiệm A/B
 
-Năm bài, ngắn nhất trong chương trình sau M11, nhưng là module duy nhất dạy suy luận nhân quả. Trọng tâm không phải chạy kiểm định — phần đó đã có ở Bài 42 — mà là thiết kế trước khi chạy và nhận diện chế độ hỏng sau khi chạy. Bài 66 ở tầng đánh giá vì kết luận quan trọng nhất của nó là quyết định không chạy.
+Năm bài, ngắn nhất trong chương trình sau M11, nhưng là module duy nhất dạy suy luận nhân quả. Trọng tâm không phải chạy kiểm định: phần đó đã có ở Bài 42: mà là thiết kế trước khi chạy và nhận diện chế độ hỏng sau khi chạy. Bài 66 ở tầng đánh giá vì kết luận quan trọng nhất của nó là quyết định không chạy.
 
 ## Điều kiện đầu vào
 
@@ -34,15 +34,15 @@ Viết một tài liệu thiết kế thí nghiệm đầy đủ và kết luậ
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L064 · Why experiments are necessary | LT | Định vị chỗ sai trong một kết luận nhân quả rút ra từ dữ liệu quan sát, và đề xuất thiết kế thí nghiệm thay thế. | Chỉ đúng chỗ sai của cả 4 tình huống, và mỗi tình huống có một thiết kế thay thế khả thi về vận hành. | M08: M05 |
-| L065 · Experiment design - hypothesis, metrics, unit | TH | Viết phần thiết kế của một tài liệu thí nghiệm: giả thuyết, cấu trúc chỉ số, đơn vị ngẫu nhiên hoá, và đánh giá nguy cơ nhiễm chéo. | Ba tài liệu thiết kế đủ bốn thành phần, và tình huống có nguy cơ nhiễm chéo được xác định đúng kèm cách xử lý. | L064 |
-| L066 · Sample size, statistical power and duration | TH | Tính cỡ mẫu cho một thiết kế và kết luận thí nghiệm có khả thi hay không trước khi chạy. | Cỡ mẫu tính đúng cho cả ba thiết kế, và thiết kế không đủ lực được xác định đúng kèm lý do định lượng. Đây là exit criterion của Mô-đun 8. | L065 |
-| L067 · Running and interpreting - common failure modes | TH | Đọc một báo cáo thí nghiệm và định vị lỗi thiết kế hoặc lỗi phân tích trong đó trước khi chấp nhận kết luận. | Gọi đúng tên lỗi của cả ba báo cáo có lỗi thiết kế, và nhận đúng trường hợp không kết luận được. | L066 |
-| L068 · When experiments are not possible | LT | Chọn phương pháp suy luận cho một tình huống không thí nghiệm được, nêu giả định của phương pháp, và kiểm giả định đó trên dữ liệu. | Chọn đúng phương pháp cho ≥ 3/4 tình huống kèm giả định, và phân tích sai khác kép có phần kiểm xu hướng song song trên dữ liệu trước can thiệp. | L067 |
+| L064 · [[wiki.da.why-experiments-are-necessary|Why experiments are necessary]]| LT | Định vị chỗ sai trong một kết luận nhân quả rút ra từ dữ liệu quan sát, và đề xuất thiết kế thí nghiệm thay thế. | Chỉ đúng chỗ sai của cả 4 tình huống, và mỗi tình huống có một thiết kế thay thế khả thi về vận hành. | M08: M05 |
+| L065 · [[wiki.da.experiment-design-hypothesis-metrics-unit|Experiment design - hypothesis, metrics, unit]]| TH | Viết phần thiết kế của một tài liệu thí nghiệm: giả thuyết, cấu trúc chỉ số, đơn vị ngẫu nhiên hoá, và đánh giá nguy cơ nhiễm chéo. | Ba tài liệu thiết kế đủ bốn thành phần, và tình huống có nguy cơ nhiễm chéo được xác định đúng kèm cách xử lý. | L064 |
+| L066 · [[wiki.da.sample-size-statistical-power-and-duration|Sample size, statistical power and duration]]| TH | Tính cỡ mẫu cho một thiết kế và kết luận thí nghiệm có khả thi hay không trước khi chạy. | Cỡ mẫu tính đúng cho cả ba thiết kế, và thiết kế không đủ lực được xác định đúng kèm lý do định lượng. Đây là exit criterion của Mô-đun 8. | L065 |
+| L067 · [[wiki.da.running-and-interpreting-common-failure-modes|Running and interpreting - common failure modes]]| TH | Đọc một báo cáo thí nghiệm và định vị lỗi thiết kế hoặc lỗi phân tích trong đó trước khi chấp nhận kết luận. | Gọi đúng tên lỗi của cả ba báo cáo có lỗi thiết kế, và nhận đúng trường hợp không kết luận được. | L066 |
+| L068 · [[wiki.da.when-experiments-are-not-possible|When experiments are not possible]]| LT | Chọn phương pháp suy luận cho một tình huống không thí nghiệm được, nêu giả định của phương pháp, và kiểm giả định đó trên dữ liệu. | Chọn đúng phương pháp cho ≥ 3/4 tình huống kèm giả định, và phân tích sai khác kép có phần kiểm xu hướng song song trên dữ liệu trước can thiệp. | L067 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DA-M08 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DA-M08 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -67,7 +67,7 @@ flowchart LR
   class A064,A065,A066,A067,A068 atom;
 ```
 
-### Bài 64: Why experiments are necessary
+### Lesson 64: Why experiments are necessary
 
 Bốn cơ chế khiến dữ liệu quan sát cho kết luận nhân quả sai, nhắc lại từ Bài 43 với ví dụ tổ chức đã ra quyết định sai vì tin chúng. Bài toán nhân quả cơ bản: không quan sát được cùng một đơn vị ở cả hai trạng thái. Ngẫu nhiên hoá giải quyết vấn đề gì về mặt thống kê. Ba điều kiện khiến ngẫu nhiên hoá bất khả thi.
 
@@ -75,7 +75,7 @@ Người học phải định vị chỗ sai trong một kết luận nhân qu�
 
 Cách đánh giá: Tầng *phân tích*. Kiểm bằng bốn tình huống: chỉ ra chỗ suy luận sai và đề xuất thí nghiệm thay thế cho từng tình huống. Phần đề xuất bắt buộc, vì chỉ ra lỗi mà không đưa được phương án thay thế chưa đủ để dùng trong công việc.
 
-### Bài 65: Experiment design - hypothesis, metrics, unit
+### Lesson 65: Experiment design - hypothesis, metrics, unit
 
 Giả thuyết phát biểu trước khi chạy và ở mức cụ thể kiểm được. Cấu trúc chỉ số: một chỉ số chính duy nhất, cộng chỉ số phụ, cộng chỉ số bảo vệ; cơ chế khiến nhiều chỉ số chính làm tăng tỉ lệ dương tính giả. Đơn vị ngẫu nhiên hoá: người dùng, phiên, thiết bị, cùng hậu quả của chọn sai. Nhiễm chéo giữa hai nhóm và điều kiện phát sinh. A/A test để kiểm tra cơ chế ngẫu nhiên hoá.
 
@@ -83,7 +83,7 @@ Người học phải viết phần thiết kế của một tài liệu thí ng
 
 Cách đánh giá: Tầng *sáng tạo*. Tài liệu thiết kế là sản phẩm mới dưới ràng buộc. Kiểm bằng rà soát chéo: một học viên khác đọc tài liệu và phải chỉ ra được nguy cơ nhiễm chéo nếu người viết bỏ sót. Một trong ba tình huống có nguy cơ nhiễm chéo cài sẵn.
 
-### Bài 66: Sample size, statistical power and duration
+### Lesson 66: Sample size, statistical power and duration
 
 Sai lầm loại I và loại II diễn đạt bằng hậu quả nghiệp vụ. Mức ý nghĩa, lực kiểm định, và hiệu ứng tối thiểu đáng quan tâm; lý do giá trị cuối là một quyết định kinh doanh chứ không phải một lựa chọn thống kê. Công thức tính cỡ mẫu và các tham số đầu vào. Thời lượng tối thiểu phải bao trọn chu kỳ tuần. Kết luận không chạy khi lưu lượng không đủ đạt cỡ mẫu trong thời gian chấp nhận được.
 
@@ -91,7 +91,7 @@ Người học phải tính cỡ mẫu cho một thiết kế và kết luận t
 
 Cách đánh giá: Tầng *đánh giá*. Kết luận có giá trị nhất của bài là quyết định không chạy, nên bài kiểm được thiết kế để ít nhất một trong ba trường hợp phải bị kết luận là không đủ lực. Người học kết luận cả ba đều chạy được là không đạt, kể cả khi phép tính đúng.
 
-### Bài 67: Running and interpreting - common failure modes
+### Lesson 67: Running and interpreting - common failure modes
 
 Nhìn lén và dừng sớm: cơ chế khiến việc kiểm tra hằng ngày rồi dừng khi đạt ngưỡng ý nghĩa làm tăng tỉ lệ dương tính giả, minh hoạ bằng mô phỏng. Vấn đề so sánh bội khi phân tích theo nhiều phân khúc. Bất cân xứng tỉ lệ mẫu là phép kiểm bắt buộc trước khi đọc kết quả. Hiệu ứng mới lạ và hiệu ứng nguyên sơ. Phân biệt kết quả không đạt ngưỡng ý nghĩa với kết luận không có tác dụng.
 
@@ -99,7 +99,7 @@ Người học phải đọc một báo cáo thí nghiệm và định vị lỗ
 
 Cách đánh giá: Tầng *phân tích*. Kiểm bằng năm báo cáo kết quả, trong đó ba chứa lỗi thiết kế và một không kết luận được. Nhận ra trường hợp không kết luận được là tiêu chí phân biệt chính; báo cáo mọi trường hợp đều có kết luận là không đạt.
 
-### Bài 68: When experiments are not possible
+### Lesson 68: When experiments are not possible
 
 Ba điều kiện khiến ngẫu nhiên hoá không thực hiện được. Sai khác kép: ý tưởng, giả định xu hướng song song, và cách kiểm tra giả định đó trên dữ liệu trước can thiệp. Chuỗi thời gian gián đoạn. Nhóm đối chứng tổng hợp ở mức nhận biết. Nguyên tắc chung: mỗi phương pháp đi kèm một tập giả định, nên phải nêu và kiểm giả định, và trình bày kết quả với mức chắc chắn thấp hơn thí nghiệm ngẫu nhiên.
 

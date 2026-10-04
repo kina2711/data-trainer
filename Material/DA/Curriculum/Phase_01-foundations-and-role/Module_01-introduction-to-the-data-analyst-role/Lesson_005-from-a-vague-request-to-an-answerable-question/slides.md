@@ -11,7 +11,7 @@ footer: 'Foundation · runnable scene package'
 
 # From a vague request to an answerable question
 
-**DA-L005 · 120 phút (ước tính)**
+**DA-L005**
 
 > Làm sao chuyển yêu cầu mơ hồ thành analytical contract có thể bác bỏ?
 
@@ -27,12 +27,12 @@ Viết contract khóa decision, population, metric, comparison, time, slices, co
 
 ---
 
-<!-- scene: S01 · source: note.md: heading 'Nỗi Đau & Động Lực' -->
+<!-- scene: S01 · source: note.md: heading Problem Definition and Operational Relevance -->
 ## Tình huống mở
 
 Câu 'phân tích giúp vì sao khách giảm' có ít nhất năm nghĩa của khách, ba cửa sổ thời gian và nhiều quyết định khác nhau.
 
-**Think–pair–share · 4 phút**
+**Independent analysis followed by peer review**
 
 1. Bạn sẽ làm gì đầu tiên?
 2. Quyết định nào có thể bị ảnh hưởng?
@@ -40,7 +40,7 @@ Câu 'phân tích giúp vì sao khách giảm' có ít nhất năm nghĩa của 
 
 ---
 
-<!-- scene: S02 · source: note.md: heading 'Cơ Chế Tác Động' -->
+<!-- scene: S02 · source: note.md: heading Mechanism -->
 ## Mental model trung tâm
 
 > Một câu hỏi trả lời được phải nêu ai sẽ quyết định gì, trên population nào, bằng metric/comparison nào, trong time boundary nào và bằng chứng nào đủ để dừng.
@@ -67,7 +67,7 @@ Không làm bước này, output sau đó có thể đúng cú pháp nhưng sai 
 
 ---
 
-<!-- scene: S03 · source: note.md: heading 'Cơ Chế Tác Động' -->
+<!-- scene: S03 · source: note.md: heading Mechanism -->
 ## Check 1 · trả lời không nhìn tài liệu
 
 **Trường đầu tiên của analytical contract là gì?**
@@ -83,7 +83,7 @@ Nếu câu trả lời chỉ nêu tên công cụ, hãy quay lại mental model 
 ---
 
 <!-- scene: S04 · source: UNSOURCED guided practice synthesis -->
-## Guided practice · 12 phút làm + 6 phút chữa
+## Guided practice
 
 Phỏng vấn role-play: stakeholder chỉ nói 'campaign vừa rồi có hiệu quả không?'. nhóm có 12 phút để tạo contract và read-back.
 
@@ -93,7 +93,7 @@ Người dạy không chữa bằng đáp án ngay. yêu cầu mỗi nhóm nêu 
 
 ---
 
-<!-- scene: S05 · source: note.md: heading 'Bản Đồ Quyết Định' -->
+<!-- scene: S05 · source: note.md: heading Decision Framework -->
 ## Quy tắc quyết định
 
 Unknown làm đổi semantics, blast radius hoặc acceptance phải chặn execution. unknown định lượng được có thể đi tiếp với coverage và limitation công khai.
@@ -114,7 +114,7 @@ Nếu deadline từ ba ngày xuống hai giờ, co scope và strength of claim. 
 
 ## Worked example · đi từng bước
 
-<!-- scene: S07 · source: note.md: heading 'Case Study Thực Chiến: một chỉ số bán hàng đổi nghĩa giữa đường' -->
+<!-- scene: S07 · source: note.md: heading Worked Case: một chỉ số bán hàng đổi nghĩa giữa đường -->
 
 1. Đổi 'khách giảm' thành paid customers tháng 9 so tháng 8 theo event time ICT, chốt D+3.
 2. Định nghĩa paid customer là distinct customer_id có payment_success, loại test/refund toàn phần.
@@ -157,8 +157,8 @@ CEO muốn câu trả lời trong hai giờ nhưng identity khách đa thiết b
 
 ---
 
-<!-- scene: S09 · source: note.md: heading 'Góc Khuất & Ngộ Nhận' -->
-## Exit ticket · 3 phút
+<!-- scene: S09 · source: note.md: heading Limits and Common Errors -->
+## Exit check
 
 **Unknown nào bắt buộc phải chặn phân tích?**
 
@@ -169,10 +169,18 @@ Unknown có thể đổi nghĩa population/metric, blast radius hoặc tiêu ch�
 
 ---
 
-## Sau buổi học
+## Post-Lesson
 
 1. Làm `quiz.md`. đạt **8/10**.
 2. Nếu trượt một concept, đọc remediation trong `after-note.md` rồi retest đúng concept đó.
 3. Hoàn thành `homework.md`. đạt **≥ 75/100** và không có critical failure.
 
 **Bắc cầu:** DA-L006: cấu trúc dữ liệu đúng trong Excel theo contract đã khóa.
+
+---
+
+## References
+
+- [[wiki.da-foundation.vague-request-to-answerable-question|From a vague request to an answerable question]]
+- [[wiki.semantic-layer.metric-contract|From a business question to a metric contract]]
+- [[wiki.data-product.requirements-traceability|Requirements traceability]]

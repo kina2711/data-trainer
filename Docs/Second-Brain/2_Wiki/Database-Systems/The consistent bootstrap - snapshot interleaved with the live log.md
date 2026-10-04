@@ -38,7 +38,7 @@ Connector establishes log position and consistent view per source protocol; boun
 
 ## 3. Snapshot events
 
-READ events represent rows in snapshot context and need distinguish from CREATE events for consumers/metrics. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `The consistent bootstrap - snapshot interleaved with the live log`, câu hỏi thực dụng là: Initial snapshot xen kẽ live log tránh gap và duplicate bằng snapshot boundary/collision protocol nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+READ events represent rows in snapshot context and need distinguish from CREATE events for consumers/metrics. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `The consistent bootstrap - snapshot interleaved with the live log`, câu hỏi thực dụng là: Initial snapshot xen kẽ live log tránh gap và duplicate bằng snapshot boundary/collision protocol nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Interleaving
 
@@ -221,7 +221,7 @@ Với `wiki.cdc.consistent-bootstrap-snapshot-log`, command thành công không 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.cdc.consistent-bootstrap-snapshot-log`
+## Execution capsule: kiểm chứng `wiki.cdc.consistent-bootstrap-snapshot-log`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.cdc.consistent-bootstrap-snapshot-log`, sơ đồ, ví dụ và artifact về **The consistent bootstrap - snapshot interleaved with the live log** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

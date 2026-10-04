@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Thiết kế API resource, error và pagination thế nào để consumer dùng ổn định và thay đổi contract có kiểm soát?
 source_ids:
   - src.book.geewax-api-design-patterns.1e
@@ -69,7 +69,7 @@ HTTP method cung cấp semantics chung, nhưng application contract quyết đ�
 Tên method không bảo vệ khỏi bug. `GET` làm thay đổi trạng thái là contract sai; `POST` có idempotency key vẫn cần atomic reservation và lưu outcome.
 
 > [!source-fact]
-> Kurose và Ross trình bày request line, HTTP methods, response structure và status code ở §2.2.3, trang in 131–135. Chi tiết semantics hiện hành cần đối chiếu RFC/documentation mới khi triển khai production.
+> Kurose và Ross trình bày request line, HTTP methods, response structure và status code ở §2.2.3, trang in 131-135. Chi tiết semantics hiện hành cần đối chiếu RFC/documentation mới khi triển khai production.
 
 ## 3. Contract bốn phần cho mỗi operation
 
@@ -162,14 +162,14 @@ List contract nêu:
 
 ### Cursor/keyset
 
-Cursor mã hóa vị trí cuối theo sort key. Query tiếp theo dùng điều kiện “sau vị trí này” theo order. Nó ổn định hơn dưới insert mới trước cursor và thường hiệu quả với index phù hợp.
+Cursor mã hóa vị trí cuối theo sort key. Query tiếp theo dùng điều kiện sau vị trí này theo order. Nó ổn định hơn dưới insert mới trước cursor và thường hiệu quả với index phù hợp.
 
 ### Snapshot token
 
 Giữ view nhất quán theo snapshot/version, mạnh hơn nhưng cần storage/lifecycle và có thể tốn tài nguyên. Phù hợp export hoặc workflow cần snapshot semantics.
 
 > [!source-fact]
-> Geewax trình bày pagination token như opaque continuation state và yêu cầu request/response nhất quán trong API list methods. *API Design Patterns*, phần pagination, PDF 556–566.
+> Geewax trình bày pagination token như opaque continuation state và yêu cầu request/response nhất quán trong API list methods. *API Design Patterns*, phần pagination, PDF 556-566.
 
 ## 9. Thiết kế cursor
 
@@ -206,7 +206,7 @@ Thí nghiệm:
 5. xác nhận union của item baseline sau cursor không trùng/sót;
 6. ghi rõ record mới có được kỳ vọng xuất hiện trong traversal hiện tại không.
 
-“Không trùng không sót” luôn cần scope. Cursor không tự tạo snapshot của dữ liệu đang đổi.
+Không trùng không sót luôn cần scope. Cursor không tự tạo snapshot của dữ liệu đang đổi.
 
 ## 11. Filtering và sorting là phần của contract
 
@@ -254,7 +254,7 @@ Provider bỏ `status`; consumer dùng field này phải fail contract trước 
 Versioning không thay deprecation process. Cần inventory consumer, adoption telemetry, compatibility window và sunset communication.
 
 > [!source-fact]
-> Newman thảo luận semantic versioning, backward compatibility, coexistence version và expand/contract trong *Building Microservices*, 2e, PDF 191–197.
+> Newman thảo luận semantic versioning, backward compatibility, coexistence version và expand/contract trong *Building Microservices*, 2e, PDF 191-197.
 
 ## 15. Additive evolution và deprecation
 
@@ -351,9 +351,9 @@ Test tối thiểu:
 - Bài áp dụng: `DE-L102`.
 
 ## Reference
-1. [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]] — resource-oriented design, errors, pagination và versioning, các phần liên quan; PDF 556–566, 642–676.
-2. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — backward compatibility, semantic versioning, coexistence và expand/contract, PDF 191–197.
-3. [[SRC-KUROSE-ROSS-NETWORKING-8E]] — HTTP message, method và status foundation, §2.2.3, trang in 131–135.
+1. [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]]: resource-oriented design, errors, pagination và versioning, các phần liên quan; PDF 556-566, 642-676.
+2. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: backward compatibility, semantic versioning, coexistence và expand/contract, PDF 191-197.
+3. [[SRC-KUROSE-ROSS-NETWORKING-8E]]: HTTP message, method và status foundation, §2.2.3, trang in 131-135.
 
 > [!synthesis]
 > Contract bốn phần, error envelope và bộ ba thay đổi DE-L102 là cấu trúc tổng hợp từ resource/pagination/versioning guidance cùng HTTP semantics. Các default cụ thể vẫn phải được quyết định theo consumer và domain.
@@ -362,11 +362,11 @@ Test tối thiểu:
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]], pp. 556–566 | list, ordering, pagination và cursor | §§7–11 | Đã trình bày invariant, cursor design và phép kiểm trùng/sót |
-| [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]], pp. 642–676 | compatibility, versioning, deprecation và resource evolution | §§12–18 | Đã trình bày ba loại thay đổi, strategy và contract tests |
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 191–197 | backward compatibility, coexistence và expand/contract | §§12, 15 | Đã trình bày compatibility window và additive evolution |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.2.3 pp. 131–135 | HTTP message, method và status foundation | §§2, 4–6 | Đã dùng làm nền; application error policy được tách khỏi transport status |
-| Tổng hợp API contract | resource design, validation layers, error envelope, optimistic concurrency và idempotency | §§1–6, 16–18 | Đã trình bày như tổng hợp có điều kiện, không gán thành một pattern nguyên văn |
+| [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]], pp. 556-566 | list, ordering, pagination và cursor | §§7-11 | Đã trình bày invariant, cursor design và phép kiểm trùng/sót |
+| [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]], pp. 642-676 | compatibility, versioning, deprecation và resource evolution | §§12-18 | Đã trình bày ba loại thay đổi, strategy và contract tests |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 191-197 | backward compatibility, coexistence và expand/contract | §§12, 15 | Đã trình bày compatibility window và additive evolution |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.2.3 pp. 131-135 | HTTP message, method và status foundation | §§2, 4-6 | Đã dùng làm nền; application error policy được tách khỏi transport status |
+| Tổng hợp API contract | resource design, validation layers, error envelope, optimistic concurrency và idempotency | §§1-6, 16-18 | Đã trình bày như tổng hợp có điều kiện, không gán thành một pattern nguyên văn |
 
 Không có mapping status/error hoặc versioning strategy phổ quát. Các lựa chọn còn phụ thuộc use case, consumer inventory và policy của hệ thống.
 
@@ -378,7 +378,7 @@ Không có mapping status/error hoặc versioning strategy phổ quát. Các l�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.backend.api-contract-resources-errors-versioning`
+## Execution capsule: kiểm chứng `wiki.backend.api-contract-resources-errors-versioning`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.backend.api-contract-resources-errors-versioning`, sơ đồ, ví dụ và artifact về **Hợp đồng API: resource, lỗi và versioning** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

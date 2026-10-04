@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Truy một data file hoặc một dòng từ current metadata pointer về snapshot và manifest như thế nào?
 source_ids:
   - src.spec.apache-iceberg-current
@@ -220,7 +220,7 @@ Mỗi claim phải chỉ rõ metadata scope, writer/reader version, exact fixtur
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.storage.iceberg-metadata-tree-snapshot-lineage`
+## Execution capsule: kiểm chứng `wiki.storage.iceberg-metadata-tree-snapshot-lineage`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.storage.iceberg-metadata-tree-snapshot-lineage`, sơ đồ, ví dụ và artifact về **Iceberg Metadata Tree and Snapshot Lineage** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -242,7 +242,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Truy một data file hoặc một dòng từ current metadata pointer về snapshot và manifest như thế nào?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Truy một data file hoặc một dòng từ current metadata pointer về snapshot và manifest như thế nào? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Iceberg Metadata Tree and Snapshot Lineage** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

@@ -37,7 +37,7 @@ Derived assets có thể inherit classification qua lineage nhưng transform/mas
 
 ## 3. Retention clock
 
-Bắt đầu từ collection, event, account closure hay legal hold theo policy; field nào chọn clock phải rõ. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Classification, retention and the enforcement boundary`, câu hỏi thực dụng là: Metadata classification và retention policy trở thành enforcement ở đâu, và đâu chỉ là advisory label? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Bắt đầu từ collection, event, account closure hay legal hold theo policy; field nào chọn clock phải rõ. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Classification, retention and the enforcement boundary`, câu hỏi thực dụng là: Metadata classification và retention policy trở thành enforcement ở đâu, và đâu chỉ là advisory label? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Enforcement points
 
@@ -218,7 +218,7 @@ Với `wiki.metadata.classification-retention-enforcement`, command thành công
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.metadata.classification-retention-enforcement`
+## Execution capsule: kiểm chứng `wiki.metadata.classification-retention-enforcement`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.metadata.classification-retention-enforcement`, sơ đồ, ví dụ và artifact về **Classification, retention and the enforcement boundary** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

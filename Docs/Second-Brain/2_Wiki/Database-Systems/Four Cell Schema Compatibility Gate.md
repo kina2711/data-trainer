@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Dựng compatibility gate bốn ô, nhiều phiên bản và semantic oracles để quyết định thứ tự rollout thế nào?
 source_ids:
   - src.standard.apache-avro-1.12
@@ -180,7 +180,7 @@ Mỗi claim cần fixture, versioned contract, counterexample và oracle ở đ�
 ## 8. Quy trình phản biện
 
 1. Tách syntax/wire, structural compatibility, generated API và business semantics.
-2. Ghi direction bằng writer–reader versions, không chỉ dùng nhãn backward/forward.
+2. Ghi direction bằng writer-reader versions, không chỉ dùng nhãn backward/forward.
 3. Khóa canonical meaning và negative fixtures trước implementation.
 4. Giữ source bytes/schema fingerprints để tái hiện.
 5. Mọi default, cache, inference hoặc registry policy đều là explicit configuration.
@@ -217,13 +217,13 @@ Mỗi claim cần fixture, versioned contract, counterexample và oracle ở đ�
 
 ## Key takeaways
 - Structural success và semantic correctness là hai gates riêng.
-- Writer–reader direction, version history và exact fixtures phải hiện trong evidence.
+- Writer-reader direction, version history và exact fixtures phải hiện trong evidence.
 - Defaults, aliases, unknown fields và registry modes có scope cụ thể; không dùng như bảo đảm chung.
 - Chưa chạy lab thì note là giáo trình/protocol, chưa phải production certification.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.serialization.four-cell-schema-compatibility-gate`
+## Execution capsule: kiểm chứng `wiki.serialization.four-cell-schema-compatibility-gate`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.serialization.four-cell-schema-compatibility-gate`, sơ đồ, ví dụ và artifact về **Four Cell Schema Compatibility Gate** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

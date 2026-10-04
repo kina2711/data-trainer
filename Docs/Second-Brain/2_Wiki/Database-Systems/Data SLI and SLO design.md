@@ -12,6 +12,7 @@ last_verified: 2026-10-02
 editorial_pass: humanized-v3
 primary_question: Thiết kế data SLI/SLO thế nào để phản ánh trải nghiệm consumer thay vì sức khỏe job nội bộ?
 source_ids:
+  - src.book.moses-gavish-voronov-data-quality-fundamentals.1e
   - src.web.google-sre-monitoring
   - src.web.gx-data-quality-use-cases
 aliases: [Data SLI and SLO design]
@@ -38,7 +39,7 @@ Bắt đầu từ decision/report/model mà dữ liệu phục vụ, critical as
 
 ## 3. Data signals
 
-Freshness, completeness, correctness proxy, schema usability và availability có thể là SLIs riêng, không trộn thành điểm bí ẩn. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Data SLI and SLO design`, câu hỏi thực dụng là: Thiết kế data SLI/SLO thế nào để phản ánh trải nghiệm consumer thay vì sức khỏe job nội bộ? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Freshness, completeness, correctness proxy, schema usability và availability có thể là SLIs riêng, không trộn thành điểm bí ẩn. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Data SLI and SLO design`, câu hỏi thực dụng là: Thiết kế data SLI/SLO thế nào để phản ánh trải nghiệm consumer thay vì sức khỏe job nội bộ? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. SLO window
 
@@ -221,7 +222,7 @@ Với `wiki.data-quality.sli-slo-design`, command thành công không tự chứ
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-quality.sli-slo-design`
+## Execution capsule: kiểm chứng `wiki.data-quality.sli-slo-design`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-quality.sli-slo-design`, sơ đồ, ví dụ và artifact về **Data SLI and SLO design** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

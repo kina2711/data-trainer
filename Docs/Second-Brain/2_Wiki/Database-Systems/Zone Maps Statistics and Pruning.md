@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Pruning được chứng minh ở partition, file, row-group, page và runtime như thế nào, đồng thời tránh cắt nhầm dữ liệu vì statistics hoặc comparison semantics không tương thích?
 source_ids:
   - src.web.duckdb-parquet-pushdown
@@ -230,7 +230,7 @@ Mỗi mệnh đề hiệu năng cần counterfactual, correctness oracle và cou
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.olap.zone-maps-statistics-pruning`
+## Execution capsule: kiểm chứng `wiki.olap.zone-maps-statistics-pruning`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.olap.zone-maps-statistics-pruning`, sơ đồ, ví dụ và artifact về **Zone Maps Statistics and Pruning** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -252,7 +252,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Pruning được chứng minh ở partition, file, row-group, page và runtime như thế nào, đồng thời tránh cắt nhầm dữ liệu vì statistics hoặc comparison semantics không tương thích?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Pruning được chứng minh ở partition, file, row-group, page và runtime như thế nào, đồng thời tránh cắt nhầm dữ liệu vì statistics hoặc comparison semantics không tương thích? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Zone Maps Statistics and Pruning** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

@@ -38,7 +38,7 @@ Kết luận về failure table và remove-component test trên dependencies ch�
 
 ## 3. Failure mode
 
-Phân tích failure table và remove-component test trên dependencies cần tìm earliest failure, propagation path, blast radius và state hoặc claim còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `The failure table and the remove-component test`, câu hỏi thực dụng là: Làm thế nào thiết kế, kiểm chứng và bảo vệ failure table và remove-component test trên dependencies mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân tích failure table và remove-component test trên dependencies cần tìm earliest failure, propagation path, blast radius và state hoặc claim còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `The failure table and the remove-component test`, câu hỏi thực dụng là: Làm thế nào thiết kế, kiểm chứng và bảo vệ failure table và remove-component test trên dependencies mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision rule
 
@@ -221,7 +221,7 @@ Với `wiki.system-design.failure-table`, command thành công không tự chứ
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.system-design.failure-table`
+## Execution capsule: kiểm chứng `wiki.system-design.failure-table`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.system-design.failure-table`, sơ đồ, ví dụ và artifact về **The failure table and the remove-component test** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

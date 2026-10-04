@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Thiết kế hai vòng usability test cho analytical product như thế nào để quan sát task success, time, assistance và confident-wrong outcomes mà không biến năm người thành bằng chứng thống kê giả?
 source_ids:
   - src.web.govuk-moderated-usability-testing
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Tách formative study và benchmark
 
-Formative qualitative test nhằm phát hiện cơ chế lỗi: vocabulary, navigation, interpretation, query construction, trust signal hoặc recovery. Benchmark quantitative nhằm ước lượng/so sánh metrics của population hoặc cohort với độ chính xác xác định. Một session có thể thu số, nhưng n=5 không biến tỷ lệ thành estimate đáng tin. NN/g đặt năm người trong qualitative iterative testing và nêu ngoại lệ; GOV.UK benchmark guidance đề xuất 30–60 actual/likely users trong bối cảnh benchmark. Roadmap dùng năm người mỗi vòng nên kết quả phải gọi là observed round evidence, không là chứng minh thống kê toàn population.
+Formative qualitative test nhằm phát hiện cơ chế lỗi: vocabulary, navigation, interpretation, query construction, trust signal hoặc recovery. Benchmark quantitative nhằm ước lượng/so sánh metrics của population hoặc cohort với độ chính xác xác định. Một session có thể thu số, nhưng n=5 không biến tỷ lệ thành estimate đáng tin. NN/g đặt năm người trong qualitative iterative testing và nêu ngoại lệ; GOV.UK benchmark guidance đề xuất 30-60 actual/likely users trong bối cảnh benchmark. Roadmap dùng năm người mỗi vòng nên kết quả phải gọi là observed round evidence, không là chứng minh thống kê toàn population.
 
 ## 2. Research question, participant và consent
 
@@ -43,7 +43,7 @@ Task nêu goal nghiệp vụ, context và constraints, không nêu tên menu, pr
 
 ## 4. Protocol không cứu người dùng
 
-Dùng introduction script và điều kiện bắt đầu nhất quán. Moderator yêu cầu think aloud cho mục tiêu định tính nhưng không chỉ đường; prompt trung tính như “bạn đang nghĩ gì?” được log riêng. Với time benchmark, think-aloud có thể làm thời gian chậm và moderator prompts tạo nhiễu, nên protocol metric phải chuẩn hóa hoặc tách. Assistance event có taxonomy: clarification về scenario, technical failure, hint, direct instruction. Stop criteria bảo vệ participant và hệ thống; downtime không được chấm thành UX failure.
+Dùng introduction script và điều kiện bắt đầu nhất quán. Moderator yêu cầu think aloud cho mục tiêu định tính nhưng không chỉ đường; prompt trung tính như bạn đang nghĩ gì? được log riêng. Với time benchmark, think-aloud có thể làm thời gian chậm và moderator prompts tạo nhiễu, nên protocol metric phải chuẩn hóa hoặc tách. Assistance event có taxonomy: clarification về scenario, technical failure, hint, direct instruction. Stop criteria bảo vệ participant và hệ thống; downtime không được chấm thành UX failure.
 
 ## 5. Bốn số đo và denominator
 
@@ -55,11 +55,11 @@ Finding có observed behavior, task/step, frequency trong sample, consequence, r
 
 ## 7. Diễn giải cải thiện trung thực
 
-Báo từng vòng bằng numerator/denominator, task distribution, participant composition và protocol deviations. “Ít nhất ba số cải thiện” là acceptance nội bộ; không cho phép cherry-pick direction hoặc che confidence-wrong tăng. Với mẫu nhỏ, kết luận “đã quan sát cải thiện ở vòng hai trong sample/protocol này”, kèm cases không cải thiện và alternative explanations. Muốn tuyên bố population improvement phải thiết kế benchmark/power/precision phù hợp. Không lấy satisfaction thay behavior; nhưng perception-confidence gap hữu ích để phát hiện kết quả sai mà tự tin.
+Báo từng vòng bằng numerator/denominator, task distribution, participant composition và protocol deviations. Ít nhất ba số cải thiện là acceptance nội bộ; không cho phép cherry-pick direction hoặc che confidence-wrong tăng. Với mẫu nhỏ, kết luận đã quan sát cải thiện ở vòng hai trong sample/protocol này, kèm cases không cải thiện và alternative explanations. Muốn tuyên bố population improvement phải thiết kế benchmark/power/precision phù hợp. Không lấy satisfaction thay behavior; nhưng perception-confidence gap hữu ích để phát hiện kết quả sai mà tự tin.
 
 ## 8. Ma trận kiểm chứng từng mệnh đề
 
-Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được. Một trang tài liệu tồn tại, catalog có search box hoặc người dùng nói ‘dễ’ không tự là bằng chứng.
+Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được. Một trang tài liệu tồn tại, catalog có search box hoặc người dùng nói dễ không tự là bằng chứng.
 
 ### 8.1. qualitative issue discovery khác quantitative benchmark
 
@@ -231,7 +231,7 @@ Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.task-based-usability-testing`
+## Execution capsule: kiểm chứng `wiki.data-product.task-based-usability-testing`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.task-based-usability-testing`, sơ đồ, ví dụ và artifact về **Task-Based Usability Testing** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -253,7 +253,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Thiết kế hai vòng usability test cho analytical product như thế nào để quan sát task success, time, assistance và confident-wrong outcomes mà không biến năm người thành bằng chứng thống kê giả?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Thiết kế hai vòng usability test cho analytical product như thế nào để quan sát task success, time, assistance và confident-wrong outcomes mà không biến năm người thành bằng chứng thống kê giả? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Task-Based Usability Testing** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

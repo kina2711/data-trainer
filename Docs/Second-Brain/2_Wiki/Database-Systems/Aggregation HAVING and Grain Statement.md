@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao chứng minh một phép tổng hợp trả đúng grain, đúng tập row đầu vào và đúng biến thể đếm?
 source_ids:
   - src.course.hcmut-sql
@@ -33,11 +33,11 @@ relationships:
 
 ## 1. Grain là đơn vị của một dòng
 
-Grain trả lời câu hỏi “một dòng đại diện cho điều gì”. Ở bảng giao dịch, grain có thể là một dòng hàng trong hóa đơn. Sau `GROUP BY customer_id, order_date`, grain trở thành một khách hàng trong một ngày. Nếu bỏ `order_date`, grain lại đổi thành một khách hàng trong toàn bộ phạm vi lọc. Hai câu truy vấn có thể đều chạy, cùng tên cột measure, nhưng trả lời hai câu hỏi khác nhau.
+Grain trả lời câu hỏi một dòng đại diện cho điều gì. Ở bảng giao dịch, grain có thể là một dòng hàng trong hóa đơn. Sau `GROUP BY customer_id, order_date`, grain trở thành một khách hàng trong một ngày. Nếu bỏ `order_date`, grain lại đổi thành một khách hàng trong toàn bộ phạm vi lọc. Hai câu truy vấn có thể đều chạy, cùng tên cột measure, nhưng trả lời hai câu hỏi khác nhau.
 
 Trước mỗi phép tổng hợp, viết một câu hoàn chỉnh về grain đầu vào, khóa hoặc tập thuộc tính phân biệt một quan sát, đơn vị measure và phạm vi thời gian. Sau tổng hợp, viết grain đầu ra theo đúng danh sách nhóm. Đây là kiểm soát thiết kế của chương trình, không phải cú pháp SQL bắt buộc. Nó buộc người viết nhận ra rằng aggregate là phép biến đổi nghĩa, không chỉ là cách rút số dòng.
 
-Một phát biểu tốt có dạng: “Trước tổng hợp: một dòng trên mỗi `order_line_id`; `line_revenue` là tiền của đúng dòng hàng. Sau tổng hợp: một dòng trên mỗi `(customer_id, calendar_month)`; `revenue` cộng được trong từng nhóm đó.” Phát biểu “dữ liệu theo khách hàng” quá mơ hồ vì không cho biết thời gian, sản phẩm, currency hoặc trạng thái đơn.
+Một phát biểu tốt có dạng: Trước tổng hợp: một dòng trên mỗi `order_line_id`; `line_revenue` là tiền của đúng dòng hàng. Sau tổng hợp: một dòng trên mỗi `(customer_id, calendar_month)`; `revenue` cộng được trong từng nhóm đó. Phát biểu dữ liệu theo khách hàng quá mơ hồ vì không cho biết thời gian, sản phẩm, currency hoặc trạng thái đơn.
 
 ## 2. Pipeline logic quanh phép tổng hợp
 
@@ -59,7 +59,7 @@ Mọi cột chi tiết được project nhưng không aggregate phải được 
 
 `count(*)` đếm số dòng đầu vào của nhóm. `count(expression)` đếm số dòng mà expression khác NULL. `count(distinct expression)` đếm số giá trị khác NULL khác nhau. Chúng chỉ bằng nhau khi expression vừa không NULL vừa unique trong grain đầu vào.
 
-Ví dụ một nhóm có năm dòng, `coupon_code` lần lượt là `A, A, NULL, B, NULL`: `count(*) = 5`, `count(coupon_code) = 3`, `count(distinct coupon_code) = 2`. Không biến thể nào “đúng hơn” tuyệt đối; mỗi biến thể trả lời một câu hỏi. Tên metric phải cho biết đang đếm giao dịch, giao dịch có coupon, hay số coupon khác nhau.
+Ví dụ một nhóm có năm dòng, `coupon_code` lần lượt là `A, A, NULL, B, NULL`: `count(*) = 5`, `count(coupon_code) = 3`, `count(distinct coupon_code) = 2`. Không biến thể nào đúng hơn tuyệt đối; mỗi biến thể trả lời một câu hỏi. Tên metric phải cho biết đang đếm giao dịch, giao dịch có coupon, hay số coupon khác nhau.
 
 Đếm entity sau join phải dùng business key và hiểu fanout. `count(*)` sau join order-lines đếm dòng hàng, không đếm đơn. `count(distinct order_id)` có thể đếm đơn nhưng cũng có thể che lỗi join tạo duplicate; cần kiểm multiplicity riêng, không coi `DISTINCT` là thuốc chữa.
 
@@ -67,7 +67,7 @@ Ví dụ một nhóm có năm dòng, `coupon_code` lần lượt là `A, A, NULL
 
 Phần lớn aggregate chuẩn của PostgreSQL bỏ qua input NULL. `sum(amount)` và `avg(amount)` dùng các giá trị không NULL; `count(amount)` cũng đếm đúng các giá trị ấy. `count(*)` không bỏ dòng vì nó không đánh giá một expression nullable. Vì vậy denominator của `avg(amount)` là số amount đã biết, không phải tổng số dòng.
 
-Ngoại trừ `count`, aggregate trên tập không có dòng thường trả NULL, không phải zero. `sum` của empty set và `sum` của các dòng đều NULL đều trả NULL trong PostgreSQL. `COALESCE(sum(amount), 0)` chỉ đúng nếu nghiệp vụ xác nhận “không có quan sát” có thể biểu diễn bằng 0. Trong khoa học dữ liệu, missing và zero thường là hai trạng thái khác nhau.
+Ngoại trừ `count`, aggregate trên tập không có dòng thường trả NULL, không phải zero. `sum` của empty set và `sum` của các dòng đều NULL đều trả NULL trong PostgreSQL. `COALESCE(sum(amount), 0)` chỉ đúng nếu nghiệp vụ xác nhận không có quan sát có thể biểu diễn bằng 0. Trong khoa học dữ liệu, missing và zero thường là hai trạng thái khác nhau.
 
 Không thay NULL bằng zero trước `avg` nếu NULL nghĩa là chưa đo. Việc đó thêm các quan sát zero giả và đổi denominator. Nếu NULL nghĩa nghiệp vụ là không phát sinh, phép thay phải được ghi thành rule và kiểm bằng dữ liệu.
 
@@ -81,13 +81,13 @@ Không thay NULL bằng zero trước `avg` nếu NULL nghĩa là chưa đo. Vi�
 
 ## 7. HAVING lọc nhóm
 
-`HAVING` được đánh giá theo nhóm sau khi row filter và grouping đã xác lập. Nó phù hợp cho “khách hàng có ít nhất ba đơn”, “key có duplicate”, “ngày có doanh thu lớn hơn ngưỡng”. Predicate trong `HAVING` phải có nghĩa tại grain nhóm.
+`HAVING` được đánh giá theo nhóm sau khi row filter và grouping đã xác lập. Nó phù hợp cho khách hàng có ít nhất ba đơn, key có duplicate, ngày có doanh thu lớn hơn ngưỡng. Predicate trong `HAVING` phải có nghĩa tại grain nhóm.
 
 `HAVING count(*) > 1` là kiểm tra duplicate theo group key, nhưng chỉ chứng minh snapshot hiện tại. Nó không thay UNIQUE constraint cho invariant lâu dài. `HAVING sum(amount) <> expected` có thể là reconciliation gate nếu expected được xác định độc lập.
 
 Khi query không có `GROUP BY`, `HAVING` lọc nhóm toàn cục. Đây là cú pháp hợp lệ nhưng thường cần giải thích rõ, vì output có thể là một dòng hoặc không dòng. Không mặc định chuyển mọi predicate sang `HAVING` để tránh lỗi cú pháp.
 
-## 8. Grain trước và sau join–aggregate
+## 8. Grain trước và sau join-aggregate
 
 Một pipeline nhiều bảng nên có grain ledger. Với mỗi CTE, ghi grain, key, số dòng, measure và relationship dự kiến với CTE tiếp. Ví dụ: `line_base` một row/line; `payment_by_order` một row/order; join line với payment-by-order vẫn một row/line; `monthly_customer` một row/customer-month.
 
@@ -97,7 +97,7 @@ Một aggregate sớm có thể giảm fanout nhưng cũng làm mất detail c�
 
 ## 9. Điều kiện lọc và mẫu số
 
-Metric là tử số, mẫu số và population. “Tỷ lệ giao hàng đúng hạn” cần định nghĩa đơn eligible, trạng thái hủy, timezone, cutoff, late-arriving data và denominator. `WHERE` khác nhau giữa tử và mẫu có thể tạo tỷ lệ sai hoặc lớn hơn 100%.
+Metric là tử số, mẫu số và population. Tỷ lệ giao hàng đúng hạn cần định nghĩa đơn eligible, trạng thái hủy, timezone, cutoff, late-arriving data và denominator. `WHERE` khác nhau giữa tử và mẫu có thể tạo tỷ lệ sai hoặc lớn hơn 100%.
 
 Conditional aggregation như `sum(case when condition then 1 else 0 end)` giữ nhiều metric trên cùng population. Tuy nhiên phải quyết định ELSE 0 hay ELSE NULL. Với `count(case when condition then 1 end)`, chỉ row TRUE được đếm; FALSE và UNKNOWN đều thành NULL. Test cần có NULL trong các input của condition.
 
@@ -105,7 +105,7 @@ FILTER clause của PostgreSQL làm điều kiện từng aggregate rõ hơn: `c
 
 ## 10. Skew và phân phối
 
-Một trung bình đơn lẻ có thể che phân phối lệch. Khi dữ liệu có long tail, báo thêm median/percentiles, histogram hoặc bucket counts. `avg` đúng số học vẫn có thể không đại diện cho trải nghiệm điển hình. Không gọi average là “bình thường” nếu chưa quan sát phân phối.
+Một trung bình đơn lẻ có thể che phân phối lệch. Khi dữ liệu có long tail, báo thêm median/percentiles, histogram hoặc bucket counts. `avg` đúng số học vẫn có thể không đại diện cho trải nghiệm điển hình. Không gọi average là bình thường nếu chưa quan sát phân phối.
 
 Group size skew cũng ảnh hưởng performance và interpretation. Một customer rất lớn có thể chi phối tổng; một partition lớn có thể gây spill. Ghi top groups, percent contribution và count distribution. Đây là phân tích bổ sung, không thay định nghĩa metric.
 
@@ -133,7 +133,7 @@ Ba query bắt buộc đặt `count(*)`, `count(nullable_column)` và `count(dis
 
 Reviewer kiểm grain statement có đủ entity, time và unit; group key có đúng grain; join relationship có bằng chứng; row filter và group filter đặt đúng; count variant đúng câu hỏi; NULL/empty-set policy rõ; numerator/denominator cùng population; measure có tính additivity; kết quả được đối soát độc lập.
 
-Không chấp nhận “query chạy” hoặc “số trông hợp lý” làm evidence. Một query đạt khi người khác có thể dự đoán số dòng, giải thích mọi cột và tái tạo reconciliation.
+Không chấp nhận query chạy hoặc số trông hợp lý làm evidence. Một query đạt khi người khác có thể dự đoán số dòng, giải thích mọi cột và tái tạo reconciliation.
 
 ## 15. Câu hỏi tự kiểm tra
 
@@ -153,20 +153,20 @@ Không chấp nhận “query chạy” hoặc “số trông hợp lý” làm 
 - Hai mươi bài lab chưa được thực thi trong knowledge note này; bằng chứng chạy thuộc `after-note.md`.
 
 ## Reference
-1. [[SRC-HCMUT-SQL]] — PDF 69–79, aggregate, GROUP BY và HAVING.
-2. [[SRC-POSTGRESQL-17-AGGREGATE-FUNCTIONS]] — semantics của aggregate PostgreSQL 17.
-3. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] — pipeline WHERE/GROUP BY/HAVING.
-4. [[SRC-POSTGRESQL-17-NULL-COMPARISON]] — NULL và UNKNOWN.
+1. [[SRC-HCMUT-SQL]]: PDF 69-79, aggregate, GROUP BY và HAVING.
+2. [[SRC-POSTGRESQL-17-AGGREGATE-FUNCTIONS]]: semantics của aggregate PostgreSQL 17.
+3. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]]: pipeline WHERE/GROUP BY/HAVING.
+4. [[SRC-POSTGRESQL-17-NULL-COMPARISON]]: NULL và UNKNOWN.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-HCMUT-SQL]], PDF 69–79 | aggregate, GROUP BY, HAVING, ORDER BY | §§2–7 | Đã trình bày và mở rộng bằng grain |
-| [[SRC-POSTGRESQL-17-AGGREGATE-FUNCTIONS]] | count variants, NULL, empty set, ordering | §§4–6, 11 | Đã giữ semantics PostgreSQL 17 |
-| [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | logical placement của WHERE/GROUP/HAVING | §§2–3, 7 | Đã tách logic khỏi physical plan |
+| [[SRC-HCMUT-SQL]], PDF 69-79 | aggregate, GROUP BY, HAVING, ORDER BY | §§2-7 | Đã trình bày và mở rộng bằng grain |
+| [[SRC-POSTGRESQL-17-AGGREGATE-FUNCTIONS]] | count variants, NULL, empty set, ordering | §§4-6, 11 | Đã giữ semantics PostgreSQL 17 |
+| [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | logical placement của WHERE/GROUP/HAVING | §§2-3, 7 | Đã tách logic khỏi physical plan |
 | [[SRC-POSTGRESQL-17-NULL-COMPARISON]] | UNKNOWN và nullable predicates | §§5, 9 | Đã kiểm soát NULL trong metric |
-| Tổng hợp DE-L120 | grain ledger, additivity, reconciliation | §§1, 8–14 | Đã ghi thành quy trình kiểm được |
+| Tổng hợp DE-L120 | grain ledger, additivity, reconciliation | §§1, 8-14 | Đã ghi thành quy trình kiểm được |
 
 ## Key takeaways
 - `GROUP BY` đổi grain; phải nói rõ grain trước và sau.
@@ -177,7 +177,7 @@ Không chấp nhận “query chạy” hoặc “số trông hợp lý” làm 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.aggregation-having-grain`
+## Execution capsule: kiểm chứng `wiki.database.aggregation-having-grain`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.aggregation-having-grain`, sơ đồ, ví dụ và artifact về **Tổng hợp, HAVING và phát biểu grain** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

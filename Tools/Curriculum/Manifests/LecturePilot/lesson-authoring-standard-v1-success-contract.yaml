@@ -1,0 +1,35 @@
+task_id: academy-audit-curriculum-quality
+instance_id: lesson-authoring-standard-v1
+status: complete
+requested_at: 2026-10-04
+owner: kina2711
+lifecycle_profile: learning
+risk_tier: R1-reviewed
+execution_path: standard-path
+primary_deliverable: approved lesson-authoring baseline and enforceable quality contract
+scope:
+  approved_examples: [DA-L001, DE-L001]
+  future_lessons: DA-L002 onward and DE-L002 onward
+acceptance:
+  owner_approval_recorded: required
+  public_duration_language: forbidden
+  lesson_to_second_brain_links: required
+  second_brain_to_book_links: required
+  scientific_plain_style: required
+  metaphorical_or_ornamental_language: forbidden
+  curly_quotes_long_dashes_and_decorative_icons: forbidden
+  humanizer_final_pass: required
+  automated_validation: required
+evidence_plan:
+  - approved L001 teaching versions and lesson packages
+  - generated Second Brain web index
+  - lesson authoring standard validator
+  - browser navigation from lesson to note to book
+recovery:
+  - revert the authoring policy and validator
+  - restore the prior approval gate state
+release_gate: G6 complete after fresh curriculum, web, authoring-standard and diff validation.
+approval:
+  status: approved
+  approved_by: kina2711
+  approved_at: 2026-10-04

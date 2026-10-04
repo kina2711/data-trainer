@@ -38,7 +38,7 @@ Clock uncertainty, incomplete operations, retries và duplicate IDs được gi�
 
 ## 3. Model selection
 
-Register, set, queue hay transactional model quyết định legal sequential states; chọn sai model làm verdict vô nghĩa. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `History analysis project - judge a guarantee from evidence`, câu hỏi thực dụng là: Từ concurrent history có invocation/response và failures, làm sao chỉ kết luận guarantee mà evidence thật sự hỗ trợ? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Register, set, queue hay transactional model quyết định legal sequential states; chọn sai model làm verdict vô nghĩa. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `History analysis project - judge a guarantee from evidence`, câu hỏi thực dụng là: Từ concurrent history có invocation/response và failures, làm sao chỉ kết luận guarantee mà evidence thật sự hỗ trợ? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Checker
 
@@ -221,7 +221,7 @@ Với `wiki.distributed.history-analysis-evidence`, command thành công không 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.distributed.history-analysis-evidence`
+## Execution capsule: kiểm chứng `wiki.distributed.history-analysis-evidence`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.distributed.history-analysis-evidence`, sơ đồ, ví dụ và artifact về **History analysis project - judge a guarantee from evidence** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

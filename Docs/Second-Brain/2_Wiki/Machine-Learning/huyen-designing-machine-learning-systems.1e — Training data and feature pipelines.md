@@ -25,25 +25,25 @@ tags: [wiki/machine-learning, book-derived, decision]
 reference_path: Material/Shared/Knowledge-Notes/PACK-CURATED-BOOKS-01/huyen-designing-machine-learning-systems.1e/02-training-data-and-feature-pipelines.md
 ---
 
-# huyen-designing-machine-learning-systems.1e — Training data and feature pipelines
+# huyen-designing-machine-learning-systems.1e: Training data and feature pipelines
 
 **Tóm tắt bản chất:** Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. Note này biến ý tưởng thành decision protocol có thể kiểm tra, không biến lời tác giả thành chân lý ngoài bối cảnh.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 Vấn đề mà **Training data and feature pipelines** giải quyết không phải thiếu thuật ngữ. Đó là lúc người làm dữ liệu phải chọn một hành động nhưng input, boundary và cost of error còn lẫn vào nhau. Khi bỏ qua boundary, một rule đúng trong ví dụ của *Designing Machine Learning Systems* bị kéo sang workload khác và tạo kết luận tự tin hơn bằng chứng.
 
-Cái giá của lỗi `huyen-designing-machine-learning-systems.1e.2` quanh **Training data and feature pipelines** xuất hiện ở consumer: quyết định sai population, tối ưu nhầm metric, mất khả năng replay hoặc không biết lúc nào cần đảo lựa chọn. Vì vậy note khóa bốn thứ trước: claim, conditions, observable artifact và falsifier. Locator gốc cho phần này là **PDF 234–242**; locator chỉ dẫn tới vùng cần đọc lại, không thay thế việc kiểm source khi claim có tác động cao.
+Cái giá của lỗi `huyen-designing-machine-learning-systems.1e.2` quanh **Training data and feature pipelines** xuất hiện ở consumer: quyết định sai population, tối ưu nhầm metric, mất khả năng replay hoặc không biết lúc nào cần đảo lựa chọn. Vì vậy note khóa bốn thứ trước: claim, conditions, observable artifact và falsifier. Locator gốc cho phần này là **PDF 234-242**; locator chỉ dẫn tới vùng cần đọc lại, không thay thế việc kiểm source khi claim có tác động cao.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew.
 
 Với `huyen-designing-machine-learning-systems.1e.2`, cơ chế của **Training data and feature pipelines** được tách thành sáu bước. (1) Xác định decision và owner. (2) Khóa population, identity, grain và time boundary. (3) Ghi input/precondition cùng unknown có impact-if-wrong. (4) Áp rule hoặc framework ở đúng scope. (5) Tạo observable artifact: bảng, query, model card, dashboard state, run log hoặc decision record. (6) Đối soát bằng oracle không dùng chung assumption với implementation chính.
 
-Phần của tác giả cho `huyen-designing-machine-learning-systems.1e.2` là khái niệm và trade-off nằm trong `SRC-HUYEN-DESIGNING-MACHINE-LEARNING-SYSTEMS-1E` tại PDF 234–242. Phần synthesis của pack là việc chuyển nó thành protocol sáu bước và evidence checklist. Hai lớp này cố ý tách nhau: synthesis có thể thay đổi theo destination, còn attribution và locator không được thay.
+Phần của tác giả cho `huyen-designing-machine-learning-systems.1e.2` là khái niệm và trade-off nằm trong `SRC-HUYEN-DESIGNING-MACHINE-LEARNING-SYSTEMS-1E` tại PDF 234-242. Phần synthesis của pack là việc chuyển nó thành protocol sáu bước và evidence checklist. Hai lớp này cố ý tách nhau: synthesis có thể thay đổi theo destination, còn attribution và locator không được thay.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Điều kiện | Chọn | Tránh | Bằng chứng |
 |---|---|---|---|
@@ -55,13 +55,13 @@ Phần của tác giả cho `huyen-designing-machine-learning-systems.1e.2` là 
 
 Default của **Training data and feature pipelines** là thử ở boundary nhỏ nhất tạo ra observation phân biệt được hai lựa chọn. Nếu experiment không thể làm recommendation đảo trong bất kỳ kết quả nào, nó không giảm uncertainty và không đáng chạy.
 
-## Case Study Thực Chiến: áp dụng Training data and feature pipelines dưới ràng buộc thay đổi
+## Worked Case: áp dụng Training data and feature pipelines dưới ràng buộc thay đổi
 
 Một nhóm ML dùng **Training data and feature pipelines** cho hệ thống chấm điểm batch. Họ khóa feature availability, split theo thời gian, baseline, slice metrics và serving contract trước training. Offline score tăng nhưng training-serving skew xuất hiện ở feature quan trọng; model không được promote dù leaderboard tốt hơn.
 
 Biến thể khó hơn của `huyen-designing-machine-learning-systems.1e.2` đổi constraint quanh **Training data and feature pipelines**: deadline từ một tuần xuống hai giờ, hoặc volume tăng 100 lần. Đội không được giảm ngưỡng correctness để kịp hạn. Họ giảm phạm vi câu trả lời, giữ hard constraints và ghi phần chưa kiểm là unknown. Đây là transfer test: dùng cùng reasoning nhưng output khác vì cost, reversibility và evidence budget đã đổi.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Framework trong *Designing Machine Learning Systems* là checklist áp dụng nguyên xi. **Thực tế:** Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. **Vì sao nghe hợp lý:** tên framework làm các bước trông độc lập với population, version và organization context.
 
@@ -69,7 +69,7 @@ Biến thể khó hơn của `huyen-designing-machine-learning-systems.1e.2` đ�
 
 **Hiểu lầm `huyen-designing-machine-learning-systems.1e.2-C`:** Một case thành công của **Training data and feature pipelines** chứng minh cơ chế tổng quát. **Thực tế:** case chỉ chứng minh observation trong fixture, version và scale đã chạy. **Vì sao nghe hợp lý:** narrative hoàn chỉnh che những changed constraints chưa xuất hiện.
 
-Edge case `huyen-designing-machine-learning-systems.1e.2-selection` của **Training data and feature pipelines** là selection: dữ liệu quan sát được có thể chỉ là phần đã qua filter, instrumentation hoặc survivor process. Edge case `huyen-designing-machine-learning-systems.1e.2-delay` tại PDF 234–242 là delayed feedback: output hôm nay chưa có outcome để xác nhận. Cả hai yêu cầu giới hạn claim thay vì thêm tính từ “có khả năng”.
+Edge case `huyen-designing-machine-learning-systems.1e.2-selection` của **Training data and feature pipelines** là selection: dữ liệu quan sát được có thể chỉ là phần đã qua filter, instrumentation hoặc survivor process. Edge case `huyen-designing-machine-learning-systems.1e.2-delay` tại PDF 234-242 là delayed feedback: output hôm nay chưa có outcome để xác nhận. Cả hai yêu cầu giới hạn claim thay vì thêm tính từ có khả năng.
 
 ## Nếu Bạn Dạy Lại Điều Này...
 
@@ -79,7 +79,7 @@ Khi dạy `huyen-designing-machine-learning-systems.1e.2`, mở bằng hai phư�
 
 ### Probe 1: definition boundary
 
-**Mệnh đề huyen-designing-machine-learning-systems.1e.2.1.** `Training data and feature pipelines` giữ được claim “Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew.” khi thay đổi `definition boundary` trong scope đã công bố.
+**Mệnh đề huyen-designing-machine-learning-systems.1e.2.1.** `Training data and feature pipelines` giữ được claim Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. khi thay đổi `definition boundary` trong scope đã công bố.
 
 **Thiết kế phép thử `huyen-designing-machine-learning-systems.1e.2.1` cho `definition boundary`.** Tạo control và variant chỉ khác ở `definition boundary`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -87,7 +87,7 @@ Khi dạy `huyen-designing-machine-learning-systems.1e.2`, mở bằng hai phư�
 
 ### Probe 2: input and preconditions
 
-**Mệnh đề huyen-designing-machine-learning-systems.1e.2.2.** `Training data and feature pipelines` giữ được claim “Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew.” khi thay đổi `input and preconditions` trong scope đã công bố.
+**Mệnh đề huyen-designing-machine-learning-systems.1e.2.2.** `Training data and feature pipelines` giữ được claim Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. khi thay đổi `input and preconditions` trong scope đã công bố.
 
 **Thiết kế phép thử `huyen-designing-machine-learning-systems.1e.2.2` cho `input and preconditions`.** Tạo control và variant chỉ khác ở `input and preconditions`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -95,7 +95,7 @@ Khi dạy `huyen-designing-machine-learning-systems.1e.2`, mở bằng hai phư�
 
 ### Probe 3: decision threshold
 
-**Mệnh đề huyen-designing-machine-learning-systems.1e.2.3.** `Training data and feature pipelines` giữ được claim “Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew.” khi thay đổi `decision threshold` trong scope đã công bố.
+**Mệnh đề huyen-designing-machine-learning-systems.1e.2.3.** `Training data and feature pipelines` giữ được claim Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. khi thay đổi `decision threshold` trong scope đã công bố.
 
 **Thiết kế phép thử `huyen-designing-machine-learning-systems.1e.2.3` cho `decision threshold`.** Tạo control và variant chỉ khác ở `decision threshold`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -103,7 +103,7 @@ Khi dạy `huyen-designing-machine-learning-systems.1e.2`, mở bằng hai phư�
 
 ### Probe 4: counterexample
 
-**Mệnh đề huyen-designing-machine-learning-systems.1e.2.4.** `Training data and feature pipelines` giữ được claim “Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew.” khi thay đổi `counterexample` trong scope đã công bố.
+**Mệnh đề huyen-designing-machine-learning-systems.1e.2.4.** `Training data and feature pipelines` giữ được claim Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. khi thay đổi `counterexample` trong scope đã công bố.
 
 **Thiết kế phép thử `huyen-designing-machine-learning-systems.1e.2.4` cho `counterexample`.** Tạo control và variant chỉ khác ở `counterexample`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -111,7 +111,7 @@ Khi dạy `huyen-designing-machine-learning-systems.1e.2`, mở bằng hai phư�
 
 ### Probe 5: failure mode
 
-**Mệnh đề huyen-designing-machine-learning-systems.1e.2.5.** `Training data and feature pipelines` giữ được claim “Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew.” khi thay đổi `failure mode` trong scope đã công bố.
+**Mệnh đề huyen-designing-machine-learning-systems.1e.2.5.** `Training data and feature pipelines` giữ được claim Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. khi thay đổi `failure mode` trong scope đã công bố.
 
 **Thiết kế phép thử `huyen-designing-machine-learning-systems.1e.2.5` cho `failure mode`.** Tạo control và variant chỉ khác ở `failure mode`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -119,7 +119,7 @@ Khi dạy `huyen-designing-machine-learning-systems.1e.2`, mở bằng hai phư�
 
 ### Probe 6: changed scale
 
-**Mệnh đề huyen-designing-machine-learning-systems.1e.2.6.** `Training data and feature pipelines` giữ được claim “Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew.” khi thay đổi `changed scale` trong scope đã công bố.
+**Mệnh đề huyen-designing-machine-learning-systems.1e.2.6.** `Training data and feature pipelines` giữ được claim Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. khi thay đổi `changed scale` trong scope đã công bố.
 
 **Thiết kế phép thử `huyen-designing-machine-learning-systems.1e.2.6` cho `changed scale`.** Tạo control và variant chỉ khác ở `changed scale`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -127,7 +127,7 @@ Khi dạy `huyen-designing-machine-learning-systems.1e.2`, mở bằng hai phư�
 
 ### Probe 7: changed time window
 
-**Mệnh đề huyen-designing-machine-learning-systems.1e.2.7.** `Training data and feature pipelines` giữ được claim “Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew.” khi thay đổi `changed time window` trong scope đã công bố.
+**Mệnh đề huyen-designing-machine-learning-systems.1e.2.7.** `Training data and feature pipelines` giữ được claim Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. khi thay đổi `changed time window` trong scope đã công bố.
 
 **Thiết kế phép thử `huyen-designing-machine-learning-systems.1e.2.7` cho `changed time window`.** Tạo control và variant chỉ khác ở `changed time window`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -135,7 +135,7 @@ Khi dạy `huyen-designing-machine-learning-systems.1e.2`, mở bằng hai phư�
 
 ### Probe 8: adversarial case
 
-**Mệnh đề huyen-designing-machine-learning-systems.1e.2.8.** `Training data and feature pipelines` giữ được claim “Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew.” khi thay đổi `adversarial case` trong scope đã công bố.
+**Mệnh đề huyen-designing-machine-learning-systems.1e.2.8.** `Training data and feature pipelines` giữ được claim Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. khi thay đổi `adversarial case` trong scope đã công bố.
 
 **Thiết kế phép thử `huyen-designing-machine-learning-systems.1e.2.8` cho `adversarial case`.** Tạo control và variant chỉ khác ở `adversarial case`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -143,7 +143,7 @@ Khi dạy `huyen-designing-machine-learning-systems.1e.2`, mở bằng hai phư�
 
 ### Probe 9: independent oracle
 
-**Mệnh đề huyen-designing-machine-learning-systems.1e.2.9.** `Training data and feature pipelines` giữ được claim “Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew.” khi thay đổi `independent oracle` trong scope đã công bố.
+**Mệnh đề huyen-designing-machine-learning-systems.1e.2.9.** `Training data and feature pipelines` giữ được claim Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. khi thay đổi `independent oracle` trong scope đã công bố.
 
 **Thiết kế phép thử `huyen-designing-machine-learning-systems.1e.2.9` cho `independent oracle`.** Tạo control và variant chỉ khác ở `independent oracle`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -151,7 +151,7 @@ Khi dạy `huyen-designing-machine-learning-systems.1e.2`, mở bằng hai phư�
 
 ### Probe 10: transfer scenario
 
-**Mệnh đề huyen-designing-machine-learning-systems.1e.2.10.** `Training data and feature pipelines` giữ được claim “Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew.” khi thay đổi `transfer scenario` trong scope đã công bố.
+**Mệnh đề huyen-designing-machine-learning-systems.1e.2.10.** `Training data and feature pipelines` giữ được claim Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. khi thay đổi `transfer scenario` trong scope đã công bố.
 
 **Thiết kế phép thử `huyen-designing-machine-learning-systems.1e.2.10` cho `transfer scenario`.** Tạo control và variant chỉ khác ở `transfer scenario`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -185,19 +185,19 @@ Control/variant có expected khóa trước, oracle độc lập, changed-constr
 
 ## Giới hạn và điều chưa cho phép kết luận
 
-- Locator **PDF 234–242** là vùng đọc đại diện, không phải tuyên bố toàn bộ sách đã được chuyển thành note này.
+- Locator **PDF 234-242** là vùng đọc đại diện, không phải tuyên bố toàn bộ sách đã được chuyển thành note này.
 - Ví dụ là synthesis để kiểm transfer, không phải trải nghiệm production hay case nguyên văn của tác giả.
 - Concept key `ck.book.huyen-designing-machine-learning-systems.1e.training-data-and-feature-pipelines` đã được owner phê duyệt `canonical`; note thuộc canonical registry coverage. Trạng thái này không tự chứng minh learner mastery.
 - Nguồn private, copyrighted; không được public hoặc trích dài nếu chưa có authority.
 
 ## Reference
-1. [[SRC-HUYEN-DESIGNING-MACHINE-LEARNING-SYSTEMS-1E]] — `src.book.huyen-designing-machine-learning-systems.1e`, PDF 234–242.
+1. [[SRC-HUYEN-DESIGNING-MACHINE-LEARNING-SYSTEMS-1E]]: `src.book.huyen-designing-machine-learning-systems.1e`, PDF 234-242.
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-HUYEN-DESIGNING-MACHINE-LEARNING-SYSTEMS-1E]] — `src.book.huyen-designing-machine-learning-systems.1e` | PDF 234–242 | Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. | mechanism, decision, case, probes | Đã phủ | các chapter và framework khác |
+| [[SRC-HUYEN-DESIGNING-MACHINE-LEARNING-SYSTEMS-1E]]: `src.book.huyen-designing-machine-learning-systems.1e` | PDF 234-242 | Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew. | mechanism, decision, case, probes | Đã phủ | các chapter và framework khác |
 
 ## Key takeaways
 - Data lineage, point-in-time correctness và feature ownership ngăn training-serving skew.
@@ -207,10 +207,10 @@ Control/variant có expected khóa trước, oracle độc lập, changed-constr
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.book.huyen-designing-machine-learning-systems.1e.training-data-and-feature-pipelines`
+## Execution capsule: kiểm chứng `wiki.book.huyen-designing-machine-learning-systems.1e.training-data-and-feature-pipelines`
 
 > [!important] Phân loại mệnh đề
-> Với `wiki.book.huyen-designing-machine-learning-systems.1e.training-data-and-feature-pipelines`, sơ đồ, ví dụ và artifact về **huyen-designing-machine-learning-systems.1e — Training data and feature pipelines** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
+> Với `wiki.book.huyen-designing-machine-learning-systems.1e.training-data-and-feature-pipelines`, sơ đồ, ví dụ và artifact về **huyen-designing-machine-learning-systems.1e: Training data and feature pipelines** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
 
 ### Sơ đồ cơ chế và điểm kiểm soát
 
@@ -225,7 +225,7 @@ flowchart LR
     R --> B
 ```
 
-Đọc sơ đồ `wiki.book.huyen-designing-machine-learning-systems.1e.training-data-and-feature-pipelines` từ trái sang phải: source chỉ cung cấp claim ban đầu cho **huyen-designing-machine-learning-systems.1e — Training data and feature pipelines**; quyết định chỉ được đi tiếp sau khi boundary, evidence và điều kiện đảo quyết định đã hiện hữu.
+Đọc sơ đồ `wiki.book.huyen-designing-machine-learning-systems.1e.training-data-and-feature-pipelines` từ trái sang phải: source chỉ cung cấp claim ban đầu cho **huyen-designing-machine-learning-systems.1e: Training data and feature pipelines**; quyết định chỉ được đi tiếp sau khi boundary, evidence và điều kiện đảo quyết định đã hiện hữu.
 
 ### Artifact thực thi tối thiểu
 
@@ -255,6 +255,6 @@ evidence = WikiBookHuyenDesigningMachineLearningSysteEvidence(
 assert evidence.accepted()
 ```
 
-Artifact của `wiki.book.huyen-designing-machine-learning-systems.1e.training-data-and-feature-pipelines` buộc người dùng ghi boundary, oracle và reversal trigger cho **huyen-designing-machine-learning-systems.1e — Training data and feature pipelines**. Các giá trị minh họa phải được thay bằng evidence thật trước khi dùng cho quyết định.
+Artifact của `wiki.book.huyen-designing-machine-learning-systems.1e.training-data-and-feature-pipelines` buộc người dùng ghi boundary, oracle và reversal trigger cho **huyen-designing-machine-learning-systems.1e: Training data and feature pipelines**. Các giá trị minh họa phải được thay bằng evidence thật trước khi dùng cho quyết định.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:END -->

@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** `GROUP BY` là một phép biến đổi hạt; cách trình bày này suy ra được mọi quy tắc còn lại của mệnh đề. Hệ quả: mọi cột trong `SELECT` phải nằm trong `GROUP BY` hoặc trong một hàm tổng hợp. Ba biến thể đếm `COUNT(*)`, `COUNT(cot)`, `COUNT(DISTINCT cot)` và tập bản ghi mỗi biến thể tính. `SUM`, `AVG`, `MIN`, `MAX` và cách chúng bỏ qua `NULL`. `WHERE` lọc dòng trước gộp, `HAVING` lọc nhóm sau gộp. Gộp nhóm trên biểu thức. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L022 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **GROUP BY, aggregate functions and HAVING**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Phát biểu hạt trước và sau mỗi phép `GROUP BY`, và chọn đúng biến thể `COUNT` theo câu hỏi nghiệp vụ. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 `GROUP BY` là một phép biến đổi hạt; cách trình bày này suy ra được mọi quy tắc còn lại của mệnh đề. Hệ quả: mọi cột trong `SELECT` phải nằm trong `GROUP BY` hoặc trong một hàm tổng hợp. Ba biến thể đếm `COUNT(*)`, `COUNT(cot)`, `COUNT(DISTINCT cot)` và tập bản ghi mỗi biến thể tính. `SUM`, `AVG`, `MIN`, `MAX` và cách chúng bỏ qua `NULL`. `WHERE` lọc dòng trước gộp, `HAVING` lọc nhóm sau gộp. Gộp nhóm trên biểu thức.
 
@@ -44,7 +44,7 @@ Cơ chế của `group-by-aggregate-functions-and-having` được kiểm qua n�
 
 Lỗi cần loại trừ trong bài này là: Đặt điều kiện trên giá trị tổng hợp vào `WHERE` · dùng `COUNT(*)` khi câu hỏi cần `COUNT(DISTINCT)` · lấy trung bình của trung bình. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Đặt điều kiện trên giá t
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L022: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “≥ 18/20 truy vấn đúng cả kết quả lẫn phát biểu hạt trước và sau.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L022: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành ≥ 18/20 truy vấn đúng cả kết quả lẫn phát biểu hạt trước và sau.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: GROUP BY, aggregate functions and HAVING
+## Worked Case: GROUP BY, aggregate functions and HAVING
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: 20 truy vấn gộp nhóm trên `DS1`, mỗi truy vấn nộp kèm phát biểu hạt trước và sau khi gộp.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `GROUP BY, aggregate functions and HAVING`, learner g
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L022 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `GROUP BY, aggregate functions and HAVING` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L022 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** `GROUP BY` là một phép biến đổi hạt; cách trình bày này suy ra được mọi quy tắc còn lại của mệnh đề. Hệ quả: mọi cột trong `SELECT` phải nằm trong `GROUP BY` hoặc trong một hàm tổng hợp. Ba biến thể đếm `COUNT(*)`, `COUNT(cot)`, `COUNT(DISTINCT cot)` và tập bản ghi mỗi biến thể tính. `SUM`, `AVG`, `MIN`, `MAX` và cách chúng bỏ qua `NULL`. `WHERE` lọc dòng trước gộp, `HAVING` lọc nhóm sau gộp. Gộp nhóm trên biểu thức.
+**Mệnh đề của probe 1: `population`.** `GROUP BY` là một phép biến đổi hạt; cách trình bày này suy ra được mọi quy tắc còn lại của mệnh đề. Hệ quả: mọi cột trong `SELECT` phải nằm trong `GROUP BY` hoặc trong một hàm tổng hợp. Ba biến thể đếm `COUNT(*)`, `COUNT(cot)`, `COUNT(DISTINCT cot)` và tập bản ghi mỗi biến thể tính. `SUM`, `AVG`, `MIN`, `MAX` và cách chúng bỏ qua `NULL`. `WHERE` lọc dòng trước gộp, `HAVING` lọc nhóm sau gộp. Gộp nhóm trên biểu thức.
 
 **Thiết kế.** Probe 1 của L022 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L022 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Phát biểu hạt trước và sau mỗi phép `GROUP BY`, và chọn đúng biến thể `COUNT` theo câu hỏi nghiệp vụ.
+**Mệnh đề của probe 2: `grain`.** Phát biểu hạt trước và sau mỗi phép `GROUP BY`, và chọn đúng biến thể `COUNT` theo câu hỏi nghiệp vụ.
 
 **Thiết kế.** Probe 2 của L022 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L022 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Đặt điều kiện trên giá trị tổng hợp vào `WHERE` · dùng `COUNT(*)` khi câu hỏi cần `COUNT(DISTINCT)` · lấy trung bình của trung bình.
+**Mệnh đề của probe 3: `identity`.** Đặt điều kiện trên giá trị tổng hợp vào `WHERE` · dùng `COUNT(*)` khi câu hỏi cần `COUNT(DISTINCT)` · lấy trung bình của trung bình.
 
 **Thiết kế.** Probe 3 của L022 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L022 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** ≥ 18/20 truy vấn đúng cả kết quả lẫn phát biểu hạt trước và sau.
+**Mệnh đề của probe 4: `time cutoff`.** ≥ 18/20 truy vấn đúng cả kết quả lẫn phát biểu hạt trước và sau.
 
 **Thiết kế.** Probe 4 của L022 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L022 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** `GROUP BY` là một phép biến đổi hạt; cách trình bày này suy ra được mọi quy tắc còn lại của mệnh đề. Hệ quả: mọi cột trong `SELECT` phải nằm trong `GROUP BY` hoặc trong một hàm tổng hợp. Ba biến thể đếm `COUNT(*)`, `COUNT(cot)`, `COUNT(DISTINCT cot)` và tập bản ghi mỗi biến thể tính. `SUM`, `AVG`, `MIN`, `MAX` và cách chúng bỏ qua `NULL`. `WHERE` lọc dòng trước gộp, `HAVING` lọc nhóm sau gộp. Gộp nhóm trên biểu thức.
+**Mệnh đề của probe 5: `missing versus zero`.** `GROUP BY` là một phép biến đổi hạt; cách trình bày này suy ra được mọi quy tắc còn lại của mệnh đề. Hệ quả: mọi cột trong `SELECT` phải nằm trong `GROUP BY` hoặc trong một hàm tổng hợp. Ba biến thể đếm `COUNT(*)`, `COUNT(cot)`, `COUNT(DISTINCT cot)` và tập bản ghi mỗi biến thể tính. `SUM`, `AVG`, `MIN`, `MAX` và cách chúng bỏ qua `NULL`. `WHERE` lọc dòng trước gộp, `HAVING` lọc nhóm sau gộp. Gộp nhóm trên biểu thức.
 
 **Thiết kế.** Probe 5 của L022 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L022 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Phát biểu hạt trước và sau mỗi phép `GROUP BY`, và chọn đúng biến thể `COUNT` theo câu hỏi nghiệp vụ.
+**Mệnh đề của probe 6: `duplicate`.** Phát biểu hạt trước và sau mỗi phép `GROUP BY`, và chọn đúng biến thể `COUNT` theo câu hỏi nghiệp vụ.
 
 **Thiết kế.** Probe 6 của L022 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L022 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Đặt điều kiện trên giá trị tổng hợp vào `WHERE` · dùng `COUNT(*)` khi câu hỏi cần `COUNT(DISTINCT)` · lấy trung bình của trung bình.
+**Mệnh đề của probe 7: `join fan-out`.** Đặt điều kiện trên giá trị tổng hợp vào `WHERE` · dùng `COUNT(*)` khi câu hỏi cần `COUNT(DISTINCT)` · lấy trung bình của trung bình.
 
 **Thiết kế.** Probe 7 của L022 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L022 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** ≥ 18/20 truy vấn đúng cả kết quả lẫn phát biểu hạt trước và sau.
+**Mệnh đề của probe 8: `changed definition`.** ≥ 18/20 truy vấn đúng cả kết quả lẫn phát biểu hạt trước và sau.
 
 **Thiết kế.** Probe 8 của L022 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L022 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** `GROUP BY` là một phép biến đổi hạt; cách trình bày này suy ra được mọi quy tắc còn lại của mệnh đề. Hệ quả: mọi cột trong `SELECT` phải nằm trong `GROUP BY` hoặc trong một hàm tổng hợp. Ba biến thể đếm `COUNT(*)`, `COUNT(cot)`, `COUNT(DISTINCT cot)` và tập bản ghi mỗi biến thể tính. `SUM`, `AVG`, `MIN`, `MAX` và cách chúng bỏ qua `NULL`. `WHERE` lọc dòng trước gộp, `HAVING` lọc nhóm sau gộp. Gộp nhóm trên biểu thức.
+**Mệnh đề của probe 9: `independent oracle`.** `GROUP BY` là một phép biến đổi hạt; cách trình bày này suy ra được mọi quy tắc còn lại của mệnh đề. Hệ quả: mọi cột trong `SELECT` phải nằm trong `GROUP BY` hoặc trong một hàm tổng hợp. Ba biến thể đếm `COUNT(*)`, `COUNT(cot)`, `COUNT(DISTINCT cot)` và tập bản ghi mỗi biến thể tính. `SUM`, `AVG`, `MIN`, `MAX` và cách chúng bỏ qua `NULL`. `WHERE` lọc dòng trước gộp, `HAVING` lọc nhóm sau gộp. Gộp nhóm trên biểu thức.
 
 **Thiết kế.** Probe 9 của L022 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L022 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Phát biểu hạt trước và sau mỗi phép `GROUP BY`, và chọn đúng biến thể `COUNT` theo câu hỏi nghiệp vụ.
+**Mệnh đề của probe 10: `replay`.** Phát biểu hạt trước và sau mỗi phép `GROUP BY`, và chọn đúng biến thể `COUNT` theo câu hỏi nghiệp vụ.
 
 **Thiết kế.** Probe 10 của L022 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L022 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Đặt điều kiện trên giá trị tổng hợp vào `WHERE` · dùng `COUNT(*)` khi câu hỏi cần `COUNT(DISTINCT)` · lấy trung bình của trung bình.
+**Mệnh đề của probe 11: `fresh snapshot`.** Đặt điều kiện trên giá trị tổng hợp vào `WHERE` · dùng `COUNT(*)` khi câu hỏi cần `COUNT(DISTINCT)` · lấy trung bình của trung bình.
 
 **Thiết kế.** Probe 11 của L022 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L022 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** ≥ 18/20 truy vấn đúng cả kết quả lẫn phát biểu hạt trước và sau.
+**Mệnh đề của probe 12: `novel scenario`.** ≥ 18/20 truy vấn đúng cả kết quả lẫn phát biểu hạt trước và sau.
 
 **Thiết kế.** Probe 12 của L022 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Phát biểu hạt trước và sau mỗi phép `GROUP BY`, và chọn đúng bi
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql`
-2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e`
+1. [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql`
+2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới GROUP BY, aggregate functions and HAVING | các mục cơ chế, case và probe | Đã phủ | ngoài objective L022 |
-| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới GROUP BY, aggregate functions and HAVING | các mục cơ chế, case và probe | Đã phủ | ngoài objective L022 |
+| [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới GROUP BY, aggregate functions and HAVING | các mục cơ chế, case và probe | Đã phủ | ngoài objective L022 |
+| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới GROUP BY, aggregate functions and HAVING | các mục cơ chế, case và probe | Đã phủ | ngoài objective L022 |
 
 ## Key takeaways
 - Phát biểu hạt trước và sau mỗi phép `GROUP BY`, và chọn đúng biến thể `COUNT` theo câu hỏi nghiệp vụ.
@@ -226,7 +226,7 @@ Phát biểu hạt trước và sau mỗi phép `GROUP BY`, và chọn đúng bi
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.group-by-aggregate-functions-and-having`
+## Execution capsule: kiểm chứng `wiki.da.group-by-aggregate-functions-and-having`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.group-by-aggregate-functions-and-having`, sơ đồ, ví dụ và artifact về **GROUP BY, aggregate functions and HAVING** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

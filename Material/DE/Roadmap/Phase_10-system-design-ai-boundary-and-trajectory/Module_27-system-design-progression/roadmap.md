@@ -45,26 +45,26 @@ Chạy một quy trình thiết kế mười bước cho năm loại hệ, và b
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L405 · The ten-step design process | LT | Chạy đủ mười bước cho một bài toán nhỏ và dừng được ở bước hai với các con số có căn cứ. | Mười bước có đầu ra ghi lại, ít nhất ba phi mục tiêu, và mọi con số ở bước hai kèm giả định cùng nguồn. | M27: M26 |
-| L406 · Quantifying requirements - traffic, data, latency, RPO and cost | TH | Lượng hoá sáu nhóm cho hai bài toán, kèm giả định, độ nhạy và ước lượng khoá nóng. | Sáu nhóm có con số kèm giả định và nguồn ở cả hai bài toán, tỉ số đỉnh trên trung bình được nêu, và phân tích độ nhạy chỉ ra kết luận đổi. | L405 |
-| L407 · Invariants and consistency boundaries | TH | Phát biểu bất biến cho hai thiết kế và suy ra ranh giới giao dịch cùng đường dựng lại dữ liệu dẫn xuất. | Mỗi bất biến chỉ ra đúng ranh giới cưỡng chế, mọi dữ liệu dẫn xuất có đường dựng lại, và mọi nhất quán cuối cùng có hợp đồng mức cũ. | L406 |
-| L408 · The capacity sheet - assumptions and sensitivity | TH | Lập bảng năng lực có công thức cho một thiết kế và chỉ ra nút thắt đầu tiên cùng ngưỡng đổi kiến trúc. | Mọi ô có công thức, nút thắt đầu tiên được chỉ ra kèm giả định, và ≥ 2 ngưỡng đổi kiến trúc được nêu kèm mô tả. | L407 |
-| L409 · Sequence 1 - a single stateful service | TH | Truy một phép ghi và một phép đọc qua mọi thành phần của ba thiết kế bậc một. | Bốn câu hỏi có câu trả lời ở mọi thành phần của ba thiết kế, và chính sách vô hiệu hoá bộ nhớ đệm được viết ra. | L408 |
-| L410 · Sequence 2 - replicated and partitioned | TH | Thiết kế một dịch vụ có bản sao và phân vùng, trả lời được ba câu hỏi và nêu lượng dữ liệu mất tối đa. | Ba câu hỏi có câu trả lời cụ thể, lượng dữ liệu mất tối đa tính được từ độ trễ sao chép, và quy trình tái phân bố có giới hạn tốc độ. | L409 |
-| L411 · Sequence 3 - asynchronous workflow | TH | Thiết kế một luồng bất đồng bộ có hợp đồng người dùng rõ và xử lý được bên tiêu thụ chậm. | Ranh giới đồng bộ và bất đồng bộ có lý do, hợp đồng người dùng đủ hai phần, và năng lực đệm khi bên tiêu thụ dừng một giờ tính được. | L410 |
-| L412 · Sequence 4 - an analytical platform | TH | Thiết kế một nền tảng phân tích có chốt đối soát ở mọi chặng và đường chạy lại rõ. | Mỗi chặng có hợp đồng vào ra và đường chạy lại, và chốt đối soát đủ để quy một chênh lệch giả định về đúng đoạn. | L411 |
-| L413 · Sequence 5 - a multi-tenant platform | TH | Thiết kế nền tảng nhiều khách hàng có cách ly, hạn mức, quy chi phí và đường tự phục vụ. | Cách ly cưỡng chế ở mọi lối vào, tình huống khách hàng ồn ào có cơ chế chặn cụ thể, chi phí quy được về từng khách hàng, và ba việc tự phục vụ được mô tả. | L412 |
-| L414 · The failure table and the remove-component test | TH | Lập bảng chế độ hỏng sáu cột và chạy phép thử bỏ thành phần cho mọi hộp trong một thiết kế. | Mọi thành phần có dòng trong bảng hỏng kèm hệ quả với dữ liệu, và mọi hộp còn lại đều qua phép thử bỏ thành phần. | L413 |
-| L415 · Cost model and unit economics in a design | TH | Lập mô hình chi phí theo công thức cho một thiết kế và so hai phương án theo chi phí trên mỗi đơn vị. | Mọi ô là công thức, ba thành phần hay bị bỏ sót đều có mặt, và hai phương án so được ở hai mức quy mô kèm điểm đảo ngược nếu có. | L414 |
-| L416 · Alternatives, trade-offs and reversibility | TH | Trình ba phương án thật có lượng hoá và nêu điều kiện làm lựa chọn không còn phù hợp. | Mỗi phương án có một bối cảnh mà nó thắng, hệ quả lượng hoá theo cùng bộ tiêu chí, và hai điều kiện đảo ngược được nêu kèm chi phí. | L415 |
-| L417 · Migration design - dual run, cutover, rollback | TH | Thiết kế kế hoạch di trú bốn giai đoạn có đối soát khi chạy song song và đường quay lui đã thử. | Kiểm kê bên tiêu thụ đầy đủ, đối soát chạy song song có tiêu chí đạt, quay lui diễn tập thành công, và thời hạn giữ hệ cũ có căn cứ. | L416 |
-| L418 · Design review simulation - three passes | TH | Rà soát ba thiết kế của người khác theo ba lượt và ghi được phản đối cùng quyết định cho từng lượt. | Mỗi thiết kế nhận ≥ 3 phát hiện có căn cứ ở các lượt khác nhau, và biên bản ghi đủ phản đối cùng quyết định cho từng lượt. | L417 |
-| L419 · The changed-constraint defence | TH | Điều chỉnh một thiết kế cho bốn ràng buộc đổi, mỗi lần chỉ đúng phần bị ảnh hưởng kèm chi phí. | ≥ 3/4 lần chỉ đúng phần bị ảnh hưởng dẫn từ hiện vật đã có, mỗi lần kèm chi phí, và không lần nào vẽ lại toàn bộ khi không cần. | L418 |
-| L420 · Capstone design dossier - RFC, spike and ADRs | DA | Nộp hồ sơ thiết kế đủ sáu phần, có thử nghiệm nhỏ chạy được và mọi thành phần truy được về một yêu cầu. | Sáu phần đầy đủ, mọi thành phần truy được về một yêu cầu hoặc bảo đảm, thử nghiệm nhỏ chạy thật có kết quả báo cáo trung thực, và bốn ràng buộc đổi được trả lời. | L419 |
+| L405 · [[wiki.system-design.ten-step-process|The ten-step design process]]| LT | Chạy đủ mười bước cho một bài toán nhỏ và dừng được ở bước hai với các con số có căn cứ. | Mười bước có đầu ra ghi lại, ít nhất ba phi mục tiêu, và mọi con số ở bước hai kèm giả định cùng nguồn. | M27: M26 |
+| L406 · [[wiki.system-design.quantified-requirements|Quantifying requirements - traffic, data, latency, RPO and cost]]| TH | Lượng hoá sáu nhóm cho hai bài toán, kèm giả định, độ nhạy và ước lượng khoá nóng. | Sáu nhóm có con số kèm giả định và nguồn ở cả hai bài toán, tỉ số đỉnh trên trung bình được nêu, và phân tích độ nhạy chỉ ra kết luận đổi. | L405 |
+| L407 · [[wiki.system-design.invariants-consistency|Invariants and consistency boundaries]]| TH | Phát biểu bất biến cho hai thiết kế và suy ra ranh giới giao dịch cùng đường dựng lại dữ liệu dẫn xuất. | Mỗi bất biến chỉ ra đúng ranh giới cưỡng chế, mọi dữ liệu dẫn xuất có đường dựng lại, và mọi nhất quán cuối cùng có hợp đồng mức cũ. | L406 |
+| L408 · [[wiki.system-design.capacity-sheet|The capacity sheet - assumptions and sensitivity]]| TH | Lập bảng năng lực có công thức cho một thiết kế và chỉ ra nút thắt đầu tiên cùng ngưỡng đổi kiến trúc. | Mọi ô có công thức, nút thắt đầu tiên được chỉ ra kèm giả định, và ≥ 2 ngưỡng đổi kiến trúc được nêu kèm mô tả. | L407 |
+| L409 · [[wiki.system-design.single-stateful-service|Sequence 1 - a single stateful service]]| TH | Truy một phép ghi và một phép đọc qua mọi thành phần của ba thiết kế bậc một. | Bốn câu hỏi có câu trả lời ở mọi thành phần của ba thiết kế, và chính sách vô hiệu hoá bộ nhớ đệm được viết ra. | L408 |
+| L410 · [[wiki.system-design.replicated-partitioned|Sequence 2 - replicated and partitioned]]| TH | Thiết kế một dịch vụ có bản sao và phân vùng, trả lời được ba câu hỏi và nêu lượng dữ liệu mất tối đa. | Ba câu hỏi có câu trả lời cụ thể, lượng dữ liệu mất tối đa tính được từ độ trễ sao chép, và quy trình tái phân bố có giới hạn tốc độ. | L409 |
+| L411 · [[wiki.system-design.async-workflow|Sequence 3 - asynchronous workflow]]| TH | Thiết kế một luồng bất đồng bộ có hợp đồng người dùng rõ và xử lý được bên tiêu thụ chậm. | Ranh giới đồng bộ và bất đồng bộ có lý do, hợp đồng người dùng đủ hai phần, và năng lực đệm khi bên tiêu thụ dừng một giờ tính được. | L410 |
+| L412 · [[wiki.system-design.analytics-platform|Sequence 4 - an analytical platform]]| TH | Thiết kế một nền tảng phân tích có chốt đối soát ở mọi chặng và đường chạy lại rõ. | Mỗi chặng có hợp đồng vào ra và đường chạy lại, và chốt đối soát đủ để quy một chênh lệch giả định về đúng đoạn. | L411 |
+| L413 · [[wiki.system-design.multi-tenant|Sequence 5 - a multi-tenant platform]]| TH | Thiết kế nền tảng nhiều khách hàng có cách ly, hạn mức, quy chi phí và đường tự phục vụ. | Cách ly cưỡng chế ở mọi lối vào, tình huống khách hàng ồn ào có cơ chế chặn cụ thể, chi phí quy được về từng khách hàng, và ba việc tự phục vụ được mô tả. | L412 |
+| L414 · [[wiki.system-design.failure-table|The failure table and the remove-component test]]| TH | Lập bảng chế độ hỏng sáu cột và chạy phép thử bỏ thành phần cho mọi hộp trong một thiết kế. | Mọi thành phần có dòng trong bảng hỏng kèm hệ quả với dữ liệu, và mọi hộp còn lại đều qua phép thử bỏ thành phần. | L413 |
+| L415 · [[wiki.system-design.cost-model|Cost model and unit economics in a design]]| TH | Lập mô hình chi phí theo công thức cho một thiết kế và so hai phương án theo chi phí trên mỗi đơn vị. | Mọi ô là công thức, ba thành phần hay bị bỏ sót đều có mặt, và hai phương án so được ở hai mức quy mô kèm điểm đảo ngược nếu có. | L414 |
+| L416 · [[wiki.system-design.alternatives-reversibility|Alternatives, trade-offs and reversibility]]| TH | Trình ba phương án thật có lượng hoá và nêu điều kiện làm lựa chọn không còn phù hợp. | Mỗi phương án có một bối cảnh mà nó thắng, hệ quả lượng hoá theo cùng bộ tiêu chí, và hai điều kiện đảo ngược được nêu kèm chi phí. | L415 |
+| L417 · [[wiki.system-design.migration-cutover|Migration design - dual run, cutover, rollback]]| TH | Thiết kế kế hoạch di trú bốn giai đoạn có đối soát khi chạy song song và đường quay lui đã thử. | Kiểm kê bên tiêu thụ đầy đủ, đối soát chạy song song có tiêu chí đạt, quay lui diễn tập thành công, và thời hạn giữ hệ cũ có căn cứ. | L416 |
+| L418 · [[wiki.system-design.review-three-pass|Design review simulation - three passes]]| TH | Rà soát ba thiết kế của người khác theo ba lượt và ghi được phản đối cùng quyết định cho từng lượt. | Mỗi thiết kế nhận ≥ 3 phát hiện có căn cứ ở các lượt khác nhau, và biên bản ghi đủ phản đối cùng quyết định cho từng lượt. | L417 |
+| L419 · [[wiki.system-design.changed-constraint|The changed-constraint defence]]| TH | Điều chỉnh một thiết kế cho bốn ràng buộc đổi, mỗi lần chỉ đúng phần bị ảnh hưởng kèm chi phí. | ≥ 3/4 lần chỉ đúng phần bị ảnh hưởng dẫn từ hiện vật đã có, mỗi lần kèm chi phí, và không lần nào vẽ lại toàn bộ khi không cần. | L418 |
+| L420 · [[wiki.system-design.capstone-dossier|Capstone design dossier - RFC, spike and ADRs]]| DA | Nộp hồ sơ thiết kế đủ sáu phần, có thử nghiệm nhỏ chạy được và mọi thành phần truy được về một yêu cầu. | Sáu phần đầy đủ, mọi thành phần truy được về một yêu cầu hoặc bảo đảm, thử nghiệm nhỏ chạy thật có kết quả báo cáo trung thực, và bốn ràng buộc đổi được trả lời. | L419 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M27 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M27 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -111,7 +111,7 @@ flowchart LR
   class A405,A406,A407,A408,A409,A410,A411,A412,A413,A414,A415,A416,A417,A418,A419,A420 atom;
 ```
 
-### Bài 405: The ten-step design process
+### Lesson 405: The ten-step design process
 
 Bài mở module bằng một quy trình có thứ tự cố định, vì bỏ bước hoặc đảo bước là nguồn của phần lớn thiết kế hỏng. Mười bước: làm rõ người dùng cùng ca sử dụng, yêu cầu chức năng cùng phi chức năng và phi mục tiêu; lượng hoá lưu lượng, dữ liệu, thời hạn giữ, độ trễ, khả dụng, nhất quán, hai con số phục hồi và chi phí; định nghĩa giao diện, sự kiện, mô hình dữ liệu và quyền sở hữu; vẽ kiến trúc tối thiểu cùng đường dữ liệu trọng yếu; phát biểu bất biến và ranh giới nhất quán; tính năng lực từng thành phần rồi tìm nút thắt; liệt kê chế độ hỏng cùng phát hiện, giảm thiểu và phục hồi; bảo mật cùng quyền riêng tư cùng quản trị cùng quan sát được cùng triển khai cùng di trú; nêu phương án thay thế và đánh đổi cùng điều kiện thiết kế không còn phù hợp; và kiểm chứng bằng một thử nghiệm nhỏ rồi viết bản ghi quyết định. Phi mục tiêu ở bước một là phần lọc mạnh nhất và hay bị bỏ nhất.
 
@@ -119,7 +119,7 @@ Người học phải chạy đủ mười bước cho một bài toán nhỏ v�
 
 Cách đánh giá: Tầng *áp dụng*. Bài mở module, áp một quy trình vào một bài toán đã quen. Kiểm bằng rà soát mười bước; đạt khi mọi bước có đầu ra ghi lại và bước hai có con số kèm giả định chứ để trống.
 
-### Bài 406: Quantifying requirements - traffic, data, latency, RPO and cost
+### Lesson 406: Quantifying requirements - traffic, data, latency, RPO and cost
 
 Bài rèn bước hai, vì đây là bước quyết định mọi con số sau. Sáu nhóm phải lượng hoá: số yêu cầu mỗi giây ở mức trung bình và mức đỉnh cùng tỉ số giữa chúng; lượng dữ liệu mỗi ngày, tổng dữ liệu theo thời hạn giữ, và tập dữ liệu làm việc; mục tiêu độ trễ phát biểu theo phân vị chứ theo trung bình; mục tiêu khả dụng cùng mô hình nhất quán mà người dùng quan sát được; hai con số phục hồi; và ngân sách chi phí. Phân bố mới là thứ quyết định thiết kế, không phải giá trị trung bình: một hệ có tỉ số đỉnh trên trung bình bằng mười cần thiết kế khác hẳn hệ có tỉ số bằng hai. Khoá nóng và khách hàng nóng phải ước lượng riêng. Mọi con số kèm giả định và kèm độ nhạy: nếu giả định sai gấp đôi thì kết luận nào đổi. Ba cách lấy con số khi chưa có hệ: từ hệ tương tự, từ quy mô nghiệp vụ, và từ giới hạn trên hiển nhiên.
 
@@ -127,7 +127,7 @@ Người học phải lượng hoá sáu nhóm cho hai bài toán, kèm giả đ
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi con số có căn cứ và có biên độ chứ một con số đơn. Kiểm bằng rà soát chéo; đạt khi mọi con số có giả định và nguồn, tỉ số đỉnh trên trung bình được nêu, và độ nhạy chỉ ra được kết luận nào đổi.
 
-### Bài 407: Invariants and consistency boundaries
+### Lesson 407: Invariants and consistency boundaries
 
 Bài rèn bước năm, và nó là bước phân biệt một thiết kế đúng với một sơ đồ hợp lý. Bất biến là mệnh đề luôn đúng bất kể thứ tự thao tác và bất kể lỗi; ví dụ số dư không âm, một khoá nghiệp vụ có đúng một bản ghi hiện hành theo Bài 157, hoặc tổng ở hai tầng phải khớp. Bất biến quyết định ranh giới giao dịch và ranh giới phân vùng: mọi thứ phải đúng cùng lúc thì phải nằm trong cùng một ranh giới nguyên tử; đặt chúng ở hai nơi thì bất biến đó không cưỡng chế được và phải chuyển sang bù trừ theo Bài 318. Từ đó suy ra câu hỏi thứ hai của bài: cái gì là nguồn sự thật và cái gì là dữ liệu dẫn xuất dựng lại được; bộ nhớ đệm và dữ liệu dẫn xuất không bao giờ là nguồn sự thật, và đường dựng lại phải mô tả được. Nhất quán cuối cùng phải kèm hợp đồng với người dùng về mức cũ tối đa, theo Bài 314.
 
@@ -135,7 +135,7 @@ Người học phải phát biểu bất biến cho hai thiết kế và suy ra 
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi suy ranh giới từ bất biến chứ đặt theo thói quen. Kiểm bằng bài phân tích; đạt khi mỗi bất biến chỉ ra đúng ranh giới cưỡng chế nó, mọi dữ liệu dẫn xuất có đường dựng lại, và mọi nhất quán cuối cùng có hợp đồng mức cũ.
 
-### Bài 408: The capacity sheet - assumptions and sensitivity
+### Lesson 408: The capacity sheet - assumptions and sensitivity
 
 Bài rèn bước sáu và tạo ra một hiện vật bắt buộc cho mọi thiết kế về sau. Bảng năng lực tính cho từng thành phần: số yêu cầu mỗi giây nó phải chịu, số kết nối đồng thời, lượng byte mỗi ngày, tập dữ liệu làm việc phải nằm trong bộ nhớ, và băng thông mạng. Mỗi ô có công thức chứ một con số, để đổi giả định thì bảng tự cập nhật. Từ bảng suy ra hai thứ: thành phần nào chạm trần trước, và ở giả định nào nó chạm. Biết nút thắt đầu tiên quan trọng hơn biết năng lực tổng, vì nó cho biết nên đầu tư vào đâu và cho biết thiết kế còn dùng được tới quy mô nào. Ngưỡng theo giai đoạn: thay vì thiết kế cho quy mô xa, nêu ngưỡng mà kiến trúc phải đổi và đổi thành gì. Độ nhạy chỉ ra giả định nào ảnh hưởng lớn nhất, và đó là giả định cần kiểm bằng thử nghiệm nhỏ trước tiên.
 
@@ -143,7 +143,7 @@ Người học phải lập bảng năng lực có công thức cho một thiế
 
 Cách đánh giá: Tầng *áp dụng*. Objective có hiện vật kiểm được và một kết luận cụ thể. Kiểm bằng rà soát bảng; đạt khi mọi ô có công thức, nút thắt đầu tiên được chỉ ra kèm giả định, và ít nhất hai ngưỡng đổi kiến trúc được nêu.
 
-### Bài 409: Sequence 1 - a single stateful service
+### Lesson 409: Sequence 1 - a single stateful service
 
 Bậc thứ nhất của bậc thang, và nó rèn thói quen truy một phép ghi cùng một phép đọc qua mọi thành phần. Một dịch vụ đơn có trạng thái gồm giao diện, logic, cơ sở dữ liệu và bộ nhớ đệm. Bốn câu hỏi cho mỗi thành phần: trạng thái nào được lưu bền, ranh giới thử lại ở đâu, điểm nhất quán ở đâu, và phục hồi lấy dữ liệu từ nguồn nào. Ba bài toán ở bậc này: rút gọn địa chỉ với sinh khoá, bộ nhớ đệm chuyển hướng, khoá nóng và hết hạn; bộ giới hạn tốc độ với trạng thái phân tán và đánh đổi giữa chính xác với khả dụng; và dịch vụ tệp với việc tách siêu dữ liệu khỏi khối dữ liệu, tải lên nhiều phần, toàn vẹn và vòng đời. Bộ nhớ đệm làm hỏng tính đúng theo hai cách phải nêu: dữ liệu cũ và mất hiệu lực sai, nên chính sách vô hiệu hoá phải viết ra chứ để mặc định.
 
@@ -151,7 +151,7 @@ Người học phải truy một phép ghi và một phép đọc qua mọi thà
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một thói quen truy vết áp cho mọi thiết kế sau. Kiểm bằng bài truy vết; đạt khi bốn câu hỏi có câu trả lời ở mọi thành phần của cả ba thiết kế và chính sách vô hiệu hoá bộ nhớ đệm được viết ra.
 
-### Bài 410: Sequence 2 - replicated and partitioned
+### Lesson 410: Sequence 2 - replicated and partitioned
 
 Bậc thứ hai thêm nhiều bản sao và nhiều phân vùng, nên nó kéo theo toàn bộ M20. Bốn quyết định: định tuyến yêu cầu tới phân vùng nào; chọn giữa người dẫn và số đông theo Bài 312 và 315; xử lý tái phân bố khi thêm hoặc bớt nút theo Bài 313; và hành vi khi đọc phải bản sao cũ. Ba câu hỏi phải trả lời cho mọi thiết kế ở bậc này: mất một nút thì mất bảo đảm gì, phân vùng mạng thì bên nào tiếp tục phục vụ, và tái phân bố chạy trong lúc phục vụ thì ảnh hưởng ra sao. Nói thêm một bản sao là không đủ; phải nói bản sao đồng bộ hay bất đồng bộ và lượng dữ liệu mất tối đa là bao nhiêu. Bài toán ở bậc này là dịch vụ thông báo có nhiều kênh, có tuỳ chọn của người dùng, có khử trùng, có thử lại và có yêu cầu về thứ tự.
 
@@ -159,7 +159,7 @@ Người học phải thiết kế một dịch vụ có bản sao và phân vù
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi nối lựa chọn sao chép với một con số rủi ro. Kiểm bằng rà soát thiết kế; đạt khi ba câu hỏi có câu trả lời cụ thể, lượng dữ liệu mất tối đa tính được, và cách xử lý khoá nóng được nêu.
 
-### Bài 411: Sequence 3 - asynchronous workflow
+### Lesson 411: Sequence 3 - asynchronous workflow
 
 Bậc thứ ba tách xử lý ra khỏi đường yêu cầu, và nó kéo theo M21 cùng M23. Ranh giới đồng bộ và bất đồng bộ là quyết định trung tâm: phần nào phải xong trước khi trả lời người dùng, phần nào làm sau. Bốn thứ phải thiết kế: trạng thái của bên tiêu thụ và cách nó tiến, thử lại cùng luỹ đẳng theo Bài 105, áp lực ngược khi bên tiêu thụ chậm hơn bên sản xuất, và bản ghi độc cùng hàng đợi lỗi. Chuyển sang bất đồng bộ đổi hợp đồng với người dùng chứ chỉ đổi kiến trúc: người dùng nhận lời hứa sẽ xử lý thay vì kết quả, nên giao diện phải có cách tra trạng thái và có cách báo khi thất bại. Bài toán ở bậc này là nền tảng nhật ký với nạp, đệm, đánh chỉ mục, lưu trữ lâu dài, truy vấn, thời hạn giữ và nhiều khách hàng.
 
@@ -167,7 +167,7 @@ Người học phải thiết kế một luồng bất đồng bộ có hợp đ
 
 Cách đánh giá: Tầng *áp dụng*. Objective gồm một hệ quả về hợp đồng mà thiết kế hay bỏ qua. Kiểm bằng rà soát thiết kế; đạt khi ranh giới đồng bộ và bất đồng bộ có lý do, hợp đồng người dùng nêu cách tra trạng thái cùng cách báo thất bại, và áp lực ngược có cơ chế cụ thể.
 
-### Bài 412: Sequence 4 - an analytical platform
+### Lesson 412: Sequence 4 - an analytical platform
 
 Bậc thứ tư là bậc gần nhất với công việc thật của chương trình, và nó gộp M11 tới M19. Năm chặng: nạp dữ liệu, lưu trữ bất biến, chốt siêu dữ liệu, tính toán phân tán, và tầng phục vụ. Với mỗi chặng, nêu hợp đồng vào và hợp đồng ra, và nêu chặng đó chạy lại được từ đâu. Ba bài toán ở bậc này: nền tảng phân tích với hợp đồng sự kiện cùng quản trị; kho dữ liệu kết hợp với nạp theo lô cùng bắt thay đổi, chốt bảng, danh mục và cách ly tính toán; và phân tích dòng chảy với phân vùng, thời gian sự kiện, mốc nước, trạng thái và đích. Yêu cầu riêng của bậc này là chứng minh tính đầy đủ, chứ chỉ vẽ luồng: thiết kế phải chỉ ra đối soát chạy ở đâu và chênh lệch được quy về đoạn nào, theo Bài 284.
 
@@ -175,7 +175,7 @@ Người học phải thiết kế một nền tảng phân tích có chốt đ�
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi tính đầy đủ chứ một sơ đồ luồng. Kiểm bằng rà soát thiết kế; đạt khi mỗi chặng có hợp đồng vào ra cùng đường chạy lại, và chốt đối soát đặt đủ để quy chênh lệch về một đoạn.
 
-### Bài 413: Sequence 5 - a multi-tenant platform
+### Lesson 413: Sequence 5 - a multi-tenant platform
 
 Bậc cao nhất, và nó thêm một chiều mà bốn bậc trước không có: nhiều khách hàng dùng chung hạ tầng. Tách mặt phẳng điều khiển khỏi mặt phẳng dữ liệu theo Bài 361. Bốn cơ chế bắt buộc: cách ly dữ liệu giữa các khách hàng cưỡng chế ở mọi lối vào; hạn mức để một khách hàng không ăn hết năng lực theo Bài 333; chính sách và ngoại lệ có chủ cùng hạn; và tự phục vụ để đội nền tảng không thành nút cổ chai. Vấn đề đặc trưng là khách hàng ồn ào: một khách chạy khối lượng nặng làm mọi khách khác chậm, và cách chặn là hạn mức cộng vách ngăn chứ trông chờ vào thiện chí. Quy chi phí về từng khách hàng cần gắn thẻ và đo theo đơn vị theo Bài 368. Thiết kế này còn phải nêu cách đội dùng nền tảng tự làm được việc mà không mở phiếu yêu cầu.
 
@@ -183,7 +183,7 @@ Người học phải thiết kế nền tảng nhiều khách hàng có cách l
 
 Cách đánh giá: Tầng *đánh giá*. Objective gồm cả chiều tổ chức chứ chỉ kỹ thuật. Kiểm bằng rà soát thiết kế cộng ba tình huống; đạt khi cách ly cưỡng chế ở mọi lối vào, tình huống khách hàng ồn ào có cơ chế chặn cụ thể, và chi phí quy được về từng khách hàng.
 
-### Bài 414: The failure table and the remove-component test
+### Lesson 414: The failure table and the remove-component test
 
 Hai hiện vật bắt buộc cho mọi thiết kế, và cả hai đều lọc ra những thứ không có lý do tồn tại. Bảng chế độ hỏng có sáu cột: thành phần, tác nhân kích hoạt, triệu chứng, cách phát hiện, ứng phó tự động hay thủ công, và hệ quả với dữ liệu; cột cuối là cột hay thiếu nhất và là cột quan trọng nhất với một hệ dữ liệu, vì mất khả dụng khác mất dữ liệu. Phép thử bỏ thành phần: với từng hộp trong sơ đồ, giả sử gỡ nó ra và hỏi mất bảo đảm nào; nếu không mất gì thì hộp đó chưa được biện minh và phải gỡ hoặc phải viết ra bảo đảm nó giữ. Phép thử này bắt được ba thứ thừa hay gặp: một tầng đệm không ai cần, một hàng đợi giữa hai dịch vụ luôn đồng bộ, và một kho dữ liệu trùng chức năng với kho khác.
 
@@ -191,7 +191,7 @@ Người học phải lập bảng chế độ hỏng sáu cột và chạy phé
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi biện minh từng thành phần chứ mô tả chúng. Kiểm bằng hai hiện vật; đạt khi mọi thành phần có ít nhất một dòng trong bảng hỏng kèm hệ quả với dữ liệu, và mọi hộp qua được phép thử bỏ thành phần hoặc bị gỡ.
 
-### Bài 415: Cost model and unit economics in a design
+### Lesson 415: Cost model and unit economics in a design
 
 Chi phí là một chiều thiết kế ngang hàng với hiệu năng và độ tin cậy, nên nó có mô hình chứ một ước tính. Mô hình chi phí tính từ bảng năng lực ở Bài 408: mỗi thành phần có công thức chi phí theo các giả định, nên đổi giả định thì chi phí tự cập nhật. Chi phí trên mỗi đơn vị theo Bài 368 là con số dùng để so hai phương án và để phát hiện vấn đề khi quy mô tăng. Ba thành phần chi phí không tỉ lệ với công việc hữu ích và hay bị bỏ sót: lưu lượng ra ngoài, năng lực nhàn rỗi, và chi phí của chính hệ đo lường. Chi phí của độ tin cậy phải nêu tường minh: chạy nhiều vùng đắt gấp mấy lần và mua được gì. Ngưỡng chi phí theo giai đoạn giống ngưỡng năng lực: tới quy mô nào thì mô hình chi phí đổi và phải thiết kế lại.
 
@@ -199,7 +199,7 @@ Người học phải lập mô hình chi phí theo công thức cho một thi�
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi so phương án bằng chi phí đơn vị chứ tổng ước tính. Kiểm bằng mô hình cộng bài so; đạt khi mọi ô là công thức, ba thành phần hay bị bỏ sót đều có mặt, và hai phương án so được ở ít nhất hai mức quy mô.
 
-### Bài 416: Alternatives, trade-offs and reversibility
+### Lesson 416: Alternatives, trade-offs and reversibility
 
 Bài rèn bước chín, và nó là bước phân biệt một thiết kế với một lựa chọn đã định sẵn. Ba phương án thật, luôn gồm phương án không làm gì; một phương án thật là phương án mà nếu ràng buộc đổi thì nó sẽ thắng, nên hai phương án dựng lên chỉ để loại bỏ là dấu hiệu quyết định đã định trước. Với mỗi phương án, lượng hoá hệ quả theo cùng bộ tiêu chí. Phân loại quyết định theo mức đảo ngược: quyết định dễ đảo thì quyết nhanh và học từ thực tế; quyết định khó đảo thì cần thử nghiệm nhỏ trước và cần bản ghi quyết định. Ba loại chi phí của việc đảo ngược: chi phí kỹ thuật, chi phí di trú dữ liệu, và chi phí tổ chức. Điều kiện thiết kế không còn phù hợp phải viết ra cùng lúc với quyết định, vì viết sau thì không ai viết, và không có nó thì kiến trúc sống quá hạn.
 
@@ -207,7 +207,7 @@ Người học phải trình ba phương án thật có lượng hoá và nêu �
 
 Cách đánh giá: Tầng *đánh giá*. Objective chống lại việc trình bày một quyết định đã định sẵn. Kiểm bằng rà soát chéo; đạt khi mỗi phương án có ít nhất một bối cảnh mà nó thắng, mọi hệ quả được lượng hoá theo cùng bộ tiêu chí, và điều kiện đảo ngược được nêu.
 
-### Bài 417: Migration design - dual run, cutover, rollback
+### Lesson 417: Migration design - dual run, cutover, rollback
 
 Phần lớn thiết kế trong công việc thật là thiết kế cho một hệ đang chạy, nên di trú là một phần của thiết kế chứ một việc sau đó. Bốn giai đoạn: kiểm kê bên tiêu thụ theo Bài 264; chạy song song hai hệ và đối soát kết quả; chuyển đổi dần theo từng phần lưu lượng hoặc từng khách hàng; và giữ đường quay lui cho tới khi hệ cũ được gỡ. Chạy song song là giai đoạn cho bằng chứng, và bỏ nó là bỏ cách duy nhất biết hệ mới đúng trước khi phụ thuộc vào nó. Một lần chuyển đổi toàn bộ là chế độ hỏng đặc trưng vì nó không có đường lùi. Thời hạn giữ hệ cũ tính từ thời gian cần để phát hiện vấn đề, chứ từ mong muốn dọn sớm. Di trú dữ liệu có hai bài toán riêng: chuyển khối dữ liệu lịch sử, và giữ hai hệ đồng bộ trong lúc chuyển.
 
@@ -215,7 +215,7 @@ Người học phải thiết kế kế hoạch di trú bốn giai đoạn có �
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là bằng chứng từ giai đoạn chạy song song. Kiểm bằng rà soát kế hoạch cộng một lần diễn tập; đạt khi kiểm kê bên tiêu thụ đầy đủ, đối soát chạy song song có tiêu chí đạt, và quay lui được diễn tập.
 
-### Bài 418: Design review simulation - three passes
+### Lesson 418: Design review simulation - three passes
 
 Bài rèn năng lực rà soát, vì đọc thiết kế của người khác là cách nhanh nhất để thấy lỗ hổng trong thiết kế của mình. Ba lượt rà soát có trọng tâm khác nhau và phải chạy tách biệt: lượt một về tính đúng, kiểm bất biến cùng ngữ nghĩa giao diện và mô hình dữ liệu; lượt hai về vận hành, kiểm chế độ hỏng cùng quy mô cùng bảo mật cùng chi phí; lượt ba về ràng buộc đổi. Người rà soát phải truy được mọi thành phần về một yêu cầu hoặc một bảo đảm, và câu hỏi mặc định là thành phần này giữ bảo đảm nào. Ba câu hỏi lọc dùng được ở mọi lượt: bất biến nào quyết định ranh giới giao dịch, thành phần nào chạm trần trước và ở giả định nào, và mỗi phụ thuộc hỏng thì cái gì mất khả dụng hoặc mất nhất quán. Rà soát mà chỉ ghi nhận đồng ý là một buổi diễn; mỗi lượt phải ghi phản đối và ghi quyết định.
 
@@ -223,7 +223,7 @@ Người học phải rà soát ba thiết kế của người khác theo ba lư
 
 Cách đánh giá: Tầng *đánh giá*. Objective đo năng lực phát hiện lỗ hổng chứ năng lực đồng ý. Kiểm bằng rà soát chéo; đạt khi mỗi thiết kế nhận ít nhất ba phát hiện có căn cứ ở các lượt khác nhau, và mọi phát hiện dẫn ra thành phần cùng bảo đảm liên quan.
 
-### Bài 419: The changed-constraint defence
+### Lesson 419: The changed-constraint defence
 
 Bài rèn năng lực quan trọng nhất của module: bảo vệ một quyết định rồi thay đổi nó khi ràng buộc đổi, mà không bám vào quyết định cũ. Bốn ràng buộc đổi chuẩn: lưu lượng gấp mười; yêu cầu xoá dữ liệu nghiêm ngặt theo quy định; mất một vùng; và cắt nửa ngân sách. Thêm hai ràng buộc về tổ chức: đội nhỏ lại một nửa, và thời hạn rút ngắn còn một phần ba. Với mỗi ràng buộc, ba câu hỏi: phần nào của thiết kế còn đúng, phần nào phải đổi, và đổi đó tốn gì. Câu trả lời đúng thường không phải giữ nguyên thiết kế và cũng không phải vẽ lại từ đầu, mà là chỉ ra đúng phần bị ảnh hưởng dựa trên bảng năng lực và bảng chế độ hỏng đã có. Hai thói quen cần bỏ: bảo vệ quyết định vì đã bỏ công vào nó, và đổi toàn bộ thiết kế vì một ràng buộc đổi.
 
@@ -231,7 +231,7 @@ Người học phải điều chỉnh một thiết kế cho bốn ràng buộc 
 
 Cách đánh giá: Tầng *đánh giá*. Objective đo năng lực thích ứng có căn cứ, và nó là tiêu chí ra của module. Kiểm bằng bốn tình huống đổi ràng buộc; đạt khi ít nhất ba lần chỉ đúng phần bị ảnh hưởng dẫn từ bảng năng lực hoặc bảng chế độ hỏng, và không lần nào vẽ lại toàn bộ khi không cần.
 
-### Bài 420: Capstone design dossier - RFC, spike and ADRs
+### Lesson 420: Capstone design dossier - RFC, spike and ADRs
 
 Bài dự án khép module, và hồ sơ này là hiện vật chính để bảo vệ tốt nghiệp. Nộp gồm sáu phần: một bản đề xuất kỹ thuật từ sáu tới mười trang kèm sơ đồ; bảng năng lực có công thức và độ nhạy theo Bài 408; bảng chế độ hỏng sáu cột cùng mô hình mối đe doạ theo Bài 400 và 414; một thử nghiệm nhỏ chạy được kiểm chứng giả định rủi ro nhất, chứ một lập luận; ba bản ghi quyết định cho ba quyết định khó đảo ngược, mỗi bản có phương án thay thế và điều kiện xem lại; và kế hoạch di trú bốn giai đoạn theo Bài 417 cùng danh mục kiểm sẵn sàng vận hành và kế hoạch đo trong 30, 60, 90 ngày. Bài toán chọn ở bậc bốn hoặc bậc năm của bậc thang. Yêu cầu chấm nghiêm nhất: người rà soát phải truy được mọi thành phần về một yêu cầu hoặc một bảo đảm.
 

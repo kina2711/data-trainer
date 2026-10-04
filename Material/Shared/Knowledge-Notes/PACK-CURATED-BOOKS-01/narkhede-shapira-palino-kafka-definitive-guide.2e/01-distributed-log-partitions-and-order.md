@@ -25,25 +25,25 @@ tags: [wiki/streaming, book-derived, decision]
 reference_path: Material/Shared/Knowledge-Notes/PACK-CURATED-BOOKS-01/narkhede-shapira-palino-kafka-definitive-guide.2e/01-distributed-log-partitions-and-order.md
 ---
 
-# narkhede-shapira-palino-kafka-definitive-guide.2e — Distributed log, partitions and order
+# narkhede-shapira-palino-kafka-definitive-guide.2e: Distributed log, partitions and order
 
 **Tóm tắt bản chất:** Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. Note này biến ý tưởng thành decision protocol có thể kiểm tra, không biến lời tác giả thành chân lý ngoài bối cảnh.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 Vấn đề mà **Distributed log, partitions and order** giải quyết không phải thiếu thuật ngữ. Đó là lúc người làm dữ liệu phải chọn một hành động nhưng input, boundary và cost of error còn lẫn vào nhau. Khi bỏ qua boundary, một rule đúng trong ví dụ của *Kafka: The Definitive Guide, Second Edition* bị kéo sang workload khác và tạo kết luận tự tin hơn bằng chứng.
 
-Cái giá của lỗi `narkhede-shapira-palino-kafka-definitive-guide.2e.1` quanh **Distributed log, partitions and order** xuất hiện ở consumer: quyết định sai population, tối ưu nhầm metric, mất khả năng replay hoặc không biết lúc nào cần đảo lựa chọn. Vì vậy note khóa bốn thứ trước: claim, conditions, observable artifact và falsifier. Locator gốc cho phần này là **PDF 61–69**; locator chỉ dẫn tới vùng cần đọc lại, không thay thế việc kiểm source khi claim có tác động cao.
+Cái giá của lỗi `narkhede-shapira-palino-kafka-definitive-guide.2e.1` quanh **Distributed log, partitions and order** xuất hiện ở consumer: quyết định sai population, tối ưu nhầm metric, mất khả năng replay hoặc không biết lúc nào cần đảo lựa chọn. Vì vậy note khóa bốn thứ trước: claim, conditions, observable artifact và falsifier. Locator gốc cho phần này là **PDF 61-69**; locator chỉ dẫn tới vùng cần đọc lại, không thay thế việc kiểm source khi claim có tác động cao.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew.
 
 Với `narkhede-shapira-palino-kafka-definitive-guide.2e.1`, cơ chế của **Distributed log, partitions and order** được tách thành sáu bước. (1) Xác định decision và owner. (2) Khóa population, identity, grain và time boundary. (3) Ghi input/precondition cùng unknown có impact-if-wrong. (4) Áp rule hoặc framework ở đúng scope. (5) Tạo observable artifact: bảng, query, model card, dashboard state, run log hoặc decision record. (6) Đối soát bằng oracle không dùng chung assumption với implementation chính.
 
-Phần của tác giả cho `narkhede-shapira-palino-kafka-definitive-guide.2e.1` là khái niệm và trade-off nằm trong `SRC-NARKHEDE-SHAPIRA-PALINO-KAFKA-DEFINITIVE-GUIDE-2E` tại PDF 61–69. Phần synthesis của pack là việc chuyển nó thành protocol sáu bước và evidence checklist. Hai lớp này cố ý tách nhau: synthesis có thể thay đổi theo destination, còn attribution và locator không được thay.
+Phần của tác giả cho `narkhede-shapira-palino-kafka-definitive-guide.2e.1` là khái niệm và trade-off nằm trong `SRC-NARKHEDE-SHAPIRA-PALINO-KAFKA-DEFINITIVE-GUIDE-2E` tại PDF 61-69. Phần synthesis của pack là việc chuyển nó thành protocol sáu bước và evidence checklist. Hai lớp này cố ý tách nhau: synthesis có thể thay đổi theo destination, còn attribution và locator không được thay.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Điều kiện | Chọn | Tránh | Bằng chứng |
 |---|---|---|---|
@@ -55,13 +55,13 @@ Phần của tác giả cho `narkhede-shapira-palino-kafka-definitive-guide.2e.1
 
 Default của **Distributed log, partitions and order** là thử ở boundary nhỏ nhất tạo ra observation phân biệt được hai lựa chọn. Nếu experiment không thể làm recommendation đảo trong bất kỳ kết quả nào, nó không giảm uncertainty và không đáng chạy.
 
-## Case Study Thực Chiến: áp dụng Distributed log, partitions and order dưới ràng buộc thay đổi
+## Worked Case: áp dụng Distributed log, partitions and order dưới ràng buộc thay đổi
 
 Một đội streaming dùng **Distributed log, partitions and order** cho metric theo event time. Họ khóa key, window, trigger, allowed lateness và state-retention policy, rồi replay cùng input dưới out-of-order và retry. Dashboard nhanh hơn nhưng correction sau late event không hội tụ; nhóm giữ kết quả provisional và chưa dùng cho settlement.
 
 Biến thể khó hơn của `narkhede-shapira-palino-kafka-definitive-guide.2e.1` đổi constraint quanh **Distributed log, partitions and order**: deadline từ một tuần xuống hai giờ, hoặc volume tăng 100 lần. Đội không được giảm ngưỡng correctness để kịp hạn. Họ giảm phạm vi câu trả lời, giữ hard constraints và ghi phần chưa kiểm là unknown. Đây là transfer test: dùng cùng reasoning nhưng output khác vì cost, reversibility và evidence budget đã đổi.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Framework trong *Kafka: The Definitive Guide, Second Edition* là checklist áp dụng nguyên xi. **Thực tế:** Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. **Vì sao nghe hợp lý:** tên framework làm các bước trông độc lập với population, version và organization context.
 
@@ -69,7 +69,7 @@ Biến thể khó hơn của `narkhede-shapira-palino-kafka-definitive-guide.2e.
 
 **Hiểu lầm `narkhede-shapira-palino-kafka-definitive-guide.2e.1-C`:** Một case thành công của **Distributed log, partitions and order** chứng minh cơ chế tổng quát. **Thực tế:** case chỉ chứng minh observation trong fixture, version và scale đã chạy. **Vì sao nghe hợp lý:** narrative hoàn chỉnh che những changed constraints chưa xuất hiện.
 
-Edge case `narkhede-shapira-palino-kafka-definitive-guide.2e.1-selection` của **Distributed log, partitions and order** là selection: dữ liệu quan sát được có thể chỉ là phần đã qua filter, instrumentation hoặc survivor process. Edge case `narkhede-shapira-palino-kafka-definitive-guide.2e.1-delay` tại PDF 61–69 là delayed feedback: output hôm nay chưa có outcome để xác nhận. Cả hai yêu cầu giới hạn claim thay vì thêm tính từ “có khả năng”.
+Edge case `narkhede-shapira-palino-kafka-definitive-guide.2e.1-selection` của **Distributed log, partitions and order** là selection: dữ liệu quan sát được có thể chỉ là phần đã qua filter, instrumentation hoặc survivor process. Edge case `narkhede-shapira-palino-kafka-definitive-guide.2e.1-delay` tại PDF 61-69 là delayed feedback: output hôm nay chưa có outcome để xác nhận. Cả hai yêu cầu giới hạn claim thay vì thêm tính từ có khả năng.
 
 ## Nếu Bạn Dạy Lại Điều Này...
 
@@ -79,7 +79,7 @@ Khi dạy `narkhede-shapira-palino-kafka-definitive-guide.2e.1`, mở bằng hai
 
 ### Probe 1: definition boundary
 
-**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.1.** `Distributed log, partitions and order` giữ được claim “Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew.” khi thay đổi `definition boundary` trong scope đã công bố.
+**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.1.** `Distributed log, partitions and order` giữ được claim Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. khi thay đổi `definition boundary` trong scope đã công bố.
 
 **Thiết kế phép thử `narkhede-shapira-palino-kafka-definitive-guide.2e.1.1` cho `definition boundary`.** Tạo control và variant chỉ khác ở `definition boundary`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -87,7 +87,7 @@ Khi dạy `narkhede-shapira-palino-kafka-definitive-guide.2e.1`, mở bằng hai
 
 ### Probe 2: input and preconditions
 
-**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.2.** `Distributed log, partitions and order` giữ được claim “Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew.” khi thay đổi `input and preconditions` trong scope đã công bố.
+**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.2.** `Distributed log, partitions and order` giữ được claim Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. khi thay đổi `input and preconditions` trong scope đã công bố.
 
 **Thiết kế phép thử `narkhede-shapira-palino-kafka-definitive-guide.2e.1.2` cho `input and preconditions`.** Tạo control và variant chỉ khác ở `input and preconditions`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -95,7 +95,7 @@ Khi dạy `narkhede-shapira-palino-kafka-definitive-guide.2e.1`, mở bằng hai
 
 ### Probe 3: decision threshold
 
-**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.3.** `Distributed log, partitions and order` giữ được claim “Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew.” khi thay đổi `decision threshold` trong scope đã công bố.
+**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.3.** `Distributed log, partitions and order` giữ được claim Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. khi thay đổi `decision threshold` trong scope đã công bố.
 
 **Thiết kế phép thử `narkhede-shapira-palino-kafka-definitive-guide.2e.1.3` cho `decision threshold`.** Tạo control và variant chỉ khác ở `decision threshold`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -103,7 +103,7 @@ Khi dạy `narkhede-shapira-palino-kafka-definitive-guide.2e.1`, mở bằng hai
 
 ### Probe 4: counterexample
 
-**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.4.** `Distributed log, partitions and order` giữ được claim “Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew.” khi thay đổi `counterexample` trong scope đã công bố.
+**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.4.** `Distributed log, partitions and order` giữ được claim Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. khi thay đổi `counterexample` trong scope đã công bố.
 
 **Thiết kế phép thử `narkhede-shapira-palino-kafka-definitive-guide.2e.1.4` cho `counterexample`.** Tạo control và variant chỉ khác ở `counterexample`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -111,7 +111,7 @@ Khi dạy `narkhede-shapira-palino-kafka-definitive-guide.2e.1`, mở bằng hai
 
 ### Probe 5: failure mode
 
-**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.5.** `Distributed log, partitions and order` giữ được claim “Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew.” khi thay đổi `failure mode` trong scope đã công bố.
+**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.5.** `Distributed log, partitions and order` giữ được claim Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. khi thay đổi `failure mode` trong scope đã công bố.
 
 **Thiết kế phép thử `narkhede-shapira-palino-kafka-definitive-guide.2e.1.5` cho `failure mode`.** Tạo control và variant chỉ khác ở `failure mode`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -119,7 +119,7 @@ Khi dạy `narkhede-shapira-palino-kafka-definitive-guide.2e.1`, mở bằng hai
 
 ### Probe 6: changed scale
 
-**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.6.** `Distributed log, partitions and order` giữ được claim “Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew.” khi thay đổi `changed scale` trong scope đã công bố.
+**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.6.** `Distributed log, partitions and order` giữ được claim Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. khi thay đổi `changed scale` trong scope đã công bố.
 
 **Thiết kế phép thử `narkhede-shapira-palino-kafka-definitive-guide.2e.1.6` cho `changed scale`.** Tạo control và variant chỉ khác ở `changed scale`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -127,7 +127,7 @@ Khi dạy `narkhede-shapira-palino-kafka-definitive-guide.2e.1`, mở bằng hai
 
 ### Probe 7: changed time window
 
-**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.7.** `Distributed log, partitions and order` giữ được claim “Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew.” khi thay đổi `changed time window` trong scope đã công bố.
+**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.7.** `Distributed log, partitions and order` giữ được claim Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. khi thay đổi `changed time window` trong scope đã công bố.
 
 **Thiết kế phép thử `narkhede-shapira-palino-kafka-definitive-guide.2e.1.7` cho `changed time window`.** Tạo control và variant chỉ khác ở `changed time window`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -135,7 +135,7 @@ Khi dạy `narkhede-shapira-palino-kafka-definitive-guide.2e.1`, mở bằng hai
 
 ### Probe 8: adversarial case
 
-**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.8.** `Distributed log, partitions and order` giữ được claim “Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew.” khi thay đổi `adversarial case` trong scope đã công bố.
+**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.8.** `Distributed log, partitions and order` giữ được claim Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. khi thay đổi `adversarial case` trong scope đã công bố.
 
 **Thiết kế phép thử `narkhede-shapira-palino-kafka-definitive-guide.2e.1.8` cho `adversarial case`.** Tạo control và variant chỉ khác ở `adversarial case`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -143,7 +143,7 @@ Khi dạy `narkhede-shapira-palino-kafka-definitive-guide.2e.1`, mở bằng hai
 
 ### Probe 9: independent oracle
 
-**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.9.** `Distributed log, partitions and order` giữ được claim “Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew.” khi thay đổi `independent oracle` trong scope đã công bố.
+**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.9.** `Distributed log, partitions and order` giữ được claim Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. khi thay đổi `independent oracle` trong scope đã công bố.
 
 **Thiết kế phép thử `narkhede-shapira-palino-kafka-definitive-guide.2e.1.9` cho `independent oracle`.** Tạo control và variant chỉ khác ở `independent oracle`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -151,7 +151,7 @@ Khi dạy `narkhede-shapira-palino-kafka-definitive-guide.2e.1`, mở bằng hai
 
 ### Probe 10: transfer scenario
 
-**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.10.** `Distributed log, partitions and order` giữ được claim “Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew.” khi thay đổi `transfer scenario` trong scope đã công bố.
+**Mệnh đề narkhede-shapira-palino-kafka-definitive-guide.2e.1.10.** `Distributed log, partitions and order` giữ được claim Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. khi thay đổi `transfer scenario` trong scope đã công bố.
 
 **Thiết kế phép thử `narkhede-shapira-palino-kafka-definitive-guide.2e.1.10` cho `transfer scenario`.** Tạo control và variant chỉ khác ở `transfer scenario`; khóa source snapshot, version, seed, identity, state và expected result trước execution. Với technical artifact, giữ command và raw output. Với decision artifact, giữ input table, chosen option, rejected option và reversal trigger.
 
@@ -185,19 +185,19 @@ Control/variant có expected khóa trước, oracle độc lập, changed-constr
 
 ## Giới hạn và điều chưa cho phép kết luận
 
-- Locator **PDF 61–69** là vùng đọc đại diện, không phải tuyên bố toàn bộ sách đã được chuyển thành note này.
+- Locator **PDF 61-69** là vùng đọc đại diện, không phải tuyên bố toàn bộ sách đã được chuyển thành note này.
 - Ví dụ là synthesis để kiểm transfer, không phải trải nghiệm production hay case nguyên văn của tác giả.
 - Concept key `ck.book.narkhede-shapira-palino-kafka-definitive-guide.2e.distributed-log-partitions-and-order` đã được owner phê duyệt `canonical`; note thuộc canonical registry coverage. Trạng thái này không tự chứng minh learner mastery.
 - Nguồn private, copyrighted; không được public hoặc trích dài nếu chưa có authority.
 
 ## Reference
-1. [[SRC-NARKHEDE-SHAPIRA-PALINO-KAFKA-DEFINITIVE-GUIDE-2E]] — `src.book.narkhede-shapira-palino-kafka-definitive-guide.2e`, PDF 61–69.
+1. [[SRC-NARKHEDE-SHAPIRA-PALINO-KAFKA-DEFINITIVE-GUIDE-2E]]: `src.book.narkhede-shapira-palino-kafka-definitive-guide.2e`, PDF 61-69.
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-NARKHEDE-SHAPIRA-PALINO-KAFKA-DEFINITIVE-GUIDE-2E]] — `src.book.narkhede-shapira-palino-kafka-definitive-guide.2e` | PDF 61–69 | Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. | mechanism, decision, case, probes | Đã phủ | các chapter và framework khác |
+| [[SRC-NARKHEDE-SHAPIRA-PALINO-KAFKA-DEFINITIVE-GUIDE-2E]]: `src.book.narkhede-shapira-palino-kafka-definitive-guide.2e` | PDF 61-69 | Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew. | mechanism, decision, case, probes | Đã phủ | các chapter và framework khác |
 
 ## Key takeaways
 - Kafka bảo toàn order trong partition; key design quyết định locality, parallelism và skew.
@@ -207,10 +207,10 @@ Control/variant có expected khóa trước, oracle độc lập, changed-constr
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.book.narkhede-shapira-palino-kafka-definitive-guide.2e.distributed-log-partitions-and-order`
+## Execution capsule: kiểm chứng `wiki.book.narkhede-shapira-palino-kafka-definitive-guide.2e.distributed-log-partitions-and-order`
 
 > [!important] Phân loại mệnh đề
-> Với `wiki.book.narkhede-shapira-palino-kafka-definitive-guide.2e.distributed-log-partitions-and-order`, sơ đồ, ví dụ và artifact về **narkhede-shapira-palino-kafka-definitive-guide.2e — Distributed log, partitions and order** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
+> Với `wiki.book.narkhede-shapira-palino-kafka-definitive-guide.2e.distributed-log-partitions-and-order`, sơ đồ, ví dụ và artifact về **narkhede-shapira-palino-kafka-definitive-guide.2e: Distributed log, partitions and order** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
 
 ### Sơ đồ cơ chế và điểm kiểm soát
 
@@ -225,7 +225,7 @@ flowchart LR
     R --> B
 ```
 
-Đọc sơ đồ `wiki.book.narkhede-shapira-palino-kafka-definitive-guide.2e.distributed-log-partitions-and-order` từ trái sang phải: source chỉ cung cấp claim ban đầu cho **narkhede-shapira-palino-kafka-definitive-guide.2e — Distributed log, partitions and order**; quyết định chỉ được đi tiếp sau khi boundary, evidence và điều kiện đảo quyết định đã hiện hữu.
+Đọc sơ đồ `wiki.book.narkhede-shapira-palino-kafka-definitive-guide.2e.distributed-log-partitions-and-order` từ trái sang phải: source chỉ cung cấp claim ban đầu cho **narkhede-shapira-palino-kafka-definitive-guide.2e: Distributed log, partitions and order**; quyết định chỉ được đi tiếp sau khi boundary, evidence và điều kiện đảo quyết định đã hiện hữu.
 
 ### Artifact thực thi tối thiểu
 
@@ -246,6 +246,6 @@ evidence_to_keep:
   - "independent review result"
 ```
 
-Artifact của `wiki.book.narkhede-shapira-palino-kafka-definitive-guide.2e.distributed-log-partitions-and-order` buộc người dùng ghi boundary, oracle và reversal trigger cho **narkhede-shapira-palino-kafka-definitive-guide.2e — Distributed log, partitions and order**. Các giá trị minh họa phải được thay bằng evidence thật trước khi dùng cho quyết định.
+Artifact của `wiki.book.narkhede-shapira-palino-kafka-definitive-guide.2e.distributed-log-partitions-and-order` buộc người dùng ghi boundary, oracle và reversal trigger cho **narkhede-shapira-palino-kafka-definitive-guide.2e: Distributed log, partitions and order**. Các giá trị minh họa phải được thay bằng evidence thật trước khi dùng cho quyết định.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:END -->

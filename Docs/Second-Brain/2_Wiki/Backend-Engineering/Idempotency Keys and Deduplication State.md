@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao để một client có thể retry request có side effect khi outcome chưa rõ mà server chỉ tạo một logical operation, kể cả hai request cùng key đến đồng thời hoặc process chết giữa chừng?
 source_ids:
   - src.book.geewax-api-design-patterns.1e
@@ -43,7 +43,7 @@ Ba timeline có cùng triệu chứng phía client:
 Client chỉ thấy timeout. Retry mù có thể cần thiết ở trường hợp 1, vô hại ở trường hợp 2 nếu rollback hoàn tất, nhưng tạo side effect kép ở trường hợp 3. Server cần identity ổn định cho logical operation để phân biệt retry với yêu cầu mới.
 
 > [!source-fact]
-> Geewax bắt đầu request-deduplication pattern từ chính sự bất khả phân biệt giữa request mất và response mất, rồi dùng request identifier do client chọn để trả lại outcome ban đầu. *API Design Patterns*, Chapter 26, PDF 712–733.
+> Geewax bắt đầu request-deduplication pattern từ chính sự bất khả phân biệt giữa request mất và response mất, rồi dùng request identifier do client chọn để trả lại outcome ban đầu. *API Design Patterns*, Chapter 26, PDF 712-733.
 
 ## 2. Idempotent method khác idempotency key
 
@@ -69,7 +69,7 @@ Contract phải công bố:
 - retryable transport/status conditions;
 - dữ liệu nhạy cảm nào không được đưa vào key hoặc log.
 
-Không có contract này, client và server có thể cùng “hỗ trợ idempotency” nhưng hiểu khác nhau.
+Không có contract này, client và server có thể cùng hỗ trợ idempotency nhưng hiểu khác nhau.
 
 ## 4. Identity phải có scope
 
@@ -97,7 +97,7 @@ Canonicalization phải được định nghĩa:
 - version API có nằm trong scope không.
 
 > [!source-fact]
-> Geewax yêu cầu lưu request-body fingerprint cùng response và gợi ý từ chối bằng conflict khi cùng request ID nhưng body khác; Chapter 26, PDF 724–727. Stripe cũng so tham số của request lặp để ngăn dùng lại key cho operation khác.
+> Geewax yêu cầu lưu request-body fingerprint cùng response và gợi ý từ chối bằng conflict khi cùng request ID nhưng body khác; Chapter 26, PDF 724-727. Stripe cũng so tham số của request lặp để ngăn dùng lại key cho operation khác.
 
 ## 6. State machine của một logical operation
 
@@ -127,7 +127,7 @@ Record tối thiểu:
 
 ## 7. Reservation phải atomic
 
-Hai request cùng key có thể tới hai replica cùng lúc. Pattern `SELECT` rồi `INSERT` không an toàn vì cả hai đều có thể thấy “chưa tồn tại”. Cần unique constraint và atomic insert/upsert:
+Hai request cùng key có thể tới hai replica cùng lúc. Pattern `SELECT` rồi `INSERT` không an toàn vì cả hai đều có thể thấy chưa tồn tại. Cần unique constraint và atomic insert/upsert:
 
 ```sql
 INSERT INTO idempotency_records (
@@ -150,14 +150,14 @@ Trường hợp tốt nhất là dedupe record và business mutation nằm trong
 
 Nếu transaction rollback, cả key lẫn effect biến mất. Retry có thể bắt đầu lại. Nếu commit, cả effect và replay state cùng tồn tại.
 
-Khi effect ở hệ ngoài, local transaction không thể atomic với nó. Cần operation ID được downstream chấp nhận, outbox/worker, hoặc reconciliation state. Không viết “exactly once” nếu chỉ có local cache trước một API call không idempotent.
+Khi effect ở hệ ngoài, local transaction không thể atomic với nó. Cần operation ID được downstream chấp nhận, outbox/worker, hoặc reconciliation state. Không viết exactly once nếu chỉ có local cache trước một API call không idempotent.
 
 ## 9. Hai concurrent duplicate phải có policy rõ
 
 Khi request thứ hai thấy `IN_PROGRESS`, các lựa chọn gồm:
 
 - chờ có giới hạn rồi replay outcome;
-- trả `409 Conflict`/mã domain “operation in progress”;
+- trả `409 Conflict`/mã domain operation in progress;
 - trả `202 Accepted` với operation-status URI;
 - trả retry hint.
 
@@ -190,7 +190,7 @@ Stripe lưu status code và body của lần thực thi đầu tiên, kể cả 
 | sau commit, trước response | `SUCCEEDED` đã bền vững | replay outcome |
 | sau response | terminal record | replay nếu client gửi lại |
 
-Process death giữa chừng yêu cầu phân biệt transaction rollback với leased work bên ngoài. TTL không nên tự biến stale `IN_PROGRESS` thành “chưa từng chạy” nếu effect ngoài có thể đã thành công.
+Process death giữa chừng yêu cầu phân biệt transaction rollback với leased work bên ngoài. TTL không nên tự biến stale `IN_PROGRESS` thành chưa từng chạy nếu effect ngoài có thể đã thành công.
 
 ## 12. Retention là semantic window
 
@@ -207,7 +207,7 @@ Chọn retention từ:
 
 Stripe cho phép loại key sau ít nhất 24 giờ. Geewax đề xuất khoảng năm phút như điểm bắt đầu cho pattern trong sách. Hai con số phục vụ hai contract khác nhau; không được lấy một con số làm chuẩn chung. Chương trình yêu cầu người học tự biện minh retention bằng failure horizon.
 
-## 13. Idempotency không phải “exactly once”
+## 13. Idempotency không phải exactly once
 
 Network có thể delivery nhiều lần. Server có thể thực thi code nhiều attempt. Điều cần bảo đảm là một logical effect được chấp nhận trong scope và window đã công bố. Nếu dedupe state bị mất, key hết hạn hoặc side effect không cùng atomic boundary, duplicate vẫn có thể xảy ra.
 
@@ -262,7 +262,7 @@ Dùng barrier gửi hai request cùng lúc tới hai worker/replica. Một reque
 | Atomicity | reservation, effect, outcome cùng boundary khi có thể | effect commit trước cache không có recovery |
 | Concurrency | unique constraint quyết owner | check-then-insert |
 | Lifecycle | in-progress, terminal, expiry có policy | chỉ có cache hit/miss |
-| Retry contract | conditions và window công bố | “cứ retry” |
+| Retry contract | conditions và window công bố | cứ retry |
 | Evidence | ba fault scenario, command/output và reconciliation | chỉ unit test tuần tự |
 
 ## 18. Câu hỏi tự kiểm tra
@@ -283,24 +283,24 @@ Dùng barrier gửi hai request cùng lúc tới hai worker/replica. Một reque
 - HTTP status cụ thể cho in-progress/conflict là quyết định API contract; note không áp một mã cho mọi hệ.
 - Chính sách Stripe là case study production, không phải tiêu chuẩn mở.
 - Idempotency window hữu hạn không bảo đảm chống trùng vĩnh viễn.
-- “Một công việc” phải được định nghĩa bằng invariant nghiệp vụ, không chỉ bằng số row dedupe.
+- Một công việc phải được định nghĩa bằng invariant nghiệp vụ, không chỉ bằng số row dedupe.
 - Exactly-once delivery không được tuyên bố từ idempotency key đơn lẻ.
 
 ## Reference
-1. [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]] — request identifier, cached outcome, fingerprint, collision và expiration; Chapter 26, PDF 712–733.
-2. [[SRC-RFC9110-HTTP-SEMANTICS]] — định nghĩa idempotent method và điều kiện retry; §9.2.2.
-3. [[SRC-STRIPE-IDEMPOTENT-REQUESTS]] — một contract production về status/body replay, parameter comparison, concurrent conflict và retention; truy cập 2026-09-28.
-4. [[SRC-POSTGRESQL-TRANSACTIONS]] — atomic transaction boundary cho dedupe record và business state; truy cập 2026-09-28.
+1. [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]]: request identifier, cached outcome, fingerprint, collision và expiration; Chapter 26, PDF 712-733.
+2. [[SRC-RFC9110-HTTP-SEMANTICS]]: định nghĩa idempotent method và điều kiện retry; §9.2.2.
+3. [[SRC-STRIPE-IDEMPOTENT-REQUESTS]]: một contract production về status/body replay, parameter comparison, concurrent conflict và retention; truy cập 2026-09-28.
+4. [[SRC-POSTGRESQL-TRANSACTIONS]]: atomic transaction boundary cho dedupe record và business state; truy cập 2026-09-28.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]], Chapter 26, PDF 712–733 | outcome uncertainty, request ID, response replay, fingerprint, collision, expiry | §§1, 4–5, 10, 12 | Đã giữ cơ chế; con số năm phút được ghi đúng là đề xuất của sách |
+| [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]], Chapter 26, PDF 712-733 | outcome uncertainty, request ID, response replay, fingerprint, collision, expiry | §§1, 4-5, 10, 12 | Đã giữ cơ chế; con số năm phút được ghi đúng là đề xuất của sách |
 | [[SRC-RFC9110-HTTP-SEMANTICS]], §9.2.2 | method idempotence và retry constraints | §2 | Đã tách chuẩn HTTP khỏi protocol key |
-| [[SRC-STRIPE-IDEMPOTENT-REQUESTS]] | case study production về replay và retention | §§5, 9–12 | Đã ghi rõ hành vi riêng của Stripe |
-| [[SRC-POSTGRESQL-TRANSACTIONS]] | local atomic boundary | §§7–8, 11 | Đã áp dụng có điều kiện |
-| Tổng hợp DE-L105 | state machine, crash matrix, security, observability và ba thí nghiệm | §§3, 6–18 | Đã đánh dấu synthesis; không hứa exactly-once |
+| [[SRC-STRIPE-IDEMPOTENT-REQUESTS]] | case study production về replay và retention | §§5, 9-12 | Đã ghi rõ hành vi riêng của Stripe |
+| [[SRC-POSTGRESQL-TRANSACTIONS]] | local atomic boundary | §§7-8, 11 | Đã áp dụng có điều kiện |
+| Tổng hợp DE-L105 | state machine, crash matrix, security, observability và ba thí nghiệm | §§3, 6-18 | Đã đánh dấu synthesis; không hứa exactly-once |
 
 Phạm vi đọc bao phủ request identity, atomic reservation, concurrent duplicate, fingerprint, outcome replay, crash recovery và expiry. Message-broker exactly-once và distributed transaction bị loại trừ có chủ đích.
 
@@ -314,7 +314,7 @@ Phạm vi đọc bao phủ request identity, atomic reservation, concurrent dupl
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.backend.idempotency-keys-deduplication-state`
+## Execution capsule: kiểm chứng `wiki.backend.idempotency-keys-deduplication-state`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.backend.idempotency-keys-deduplication-state`, sơ đồ, ví dụ và artifact về **Idempotency key và trạng thái chống trùng** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

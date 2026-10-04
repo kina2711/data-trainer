@@ -1,0 +1,31 @@
+task_id: academy-audit-curriculum-quality
+status: complete
+lifecycle_profile: learning
+risk_tier: R1-reviewed
+execution_path: standard-path
+phase_reached: G6-Release
+primary_deliverable: approved lesson-authoring baseline and enforceable quality contract
+evidence:
+  - Tools/Curriculum/Policies/lesson-authoring-standard-v1.md
+  - Tools/Curriculum/Build/validate_lesson_authoring_standard.py
+  - Tools/Curriculum/Manifests/LecturePilot/lesson-authoring-standard-v1-core-verify-deliverable.json
+test_results:
+  - validate_l001_editorial_and_library.py: pass
+  - npm run brain:test: pass
+  - npm run lectures:first10:test: pass
+  - npm run lectures:authoring:test: pass
+  - git diff --check: pass
+gate_results:
+  - G0-G4: pass
+  - G5: approved by kina2711 on 2026-10-04
+  - G6: pass
+approval_status: approved
+assumptions:
+  - Approval covers DA-L001 and DE-L001 as authoring examples.
+  - Internal operational duration metadata remains private and is not learner-facing.
+limitations:
+  - No teaching version for lesson 2 or later was authored in this task.
+residual_risks:
+  - Spoken delivery has not been calibrated with a learner; owner remains kina2711.
+next_task: academy-build-scene-package for DA-L002 and DE-L002 under lesson-authoring-v1
+next_owner: Codex with owner review by kina2711

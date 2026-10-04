@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Vùng raw cần giữ payload và metadata nào để replay, audit, privacy và reconciliation?
 source_ids:
   - src.book.reis-housley-fundamentals-data-engineering
@@ -44,7 +44,7 @@ Keep original bytes for files/API responses where rights/security allow, or reco
 
 ## 4. Privacy and security
 
-Classify sensitive fields/payloads before landing. Apply encryption in transit/at rest, least privilege, key rotation, audit, retention and deletion propagation. Raw access is narrower, not wider. Tokenization/masking may be required before persistence; then “raw” means earliest policy-compliant representation and transformation evidence. Secrets never land in payload/logs.
+Classify sensitive fields/payloads before landing. Apply encryption in transit/at rest, least privilege, key rotation, audit, retention and deletion propagation. Raw access is narrower, not wider. Tokenization/masking may be required before persistence; then raw means earliest policy-compliant representation and transformation evidence. Secrets never land in payload/logs.
 
 ## 5. Retention and deletion
 
@@ -226,7 +226,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ingestion.landing-zone-fidelity-envelope-metadata`
+## Execution capsule: kiểm chứng `wiki.ingestion.landing-zone-fidelity-envelope-metadata`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ingestion.landing-zone-fidelity-envelope-metadata`, sơ đồ, ví dụ và artifact về **Landing Zone Fidelity Envelope and Metadata** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -248,7 +248,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Vùng raw cần giữ payload và metadata nào để replay, audit, privacy và reconciliation?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Vùng raw cần giữ payload và metadata nào để replay, audit, privacy và reconciliation? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Landing Zone Fidelity Envelope and Metadata** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

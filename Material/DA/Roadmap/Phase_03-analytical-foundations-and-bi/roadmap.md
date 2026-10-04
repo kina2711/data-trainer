@@ -1,6 +1,6 @@
 # Giai đoạn 3: Nền tảng phân tích và BI
 
-Giai đoạn này kết hợp M04–M06. Người học chuyển từ `Bằng chứng hoàn thành Giai đoạn 2` sang khả năng tạo và bảo vệ bằng chứng tích hợp ở L054.
+Giai đoạn này kết hợp M04-M06. Người học chuyển từ `Bằng chứng hoàn thành Giai đoạn 2` sang khả năng tạo và bảo vệ bằng chứng tích hợp ở L054.
 
 ## Điều kiện đầu vào
 
@@ -52,13 +52,13 @@ flowchart LR
 
 ### Nhiệm vụ
 
-Phần A (30đ) kết quả kiểm thử với ba người dùng · Phần B (20đ) tài liệu chỉ số trong dashboard · Phần C (20đ) chất lượng thiết kế theo nguyên tắc Bài 46–48 · Phần D (15đ) hiệu năng đo được · Phần E (15đ) bảo vệ lựa chọn thiết kế dưới chất vấn.
+Phần A (30đ) kết quả kiểm thử với ba người dùng · Phần B (20đ) tài liệu chỉ số trong dashboard · Phần C (20đ) chất lượng thiết kế theo nguyên tắc Bài 46-48 · Phần D (15đ) hiệu năng đo được · Phần E (15đ) bảo vệ lựa chọn thiết kế dưới chất vấn.
 
 ### Cách đánh giá
 
 | Tiêu chí | Bằng chứng | Ngưỡng đạt | Lỗi loại trực tiếp |
 |---|---|---|---|
-| Chứng minh bằng quan sát rằng ba người chưa từng thấy dashboard trả lời được năm câu hỏi nghiệp vụ trên đó mà không cần hướng dẫn. | Phần A (30đ) kết quả kiểm thử với ba người dùng · Phần B (20đ) tài liệu chỉ số trong dashboard · Phần C (20đ) chất lượng thiết kế theo nguyên tắc Bài 46–48 · Phần D (15đ) hiệu năng đo được · Phần E (15đ) bảo vệ lựa chọn thiết kế dưới chất vấn. | ≥ 70/100 và phần A ≥ 60%. Không đạt thì làm lại với đề khác, theo quy trình khắc phục của roadmap giai đoạn. Đạt ≥ 70/100 và phần kiểm thử người dùng ≥ 60%. Đây là exit criterion của Mô-đun 6. | Hướng dẫn người dùng trong lúc kiểm thử nên kết quả không dùng được · hỏi ý kiến thay vì quan sát thao tác · bỏ phần tài liệu chỉ số. |
+| Chứng minh bằng quan sát rằng ba người chưa từng thấy dashboard trả lời được năm câu hỏi nghiệp vụ trên đó mà không cần hướng dẫn. | Phần A (30đ) kết quả kiểm thử với ba người dùng · Phần B (20đ) tài liệu chỉ số trong dashboard · Phần C (20đ) chất lượng thiết kế theo nguyên tắc Bài 46-48 · Phần D (15đ) hiệu năng đo được · Phần E (15đ) bảo vệ lựa chọn thiết kế dưới chất vấn. | ≥ 70/100 và phần A ≥ 60%. Không đạt thì làm lại với đề khác, theo quy trình khắc phục của roadmap giai đoạn. Đạt ≥ 70/100 và phần kiểm thử người dùng ≥ 60%. Đây là exit criterion của Mô-đun 6. | Hướng dẫn người dùng trong lúc kiểm thử nên kết quả không dùng được · hỏi ý kiến thay vì quan sát thao tác · bỏ phần tài liệu chỉ số. |
 
 ## Điểm tích hợp
 

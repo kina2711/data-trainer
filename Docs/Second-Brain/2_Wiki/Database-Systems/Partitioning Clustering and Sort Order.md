@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Chọn partition transform, clustering và sort order bằng cách cân pruning, file size, metadata, write maintenance và workload mix như thế nào?
 source_ids:
   - src.web.duckdb-parquet-pushdown
@@ -234,7 +234,7 @@ Mỗi mệnh đề hiệu năng cần counterfactual, correctness oracle và cou
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.olap.partitioning-clustering-sort-order`
+## Execution capsule: kiểm chứng `wiki.olap.partitioning-clustering-sort-order`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.olap.partitioning-clustering-sort-order`, sơ đồ, ví dụ và artifact về **Partitioning Clustering and Sort Order** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -256,7 +256,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Chọn partition transform, clustering và sort order bằng cách cân pruning, file size, metadata, write maintenance và workload mix như thế nào?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Chọn partition transform, clustering và sort order bằng cách cân pruning, file size, metadata, write maintenance và workload mix như thế nào? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Partitioning Clustering and Sort Order** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

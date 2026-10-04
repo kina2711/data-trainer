@@ -1,2 +1,59 @@
 schema_version: 1
-sources: []
+sources:
+  - id: DA-L001-S1
+    type: official-course-note
+    title: Introducing Data Analytics and Analytical Thinking
+    authority: Google/Coursera
+    locator: Module 1 readings, How data analysts approach tasks and New data perspectives
+    local_path: Material/DA/Reference/Library/Source-Notes/COURSE-C-DA-INTRO.md
+    accessed_at: 2026-09-27
+    supports: six-phase analysis process, iteration, stakeholder decision and responsible data handling
+    status: partially-deep-read
+  - id: DA-L001-S2
+    type: official-career-curriculum
+    title: Google Data Analytics Certificate
+    authority: Google
+    url: https://grow.google/certificates/data-analytics/
+    locator: Overview, skills and tools
+    accessed_at: 2026-10-03
+    supports: ask, prepare, process, analyze, share and act as a role-level workflow
+    status: verified-online
+  - id: DA-L001-S3
+    type: official-study-guide
+    title: Study guide for Exam PL-300, Microsoft Power BI Data Analyst
+    authority: Microsoft Learn
+    url: https://learn.microsoft.com/en-us/certifications/resources/study-guides/PL-300
+    locator: Audience profile and Skills at a glance, version measured from 2026-04-20
+    accessed_at: 2026-10-03
+    supports: stakeholder collaboration, data preparation, modeling, visualization, analysis, governance and security
+    status: verified-online
+  - id: DA-L001-S4
+    type: curriculum-contract
+    title: DA Module 1 roadmap
+    authority: Rabbit Data curriculum owner
+    locator: Concepts C01-001 and Lesson L001
+    local_path: Material/DA/Roadmap/Phase_01-foundations-and-role/Module_01-introduction-to-the-data-analyst-role/roadmap.md
+    accessed_at: 2026-10-03
+    supports: required role-boundary outcome and assessment contract
+    status: owner-governed
+  - id: DA-L001-W1
+    type: canonical-second-brain-note
+    title: Operating as a Data Analyst
+    authority: Rabbit Data Second Brain
+    locator: "#note=wiki.da.operating-as-a-data-analyst"
+    supports: role boundary, decision trace and evidence package
+    status: canonical
+  - id: DA-L001-W2
+    type: canonical-second-brain-note
+    title: Decision-first Discovery
+    authority: Rabbit Data Second Brain
+    locator: "#note=wiki.data-product.decision-first-discovery"
+    supports: decision, question, metric and action chain
+    status: canonical
+  - id: DA-L001-W3
+    type: canonical-second-brain-note
+    title: Revenue and Commerce Analytics
+    authority: Rabbit Data Second Brain
+    locator: "#note=wiki.da.revenue-and-commerce-analytics"
+    supports: metric grain, revenue semantics and reconciliation examples
+    status: canonical

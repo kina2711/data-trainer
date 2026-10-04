@@ -38,7 +38,7 @@ Kill trước/sau source-offset flush, transport publish, sink side effect và s
 
 ## 3. Idempotent sink
 
-Sink dùng stable event identity hoặc compare-and-set/version rule; dedup không được dựa duy nhất vào wall clock. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `CDC project - reconcile after repeated crashes`, câu hỏi thực dụng là: Một CDC pipeline phải chứng minh convergence ra sao sau nhiều lần crash tại các durability boundaries? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Sink dùng stable event identity hoặc compare-and-set/version rule; dedup không được dựa duy nhất vào wall clock. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `CDC project - reconcile after repeated crashes`, câu hỏi thực dụng là: Một CDC pipeline phải chứng minh convergence ra sao sau nhiều lần crash tại các durability boundaries? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Reconciliation
 
@@ -221,7 +221,7 @@ Với `wiki.cdc.repeated-crash-reconciliation`, command thành công không tự
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.cdc.repeated-crash-reconciliation`
+## Execution capsule: kiểm chứng `wiki.cdc.repeated-crash-reconciliation`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.cdc.repeated-crash-reconciliation`, sơ đồ, ví dụ và artifact về **CDC project - reconcile after repeated crashes** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

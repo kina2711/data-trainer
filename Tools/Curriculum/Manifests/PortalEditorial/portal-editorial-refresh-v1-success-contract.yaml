@@ -1,0 +1,32 @@
+task_id: academy-refresh-curriculum
+instance_id: portal-editorial-refresh-v1
+status: active
+requested_at: 2026-10-04
+owner: kina2711
+lifecycle_profile: learning
+risk_tier: R1-reviewed
+execution_path: standard-path
+primary_deliverable: versioned editorial release for published curriculum, Second Brain and portal UI
+scope:
+  roadmaps: all published DA and DE roadmap assets
+  lesson_assets: all assets of the ten published lessons
+  second_brain: all canonical notes in the web index
+  portal_ui: navigation, section headings, filters, tabs and empty states
+acceptance:
+  public_course_duration_language: forbidden
+  lesson_references_open_second_brain: required
+  second_brain_sources_open_library_books: required where a book source exists
+  scientific_plain_style: required
+  ornamental_language_metaphors_icons_curly_quotes_long_dashes: forbidden
+  humanizer_final_pass: required
+  second_brain_long_form_depth: required
+  portal_navigation_and_asset_labels: English
+  regression_tests: required
+assumptions:
+  - English title requirement applies to portal UI and asset-tab labels; Vietnamese academic content remains Vietnamese.
+  - A note may retain an authoritative web source when no honest book source supports the claim; the UI must expose every available book source directly.
+recovery:
+  - revert files listed in the post-change scope audit
+  - rebuild the prior brain index
+  - rerun portal and curriculum regression tests
+approval_gate: Owner review is required for the exact refreshed release.

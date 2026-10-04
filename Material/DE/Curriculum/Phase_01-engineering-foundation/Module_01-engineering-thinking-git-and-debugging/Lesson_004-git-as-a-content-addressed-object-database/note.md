@@ -31,7 +31,7 @@ Không nên dạy SHA-1 như bản chất duy nhất của Git. Bản chất là
 
 ## 3. Working tree, index và repository
 
-Working tree là bản checkout có thể sửa; index là snapshot dự kiến cho commit kế tiếp; repository giữ object và refs. `git add` cập nhật index bằng content hiện tại, không đơn giản đặt cờ ‘đã theo dõi’. Sửa file lần nữa sau add tạo hai phiên bản: index giữ bản đã stage, working tree giữ bản mới hơn.
+Working tree là bản checkout có thể sửa; index là snapshot dự kiến cho commit kế tiếp; repository giữ object và refs. `git add` cập nhật index bằng content hiện tại, không đơn giản đặt cờ đã theo dõi. Sửa file lần nữa sau add tạo hai phiên bản: index giữ bản đã stage, working tree giữ bản mới hơn.
 
 `git status` và `git diff` chỉ có nghĩa khi biết hai trạng thái đang được so. `git diff` mặc định so working tree với index; `git diff --cached` so index với `HEAD`. Học thuộc output mà không nêu cặp trạng thái dẫn tới dự đoán sai khi partial staging.
 
@@ -39,25 +39,25 @@ Working tree là bản checkout có thể sửa; index là snapshot dự kiến 
 
 Branch là ref có thể di chuyển tới commit. `HEAD` thường là symbolic ref trỏ tới branch hiện tại; branch lại trỏ tới commit. Commit mới dùng commit hiện tại làm parent rồi cập nhật branch. Detached HEAD bỏ lớp branch nhưng không phá object graph.
 
-Xóa branch chỉ xóa một ref, không xóa object ngay lập tức. Commit còn reachable từ ref khác hoặc reflog vẫn có thể tìm và phục hồi. Sau khi không còn reachable và hết retention, garbage collection mới có thể loại object; vì vậy ‘xóa nhánh luôn an toàn’ cũng là kết luận quá rộng.
+Xóa branch chỉ xóa một ref, không xóa object ngay lập tức. Commit còn reachable từ ref khác hoặc reflog vẫn có thể tìm và phục hồi. Sau khi không còn reachable và hết retention, garbage collection mới có thể loại object; vì vậy xóa nhánh luôn an toàn cũng là kết luận quá rộng.
 
 ## 5. Reset được suy từ ba cây
 
 Để hiểu reset, theo dõi `HEAD`, index và working tree riêng. `--soft` di chuyển ref/HEAD nhưng giữ index và working tree; mixed reset còn cập nhật index; hard reset cập nhật cả working tree và có thể làm mất thay đổi chưa lưu. Cú pháp nguy hiểm vì phạm vi mutation khác nhau, không phải vì tên lệnh khó nhớ.
 
-Trước reset, ghi bảng trạng thái của ba vùng và dự đoán từng cột sau lệnh. Nếu mục tiêu chỉ bỏ stage hoặc khôi phục file, dùng command hẹp hơn giúp giảm blast radius. Không chạy hard reset dựa trên trực giác ‘quay lại commit’.
+Trước reset, ghi bảng trạng thái của ba vùng và dự đoán từng cột sau lệnh. Nếu mục tiêu chỉ bỏ stage hoặc khôi phục file, dùng command hẹp hơn giúp giảm blast radius. Không chạy hard reset dựa trên trực giác quay lại commit.
 
 ## 6. Đọc object thô để kiểm mô hình
 
 Một repository ba commit đủ để kiểm mọi mệnh đề nền. Dùng `git rev-parse`, `git cat-file -t/-p`, `git ls-tree`, `git show-ref` và `git symbolic-ref HEAD` để dựng graph từ evidence. Dự đoán trước mỗi command rồi so output, tránh biến lab thành chép lệnh.
 
-Bằng chứng cần ghi Git version, object format, commit IDs trước–sau và trạng thái ba vùng. Nếu command hiện đại thay output so với sách 2014, giữ cơ chế ổn định và ghi khác biệt phiên bản thay vì ép output cũ.
+Bằng chứng cần ghi Git version, object format, commit IDs trước-sau và trạng thái ba vùng. Nếu command hiện đại thay output so với sách 2014, giữ cơ chế ổn định và ghi khác biệt phiên bản thay vì ép output cũ.
 
 ## 7. Tình huống xuyên suốt
 
 Một file `orders.csv` được commit ba lần, lần hai thêm dòng và lần ba đổi tên. Học viên chứng minh blob của content không đổi được tái dùng, tree đổi khi tên đổi, commit đổi theo tree/parent, rồi tạo và xóa một branch để thấy ref biến mất trong khi commit còn trong reflog.
 
-Tình huống của `wiki.engineering-foundation.git-object-database` phải được chạy trong sandbox hoặc fixture có version. Nếu chưa chạy, các kết quả mong đợi chỉ là protocol đánh giá; không được ghi thành observation. Người học giữ input, command, state trước–sau, raw output và một oracle độc lập đủ để reviewer tái hiện câu hỏi riêng của bài `Git as a content-addressed object database`.
+Tình huống của `wiki.engineering-foundation.git-object-database` phải được chạy trong sandbox hoặc fixture có version. Nếu chưa chạy, các kết quả mong đợi chỉ là protocol đánh giá; không được ghi thành observation. Người học giữ input, command, state trước-sau, raw output và một oracle độc lập đủ để reviewer tái hiện câu hỏi riêng của bài `Git as a content-addressed object database`.
 
 ## 8. Failure modes và ngộ nhận
 
@@ -144,10 +144,14 @@ Mỗi probe dưới đây bắt đầu bằng dự đoán viết trước. Kết
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-CHACON-STRAUB-PRO-GIT-2E]] — `src.book.chacon-straub-pro-git.2e` | Chapter 1 PDF 42–43; Chapter 3 PDF 129–174; Chapter 7 PDF 422–434; Chapter 10 PDF 762–790 | object graph, refs, merge, rebase, reset và identity | §§1–9 | Đã phủ | Nội dung ngoài objective DE-L004 |
+| [[SRC-CHACON-STRAUB-PRO-GIT-2E]]: `src.book.chacon-straub-pro-git.2e` | Chapter 1 PDF 42-43; Chapter 3 PDF 129-174; Chapter 7 PDF 422-434; Chapter 10 PDF 762-790 | object graph, refs, merge, rebase, reset và identity | §§1-9 | Đã phủ | Nội dung ngoài objective DE-L004 |
 
 ## Key takeaways
 - Khi coi Git là object graph cộng refs và ba vùng, command trở thành hệ quả có thể dự đoán thay vì danh sách phải học thuộc.
 - Một kết luận chỉ có giá trị trong scope, version và state đã ghi.
 - Counterexample và changed-constraint test mạnh hơn việc lặp lại định nghĩa.
 - Trước khi lab chạy, note này đã có provenance và protocol nhưng chưa phải chứng nhận production.
+
+## References
+
+- [[wiki.engineering-foundation.git-object-database|Git as a content-addressed object database]]

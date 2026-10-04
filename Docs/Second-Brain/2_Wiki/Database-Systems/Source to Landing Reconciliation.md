@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Đối soát source–landing ở những tầng nào để phát hiện missing, duplicate, corruption và semantic coercion?
 source_ids:
   - src.web.aws-dms-data-validation
@@ -27,11 +27,11 @@ relationships:
 # Source to Landing Reconciliation
 
 > [!abstract] Câu hỏi trung tâm
-> Đối soát source–landing ở những tầng nào để phát hiện missing, duplicate, corruption và semantic coercion?
+> Đối soát source-landing ở những tầng nào để phát hiện missing, duplicate, corruption và semantic coercion?
 
 ## 1. Boundary trước số liệu
 
-Mọi phép đối soát cần cùng source boundary: snapshot ID, LSN/SCN, watermark tuple, API cursor window hoặc file manifest. So source đang chuyển động với landing của thời điểm khác tạo false mismatch. Ghi included/excluded scope, timezone, delete state, late-data allowance và validation delay. Không có boundary thì “khớp” không có nghĩa xác định.
+Mọi phép đối soát cần cùng source boundary: snapshot ID, LSN/SCN, watermark tuple, API cursor window hoặc file manifest. So source đang chuyển động với landing của thời điểm khác tạo false mismatch. Ghi included/excluded scope, timezone, delete state, late-data allowance và validation delay. Không có boundary thì khớp không có nghĩa xác định.
 
 ## 2. Bốn tầng oracle
 
@@ -223,7 +223,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ingestion.source-to-landing-reconciliation`
+## Execution capsule: kiểm chứng `wiki.ingestion.source-to-landing-reconciliation`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ingestion.source-to-landing-reconciliation`, sơ đồ, ví dụ và artifact về **Source to Landing Reconciliation** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -245,7 +245,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Đối soát source–landing ở những tầng nào để phát hiện missing, duplicate, corruption và semantic coercion?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Đối soát source-landing ở những tầng nào để phát hiện missing, duplicate, corruption và semantic coercion? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Source to Landing Reconciliation** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 
@@ -275,7 +275,7 @@ Artifact của `wiki.ingestion.source-to-landing-reconciliation` buộc người
 
 ### Tự kiểm tra trước khi tái sử dụng
 
-1. Bạn có thể trả lời `Đối soát source–landing ở những tầng nào để phát hiện missing, duplicate, corruption và semantic coercion?` bằng một câu mà không kéo thêm concept thứ hai không?
+1. Bạn có thể trả lời `Đối soát source-landing ở những tầng nào để phát hiện missing, duplicate, corruption và semantic coercion?` bằng một câu mà không kéo thêm concept thứ hai không?
 2. Source locator nào đỡ cho claim, và phần nào chỉ là synthesis trong note?
 3. Observation nào khiến bạn dừng, thu hẹp hoặc đảo quyết định?
 4. Artifact nào cho phép một reviewer độc lập tái hiện kết quả?

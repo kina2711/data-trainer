@@ -38,7 +38,7 @@ ACL/policy theo cluster, topic, group, transactional ID và admin operation; den
 
 ## 3. Quotas
 
-Producer/consumer bandwidth, request rate và controller/admin protections giới hạn noisy neighbor nhưng throttling metrics phải visible. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Security, quota and multi-tenancy`, câu hỏi thực dụng là: Authentication, authorization, encryption, quotas và namespace isolation tạo multi-tenant boundary thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Producer/consumer bandwidth, request rate và controller/admin protections giới hạn noisy neighbor nhưng throttling metrics phải visible. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Security, quota and multi-tenancy`, câu hỏi thực dụng là: Authentication, authorization, encryption, quotas và namespace isolation tạo multi-tenant boundary thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Namespace isolation
 
@@ -221,7 +221,7 @@ Với `wiki.streaming.kafka-security-quota-tenancy`, command thành công không
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.streaming.kafka-security-quota-tenancy`
+## Execution capsule: kiểm chứng `wiki.streaming.kafka-security-quota-tenancy`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.streaming.kafka-security-quota-tenancy`, sơ đồ, ví dụ và artifact về **Security, quota and multi-tenancy** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -1,4 +1,4 @@
-# DE Lesson 3 — Practice, feedback and retest
+# DE Lesson 3: Practice, feedback and retest
 
 ## Thực hành có hướng dẫn
 
@@ -15,10 +15,10 @@
 
 ## Retrieval checks và đáp án tối thiểu
 
-- **ADR lưu gì quan trọng nhất?** — Context và reasoning đủ để tái tạo quyết định khi constraint thay đổi.
-- **Hard constraint khác weighted criterion thế nào?** — Vi phạm hard constraint loại option; không được bù bằng điểm ở tiêu chí khác.
-- **Một option tốt cần mô tả gì?** — Lợi ích, cost, failure mode và evidence có thể đảo đánh giá.
-- **Revisit signal tốt có tính chất gì?** — Đo được, có owner và gắn với assumption/constraint cụ thể.
+- **ADR lưu gì quan trọng nhất?**: Context và reasoning đủ để tái tạo quyết định khi constraint thay đổi.
+- **Hard constraint khác weighted criterion thế nào?**: Vi phạm hard constraint loại option; không được bù bằng điểm ở tiêu chí khác.
+- **Một option tốt cần mô tả gì?**: Lợi ích, cost, failure mode và evidence có thể đảo đánh giá.
+- **Revisit signal tốt có tính chất gì?**: Đo được, có owner và gắn với assumption/constraint cụ thể.
 
 ## Novel-scenario retest
 
@@ -26,7 +26,7 @@ Option rẻ nhất vi phạm RPO nhưng có tổng điểm cao nhất. Giải th
 
 **Pass condition:** câu trả lời nêu boundary, evidence, lựa chọn, ít nhất một alternative, blast radius/consumer harm và reversal trigger. Không chấm theo việc trùng wording của đáp án mẫu.
 
-## Bài làm sau buổi học
+## Post-Lesson Work
 
 - Làm `quiz.md`, ngưỡng 8/10.
 - Làm `homework.md`, ngưỡng 75/100 và không có critical failure.
@@ -43,8 +43,14 @@ Option rẻ nhất vi phạm RPO nhưng có tổng điểm cao nhất. Giải th
 
 ## Giới hạn
 
-Gói này chưa được dạy trên cohort thật; thời lượng là ước tính. Điểm quiz/homework chỉ là evidence trong scope của DE-L003, không phải chứng nhận vai trò hay kinh nghiệm production.
+Gói này chưa được dạy trên cohort thật. Điểm quiz và homework chỉ là evidence trong scope của DE-L003, không phải chứng nhận vai trò hoặc kinh nghiệm production.
 
 ## Bắc cầu
 
-DE-L004 — hiểu Git object graph để reasoning về thay đổi và phục hồi.
+DE-L004: hiểu Git object graph để reasoning về thay đổi và phục hồi.
+
+## References
+
+- [[wiki.engineering-foundation.adr-trade-offs|Trade-offs and architecture decision records]]
+- [[wiki.data-product.decision-first-discovery|Decision-First Discovery]]
+- [[wiki.data-product.requirements-traceability|Requirements traceability]]

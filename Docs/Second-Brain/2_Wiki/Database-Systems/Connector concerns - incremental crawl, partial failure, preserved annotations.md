@@ -38,7 +38,7 @@ Incremental window thường cần overlap để chống late updates; canonical
 
 ## 3. Partial failure
 
-Phân loại permission, parse, rate limit, object-not-found và sink rejection; giữ failed work units để retry có scope. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Connector concerns - incremental crawl, partial failure, preserved annotations`, câu hỏi thực dụng là: Connector incremental phải xử lý checkpoint, partial failure và preserved annotations thế nào để không mất metadata do người dùng quản trị? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân loại permission, parse, rate limit, object-not-found và sink rejection; giữ failed work units để retry có scope. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Connector concerns - incremental crawl, partial failure, preserved annotations`, câu hỏi thực dụng là: Connector incremental phải xử lý checkpoint, partial failure và preserved annotations thế nào để không mất metadata do người dùng quản trị? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Deletion detection
 
@@ -221,7 +221,7 @@ Với `wiki.metadata.connector-incremental-partial-annotations`, command thành 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.metadata.connector-incremental-partial-annotations`
+## Execution capsule: kiểm chứng `wiki.metadata.connector-incremental-partial-annotations`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.metadata.connector-incremental-partial-annotations`, sơ đồ, ví dụ và artifact về **Connector concerns - incremental crawl, partial failure, preserved annotations** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

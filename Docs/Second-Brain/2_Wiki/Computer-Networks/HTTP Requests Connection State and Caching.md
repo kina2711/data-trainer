@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-27
 last_verified: 2026-09-27
 review_after: 2027-03-27
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một HTTP request đi qua những ranh giới nào, trạng thái nằm ở đâu, và cần đọc message, connection, cookie cùng cache thế nào để không chẩn đoán sai?
 source_ids:
   - src.book.kurose-ross-networking.8e
@@ -38,7 +38,7 @@ relationships:
 
 ## Mô hình tổng quát
 
-HTTP là giao thức tầng ứng dụng theo mô hình request–response. Client gửi request có method, target, headers và có thể có body. Server trả response gồm status, headers và có thể có body. Một trang web có thể cần nhiều object; mỗi object có URL riêng và tạo thêm request.
+HTTP là giao thức tầng ứng dụng theo mô hình request-response. Client gửi request có method, target, headers và có thể có body. Server trả response gồm status, headers và có thể có body. Một trang web có thể cần nhiều object; mỗi object có URL riêng và tạo thêm request.
 
 ```mermaid
 flowchart LR
@@ -58,7 +58,7 @@ flowchart LR
 Sơ đồ này cố ý đặt proxy vào đường đi. Log của origin vắng mặt không chứng minh client chưa gửi request; request có thể dừng ở DNS, connection, TLS hoặc proxy. Tương tự, response nhận từ proxy không nhất thiết phản ánh trạng thái tức thời của origin.
 
 > [!source-fact]
-> Kurose và Ross mô tả HTTP là giao thức tầng ứng dụng của Web, do client và server trao đổi HTTP message; mỗi object có URL và server trả object qua response. Locator: §2.2.1, trang in 126–128.
+> Kurose và Ross mô tả HTTP là giao thức tầng ứng dụng của Web, do client và server trao đổi HTTP message; mỗi object có URL và server trả object qua response. Locator: §2.2.1, trang in 126-128.
 
 ## 1. Ba hợp đồng cần tách riêng
 
@@ -83,10 +83,10 @@ HTTP quy định cấu trúc message, method, status và headers. Status `500`, 
 
 Sách gọi HTTP là stateless vì server không cần nhớ request trước để hiểu request hiện tại theo mô hình cơ bản. Nếu client yêu cầu cùng object hai lần, server có thể trả lại object thay vì dựa vào ký ức rằng nó vừa phục vụ request đó.
 
-Website thực tế vẫn duy trì trạng thái trong database, session store hoặc client. Cookie tạo một lớp liên kết giữa các request: server cấp identifier, browser lưu nó và gửi lại ở những request sau. Bởi vậy, “HTTP stateless” không đồng nghĩa “ứng dụng không có session” hay “server không có database”.
+Website thực tế vẫn duy trì trạng thái trong database, session store hoặc client. Cookie tạo một lớp liên kết giữa các request: server cấp identifier, browser lưu nó và gửi lại ở những request sau. Bởi vậy, HTTP stateless không đồng nghĩa ứng dụng không có session hay server không có database.
 
 > [!source-fact]
-> Tính stateless của HTTP và cách cookie tạo lớp session phía trên HTTP được trình bày tại §2.2.1 và §2.2.4, trang in 127–128 và 135–138.
+> Tính stateless của HTTP và cách cookie tạo lớp session phía trên HTTP được trình bày tại §2.2.1 và §2.2.4, trang in 127-128 và 135-138.
 
 ## 3. Connection không bền và connection bền
 
@@ -107,7 +107,7 @@ HTTP/1.1 cho phép giữ connection sau response để gửi thêm request. Nhi�
 Tuy nhiên, connection sống lâu tạo thêm câu hỏi vận hành: ai đặt idle timeout, proxy có timeout ngắn hơn origin không, connection pool có tái sử dụng socket đã bị peer đóng không, và request đang ở trạng thái nào khi connection bị cắt.
 
 > [!source-fact]
-> Non-persistent, persistent connection và phép ước lượng hai RTT nằm tại §2.2.2, trang in 128–131. Sách mô tả pipelining trong bối cảnh HTTP/1.1; không dùng mô tả này làm khuyến nghị client hiện hành.
+> Non-persistent, persistent connection và phép ước lượng hai RTT nằm tại §2.2.2, trang in 128-131. Sách mô tả pipelining trong bối cảnh HTTP/1.1; không dùng mô tả này làm khuyến nghị client hiện hành.
 
 ## 4. Anatomy của request
 
@@ -126,7 +126,7 @@ Request line cho biết method, target và version. `Host` xác định authorit
 Sách giới thiệu `GET`, `POST`, `HEAD`, `PUT` và `DELETE`, nhưng tên method chưa đủ để kết luận endpoint an toàn khi retry. Cần đọc semantics chuẩn hiện hành và hợp đồng API cụ thể, đặc biệt với side effect, idempotency key và xử lý request trùng.
 
 > [!source-fact]
-> Request line, headers, body và các method minh họa nằm tại §2.2.3, trang in 131–133.
+> Request line, headers, body và các method minh họa nằm tại §2.2.3, trang in 131-133.
 
 ## 5. Anatomy của response
 
@@ -141,10 +141,10 @@ optional body
 
 Status line báo kết quả xử lý ở tầng HTTP. `Content-Type` mới là chỉ dấu chính thức về media type; đuôi file không thay thế header. `Content-Length` mô tả độ dài body theo quy tắc message framing phù hợp. `Date`, `Last-Modified` và các metadata khác phục vụ thời gian, cache hoặc quan sát.
 
-Các ví dụ `200`, `301`, `400`, `404`, `505` trong sách minh họa nhiều lớp kết quả. Status 4xx/5xx không phải lỗi transport. Client đã nhận được response và cần giải thích status theo endpoint, thay vì gộp tất cả dưới nhãn “network error”.
+Các ví dụ `200`, `301`, `400`, `404`, `505` trong sách minh họa nhiều lớp kết quả. Status 4xx/5xx không phải lỗi transport. Client đã nhận được response và cần giải thích status theo endpoint, thay vì gộp tất cả dưới nhãn network error.
 
 > [!source-fact]
-> Status line, response headers, body và một số status code được trình bày tại §2.2.3, trang in 133–135.
+> Status line, response headers, body và một số status code được trình bày tại §2.2.3, trang in 133-135.
 
 ## 6. Cookie và ranh giới trạng thái
 
@@ -161,7 +161,7 @@ Khi chẩn đoán session:
 - không đưa giá trị cookie nhạy cảm vào log hoặc note.
 
 > [!source-fact]
-> Bốn thành phần cookie, việc duy trì session và cảnh báo riêng tư nằm tại §2.2.4, trang in 135–138.
+> Bốn thành phần cookie, việc duy trì session và cảnh báo riêng tư nằm tại §2.2.4, trang in 135-138.
 
 > [!uncertainty]
 > Phạm vi sách không đủ cho chính sách cookie hiện hành. `Secure`, `HttpOnly`, `SameSite`, partitioned storage, third-party-cookie policy và CSRF cần tài liệu trình duyệt cùng chuẩn mới trước khi đưa ra hướng dẫn bảo mật.
@@ -173,12 +173,12 @@ Browser có thể gửi request tới web cache thay vì origin. Nếu cache hit
 - server đối với browser;
 - client đối với origin.
 
-Hai connection là hai ranh giới quan sát khác nhau. Client timeout không cho biết connection proxy–origin ra sao. Origin log thành công cũng chưa chứng minh proxy đã chuyển toàn bộ response cho client.
+Hai connection là hai ranh giới quan sát khác nhau. Client timeout không cho biết connection proxy-origin ra sao. Origin log thành công cũng chưa chứng minh proxy đã chuyển toàn bộ response cho client.
 
 Cache có thể giảm latency và giảm traffic qua access link, nhưng hiệu quả phụ thuộc hit rate, kích thước object, traffic pattern và policy. Ví dụ định lượng trong sách dùng giả định 15 Mbit/s, 15 request/s, object 1 Mbit và hit rate 0,4 để minh họa cách cache làm traffic intensity giảm; đó không phải benchmark chung.
 
 > [!source-fact]
-> Luồng cache hit/miss, vai trò kép của proxy và ví dụ traffic intensity nằm tại §2.2.5, trang in 138–142.
+> Luồng cache hit/miss, vai trò kép của proxy và ví dụ traffic intensity nằm tại §2.2.5, trang in 138-142.
 
 ## 8. Freshness và conditional request
 
@@ -191,10 +191,10 @@ Quy trình khái quát:
 3. origin xác nhận chưa đổi bằng `304`, hoặc gửi representation mới;
 4. cache cập nhật metadata và phục vụ client theo policy.
 
-`304` không có nghĩa “không có dữ liệu”; nó cho phép client/cache dùng body đã có. Debug chỉ nhìn response body rỗng mà bỏ request headers và cache state rất dễ kết luận sai.
+`304` không có nghĩa không có dữ liệu; nó cho phép client/cache dùng body đã có. Debug chỉ nhìn response body rỗng mà bỏ request headers và cache state rất dễ kết luận sai.
 
 > [!source-fact]
-> Conditional GET với `If-Modified-Since`, `Last-Modified` và `304 Not Modified` nằm tại §2.2.5, trang in 142–143.
+> Conditional GET với `If-Modified-Since`, `Last-Modified` và `304 Not Modified` nằm tại §2.2.5, trang in 142-143.
 
 > [!synthesis]
 > HTTP caching hiện đại còn có validator và directive khác. Note này chỉ dùng ví dụ trong sách để xây mental model revalidation; policy production phải đối chiếu chuẩn caching hiện hành và hành vi CDN.
@@ -208,7 +208,7 @@ Multiplexing giảm việc object nhỏ phải xếp sau object lớn ở tầng
 Phần cuối gọi HTTP/3 là draft năm 2020. Đây là dữ kiện lịch sử của nguồn, không phải mô tả trạng thái chuẩn năm 2026. Note này không dùng đoạn đó để khẳng định triển khai hiện hành.
 
 > [!source-fact]
-> HTTP/2 framing, stream interleaving, prioritization, server push và mô tả HTTP/3 tại thời điểm 2020 nằm tại §2.2.6, trang in 143–146.
+> HTTP/2 framing, stream interleaving, prioritization, server push và mô tả HTTP/3 tại thời điểm 2020 nằm tại §2.2.6, trang in 143-146.
 
 ## 10. Retry sau timeout: vùng mơ hồ phải được giữ nguyên
 
@@ -302,10 +302,10 @@ Chỉ dựa vào §2.2 chưa thể:
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§2.2.1–2.2.2 | HTTP overview, non-persistent và persistent connection | §§1–3 | Đã trình bày cùng RTT model và giới hạn của mô hình |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.2.3 | request/response message và method/status semantics | §§4–5 | Đã trình bày các trường quyết định behavior |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§2.2.1-2.2.2 | HTTP overview, non-persistent và persistent connection | §§1-3 | Đã trình bày cùng RTT model và giới hạn của mô hình |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.2.3 | request/response message và method/status semantics | §§4-5 | Đã trình bày các trường quyết định behavior |
 | [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.2.4 | cookie và user/session state | §6 | Đã tách transport, protocol và application state |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§2.2.5–2.2.6 | web cache, conditional request và HTTP/2 | §§7–9 | Đã trình bày cache boundary, freshness/validation và phần HTTP/2 thay đổi |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§2.2.5-2.2.6 | web cache, conditional request và HTTP/2 | §§7-9 | Đã trình bày cache boundary, freshness/validation và phần HTTP/2 thay đổi |
 
 Idempotency key, CDN policy và retry amplification chỉ được mô tả như giới hạn hoặc phần nối tiếp vì §2.2 không cung cấp đủ contract production cho các chủ đề đó.
 
@@ -317,7 +317,7 @@ Idempotency key, CDN policy và retry amplification chỉ được mô tả như
 - Timeout chỉ xác nhận caller không nhận kết quả trong ngân sách chờ. Với operation có side effect, retry an toàn cần idempotency contract hoặc bằng chứng về outcome trước đó.
 
 ## Reference
-1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §2.2, printed pp. 125–146, PDF pp. 127–148.
+1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §2.2, printed pp. 125-146, PDF pp. 127-148.
 2. Hồ sơ nguồn: [[SRC-KUROSE-ROSS-NETWORKING-8E]].
 3. Source note: `Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-03.md`.
 
@@ -329,7 +329,7 @@ Idempotency key, CDN policy và retry amplification chỉ được mô tả như
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.network.http-request-connection-state-cache`
+## Execution capsule: kiểm chứng `wiki.network.http-request-connection-state-cache`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.network.http-request-connection-state-cache`, sơ đồ, ví dụ và artifact về **HTTP request, connection, state và cache** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

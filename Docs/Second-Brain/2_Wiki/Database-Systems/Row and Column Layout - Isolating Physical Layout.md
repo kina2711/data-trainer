@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Thiết kế phép đo nào cô lập phần đóng góp của row/column layout khỏi compression, pruning, cache, metadata và khác biệt engine?
 source_ids:
   - src.book.kleppmann-ddia.1e
@@ -233,7 +233,7 @@ Mỗi kết luận cần input, observation và failure signal có thể lưu. T
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.olap.row-column-layout-isolation`
+## Execution capsule: kiểm chứng `wiki.olap.row-column-layout-isolation`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.olap.row-column-layout-isolation`, sơ đồ, ví dụ và artifact về **Row and Column Layout - Isolating Physical Layout** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -255,7 +255,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Thiết kế phép đo nào cô lập phần đóng góp của row/column layout khỏi compression, pruning, cache, metadata và khác biệt engine?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Thiết kế phép đo nào cô lập phần đóng góp của row/column layout khỏi compression, pruning, cache, metadata và khác biệt engine? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Row and Column Layout - Isolating Physical Layout** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

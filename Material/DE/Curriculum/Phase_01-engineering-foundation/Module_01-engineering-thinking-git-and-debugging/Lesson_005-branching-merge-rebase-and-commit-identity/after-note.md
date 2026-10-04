@@ -1,4 +1,4 @@
-# DE Lesson 5 — Practice, feedback and retest
+# DE Lesson 5: Practice, feedback and retest
 
 ## Thực hành có hướng dẫn
 
@@ -15,10 +15,10 @@ Bốn scenario card: branch riêng, shared branch, bad release, noisy fixups. Ch
 
 ## Retrieval checks và đáp án tối thiểu
 
-- **Fast-forward xảy ra khi nào?** — Tip hiện tại là ancestor của tip được hợp nhất nên ref chỉ cần di chuyển.
-- **Three-way merge dùng ba trạng thái nào?** — Hai tips và merge base chung.
-- **Vì sao rebase đổi commit identity?** — Commit được tạo lại trên parent mới nên object content và OID đổi.
-- **Squash mất thông tin gì?** — Các commit boundary và topology trung gian trên history đích.
+- **Fast-forward xảy ra khi nào?**: Tip hiện tại là ancestor của tip được hợp nhất nên ref chỉ cần di chuyển.
+- **Three-way merge dùng ba trạng thái nào?**: Hai tips và merge base chung.
+- **Vì sao rebase đổi commit identity?**: Commit được tạo lại trên parent mới nên object content và OID đổi.
+- **Squash mất thông tin gì?**: Các commit boundary và topology trung gian trên history đích.
 
 ## Novel-scenario retest
 
@@ -26,7 +26,7 @@ Pipeline pin commit SHA cũ trong khi team muốn rebase branch. Thiết kế mi
 
 **Pass condition:** câu trả lời nêu boundary, evidence, lựa chọn, ít nhất một alternative, blast radius/consumer harm và reversal trigger. Không chấm theo việc trùng wording của đáp án mẫu.
 
-## Bài làm sau buổi học
+## Post-Lesson Work
 
 - Làm `quiz.md`, ngưỡng 8/10.
 - Làm `homework.md`, ngưỡng 75/100 và không có critical failure.
@@ -43,8 +43,14 @@ Pipeline pin commit SHA cũ trong khi team muốn rebase branch. Thiết kế mi
 
 ## Giới hạn
 
-Gói này chưa được dạy trên cohort thật; thời lượng là ước tính. Điểm quiz/homework chỉ là evidence trong scope của DE-L005, không phải chứng nhận vai trò hay kinh nghiệm production.
+Gói này chưa được dạy trên cohort thật. Điểm quiz và homework chỉ là evidence trong scope của DE-L005, không phải chứng nhận vai trò hoặc kinh nghiệm production.
 
 ## Bắc cầu
 
-DE-L006 — phục hồi lost work bằng reflog, detached HEAD và bisect.
+DE-L006: phục hồi lost work bằng reflog, detached HEAD và bisect.
+
+## References
+
+- [[wiki.engineering-foundation.git-history-integration|Branching, merge, rebase and commit identity]]
+- [[wiki.engineering-foundation.git-object-database|Git as a content-addressed object database]]
+- [[wiki.engineering-foundation.adr-trade-offs|Trade-offs and architecture decision records]]

@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao thiết kế portfolio chỉ mục từ workload, dự đoán cột/order/coverage, và định lượng cả read benefit lẫn write/storage cost?
 source_ids:
   - src.manual.postgresql-17.10
@@ -34,7 +34,7 @@ relationships:
 
 Index lưu mapping từ key có thứ tự hoặc access-method-specific representation đến heap tuples. Nó tăng thêm cách tìm rows nhưng phải được tạo, lưu, cập nhật, vacuum và cache. Mỗi index là một bản sao cấu trúc phụ của dữ liệu, không phải metadata miễn phí.
 
-Thiết kế bắt đầu từ workload: query frequency/latency/SLO, predicates, joins, order/group, projected columns, table size, write mix và concurrency. “Cột xuất hiện trong WHERE” mới là tín hiệu, chưa đủ để tạo index.
+Thiết kế bắt đầu từ workload: query frequency/latency/SLO, predicates, joins, order/group, projected columns, table size, write mix và concurrency. Cột xuất hiện trong WHERE mới là tín hiệu, chưa đủ để tạo index.
 
 Portfolio tốt tối ưu tổng chi phí có trọng số, không từng query riêng. Hai indexes trùng prefix có thể redundant; một index đặc biệt cho query hiếm có thể không đáng.
 
@@ -50,7 +50,7 @@ Heap vẫn lưu row version và visibility. Regular index scan fetch heap; index
 
 Index thường hữu ích khi predicate chọn ít rows, nhưng planner cân pages, correlation, cache, output order, LIMIT và index-only coverage. Query lấy nhiều rows có thể vẫn dùng index vì ORDER BY LIMIT; query chọn ít nhưng function/cast mismatch có thể không dùng.
 
-Không có ngưỡng “5%/20%” phổ quát. Dataset/hardware/cost model quyết định. Benchmark cả hot/cold cache và representative parameters.
+Không có ngưỡng 5%/20% phổ quát. Dataset/hardware/cost model quyết định. Benchmark cả hot/cold cache và representative parameters.
 
 Seq scan trên bảng nhỏ hoặc analytics là hợp lý. Mục tiêu là SLO/throughput, không tỷ lệ index usage tối đa.
 
@@ -58,13 +58,13 @@ Seq scan trên bảng nhỏ hoặc analytics là hợp lý. Mục tiêu là SLO/
 
 Với B-tree `(a,b,c)`, equality constraints trên leading columns và inequality trên cột kế tiếp thường giới hạn contiguous scan tốt nhất. Query `a=?`, `(a,b)`, `(a,b,c)` là patterns tự nhiên. Predicate chỉ trên `b` thường không có conventional leading-key navigation.
 
-Nhưng không được nói “không bao giờ dùng”: PostgreSQL 17 manual mô tả skip scan trong một số điều kiện, engine có thể lặp distinct leading values để khai thác later column khi dự kiến có lợi. Nó phụ thuộc NDV/selectivity/cost và có thể vẫn scan phần lớn index.
+Nhưng không được nói không bao giờ dùng: PostgreSQL 17 manual mô tả skip scan trong một số điều kiện, engine có thể lặp distinct leading values để khai thác later column khi dự kiến có lợi. Nó phụ thuộc NDV/selectivity/cost và có thể vẫn scan phần lớn index.
 
-Lab “index sai thứ tự không được dùng” phải dựng data/workload và quan sát plan, không biến thành luật tuyệt đối. Kết luận đúng là order ảnh hưởng khả năng giới hạn scan và cost.
+Lab index sai thứ tự không được dùng phải dựng data/workload và quan sát plan, không biến thành luật tuyệt đối. Kết luận đúng là order ảnh hưởng khả năng giới hạn scan và cost.
 
 ## 5. Chọn thứ tự cột
 
-Quy tắc không đơn giản “cột selectivity cao trước”. Xem equality, range, ordering, grouping, join và query family. Thường đặt equality keys dùng chung trước, rồi range/order; nhưng một order khác có thể phục vụ nhiều queries hơn.
+Quy tắc không đơn giản cột selectivity cao trước. Xem equality, range, ordering, grouping, join và query family. Thường đặt equality keys dùng chung trước, rồi range/order; nhưng một order khác có thể phục vụ nhiều queries hơn.
 
 Ví dụ `(tenant_id, status, created_at DESC)` hỗ trợ tenant+status+time range/order. Nếu query chủ yếu tenant+time không status, status ở giữa có thể cản ordered range. Có thể cần `(tenant_id, created_at)` thay vì thêm mọi cột.
 
@@ -100,7 +100,7 @@ Expression index lưu kết quả như `lower(email)` và phục vụ predicate 
 
 Expression index thêm compute cost trên write và storage. Nếu only need stats, expression statistics có thể phù hợp hơn. Nếu query có thể chuẩn hóa write vào generated/normalized column, so maintainability.
 
-Đừng “sửa sargability” bằng index cho mọi wrapper; đôi khi rewrite predicate bảo toàn semantics tốt hơn.
+Đừng sửa sargability bằng index cho mọi wrapper; đôi khi rewrite predicate bảo toàn semantics tốt hơn.
 
 ## 10. Unique indexes và constraints
 
@@ -162,7 +162,7 @@ Cố ý tạo `(a,b)` trong khi workload chỉ lọc b trên data khiến skip s
 
 Mỗi candidate ghi query coverage, frequency/SLO, predicate/order, current plan, estimated benefit, index size, write rate, build lock/disk risk, redundancy và owner. Quyết định create/keep/drop/defer kèm evidence.
 
-Một index “đọc nhanh 10×” có thể bị từ chối nếu query chạy mỗi tháng còn writes giảm 30%. Ngược lại, critical lookup hiếm có SLO cứng có thể đáng.
+Một index đọc nhanh 10× có thể bị từ chối nếu query chạy mỗi tháng còn writes giảm 30%. Ngược lại, critical lookup hiếm có SLO cứng có thể đáng.
 
 Không dùng một score mơ hồ; giữ raw metrics và priorities.
 
@@ -174,7 +174,7 @@ Một lỗi khác là thêm index để che estimate sai, rồi plan khác vẫn
 
 ## 19. Câu hỏi tự kiểm tra
 
-1. Vì sao leftmost rule không nên phát biểu “cột thứ hai tuyệt đối không dùng” ở PostgreSQL 17?
+1. Vì sao leftmost rule không nên phát biểu cột thứ hai tuyệt đối không dùng ở PostgreSQL 17?
 2. INCLUDE khác key columns thế nào?
 3. Index-only scan cần visibility condition gì?
 4. Partial index predicate matching có giới hạn nào?
@@ -190,18 +190,18 @@ Một lỗi khác là thêm index để che estimate sai, rồi plan khác vẫn
 - Bộ 50 query và write benchmark chưa chạy; evidence thuộc `after-note.md`.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-10-MANUAL]] — multicolumn, expression, partial và index-only indexes.
-2. [[SRC-MASTERING-POSTGRESQL-17-6E]] — index cost, combined/functional/partial indexes và runtime usage.
-3. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]] — B-tree/index scan/index-only cost mechanisms.
+1. [[SRC-POSTGRESQL-17-10-MANUAL]]: multicolumn, expression, partial và index-only indexes.
+2. [[SRC-MASTERING-POSTGRESQL-17-6E]]: index cost, combined/functional/partial indexes và runtime usage.
+3. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]]: B-tree/index scan/index-only cost mechanisms.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 488–498 | multicolumn/skip scan, expression, partial, index-only | §§4–10 | Đã giữ nuance 17.10 |
-| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 87–112, 198–202 | index design/cost/unused stats | §§1–18 | Đã bỏ ngưỡng cứng |
-| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 330–349 | index scan mechanisms/cost | §§2–7 | Đã đối chiếu manual 17.10 |
-| Tổng hợp DE-L129 | 50-query portfolio, read/write evidence | §§16–18 | Đã thành decision protocol |
+| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 488-498 | multicolumn/skip scan, expression, partial, index-only | §§4-10 | Đã giữ nuance 17.10 |
+| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 87-112, 198-202 | index design/cost/unused stats | §§1-18 | Đã bỏ ngưỡng cứng |
+| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 330-349 | index scan mechanisms/cost | §§2-7 | Đã đối chiếu manual 17.10 |
+| Tổng hợp DE-L129 | 50-query portfolio, read/write evidence | §§16-18 | Đã thành decision protocol |
 
 ## Key takeaways
 - Index là portfolio decision từ workload, không phải phản xạ cho từng WHERE column.
@@ -212,7 +212,7 @@ Một lỗi khác là thêm index để che estimate sai, rồi plan khác vẫn
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.index-structure-composite-order-cost`
+## Execution capsule: kiểm chứng `wiki.database.index-structure-composite-order-cost`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.index-structure-composite-order-cost`, sơ đồ, ví dụ và artifact về **Cấu trúc chỉ mục, thứ tự cột và chi phí** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

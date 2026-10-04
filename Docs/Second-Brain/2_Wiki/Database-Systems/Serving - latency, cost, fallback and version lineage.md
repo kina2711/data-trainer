@@ -38,7 +38,7 @@ Kết luận về serving latency, token cost, fallback, caching và model-versi
 
 ## 3. Failure mode
 
-Phân tích serving latency, token cost, fallback, caching và model-version lineage cần tìm earliest failure, propagation path, blast radius và state hoặc claim còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Serving - latency, cost, fallback and version lineage`, câu hỏi thực dụng là: Làm thế nào thiết kế, kiểm chứng và bảo vệ serving latency, token cost, fallback, caching và model-version lineage mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân tích serving latency, token cost, fallback, caching và model-version lineage cần tìm earliest failure, propagation path, blast radius và state hoặc claim còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Serving - latency, cost, fallback and version lineage`, câu hỏi thực dụng là: Làm thế nào thiết kế, kiểm chứng và bảo vệ serving latency, token cost, fallback, caching và model-version lineage mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision rule
 
@@ -221,7 +221,7 @@ Với `wiki.ai.serving-lineage`, command thành công không tự chứng minh d
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ai.serving-lineage`
+## Execution capsule: kiểm chứng `wiki.ai.serving-lineage`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ai.serving-lineage`, sơ đồ, ví dụ và artifact về **Serving - latency, cost, fallback and version lineage** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

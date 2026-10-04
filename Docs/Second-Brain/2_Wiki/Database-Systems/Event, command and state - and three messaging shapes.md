@@ -38,7 +38,7 @@ Command yêu cầu một capability thực hiện intent, có target/authority v
 
 ## 3. State record
 
-Keyed state/changelog mô tả latest known representation; compaction và tombstone ảnh hưởng reconstruction. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Event, command and state - and three messaging shapes`, câu hỏi thực dụng là: Event, command và state record khác intent/authority ra sao, và ba messaging shapes phục vụ coupling nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Keyed state/changelog mô tả latest known representation; compaction và tombstone ảnh hưởng reconstruction. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Event, command and state - and three messaging shapes`, câu hỏi thực dụng là: Event, command và state record khác intent/authority ra sao, và ba messaging shapes phục vụ coupling nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Queue shape
 
@@ -221,7 +221,7 @@ Với `wiki.streaming.event-command-state-shapes`, command thành công không t
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.streaming.event-command-state-shapes`
+## Execution capsule: kiểm chứng `wiki.streaming.event-command-state-shapes`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.streaming.event-command-state-shapes`, sơ đồ, ví dụ và artifact về **Event, command and state - and three messaging shapes** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

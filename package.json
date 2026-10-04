@@ -12,7 +12,9 @@
     "brain:desktop": "electron Apps/SecondBrain/desktop/main.cjs",
     "brain:test": "npm run brain:index && node --check Apps/SecondBrain/web/app.js && node --check Apps/SecondBrain/desktop/main.cjs && node --check Apps/SecondBrain/desktop/preload.cjs && node --test Apps/SecondBrain/tests/app.test.mjs",
     "lectures:first10:build": "python3 Tools/Curriculum/Build/build_da_de_first_5_lessons.py",
-    "lectures:first10:test": "python3 Tools/Curriculum/Build/build_da_de_first_5_lessons.py --check && python3 Tools/Curriculum/Build/validate_da_de_first_5_lessons.py"
+    "lectures:first10:test": "python3 Tools/Curriculum/Build/build_da_de_first_5_lessons.py --check && python3 Tools/Curriculum/Build/validate_da_de_first_5_lessons.py",
+    "lectures:authoring:test": "npm run brain:index && python3 Tools/Curriculum/Build/validate_lesson_authoring_standard.py",
+    "portal:editorial:test": "npm run brain:index && python3 Tools/Curriculum/Build/validate_portal_editorial_standard.py"
   },
   "engines": {
     "node": ">=20"

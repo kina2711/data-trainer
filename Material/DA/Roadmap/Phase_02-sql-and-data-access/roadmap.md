@@ -1,6 +1,6 @@
 # Giai đoạn 2: SQL và truy cập dữ liệu
 
-Giai đoạn này kết hợp M03–M03. Người học chuyển từ `Bằng chứng hoàn thành Giai đoạn 1` sang khả năng tạo và bảo vệ bằng chứng tích hợp ở L030.
+Giai đoạn này kết hợp M03-M03. Người học chuyển từ `Bằng chứng hoàn thành Giai đoạn 1` sang khả năng tạo và bảo vệ bằng chứng tích hợp ở L030.
 
 ## Điều kiện đầu vào
 

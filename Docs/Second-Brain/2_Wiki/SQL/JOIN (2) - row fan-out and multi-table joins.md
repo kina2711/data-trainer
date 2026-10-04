@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Nhân bản dòng: cơ chế bảng bên phải có nhiều dòng khớp làm tổng bị thổi phồng, cách phát hiện bằng đếm và cách xử lý bằng gộp trước khi ghép. `LEFT JOIN` có điều kiện bảng phải đặt trong `WHERE` và cơ chế nó biến thành `INNER JOIN`. Ghép ba bảng trở lên và thứ tự ghép. Tự ghép cho quan hệ phân cấp. Quy trình kiểm chứng bắt buộc: đếm dòng trước và sau mỗi phép ghép. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L024 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **JOIN (2) - row fan-out and multi-table joins**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Viết truy vấn ghép nhiều bảng và chứng minh bằng phép đếm rằng kết quả không mất dòng và không nhân dòng. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Nhân bản dòng: cơ chế bảng bên phải có nhiều dòng khớp làm tổng bị thổi phồng, cách phát hiện bằng đếm và cách xử lý bằng gộp trước khi ghép. `LEFT JOIN` có điều kiện bảng phải đặt trong `WHERE` và cơ chế nó biến thành `INNER JOIN`. Ghép ba bảng trở lên và thứ tự ghép. Tự ghép cho quan hệ phân cấp. Quy trình kiểm chứng bắt buộc: đếm dòng trước và sau mỗi phép ghép.
 
@@ -44,7 +44,7 @@ Cơ chế của `join-2-row-fan-out-and-multi-table-joins` được kiểm qua n
 
 Lỗi cần loại trừ trong bài này là: Ghép bảng chi tiết vào bảng tổng rồi cộng cột tổng · đặt điều kiện bảng phải vào `WHERE` sau `LEFT JOIN` · không đếm dòng trước và sau nên không phát hiện nhân bản. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Ghép bảng chi tiết vào bản
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L024: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Tổng doanh thu từ truy vấn 5 bảng khớp tuyệt đối với tổng từ bảng hoá đơn, và nộp đủ phép đếm dòng tại mỗi bước ghép.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L024: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Tổng doanh thu từ truy vấn 5 bảng khớp tuyệt đối với tổng từ bảng hoá đơn, và nộp đủ phép đếm dòng tại mỗi bước ghép.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: JOIN (2) - row fan-out and multi-table joins
+## Worked Case: JOIN (2) - row fan-out and multi-table joins
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Trên `DS1`, ghép 5 bảng để ra báo cáo doanh thu theo khách hàng × sản phẩm. Chứng minh tổng khớp với tổng tính trực tiếp từ bảng hoá đơn.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `JOIN (2) - row fan-out and multi-table joins`, learn
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L024 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `JOIN (2) - row fan-out and multi-table joins` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L024 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Nhân bản dòng: cơ chế bảng bên phải có nhiều dòng khớp làm tổng bị thổi phồng, cách phát hiện bằng đếm và cách xử lý bằng gộp trước khi ghép. `LEFT JOIN` có điều kiện bảng phải đặt trong `WHERE` và cơ chế nó biến thành `INNER JOIN`. Ghép ba bảng trở lên và thứ tự ghép. Tự ghép cho quan hệ phân cấp. Quy trình kiểm chứng bắt buộc: đếm dòng trước và sau mỗi phép ghép.
+**Mệnh đề của probe 1: `population`.** Nhân bản dòng: cơ chế bảng bên phải có nhiều dòng khớp làm tổng bị thổi phồng, cách phát hiện bằng đếm và cách xử lý bằng gộp trước khi ghép. `LEFT JOIN` có điều kiện bảng phải đặt trong `WHERE` và cơ chế nó biến thành `INNER JOIN`. Ghép ba bảng trở lên và thứ tự ghép. Tự ghép cho quan hệ phân cấp. Quy trình kiểm chứng bắt buộc: đếm dòng trước và sau mỗi phép ghép.
 
 **Thiết kế.** Probe 1 của L024 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L024 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Viết truy vấn ghép nhiều bảng và chứng minh bằng phép đếm rằng kết quả không mất dòng và không nhân dòng.
+**Mệnh đề của probe 2: `grain`.** Viết truy vấn ghép nhiều bảng và chứng minh bằng phép đếm rằng kết quả không mất dòng và không nhân dòng.
 
 **Thiết kế.** Probe 2 của L024 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L024 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Ghép bảng chi tiết vào bảng tổng rồi cộng cột tổng · đặt điều kiện bảng phải vào `WHERE` sau `LEFT JOIN` · không đếm dòng trước và sau nên không phát hiện nhân bản.
+**Mệnh đề của probe 3: `identity`.** Ghép bảng chi tiết vào bảng tổng rồi cộng cột tổng · đặt điều kiện bảng phải vào `WHERE` sau `LEFT JOIN` · không đếm dòng trước và sau nên không phát hiện nhân bản.
 
 **Thiết kế.** Probe 3 của L024 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L024 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Tổng doanh thu từ truy vấn 5 bảng khớp tuyệt đối với tổng từ bảng hoá đơn, và nộp đủ phép đếm dòng tại mỗi bước ghép.
+**Mệnh đề của probe 4: `time cutoff`.** Tổng doanh thu từ truy vấn 5 bảng khớp tuyệt đối với tổng từ bảng hoá đơn, và nộp đủ phép đếm dòng tại mỗi bước ghép.
 
 **Thiết kế.** Probe 4 của L024 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L024 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Nhân bản dòng: cơ chế bảng bên phải có nhiều dòng khớp làm tổng bị thổi phồng, cách phát hiện bằng đếm và cách xử lý bằng gộp trước khi ghép. `LEFT JOIN` có điều kiện bảng phải đặt trong `WHERE` và cơ chế nó biến thành `INNER JOIN`. Ghép ba bảng trở lên và thứ tự ghép. Tự ghép cho quan hệ phân cấp. Quy trình kiểm chứng bắt buộc: đếm dòng trước và sau mỗi phép ghép.
+**Mệnh đề của probe 5: `missing versus zero`.** Nhân bản dòng: cơ chế bảng bên phải có nhiều dòng khớp làm tổng bị thổi phồng, cách phát hiện bằng đếm và cách xử lý bằng gộp trước khi ghép. `LEFT JOIN` có điều kiện bảng phải đặt trong `WHERE` và cơ chế nó biến thành `INNER JOIN`. Ghép ba bảng trở lên và thứ tự ghép. Tự ghép cho quan hệ phân cấp. Quy trình kiểm chứng bắt buộc: đếm dòng trước và sau mỗi phép ghép.
 
 **Thiết kế.** Probe 5 của L024 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L024 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Viết truy vấn ghép nhiều bảng và chứng minh bằng phép đếm rằng kết quả không mất dòng và không nhân dòng.
+**Mệnh đề của probe 6: `duplicate`.** Viết truy vấn ghép nhiều bảng và chứng minh bằng phép đếm rằng kết quả không mất dòng và không nhân dòng.
 
 **Thiết kế.** Probe 6 của L024 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L024 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Ghép bảng chi tiết vào bảng tổng rồi cộng cột tổng · đặt điều kiện bảng phải vào `WHERE` sau `LEFT JOIN` · không đếm dòng trước và sau nên không phát hiện nhân bản.
+**Mệnh đề của probe 7: `join fan-out`.** Ghép bảng chi tiết vào bảng tổng rồi cộng cột tổng · đặt điều kiện bảng phải vào `WHERE` sau `LEFT JOIN` · không đếm dòng trước và sau nên không phát hiện nhân bản.
 
 **Thiết kế.** Probe 7 của L024 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L024 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Tổng doanh thu từ truy vấn 5 bảng khớp tuyệt đối với tổng từ bảng hoá đơn, và nộp đủ phép đếm dòng tại mỗi bước ghép.
+**Mệnh đề của probe 8: `changed definition`.** Tổng doanh thu từ truy vấn 5 bảng khớp tuyệt đối với tổng từ bảng hoá đơn, và nộp đủ phép đếm dòng tại mỗi bước ghép.
 
 **Thiết kế.** Probe 8 của L024 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L024 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Nhân bản dòng: cơ chế bảng bên phải có nhiều dòng khớp làm tổng bị thổi phồng, cách phát hiện bằng đếm và cách xử lý bằng gộp trước khi ghép. `LEFT JOIN` có điều kiện bảng phải đặt trong `WHERE` và cơ chế nó biến thành `INNER JOIN`. Ghép ba bảng trở lên và thứ tự ghép. Tự ghép cho quan hệ phân cấp. Quy trình kiểm chứng bắt buộc: đếm dòng trước và sau mỗi phép ghép.
+**Mệnh đề của probe 9: `independent oracle`.** Nhân bản dòng: cơ chế bảng bên phải có nhiều dòng khớp làm tổng bị thổi phồng, cách phát hiện bằng đếm và cách xử lý bằng gộp trước khi ghép. `LEFT JOIN` có điều kiện bảng phải đặt trong `WHERE` và cơ chế nó biến thành `INNER JOIN`. Ghép ba bảng trở lên và thứ tự ghép. Tự ghép cho quan hệ phân cấp. Quy trình kiểm chứng bắt buộc: đếm dòng trước và sau mỗi phép ghép.
 
 **Thiết kế.** Probe 9 của L024 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L024 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Viết truy vấn ghép nhiều bảng và chứng minh bằng phép đếm rằng kết quả không mất dòng và không nhân dòng.
+**Mệnh đề của probe 10: `replay`.** Viết truy vấn ghép nhiều bảng và chứng minh bằng phép đếm rằng kết quả không mất dòng và không nhân dòng.
 
 **Thiết kế.** Probe 10 của L024 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L024 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Ghép bảng chi tiết vào bảng tổng rồi cộng cột tổng · đặt điều kiện bảng phải vào `WHERE` sau `LEFT JOIN` · không đếm dòng trước và sau nên không phát hiện nhân bản.
+**Mệnh đề của probe 11: `fresh snapshot`.** Ghép bảng chi tiết vào bảng tổng rồi cộng cột tổng · đặt điều kiện bảng phải vào `WHERE` sau `LEFT JOIN` · không đếm dòng trước và sau nên không phát hiện nhân bản.
 
 **Thiết kế.** Probe 11 của L024 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L024 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Tổng doanh thu từ truy vấn 5 bảng khớp tuyệt đối với tổng từ bảng hoá đơn, và nộp đủ phép đếm dòng tại mỗi bước ghép.
+**Mệnh đề của probe 12: `novel scenario`.** Tổng doanh thu từ truy vấn 5 bảng khớp tuyệt đối với tổng từ bảng hoá đơn, và nộp đủ phép đếm dòng tại mỗi bước ghép.
 
 **Thiết kế.** Probe 12 của L024 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Tổng doanh thu từ truy vấn 5 bảng khớp tuyệt đối với tổng t�
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql`
-2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e`
+1. [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql`
+2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới JOIN (2) - row fan-out and multi-table joins | các mục cơ chế, case và probe | Đã phủ | ngoài objective L024 |
-| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới JOIN (2) - row fan-out and multi-table joins | các mục cơ chế, case và probe | Đã phủ | ngoài objective L024 |
+| [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới JOIN (2) - row fan-out and multi-table joins | các mục cơ chế, case và probe | Đã phủ | ngoài objective L024 |
+| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới JOIN (2) - row fan-out and multi-table joins | các mục cơ chế, case và probe | Đã phủ | ngoài objective L024 |
 
 ## Key takeaways
 - Viết truy vấn ghép nhiều bảng và chứng minh bằng phép đếm rằng kết quả không mất dòng và không nhân dòng.
@@ -226,7 +226,7 @@ Tổng doanh thu từ truy vấn 5 bảng khớp tuyệt đối với tổng t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.join-2-row-fan-out-and-multi-table-joins`
+## Execution capsule: kiểm chứng `wiki.da.join-2-row-fan-out-and-multi-table-joins`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.join-2-row-fan-out-and-multi-table-joins`, sơ đồ, ví dụ và artifact về **JOIN (2) - row fan-out and multi-table joins** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

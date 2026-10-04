@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao tính running total, moving average và tăng trưởng theo kỳ đúng khi có peer rows, kỳ thiếu, duplicate và mẫu số bằng zero?
 source_ids:
   - src.web.postgresql-17-window-functions
@@ -58,7 +58,7 @@ Quy tắc giáo trình: khi metric phụ thuộc frame, viết frame explicit. �
 
 `ROWS` đếm physical rows theo order. `ROWS BETWEEN 2 PRECEDING AND CURRENT ROW` lấy tối đa ba rows, không phải ba tháng nếu tháng thiếu và không phải ba giá trị khác nhau nếu period duplicate.
 
-ROWS phù hợp sau khi đã đảm bảo một row/entity-period và calendar scaffold liên tục. Khi đó ba rows đúng ba periods. Nếu không có uniqueness/continuity, tên “3-month moving average” là không được chứng minh.
+ROWS phù hợp sau khi đã đảm bảo một row/entity-period và calendar scaffold liên tục. Khi đó ba rows đúng ba periods. Nếu không có uniqueness/continuity, tên 3-month moving average là không được chứng minh.
 
 Tie-break trong order quyết định row nào là preceding khi period duplicate. Tốt hơn fail uniqueness thay vì thêm arbitrary ID và tiếp tục metric.
 
@@ -68,7 +68,7 @@ Tie-break trong order quyết định row nào là preceding khi period duplicat
 
 Với duplicate order value, peers đi cùng frame boundary. Điều này có ích khi tất cả events cùng timestamp/price phải được coi một điểm, nhưng có thể gây bước nhảy lũy kế.
 
-Không nói RANGE luôn là “khoảng thời gian”. Nó là value-based frame; thời gian chỉ khi ordering expression là time và offset tương thích. Đọc dialect cụ thể.
+Không nói RANGE luôn là khoảng thời gian. Nó là value-based frame; thời gian chỉ khi ordering expression là time và offset tương thích. Đọc dialect cụ thể.
 
 ## 6. GROUPS
 
@@ -130,7 +130,7 @@ First period không có previous là not-applicable, không phải 0% growth. Ng
 
 Lab tạo hai rows cùng period để so `ROWS` và default/RANGE behavior. Với ROWS, cumulative sum có thể tăng ở từng row theo tie-break; với RANGE/default, peer rows cùng frame end nên cùng cumulative result. GROUPS đi theo nhóm period.
 
-Sau experiment, production pipeline phải quyết định aggregate duplicate về một row hay coi là lỗi. Không giữ duplicate chỉ vì RANGE cho số “đẹp”.
+Sau experiment, production pipeline phải quyết định aggregate duplicate về một row hay coi là lỗi. Không giữ duplicate chỉ vì RANGE cho số đẹp.
 
 Lưu input table và output ba frame cạnh nhau, giải thích chính xác row membership.
 
@@ -148,7 +148,7 @@ Không chỉ so final running total; moving windows có thể sai ở giữa r�
 
 Centered moving average dùng preceding và following nhưng nhìn dữ liệu tương lai, không phù hợp online/causal metric. Báo rõ nếu dùng cho smoothing phân tích lịch sử.
 
-Trailing window phải chốt inclusive boundaries. “30 ngày” có thể là current + 29 trước hoặc interval 30×24 giờ; DST và timestamp boundary làm khác.
+Trailing window phải chốt inclusive boundaries. 30 ngày có thể là current + 29 trước hoặc interval 30×24 giờ; DST và timestamp boundary làm khác.
 
 ## 16. Reconciliation
 
@@ -190,18 +190,18 @@ Một lỗi khác là dùng `last_value` default rồi tưởng là last partiti
 - Lab 24 tháng chưa được chạy trong note; evidence thuộc `after-note.md`.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-WINDOW-FUNCTIONS]] — frame, peer, aggregate windows và lag/lead.
-2. [[SRC-POSTGRESQL-17-GENERATE-SERIES]] — dựng chuỗi date/timestamp trong PostgreSQL 17.
-3. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] — logical stage của window calculation.
+1. [[SRC-POSTGRESQL-17-WINDOW-FUNCTIONS]]: frame, peer, aggregate windows và lag/lead.
+2. [[SRC-POSTGRESQL-17-GENERATE-SERIES]]: dựng chuỗi date/timestamp trong PostgreSQL 17.
+3. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]]: logical stage của window calculation.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-WINDOW-FUNCTIONS]] | default frame, ROWS/RANGE/GROUPS, lag | §§2–10, 15 | Đã giữ semantics và peer cases |
+| [[SRC-POSTGRESQL-17-WINDOW-FUNCTIONS]] | default frame, ROWS/RANGE/GROUPS, lag | §§2-10, 15 | Đã giữ semantics và peer cases |
 | [[SRC-POSTGRESQL-17-GENERATE-SERIES]] | series scaffold, step/timezone limits | §9 | Đã gắn với calendar contract |
 | [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | stage của window sau grouping | §1 | Đã bảo toàn grain reasoning |
-| Tổng hợp DE-L124 | 24 tháng, ba kỳ thiếu, zero/status, reconciliation | §§11–18 | Đã thành test plan chi tiết |
+| Tổng hợp DE-L124 | 24 tháng, ba kỳ thiếu, zero/status, reconciliation | §§11-18 | Đã thành test plan chi tiết |
 
 ## Key takeaways
 - Muốn metric theo tháng, phải bảo đảm một row/entity-month và calendar liên tục trước window.
@@ -212,7 +212,7 @@ Một lỗi khác là dùng `last_value` default rồi tưởng là last partiti
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.window-frames-running-period-comparison`
+## Execution capsule: kiểm chứng `wiki.database.window-frames-running-period-comparison`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.window-frames-running-period-comparison`, sơ đồ, ví dụ và artifact về **Window frames, lũy kế và so sánh theo kỳ** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

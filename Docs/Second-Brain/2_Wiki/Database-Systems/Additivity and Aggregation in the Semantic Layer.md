@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Tầng ngữ nghĩa phải mã hóa additivity như thế nào để từ chối hoặc rewrite truy vấn sai mà không chặn nhầm các truy vấn hợp lệ?
 source_ids:
   - src.book.kimball-ross-data-warehouse-toolkit.3e
@@ -51,7 +51,7 @@ COUNT(DISTINCT entity) không cộng qua regions hoặc months nếu entity xu�
 
 ## 6. Negative tests và false positives
 
-Bộ test gồm năm invalid queries: sum balance over time, sum rate, sum distinct counts, use incompatible aggregate, combine different units. Năm valid controls thay một điều kiện để chứng minh rule không chặn quá tay. Mỗi rejection cần stable error code. Nếu engine không thể reject, wrapper/lint/contract test phải bắt trước consumption; dashboard số sai không được coi là “trách nhiệm analyst”.
+Bộ test gồm năm invalid queries: sum balance over time, sum rate, sum distinct counts, use incompatible aggregate, combine different units. Năm valid controls thay một điều kiện để chứng minh rule không chặn quá tay. Mỗi rejection cần stable error code. Nếu engine không thể reject, wrapper/lint/contract test phải bắt trước consumption; dashboard số sai không được coi là trách nhiệm analyst.
 
 ## 7. Quan hệ với SQL engine
 
@@ -205,7 +205,7 @@ Các mệnh đề dưới đây phải được kiểm bằng fixture, invariant
 - Chưa chạy lab hai người, semantic graph planner, ratio rollup, aggregation rejection hoặc calendar fixture; note mô tả protocol cần thực thi.
 - dbt/MetricFlow là ví dụ sản phẩm được kiểm ngày 2026-10-01; syntax và availability có thể đổi theo version/tier.
 - PostgreSQL documentation mô tả SQL mechanics, không tự cung cấp business semantics hay metric governance.
-- Kimball–Ross hỗ trợ grain, additivity và calendar modeling; semantic-layer enforcement là phần tổng hợp có đối chiếu tài liệu hiện hành.
+- Kimball-Ross hỗ trợ grain, additivity và calendar modeling; semantic-layer enforcement là phần tổng hợp có đối chiếu tài liệu hiện hành.
 - Owner chưa phê duyệt meaning nên note giữ trạng thái `review`.
 
 ## Reference
@@ -230,7 +230,7 @@ Các mệnh đề dưới đây phải được kiểm bằng fixture, invariant
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.additivity-enforcement`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.additivity-enforcement`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.additivity-enforcement`, sơ đồ, ví dụ và artifact về **Additivity and Aggregation in the Semantic Layer** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

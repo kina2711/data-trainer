@@ -37,7 +37,7 @@ Guarantee của secrets, encryption keys, rotation và audit trail chỉ có ngh
 
 ## 3. Failure mode
 
-Phân tích secrets, encryption keys, rotation và audit trail cần chỉ ra earliest controllable failure, blast radius và trạng thái còn quan sát được sau lỗi. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Secrets, keys and the audit trail`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành secrets, encryption keys, rotation và audit trail mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân tích secrets, encryption keys, rotation và audit trail cần chỉ ra earliest controllable failure, blast radius và trạng thái còn quan sát được sau lỗi. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Secrets, keys and the audit trail`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành secrets, encryption keys, rotation và audit trail mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision rule
 
@@ -45,7 +45,7 @@ Quyết định về secrets, encryption keys, rotation và audit trail phải n
 
 ## 5. Evidence
 
-Bằng chứng cho secrets, encryption keys, rotation và audit trail gồm resolved configuration, runtime identity, metrics/logs, state trước–sau và independent oracle. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `Secrets, keys and the audit trail`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành secrets, encryption keys, rotation và audit trail mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Bằng chứng cho secrets, encryption keys, rotation và audit trail gồm resolved configuration, runtime identity, metrics/logs, state trước-sau và independent oracle. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `Secrets, keys and the audit trail`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành secrets, encryption keys, rotation và audit trail mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 6. Recovery lab
 
@@ -87,9 +87,9 @@ Với `wiki.cloud.secrets-keys-audit`, command thành công không tự chứng 
 
 **Bằng chứng cần giữ.** Đối với probe 4 của `Secrets, keys and the audit trail`, lưu checkpoint, external ledger và trạng thái sau restart. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
 
-### 7.5. Secrets, keys and the audit trail: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho secrets, encryption keys, rotation và audit trail gồm resolved configuration, runtime identity, metrics/logs, state trước–sau và independent oracle
+### 7.5. Secrets, keys and the audit trail: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho secrets, encryption keys, rotation và audit trail gồm resolved configuration, runtime identity, metrics/logs, state trước-sau và independent oracle
 
-**Mệnh đề cần kiểm.** Secrets, keys and the audit trail: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho secrets, encryption keys, rotation và audit trail gồm resolved configuration, runtime identity, metrics/logs, state trước–sau và independent oracle.
+**Mệnh đề cần kiểm.** Secrets, keys and the audit trail: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho secrets, encryption keys, rotation và audit trail gồm resolved configuration, runtime identity, metrics/logs, state trước-sau và independent oracle.
 
 **Thiết kế phép thử cho `wiki.cloud.secrets-keys-audit`.** Trong ngữ cảnh `wiki.cloud.secrets-keys-audit`, đảo thứ tự input và concurrency nhưng giữ logical population. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Secrets, keys and the audit trail` công bố.
 
@@ -135,9 +135,9 @@ Với `wiki.cloud.secrets-keys-audit`, command thành công không tự chứng 
 
 **Bằng chứng cần giữ.** Đối với probe 10 của `Secrets, keys and the audit trail`, package phải đủ để người khác dựng lại decision và limitation. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
 
-### 7.11. Secrets, keys and the audit trail: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho secrets, encryption keys, rotation và audit trail gồm resolved configuration, runtime identity, metrics/logs, state trước–sau và independent oracle
+### 7.11. Secrets, keys and the audit trail: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho secrets, encryption keys, rotation và audit trail gồm resolved configuration, runtime identity, metrics/logs, state trước-sau và independent oracle
 
-**Mệnh đề cần kiểm.** Secrets, keys and the audit trail: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho secrets, encryption keys, rotation và audit trail gồm resolved configuration, runtime identity, metrics/logs, state trước–sau và independent oracle.
+**Mệnh đề cần kiểm.** Secrets, keys and the audit trail: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho secrets, encryption keys, rotation và audit trail gồm resolved configuration, runtime identity, metrics/logs, state trước-sau và independent oracle.
 
 **Thiết kế phép thử cho `wiki.cloud.secrets-keys-audit`.** Trong ngữ cảnh `wiki.cloud.secrets-keys-audit`, so với oracle độc lập không dùng chung query hoặc parser. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Secrets, keys and the audit trail` công bố.
 
@@ -218,7 +218,7 @@ Với `wiki.cloud.secrets-keys-audit`, command thành công không tự chứng 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.cloud.secrets-keys-audit`
+## Execution capsule: kiểm chứng `wiki.cloud.secrets-keys-audit`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.cloud.secrets-keys-audit`, sơ đồ, ví dụ và artifact về **Secrets, keys and the audit trail** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

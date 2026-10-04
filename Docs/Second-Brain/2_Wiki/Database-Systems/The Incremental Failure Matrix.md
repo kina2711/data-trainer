@@ -50,11 +50,11 @@ Advance checkpoint trước durable publish gây gap; sau publish gây replay, n
 
 ## 6. Game day scoring
 
-Inject từng failure tại controlled kill point, dự báo state trước khi chạy rồi so observed. Chấm detection latency, blast radius, data divergence, recovery time, manual steps và evidence completeness. Stop rule bảo vệ source/shared warehouse. Rerun targeted scenario sau remediation. Matrix chỉ được đóng khi không có failure nào kết thúc bằng “operator đoán target hiện đang đúng”.
+Inject từng failure tại controlled kill point, dự báo state trước khi chạy rồi so observed. Chấm detection latency, blast radius, data divergence, recovery time, manual steps và evidence completeness. Stop rule bảo vệ source/shared warehouse. Rerun targeted scenario sau remediation. Matrix chỉ được đóng khi không có failure nào kết thúc bằng operator đoán target hiện đang đúng.
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
-Trong `The Incremental Failure Matrix`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước–sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dùng project/fixture nhỏ có exact boundary và owner; capture source, compiled/runtime artifacts, relations và consumer-facing diff; đối soát bằng alternate computation hoặc inventory độc lập.
+Trong `The Incremental Failure Matrix`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước-sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dùng project/fixture nhỏ có exact boundary và owner; capture source, compiled/runtime artifacts, relations và consumer-facing diff; đối soát bằng alternate computation hoặc inventory độc lập.
 
 ### 7.1. Incremental-failure probe 1: injection point, durable state, alert, recovery và reconciliation phải nối được
 
@@ -70,7 +70,7 @@ Trong `The Incremental Failure Matrix`, mỗi claim phải nối được tới 
 
 **Thiết kế phép thử cho `wiki.transformation.incremental-failure-matrix`.** Với `Incremental-failure probe 2: injection point, durable state, alert, recovery và reconciliation phải nối được`, Giữ nguyên input rồi đổi đúng một tham số cấu hình liên quan. Nếu output đổi theo nhiều hướng cùng lúc, phép thử chưa cô lập được nguyên nhân và phải thu hẹp lại. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Incremental-failure probe 2: injection point, durable state, alert, recovery và reconciliation phải nối được` phải cho thấy: Báo cả giá trị trước–sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Incremental-failure probe 2: injection point, durable state, alert, recovery và reconciliation phải nối được` phải cho thấy: Báo cả giá trị trước-sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.3. Incremental-failure probe 3: injection point, durable state, alert, recovery và reconciliation phải nối được
 
@@ -118,7 +118,7 @@ Trong `The Incremental Failure Matrix`, mỗi claim phải nối được tới 
 
 **Thiết kế phép thử cho `wiki.transformation.incremental-failure-matrix`.** Với `Incremental-failure probe 8: injection point, durable state, alert, recovery và reconciliation phải nối được`, Dùng một schema change tương thích và một thay đổi phá vỡ key, type hoặc meaning. Kết quả phải chỉ ra khác biệt giữa parse được, chạy được và vẫn giữ đúng semantics. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Incremental-failure probe 8: injection point, durable state, alert, recovery và reconciliation phải nối được` phải cho thấy: Lưu schema trước–sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Incremental-failure probe 8: injection point, durable state, alert, recovery và reconciliation phải nối được` phải cho thấy: Lưu schema trước-sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.9. Incremental-failure probe 9: injection point, durable state, alert, recovery và reconciliation phải nối được
 
@@ -223,7 +223,7 @@ Trong `The Incremental Failure Matrix`, mỗi claim phải nối được tới 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.transformation.incremental-failure-matrix`
+## Execution capsule: kiểm chứng `wiki.transformation.incremental-failure-matrix`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.transformation.incremental-failure-matrix`, sơ đồ, ví dụ và artifact về **The Incremental Failure Matrix** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

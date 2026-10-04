@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Reverse ETL được thiết kế thế nào để giữ system-of-record boundary, identity và retry safety, purpose limitation và vòng phản hồi có thể truy vết?
 source_ids:
   - src.web.hightouch-reverse-etl-syncs
@@ -65,121 +65,121 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Mệnh đề cần kiểm.** warehouse-derived field không mặc nhiên là operational source of truth.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.2. mỗi field có authority và conflict rule
 
 **Mệnh đề cần kiểm.** mỗi field có authority và conflict rule.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.3. primary key change làm CDC identity đổi
 
 **Mệnh đề cần kiểm.** primary key change làm CDC identity đổi.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.4. record leaving segment không mặc nhiên hard delete
 
 **Mệnh đề cần kiểm.** record leaving segment không mặc nhiên hard delete.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.5. full resync có thể duplicate side effects
 
 **Mệnh đề cần kiểm.** full resync có thể duplicate side effects.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.6. retry timeout cần idempotency key and outcome record
 
 **Mệnh đề cần kiểm.** retry timeout cần idempotency key and outcome record.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.7. upsert state khác action command
 
 **Mệnh đề cần kiểm.** upsert state khác action command.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.8. purpose limitation áp cho further processing
 
 **Mệnh đề cần kiểm.** purpose limitation áp cho further processing.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.9. derived score có thể là sensitive inference
 
 **Mệnh đề cần kiểm.** derived score có thể là sensitive inference.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.10. sync cần approved-field allowlist
 
 **Mệnh đề cần kiểm.** sync cần approved-field allowlist.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.11. intervention làm thay outcome distribution
 
 **Mệnh đề cần kiểm.** intervention làm thay outcome distribution.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.12. feedback lineage phải quay từ destination về source
 
 **Mệnh đề cần kiểm.** feedback lineage phải quay từ destination về source.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.13. completed with rejected rows không phải full success
 
 **Mệnh đề cần kiểm.** completed with rejected rows không phải full success.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.14. operational SLO cần on-call and recovery
 
 **Mệnh đề cần kiểm.** operational SLO cần on-call and recovery.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.15. bidirectional edits cần explicit conflict resolution
 
 **Mệnh đề cần kiểm.** bidirectional edits cần explicit conflict resolution.
 
-**Cách kiểm.** Vẽ source–model–sync–destination–action–event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Vẽ source-model-sync-destination-action-event loop; inject timeout-after-commit, duplicate key, key change, removed row, purpose mismatch và rejected destination rows. Kiểm idempotency, authority, privacy, reconciliation và intervention lineage. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.reverse-etl-shadow-system`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ## 9. Quy trình phản biện
 
@@ -196,7 +196,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 1. Invariant hoặc decision nào đang được bảo vệ?
 2. Chủ thể, resource, event hay cost unit được định danh bằng gì?
 3. Denominator, time window và unknown/unallocated set là gì?
-4. Failure nào vẫn cho tín hiệu xanh hoặc “completed”?
+4. Failure nào vẫn cho tín hiệu xanh hoặc completed?
 5. Thay đổi nào làm policy, metric, allocation hoặc state transition phải xem lại?
 6. Ai có quyền duyệt, ai vận hành và bằng chứng nào còn chưa chạy?
 
@@ -230,7 +230,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.reverse-etl-shadow-system`
+## Execution capsule: kiểm chứng `wiki.data-product.reverse-etl-shadow-system`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.reverse-etl-shadow-system`, sơ đồ, ví dụ và artifact về **Reverse ETL and the Shadow Operational System** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

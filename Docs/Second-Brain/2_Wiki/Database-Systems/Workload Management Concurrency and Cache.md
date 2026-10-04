@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Tách queueing khỏi execution slowdown dưới concurrency như thế nào, và chọn admission, isolation, scaling hay query tuning dựa trên evidence nào?
 source_ids:
   - src.web.redshift-wlm-query-metrics
@@ -235,7 +235,7 @@ Mỗi mệnh đề về latency, scaling, cache, concurrency hoặc cost cần c
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.olap.workload-management-concurrency-cache`
+## Execution capsule: kiểm chứng `wiki.olap.workload-management-concurrency-cache`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.olap.workload-management-concurrency-cache`, sơ đồ, ví dụ và artifact về **Workload Management Concurrency and Cache** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -257,7 +257,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Tách queueing khỏi execution slowdown dưới concurrency như thế nào, và chọn admission, isolation, scaling hay query tuning dựa trên evidence nào?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Tách queueing khỏi execution slowdown dưới concurrency như thế nào, và chọn admission, isolation, scaling hay query tuning dựa trên evidence nào? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Workload Management Concurrency and Cache** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

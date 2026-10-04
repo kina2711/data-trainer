@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-27
 last_verified: 2026-09-27
 review_after: 2027-03-27
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Khi tải vượt khả năng xử lý hoặc downstream đang hỏng, rate limiter, backpressure, load shedding và circuit breaker phải phối hợp thế nào để hệ suy giảm có kiểm soát thay vì tự khuếch đại thành cascading failure?
 source_ids:
   - src.book.titmus-cloud-native-go.1e
@@ -37,7 +37,7 @@ relationships:
 # Rate limiting, backpressure và circuit breaker giữa các dịch vụ
 
 > [!abstract] Câu hỏi trung tâm
-> Quá tải hiếm khi chỉ là “nhiều request”. Queue dài làm latency tăng; client timeout rồi retry; retry lại làm arrival rate tăng; tài nguyên bị giữ lâu hơn và capacity hữu dụng giảm. Muốn chặn vòng phản hồi ấy, hệ thống phải giới hạn lượng việc nhận vào, truyền tín hiệu giảm tốc, loại bỏ công việc ít giá trị, dừng gọi dependency đang hỏng và ràng buộc mọi retry bằng deadline cùng budget.
+> Quá tải hiếm khi chỉ là nhiều request. Queue dài làm latency tăng; client timeout rồi retry; retry lại làm arrival rate tăng; tài nguyên bị giữ lâu hơn và capacity hữu dụng giảm. Muốn chặn vòng phản hồi ấy, hệ thống phải giới hạn lượng việc nhận vào, truyền tín hiệu giảm tốc, loại bỏ công việc ít giá trị, dừng gọi dependency đang hỏng và ràng buộc mọi retry bằng deadline cùng budget.
 
 ## 1. Overload là một vòng phản hồi
 
@@ -55,12 +55,12 @@ flowchart LR
     L --> C --> Q
 ```
 
-Khi throughput tiến gần capacity, request mới phải chờ tài nguyên đang bận. Queueing delay tăng mạnh trước cả khi server “sập”. Nếu timeout kích hoạt retry, chính cơ chế phục hồi làm thêm việc vào lúc hệ ít khả năng xử lý nhất.
+Khi throughput tiến gần capacity, request mới phải chờ tài nguyên đang bận. Queueing delay tăng mạnh trước cả khi server sập. Nếu timeout kích hoạt retry, chính cơ chế phục hồi làm thêm việc vào lúc hệ ít khả năng xử lý nhất.
 
 Một hệ có thể tiếp tục ở trạng thái quá tải ngay cả khi external load đã giảm: queue cũ, retry đang chờ, connection tồn đọng và synchronized backoff tiếp tục duy trì áp lực. DDIA gọi hiện tượng hệ không tự trở lại trạng thái ổn định này là metastable failure.
 
 > [!source-fact]
-> Quan hệ throughput–response time, queueing delay, retry storm và metastable failure nằm tại DDIA Second Edition Early Release, Chapter 2, PDF 76–78.
+> Quan hệ throughput-response time, queueing delay, retry storm và metastable failure nằm tại DDIA Second Edition Early Release, Chapter 2, PDF 76-78.
 
 > [!uncertainty]
 > DDIA được dùng ở đây là bản Early Release chưa hoàn chỉnh, có thể đổi wording và pagination khi phát hành chính thức. Luận điểm overload được đối chiếu với Cloud Native Go; locator DDIA phải kiểm lại khi bản cuối được đưa vào kho.
@@ -75,10 +75,10 @@ Nếu arrival rate vượt service rate đủ lâu, không thuật toán queue n
 - từ chối hoặc trì hoãn một phần công việc;
 - giữ lại công việc quan trọng và bỏ phần ít giá trị hơn.
 
-Nhận hết rồi để queue tăng vô hạn chỉ trì hoãn quyết định. Đến lúc memory, connection pool hoặc thread pool cạn, hệ thống vẫn phải drop—nhưng drop muộn hơn, tốn nhiều tài nguyên hơn và khó giải thích hơn.
+Nhận hết rồi để queue tăng vô hạn chỉ trì hoãn quyết định. Đến lúc memory, connection pool hoặc thread pool cạn, hệ thống vẫn phải drop:nhưng drop muộn hơn, tốn nhiều tài nguyên hơn và khó giải thích hơn.
 
 > [!source-fact]
-> Cloud Native Go nêu rằng mọi service đều có ngưỡng request frequency vượt quá khả năng và khi ấy buộc phải từ chối một phần hoặc toàn bộ request; Chapter 9, trang in 269–270, PDF 291–292.
+> Cloud Native Go nêu rằng mọi service đều có ngưỡng request frequency vượt quá khả năng và khi ấy buộc phải từ chối một phần hoặc toàn bộ request; Chapter 9, trang in 269-270, PDF 291-292.
 
 ## 3. Sáu cơ chế bảo vệ sáu điểm khác nhau
 
@@ -87,14 +87,14 @@ Nhận hết rồi để queue tăng vô hạn chỉ trì hoãn quyết định.
 | TCP flow control | Receive buffer còn trống (`rwnd`) | Giảm byte đang bay tới receiver | Socket receive buffer |
 | Rate limiting / throttling | Rate theo key vượt policy | Delay hoặc reject trước xử lý | Quota/capacity được phân bổ |
 | Concurrency limiting | In-flight work đạt trần | Không nhận thêm work đồng thời | Worker, connection, CPU, downstream |
-| Backpressure | Consumer báo không theo kịp | Producer giảm tốc/dừng/đổi chế độ | Toàn tuyến producer–consumer |
+| Backpressure | Consumer báo không theo kịp | Producer giảm tốc/dừng/đổi chế độ | Toàn tuyến producer-consumer |
 | Load shedding | Saturation signal vượt ngưỡng | Drop, reject hoặc degrade có chủ đích | Sức khỏe service khi quá tải |
 | Circuit breaker | Downstream failures/latency vượt policy | Fail fast, không phát outgoing call | Downstream và tài nguyên caller |
 
-Cùng là “làm ít request đi” nhưng chúng không thay nhau. Rate limiter có thể chặn caller vượt quota dù downstream hoàn toàn khỏe. Circuit breaker có thể mở ở rate thấp nếu các call liên tiếp thất bại.
+Cùng là làm ít request đi nhưng chúng không thay nhau. Rate limiter có thể chặn caller vượt quota dù downstream hoàn toàn khỏe. Circuit breaker có thể mở ở rate thấp nếu các call liên tiếp thất bại.
 
 > [!synthesis]
-> Bảng là taxonomy biên tập từ ba nguồn. Cloud Native Go so sánh throttle với circuit breaker; DDIA nối load shedding, backpressure, circuit breaker và token bucket trong overload loop; Kurose–Ross cung cấp TCP flow-control boundary.
+> Bảng là taxonomy biên tập từ ba nguồn. Cloud Native Go so sánh throttle với circuit breaker; DDIA nối load shedding, backpressure, circuit breaker và token bucket trong overload loop; Kurose-Ross cung cấp TCP flow-control boundary.
 
 ## 4. TCP flow control không phải service backpressure
 
@@ -111,7 +111,7 @@ Nó không biết:
 Một service vẫn có thể đọc nhanh khỏi socket, làm `rwnd` rộng, rồi dồn request vào queue nội bộ không giới hạn. Transport khỏe trong khi application đã quá tải.
 
 > [!source-fact]
-> Receive buffer, `rwnd` và việc ghép tốc độ sender với nhịp application đọc socket nằm tại Kurose–Ross §3.5.5, trang in 276–278, PDF 278–280.
+> Receive buffer, `rwnd` và việc ghép tốc độ sender với nhịp application đọc socket nằm tại Kurose-Ross §3.5.5, trang in 276-278, PDF 278-280.
 
 ## 5. Backpressure là một hợp đồng phản hồi
 
@@ -125,7 +125,7 @@ Backpressure cần một đường truyền tín hiệu từ consumer về produ
 - protocol-level window;
 - broker quota hoặc producer throttle.
 
-Một tín hiệu chỉ hữu ích nếu producer thực sự thay đổi hành vi. Nếu server trả “chậm lại” nhưng mọi client retry ngay, đó là error response chứ chưa phải backpressure hoạt động.
+Một tín hiệu chỉ hữu ích nếu producer thực sự thay đổi hành vi. Nếu server trả chậm lại nhưng mọi client retry ngay, đó là error response chứ chưa phải backpressure hoạt động.
 
 Backpressure contract phải nói rõ:
 
@@ -175,10 +175,10 @@ Rate limiter quyết định caller nào được tạo work mới theo một po
 - cost unit thay vì request count;
 - tổ hợp global limit và per-key limit.
 
-Nếu mọi request có cost khác nhau, “100 request/s” không đại diện tải. Một query scan lớn và một health check nhẹ không nên tiêu cùng một đơn vị. Weighted token hoặc concurrency cost thường phản ánh tài nguyên tốt hơn request count thuần.
+Nếu mọi request có cost khác nhau, 100 request/s không đại diện tải. Một query scan lớn và một health check nhẹ không nên tiêu cùng một đơn vị. Weighted token hoặc concurrency cost thường phản ánh tài nguyên tốt hơn request count thuần.
 
 > [!source-fact]
-> Cloud Native Go mô tả throttling theo ngưỡng rate định trước, thường dùng để ngăn một user tiêu quá nhiều tài nguyên, và minh họa cả global lẫn per-user bucket; trang in 270–274, PDF 292–296.
+> Cloud Native Go mô tả throttling theo ngưỡng rate định trước, thường dùng để ngăn một user tiêu quá nhiều tài nguyên, và minh họa cả global lẫn per-user bucket; trang in 270-274, PDF 292-296.
 
 ## 8. Token bucket giữ burst trong một biên xác định
 
@@ -200,20 +200,20 @@ Bucket capacity không phải throughput của service; refill rate cũng không
 Một bucket capacity 20, refill 10 token/s cho phép burst 20 request khi bucket đầy rồi tiến về rate dài hạn 10 request/s nếu mỗi request tốn một token. Nếu request nặng tốn 5 token, cùng bucket chỉ nhận bốn request nặng trong burst.
 
 > [!source-fact]
-> Cloud Native Go dùng token bucket với capacity, refill count và thời lượng refill; trang in 271–272, PDF 293–294. Công thức trên là cách viết toán học tương đương, không phải công thức in nguyên dạng trong sách.
+> Cloud Native Go dùng token bucket với capacity, refill count và thời lượng refill; trang in 271-272, PDF 293-294. Công thức trên là cách viết toán học tương đương, không phải công thức in nguyên dạng trong sách.
 
 ## 9. State của limiter quyết định tính công bằng
 
 Per-user bucket ngăn một caller chiếm hết quota nhưng đặt ra ba vấn đề:
 
-1. **Identity**: key nào đại diện caller—user, tenant, API key, IP hay workload class?
+1. **Identity**: key nào đại diện caller:user, tenant, API key, IP hay workload class?
 2. **Storage**: local state làm mỗi replica có quota riêng; shared state thêm latency và failure mode.
 3. **Lifecycle**: key cũ phải được purge; nếu không, cardinality tăng thành memory leak.
 
 Ví dụ trong sách giữ bucket map cục bộ và tác giả ghi rõ chưa production-ready: chưa an toàn đầy đủ cho concurrent use, không purge record cũ, không chia sẻ quota giữa replica.
 
 > [!source-fact]
-> Các giới hạn concurrency, record eviction và local multi-replica state được Cloud Native Go nêu trực tiếp tại trang in 273–274, PDF 295–296.
+> Các giới hạn concurrency, record eviction và local multi-replica state được Cloud Native Go nêu trực tiếp tại trang in 273-274, PDF 295-296.
 
 ## 10. Response của limiter là một phần protocol
 
@@ -228,7 +228,7 @@ Reject cần machine-readable reason và hướng dẫn caller. Với HTTP, sác
 Caller không nên diễn giải mọi `429` như lệnh retry vô hạn. Deadline, retry budget và idempotency vẫn áp dụng.
 
 > [!source-fact]
-> Ví dụ REST trong Cloud Native Go trả HTTP 429 khi per-user throttle không cho phép request; trang in 273–274, PDF 295–296.
+> Ví dụ REST trong Cloud Native Go trả HTTP 429 khi per-user throttle không cho phép request; trang in 273-274, PDF 295-296.
 
 ## 11. Concurrency limiter bảo vệ số công việc đang chạy
 
@@ -261,7 +261,7 @@ Throttle dùng quota/rate định trước. Load shedding quan sát resource ho�
 Cloud Native Go minh họa middleware reject bằng HTTP 503 khi queue depth vượt ngưỡng giả định. Tác giả gọi đây là ví dụ; hàm đo queue và threshold thực phải đến từ implementation.
 
 > [!source-fact]
-> Định nghĩa load shedding, khác biệt với quota-based throttling và ví dụ queue-depth/HTTP 503 nằm tại Cloud Native Go, trang in 274–275, PDF 296–297.
+> Định nghĩa load shedding, khác biệt với quota-based throttling và ví dụ queue-depth/HTTP 503 nằm tại Cloud Native Go, trang in 274-275, PDF 296-297.
 
 ## 13. Shed có ưu tiên tốt hơn drop ngẫu nhiên
 
@@ -277,7 +277,7 @@ Graceful degradation giảm cost thay vì bỏ toàn bộ request: trả cache c
 
 > [!source-fact]
 > Cloud Native Go nêu priority shedding và graceful degradation bằng cached data hoặc thuật toán rẻ
-hơn nhưng kém chính xác; trang in 274–275, PDF 296–297.
+hơn nhưng kém chính xác; trang in 274-275, PDF 296-297.
 
 > [!inference]
 > Danh sách priority class là ví dụ thiết kế; policy thật cần product/SLO decision và security review.
@@ -300,7 +300,7 @@ stateDiagram-v2
 Sách mô tả hai trạng thái closed/open và tự đóng lại sau thời gian chờ. Sơ đồ dùng tên `PROBE` để thể hiện bước kiểm có giới hạn trước khi phục hồi traffic; nhiều library gọi trạng thái này là half-open, nhưng semantics phải lấy từ library cụ thể.
 
 > [!source-fact]
-> Mục đích, closed/open state, failure threshold, fail-fast và delayed recovery của Circuit Breaker nằm tại Cloud Native Go, Chapter 4, trang in 77–78, PDF 99–100; tóm lược lại tại trang in 280, PDF 302.
+> Mục đích, closed/open state, failure threshold, fail-fast và delayed recovery của Circuit Breaker nằm tại Cloud Native Go, Chapter 4, trang in 77-78, PDF 99-100; tóm lược lại tại trang in 280, PDF 302.
 
 > [!synthesis]
 > `PROBE` là state biên tập để tránh mở toàn bộ traffic ngay khi hết delay. Nguồn đã đọc không chuẩn hóa tên hoặc số lượng probe.
@@ -317,7 +317,7 @@ Không phải outcome xấu nào cũng chứng minh dependency hỏng. Policy c�
 - local resource exhaustion;
 - slow success vượt latency threshold.
 
-Nếu đếm mọi 4xx là dependency failure, một đợt client gửi payload sai có thể mở circuit khỏe. Nếu bỏ qua timeout hoặc slow success, pool vẫn cạn dù breaker thấy “không có lỗi”.
+Nếu đếm mọi 4xx là dependency failure, một đợt client gửi payload sai có thể mở circuit khỏe. Nếu bỏ qua timeout hoặc slow success, pool vẫn cạn dù breaker thấy không có lỗi.
 
 > [!synthesis]
 > Nguồn minh họa consecutive errors nhưng không định nghĩa classifier dùng chung. Failure taxonomy là phần bắt buộc của implementation contract và phải phù hợp protocol đang gọi.
@@ -346,7 +346,7 @@ Fallback chỉ tốt khi:
 - không dùng chung resource pool đang cạn;
 - không làm dữ liệu cũ hoặc thiếu bị hiểu là thành công đầy đủ.
 
-Một fallback đọc cache có thể gây cache stampede; một fallback gọi secondary region có thể dồn tải làm region đó sập; default rỗng có thể che mất dữ liệu. Breaker “mở” nhưng fallback đắt vẫn giữ vòng feedback.
+Một fallback đọc cache có thể gây cache stampede; một fallback gọi secondary region có thể dồn tải làm region đó sập; default rỗng có thể che mất dữ liệu. Breaker mở nhưng fallback đắt vẫn giữ vòng feedback.
 
 > [!inference]
 > Các failure mode của fallback là phép áp dụng nguyên lý fault containment. Phạm vi nguồn chỉ nói fail-fast hoặc defined fallback, không chứng minh một fallback cụ thể là an toàn.
@@ -364,7 +364,7 @@ Con số là upper-bound minh họa; cancellation và failure sớm có thể l�
 Cloud Native Go mô tả retry loop không delay trên nhiều instance đã tạo retry storm, khiến downstream khó phục hồi ngay cả sau khi lỗi ban đầu hết.
 
 > [!source-fact]
-> Retry storm và positive feedback được trình bày tại Cloud Native Go, trang in 275–276, PDF 297–298; DDIA Early Release mô tả cùng cơ chế tại PDF 78.
+> Retry storm và positive feedback được trình bày tại Cloud Native Go, trang in 275-276, PDF 297-298; DDIA Early Release mô tả cùng cơ chế tại PDF 78.
 
 > [!synthesis]
 > Phép tính 27 attempt là mô hình amplification tự xây, không phải số liệu đo từ hai sách.
@@ -387,7 +387,7 @@ Một retry policy cần:
 Không retry sau khi deadline còn lại nhỏ hơn thời gian cần để attempt có ích. Không retry operation có side effect nếu protocol không cung cấp idempotency key, deduplication hoặc outcome reconciliation.
 
 > [!source-fact]
-> Fixed backoff, exponential backoff, synchronized spikes và jitter nằm tại Cloud Native Go, trang in 276–280, PDF 298–302.
+> Fixed backoff, exponential backoff, synchronized spikes và jitter nằm tại Cloud Native Go, trang in 276-280, PDF 298-302.
 
 > [!synthesis]
 > Retry budget và idempotency gate nối nội dung nguồn với failure boundary của chương HTTP/API client. Nguồn có phần idempotence sau trang 281 nhưng không nằm trong phạm vi đọc của note này; chi tiết cần source pass riêng trước khi làm production policy.
@@ -459,7 +459,7 @@ Backpressure policy cho pipeline cần trả lời:
 | Deadline | End-to-end budget được chia và truyền xuống thế nào? |
 | Recovery | Tăng tải trở lại theo nhịp nào để tránh tái quá tải? |
 
-Nếu một ô chưa trả lời được, đó là khoảng trống thiết kế, không phải “dùng default của library”.
+Nếu một ô chưa trả lời được, đó là khoảng trống thiết kế, không phải dùng default của library.
 
 ## 24. Metric phải giải thích được quyết định
 
@@ -537,7 +537,7 @@ flowchart LR
 - service hồi phục khi bỏ fault mà không cần restart;
 - mọi rejected/degraded response có reason và được phân loại.
 
-“Mức chấp nhận được” phải được ghi thành số trước khi chạy. Không được nhìn graph sau test rồi chọn threshold có lợi cho kết quả.
+Mức chấp nhận được phải được ghi thành số trước khi chạy. Không được nhìn graph sau test rồi chọn threshold có lợi cho kết quả.
 
 > [!synthesis]
 > Thực nghiệm chuyển objective và Done when của DE-L087 thành evidence plan. Nguồn cung cấp cơ chế và failure model, không cung cấp ngưỡng cho hệ thử này.
@@ -559,7 +559,7 @@ flowchart LR
 
 | Cách hiểu sai | Cách đọc đúng |
 |---|---|
-| Rate limiter và circuit breaker đều chỉ “chặn request” | Một cái theo rate/quota; một cái theo dependency failure |
+| Rate limiter và circuit breaker đều chỉ chặn request | Một cái theo rate/quota; một cái theo dependency failure |
 | Queue lớn giúp không mất request | Queue lớn tăng wait, memory và stale work; vẫn cần bound |
 | TCP flow control bảo vệ application khỏi overload | Nó bảo vệ receive buffer, không biết business queue |
 | Backpressure là trả lỗi | Producer phải nhận signal và thực sự giảm tốc |
@@ -609,7 +609,7 @@ Chương này chưa đủ để:
 ## 30. Liên kết chương trình
 
 - Nguồn: [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], [[SRC-KLEPPMANN-DDIA-2E-EARLY-RELEASE]], [[SRC-KUROSE-ROSS-NETWORKING-8E]].
-- Bài áp dụng trực tiếp: `DE-L087` — Rate limiting and backpressure between services.
+- Bài áp dụng trực tiếp: `DE-L087`: Rate limiting and backpressure between services.
 - Bài nền: `DE-L079`, `DE-L082`, `DE-L083`, `DE-L086`.
 - Bài dùng lại: `DE-L088`, các module ingestion, streaming, distributed systems và reliability.
 - Liên quan: [[TCP Reliability RTT RTO and Flow Control|TCP reliability RTT RTO và flow control]], [[TCP Congestion Control AIMD ECN and Fairness|TCP congestion control AIMD ECN và fairness]], [[HTTP Requests Connection State and Caching|HTTP request connection state và cache]], [[Proxies Middleboxes and Load Balancer Connection Boundaries|Proxy middlebox và load balancer - ranh giới kết nối]], [[Socket Byte Streams Framing and Partial I-O|Socket byte stream framing và partial I-O]].
@@ -619,11 +619,11 @@ Chương này chưa đủ để:
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], Ch. 4 pp. 99–100 | circuit breaker và retry primitive | §§14–20 | Đã trình bày breaker state, failure classification và retry amplification |
-| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], Ch. 9 pp. 290–303 | service resilience, throttling và overload control | §§1–3, 7–17, 21–24 | Đã trình bày theo vị trí điều khiển và metric |
-| [[SRC-KLEPPMANN-DDIA-2E-EARLY-RELEASE]], Ch. 2 pp. 76–80 | queue, overload và backpressure trong hệ phân tán | §§4–6, 21–22 | Đã trình bày; nguồn là early release nên claim được giữ qualifier |
+| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], Ch. 4 pp. 99-100 | circuit breaker và retry primitive | §§14-20 | Đã trình bày breaker state, failure classification và retry amplification |
+| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], Ch. 9 pp. 290-303 | service resilience, throttling và overload control | §§1-3, 7-17, 21-24 | Đã trình bày theo vị trí điều khiển và metric |
+| [[SRC-KLEPPMANN-DDIA-2E-EARLY-RELEASE]], Ch. 2 pp. 76-80 | queue, overload và backpressure trong hệ phân tán | §§4-6, 21-22 | Đã trình bày; nguồn là early release nên claim được giữ qualifier |
 | [[SRC-KUROSE-ROSS-NETWORKING-8E]], §3.5.5 | TCP receive-window flow control | §4 | Đã dùng để phân biệt transport flow control với service backpressure |
-| Tổng hợp vận hành | bounded queue, priority shedding, overload experiment và policy | §§6, 11–13, 21–26 | Đã gắn `synthesis`; threshold cụ thể không được gán cho tác giả |
+| Tổng hợp vận hành | bounded queue, priority shedding, overload experiment và policy | §§6, 11-13, 21-26 | Đã gắn `synthesis`; threshold cụ thể không được gán cho tác giả |
 
 Limiter library, runtime scheduler và production SLO cụ thể không có trong các lát nguồn. Chúng được giữ thành điều kiện cần nguồn và phép đo riêng.
 
@@ -635,9 +635,9 @@ Limiter library, runtime scheduler và production SLO cụ thể không có tron
 - Policy phải chỉ rõ priority, giới hạn, response, metric và ownership. Load test cần chứng minh cả capacity bình thường lẫn việc ưu tiên còn được phục vụ khi overload.
 
 ## Reference
-1. Matthew A. Titmus, *Cloud Native Go: Building Reliable Services in Unreliable Environments*, First Edition, O'Reilly Media, 2021, Chapter 4, printed pp. 77–78, PDF pp. 99–100; Chapter 9, printed pp. 268–281, PDF pp. 290–303.
-2. Martin Kleppmann, *Designing Data-Intensive Applications*, Second Edition Early Release, O'Reilly Media, provisional/partial source, Chapter 2, PDF pp. 76–80. Bản nguồn không có pagination in ổn định và chưa phải bản phát hành cuối.
-3. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §3.5.5, printed pp. 276–278, PDF pp. 278–280.
+1. Matthew A. Titmus, *Cloud Native Go: Building Reliable Services in Unreliable Environments*, First Edition, O'Reilly Media, 2021, Chapter 4, printed pp. 77-78, PDF pp. 99-100; Chapter 9, printed pp. 268-281, PDF pp. 290-303.
+2. Martin Kleppmann, *Designing Data-Intensive Applications*, Second Edition Early Release, O'Reilly Media, provisional/partial source, Chapter 2, PDF pp. 76-80. Bản nguồn không có pagination in ổn định và chưa phải bản phát hành cuối.
+3. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §3.5.5, printed pp. 276-278, PDF pp. 278-280.
 4. Hồ sơ nguồn: [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], [[SRC-KLEPPMANN-DDIA-2E-EARLY-RELEASE]], [[SRC-KUROSE-ROSS-NETWORKING-8E]].
 5. Source notes: `Material/DE/Reference/Library/Source-Notes/PACK-SERVICE-RESILIENCE-BOOK-01.md`, `Material/DE/Reference/Library/Source-Notes/PACK-DATA-SYSTEMS-BOOK-01.md` và `Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-03.md`.
 
@@ -649,7 +649,7 @@ Limiter library, runtime scheduler và production SLO cụ thể không có tron
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.distributed-systems.service-overload-backpressure-circuit-breaker`
+## Execution capsule: kiểm chứng `wiki.distributed-systems.service-overload-backpressure-circuit-breaker`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.distributed-systems.service-overload-backpressure-circuit-breaker`, sơ đồ, ví dụ và artifact về **Rate limiting, backpressure và circuit breaker giữa các dịch vụ** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

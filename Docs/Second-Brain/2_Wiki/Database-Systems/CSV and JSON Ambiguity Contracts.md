@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: CSV và JSON quy định gì, bỏ ngỏ gì, và làm sao ngăn silent reinterpretation giữa writer với reader?
 source_ids:
   - src.standard.rfc4180-csv
@@ -179,7 +179,7 @@ Mỗi claim cần fixture, versioned contract, counterexample và oracle ở đ�
 ## 8. Quy trình phản biện
 
 1. Tách syntax/wire, structural compatibility, generated API và business semantics.
-2. Ghi direction bằng writer–reader versions, không chỉ dùng nhãn backward/forward.
+2. Ghi direction bằng writer-reader versions, không chỉ dùng nhãn backward/forward.
 3. Khóa canonical meaning và negative fixtures trước implementation.
 4. Giữ source bytes/schema fingerprints để tái hiện.
 5. Mọi default, cache, inference hoặc registry policy đều là explicit configuration.
@@ -214,13 +214,13 @@ Mỗi claim cần fixture, versioned contract, counterexample và oracle ở đ�
 
 ## Key takeaways
 - Structural success và semantic correctness là hai gates riêng.
-- Writer–reader direction, version history và exact fixtures phải hiện trong evidence.
+- Writer-reader direction, version history và exact fixtures phải hiện trong evidence.
 - Defaults, aliases, unknown fields và registry modes có scope cụ thể; không dùng như bảo đảm chung.
 - Chưa chạy lab thì note là giáo trình/protocol, chưa phải production certification.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.serialization.csv-json-ambiguity-contracts`
+## Execution capsule: kiểm chứng `wiki.serialization.csv-json-ambiguity-contracts`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.serialization.csv-json-ambiguity-contracts`, sơ đồ, ví dụ và artifact về **CSV and JSON Ambiguity Contracts** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -242,7 +242,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “CSV và JSON quy định gì, bỏ ngỏ gì, và làm sao ngăn silent reinterpretation giữa writer với reader?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: CSV và JSON quy định gì, bỏ ngỏ gì, và làm sao ngăn silent reinterpretation giữa writer với reader? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **CSV and JSON Ambiguity Contracts** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

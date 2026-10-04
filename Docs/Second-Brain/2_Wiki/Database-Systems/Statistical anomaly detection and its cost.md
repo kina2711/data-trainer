@@ -38,7 +38,7 @@ Rolling history có contamination, trend và regime change; baseline cần exclu
 
 ## 3. Detector choices
 
-Static bands, robust z-score, seasonal residual và forecast interval có assumption/cost khác nhau. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Statistical anomaly detection and its cost`, câu hỏi thực dụng là: Anomaly detector được đánh giá bằng detection value, false-positive cost và compute cost như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Static bands, robust z-score, seasonal residual và forecast interval có assumption/cost khác nhau. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Statistical anomaly detection and its cost`, câu hỏi thực dụng là: Anomaly detector được đánh giá bằng detection value, false-positive cost và compute cost như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Error economics
 
@@ -221,7 +221,7 @@ Với `wiki.data-quality.statistical-anomaly-cost`, command thành công không 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-quality.statistical-anomaly-cost`
+## Execution capsule: kiểm chứng `wiki.data-quality.statistical-anomaly-cost`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-quality.statistical-anomaly-cost`, sơ đồ, ví dụ và artifact về **Statistical anomaly detection and its cost** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

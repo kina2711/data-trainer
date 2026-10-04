@@ -38,7 +38,7 @@ Contract, owner, freshness, quality history, lineage coverage và consumer revie
 
 ## 3. Expiry rule
 
-Certification hết hạn theo thời gian hoặc material change; owner/check failure/schema drift có thể trigger review sớm. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Certification, deprecation and the expiry rule`, câu hỏi thực dụng là: Certification và deprecation cần expiry rule nào để catalog không giữ trust badge hoặc cảnh báo vĩnh viễn? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Certification hết hạn theo thời gian hoặc material change; owner/check failure/schema drift có thể trigger review sớm. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Certification, deprecation and the expiry rule`, câu hỏi thực dụng là: Certification và deprecation cần expiry rule nào để catalog không giữ trust badge hoặc cảnh báo vĩnh viễn? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Deprecation state
 
@@ -221,7 +221,7 @@ Với `wiki.metadata.certification-deprecation-expiry`, command thành công kh�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.metadata.certification-deprecation-expiry`
+## Execution capsule: kiểm chứng `wiki.metadata.certification-deprecation-expiry`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.metadata.certification-deprecation-expiry`, sơ đồ, ví dụ và artifact về **Certification, deprecation and the expiry rule** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

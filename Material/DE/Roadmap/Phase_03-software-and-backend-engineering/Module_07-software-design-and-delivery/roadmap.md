@@ -41,8 +41,8 @@ Xây một kho mã đổi được mà không phá hợp đồng, có chiến l�
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L089 · From use case to contract and domain vocabulary | LT | Viết hợp đồng bốn phần cho các điểm vào của một mô đun, với từ vựng khớp từ vựng nghiệp vụ. | Năm điểm vào đều có đủ bốn phần, và người đóng vai nghiệp vụ không tìm được khái niệm nào mang hai tên. | M07: M02 |
-| L090 · Cohesion, coupling and the direction of dependency | LT | Vẽ đồ thị phụ thuộc của một kho mã và chỉ ra mọi cạnh đi sai chiều. | Đồ thị phụ thuộc vẽ đúng cho cả hai kho, chỉ đủ cạnh sai chiều, và hai con số tệp phải sửa chênh nhau rõ rệt. | L089 |
+| L089 · [[wiki.de-foundation.from-use-case-to-contract-and-domain-vocabulary|From use case to contract and domain vocabulary]]| LT | Viết hợp đồng bốn phần cho các điểm vào của một mô đun, với từ vựng khớp từ vựng nghiệp vụ. | Năm điểm vào đều có đủ bốn phần, và người đóng vai nghiệp vụ không tìm được khái niệm nào mang hai tên. | M07: M02 |
+| L090 · [[wiki.de-foundation.cohesion-coupling-and-the-direction-of-dependency|Cohesion, coupling and the direction of dependency]]| LT | Vẽ đồ thị phụ thuộc của một kho mã và chỉ ra mọi cạnh đi sai chiều. | Đồ thị phụ thuộc vẽ đúng cho cả hai kho, chỉ đủ cạnh sai chiều, và hai con số tệp phải sửa chênh nhau rõ rệt. | L089 |
 | L091 · Ports and adapters in practice | TH | Tái cấu trúc một script thành ba tầng, rồi đổi bộ chuyển đổi lưu trữ mà không sửa phép kiểm lõi. | Phép kiểm lõi không sửa dòng nào và vẫn xanh sau khi đổi bộ chuyển đổi, và tầng miền không nhập thư viện ngoài nào. | L090 |
 | L092 · Error design - expected failure against defect | TH | Phân loại lỗi theo hai trục và cài đặt cách xử lý đúng cho từng ô, chứng minh bằng thí nghiệm tiêm lỗi. | Bảng mười lỗi phân loại đủ hai trục, và bốn lỗi tiêm đều đi đúng đường với khiếm khuyết không bị nuốt. | L091 |
 | L093 · The test pyramid and where to place a double | TH | Đặt đúng tầng cho mười phép kiểm và chứng minh bộ kiểm không đỏ khi tái cấu trúc mà hành vi không đổi. | Mười phép kiểm đặt đúng tầng, và sau khi tái cấu trúc nội bộ thì bộ kiểm xanh mà không sửa phép kiểm nào. | L092 |
@@ -56,7 +56,7 @@ Xây một kho mã đổi được mà không phá hợp đồng, có chiến l�
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M07 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M07 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -95,7 +95,7 @@ flowchart LR
   class A089,A090,A091,A092,A093,A094,A095,A096,A097,A098,A099,A100 atom;
 ```
 
-### Bài 89: From use case to contract and domain vocabulary
+### Lesson 89: From use case to contract and domain vocabulary
 
 Bài nối Bài 1 với thiết kế mã: sau khi có phát biểu bài toán thì bước tiếp là đặt tên cho các khái niệm và cố định hợp đồng. Từ vựng miền: dùng đúng từ mà người nghiệp vụ dùng, một khái niệm một tên, và không dịch qua lại giữa hai bộ từ vựng trong cùng một kho mã; mỗi lần dịch là một chỗ có thể sai. Ca sử dụng và tiêu chí chấp nhận theo Bài 1, nay gắn với một tên hàm hoặc một điểm vào cụ thể. Hợp đồng gồm bốn phần: kiểu dữ liệu vào ra, điều kiện trước, điều kiện sau, và hợp đồng lỗi tức hàm này có thể thất bại theo những cách nào. Phần cuối hay bị bỏ và là phần gây nhiều sự cố nhất, vì người gọi không biết phải xử lý gì. Hợp đồng dữ liệu ở đây là hợp đồng trong mã; hợp đồng giữa hai đội ở tầng cao hơn sẽ học ở M18 và M19.
 
@@ -103,7 +103,7 @@ Người học phải viết hợp đồng bốn phần cho các điểm vào c�
 
 Cách đánh giá: Tầng *áp dụng*. Bài mở module, nối kỹ năng phát biểu bài toán ở M1 với cấu trúc mã. Kiểm bằng rà soát chéo với người đóng vai nghiệp vụ; đạt khi mọi điểm vào có đủ bốn phần và không có khái niệm nào mang hai tên.
 
-### Bài 90: Cohesion, coupling and the direction of dependency
+### Lesson 90: Cohesion, coupling and the direction of dependency
 
 Hai đại lượng quyết định mã có sửa được không, và chúng đo được chứ chỉ cảm nhận. Độ gắn kết: các thứ trong một mô đun có cùng lý do thay đổi không. Độ phụ thuộc: đổi mô đun này buộc đổi bao nhiêu mô đun khác. Chiều phụ thuộc là thứ quan trọng nhất và hay bị làm sai: lõi nghiệp vụ không được phụ thuộc vào khung, cơ sở dữ liệu hay định dạng tệp, mà ngược lại. Lý do không phải thẩm mỹ mà là khả năng kiểm thử và khả năng thay thế: lõi không biết gì về cơ sở dữ liệu thì kiểm thử lõi không cần cơ sở dữ liệu, và đổi cơ sở dữ liệu không đụng lõi. Đảo ngược phụ thuộc là kỹ thuật đạt điều đó: lõi định nghĩa giao diện nó cần, tầng ngoài cài đặt giao diện đó. Che giấu thông tin: mô đun lộ ra ít nhất có thể, vì mọi thứ lộ ra đều thành hợp đồng mà người khác dựa vào.
 
@@ -111,7 +111,7 @@ Người học phải vẽ đồ thị phụ thuộc của một kho mã và ch�
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi đọc cấu trúc thật và đánh giá nó theo tiêu chí, chứ nhớ định nghĩa. Kiểm bằng bài phân tích hai kho mã; đạt khi vẽ đúng đồ thị và chỉ ra đủ các cạnh sai chiều ở kho có vấn đề.
 
-### Bài 91: Ports and adapters in practice
+### Lesson 91: Ports and adapters in practice
 
 Bài biến nguyên tắc ở Bài 90 thành cấu trúc thư mục cụ thể. Ba tầng và trách nhiệm: miền chứa quy tắc nghiệp vụ và không nhập gì từ bên ngoài; ứng dụng điều phối các ca sử dụng và định nghĩa cổng tức giao diện nó cần; bộ chuyển đổi cài đặt cổng bằng công nghệ cụ thể. Gốc kết nối là chỗ duy nhất biết cả ba và ghép chúng lại lúc khởi động. Phép thử thật của kiến trúc này không phải sơ đồ đẹp mà là đổi bộ chuyển đổi mà phép kiểm lõi không sửa một dòng; nếu phải sửa thì ranh giới đã rò rỉ. Ba dấu hiệu ranh giới rò rỉ: kiểu dữ liệu của thư viện cơ sở dữ liệu xuất hiện trong chữ ký hàm miền, lỗi của thư viện lọt ra ngoài chưa dịch, và cấu trúc bảng lộ nguyên vào tên thuộc tính miền. Cảnh báo về mức độ: kiến trúc này tốn công, và với một script một lần thì nó là thừa.
 
@@ -119,7 +119,7 @@ Người học phải tái cấu trúc một script thành ba tầng, rồi đ�
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một phép biến đổi cấu trúc có tiêu chí nghiệm thu khách quan. Kiểm bằng phép thử đổi bộ chuyển đổi; đạt khi phép kiểm lõi không sửa dòng nào và vẫn xanh.
 
-### Bài 92: Error design - expected failure against defect
+### Lesson 92: Error design - expected failure against defect
 
 Phân biệt quan trọng nhất trong thiết kế lỗi và cũng là phân biệt hay bị bỏ: thất bại dự kiến là phần của hợp đồng và người gọi phải xử lý; khiếm khuyết là lỗi lập trình và không nên bắt để chạy tiếp. Ví dụ với dữ liệu: tệp nguồn thiếu cột là thất bại dự kiến, còn chỉ số mảng vượt biên là khiếm khuyết. Hệ quả: bắt hết mọi ngoại lệ rồi ghi nhật ký và chạy tiếp là biến khiếm khuyết thành dữ liệu sai âm thầm. Phân loại thứ hai độc lập với phân loại trên và quyết định hành vi vận hành: lỗi thử lại được và lỗi vĩnh viễn, theo đúng phân loại ở Bài 30. Truyền ngữ cảnh: lỗi đi lên phải mang theo đủ thông tin để chẩn đoán mà không cần chạy lại, tức là dòng nào, tệp nào, giá trị nào. Dịch lỗi ở ranh giới theo Bài 15, nay đặt vào đúng tầng của kiến trúc ba tầng.
 
@@ -127,7 +127,7 @@ Người học phải phân loại lỗi theo hai trục và cài đặt cách x
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một thiết kế có bốn trường hợp kiểm được riêng. Kiểm bằng bốn loại lỗi tiêm; đạt khi cả bốn đi đúng đường và khiếm khuyết không bị nuốt.
 
-### Bài 93: The test pyramid and where to place a double
+### Lesson 93: The test pyramid and where to place a double
 
 Bài này chi tiết hoá Bài 19 bằng câu hỏi đặt phép kiểm ở tầng nào. Hình tháp hay hình thoi: nhiều phép kiểm nhanh ở dưới, ít phép kiểm chậm ở trên; với mã dữ liệu thì tầng tích hợp thường dày hơn hình tháp kinh điển vì phần lớn lỗi nằm ở chỗ ghép với cơ sở dữ liệu và định dạng tệp. Quy tắc đặt bộ thay thế và đây là quy tắc quan trọng nhất của bài: chỉ thay thế ở ranh giới mình không sở hữu, tức hệ ngoài; thay thế thành phần bên trong là tự kiểm mã giả của mình và làm mọi lần tái cấu trúc thành phép kiểm đỏ. Bộ dựng dữ liệu kiểm thử để phép kiểm đọc được và không lặp. Tính xác định theo Bài 19. Phép kiểm đặc tả dùng khi tái cấu trúc mã cũ chưa có phép kiểm: ghi lại hành vi hiện tại làm mốc trước khi sửa, kể cả hành vi đó có vẻ sai.
 
@@ -135,7 +135,7 @@ Người học phải đặt đúng tầng cho mười phép kiểm và chứng 
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi phán đoán về vị trí và phạm vi phép kiểm, chỗ hay làm sai theo hướng tốn kém. Kiểm bằng phép thử tái cấu trúc; đạt khi bộ kiểm vẫn xanh sau khi đổi cấu trúc nội bộ mà không sửa phép kiểm nào.
 
-### Bài 94: Contract testing between a producer and a consumer
+### Lesson 94: Contract testing between a producer and a consumer
 
 Khi hai thành phần do hai người hoặc hai đội viết, phép kiểm của mỗi bên không phát hiện được việc hai bên hiểu khác nhau về giao diện. Phép kiểm hợp đồng giải đúng chỗ đó: bên tiêu thụ khai báo nó cần gì, bên cung cấp chạy phép kiểm chứng minh nó đáp ứng, và hợp đồng đó nằm trong quy trình tích hợp liên tục của cả hai. Khác với phép kiểm đầu cuối: hợp đồng chạy nhanh, không cần dựng cả hệ, và chỉ ra chính xác trường nào không khớp. Thay đổi phá vỡ và thay đổi tương thích: thêm trường tuỳ chọn thì an toàn, xoá trường bắt buộc hoặc đổi kiểu thì không; đây là cùng bộ quy tắc sẽ gặp ở M19 khi nói về sổ đăng ký lược đồ. Quy trình đổi hợp đồng an toàn theo hai giai đoạn. Vì sao bài này quan trọng với người làm dữ liệu: mọi nguồn dữ liệu là một bên cung cấp, và không có hợp đồng thì họ đổi lược đồ lúc nào ta hỏng lúc đó.
 
@@ -143,7 +143,7 @@ Người học phải dựng phép kiểm hợp đồng giữa hai thành phần
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cơ chế kiểm được bằng thí nghiệm đổi lược đồ. Kiểm bằng ba thay đổi; đạt khi phép kiểm hợp đồng chặn đúng thay đổi phá vỡ và cho qua thay đổi tương thích.
 
-### Bài 95: Refactoring in small behaviour-preserving steps
+### Lesson 95: Refactoring in small behaviour-preserving steps
 
 Tái cấu trúc là đổi cấu trúc mà giữ nguyên hành vi, và hai chữ cuối là phần khó. Quy trình an toàn: có phép kiểm phủ hành vi hiện tại trước, đổi một bước nhỏ, chạy phép kiểm, nộp; lặp lại. Bước nhỏ nghĩa là mỗi lần đổi vẫn chạy được, chứ đập ra rồi dựng lại trong ba ngày. Với mã cũ chưa có phép kiểm thì dùng phép kiểm đặc tả ở Bài 93 để chốt hành vi hiện tại trước, kể cả hành vi có vẻ sai; sửa cái sai là một thay đổi riêng và phải nộp riêng. Các mẫu tái cấu trúc phổ biến dùng như công cụ chứ mục tiêu: đưa vào một mẫu khi nó giải một sức ép có thật trong mã, chứ vì mẫu đó nổi tiếng. Ba dấu hiệu mã cần tái cấu trúc và ba dấu hiệu đang tái cấu trúc quá đà. Cách tách tái cấu trúc khỏi sửa lỗi trong lịch sử Git để rà soát được, nối lại kỷ luật commit ở Bài 7.
 
@@ -151,7 +151,7 @@ Người học phải tái cấu trúc một mô đun rối bằng các bước 
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi kỷ luật quy trình chứ kiến thức mới. Kiểm bằng lịch sử Git cộng bộ kiểm; đạt khi mọi commit đều chạy được và bộ kiểm xanh, và hành vi cuối giống hành vi đầu.
 
-### Bài 96: Static analysis, dependency and security scanning
+### Lesson 96: Static analysis, dependency and security scanning
 
 Bốn loại kiểm tự động chạy trước khi mã tới tay người rà soát, để người rà soát dành thời gian cho phần máy không làm được. Định dạng tự động: chấm dứt tranh luận phong cách bằng một công cụ, không bàn nữa. Soát lỗi tĩnh: bắt lỗi thật như biến chưa dùng, so sánh luôn đúng, hoặc tài nguyên chưa đóng. Kiểm kiểu theo Bài 18. Quét phụ thuộc: thư viện có lỗ hổng đã công bố, và đây là loại rủi ro mà đội tự viết mã tốt vẫn dính. Quét bí mật cả lịch sử kho theo Bài 31. Ngưỡng chặn phải quyết trước chứ tuỳ hứng: mức nào chặn hợp nhất, mức nào chỉ cảnh báo; không đặt ngưỡng thì hoặc chặn mọi thứ rồi bị tắt, hoặc không chặn gì. Danh mục thành phần phần mềm ở mức nhận biết: biết mình đang chạy những thư viện nào là điều kiện để phản ứng khi có lỗ hổng mới công bố.
 
@@ -159,7 +159,7 @@ Người học phải dựng bộ kiểm tự động bốn loại với ngưỡ
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cấu hình có tiêu chí nghiệm thu bằng phép thử tiêm. Kiểm bằng bốn vi phạm tiêm; đạt khi cả bốn bị chặn ở đúng bước và ngưỡng chặn được ghi lại thành tài liệu.
 
-### Bài 97: Release - artifacts, versions and migration compatibility
+### Lesson 97: Release - artifacts, versions and migration compatibility
 
 Phát hành là chỗ mã gặp người dùng, và ba nguyên tắc quyết định nó có an toàn không. Sản phẩm dựng bất biến: dựng một lần, cùng một sản phẩm đó đi qua mọi môi trường; dựng lại cho từng môi trường là cách để môi trường sản xuất chạy thứ chưa ai kiểm. Đánh số phiên bản theo ngữ nghĩa và ý nghĩa với người dùng theo Bài 17. Tương thích khi di trú là phần khó nhất với hệ có dữ liệu: mã mới phải chạy được với lược đồ cũ, và mã cũ phải chạy được với lược đồ mới, ít nhất trong một cửa sổ, vì lúc triển khai thì hai phiên bản cùng chạy. Từ đó suy ra quy tắc đổi lược đồ hai giai đoạn: thêm trước, chuyển dữ liệu, đổi mã, rồi mới xoá cái cũ; gộp lại một bước là gây gián đoạn. Nhật ký thay đổi viết cho người dùng chứ chép lại danh sách commit.
 
@@ -167,7 +167,7 @@ Người học phải thực hiện một thay đổi lược đồ phá vỡ th
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một quy trình có tiêu chí nghiệm thu bằng việc dịch vụ không lỗi trong suốt quá trình. Kiểm bằng thí nghiệm triển khai có tải; đạt khi không yêu cầu nào thất bại và cả hai phiên bản cùng chạy được.
 
-### Bài 98: Deployment strategies and rollback
+### Lesson 98: Deployment strategies and rollback
 
 Bốn cách đưa phiên bản mới ra và đánh đổi của từng cách. Thay thế tại chỗ: đơn giản, có gián đoạn, lùi lại chậm. Xanh và lam: chạy song song hai môi trường rồi chuyển lưu lượng, lùi lại tức thì nhưng tốn gấp đôi tài nguyên. Phát hành dần: đưa phiên bản mới cho một phần nhỏ người dùng, quan sát chỉ số, rồi mở rộng; đây là cách an toàn nhất và cũng đòi khả năng quan sát tốt nhất. Cờ tính năng: tách việc triển khai mã khỏi việc bật tính năng, nên lùi một tính năng không cần triển khai lại. Điều kiện để mọi cách trên hoạt động với hệ có dữ liệu: tương thích hai chiều theo Bài 97, vì lùi mã mà lược đồ đã đổi một chiều thì không lùi được. Lùi lại phải được diễn tập chứ chỉ viết trong tài liệu, và bài lab này chính là buổi diễn tập đó.
 
@@ -175,7 +175,7 @@ Người học phải chọn chiến lược triển khai cho một ràng buộc
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi chọn theo ràng buộc tài nguyên và rủi ro, rồi chứng minh bằng diễn tập. Kiểm bằng bài chọn cộng diễn tập lùi; đạt khi chọn đúng ba tình huống và lùi hoàn tất trong hạn đã đặt.
 
-### Bài 99: Monolith, modular monolith and the cost of splitting
+### Lesson 99: Monolith, modular monolith and the cost of splitting
 
 Bài chống lại một xu hướng tốn kém: chia nhỏ dịch vụ khi chưa cần. Ba dạng và điều kiện phù hợp. Khối đơn: một kho mã một sản phẩm triển khai, đơn giản nhất, và đủ cho phần lớn hệ dữ liệu ở quy mô vừa. Khối đơn có mô đun: vẫn một sản phẩm triển khai nhưng ranh giới mô đun được cưỡng chế, nên giữ được tính đơn giản vận hành mà vẫn sửa được; đây là lựa chọn mặc định đúng cho phần lớn đội. Nhiều dịch vụ: mỗi phần triển khai riêng, chia được theo đội và theo tải, đổi lại thuế vận hành rất lớn gồm mạng giữa các dịch vụ, dữ liệu phân tán, theo vết xuyên dịch vụ, và triển khai phối hợp. Ba điều kiện cần trước khi tách và ba dấu hiệu tách quá sớm. Sở hữu dữ liệu là ranh giới thật: hai dịch vụ cùng ghi một bảng thì chúng chưa thật sự tách.
 
@@ -183,7 +183,7 @@ Người học phải quyết định có nên tách dịch vụ hay không cho 
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi cân chi phí vận hành với lợi ích tổ chức, chứ theo xu hướng. Kiểm bằng ba tình huống trong đó ít nhất hai không nên tách; đạt khi quyết định đúng cả ba và nêu điều kiện kích hoạt kiểm được.
 
-### Bài 100: Delivery project - a modular package with a release path
+### Lesson 100: Delivery project - a modular package with a release path
 
 Bài dự án khép module. Nâng công cụ ở Bài 32 thành một sản phẩm có kiến trúc và có đường phát hành. Danh mục kiểm tám điểm: ba tầng với đồ thị phụ thuộc không có cạnh sai chiều; hợp đồng bốn phần cho mọi điểm vào công khai; thiết kế lỗi hai trục; bộ kiểm đủ bốn tầng không mô phỏng thành phần bên trong; phép kiểm hợp đồng với một bên tiêu thụ; quy trình tự động bốn loại kiểm có ngưỡng chặn; sản phẩm dựng bất biến có đánh số phiên bản; và một lần di trú lược đồ hai giai đoạn đã diễn tập. Phép thử nghiệm thu gồm hai phần: đổi bộ chuyển đổi lưu trữ mà phép kiểm lõi không sửa dòng nào; và triển khai một phiên bản có lỗi rồi lùi lại trong hạn đã đặt. Nộp kèm một tài liệu quyết định cho lựa chọn kiến trúc, theo Bài 99.
 

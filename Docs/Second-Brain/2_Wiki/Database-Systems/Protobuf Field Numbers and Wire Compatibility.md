@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Field numbers và wire types quyết định Protobuf compatibility thế nào, kể cả khi parse không báo lỗi?
 source_ids:
   - src.standard.protobuf-proto3-guide
@@ -30,7 +30,7 @@ relationships:
 
 ## 1. Tag là identity trên wire
 
-Binary key combines field number and wire type; field name absent. Rename in `.proto` preserves binary wire identity when number/type unchanged, nhưng generated API, JSON/TextFormat names và reflection users có thể break. Renumber equals delete plus add. Numbers 1–15 encode compactly; optimization không bao giờ biện minh renumber deployed fields.
+Binary key combines field number and wire type; field name absent. Rename in `.proto` preserves binary wire identity when number/type unchanged, nhưng generated API, JSON/TextFormat names và reflection users có thể break. Renumber equals delete plus add. Numbers 1-15 encode compactly; optimization không bao giờ biện minh renumber deployed fields.
 
 ## 2. Wire types không phải semantic types
 
@@ -42,7 +42,7 @@ Adding a new field number is binary wire-safe under guide rules, while applicati
 
 ## 4. Unknown fields
 
-Modern proto3 binary messages preserve unknown fields through parse and binary reserialization, but conversion to JSON, field-by-field copy, reflection filters or older/specific runtime paths may discard them. A relay compatibility test must execute the exact parse–transform–serialize path. Unknown preservation does not mean application understands or validates the field.
+Modern proto3 binary messages preserve unknown fields through parse and binary reserialization, but conversion to JSON, field-by-field copy, reflection filters or older/specific runtime paths may discard them. A relay compatibility test must execute the exact parse-transform-serialize path. Unknown preservation does not mean application understands or validates the field.
 
 ## 5. oneof enum map boundaries
 
@@ -179,7 +179,7 @@ Mỗi claim cần fixture, versioned contract, counterexample và oracle ở đ�
 ## 8. Quy trình phản biện
 
 1. Tách syntax/wire, structural compatibility, generated API và business semantics.
-2. Ghi direction bằng writer–reader versions, không chỉ dùng nhãn backward/forward.
+2. Ghi direction bằng writer-reader versions, không chỉ dùng nhãn backward/forward.
 3. Khóa canonical meaning và negative fixtures trước implementation.
 4. Giữ source bytes/schema fingerprints để tái hiện.
 5. Mọi default, cache, inference hoặc registry policy đều là explicit configuration.
@@ -214,13 +214,13 @@ Mỗi claim cần fixture, versioned contract, counterexample và oracle ở đ�
 
 ## Key takeaways
 - Structural success và semantic correctness là hai gates riêng.
-- Writer–reader direction, version history và exact fixtures phải hiện trong evidence.
+- Writer-reader direction, version history và exact fixtures phải hiện trong evidence.
 - Defaults, aliases, unknown fields và registry modes có scope cụ thể; không dùng như bảo đảm chung.
 - Chưa chạy lab thì note là giáo trình/protocol, chưa phải production certification.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.serialization.protobuf-field-numbers-wire-compatibility`
+## Execution capsule: kiểm chứng `wiki.serialization.protobuf-field-numbers-wire-compatibility`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.serialization.protobuf-field-numbers-wire-compatibility`, sơ đồ, ví dụ và artifact về **Protobuf Field Numbers and Wire Compatibility** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -242,7 +242,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Field numbers và wire types quyết định Protobuf compatibility thế nào, kể cả khi parse không báo lỗi?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Field numbers và wire types quyết định Protobuf compatibility thế nào, kể cả khi parse không báo lỗi? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Protobuf Field Numbers and Wire Compatibility** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

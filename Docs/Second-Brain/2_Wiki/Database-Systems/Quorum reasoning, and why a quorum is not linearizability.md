@@ -37,7 +37,7 @@ Cần monotonic version/ballot, read repair hoặc coordination để phân bi�
 
 ## 3. Sloppy quorum
 
-Fallback nodes và topology-aware quorums có thể làm sets không giao nhau như N logical đơn giản. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Quorum reasoning, and why a quorum is not linearizability`, câu hỏi thực dụng là: Vì sao điều kiện R+W>N chỉ là giao nhau tập replica và chưa đủ chứng minh linearizability? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Fallback nodes và topology-aware quorums có thể làm sets không giao nhau như N logical đơn giản. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Quorum reasoning, and why a quorum is not linearizability`, câu hỏi thực dụng là: Vì sao điều kiện R+W>N chỉ là giao nhau tập replica và chưa đủ chứng minh linearizability? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Failures and clocks
 
@@ -218,7 +218,7 @@ Với `wiki.distributed.quorum-not-linearizability`, command thành công không
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.distributed.quorum-not-linearizability`
+## Execution capsule: kiểm chứng `wiki.distributed.quorum-not-linearizability`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.distributed.quorum-not-linearizability`, sơ đồ, ví dụ và artifact về **Quorum reasoning, and why a quorum is not linearizability** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

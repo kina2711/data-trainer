@@ -47,7 +47,7 @@ Một abstraction rò rỉ khi caller vẫn phải biết chi tiết bị tuyên
 
 ## 3. State quyết định độ khó thay thế
 
-Stateless function dễ nhân bản vì kết quả chỉ phụ thuộc input. Component giữ state cần nói state nào là authoritative, lifecycle ra sao, ai được mutate và phục hồi thế nào. Cache, checkpoint và dedup ledger là ba state có semantics khác nhau; gom chúng vào một hộp ‘storage’ che mất recovery contract.
+Stateless function dễ nhân bản vì kết quả chỉ phụ thuộc input. Component giữ state cần nói state nào là authoritative, lifecycle ra sao, ai được mutate và phục hồi thế nào. Cache, checkpoint và dedup ledger là ba state có semantics khác nhau; gom chúng vào một hộp storage che mất recovery contract.
 
 Invariant phải sống gần owner của state. Nếu hai component cùng có quyền cập nhật một state machine mà không có protocol, failure giữa hai write tạo trạng thái trung gian. Decomposition cần làm rõ transaction boundary hoặc compensation, không chỉ vẽ mũi tên gọi hàm.
 
@@ -65,7 +65,7 @@ Orthogonality là phép thử thay đổi: thay một quyết định thì bao n
 
 ## 6. Đồ thị phụ thuộc và vòng lặp
 
-Một vòng A→B→C→A khiến không boundary nào đứng độc lập để kiểm thử hoặc thay thế. Phá vòng bằng cách chuyển policy về owner, tách protocol hoặc đảo dependency qua port. Không nên tạo package ‘common’ chỉ để giấu vòng; shared package vẫn là một node có ownership và release contract.
+Một vòng A→B→C→A khiến không boundary nào đứng độc lập để kiểm thử hoặc thay thế. Phá vòng bằng cách chuyển policy về owner, tách protocol hoặc đảo dependency qua port. Không nên tạo package common chỉ để giấu vòng; shared package vẫn là một node có ownership và release contract.
 
 Sau khi vẽ source graph, bổ sung data owner, runtime call và failure dependency. Một cạnh phải ghi assumption cụ thể: schema, ordering, availability hay identity. Danh sách cạnh có ý nghĩa hơn số lượng hộp vì nó cho biết điều gì thực sự phải phối hợp khi thay đổi.
 
@@ -73,7 +73,7 @@ Sau khi vẽ source graph, bổ sung data owner, runtime call và failure depend
 
 Hệ bán hàng được chia thành order policy, payment adapter, inventory adapter và fulfillment workflow. Order policy sở hữu state transition; adapters cài port do application sở hữu; workflow điều phối nhưng không cập nhật trực tiếp bảng của adapters. Nhóm inject payment timeout và chứng minh order vẫn ở trạng thái recoverable trong khi catalog read tiếp tục phục vụ.
 
-Tình huống của `wiki.engineering-foundation.decomposition-four-axes` phải được chạy trong sandbox hoặc fixture có version. Nếu chưa chạy, các kết quả mong đợi chỉ là protocol đánh giá; không được ghi thành observation. Người học giữ input, command, state trước–sau, raw output và một oracle độc lập đủ để reviewer tái hiện câu hỏi riêng của bài `Decomposition - responsibility, interface, state and failure domain`.
+Tình huống của `wiki.engineering-foundation.decomposition-four-axes` phải được chạy trong sandbox hoặc fixture có version. Nếu chưa chạy, các kết quả mong đợi chỉ là protocol đánh giá; không được ghi thành observation. Người học giữ input, command, state trước-sau, raw output và một oracle độc lập đủ để reviewer tái hiện câu hỏi riêng của bài `Decomposition - responsibility, interface, state and failure domain`.
 
 ## 8. Failure modes và ngộ nhận
 
@@ -161,8 +161,8 @@ Mỗi probe dưới đây bắt đầu bằng dự đoán viết trước. Kết
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]] — `src.book.sommerville-software-engineering.10e` | Chapter 4 PDF 103–132; Chapter 7 PDF 169–212 | requirement validation, interface, decomposition và information hiding | §§1–9 | Đã phủ | Nội dung ngoài objective DE-L002 |
-| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]] — `src.book.hunt-thomas-pragmatic-programmer.20ae` | Topic 10 PDF 76–83 | orthogonality, change isolation và decision discipline | §§1–9 | Đã phủ | Nội dung ngoài objective DE-L002 |
+| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]]: `src.book.sommerville-software-engineering.10e` | Chapter 4 PDF 103-132; Chapter 7 PDF 169-212 | requirement validation, interface, decomposition và information hiding | §§1-9 | Đã phủ | Nội dung ngoài objective DE-L002 |
+| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]]: `src.book.hunt-thomas-pragmatic-programmer.20ae` | Topic 10 PDF 76-83 | orthogonality, change isolation và decision discipline | §§1-9 | Đã phủ | Nội dung ngoài objective DE-L002 |
 
 ## Key takeaways
 - Decomposition có giá trị khi cô lập decision, state và failure; số lượng component tự nó không chứng minh điều đó.
@@ -172,7 +172,7 @@ Mỗi probe dưới đây bắt đầu bằng dự đoán viết trước. Kết
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.engineering-foundation.decomposition-four-axes`
+## Execution capsule: kiểm chứng `wiki.engineering-foundation.decomposition-four-axes`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.engineering-foundation.decomposition-four-axes`, sơ đồ, ví dụ và artifact về **Decomposition - responsibility, interface, state and failure domain** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

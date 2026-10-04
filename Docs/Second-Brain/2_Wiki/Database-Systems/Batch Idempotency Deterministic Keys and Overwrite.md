@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một batch rerun cần identity, deterministic computation và publication protocol nào để cho cùng accepted state?
 source_ids:
   - src.web.dbt-incremental-models
@@ -226,7 +226,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.transformation.batch-idempotency-deterministic-keys-overwrite`
+## Execution capsule: kiểm chứng `wiki.transformation.batch-idempotency-deterministic-keys-overwrite`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.transformation.batch-idempotency-deterministic-keys-overwrite`, sơ đồ, ví dụ và artifact về **Batch Idempotency Deterministic Keys and Overwrite** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -248,7 +248,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Một batch rerun cần identity, deterministic computation và publication protocol nào để cho cùng accepted state?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Một batch rerun cần identity, deterministic computation và publication protocol nào để cho cùng accepted state? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Batch Idempotency Deterministic Keys and Overwrite** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

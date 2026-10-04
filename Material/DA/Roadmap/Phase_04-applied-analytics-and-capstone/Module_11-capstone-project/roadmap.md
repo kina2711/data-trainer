@@ -6,7 +6,7 @@
 
 | Mã | Người học có thể | Bằng chứng được chấp nhận |
 |---|---|---|
-| EN-11-01 | Toàn bộ M01–M10 | Bằng chứng hoàn thành điều kiện được nêu trong cột trước |
+| EN-11-01 | Toàn bộ M01-M10 | Bằng chứng hoàn thành điều kiện được nêu trong cột trước |
 
 Nếu chưa có bằng chứng đầu vào, người học phải hoàn thành lại bài hoặc mô-đun được dẫn chiếu trước khi thực hiện phép đánh giá của mô-đun này.
 
@@ -32,13 +32,13 @@ Thực hiện trọn một dự án phân tích từ câu hỏi mơ hồ tới k
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L083 · Choosing a topic and writing the spec | DA | Viết một đặc tả dự án đủ sáu bước của Bài 5 và bảo vệ nó qua bốn tiêu chí khả thi. | Đặc tả đủ sáu bước và được duyệt qua cả bốn tiêu chí khả thi. | M11: Toàn bộ M01–M10 |
-| L084 · Execution and mid-point review | DA | Trình bày tiến độ dự án trong 10 phút, tiếp nhận phản biện, và điều chỉnh phạm vi khi bằng chứng cho thấy phạm vi ban đầu không hoàn thành được. | Nộp đủ năm đầu ra bắt buộc ở trạng thái đang chạy được, và quyết định về phạm vi có bằng chứng tiến độ kèm theo. | L083 |
-| L085 · Capstone defense | KT | Bảo vệ trọn một dự án phân tích trước hội đồng: nêu được câu hỏi, phương pháp, bằng chứng đối soát, khuyến nghị có định lượng, và giới hạn, dưới chất vấn. | ≥ 75/100, phần G ≥ 60%, và phần E không được bỏ. Đề bài chứa một lỗi chất lượng dữ liệu cài sẵn; không phát hiện ra sẽ bị trừ ở cả phần B lẫn phần F. Đạt ≥ 75/100, phần G ≥ 60%, phần E có làm, và lỗi chất lượng dữ liệu cài sẵn được phát hiện. Đây là exit criterion của Mô-đun 11 và của toàn chương trình. | L084 |
+| L083 · [[wiki.da.choosing-a-topic-and-writing-the-spec|Choosing a topic and writing the spec]]| DA | Viết một đặc tả dự án đủ sáu bước của Bài 5 và bảo vệ nó qua bốn tiêu chí khả thi. | Đặc tả đủ sáu bước và được duyệt qua cả bốn tiêu chí khả thi. | M11: Toàn bộ M01-M10 |
+| L084 · [[wiki.da.execution-and-mid-point-review|Execution and mid-point review]]| DA | Trình bày tiến độ dự án trong 10 phút, tiếp nhận phản biện, và điều chỉnh phạm vi khi bằng chứng cho thấy phạm vi ban đầu không hoàn thành được. | Nộp đủ năm đầu ra bắt buộc ở trạng thái đang chạy được, và quyết định về phạm vi có bằng chứng tiến độ kèm theo. | L083 |
+| L085 · [[wiki.da.capstone-defense|Capstone defense]]| KT | Bảo vệ trọn một dự án phân tích trước hội đồng: nêu được câu hỏi, phương pháp, bằng chứng đối soát, khuyến nghị có định lượng, và giới hạn, dưới chất vấn. | ≥ 75/100, phần G ≥ 60%, và phần E không được bỏ. Đề bài chứa một lỗi chất lượng dữ liệu cài sẵn; không phát hiện ra sẽ bị trừ ở cả phần B lẫn phần F. Đạt ≥ 75/100, phần G ≥ 60%, phần E có làm, và lỗi chất lượng dữ liệu cài sẵn được phát hiện. Đây là exit criterion của Mô-đun 11 và của toàn chương trình. | L084 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DA-M11 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DA-M11 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -59,7 +59,7 @@ flowchart LR
   class A083,A084,A085 atom;
 ```
 
-### Bài 83: Choosing a topic and writing the spec
+### Lesson 83: Choosing a topic and writing the spec
 
 Bốn tiêu chí của một đề khả thi: có dữ liệu thật truy cập được, có câu hỏi nghiệp vụ thật, có một quyết định cụ thể phía sau, và phạm vi hoàn thành được trong 3 tuần. Ba nguồn đề: dữ liệu công khai của Việt Nam, dữ liệu công ty đang làm có xin phép, hoặc bộ dữ liệu của khoá nhưng đặt câu hỏi mới chưa trả lời trong các bài trước.
 
@@ -67,25 +67,25 @@ Người học phải viết một đặc tả dự án đủ sáu bước của
 
 Cách đánh giá: Tầng *sáng tạo*. Đặc tả là sản phẩm thiết kế dưới ràng buộc. Kiểm bằng bảo vệ đề: đề không qua đủ bốn tiêu chí không được duyệt, và người học phải sửa hoặc đổi đề. Tiêu chí thường trượt nhất là có quyết định cụ thể phía sau.
 
-### Bài 84: Execution and mid-point review
+### Lesson 84: Execution and mid-point review
 
 Không có nội dung mới. Rà soát giữa kỳ dựa trên sản phẩm đang chạy được.
 
-Người học phải trình bày tiến độ dự án trong 10 phút, tiếp nhận phản biện, và điều chỉnh phạm vi khi bằng chứng cho thấy phạm vi ban đầu không hoàn thành được. Bằng chứng thực hành:  Buổi này trình bày tiến độ 10 phút, nhận phản biện, và điều chỉnh phạm vi nếu cần. Năm đầu ra bắt buộc phải có ở trạng thái đang chạy được: kho mã chạy lại được · báo cáo chất lượng dữ liệu · phân tích có nhật ký giả thuyết · dashboard hoặc bộ biểu đồ · báo cáo ba phiên bản theo Bài 78. Bài hoàn tất khi nộp đủ năm đầu ra bắt buộc ở trạng thái đang chạy được, và quyết định về phạm vi có bằng chứng tiến độ kèm theo.
+Người học phải trình bày tiến độ dự án trong 10 phút, tiếp nhận phản biện, và điều chỉnh phạm vi khi bằng chứng cho thấy phạm vi ban đầu không hoàn thành được. Bằng chứng thực hành: Buổi này trình bày tiến độ 10 phút, nhận phản biện, và điều chỉnh phạm vi nếu cần. Năm đầu ra bắt buộc phải có ở trạng thái đang chạy được: kho mã chạy lại được · báo cáo chất lượng dữ liệu · phân tích có nhật ký giả thuyết · dashboard hoặc bộ biểu đồ · báo cáo ba phiên bản theo Bài 78. Bài hoàn tất khi nộp đủ năm đầu ra bắt buộc ở trạng thái đang chạy được, và quyết định về phạm vi có bằng chứng tiến độ kèm theo.
 
 Cách đánh giá: Tầng *đánh giá*. Kiểm bằng chất lượng quyết định điều chỉnh phạm vi: người học phải nêu bằng chứng cho quyết định giữ hoặc thu hẹp phạm vi. Giữ nguyên phạm vi trong khi tiến độ cho thấy không kịp là một quyết định không đạt.
 
-### Bài 85: Capstone defense
+### Lesson 85: Capstone defense
 
 Không có nội dung mới. Buổi bảo vệ trước hội đồng gồm một Data Analyst đang đi làm, một người đóng vai bên nghiệp vụ, và một giảng viên.
 
-Người học phải bảo vệ trọn một dự án phân tích trước hội đồng: nêu được câu hỏi, phương pháp, bằng chứng đối soát, khuyến nghị có định lượng, và giới hạn, dưới chất vấn. Bằng chứng thực hành: Trình bày 20 phút, hỏi đáp 15 phút, nhận xét hội đồng 10 phút. | Phần | Điểm | Nội dung | |---|---|---| | A | 10 | Làm rõ câu hỏi và đặc tả | | B | 15 | Kiểm tra chất lượng dữ liệu trước khi phân tích | | C | 20 | Phân tích: SQL, thống kê, điều tra | | D | 15 | Trực quan hoá hoặc dashboard | | E | 10 | Đối soát: chứng minh kết quả bằng hai đường độc lập | | F | 10 | Khuyến nghị hành động có định lượng tác động | | G | 20 | Bảo vệ dưới chất vấn, gồm nêu rõ giới hạn | Bài hoàn tất khi ≥ 75/100, phần G ≥ 60%, và phần E không được bỏ. Đề bài chứa một lỗi chất lượng dữ liệu cài sẵn; không phát hiện ra sẽ bị trừ ở cả phần B lẫn phần F. Đạt ≥ 75/100, phần G ≥ 60%, phần E có làm, và lỗi chất lượng dữ liệu cài sẵn được phát hiện. Đây là exit criterion của Mô-đun 11 và của toàn chương trình.
+Người học phải bảo vệ trọn một dự án phân tích trước hội đồng: nêu được câu hỏi, phương pháp, bằng chứng đối soát, khuyến nghị có định lượng, và giới hạn, dưới chất vấn. Bằng chứng thực hành: Trình bày, bảo vệ dưới chất vấn và nhận xét hội đồng. | Phần | Điểm | Nội dung | |---|---|---| | A | 10 | Làm rõ câu hỏi và đặc tả | | B | 15 | Kiểm tra chất lượng dữ liệu trước khi phân tích | | C | 20 | Phân tích: SQL, thống kê, điều tra | | D | 15 | Trực quan hoá hoặc dashboard | | E | 10 | Đối soát: chứng minh kết quả bằng hai đường độc lập | | F | 10 | Khuyến nghị hành động có định lượng tác động | | G | 20 | Bảo vệ dưới chất vấn, gồm nêu rõ giới hạn | Bài hoàn tất khi ≥ 75/100, phần G ≥ 60%, và phần E không được bỏ. Đề bài chứa một lỗi chất lượng dữ liệu cài sẵn; không phát hiện ra sẽ bị trừ ở cả phần B lẫn phần F. Đạt ≥ 75/100, phần G ≥ 60%, phần E có làm, và lỗi chất lượng dữ liệu cài sẵn được phát hiện. Đây là exit criterion của Mô-đun 11 và của toàn chương trình.
 
 Cách đánh giá: Tầng *đánh giá* và *sáng tạo*. Kiểm bằng rubric bảy phần trước hội đồng. Đề chứa một lỗi chất lượng dữ liệu cài sẵn, nên phần B và phần F cùng phản ánh việc có phát hiện ra lỗi đó hay không. Phần G kiểm khả năng giữ kết luận dưới chất vấn.
 
 ## Lý do sắp xếp
 
-Mô-đun bắt đầu từ `M11: Toàn bộ M01–M10` và đi theo các quan hệ tiên quyết đã ghi trong bảng. Mỗi bài chỉ sử dụng khái niệm hoặc thao tác đã được giới thiệu trước đó; bài cuối L085 tích hợp đầu ra của toàn mô-đun.
+Mô-đun bắt đầu từ `M11: Toàn bộ M01-M10` và đi theo các quan hệ tiên quyết đã ghi trong bảng. Mỗi bài chỉ sử dụng khái niệm hoặc thao tác đã được giới thiệu trước đó; bài cuối L085 tích hợp đầu ra của toàn mô-đun.
 
 ## Ma trận đánh giá
 
@@ -103,7 +103,7 @@ Không cộng điểm để bù cho lỗi loại trực tiếp. Người học p
 |---|---|---|---|
 | Choosing a topic and writing the spec | L083 | Viết đặc tả dự án đủ sáu bước của Bài 5. Bảo vệ đề trước giảng viên qua bốn tiêu chí. Chỉ đề được duyệt mới làm tiếp. | Chọn đề theo mức độ sẵn có của dữ liệu thay vì theo quyết định phía sau · phạm vi rộng hơn mức làm được trong 3 tuần · câu hỏi đã được trả lời trong một bài của khoá. |
 | Execution and mid-point review | L084 | Buổi này trình bày tiến độ 10 phút, nhận phản biện, và điều chỉnh phạm vi nếu cần. Năm đầu ra bắt buộc phải có ở trạng thái đang chạy được: kho mã chạy lại được · báo cáo chất lượng dữ liệu · phân tích có nhật ký giả thuyết · dashboard hoặc bộ biểu đồ · báo cáo ba phiên bản theo Bài 78. | Giữ nguyên phạm vi dù tiến độ cho thấy không kịp · bỏ phần chất lượng dữ liệu để kịp phần phân tích · trình bày kế hoạch thay vì trình bày kết quả đã có. |
-| Capstone defense | L085 | Trình bày 20 phút, hỏi đáp 15 phút, nhận xét hội đồng 10 phút. \| Phần \| Điểm \| Nội dung \| \|---\|---\|---\| \| A \| 10 \| Làm rõ câu hỏi và đặc tả \| \| B \| 15 \| Kiểm tra chất lượng dữ liệu trước khi phân tích \| \| C \| 20 \| Phân tích: SQL, thống kê, điều tra \| \| D \| 15 \| Trực quan hoá hoặc dashboard \| \| E \| 10 \| Đối soát: chứng minh kết quả bằng hai đường độc lập \| \| F \| 10 \| Khuyến nghị hành động có định lượng tác động \| \| G \| 20 \| Bảo vệ dưới chất vấn, gồm nêu rõ giới hạn \| | Bỏ phần đối soát để dành thời gian cho phần phân tích · khuyến nghị không định lượng được tác động · không phát hiện lỗi dữ liệu cài sẵn. |
+| Capstone defense | L085 | Trình bày, bảo vệ dưới chất vấn và nhận xét hội đồng. \| Phần \| Điểm \| Nội dung \| \|---\|---\|---\| \| A \| 10 \| Làm rõ câu hỏi và đặc tả \| \| B \| 15 \| Kiểm tra chất lượng dữ liệu trước khi phân tích \| \| C \| 20 \| Phân tích: SQL, thống kê, điều tra \| \| D \| 15 \| Trực quan hoá hoặc dashboard \| \| E \| 10 \| Đối soát: chứng minh kết quả bằng hai đường độc lập \| \| F \| 10 \| Khuyến nghị hành động có định lượng tác động \| \| G \| 20 \| Bảo vệ dưới chất vấn, gồm nêu rõ giới hạn \| | Bỏ phần đối soát để dành thời gian cho phần phân tích · khuyến nghị không định lượng được tác động · không phát hiện lỗi dữ liệu cài sẵn. |
 
 ## Ngộ nhận và lỗi loại trực tiếp
 
@@ -117,7 +117,7 @@ Không cộng điểm để bù cho lỗi loại trực tiếp. Người học p
 
 | Kế thừa từ | Cung cấp cho mô-đun sau | Cam kết đầu ra |
 |---|---|---|
-| Toàn bộ M01–M10 | M01, M10 | Thực hiện trọn một dự án phân tích từ câu hỏi mơ hồ tới khuyến nghị có định lượng, và bảo vệ nó trước hội đồng |
+| Toàn bộ M01-M10 | M01, M10 | Thực hiện trọn một dự án phân tích từ câu hỏi mơ hồ tới khuyến nghị có định lượng, và bảo vệ nó trước hội đồng |
 
 ## Tài liệu tham khảo
 

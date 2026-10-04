@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Các scan, sort, aggregate và ba join algorithm tiêu thụ CPU, I/O, memory thế nào, và dự đoán plan được kiểm chứng ra sao?
 source_ids:
   - src.manual.postgresql-17.10
@@ -40,7 +40,7 @@ Plan node name không đủ kết luận; đọc conditions, rows, loops, buffer
 
 ## 2. Sequential scan
 
-Sequential scan đọc heap pages tuần tự và áp filter. Nó hợp lý khi query cần phần lớn bảng, bảng nhỏ, correlation/index không có lợi hoặc random fetch đắt. “Seq scan là xấu” là ngộ nhận.
+Sequential scan đọc heap pages tuần tự và áp filter. Nó hợp lý khi query cần phần lớn bảng, bảng nhỏ, correlation/index không có lợi hoặc random fetch đắt. Seq scan là xấu là ngộ nhận.
 
 `Rows Removed by Filter` giúp thấy selectivity actual; buffers cho thấy pages hit/read. Một seq scan thường xuyên trên bảng lớn có thể là missing index, nhưng cũng có thể là analytics hoặc backup hợp lý.
 
@@ -50,7 +50,7 @@ Parallel seq scan chia pages cho workers, thêm gather. Parallelism có setup/co
 
 Index scan duyệt access method để lấy TIDs rồi fetch heap rows và kiểm visibility. Nó có lợi khi selectivity đủ thấp, ordering hữu ích hoặc correlation giảm random I/O. Nhiều scattered heap fetch có thể đắt hơn seq scan.
 
-`Index Cond` là điều kiện dùng để định vị trong index; `Filter` là điều kiện áp sau khi fetch. Hai query đều “dùng index” nhưng lượng heap work có thể rất khác.
+`Index Cond` là điều kiện dùng để định vị trong index; `Filter` là điều kiện áp sau khi fetch. Hai query đều dùng index nhưng lượng heap work có thể rất khác.
 
 Cost phụ thuộc pages, tuples, correlation, cache và constants. Không định một ngưỡng phần trăm phổ quát.
 
@@ -60,7 +60,7 @@ Index-only scan cần access method lưu/reconstruct columns và query chỉ c�
 
 `INCLUDE` thêm payload columns để cover query mà không làm search key; index rộng tăng storage/write cost và có size limits. Workload update-heavy có thể làm all-visible thấp, khiến index-only degrade gần index scan.
 
-Vì vậy “covering index không cần heap” chỉ đúng khi coverage và visibility cùng đạt.
+Vì vậy covering index không cần heap chỉ đúng khi coverage và visibility cùng đạt.
 
 ## 5. Bitmap scans
 
@@ -116,7 +116,7 @@ Merge join đọc hai inputs đã sorted theo join keys và tiến đồng bộ.
 
 Duplicates cần nhóm matching và có thể tạo many-to-many output như semantics yêu cầu. Merge join phù hợp equality và một số ordered comparisons tùy operator families.
 
-Nói “merge tốt khi cả hai đã sort” là heuristic; cardinality, selectivity và available paths vẫn quyết định.
+Nói merge tốt khi cả hai đã sort là heuristic; cardinality, selectivity và available paths vẫn quyết định.
 
 ## 12. So sánh ba thuật toán
 
@@ -130,7 +130,7 @@ Outer/semi/anti/non-equi support khác nhau. Correctness đến từ semantics, 
 
 Tình huống A: outer 10 rows, inner hàng triệu với selective indexed key → dự đoán nested loop. B: hai tập lớn equi, build side vừa memory, không sorted → hash. C: hai inputs đã ordered/indexed và output cần order → merge. D: hash build vượt work_mem → hash batches/temp hoặc alternative plan.
 
-Đây là hypotheses, không cam kết. Ghi dự đoán trước; chạy EXPLAIN (ANALYZE, BUFFERS, SETTINGS); giải thích nếu khác bằng estimates/costs/paths. Không bật/tắt join methods để tạo “bằng chứng” cho default planner; chỉ dùng toggles ở experiment bổ sung.
+Đây là hypotheses, không cam kết. Ghi dự đoán trước; chạy EXPLAIN (ANALYZE, BUFFERS, SETTINGS); giải thích nếu khác bằng estimates/costs/paths. Không bật/tắt join methods để tạo bằng chứng cho default planner; chỉ dùng toggles ở experiment bổ sung.
 
 Fixture có cùng result semantics. So result checksum khi rewrite/index khác.
 
@@ -182,18 +182,18 @@ Một lỗi khác là bỏ qua join fanout: algorithm nhanh vẫn trả số lư
 - Bốn scenario chưa chạy trong note; evidence thuộc `after-note.md`.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-10-MANUAL]] — EXPLAIN, index scans và planner configuration.
-2. [[SRC-MASTERING-POSTGRESQL-17-6E]] — cost model, indexes và join planning.
-3. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]] — scan costs và nested/hash/merge mechanisms.
+1. [[SRC-POSTGRESQL-17-10-MANUAL]]: EXPLAIN, index scans và planner configuration.
+2. [[SRC-MASTERING-POSTGRESQL-17-6E]]: cost model, indexes và join planning.
+3. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]]: scan costs và nested/hash/merge mechanisms.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 488–498, 559–571 | scans, EXPLAIN, planner knobs | §§1–8, 16 | Đã đối chiếu 17.10 |
-| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 87–112, 223–270 | index/cost/join examples | §§2–13 | Đã bỏ ngưỡng phổ quát |
-| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 330–407 | access paths và ba joins | §§3–12 | Đã giữ mechanism, gắn version caveat |
-| Tổng hợp DE-L127 | four predictions, spill experiment | §§13–17 | Đã thành evidence protocol |
+| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 488-498, 559-571 | scans, EXPLAIN, planner knobs | §§1-8, 16 | Đã đối chiếu 17.10 |
+| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 87-112, 223-270 | index/cost/join examples | §§2-13 | Đã bỏ ngưỡng phổ quát |
+| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 330-407 | access paths và ba joins | §§3-12 | Đã giữ mechanism, gắn version caveat |
+| Tổng hợp DE-L127 | four predictions, spill experiment | §§13-17 | Đã thành evidence protocol |
 
 ## Key takeaways
 - Plan phải đọc như cây rows/loops/cost/memory/I/O, không theo tên node riêng lẻ.
@@ -204,7 +204,7 @@ Một lỗi khác là bỏ qua join fanout: algorithm nhanh vẫn trả số lư
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.physical-operators-join-algorithms`
+## Execution capsule: kiểm chứng `wiki.database.physical-operators-join-algorithms`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.physical-operators-join-algorithms`, sơ đồ, ví dụ và artifact về **Toán tử vật lý và ba thuật toán kết** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -226,7 +226,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Các scan, sort, aggregate và ba join algorithm tiêu thụ CPU, I/O, memory thế nào, và dự đoán plan được kiểm chứng ra sao?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Các scan, sort, aggregate và ba join algorithm tiêu thụ CPU, I/O, memory thế nào, và dự đoán plan được kiểm chứng ra sao? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Toán tử vật lý và ba thuật toán kết** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

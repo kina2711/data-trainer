@@ -1,0 +1,28 @@
+task_id: academy-build-scene-package
+instance_id: da-de-l001-deep-rewrite-pilot
+status: awaiting-owner-approval
+requested_at: 2026-10-03
+primary_deliverable: two owner-reviewable runnable scene packages for DA-L001 and DE-L001
+owner: kina2711
+consumers:
+  - curriculum owner
+  - instructor
+  - foundation learner
+acceptance:
+  packages: 2
+  lesson_ids: [DA-L001, DE-L001]
+  assets_per_package: [lesson.yaml, note.md, slides.md, quiz.md, homework.md, after-note.md]
+  note_format: textbook-v4
+  source_traceability: required
+  authentic_assessment: required
+  responsive_web_render: required
+  owner_approval_before_next_lessons: required
+quality_gates:
+  - note has exactly three opening H1 lines and no YAML frontmatter
+  - theory follows observation, model, mechanism, evidence, consequence, decision, boundary
+  - each scene maps to a precise note heading or is explicitly marked UNSOURCED synthesis
+  - quiz has 10 questions and targeted feedback
+  - homework rubric totals 100 with critical failures and retest
+  - Markdown, Mermaid, tables, code and details render without browser errors
+  - existing remaining eight pilot lessons are unchanged
+release_policy: Draft for owner review only. Do not continue the sequence until the owner approves both pilots.

@@ -55,7 +55,7 @@ Enumerate normal day, month boundary, leap day, DST forward/back, timezone rule 
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
-Trong `Logical Date Data Interval and the Timezone Traps`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước–sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dựng artifact/workflow fixture có exact versions và intervals; inject one failure or changed assumption; capture resolved graph/state/query IDs or scheduler context and compare with independent coverage oracle.
+Trong `Logical Date Data Interval and the Timezone Traps`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước-sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dựng artifact/workflow fixture có exact versions và intervals; inject one failure or changed assumption; capture resolved graph/state/query IDs or scheduler context and compare with independent coverage oracle.
 
 ### 7.1. Time-interval probe 1: trigger type, logical identity, UTC/local interval, boundary event và coverage oracle phải rõ
 
@@ -71,7 +71,7 @@ Trong `Logical Date Data Interval and the Timezone Traps`, mỗi claim phải n�
 
 **Thiết kế phép thử cho `wiki.orchestration.logical-date-data-interval-timezone`.** Với `Time-interval probe 2: trigger type, logical identity, UTC/local interval, boundary event và coverage oracle phải rõ`, Giữ nguyên input rồi đổi đúng một tham số cấu hình liên quan. Nếu output đổi theo nhiều hướng cùng lúc, phép thử chưa cô lập được nguyên nhân và phải thu hẹp lại. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Time-interval probe 2: trigger type, logical identity, UTC/local interval, boundary event và coverage oracle phải rõ` phải cho thấy: Báo cả giá trị trước–sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Time-interval probe 2: trigger type, logical identity, UTC/local interval, boundary event và coverage oracle phải rõ` phải cho thấy: Báo cả giá trị trước-sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.3. Time-interval probe 3: trigger type, logical identity, UTC/local interval, boundary event và coverage oracle phải rõ
 
@@ -119,7 +119,7 @@ Trong `Logical Date Data Interval and the Timezone Traps`, mỗi claim phải n�
 
 **Thiết kế phép thử cho `wiki.orchestration.logical-date-data-interval-timezone`.** Với `Time-interval probe 8: trigger type, logical identity, UTC/local interval, boundary event và coverage oracle phải rõ`, Dùng một schema change tương thích và một thay đổi phá vỡ key, type hoặc meaning. Kết quả phải chỉ ra khác biệt giữa parse được, chạy được và vẫn giữ đúng semantics. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Time-interval probe 8: trigger type, logical identity, UTC/local interval, boundary event và coverage oracle phải rõ` phải cho thấy: Lưu schema trước–sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Time-interval probe 8: trigger type, logical identity, UTC/local interval, boundary event và coverage oracle phải rõ` phải cho thấy: Lưu schema trước-sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.9. Time-interval probe 9: trigger type, logical identity, UTC/local interval, boundary event và coverage oracle phải rõ
 
@@ -226,7 +226,7 @@ Trong `Logical Date Data Interval and the Timezone Traps`, mỗi claim phải n�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.orchestration.logical-date-data-interval-timezone`
+## Execution capsule: kiểm chứng `wiki.orchestration.logical-date-data-interval-timezone`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.orchestration.logical-date-data-interval-timezone`, sơ đồ, ví dụ và artifact về **Logical Date Data Interval and the Timezone Traps** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

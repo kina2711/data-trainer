@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-27
 last_verified: 2026-09-27
 review_after: 2027-03-27
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một tên miền được phân giải qua những thành phần nào, cache thay đổi kết quả quan sát ra sao, và cần thu bằng chứng gì khi DNS gặp sự cố?
 source_ids:
   - src.book.kurose-ross-networking.8e
@@ -34,7 +34,7 @@ relationships:
 # DNS resolution, delegation, cache và TTL
 
 > [!abstract] Câu hỏi trung tâm
-> Khi hai máy cùng hỏi một tên miền nhưng nhận kết quả khác nhau, điều cần tìm không chỉ là “DNS có hoạt động không”. Phải biết máy đã hỏi resolver nào, resolver trả dữ liệu từ cache hay tiếp tục đi theo chuỗi delegation, record thuộc loại gì, còn bao nhiêu TTL và câu trả lời có thẩm quyền hay không.
+> Khi hai máy cùng hỏi một tên miền nhưng nhận kết quả khác nhau, điều cần tìm không chỉ là DNS có hoạt động không. Phải biết máy đã hỏi resolver nào, resolver trả dữ liệu từ cache hay tiếp tục đi theo chuỗi delegation, record thuộc loại gì, còn bao nhiêu TTL và câu trả lời có thẩm quyền hay không.
 
 ## Mô hình cần ghi nhớ
 
@@ -64,7 +64,7 @@ flowchart LR
 Trong thực tế, cache có thể rút ngắn chuỗi ở nhiều điểm. Resolver cũng có thể nhận referral tới một DNS server trung gian trước khi tới authoritative server cuối cùng.
 
 > [!source-fact]
-> Kurose và Ross định nghĩa DNS là cơ sở dữ liệu phân tán theo hệ thống DNS server phân cấp và là giao thức tầng ứng dụng để host truy vấn cơ sở dữ liệu ấy. Locator: §2.4.1, trang in 153–155.
+> Kurose và Ross định nghĩa DNS là cơ sở dữ liệu phân tán theo hệ thống DNS server phân cấp và là giao thức tầng ứng dụng để host truy vấn cơ sở dữ liệu ấy. Locator: §2.4.1, trang in 153-155.
 
 ## 1. DNS cung cấp những dịch vụ nào
 
@@ -85,7 +85,7 @@ Record `MX` cho biết mail exchanger của một domain. Việc hỏi `MX` khá
 Một hostname có thể gắn với nhiều địa chỉ. Sách mô tả cách DNS server thay đổi thứ tự danh sách địa chỉ trong response để phân phối request giữa các server sao chép. Đây là phân phối ở khâu trả lời tên; nó không thay thế health check, session policy hay load balancer chuyên dụng.
 
 > [!source-fact]
-> Host aliasing, mail-server aliasing và load distribution được trình bày tại §2.4.1, trang in 154–155.
+> Host aliasing, mail-server aliasing và load distribution được trình bày tại §2.4.1, trang in 154-155.
 
 ## 2. Vì sao DNS không dùng một cơ sở dữ liệu tập trung
 
@@ -100,10 +100,10 @@ Cấp bậc nền tảng gồm:
 | Authoritative server | Giữ dữ liệu có thẩm quyền cho zone mà nó phục vụ |
 | Local/recursive resolver | Nhận yêu cầu từ client, dùng cache hoặc thay client thực hiện chuỗi truy vấn |
 
-Local resolver rất quan trọng nhưng không thuộc chặt vào cây root–TLD–authoritative. Máy khách thường nhận địa chỉ resolver qua cấu hình mạng, chẳng hạn DHCP. Khoảng cách mạng và chính sách của resolver ảnh hưởng trực tiếp tới kết quả mà client quan sát.
+Local resolver rất quan trọng nhưng không thuộc chặt vào cây root-TLD-authoritative. Máy khách thường nhận địa chỉ resolver qua cấu hình mạng, chẳng hạn DHCP. Khoảng cách mạng và chính sách của resolver ảnh hưởng trực tiếp tới kết quả mà client quan sát.
 
 > [!source-fact]
-> Lý do phân tán, ba lớp root/TLD/authoritative và vai trò local DNS server nằm tại §2.4.2, trang in 156–159. Các con số về số root instance trong sách mang mốc 2020 và không được dùng như số hiện hành.
+> Lý do phân tán, ba lớp root/TLD/authoritative và vai trò local DNS server nằm tại §2.4.2, trang in 156-159. Các con số về số root instance trong sách mang mốc 2020 và không được dùng như số hiện hành.
 
 ## 3. Delegation: trao quyền quản lý từng phần namespace
 
@@ -113,7 +113,7 @@ Delegation làm rõ một điểm thường bị bỏ qua: server trả lời kh
 
 ### Glue record
 
-Nếu nameserver của một domain lại có tên nằm trong chính domain ấy, resolver cần địa chỉ để tránh vòng lặp “muốn tìm địa chỉ nameserver nhưng lại phải hỏi nameserver đó”. Sách minh họa TLD giữ record `NS` và record `A` cho DNS server được nhắc trong `NS`. Record địa chỉ đi kèm referral thường được gọi là glue trong vận hành DNS.
+Nếu nameserver của một domain lại có tên nằm trong chính domain ấy, resolver cần địa chỉ để tránh vòng lặp muốn tìm địa chỉ nameserver nhưng lại phải hỏi nameserver đó. Sách minh họa TLD giữ record `NS` và record `A` cho DNS server được nhắc trong `NS`. Record địa chỉ đi kèm referral thường được gọi là glue trong vận hành DNS.
 
 > [!synthesis]
 > §2.4.3 mô tả cặp `NS` và `A` dùng để tiếp tục query chain; cách gọi và kiểm tra glue cần được đối chiếu RFC/tài liệu DNS hiện hành khi viết lab quản trị zone.
@@ -128,7 +128,7 @@ Hai kiểu truy vấn khác nhau ở trách nhiệm tìm câu trả lời:
 Mẫu thường gặp trong sách là client gửi recursive query tới local resolver; resolver sau đó dùng các iterative query với root, TLD và authoritative server. Không nên đọc sơ đồ này như quy tắc rằng mọi resolver và mọi deployment đều vận hành giống nhau.
 
 > [!source-fact]
-> Chuỗi tám message, trường hợp có DNS trung gian thành mười message và sự khác biệt giữa recursive với iterative query nằm tại §2.4.2, trang in 159–161.
+> Chuỗi tám message, trường hợp có DNS trung gian thành mười message và sự khác biệt giữa recursive với iterative query nằm tại §2.4.2, trang in 159-161.
 
 ## 5. Cache và TTL
 
@@ -150,10 +150,10 @@ Giả sử authoritative record đổi từ IP cũ sang IP mới. Resolver đã 
 6. cache khác trên client, runtime hoặc proxy nếu có.
 
 > [!source-fact]
-> Cơ chế cache, khả năng resolver không authoritative trả dữ liệu cache và việc loại bỏ dữ liệu sau một khoảng thời gian được trình bày tại §2.4.2, trang in 160–161.
+> Cơ chế cache, khả năng resolver không authoritative trả dữ liệu cache và việc loại bỏ dữ liệu sau một khoảng thời gian được trình bày tại §2.4.2, trang in 160-161.
 
 > [!uncertainty]
-> Sách dùng ví dụ “thường đặt hai ngày” khi nói thời gian cache; đây không phải TTL mặc định chung. TTL thực tế nằm trong từng record và policy của hệ thống. Negative caching, prefetch, serve-stale và cache của ứng dụng không được §2.4 mô tả đủ để suy ra hành vi hiện hành.
+> Sách dùng ví dụ thường đặt hai ngày khi nói thời gian cache; đây không phải TTL mặc định chung. TTL thực tế nằm trong từng record và policy của hệ thống. Negative caching, prefetch, serve-stale và cache của ứng dụng không được §2.4 mô tả đủ để suy ra hành vi hiện hành.
 
 ## 6. Resource record
 
@@ -175,7 +175,7 @@ Sách biểu diễn resource record bằng bộ bốn:
 Một response có thể chứa nhiều record. Resolver phải đọc đúng type và đúng section; thấy một địa chỉ trong message chưa có nghĩa địa chỉ ấy là answer cho câu hỏi ban đầu.
 
 > [!source-fact]
-> Cấu trúc resource record và ý nghĩa của `A`, `NS`, `CNAME`, `MX` nằm tại §2.4.3, trang in 161–163.
+> Cấu trúc resource record và ý nghĩa của `A`, `NS`, `CNAME`, `MX` nằm tại §2.4.3, trang in 161-163.
 
 ## 7. Cấu trúc message DNS
 
@@ -188,16 +188,16 @@ Query và reply dùng cùng định dạng tổng quát. Header 12 byte chứa t
 | Authority | Record về server có thẩm quyền hoặc delegation |
 | Additional | Record hỗ trợ, chẳng hạn địa chỉ của hostname được nêu trong `MX` hoặc `NS` |
 
-Khi chẩn đoán, cần giữ cả header flags lẫn bốn section. Chỉ copy dòng “Address” từ output đã rút gọn có thể làm mất referral, authoritative bit hoặc record hỗ trợ quyết định bước tiếp theo.
+Khi chẩn đoán, cần giữ cả header flags lẫn bốn section. Chỉ copy dòng Address từ output đã rút gọn có thể làm mất referral, authoritative bit hoặc record hỗ trợ quyết định bước tiếp theo.
 
 > [!source-fact]
-> Header, Question, Answer, Authority và Additional section được mô tả tại §2.4.3, trang in 163–164.
+> Header, Question, Answer, Authority và Additional section được mô tả tại §2.4.3, trang in 163-164.
 
 ## 8. Từ tên miền mới tới dữ liệu DNS
 
 Sách mô tả việc đăng ký domain thông qua registrar và cung cấp tên cùng địa chỉ của primary và secondary authoritative DNS server. Registry/TLD cần có delegation phù hợp; authoritative server của tổ chức giữ record cho host và dịch vụ bên trong zone.
 
-Mô hình này tách ba việc thường bị gọi chung là “cấu hình DNS”:
+Mô hình này tách ba việc thường bị gọi chung là cấu hình DNS:
 
 1. quyền đăng ký domain;
 2. delegation từ parent zone;
@@ -224,7 +224,7 @@ Thu answer, TTL, status/error, authoritative flag và thời gian phản hồi. 
 
 ### Bước 4: so sánh các authoritative server
 
-Primary và secondary cần trả bộ dữ liệu nhất quán theo kỳ vọng vận hành. Ghi rõ server nào trả lời, không gộp mọi kết quả dưới nhãn “DNS”.
+Primary và secondary cần trả bộ dữ liệu nhất quán theo kỳ vọng vận hành. Ghi rõ server nào trả lời, không gộp mọi kết quả dưới nhãn DNS.
 
 ### Bước 5: giải thích cache bằng thời gian
 
@@ -290,10 +290,10 @@ Các nội dung trên cần RFC và tài liệu của resolver/authoritative imp
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.4.1 | dịch vụ DNS và lý do không dùng thiết kế tập trung | §§1–2 | Đã trình bày đầy đủ các vai trò chính |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.4.2 | hierarchy, root/TLD/authoritative server, local resolver, recursive và iterative resolution | §§3–4 | Đã trình bày theo chuỗi truy vấn và trách nhiệm từng bên |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.4.1 | dịch vụ DNS và lý do không dùng thiết kế tập trung | §§1-2 | Đã trình bày đầy đủ các vai trò chính |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.4.2 | hierarchy, root/TLD/authoritative server, local resolver, recursive và iterative resolution | §§3-4 | Đã trình bày theo chuỗi truy vấn và trách nhiệm từng bên |
 | [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.4.2 | caching và TTL | §5 | Đã trình bày; stale serving và negative caching được ghi là nguồn bổ sung |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§2.4.3–2.4.4 | resource record, message format và đưa record mới vào hệ thống | §§6–8 | Đã trình bày từ record tới quy trình công bố domain |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§2.4.3-2.4.4 | resource record, message format và đưa record mới vào hệ thống | §§6-8 | Đã trình bày từ record tới quy trình công bố domain |
 
 DNSSEC, split-horizon, DoH/DoT và resolver stale policy không thuộc lát nguồn này; note ghi chúng là khoảng cần nguồn khác thay vì tự lấp bằng suy đoán.
 
@@ -305,7 +305,7 @@ DNSSEC, split-horizon, DoH/DoT và resolver stale policy không thuộc lát ngu
 - Khi điều tra thay đổi DNS, cần ghi resolver, thời điểm truy vấn, loại record, TTL còn lại, authoritative answer và đường delegation thay vì chỉ ghi địa chỉ IP nhận được.
 
 ## Reference
-1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §2.4, printed pp. 152–164, PDF pp. 154–166.
+1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §2.4, printed pp. 152-164, PDF pp. 154-166.
 2. Hồ sơ nguồn: [[SRC-KUROSE-ROSS-NETWORKING-8E]].
 3. Source note: `Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-03.md`.
 
@@ -317,7 +317,7 @@ DNSSEC, split-horizon, DoH/DoT và resolver stale policy không thuộc lát ngu
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.network.dns-resolution-delegation-cache`
+## Execution capsule: kiểm chứng `wiki.network.dns-resolution-delegation-cache`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.network.dns-resolution-delegation-cache`, sơ đồ, ví dụ và artifact về **DNS resolution, delegation, cache và TTL** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Field IDs và partition specs cho phép dữ liệu cũ/mới cùng tồn tại mà query vẫn đúng thế nào?
 source_ids:
   - src.spec.apache-iceberg-current
@@ -220,7 +220,7 @@ Mỗi claim phải chỉ rõ metadata scope, writer/reader version, exact fixtur
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.storage.iceberg-hidden-partition-schema-field-id-evolution`
+## Execution capsule: kiểm chứng `wiki.storage.iceberg-hidden-partition-schema-field-id-evolution`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.storage.iceberg-hidden-partition-schema-field-id-evolution`, sơ đồ, ví dụ và artifact về **Iceberg Hidden Partition Schema and Field ID Evolution** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -242,7 +242,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Field IDs và partition specs cho phép dữ liệu cũ/mới cùng tồn tại mà query vẫn đúng thế nào?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Field IDs và partition specs cho phép dữ liệu cũ/mới cùng tồn tại mà query vẫn đúng thế nào? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Iceberg Hidden Partition Schema and Field ID Evolution** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

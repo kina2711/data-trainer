@@ -38,7 +38,7 @@ Kết luận về strategy memo gồm diagnosis, bets, sequence và revisit sign
 
 ## 3. Failure mode
 
-Phân tích strategy memo gồm diagnosis, bets, sequence và revisit signals cần tìm earliest failure, propagation path, blast radius và state hoặc claim còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Strategy memo - diagnosis, bets, sequence, revisit signals`, câu hỏi thực dụng là: Làm thế nào thiết kế, kiểm chứng và bảo vệ strategy memo gồm diagnosis, bets, sequence và revisit signals mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân tích strategy memo gồm diagnosis, bets, sequence và revisit signals cần tìm earliest failure, propagation path, blast radius và state hoặc claim còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Strategy memo - diagnosis, bets, sequence, revisit signals`, câu hỏi thực dụng là: Làm thế nào thiết kế, kiểm chứng và bảo vệ strategy memo gồm diagnosis, bets, sequence và revisit signals mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision rule
 
@@ -221,7 +221,7 @@ Với `wiki.staff.strategy-memo`, command thành công không tự chứng minh 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.staff.strategy-memo`
+## Execution capsule: kiểm chứng `wiki.staff.strategy-memo`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.staff.strategy-memo`, sơ đồ, ví dụ và artifact về **Strategy memo - diagnosis, bets, sequence, revisit signals** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

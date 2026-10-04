@@ -38,7 +38,7 @@ Watermark là completeness claim có policy; allowed lateness quyết định s�
 
 ## 3. Out-of-order behavior
 
-Arrival order không được giả làm business order; sequence/version tie-break phải deterministic và có collision path. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Temporal tests - late, out of order and overlap`, câu hỏi thực dụng là: Temporal tests phải mô hình late, out-of-order, overlap và correction bằng những clock và interval nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Arrival order không được giả làm business order; sequence/version tie-break phải deterministic và có collision path. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Temporal tests - late, out of order and overlap`, câu hỏi thực dụng là: Temporal tests phải mô hình late, out-of-order, overlap và correction bằng những clock và interval nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Interval overlap
 
@@ -221,7 +221,7 @@ Với `wiki.data-quality.temporal-tests`, command thành công không tự chứ
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-quality.temporal-tests`
+## Execution capsule: kiểm chứng `wiki.data-quality.temporal-tests`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-quality.temporal-tests`, sơ đồ, ví dụ và artifact về **Temporal tests - late, out of order and overlap** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

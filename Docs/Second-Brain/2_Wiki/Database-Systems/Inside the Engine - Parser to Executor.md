@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một truy vấn đi qua parser, analyzer, rewriter, planner và executor như thế nào, và evidence nào quy một hiện tượng về đúng giai đoạn?
 source_ids:
   - src.manual.postgresql-17.10
@@ -27,7 +27,7 @@ relationships:
 # Bên trong engine: từ parser đến executor
 
 > [!abstract] Câu hỏi trung tâm
-> Giai đoạn nào biến SQL text thành kết quả, mỗi giai đoạn nhận/trả representation gì, và làm sao chẩn đoán thay vì gọi chung mọi thứ là “optimizer”?
+> Giai đoạn nào biến SQL text thành kết quả, mỗi giai đoạn nhận/trả representation gì, và làm sao chẩn đoán thay vì gọi chung mọi thứ là optimizer?
 
 ## 1. Query path là chuỗi biến đổi
 
@@ -47,7 +47,7 @@ Parser error position hữu ích nhưng dynamic SQL có thể làm offset khó �
 
 ## 3. Parse analysis và name binding
 
-Analyzer/binder phân giải table, column, function/operator overload, scope, types và coercions; output là transformed query tree. “Column does not exist”, ambiguous column, incompatible type hoặc function resolution thường thuộc đây.
+Analyzer/binder phân giải table, column, function/operator overload, scope, types và coercions; output là transformed query tree. Column does not exist, ambiguous column, incompatible type hoặc function resolution thường thuộc đây.
 
 `search_path` làm cùng unqualified name trỏ object khác. Production nên schema-qualify nơi cần và bảo vệ search_path, đặc biệt trong security-sensitive functions. Alias tạo scope; outer/inner references phải theo query level.
 
@@ -75,15 +75,15 @@ EXPLAIN `cost=startup..total` là đơn vị tương đối của mô hình, kh�
 
 Startup cost quan trọng khi consumer chỉ lấy ít rows/LIMIT; total cost cho toàn output. Một plan có startup thấp nhưng total cao có thể được chọn cho LIMIT. Cost không bao gồm mọi contention/network/client rendering.
 
-Không hiệu chỉnh cost constants bằng cảm giác “SSD nhanh”. Benchmark representative I/O/cache, thay đổi có kiểm soát và xem portfolio plans. Giảm `random_page_cost` quá mức có thể đẩy index scans không phù hợp.
+Không hiệu chỉnh cost constants bằng cảm giác SSD nhanh. Benchmark representative I/O/cache, thay đổi có kiểm soát và xem portfolio plans. Giảm `random_page_cost` quá mức có thể đẩy index scans không phù hợp.
 
 ## 7. Cardinality là đầu vào trung tâm
 
-Estimated rows truyền từ node con lên cha và ảnh hưởng join order, join algorithm, aggregation, memory và parallelism. Sai sớm có thể khuếch đại. Planner không “ngu” nếu statistics nói một predicate trả 10 rows nhưng thực tế một triệu.
+Estimated rows truyền từ node con lên cha và ảnh hưởng join order, join algorithm, aggregation, memory và parallelism. Sai sớm có thể khuếch đại. Planner không ngu nếu statistics nói một predicate trả 10 rows nhưng thực tế một triệu.
 
 Nguyên nhân gồm stale sample, skew, correlated columns, expressions thiếu stats, parameter/generic plan, data changes và model limitations. Cần tìm node đầu tiên estimate/actual lệch mạnh.
 
-Không khẳng định “phần lớn query chậm do estimation” như fact phổ quát nếu không có số liệu workload. Estimation là một nguyên nhân quan trọng, bên cạnh blocking, I/O, bad SQL semantics, bloat, contention và configuration.
+Không khẳng định phần lớn query chậm do estimation như fact phổ quát nếu không có số liệu workload. Estimation là một nguyên nhân quan trọng, bên cạnh blocking, I/O, bad SQL semantics, bloat, contention và configuration.
 
 ## 8. Executor
 
@@ -113,7 +113,7 @@ Không chữa bằng literal hóa mọi query; sẽ tăng parse/plan overhead v�
 
 Syntax error → parser. Column ambiguous/not found → analysis/binding. Query qua view biến thành base tables → rewrite. Plan đổi sau `ANALYZE` → planner nhận statistics mới. Hash join thay nested loop khi selectivity đổi → planner choice dựa estimates/cost. Sort spill/temp I/O trong actual run → executor thực thi physical operator dưới memory budget.
 
-“Hai câu viết khác cùng plan” có thể do rewrite/planner normalization; cần xem query tree/plan, không gán một cách tuyệt đối. “Kết quả sai” trước hết kiểm SQL semantics/data, không mặc định executor bug.
+Hai câu viết khác cùng plan có thể do rewrite/planner normalization; cần xem query tree/plan, không gán một cách tuyệt đối. Kết quả sai trước hết kiểm SQL semantics/data, không mặc định executor bug.
 
 Lab yêu cầu giải thích evidence cho mapping, không chỉ tên bước.
 
@@ -137,7 +137,7 @@ SSD thường thu hẹp chênh lệch random/sequential I/O, nhưng cache hierar
 
 Quy trình: xác định latency/correctness symptom; tách pool/lock/network/server; capture query+parameters+snapshot; EXPLAIN; nếu an toàn dùng ANALYZE/BUFFERS; tìm node đầu tiên mismatch/spill/loops; kiểm stats/config/indexes; tạo một thay đổi; đo lại result parity và plan/runtime.
 
-Mỗi hypothesis có predicted observation. “Stats cũ” dự đoán estimate đổi sau ANALYZE; “cost hardware lệch” dự đoán plan frontier đổi khi cost model chỉnh nhưng actual alternatives phải được benchmark.
+Mỗi hypothesis có predicted observation. Stats cũ dự đoán estimate đổi sau ANALYZE; cost hardware lệch dự đoán plan frontier đổi khi cost model chỉnh nhưng actual alternatives phải được benchmark.
 
 Không stack ANALYZE + index + rewrite rồi tuyên bố nguyên nhân.
 
@@ -167,16 +167,16 @@ Plan stability tuyệt đối không phải mục tiêu; plan nên đổi khi da
 - Sáu hiện tượng lab chưa được thực thi; evidence thuộc `after-note.md`.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-10-MANUAL]] — query path, EXPLAIN, planner statistics/configuration.
-2. [[SRC-MASTERING-POSTGRESQL-17-6E]] — cost model, plans, optimizer và joins.
+1. [[SRC-POSTGRESQL-17-10-MANUAL]]: query path, EXPLAIN, planner statistics/configuration.
+2. [[SRC-MASTERING-POSTGRESQL-17-6E]]: cost model, plans, optimizer và joins.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 559–580, 2341–2347 | EXPLAIN, planner stats, query path | §§1–13 | Đã giữ stage boundaries |
-| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 223–270 | optimizer/cost/plan/join controls | §§5–15 | Đã tách heuristic khỏi evidence |
-| Tổng hợp DE-L126 | six-phenomenon mapping, diagnostic workflow | §§11, 14–15 | Đã thành rubric kiểm được |
+| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 559-580, 2341-2347 | EXPLAIN, planner stats, query path | §§1-13 | Đã giữ stage boundaries |
+| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 223-270 | optimizer/cost/plan/join controls | §§5-15 | Đã tách heuristic khỏi evidence |
+| Tổng hợp DE-L126 | six-phenomenon mapping, diagnostic workflow | §§11, 14-15 | Đã thành rubric kiểm được |
 
 ## Key takeaways
 - Mỗi giai đoạn có representation và failure modes riêng; không gọi chung là optimizer.
@@ -187,7 +187,7 @@ Plan stability tuyệt đối không phải mục tiêu; plan nên đổi khi da
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.engine-parser-rewriter-planner-executor`
+## Execution capsule: kiểm chứng `wiki.database.engine-parser-rewriter-planner-executor`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.engine-parser-rewriter-planner-executor`, sơ đồ, ví dụ và artifact về **Bên trong engine: từ parser đến executor** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -209,7 +209,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Một truy vấn đi qua parser, analyzer, rewriter, planner và executor như thế nào, và evidence nào quy một hiện tượng về đúng giai đoạn?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Một truy vấn đi qua parser, analyzer, rewriter, planner và executor như thế nào, và evidence nào quy một hiện tượng về đúng giai đoạn? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Bên trong engine: từ parser đến executor** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

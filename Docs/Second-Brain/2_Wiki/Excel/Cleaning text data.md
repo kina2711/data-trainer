@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Hàm xử lý chuỗi: `TRIM`, `CLEAN`, `UPPER`, `LOWER`, `PROPER`, `LEFT`, `RIGHT`, `MID`, `LEN`, `FIND`, `SEARCH`, `SUBSTITUTE`, `TEXTSPLIT`, `TEXTJOIN`. Text to Columns và Flash Fill, cùng giới hạn của mỗi công cụ. Chuẩn hoá tiếng Việt: dấu, chữ hoa chữ thường, khoảng trắng kép, ký tự không in được. Phát hiện bản ghi trùng mờ: cùng thực thể, biểu diễn chuỗi khác nhau. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L010 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Cleaning text data**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Chuẩn hoá một cột tên hoặc địa chỉ nhập tay về dạng so sánh được, và định lượng số cặp trùng thực chất phát hiện thêm sau chuẩn hoá. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Hàm xử lý chuỗi: `TRIM`, `CLEAN`, `UPPER`, `LOWER`, `PROPER`, `LEFT`, `RIGHT`, `MID`, `LEN`, `FIND`, `SEARCH`, `SUBSTITUTE`, `TEXTSPLIT`, `TEXTJOIN`. Text to Columns và Flash Fill, cùng giới hạn của mỗi công cụ. Chuẩn hoá tiếng Việt: dấu, chữ hoa chữ thường, khoảng trắng kép, ký tự không in được. Phát hiện bản ghi trùng mờ: cùng thực thể, biểu diễn chuỗi khác nhau.
 
@@ -44,7 +44,7 @@ Cơ chế của `cleaning-text-data` được kiểm qua năm lớp: input và p
 
 Lỗi cần loại trừ trong bài này là: Chuẩn hoá quá tay rồi gộp nhầm hai khách hàng khác nhau · bỏ qua ký tự không in được · áp `PROPER` lên tên riêng viết tắt. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Chuẩn hoá quá tay rồi gộp 
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L010: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Phát hiện ≥ 44/47 cặp trùng thực chất và không gộp nhầm cặp nào ngoài danh sách đáp án.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L010: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Phát hiện ≥ 44/47 cặp trùng thực chất và không gộp nhầm cặp nào ngoài danh sách đáp án.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Cleaning text data
+## Worked Case: Cleaning text data
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Cho 3.000 tên khách hàng nhập tay có khoảng trắng thừa, chữ hoa chữ thường không nhất quán và dấu thiếu. Chuẩn hoá và phát hiện 47 cặp trùng thực chất.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Cleaning text data`, learner ghi expected result, gr
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L010 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Cleaning text data` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L010 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Hàm xử lý chuỗi: `TRIM`, `CLEAN`, `UPPER`, `LOWER`, `PROPER`, `LEFT`, `RIGHT`, `MID`, `LEN`, `FIND`, `SEARCH`, `SUBSTITUTE`, `TEXTSPLIT`, `TEXTJOIN`. Text to Columns và Flash Fill, cùng giới hạn của mỗi công cụ. Chuẩn hoá tiếng Việt: dấu, chữ hoa chữ thường, khoảng trắng kép, ký tự không in được. Phát hiện bản ghi trùng mờ: cùng thực thể, biểu diễn chuỗi khác nhau.
+**Mệnh đề của probe 1: `population`.** Hàm xử lý chuỗi: `TRIM`, `CLEAN`, `UPPER`, `LOWER`, `PROPER`, `LEFT`, `RIGHT`, `MID`, `LEN`, `FIND`, `SEARCH`, `SUBSTITUTE`, `TEXTSPLIT`, `TEXTJOIN`. Text to Columns và Flash Fill, cùng giới hạn của mỗi công cụ. Chuẩn hoá tiếng Việt: dấu, chữ hoa chữ thường, khoảng trắng kép, ký tự không in được. Phát hiện bản ghi trùng mờ: cùng thực thể, biểu diễn chuỗi khác nhau.
 
 **Thiết kế.** Probe 1 của L010 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L010 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Chuẩn hoá một cột tên hoặc địa chỉ nhập tay về dạng so sánh được, và định lượng số cặp trùng thực chất phát hiện thêm sau chuẩn hoá.
+**Mệnh đề của probe 2: `grain`.** Chuẩn hoá một cột tên hoặc địa chỉ nhập tay về dạng so sánh được, và định lượng số cặp trùng thực chất phát hiện thêm sau chuẩn hoá.
 
 **Thiết kế.** Probe 2 của L010 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L010 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Chuẩn hoá quá tay rồi gộp nhầm hai khách hàng khác nhau · bỏ qua ký tự không in được · áp `PROPER` lên tên riêng viết tắt.
+**Mệnh đề của probe 3: `identity`.** Chuẩn hoá quá tay rồi gộp nhầm hai khách hàng khác nhau · bỏ qua ký tự không in được · áp `PROPER` lên tên riêng viết tắt.
 
 **Thiết kế.** Probe 3 của L010 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L010 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Phát hiện ≥ 44/47 cặp trùng thực chất và không gộp nhầm cặp nào ngoài danh sách đáp án.
+**Mệnh đề của probe 4: `time cutoff`.** Phát hiện ≥ 44/47 cặp trùng thực chất và không gộp nhầm cặp nào ngoài danh sách đáp án.
 
 **Thiết kế.** Probe 4 của L010 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L010 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Hàm xử lý chuỗi: `TRIM`, `CLEAN`, `UPPER`, `LOWER`, `PROPER`, `LEFT`, `RIGHT`, `MID`, `LEN`, `FIND`, `SEARCH`, `SUBSTITUTE`, `TEXTSPLIT`, `TEXTJOIN`. Text to Columns và Flash Fill, cùng giới hạn của mỗi công cụ. Chuẩn hoá tiếng Việt: dấu, chữ hoa chữ thường, khoảng trắng kép, ký tự không in được. Phát hiện bản ghi trùng mờ: cùng thực thể, biểu diễn chuỗi khác nhau.
+**Mệnh đề của probe 5: `missing versus zero`.** Hàm xử lý chuỗi: `TRIM`, `CLEAN`, `UPPER`, `LOWER`, `PROPER`, `LEFT`, `RIGHT`, `MID`, `LEN`, `FIND`, `SEARCH`, `SUBSTITUTE`, `TEXTSPLIT`, `TEXTJOIN`. Text to Columns và Flash Fill, cùng giới hạn của mỗi công cụ. Chuẩn hoá tiếng Việt: dấu, chữ hoa chữ thường, khoảng trắng kép, ký tự không in được. Phát hiện bản ghi trùng mờ: cùng thực thể, biểu diễn chuỗi khác nhau.
 
 **Thiết kế.** Probe 5 của L010 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L010 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Chuẩn hoá một cột tên hoặc địa chỉ nhập tay về dạng so sánh được, và định lượng số cặp trùng thực chất phát hiện thêm sau chuẩn hoá.
+**Mệnh đề của probe 6: `duplicate`.** Chuẩn hoá một cột tên hoặc địa chỉ nhập tay về dạng so sánh được, và định lượng số cặp trùng thực chất phát hiện thêm sau chuẩn hoá.
 
 **Thiết kế.** Probe 6 của L010 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L010 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Chuẩn hoá quá tay rồi gộp nhầm hai khách hàng khác nhau · bỏ qua ký tự không in được · áp `PROPER` lên tên riêng viết tắt.
+**Mệnh đề của probe 7: `join fan-out`.** Chuẩn hoá quá tay rồi gộp nhầm hai khách hàng khác nhau · bỏ qua ký tự không in được · áp `PROPER` lên tên riêng viết tắt.
 
 **Thiết kế.** Probe 7 của L010 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L010 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Phát hiện ≥ 44/47 cặp trùng thực chất và không gộp nhầm cặp nào ngoài danh sách đáp án.
+**Mệnh đề của probe 8: `changed definition`.** Phát hiện ≥ 44/47 cặp trùng thực chất và không gộp nhầm cặp nào ngoài danh sách đáp án.
 
 **Thiết kế.** Probe 8 của L010 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L010 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Hàm xử lý chuỗi: `TRIM`, `CLEAN`, `UPPER`, `LOWER`, `PROPER`, `LEFT`, `RIGHT`, `MID`, `LEN`, `FIND`, `SEARCH`, `SUBSTITUTE`, `TEXTSPLIT`, `TEXTJOIN`. Text to Columns và Flash Fill, cùng giới hạn của mỗi công cụ. Chuẩn hoá tiếng Việt: dấu, chữ hoa chữ thường, khoảng trắng kép, ký tự không in được. Phát hiện bản ghi trùng mờ: cùng thực thể, biểu diễn chuỗi khác nhau.
+**Mệnh đề của probe 9: `independent oracle`.** Hàm xử lý chuỗi: `TRIM`, `CLEAN`, `UPPER`, `LOWER`, `PROPER`, `LEFT`, `RIGHT`, `MID`, `LEN`, `FIND`, `SEARCH`, `SUBSTITUTE`, `TEXTSPLIT`, `TEXTJOIN`. Text to Columns và Flash Fill, cùng giới hạn của mỗi công cụ. Chuẩn hoá tiếng Việt: dấu, chữ hoa chữ thường, khoảng trắng kép, ký tự không in được. Phát hiện bản ghi trùng mờ: cùng thực thể, biểu diễn chuỗi khác nhau.
 
 **Thiết kế.** Probe 9 của L010 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L010 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Chuẩn hoá một cột tên hoặc địa chỉ nhập tay về dạng so sánh được, và định lượng số cặp trùng thực chất phát hiện thêm sau chuẩn hoá.
+**Mệnh đề của probe 10: `replay`.** Chuẩn hoá một cột tên hoặc địa chỉ nhập tay về dạng so sánh được, và định lượng số cặp trùng thực chất phát hiện thêm sau chuẩn hoá.
 
 **Thiết kế.** Probe 10 của L010 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L010 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Chuẩn hoá quá tay rồi gộp nhầm hai khách hàng khác nhau · bỏ qua ký tự không in được · áp `PROPER` lên tên riêng viết tắt.
+**Mệnh đề của probe 11: `fresh snapshot`.** Chuẩn hoá quá tay rồi gộp nhầm hai khách hàng khác nhau · bỏ qua ký tự không in được · áp `PROPER` lên tên riêng viết tắt.
 
 **Thiết kế.** Probe 11 của L010 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L010 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Phát hiện ≥ 44/47 cặp trùng thực chất và không gộp nhầm cặp nào ngoài danh sách đáp án.
+**Mệnh đề của probe 12: `novel scenario`.** Phát hiện ≥ 44/47 cặp trùng thực chất và không gộp nhầm cặp nào ngoài danh sách đáp án.
 
 **Thiết kế.** Probe 12 của L010 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Phát hiện ≥ 44/47 cặp trùng thực chất và không gộp nhầm cặp 
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]] — `src.web.govuk-data-analytics-tools-guidance`
-2. [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]] — `src.book.kimball-ross-data-warehouse-toolkit.3e`
+1. [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]]: `src.web.govuk-data-analytics-tools-guidance`
+2. [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]]: `src.book.kimball-ross-data-warehouse-toolkit.3e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]] — `src.web.govuk-data-analytics-tools-guidance` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Cleaning text data | các mục cơ chế, case và probe | Đã phủ | ngoài objective L010 |
-| [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]] — `src.book.kimball-ross-data-warehouse-toolkit.3e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Cleaning text data | các mục cơ chế, case và probe | Đã phủ | ngoài objective L010 |
+| [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]]: `src.web.govuk-data-analytics-tools-guidance` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Cleaning text data | các mục cơ chế, case và probe | Đã phủ | ngoài objective L010 |
+| [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]]: `src.book.kimball-ross-data-warehouse-toolkit.3e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Cleaning text data | các mục cơ chế, case và probe | Đã phủ | ngoài objective L010 |
 
 ## Key takeaways
 - Chuẩn hoá một cột tên hoặc địa chỉ nhập tay về dạng so sánh được, và định lượng số cặp trùng thực chất phát hiện thêm sau chuẩn hoá.
@@ -226,7 +226,7 @@ Phát hiện ≥ 44/47 cặp trùng thực chất và không gộp nhầm cặp 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.cleaning-text-data`
+## Execution capsule: kiểm chứng `wiki.da.cleaning-text-data`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.cleaning-text-data`, sơ đồ, ví dụ và artifact về **Cleaning text data** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

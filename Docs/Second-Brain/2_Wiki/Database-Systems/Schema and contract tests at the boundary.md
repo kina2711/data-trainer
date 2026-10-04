@@ -38,7 +38,7 @@ Grain, key, units, timezone, enum meaning, update/deletion policy và compatibil
 
 ## 3. Compatibility direction
 
-Backward và forward compatibility phụ thuộc ai đọc phiên bản nào; additive field không luôn an toàn với strict consumers. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Schema and contract tests at the boundary`, câu hỏi thực dụng là: Schema test và semantic contract test khác nhau thế nào tại producer-consumer boundary? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Backward và forward compatibility phụ thuộc ai đọc phiên bản nào; additive field không luôn an toàn với strict consumers. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Schema and contract tests at the boundary`, câu hỏi thực dụng là: Schema test và semantic contract test khác nhau thế nào tại producer-consumer boundary? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Boundary fixtures
 
@@ -221,7 +221,7 @@ Với `wiki.data-quality.schema-contract-boundary`, command thành công không 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-quality.schema-contract-boundary`
+## Execution capsule: kiểm chứng `wiki.data-quality.schema-contract-boundary`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-quality.schema-contract-boundary`, sơ đồ, ví dụ và artifact về **Schema and contract tests at the boundary** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

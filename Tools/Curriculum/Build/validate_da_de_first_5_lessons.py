@@ -56,8 +56,8 @@ def main() -> int:
             metrics["scenes"] += len(scenes)
             if len(scenes) != 9 or {scene.get("type") for scene in scenes} != TYPES:
                 failures.append(f"{role}-L{number:03d}: scene vocabulary/coverage")
-            if sum(scene.get("minutes", 0) for scene in scenes) != 120:
-                failures.append(f"{role}-L{number:03d}: scene minutes do not sum to 120")
+            if any("minutes" in scene for scene in scenes) or "duration_minutes_estimate" in blueprint:
+                failures.append(f"{role}-L{number:03d}: public course timing remains")
             ids = {scene.get("id") for scene in scenes}
             for scene in scenes:
                 span = scene.get("source_span", "")
@@ -65,7 +65,7 @@ def main() -> int:
                     if scene.get("type") not in {"practice", "decide", "apply"}:
                         failures.append(f"{role}-L{number:03d}/{scene.get('id')}: unexpected unsourced scene")
                 else:
-                    match = re.search(r"heading '(.+)'$", span)
+                    match = re.search(r"heading '?(.+?)'?$", span)
                     if not match or not note_has_heading(texts["note.md"], match.group(1)):
                         failures.append(f"{role}-L{number:03d}/{scene.get('id')}: source heading not found: {span}")
                 if scene.get("type") == "apply":
@@ -98,15 +98,18 @@ def main() -> int:
             for required in ("Feedback protocol", "Novel-scenario retest", "Remediation map", "Giới hạn"):
                 if required not in texts["after-note.md"]:
                     failures.append(f"{role}-L{number:03d}: after-note missing {required}")
+            for name in ("note.md", "slides.md", "quiz.md", "homework.md", "after-note.md"):
+                if not re.search(r"\[\[wiki\.[^|\]]+\|[^\]]+\]\]", texts[name]):
+                    failures.append(f"{role}-L{number:03d}/{name}: missing labeled Second Brain reference")
 
-    if metrics != {"lessons": 10, "scenes": 90, "slides": 170, "quiz_questions": 100, "homework_rubrics": 10}:
+    if metrics != {"lessons": 10, "scenes": 90, "slides": 180, "quiz_questions": 100, "homework_rubrics": 10}:
         failures.append("aggregate metrics mismatch: " + json.dumps(metrics, ensure_ascii=False, sort_keys=True))
     print("metrics", json.dumps(metrics, ensure_ascii=False, sort_keys=True))
     if failures:
         print(f"FAIL count={len(failures)}")
         print("\n".join(f"- {failure}" for failure in failures[:100]))
         return 1
-    print("PASS lessons=10 scenes=90 slides=170 quiz_questions=100 homework_rubrics=10 placeholders=0")
+    print("PASS lessons=10 scenes=90 slides=180 quiz_questions=100 homework_rubrics=10 placeholders=0")
     return 0
 
 

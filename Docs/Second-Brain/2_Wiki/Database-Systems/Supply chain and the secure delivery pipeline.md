@@ -39,7 +39,7 @@ Guarantee của dependency inventory, pinned inputs, isolated build, provenance,
 
 ## 3. Failure mode
 
-Phân tích dependency inventory, pinned inputs, isolated build, provenance, attestation và deployment policy cần tìm earliest controllable failure, propagation path, blast radius và durable state còn tin cậy. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Supply chain and the secure delivery pipeline`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành dependency inventory, pinned inputs, isolated build, provenance, attestation và deployment policy mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân tích dependency inventory, pinned inputs, isolated build, provenance, attestation và deployment policy cần tìm earliest controllable failure, propagation path, blast radius và durable state còn tin cậy. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Supply chain and the secure delivery pipeline`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành dependency inventory, pinned inputs, isolated build, provenance, attestation và deployment policy mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision rule
 
@@ -224,7 +224,7 @@ Với `wiki.security.secure-delivery-supply-chain`, command thành công không 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.security.secure-delivery-supply-chain`
+## Execution capsule: kiểm chứng `wiki.security.secure-delivery-supply-chain`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.security.secure-delivery-supply-chain`, sơ đồ, ví dụ và artifact về **Supply chain and the secure delivery pipeline** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

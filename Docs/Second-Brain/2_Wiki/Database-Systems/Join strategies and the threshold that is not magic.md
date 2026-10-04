@@ -37,7 +37,7 @@ Broadcast hash join tránh shuffle phía lớn nhưng cần estimate nhỏ đán
 
 ## 3. Sort merge
 
-Sort-merge scales cho equi-join lớn nhưng trả chi phí exchange, sort và spill nếu inputs chưa đáp ứng distribution/order. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Join strategies and the threshold that is not magic`, câu hỏi thực dụng là: Spark chọn broadcast, sort-merge, shuffle-hash hoặc storage-partition join dựa trên evidence nào, và vì sao threshold không phải phép màu? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Sort-merge scales cho equi-join lớn nhưng trả chi phí exchange, sort và spill nếu inputs chưa đáp ứng distribution/order. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Join strategies and the threshold that is not magic`, câu hỏi thực dụng là: Spark chọn broadcast, sort-merge, shuffle-hash hoặc storage-partition join dựa trên evidence nào, và vì sao threshold không phải phép màu? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Threshold
 
@@ -218,7 +218,7 @@ Với `wiki.spark.join-strategies-thresholds`, command thành công không tự 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.spark.join-strategies-thresholds`
+## Execution capsule: kiểm chứng `wiki.spark.join-strategies-thresholds`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.spark.join-strategies-thresholds`, sơ đồ, ví dụ và artifact về **Join strategies and the threshold that is not magic** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

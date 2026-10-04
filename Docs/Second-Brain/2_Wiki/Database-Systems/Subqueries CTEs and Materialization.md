@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao phân rã một truy vấn phức tạp thành các quan hệ trung gian có grain rõ mà không suy diễn sai về materialization và hiệu năng?
 source_ids:
   - src.web.postgresql-17-with-queries
@@ -76,7 +76,7 @@ Một CTE không đệ quy, không side effect, được tham chiếu một lầ
 
 `MATERIALIZED` buộc calculation riêng; `NOT MATERIALIZED` yêu cầu merge vào parent trong các trường hợp cho phép. `NOT MATERIALIZED` có thể lặp computation nếu nhiều reference, nhưng cho phép mỗi consumer chỉ đọc phần cần. Không có lựa chọn mặc định tốt cho mọi query.
 
-Quy tắc này là của PostgreSQL 17. SQL Server, Oracle, BigQuery, Snowflake và các phiên bản khác có optimizer semantics khác. Không viết “CTE luôn là optimization fence” hoặc “CTE luôn miễn phí”.
+Quy tắc này là của PostgreSQL 17. SQL Server, Oracle, BigQuery, Snowflake và các phiên bản khác có optimizer semantics khác. Không viết CTE luôn là optimization fence hoặc CTE luôn miễn phí.
 
 ## 7. Ví dụ pushdown blocker
 
@@ -96,7 +96,7 @@ Không coi mọi correlated subquery là xấu. `EXISTS` tương quan có thể 
 
 ## 9. Reuse và tính nhất quán snapshot
 
-Một materialized CTE được evaluate theo statement snapshot và kết quả tái dùng. Đây có thể giúp hai nhánh nhìn cùng một intermediate result. Tuy vậy isolation/snapshot semantics đến từ transaction và statement, không phải lời hứa chung “CTE làm dữ liệu nhất quán”.
+Một materialized CTE được evaluate theo statement snapshot và kết quả tái dùng. Đây có thể giúp hai nhánh nhìn cùng một intermediate result. Tuy vậy isolation/snapshot semantics đến từ transaction và statement, không phải lời hứa chung CTE làm dữ liệu nhất quán.
 
 Data-modifying CTE có semantics phức tạp: sub-statements chạy trong cùng statement snapshot, thứ tự actual execution không nên dùng để truyền trạng thái ngoài `RETURNING`. Batch này tập trung read query; write CTE cần học riêng và test kỹ.
 
@@ -146,7 +146,7 @@ Artifact gồm SQL, seed/fixture, PostgreSQL version/settings, plans có actual,
 
 Các lỗi điển hình gồm tên `t1/tmp2`; `NOT IN` trên tập nullable; correlated scalar subquery lặp trên outer set lớn mà không xem plan; giả định CTE luôn materialized; ép `NOT MATERIALIZED` như tối ưu mặc định; dùng `LIMIT 1` để che cardinality; dùng CTE để che join fanout; so kết quả bằng row count בלבד.
 
-Một anti-pattern khác là “optimization by rewrite” trước khi có baseline. Query mới nhanh trên một run nhưng trả multiset khác không phải tối ưu.
+Một anti-pattern khác là optimization by rewrite trước khi có baseline. Query mới nhanh trên một run nhưng trả multiset khác không phải tối ưu.
 
 ## 16. Câu hỏi tự kiểm tra
 
@@ -166,18 +166,18 @@ Một anti-pattern khác là “optimization by rewrite” trước khi có base
 - Tên theo grain nâng khả năng review nhưng không thay constraints và data tests.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-WITH-QUERIES]] — CTE, recursive CTE và materialization controls.
-2. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] — subquery/table-expression pipeline.
-3. [[SRC-POSTGRESQL-17-NULL-COMPARISON]] — NULL/UNKNOWN cho membership predicates.
+1. [[SRC-POSTGRESQL-17-WITH-QUERIES]]: CTE, recursive CTE và materialization controls.
+2. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]]: subquery/table-expression pipeline.
+3. [[SRC-POSTGRESQL-17-NULL-COMPARISON]]: NULL/UNKNOWN cho membership predicates.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-WITH-QUERIES]] | CTE folding, reuse, MATERIALIZED/NOT MATERIALIZED | §§4–9 | Đã giới hạn theo PostgreSQL 17 |
-| [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | derived tables, subqueries, logical pipeline | §§1–4 | Đã gắn với grain contract |
+| [[SRC-POSTGRESQL-17-WITH-QUERIES]] | CTE folding, reuse, MATERIALIZED/NOT MATERIALIZED | §§4-9 | Đã giới hạn theo PostgreSQL 17 |
+| [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | derived tables, subqueries, logical pipeline | §§1-4 | Đã gắn với grain contract |
 | [[SRC-POSTGRESQL-17-NULL-COMPARISON]] | IN/NOT IN và UNKNOWN | §3 | Đã có negative fixtures |
-| Tổng hợp DE-L121 | grain naming, parity, plan experiment | §§5, 10–15 | Đã chuyển thành evidence workflow |
+| Tổng hợp DE-L121 | grain naming, parity, plan experiment | §§5, 10-15 | Đã chuyển thành evidence workflow |
 
 ## Key takeaways
 - CTE là ranh giới logic có tên; nó không mặc định là ranh giới vật lý.
@@ -188,7 +188,7 @@ Một anti-pattern khác là “optimization by rewrite” trước khi có base
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.subqueries-ctes-materialization`
+## Execution capsule: kiểm chứng `wiki.database.subqueries-ctes-materialization`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.subqueries-ctes-materialization`, sơ đồ, ví dụ và artifact về **Subquery, CTE và materialization** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

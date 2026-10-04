@@ -1,2 +1,93 @@
 schema_version: 1
-sources: []
+sources:
+  - id: DE-L001-S1
+    type: official-guide
+    title: Software Engineering Guidebook, Requirements Analysis Phase
+    authority: NASA Goddard Space Flight Center
+    url: https://voyager.gsfc.nasa.gov/Library/Software_Guide_HSTX.pdf
+    locator: Requirements Analysis Phase, requirement qualities including unambiguous and verifiable
+    accessed_at: 2026-10-03
+    supports: requirement quality and testability
+    status: verified-online
+  - id: DE-L001-S2
+    type: official-documentation
+    title: Gherkin Reference
+    authority: Cucumber
+    url: https://cucumber.io/docs/gherkin/reference/
+    locator: Example, Given, When and Then sections
+    accessed_at: 2026-10-03
+    supports: executable examples, known precondition, event and observable outcome
+    status: verified-online
+  - id: DE-L001-S3
+    type: internet-standard
+    title: RFC 9110, HTTP Semantics
+    authority: IETF
+    url: https://www.rfc-editor.org/rfc/rfc9110.html
+    locator: Section 9.2.2, Idempotent Methods
+    accessed_at: 2026-10-03
+    supports: retry semantics and limits of method-level idempotence
+    status: verified-online
+  - id: DE-L001-S4
+    type: engineering-practice
+    title: Making retries safe with idempotent APIs
+    authority: Amazon Builders' Library
+    url: https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/
+    locator: Retrying and side effects, client request identifiers, late arriving requests
+    accessed_at: 2026-10-03
+    supports: idempotency token semantics, duplicate requests and unknown outcomes
+    status: verified-online
+  - id: DE-L001-S5
+    type: official-practice-guide
+    title: Implementing SLOs
+    authority: Google Site Reliability Engineering
+    url: https://sre.google/workbook/implementing-slos/
+    locator: SLO definition and initial SLO process
+    accessed_at: 2026-10-03
+    supports: measurable service reliability target and consumer-centered threshold
+    status: verified-online
+  - id: DE-L001-S6
+    type: official-documentation
+    title: Example Mapping
+    authority: Cucumber
+    url: https://cucumber.io/docs/bdd/example-mapping/
+    locator: Rules, examples, questions and scope discovery
+    accessed_at: 2026-10-03
+    supports: turning unclear requirements into rules, examples and explicit unknowns
+    status: verified-online
+  - id: DE-L001-S7
+    type: curriculum-contract
+    title: DE Module 1 roadmap
+    authority: Rabbit Data curriculum owner
+    locator: Lesson L001 and module exit criteria
+    local_path: Material/DE/Roadmap/Phase_01-engineering-foundation/Module_01-engineering-thinking-git-and-debugging/roadmap.md
+    accessed_at: 2026-10-03
+    supports: required six-part contract artifact and assessment boundary
+    status: owner-governed
+  - id: DE-L001-W1
+    type: canonical-second-brain-note
+    title: Decision-first Discovery
+    authority: Rabbit Data Second Brain
+    locator: "#note=wiki.data-product.decision-first-discovery"
+    supports: decision boundary, unknowns and acceptance evidence
+    status: canonical
+  - id: DE-L001-W2
+    type: canonical-second-brain-note
+    title: Idempotency Keys, Deduplication and State
+    authority: Rabbit Data Second Brain
+    locator: "#note=wiki.backend.idempotency-keys-deduplication-state"
+    supports: retry safety, token scope and duplicate-result semantics
+    status: canonical
+  - id: DE-L001-W3
+    type: canonical-second-brain-note
+    title: Requirements Traceability
+    authority: Rabbit Data Second Brain
+    locator: "#note=wiki.data-product.requirements-traceability"
+    supports: requirement-to-test-to-evidence traceability
+    status: canonical
+  - id: DE-L001-W4
+    type: canonical-second-brain-note
+    title: SLI and SLO Design
+    authority: Rabbit Data Second Brain
+    locator: "#note=wiki.data-quality.sli-slo-design"
+    supports: measurable operating thresholds and reliability evidence
+    status: canonical

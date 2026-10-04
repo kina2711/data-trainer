@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một semantic query được hạ từ yêu cầu metric–dimension thành SQL qua những bước nào, và làm sao xác định đúng bước gây sai số hoặc chi phí?
 source_ids:
   - src.web.dbt-semantic-models
@@ -27,7 +27,7 @@ relationships:
 # Query Compilation Internals
 
 > [!abstract] Câu hỏi trung tâm
-> Một semantic query được hạ từ yêu cầu metric–dimension thành SQL qua những bước nào, và làm sao xác định đúng bước gây sai số hoặc chi phí?
+> Một semantic query được hạ từ yêu cầu metric-dimension thành SQL qua những bước nào, và làm sao xác định đúng bước gây sai số hoặc chi phí?
 
 ## 1. Compiler nhận một câu hỏi có kiểu
 
@@ -35,7 +35,7 @@ relationships:
 
 ## 2. Từ dependency graph đến logical dataflow
 
-Sau resolution, planner dựng directed acyclic graph cho metric dependencies: base expressions, intrinsic filters, numerator/denominator, time spine và derived operations. Chu trình ở graph này là lỗi vì không thể xác định thứ tự tính. Entity relationship graph lại có thể chứa cycle hợp lệ; vấn đề là một request có nhiều đường mang nghĩa khác nhau. Planner phải chọn allowed role-qualified path hoặc reject ambiguity. Hai loại graph không được dùng chung quy tắc “không có chu trình”.
+Sau resolution, planner dựng directed acyclic graph cho metric dependencies: base expressions, intrinsic filters, numerator/denominator, time spine và derived operations. Chu trình ở graph này là lỗi vì không thể xác định thứ tự tính. Entity relationship graph lại có thể chứa cycle hợp lệ; vấn đề là một request có nhiều đường mang nghĩa khác nhau. Planner phải chọn allowed role-qualified path hoặc reject ambiguity. Hai loại graph không được dùng chung quy tắc không có chu trình.
 
 ## 3. Chọn source, path và common grain
 
@@ -43,7 +43,7 @@ Planner tìm semantic models chứa base facts, xác định join keys/cardinali
 
 ## 4. Hạ plan thành SQL
 
-Logical nodes được hạ thành scans, filters, projections, joins, grouped aggregates, windows và final projection theo dialect. CTE boundaries giúp đọc nhưng không đảm bảo materialization. Predicate pushdown, join reordering và expression simplification phải bảo toàn outer-join, window và time-boundary semantics. Generated SQL là một serialization của plan; warehouse optimizer còn biến đổi nó thành physical plan. Vì vậy cần lưu cả semantic/dataflow plan, SQL và warehouse execution plan thay vì gọi cả ba là “kế hoạch”.
+Logical nodes được hạ thành scans, filters, projections, joins, grouped aggregates, windows và final projection theo dialect. CTE boundaries giúp đọc nhưng không đảm bảo materialization. Predicate pushdown, join reordering và expression simplification phải bảo toàn outer-join, window và time-boundary semantics. Generated SQL là một serialization của plan; warehouse optimizer còn biến đổi nó thành physical plan. Vì vậy cần lưu cả semantic/dataflow plan, SQL và warehouse execution plan thay vì gọi cả ba là kế hoạch.
 
 ## 5. Ba lớp nguyên nhân của kết quả lạ
 
@@ -55,7 +55,7 @@ Lỗi contract/config gồm sai population, grain, entity role, aggregation ho�
 
 ## 7. Lab ba tình huống có hồ sơ bằng chứng
 
-Case một chọn nhầm role-playing path; case hai gộp ratio/balance sai; case ba chậm vì scan và join ở grain quá thấp. Với mỗi case, ghi canonical request, manifest hash, dataflow stages, generated SQL hash, oracle và earliest divergent node. Case hiệu năng lưu trước–sau trên cùng warehouse size/cache state. Kết luận chỉ đạt khi tìm đúng nguyên nhân ít nhất hai case và case chậm cải thiện có số đo mà output cùng contract version không đổi.
+Case một chọn nhầm role-playing path; case hai gộp ratio/balance sai; case ba chậm vì scan và join ở grain quá thấp. Với mỗi case, ghi canonical request, manifest hash, dataflow stages, generated SQL hash, oracle và earliest divergent node. Case hiệu năng lưu trước-sau trên cùng warehouse size/cache state. Kết luận chỉ đạt khi tìm đúng nguyên nhân ít nhất hai case và case chậm cải thiện có số đo mà output cùng contract version không đổi.
 
 ## 8. Ma trận kiểm chứng từng mệnh đề
 
@@ -205,7 +205,7 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 - Chưa chạy MetricFlow, warehouse queries, execution plans hoặc labs; note mô tả protocol và expected evidence.
 - dbt/MetricFlow docs được kiểm ngày 2026-10-01; commands và YAML phụ thuộc engine/version/environment.
 - Thuật ngữ fan/chasm có thể khác giữa sản phẩm; invariant của bài là grain, multiplicity, population và semantic path.
-- Kimball–Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
+- Kimball-Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
 - Owner chưa phê duyệt semantic meaning nên note giữ trạng thái `review`.
 
 ## Reference
@@ -223,14 +223,14 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 
 ## Key takeaways
 - Join correctness phải được chứng minh bằng grain, multiplicity, unmatched ledger và independent oracle.
-- Metric–dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
+- Metric-dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
 - Parse/validate/compile không thay reconciliation với business contract.
 - Generated SQL phải được đọc theo population, path, aggregation và time/filter semantics.
 - Chưa chạy protocol thì note là tài liệu học thuật có truy nguồn, không phải chứng nhận production.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.query-compilation-internals`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.query-compilation-internals`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.query-compilation-internals`, sơ đồ, ví dụ và artifact về **Query Compilation Internals** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -252,7 +252,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Một semantic query được hạ từ yêu cầu metric–dimension thành SQL qua những bước nào, và làm sao xác định đúng bước gây sai số hoặc chi phí?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Một semantic query được hạ từ yêu cầu metric-dimension thành SQL qua những bước nào, và làm sao xác định đúng bước gây sai số hoặc chi phí? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Query Compilation Internals** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 
@@ -282,7 +282,7 @@ Artifact của `wiki.semantic-layer.query-compilation-internals` buộc người
 
 ### Tự kiểm tra trước khi tái sử dụng
 
-1. Bạn có thể trả lời `Một semantic query được hạ từ yêu cầu metric–dimension thành SQL qua những bước nào, và làm sao xác định đúng bước gây sai số hoặc chi phí?` bằng một câu mà không kéo thêm concept thứ hai không?
+1. Bạn có thể trả lời `Một semantic query được hạ từ yêu cầu metric-dimension thành SQL qua những bước nào, và làm sao xác định đúng bước gây sai số hoặc chi phí?` bằng một câu mà không kéo thêm concept thứ hai không?
 2. Source locator nào đỡ cho claim, và phần nào chỉ là synthesis trong note?
 3. Observation nào khiến bạn dừng, thu hẹp hoặc đảo quyết định?
 4. Artifact nào cho phép một reviewer độc lập tái hiện kết quả?

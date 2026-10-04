@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một metric cần hồ sơ bằng chứng nào để chứng minh mọi join path bảo toàn grain và control totals ở nhiều mức gộp?
 source_ids:
   - src.book.kimball-ross-data-warehouse-toolkit.3e
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Nghĩa vụ chứng minh
 
-“Không thấy số lạ” không phải bằng chứng. Mỗi metric phải có fanout proof gắn với contract version và semantic graph version. Proof xác nhận population, grain, join cardinality, row multiplicity và aggregate output trên fixture có ca biên. Một lần kiểm ở detail grain không đủ vì duplicate có thể collapse khi group hoặc chỉ lộ khi slice theo dimension khác.
+Không thấy số lạ không phải bằng chứng. Mỗi metric phải có fanout proof gắn với contract version và semantic graph version. Proof xác nhận population, grain, join cardinality, row multiplicity và aggregate output trên fixture có ca biên. Một lần kiểm ở detail grain không đủ vì duplicate có thể collapse khi group hoặc chỉ lộ khi slice theo dimension khác.
 
 ## 2. Bước một: grain ledger
 
@@ -205,7 +205,7 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 - Chưa chạy MetricFlow, warehouse queries, execution plans hoặc labs; note mô tả protocol và expected evidence.
 - dbt/MetricFlow docs được kiểm ngày 2026-10-01; commands và YAML phụ thuộc engine/version/environment.
 - Thuật ngữ fan/chasm có thể khác giữa sản phẩm; invariant của bài là grain, multiplicity, population và semantic path.
-- Kimball–Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
+- Kimball-Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
 - Owner chưa phê duyệt semantic meaning nên note giữ trạng thái `review`.
 
 ## Reference
@@ -223,14 +223,14 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 
 ## Key takeaways
 - Join correctness phải được chứng minh bằng grain, multiplicity, unmatched ledger và independent oracle.
-- Metric–dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
+- Metric-dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
 - Parse/validate/compile không thay reconciliation với business contract.
 - Generated SQL phải được đọc theo population, path, aggregation và time/filter semantics.
 - Chưa chạy protocol thì note là tài liệu học thuật có truy nguồn, không phải chứng nhận production.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.fanout-proof`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.fanout-proof`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.fanout-proof`, sơ đồ, ví dụ và artifact về **Fanout - Proving a Metric Is Not Double Counted** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -252,7 +252,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Một metric cần hồ sơ bằng chứng nào để chứng minh mọi join path bảo toàn grain và control totals ở nhiều mức gộp?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Một metric cần hồ sơ bằng chứng nào để chứng minh mọi join path bảo toàn grain và control totals ở nhiều mức gộp? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Fanout - Proving a Metric Is Not Double Counted** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

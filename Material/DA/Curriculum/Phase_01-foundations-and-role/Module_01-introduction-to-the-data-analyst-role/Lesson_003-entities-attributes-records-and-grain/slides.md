@@ -11,7 +11,7 @@ footer: 'Foundation · runnable scene package'
 
 # Entities, attributes, records and grain
 
-**DA-L003 · 120 phút (ước tính)**
+**DA-L003**
 
 > Mỗi dòng đại diện cho điều gì và phép tính nào hợp lệ ở grain đó?
 
@@ -27,12 +27,12 @@ Phát biểu và kiểm chứng grain, khóa ứng viên, rồi định lượng
 
 ---
 
-<!-- scene: S01 · source: note.md: heading 'Nỗi Đau & Động Lực' -->
+<!-- scene: S01 · source: note.md: heading Problem Definition and Operational Relevance -->
 ## Tình huống mở
 
 Một đơn có ba dòng sản phẩm. Join orders với order_items rồi SUM(order_total) làm doanh thu tăng gấp ba dù query chạy hoàn hảo.
 
-**Think–pair–share · 4 phút**
+**Independent analysis followed by peer review**
 
 1. Bạn sẽ làm gì đầu tiên?
 2. Quyết định nào có thể bị ảnh hưởng?
@@ -40,7 +40,7 @@ Một đơn có ba dòng sản phẩm. Join orders với order_items rồi SUM(o
 
 ---
 
-<!-- scene: S02 · source: note.md: heading 'Cơ Chế Tác Động' -->
+<!-- scene: S02 · source: note.md: heading Mechanism -->
 ## Mental model trung tâm
 
 > Grain là lời cam kết mỗi dòng đại diện cho điều gì. mọi phép đếm, join và aggregate phải được chứng minh tương thích với lời cam kết đó.
@@ -67,7 +67,7 @@ Không làm bước này, output sau đó có thể đúng cú pháp nhưng sai 
 
 ---
 
-<!-- scene: S03 · source: note.md: heading 'Cơ Chế Tác Động' -->
+<!-- scene: S03 · source: note.md: heading Mechanism -->
 ## Check 1 · trả lời không nhìn tài liệu
 
 **Grain là gì?**
@@ -83,7 +83,7 @@ Nếu câu trả lời chỉ nêu tên công cụ, hãy quay lại mental model 
 ---
 
 <!-- scene: S04 · source: UNSOURCED guided practice synthesis -->
-## Guided practice · 12 phút làm + 6 phút chữa
+## Guided practice
 
 Cho năm schema nhỏ. viết grain, candidate key, cardinality dự kiến và một query/profile chứng minh cho từng bảng.
 
@@ -93,7 +93,7 @@ Người dạy không chữa bằng đáp án ngay. yêu cầu mỗi nhóm nêu 
 
 ---
 
-<!-- scene: S05 · source: note.md: heading 'Bản Đồ Quyết Định' -->
+<!-- scene: S05 · source: note.md: heading Decision Framework -->
 ## Quy tắc quyết định
 
 Nếu hai bảng khác grain, hoặc aggregate bảng nhiều về grain một trước join, hoặc giữ measure ở bảng sở hữu. không SUM measure phía một sau join many.
@@ -114,7 +114,7 @@ Nếu yêu cầu chuyển từ đơn sang khách-tháng, phải công bố grain
 
 ## Worked example · đi từng bước
 
-<!-- scene: S07 · source: note.md: heading 'Case Study Thực Chiến: một chỉ số bán hàng đổi nghĩa giữa đường' -->
+<!-- scene: S07 · source: note.md: heading Worked Case: một chỉ số bán hàng đổi nghĩa giữa đường -->
 
 1. Orders ở grain một dòng/đơn. items ở grain một dòng/sản phẩm trong đơn.
 2. Dự đoán join one-to-many và đánh dấu order_total không additive sau join.
@@ -157,8 +157,8 @@ Một bảng customer_address lưu lịch sử hiệu lực. Chọn grain và jo
 
 ---
 
-<!-- scene: S09 · source: note.md: heading 'Góc Khuất & Ngộ Nhận' -->
-## Exit ticket · 3 phút
+<!-- scene: S09 · source: note.md: heading Limits and Common Errors -->
+## Exit check
 
 **Tại sao DISTINCT không phải cách sửa mặc định cho fan-out?**
 
@@ -169,10 +169,18 @@ DISTINCT có thể xóa record hợp lệ và che mismatch grain. phải sửa c
 
 ---
 
-## Sau buổi học
+## Post-Lesson
 
 1. Làm `quiz.md`. đạt **8/10**.
 2. Nếu trượt một concept, đọc remediation trong `after-note.md` rồi retest đúng concept đó.
 3. Hoàn thành `homework.md`. đạt **≥ 75/100** và không có critical failure.
 
 **Bắc cầu:** L004: phân rã outcome thành metric tree có driver hành động được.
+
+---
+
+## References
+
+- [[wiki.da-foundation.entity-attribute-record-and-grain|Entities, attributes, records and grain]]
+- [[wiki.data-modeling.fact-table-types|Fact table types]]
+- [[wiki.database.joins-duplicate-multiplication-null|Join multiplication and NULL behavior]]

@@ -1,4 +1,4 @@
-# DA Lesson 3 — Practice, feedback and retest
+# DA Lesson 3: Practice, feedback and retest
 
 ## Thực hành có hướng dẫn
 
@@ -15,10 +15,10 @@ Cho năm schema nhỏ; viết grain, candidate key, cardinality dự kiến và 
 
 ## Retrieval checks và đáp án tối thiểu
 
-- **Grain là gì?** — Lời cam kết một dòng đại diện cho đối tượng/sự kiện nào trong boundary đã nêu.
-- **Dấu hiệu trực tiếp của fan-out là gì?** — Row count hoặc multiplicity trên base key tăng sau join.
-- **Measure phía one nên xử lý thế nào trước one-to-many join?** — Giữ ở bảng sở hữu hoặc aggregate phía many về cùng grain trước khi ghép.
-- **Candidate key cần được kiểm bằng gì?** — Count so với count distinct cùng kiểm NULL và duplicate distribution.
+- **Grain là gì?**: Lời cam kết một dòng đại diện cho đối tượng/sự kiện nào trong boundary đã nêu.
+- **Dấu hiệu trực tiếp của fan-out là gì?**: Row count hoặc multiplicity trên base key tăng sau join.
+- **Measure phía one nên xử lý thế nào trước one-to-many join?**: Giữ ở bảng sở hữu hoặc aggregate phía many về cùng grain trước khi ghép.
+- **Candidate key cần được kiểm bằng gì?**: Count so với count distinct cùng kiểm NULL và duplicate distribution.
 
 ## Novel-scenario retest
 
@@ -26,7 +26,7 @@ Một bảng customer_address lưu lịch sử hiệu lực. Chọn grain và jo
 
 **Pass condition:** câu trả lời nêu boundary, evidence, lựa chọn, ít nhất một alternative, blast radius/consumer harm và reversal trigger. Không chấm theo việc trùng wording của đáp án mẫu.
 
-## Bài làm sau buổi học
+## Post-Lesson Work
 
 - Làm `quiz.md`, ngưỡng 8/10.
 - Làm `homework.md`, ngưỡng 75/100 và không có critical failure.
@@ -43,8 +43,14 @@ Một bảng customer_address lưu lịch sử hiệu lực. Chọn grain và jo
 
 ## Giới hạn
 
-Gói này chưa được dạy trên cohort thật; thời lượng là ước tính. Điểm quiz/homework chỉ là evidence trong scope của DA-L003, không phải chứng nhận vai trò hay kinh nghiệm production.
+Gói này chưa được dạy trên cohort thật. Điểm quiz và homework chỉ là evidence trong scope của DA-L003, không phải chứng nhận vai trò hoặc kinh nghiệm production.
 
 ## Bắc cầu
 
-L004 — phân rã outcome thành metric tree có driver hành động được.
+L004: phân rã outcome thành metric tree có driver hành động được.
+
+## References
+
+- [[wiki.da-foundation.entity-attribute-record-and-grain|Entities, attributes, records and grain]]
+- [[wiki.data-modeling.fact-table-types|Fact table types]]
+- [[wiki.database.joins-duplicate-multiplication-null|Join multiplication and NULL behavior]]

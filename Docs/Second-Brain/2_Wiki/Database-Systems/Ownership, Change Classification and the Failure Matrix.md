@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Ba vai sở hữu phối hợp ra sao, và failure matrix biến bảy lỗi semantic layer thành controls, tests và postmortem actions như thế nào?
 source_ids:
   - src.book.reis-housley-fundamentals-data-engineering
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Ba vai và quyền quyết định
 
-Business owner quyết population, interpretation, acceptable change và consumer sign-off. Technical owner chịu implementation, tests, performance, security và incident response. Catalog steward giữ IDs, metadata, lifecycle gates, notices và evidence completeness. Một người có thể giữ nhiều vai ở đội nhỏ, nhưng decision rights vẫn tách. Gán cho “Finance team” không đủ: cần accountable person, deputy, escalation và review date.
+Business owner quyết population, interpretation, acceptable change và consumer sign-off. Technical owner chịu implementation, tests, performance, security và incident response. Catalog steward giữ IDs, metadata, lifecycle gates, notices và evidence completeness. Một người có thể giữ nhiều vai ở đội nhỏ, nhưng decision rights vẫn tách. Gán cho Finance team không đủ: cần accountable person, deputy, escalation và review date.
 
 ## 2. RACI không thay accountability
 
@@ -39,7 +39,7 @@ Matrix tasks gồm propose, semantic approval, implementation, certify, change c
 
 ## 3. Failure matrix bảy dòng
 
-Double count; ambiguous join; wrong aggregation type; time semantic drift; aggregate inference leak; cache missing security/semantic version; formula overwritten in place. Mỗi row ghi symptom, invariant violated, root/contributing conditions, detection signal, prevention, automated test, severity, owner và response. “Query returned wrong number” là symptom, không phải root cause. Một control có thể cover nhiều rows nhưng mỗi row cần chứng minh detection path riêng.
+Double count; ambiguous join; wrong aggregation type; time semantic drift; aggregate inference leak; cache missing security/semantic version; formula overwritten in place. Mỗi row ghi symptom, invariant violated, root/contributing conditions, detection signal, prevention, automated test, severity, owner và response. Query returned wrong number là symptom, không phải root cause. Một control có thể cover nhiều rows nhưng mỗi row cần chứng minh detection path riêng.
 
 ## 4. Detection và prevention tách nhau
 
@@ -51,7 +51,7 @@ Tạo seven mutations trên fixture, mỗi mutation chỉ kích một failure mo
 
 ## 6. Postmortem không đổ lỗi cá nhân
 
-Timeline dựa facts, impact và detection lag; phân tích vì sao hệ thống cho action hợp lý tại thời điểm đó đi tới failure. Ghi contributing conditions như missing gate, ambiguous ownership, alert blind spot và incentive/time pressure. Blameless không bỏ accountability: action items có owner, due date, verification và priority. “Nhắc người cẩn thận hơn” không phải corrective control; test/gate/tool/documented decision mới quan sát được.
+Timeline dựa facts, impact và detection lag; phân tích vì sao hệ thống cho action hợp lý tại thời điểm đó đi tới failure. Ghi contributing conditions như missing gate, ambiguous ownership, alert blind spot và incentive/time pressure. Blameless không bỏ accountability: action items có owner, due date, verification và priority. Nhắc người cẩn thận hơn không phải corrective control; test/gate/tool/documented decision mới quan sát được.
 
 ## 7. Từ postmortem về backlog kiểm soát
 
@@ -230,7 +230,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.ownership-failure-matrix`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.ownership-failure-matrix`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.ownership-failure-matrix`, sơ đồ, ví dụ và artifact về **Ownership, Change Classification and the Failure Matrix** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

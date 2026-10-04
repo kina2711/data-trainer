@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một dataset cần những đặc tính vận hành nào để trở thành analytical data product, và rubric trưởng thành phải dựa trên bằng chứng nào?
 source_ids:
   - src.web.dehghani-data-mesh-principles
@@ -35,7 +35,7 @@ Dataset là collection dữ liệu; mart là modeled dataset cho analytical use;
 
 ## 2. Tám thuộc tính như evidence rubric
 
-Named accountable owner; identified consumers/use cases; stable public interface; explicit contract; service commitments; usable documentation/discovery; access policy; lifecycle/deprecation plan. Mỗi ô pass cần artifact/observation: owner with decision rights, consumer registry, schema/API version, tests/SLO dashboards, access negative test, deprecation record. Checkbox “có docs” không đủ nếu consumer không trả lời được grain/freshness.
+Named accountable owner; identified consumers/use cases; stable public interface; explicit contract; service commitments; usable documentation/discovery; access policy; lifecycle/deprecation plan. Mỗi ô pass cần artifact/observation: owner with decision rights, consumer registry, schema/API version, tests/SLO dashboards, access negative test, deprecation record. Checkbox có docs không đủ nếu consumer không trả lời được grain/freshness.
 
 ## 3. Data mesh source và curriculum synthesis
 
@@ -230,7 +230,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.product-anatomy`
+## Execution capsule: kiểm chứng `wiki.data-product.product-anatomy`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.product-anatomy`, sơ đồ, ví dụ và artifact về **Product Anatomy - What Makes a Dataset a Product** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

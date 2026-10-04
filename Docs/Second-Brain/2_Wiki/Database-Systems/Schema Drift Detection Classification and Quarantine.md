@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Schema drift được phát hiện, phân loại và cô lập thế nào để tránh vừa mất dữ liệu vừa phát tán sai nghĩa?
 source_ids:
   - src.web.airbyte-schema-change-management
@@ -51,7 +51,7 @@ Compatible additive có thể land raw và mở field sau approval; coercible ch
 
 ## 6. Failure lab
 
-Inject add/drop/rename/type narrowing, key removal, nested-path change, enum meaning change và connector major upgrade. Assert exact classification, pause/continue policy, zero silent loss, quarantine evidence và deterministic replay after approval. So raw count/hash trước–sau; chứng minh old readers behavior. Lưu schema snapshots, diff, decision và downstream test results.
+Inject add/drop/rename/type narrowing, key removal, nested-path change, enum meaning change và connector major upgrade. Assert exact classification, pause/continue policy, zero silent loss, quarantine evidence và deterministic replay after approval. So raw count/hash trước-sau; chứng minh old readers behavior. Lưu schema snapshots, diff, decision và downstream test results.
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
@@ -223,7 +223,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ingestion.schema-drift-detection-classification-quarantine`
+## Execution capsule: kiểm chứng `wiki.ingestion.schema-drift-detection-classification-quarantine`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ingestion.schema-drift-detection-classification-quarantine`, sơ đồ, ví dụ và artifact về **Schema Drift Detection Classification and Quarantine** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -245,7 +245,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Schema drift được phát hiện, phân loại và cô lập thế nào để tránh vừa mất dữ liệu vừa phát tán sai nghĩa?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Schema drift được phát hiện, phân loại và cô lập thế nào để tránh vừa mất dữ liệu vừa phát tán sai nghĩa? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Schema Drift Detection Classification and Quarantine** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

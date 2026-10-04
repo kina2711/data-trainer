@@ -38,7 +38,7 @@ In-place repair phù hợp state giới hạn; backfill tái xử lý intervals;
 
 ## 3. Version pinning
 
-Ghi code, config, source snapshot và reference data version dùng cho correction; latest không mặc nhiên đúng lịch sử. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Repair, backfill and restatement`, câu hỏi thực dụng là: Chọn repair, backfill hay restatement dựa trên corrupted scope và consumer-visible history ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Ghi code, config, source snapshot và reference data version dùng cho correction; latest không mặc nhiên đúng lịch sử. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Repair, backfill and restatement`, câu hỏi thực dụng là: Chọn repair, backfill hay restatement dựa trên corrupted scope và consumer-visible history ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Isolation
 
@@ -221,7 +221,7 @@ Với `wiki.data-quality.repair-backfill-restatement`, command thành công khô
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-quality.repair-backfill-restatement`
+## Execution capsule: kiểm chứng `wiki.data-quality.repair-backfill-restatement`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-quality.repair-backfill-restatement`, sơ đồ, ví dụ và artifact về **Repair, backfill and restatement** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

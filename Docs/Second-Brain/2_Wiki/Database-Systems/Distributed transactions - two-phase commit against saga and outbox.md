@@ -38,7 +38,7 @@ Chuỗi local transactions với compensations chấp nhận intermediate visibi
 
 ## 3. Transactional outbox
 
-Domain state và outbox row cùng local transaction; relay at-least-once nên consumer vẫn cần dedup/idempotency. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Distributed transactions - two-phase commit against saga and outbox`, câu hỏi thực dụng là: Chọn 2PC, saga hay transactional outbox theo atomicity boundary, blocking, compensation và delivery semantics ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Domain state và outbox row cùng local transaction; relay at-least-once nên consumer vẫn cần dedup/idempotency. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Distributed transactions - two-phase commit against saga and outbox`, câu hỏi thực dụng là: Chọn 2PC, saga hay transactional outbox theo atomicity boundary, blocking, compensation và delivery semantics ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision matrix
 
@@ -221,7 +221,7 @@ Với `wiki.distributed.2pc-saga-outbox`, command thành công không tự chứ
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.distributed.2pc-saga-outbox`
+## Execution capsule: kiểm chứng `wiki.distributed.2pc-saga-outbox`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.distributed.2pc-saga-outbox`, sơ đồ, ví dụ và artifact về **Distributed transactions - two-phase commit against saga and outbox** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

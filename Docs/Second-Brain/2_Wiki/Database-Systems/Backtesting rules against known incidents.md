@@ -38,7 +38,7 @@ Tách development và holdout incidents theo thời gian/họ lỗi; không dùn
 
 ## 3. Replay fidelity
 
-Khôi phục data snapshots hoặc feature traces gần thời điểm đó; synthetic replay phải ghi điểm khác thực tế. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Backtesting rules against known incidents`, câu hỏi thực dụng là: Backtest rule thế nào để đo detection coverage mà không rò nhãn sự cố vào threshold? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Khôi phục data snapshots hoặc feature traces gần thời điểm đó; synthetic replay phải ghi điểm khác thực tế. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Backtesting rules against known incidents`, câu hỏi thực dụng là: Backtest rule thế nào để đo detection coverage mà không rò nhãn sự cố vào threshold? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Scoring
 
@@ -221,7 +221,7 @@ Với `wiki.data-quality.backtesting-known-incidents`, command thành công khô
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-quality.backtesting-known-incidents`
+## Execution capsule: kiểm chứng `wiki.data-quality.backtesting-known-incidents`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-quality.backtesting-known-incidents`, sơ đồ, ví dụ và artifact về **Backtesting rules against known incidents** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

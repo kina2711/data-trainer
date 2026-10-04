@@ -11,7 +11,7 @@ footer: 'Foundation · runnable scene package'
 
 # Git as a content-addressed object database
 
-**DE-L004 · 120 phút (ước tính)**
+**DE-L004**
 
 > Object graph, index và refs giải thích Git như thế nào?
 
@@ -27,12 +27,12 @@ Dựng object graph và dự đoán thay đổi ở working tree, index, reposit
 
 ---
 
-<!-- scene: S01 · source: note.md: heading '1. Git lưu snapshot qua object graph' -->
+<!-- scene: S01 · source: note.md: heading 1. Git lưu snapshot qua object graph -->
 ## Tình huống mở
 
 Bạn git add file, sửa tiếp rồi git commit. Vì sao commit không chứa bản đang nhìn thấy trong editor?
 
-**Think–pair–share · 4 phút**
+**Independent analysis followed by peer review**
 
 1. Bạn sẽ làm gì đầu tiên?
 2. Quyết định nào có thể bị ảnh hưởng?
@@ -40,7 +40,7 @@ Bạn git add file, sửa tiếp rồi git commit. Vì sao commit không chứa 
 
 ---
 
-<!-- scene: S02 · source: note.md: heading '2. Content-addressed identity' -->
+<!-- scene: S02 · source: note.md: heading 2. Content-addressed identity -->
 ## Mental model trung tâm
 
 > Git lưu immutable content-addressed objects. working tree, index và repository là ba trạng thái khác nhau, còn refs đặt tên lên commit graph.
@@ -67,7 +67,7 @@ Không làm bước này, output sau đó có thể đúng cú pháp nhưng sai 
 
 ---
 
-<!-- scene: S03 · source: note.md: heading '2. Content-addressed identity' -->
+<!-- scene: S03 · source: note.md: heading 2. Content-addressed identity -->
 ## Check 1 · trả lời không nhìn tài liệu
 
 **Blob lưu gì?**
@@ -83,7 +83,7 @@ Nếu câu trả lời chỉ nêu tên công cụ, hãy quay lại mental model 
 ---
 
 <!-- scene: S04 · source: UNSOURCED guided practice synthesis -->
-## Guided practice · 12 phút làm + 6 phút chữa
+## Guided practice
 
 Trong repo sandbox, học viên dự đoán sáu trạng thái rồi chạy command để kiểm bằng object plumbing.
 
@@ -93,7 +93,7 @@ Người dạy không chữa bằng đáp án ngay. yêu cầu mỗi nhóm nêu 
 
 ---
 
-<!-- scene: S05 · source: note.md: heading '3. Working tree, index và repository' -->
+<!-- scene: S05 · source: note.md: heading 3. Working tree, index và repository -->
 ## Quy tắc quyết định
 
 Trước reset/restore, gọi tên ref và ba trạng thái sẽ đổi. dùng mode nhỏ nhất đạt mục tiêu và bảo toàn evidence cần giữ.
@@ -114,7 +114,7 @@ Trước reset/restore, gọi tên ref và ba trạng thái sẽ đổi. dùng m
 
 ## Worked example · đi từng bước
 
-<!-- scene: S07 · source: note.md: heading '4. References làm graph có tên' -->
+<!-- scene: S07 · source: note.md: heading 4. References làm graph có tên -->
 
 1. Tạo file, hash-object để thấy blob identity, add và đọc index entry.
 2. Commit để tạo tree/commit. cat-file -p lần theo parent và tree.
@@ -157,8 +157,8 @@ Một commit 'mất' sau reset nhưng còn trong reflog. Giải thích reachabil
 
 ---
 
-<!-- scene: S09 · source: note.md: heading '5. Reset được suy từ ba cây' -->
-## Exit ticket · 3 phút
+<!-- scene: S09 · source: note.md: heading 5. Reset được suy từ ba cây -->
+## Exit check
 
 **git diff và git diff --cached so những trạng thái nào?**
 
@@ -169,10 +169,18 @@ git diff: working tree với index. git diff --cached: index với HEAD.
 
 ---
 
-## Sau buổi học
+## Post-Lesson
 
 1. Làm `quiz.md`. đạt **8/10**.
 2. Nếu trượt một concept, đọc remediation trong `after-note.md` rồi retest đúng concept đó.
 3. Hoàn thành `homework.md`. đạt **≥ 75/100** và không có critical failure.
 
 **Bắc cầu:** DE-L005: merge, rebase, revert và commit identity.
+
+---
+
+## References
+
+- [[wiki.engineering-foundation.git-object-database|Git as a content-addressed object database]]
+- [[wiki.engineering-foundation.adr-trade-offs|Trade-offs and architecture decision records]]
+- [[wiki.data-product.requirements-traceability|Requirements traceability]]

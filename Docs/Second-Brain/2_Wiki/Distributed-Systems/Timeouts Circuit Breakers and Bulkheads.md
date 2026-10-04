@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Phối hợp deadline, timeout, retry, circuit breaker và bulkhead thế nào để một dependency chậm hoặc chết không làm cạn tài nguyên của toàn API?
 source_ids:
   - src.book.titmus-cloud-native-go.1e
@@ -34,7 +34,7 @@ relationships:
 
 ## 1. Cascading failure bắt đầu từ thời gian giữ tài nguyên
 
-Một outbound call chờ 30 giây có thể giữ inbound connection, worker slot, database connection hoặc semaphore. Khi dependency chậm, số in-flight tăng theo Little’s Law:
+Một outbound call chờ 30 giây có thể giữ inbound connection, worker slot, database connection hoặc semaphore. Khi dependency chậm, số in-flight tăng theo Littles Law:
 
 $$
 L = \lambda W
@@ -61,14 +61,14 @@ uncertainty reserve   150 ms
 
 Không được đặt ba dependency timeout 800 ms nối tiếp nhau trong request 800 ms. Cần trừ thời gian đã dùng, propagation overhead và cleanup margin. Nếu budget còn lại không đủ cho attempt có ý nghĩa, fail fast hoặc degrade.
 
-Timeout phải bao phủ đúng boundary: DNS/connect/TLS, pool acquisition, request headers, body read, server query, stream idle. Một “HTTP timeout” duy nhất có thể bỏ sót connection pool wait hoặc stream không kết thúc.
+Timeout phải bao phủ đúng boundary: DNS/connect/TLS, pool acquisition, request headers, body read, server query, stream idle. Một HTTP timeout duy nhất có thể bỏ sót connection pool wait hoặc stream không kết thúc.
 
 ## 3. Chọn timeout từ distribution và hậu quả
 
 Timeout quá ngắn tạo false timeout, retry và load amplification. Quá dài giữ tài nguyên vô ích. Cần dùng latency distribution của dependency trong network path thật, false-timeout budget và SLO end-to-end.
 
 > [!source-fact]
-> AWS Builders’ Library khuyến nghị chọn acceptable false-timeout rate rồi dùng percentile latency tương ứng, đồng thời tính đến network/TLS setup và các dependency có distribution sát nhau; bài “Timeouts, retries, and backoff with jitter”, truy cập 2026-09-28.
+> AWS Builders Library khuyến nghị chọn acceptable false-timeout rate rồi dùng percentile latency tương ứng, đồng thời tính đến network/TLS setup và các dependency có distribution sát nhau; bài Timeouts, retries, and backoff with jitter, truy cập 2026-09-28.
 
 Không copy một số milliseconds từ môi trường khác. Canary, cross-region call, cold connection và deployment warm-up có tail khác steady-state local benchmark.
 
@@ -95,7 +95,7 @@ Không retry validation error, permission denial hoặc permanent not-found. Kh�
 
 Nếu mỗi tầng tự retry ba lần trong call chain năm tầng, một request có thể khuếch đại thành nhiều attempt phía dưới. Thực tế còn giới hạn bởi failure path, nhưng hướng nguy hiểm là rõ: retry ở nhiều tầng nhân work và làm diagnosis khó.
 
-Chọn một tầng có ngữ cảnh để retry; thường là tầng caller trực tiếp hiểu idempotency và deadline. Thêm retry budget theo tỷ lệ trên traffic gốc, không chỉ “max attempts per request”. Khi hệ đã quá tải, budget phải co lại.
+Chọn một tầng có ngữ cảnh để retry; thường là tầng caller trực tiếp hiểu idempotency và deadline. Thêm retry budget theo tỷ lệ trên traffic gốc, không chỉ max attempts per request. Khi hệ đã quá tải, budget phải co lại.
 
 ## 7. Backoff và jitter
 
@@ -108,7 +108,7 @@ delay_n = random(0, min(cap, base * 2^n))
 Đây là full jitter minh họa; thuật toán cụ thể phải đồng bộ với SDK/platform. Jitter không sửa operation không idempotent hay deadline đã hết. Sleep phải bị cancellation ngắt được.
 
 > [!source-fact]
-> AWS mô tả retries là “selfish” vì tăng load, dùng backoff có trần, jitter để giảm synchronized retry và token bucket để giới hạn retry cục bộ.
+> AWS mô tả retries là selfish vì tăng load, dùng backoff có trần, jitter để giảm synchronized retry và token bucket để giới hạn retry cục bộ.
 
 ## 8. Circuit breaker
 
@@ -128,7 +128,7 @@ HALF_OPEN --probe failure--> OPEN
 Breaker không phải retry và không sửa một request đang chạy. Nó ngăn request mới tiếp tục tiêu tài nguyên vào dependency có xác suất thất bại cao.
 
 > [!source-fact]
-> *Cloud Native Go* trình bày circuit breaker và retry tại Chapter 4, PDF 99–108; ngưỡng, recovery period và failure classification là policy cần cấu hình theo workload.
+> *Cloud Native Go* trình bày circuit breaker và retry tại Chapter 4, PDF 99-108; ngưỡng, recovery period và failure classification là policy cần cấu hình theo workload.
 
 ## 9. Chọn scope và signal của breaker
 
@@ -143,13 +143,13 @@ Signal không nên chỉ đếm mọi exception:
 - cancellation do client hết deadline không luôn là lỗi dependency;
 - minimum sample size tránh mở từ một lỗi đơn lẻ.
 
-Breaker state và transition phải có metric/event. Nếu không, “fail fast” trông giống dependency trả lỗi ngay.
+Breaker state và transition phải có metric/event. Nếu không, fail fast trông giống dependency trả lỗi ngay.
 
 ## 10. Half-open và recovery
 
 Nếu mọi request cùng probe lúc cool-down hết, dependency vừa hồi lại bị dội tải. Half-open phải giới hạn probe concurrency. Success threshold cần đủ để tránh đóng từ một probe may mắn; failure mở lại theo policy.
 
-Breaker không “không bao giờ đóng lại”. Nó có recovery state, manual override có kiểm soát và observability. Đồng thời không nên flap liên tục; threshold/hysteresis cần đo.
+Breaker không không bao giờ đóng lại. Nó có recovery state, manual override có kiểm soát và observability. Đồng thời không nên flap liên tục; threshold/hysteresis cần đo.
 
 ## 11. Bulkhead cô lập pool
 
@@ -183,7 +183,7 @@ Knowledge note [[Rate Limiting Backpressure and Circuit Breakers Between Service
 
 ## 14. Fallback phải giữ semantics
 
-Fallback có thể trả cache cũ, partial response, async acceptance hoặc feature unavailable. Nó chỉ đúng nếu contract cho phép và người dùng biết freshness/completeness. Trả dữ liệu rỗng như thành công để “giữ availability” có thể tạo quyết định sai.
+Fallback có thể trả cache cũ, partial response, async acceptance hoặc feature unavailable. Nó chỉ đúng nếu contract cho phép và người dùng biết freshness/completeness. Trả dữ liệu rỗng như thành công để giữ availability có thể tạo quyết định sai.
 
 Fallback cũng có dependency và capacity. Nếu breaker mở rồi mọi request dồn vào database fallback chưa được bulkhead, failure chỉ chuyển chỗ.
 
@@ -201,7 +201,7 @@ Trả timeout/connection failure. Quan sát breaker mở, call thật giảm, fa
 
 Đo queue age, rejection, latency và throughput. Chứng minh bounded admission/load shedding giữ phần traffic ưu tiên và không làm pool toàn cục cạn.
 
-## 16. Đo “suy giảm có kiểm soát”
+## 16. Đo suy giảm có kiểm soát
 
 Không chỉ báo tổng success rate. Tách:
 
@@ -258,27 +258,27 @@ Evidence pack gồm:
 
 ## 20. Giới hạn
 
-- Công thức Little’s Law dùng cho capacity reasoning ở trạng thái phù hợp, không dự báo mọi workload burst.
+- Công thức Littles Law dùng cho capacity reasoning ở trạng thái phù hợp, không dự báo mọi workload burst.
 - Threshold breaker, timeout và pool size phải đo; note không cấp default production.
 - Pattern không thay capacity planning, backpressure hay sửa dependency gốc.
 - SDK retry mặc định phải được kiểm; không giả định chỉ code ứng dụng mới retry.
 - Distributed workflow dài cần pattern khác ngoài synchronous resilience.
 
 ## Reference
-1. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]] — circuit breaker, retry, throttle, overload, timeout và resilience; PDF 99–108, 290–303.
-2. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — failure isolation và service boundary; dùng như practitioner context, không mặc nhiên yêu cầu microservice.
-3. [[SRC-AWS-TIMEOUTS-RETRIES-BACKOFF]] — chọn timeout theo percentile/false-timeout budget, retry amplification, capped backoff, jitter và retry token budget; truy cập 2026-09-28.
-4. [[SRC-AZURE-BULKHEAD]] — phân vùng resource/pool để cô lập dependency failure và trade-off của isolation; truy cập 2026-09-28.
+1. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]]: circuit breaker, retry, throttle, overload, timeout và resilience; PDF 99-108, 290-303.
+2. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: failure isolation và service boundary; dùng như practitioner context, không mặc nhiên yêu cầu microservice.
+3. [[SRC-AWS-TIMEOUTS-RETRIES-BACKOFF]]: chọn timeout theo percentile/false-timeout budget, retry amplification, capped backoff, jitter và retry token budget; truy cập 2026-09-28.
+4. [[SRC-AZURE-BULKHEAD]]: phân vùng resource/pool để cô lập dependency failure và trade-off của isolation; truy cập 2026-09-28.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], PDF 99–108, 290–303 | breaker, retry, throttle, timeout và overload | §§3–10, 13 | Đã giữ cơ chế và giới hạn code minh họa |
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] | distributed/service failure context | §§1, 11–14 | Chỉ dùng làm bối cảnh, không suy ra phải tách service |
-| [[SRC-AWS-TIMEOUTS-RETRIES-BACKOFF]] | percentile timeout, retry load, backoff, jitter, token budget | §§3, 5–7 | Đã phân biệt khuyến nghị với threshold workload |
-| [[SRC-AZURE-BULKHEAD]] | pool isolation, connection exhaustion và trade-off | §§11–12 | Đã dùng đúng phạm vi pattern |
-| Tổng hợp DE-L107 | deadline propagation, bulkhead resource map, fault lab và evidence | §§2, 4, 11–18 | Đã trình bày thành synthesis có thể kiểm |
+| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], PDF 99-108, 290-303 | breaker, retry, throttle, timeout và overload | §§3-10, 13 | Đã giữ cơ chế và giới hạn code minh họa |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] | distributed/service failure context | §§1, 11-14 | Chỉ dùng làm bối cảnh, không suy ra phải tách service |
+| [[SRC-AWS-TIMEOUTS-RETRIES-BACKOFF]] | percentile timeout, retry load, backoff, jitter, token budget | §§3, 5-7 | Đã phân biệt khuyến nghị với threshold workload |
+| [[SRC-AZURE-BULKHEAD]] | pool isolation, connection exhaustion và trade-off | §§11-12 | Đã dùng đúng phạm vi pattern |
+| Tổng hợp DE-L107 | deadline propagation, bulkhead resource map, fault lab và evidence | §§2, 4, 11-18 | Đã trình bày thành synthesis có thể kiểm |
 
 Phạm vi đọc bao phủ deadline/timeout, cancellation, retry safety/budget, breaker lifecycle, bulkhead, bounded admission và fault testing. Multi-region disaster recovery bị loại trừ vì ngoài objective.
 
@@ -292,7 +292,7 @@ Phạm vi đọc bao phủ deadline/timeout, cancellation, retry safety/budget, 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.distributed-systems.timeouts-circuit-breakers-bulkheads`
+## Execution capsule: kiểm chứng `wiki.distributed-systems.timeouts-circuit-breakers-bulkheads`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.distributed-systems.timeouts-circuit-breakers-bulkheads`, sơ đồ, ví dụ và artifact về **Deadline, timeout, circuit breaker và bulkhead** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

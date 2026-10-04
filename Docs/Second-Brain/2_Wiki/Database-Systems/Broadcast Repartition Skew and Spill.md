@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Phân biệt broadcast, repartition, skew và spill từ plan/runtime counters như thế nào, rồi chọn remediation mà không che nhầm nguyên nhân?
 source_ids:
   - src.web.trino-join-distribution
@@ -235,7 +235,7 @@ Mỗi mệnh đề về latency, scaling, cache, concurrency hoặc cost cần c
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.olap.broadcast-repartition-skew-spill`
+## Execution capsule: kiểm chứng `wiki.olap.broadcast-repartition-skew-spill`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.olap.broadcast-repartition-skew-spill`, sơ đồ, ví dụ và artifact về **Broadcast Repartition Skew and Spill** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -257,7 +257,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Phân biệt broadcast, repartition, skew và spill từ plan/runtime counters như thế nào, rồi chọn remediation mà không che nhầm nguyên nhân?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Phân biệt broadcast, repartition, skew và spill từ plan/runtime counters như thế nào, rồi chọn remediation mà không che nhầm nguyên nhân? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Broadcast Repartition Skew and Spill** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

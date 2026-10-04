@@ -37,7 +37,7 @@ Elapsed-time measurement cần clock không đi lùi trong một process/boot; k
 
 ## 3. Happens-before
 
-Program order và message send-before-receive tạo partial order; concurrent events không buộc có real causal order. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Time and order - wall clock, monotonic clock and logical clocks`, câu hỏi thực dụng là: Wall clock, monotonic clock và logical clocks hỗ trợ những assertions khác nhau nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Program order và message send-before-receive tạo partial order; concurrent events không buộc có real causal order. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Time and order - wall clock, monotonic clock and logical clocks`, câu hỏi thực dụng là: Wall clock, monotonic clock và logical clocks hỗ trợ những assertions khác nhau nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Lamport clock
 
@@ -218,7 +218,7 @@ Với `wiki.distributed.time-order-clocks`, command thành công không tự ch�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.distributed.time-order-clocks`
+## Execution capsule: kiểm chứng `wiki.distributed.time-order-clocks`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.distributed.time-order-clocks`, sơ đồ, ví dụ và artifact về **Time and order - wall clock, monotonic clock and logical clocks** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

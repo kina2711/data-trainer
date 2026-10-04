@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao truy vết ba tầng parallelism của một MPP query và xác định strong-scaling ceiling bằng evidence thay vì gán mọi speedup cho số worker?
 source_ids:
   - src.paper.amdahl-1967
@@ -238,7 +238,7 @@ Mỗi mệnh đề về latency, scaling, cache, concurrency hoặc cost cần c
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.olap.mpp-strong-scaling-mimd-spmd-batch-simd`
+## Execution capsule: kiểm chứng `wiki.olap.mpp-strong-scaling-mimd-spmd-batch-simd`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.olap.mpp-strong-scaling-mimd-spmd-batch-simd`, sơ đồ, ví dụ và artifact về **MPP Strong Scaling - MIMD SPMD Batch and SIMD** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -260,7 +260,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Làm sao truy vết ba tầng parallelism của một MPP query và xác định strong-scaling ceiling bằng evidence thay vì gán mọi speedup cho số worker?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Làm sao truy vết ba tầng parallelism của một MPP query và xác định strong-scaling ceiling bằng evidence thay vì gán mọi speedup cho số worker? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **MPP Strong Scaling - MIMD SPMD Batch and SIMD** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

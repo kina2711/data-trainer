@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao chứng minh một API không chỉ nhận diện đúng caller mà còn kiểm đúng quyền trên từng object, từng action và trạng thái hiện tại, kể cả sau khi quyền bị thu hồi?
 source_ids:
   - src.web.owasp-bola-2023
@@ -78,7 +78,7 @@ Chỉ một `@requires_role("admin")` không đủ nếu admin bị giới hạn
 
 ## 5. Ownership là quan hệ, không nhất thiết là một cột
 
-“Owner” có thể là:
+Owner có thể là:
 
 - user tạo resource;
 - organization/tenant;
@@ -88,7 +88,7 @@ Chỉ một `@requires_role("admin")` không đủ nếu admin bị giới hạn
 - service account đại diện workload;
 - policy theo thuộc tính và mục đích sử dụng.
 
-Do đó ownership check nên được đặt tên theo quyền: `can_read_report(principal, report)` tốt hơn `is_owner`. Tên quyền phản ánh action và tránh mở rộng “owner” thành bypass tổng quát.
+Do đó ownership check nên được đặt tên theo quyền: `can_read_report(principal, report)` tốt hơn `is_owner`. Tên quyền phản ánh action và tránh mở rộng owner thành bypass tổng quát.
 
 ## 6. Đưa scope vào query khi có thể
 
@@ -103,7 +103,7 @@ WHERE id = :report_id
 
 Điều này giảm nguy cơ quên check, nhưng không thay policy engine cho rule phức tạp. Repository/API phải cho thấy scope bắt buộc; hàm `get_by_id(id)` dùng trong multi-tenant handler là dấu hiệu cần xem lại.
 
-Nếu cần phân biệt “không tồn tại” với “không được phép”, phải cân nhắc information disclosure. Trả cùng response ngoài nhưng ghi reason khác trong audit log là một lựa chọn thường dùng.
+Nếu cần phân biệt không tồn tại với không được phép, phải cân nhắc information disclosure. Trả cùng response ngoài nhưng ghi reason khác trong audit log là một lựa chọn thường dùng.
 
 ## 7. Reference-based check, không tin object từ client
 
@@ -135,7 +135,7 @@ Authorization logic tập trung về semantics nhưng enforcement được kiể
 
 Access token tự chứa cho phép resource server kiểm chữ ký và claim mà không gọi authorization server cho mỗi request. Đổi lại, claim có thể cũ cho tới khi token hết hạn nếu resource server không tra revocation/policy state hiện hành.
 
-Không được phát biểu “JWT không thể thu hồi”. Các lựa chọn gồm:
+Không được phát biểu JWT không thể thu hồi. Các lựa chọn gồm:
 
 - access token ngắn hạn để giới hạn stale window;
 - denylist/revocation state theo token/session ID;
@@ -175,7 +175,7 @@ WHERE id = :id
   AND version = :expected_version;
 ```
 
-Policy phức tạp qua dịch vụ ngoài không thể luôn atomic với database. Khi đó cần mô tả consistency window, operation intent, recheck hoặc compensation. Không tuyên bố “checked” như trạng thái tồn tại mãi.
+Policy phức tạp qua dịch vụ ngoài không thể luôn atomic với database. Khi đó cần mô tả consistency window, operation intent, recheck hoặc compensation. Không tuyên bố checked như trạng thái tồn tại mãi.
 
 ## 13. Negative test là bằng chứng chính
 
@@ -205,7 +205,7 @@ Thí nghiệm:
 6. ghi thời điểm request đầu tiên bị từ chối `t1`;
 7. báo `t1 - t0`, cache path, clock source và policy target.
 
-Nếu mục tiêu “dưới 60 giây”, test phải kiểm cả p95/p99 qua nhiều replica và tình huống cache/identity provider gián đoạn. Một lần chạy local không chứng minh SLO.
+Nếu mục tiêu dưới 60 giây, test phải kiểm cả p95/p99 qua nhiều replica và tình huống cache/identity provider gián đoạn. Một lần chạy local không chứng minh SLO.
 
 ## 15. Audit không được biến thành rò dữ liệu
 
@@ -260,18 +260,18 @@ Evidence pack gồm:
 - Database row-level security là defense-in-depth, không thay toàn bộ application authorization.
 
 ## Reference
-1. [[SRC-OWASP-BOLA-2023]] — object-level authorization trên mọi endpoint nhận object ID; API Security Top 10 2023, API1.
-2. [[SRC-OWASP-AUTHORIZATION-CHEAT-SHEET]] — deny by default, permission validation trên mọi request và server-side enforcement; truy cập 2026-09-28.
-3. [[SRC-OAUTH-SECURITY-BCP]] — access-token privilege restriction, sender constraint, refresh-token protection/rotation/replay detection; RFC 9700 §§2.2–2.3, 4.14.
+1. [[SRC-OWASP-BOLA-2023]]: object-level authorization trên mọi endpoint nhận object ID; API Security Top 10 2023, API1.
+2. [[SRC-OWASP-AUTHORIZATION-CHEAT-SHEET]]: deny by default, permission validation trên mọi request và server-side enforcement; truy cập 2026-09-28.
+3. [[SRC-OAUTH-SECURITY-BCP]]: access-token privilege restriction, sender constraint, refresh-token protection/rotation/replay detection; RFC 9700 §§2.2-2.3, 4.14.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
 | [[SRC-OWASP-BOLA-2023]] | object-level authorization và identifier limitation | §§1, 4, 7, 13 | Đã chuyển thành testable controls |
-| [[SRC-OWASP-AUTHORIZATION-CHEAT-SHEET]] | authn/authz separation, deny-default, every-request validation, server-side checks | §§1–3, 8 | Đã giữ đúng phạm vi khuyến nghị |
-| [[SRC-OAUTH-SECURITY-BCP]], §§2.2–2.3, 4.14 | privilege restriction, sender constraint, refresh rotation và expiry | §§9–11, 14 | Đã cập nhật theo RFC 2025; không nói JWT “không thể revoke” |
-| Tổng hợp DE-L106 | relationship model, query scoping, TOCTOU, negative matrix, revocation measurement | §§5–18 | Đã ghi thành synthesis và evidence, không gán nguyên văn cho nguồn |
+| [[SRC-OWASP-AUTHORIZATION-CHEAT-SHEET]] | authn/authz separation, deny-default, every-request validation, server-side checks | §§1-3, 8 | Đã giữ đúng phạm vi khuyến nghị |
+| [[SRC-OAUTH-SECURITY-BCP]], §§2.2-2.3, 4.14 | privilege restriction, sender constraint, refresh rotation và expiry | §§9-11, 14 | Đã cập nhật theo RFC 2025; không nói JWT không thể revoke |
+| Tổng hợp DE-L106 | relationship model, query scoping, TOCTOU, negative matrix, revocation measurement | §§5-18 | Đã ghi thành synthesis và evidence, không gán nguyên văn cho nguồn |
 
 Phạm vi đọc bao phủ authentication boundary, action/object authorization, ownership, token freshness, refresh replay và negative testing. Cryptographic implementation chi tiết và giao diện đăng nhập người dùng nằm ngoài objective.
 
@@ -285,7 +285,7 @@ Phạm vi đọc bao phủ authentication boundary, action/object authorization,
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.security.authentication-authorization-ownership-checks`
+## Execution capsule: kiểm chứng `wiki.security.authentication-authorization-ownership-checks`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.security.authentication-authorization-ownership-checks`, sơ đồ, ví dụ và artifact về **Xác thực, ủy quyền và kiểm quyền sở hữu** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

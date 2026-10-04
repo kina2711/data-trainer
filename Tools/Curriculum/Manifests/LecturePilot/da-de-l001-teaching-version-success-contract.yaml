@@ -1,0 +1,62 @@
+task_id: academy-build-scene-package
+instance_id: da-de-l001-teaching-version
+status: approved-baseline
+requested_at: 2026-10-04
+owner: kina2711
+lifecycle_profile: learning
+risk_tier: R2-standard
+execution_path: standard-path
+primary_deliverable: two spoken-teaching versions aligned to DA-L001 and DE-L001
+consumers:
+  - beginner learner
+  - instructor delivering the lesson
+acceptance:
+  lesson_ids: [DA-L001, DE-L001]
+  tab_label: Bản giảng dạy
+  spoken_language: direct Vietnamese
+  unexplained_jargon: forbidden
+  course_duration_language: forbidden
+  worked_example: required
+  guided_questions: required
+  misconception_checks: required
+  lesson_to_second_brain_links: required
+  web_desktop_rendering: required
+  editorial_police_pass: required
+  humanizer_pass: required
+  owner_approval_before_later_lessons: required
+assumptions:
+  learner_memory: No prior mastery claimed; all essential terms are introduced in the artifact.
+  scope: Only DA-L001 and DE-L001 receive the new teaching version before owner approval.
+recovery:
+  - remove teaching.md from the two L001 packages
+  - revert optional teaching asset indexing and tests
+  - rebuild the previous portal index
+release_policy: Approved as the authoring baseline. Later teaching versions must comply with lesson-authoring-v1.
+evidence:
+  DA-L001:
+    words: 2109
+    wiki_links: 3
+    web_tab: pass
+  DE-L001:
+    words: 2453
+    wiki_links: 4
+    mermaid_render: pass
+    web_tab: pass
+  humanizer:
+    source: blader/humanizer
+    version: 3.1.0
+    patterns_reviewed: 26
+    code_data_and_link_targets_preserved: true
+    result: pass
+  automated_checks:
+    - validate_l001_editorial_and_library.py: pass
+    - npm run brain:test: pass
+    - npm run lectures:first10:test: pass
+    - git diff --check: pass
+    - Electron smoke test: pass
+approval:
+  status: approved
+  approved_by: kina2711
+  approved_at: 2026-10-04
+  scope: DA-L001 and DE-L001 teaching versions as the baseline for later lessons
+open_gate: closed

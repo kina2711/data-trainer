@@ -47,28 +47,28 @@ Biến một yêu cầu mơ hồ thành quyết định, câu hỏi, cây chỉ 
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L185 · Decision-first discovery | LT | Chuyển một yêu cầu mơ hồ thành phát biểu quyết định đủ bốn phần và nhận ra yêu cầu không dẫn tới hành động nào. | Bốn phần đầy đủ ở ≥ 4/5 yêu cầu, và nhận ra đúng yêu cầu không dẫn tới hành động kèm cách xử lý. | M13: M12 |
-| L186 · Question decomposition and the metric tree | TH | Dựng cây chỉ số từ một quyết định sao cho mọi lá có chủ và có đòn bẩy, và mọi nút trỏ tới một hợp đồng. | Mọi lá có chủ và đòn bẩy cụ thể, mọi nút dẫn tới một hợp đồng, và chỉ số dẫn dắt được đánh dấu tách khỏi chỉ số kết quả. | L185 |
-| L187 · Requirements traceability | TH | Dựng ma trận truy ngược năm mắt và trả lời được cả hai chiều cho ba truy vấn kiểm tra. | Trả lời đúng cả ba câu hỏi chỉ bằng ma trận, và tìm được ít nhất một bảng không phục vụ quyết định nào. | L186 |
-| L188 · Product anatomy - what makes a dataset a product | LT | Chấm một tập dữ liệu theo tám thuộc tính và chỉ ra nó ở mức trưởng thành nào. | Chấm đúng ≥ 2/3 tập dữ liệu theo tám thuộc tính kèm bằng chứng, và sáu khái niệm được phân loại bằng ví dụ thật. | L187 |
-| L189 · Interface design for an analytical product | TH | Thiết kế giao diện cho một sản phẩm với tập cột công khai tối thiểu và chứng minh nó đủ cho ba câu hỏi nghiệp vụ. | Ba câu hỏi nghiệp vụ trả lời được bằng tập cột công khai, không cột nội bộ nào lộ ra, và người dùng thử không phải hỏi nghĩa cột. | L188 |
-| L190 · Contract compatibility for consumers | TH | Thực hiện một thay đổi phá vỡ theo quy trình hai giai đoạn mà không làm bên tiêu thụ nào lỗi. | Không bên tiêu thụ nào lỗi qua toàn bộ quá trình, danh sách người dùng được xác định trước khi bỏ, và thay đổi mức hai có thông báo. | L189 |
-| L191 · The documentation hierarchy | TH | Viết bộ tài liệu bốn tầng và chứng minh người lạ tìm được sản phẩm rồi dùng được trong giới hạn thời gian. | Người lạ quyết định được trong 30 giây và chạy được truy vấn đầu trong 10 phút, và bốn tầng tài liệu đều có nội dung. | L190 |
-| L192 · Search, discovery and the findability test | TH | Đo tỉ lệ tìm thấy bằng phép thử với người dùng thật và cải thiện được tỉ lệ đó sau một vòng sửa. | Có tỉ lệ tìm thấy ở cả hai vòng với vòng sau cao hơn, và danh sách từ khoá thất bại được dùng để sửa. | L191 |
-| L193 · Documentation tests | TH | Dựng bốn loại kiểm tài liệu chạy tự động và chặn được tài liệu lạc hậu ở mức nộp mã. | Bốn vi phạm đều bị chặn ở đúng loại kiểm, và ba thứ cần rà soát người được liệt kê rõ. | L192 |
-| L194 · Self-service UX and the enablement boundary | LT | Chấm mức tự phục vụ hiện tại theo bốn điều kiện và xác định ranh giới hỗ trợ cho một đội cho trước. | Bốn điều kiện được chấm có bằng chứng, phân đúng ≥ 7/10 câu hỏi vào ba mức, và ranh giới hỗ trợ nêu rõ hai phía. | L193 |
-| L195 · Task-based usability testing | TH | Chạy được hai vòng thử khả dụng và chứng minh bốn số đo cải thiện ở vòng hai. | Bốn số đo đủ ở cả hai vòng, ≥ 3 số cải thiện, và chỗ không cải thiện có giải thích. | L194 |
-| L196 · Serving, access and security for consumers | TH | Mở ba đường phục vụ với chính sách nhất quán và đạt ba yêu cầu phi chức năng. | Phép thử phủ định cho kết quả giống nhau ở cả ba đường, ba yêu cầu phi chức năng đạt, và dữ liệu môi trường thử đã che. | L195 |
-| L197 · Adoption metrics that are not vanity | TH | Chọn bộ chỉ số mức dùng hợp lệ cho một sản phẩm và giải thích vì sao ba chỉ số phù phiếm bị loại. | Bốn chỉ số hợp lệ đo được từ dữ liệu thật, ba chỉ số phù phiếm được chỉ ra dẫn tới kết luận sai thế nào, và mỗi chỉ số có cảnh báo hành vi xấu. | L196 |
-| L198 · Cost to serve | TH | Tính chi phí bốn thành phần cho ba sản phẩm và đề xuất khai tử có căn cứ cho ít nhất một cái. | Bốn thành phần có số hoặc ước lượng có căn cứ cho cả ba sản phẩm, và đề xuất khai tử dẫn được từ bảng kèm phương án thay thế. | L197 |
-| L199 · Reverse ETL and the shadow operational system | LT | Nhận ra một hệ vận hành ngầm đang hình thành và nêu bốn ràng buộc phải tôn trọng khi đẩy ngược. | Nhận đúng ≥ 2/3 trường hợp có rủi ro kèm ràng buộc bị vi phạm, và vẽ đúng chỗ vòng phản hồi hình thành. | L198 |
-| L200 · Lifecycle and the operating model | TH | Vận hành vòng đời sáu giai đoạn với cửa chứng nhận và vòng phản hồi đọc được từ dữ liệu hỗ trợ. | Sản phẩm thiếu điều kiện bị chặn chứng nhận, và ba câu hỏi lặp lại được chuyển thành thay đổi thiết kế cụ thể. | L199 |
-| L201 · Capstone - a governed customer health data product | DA | Nộp sản phẩm đủ tám hạng mục, không vi phạm bốn điều kiện tự động không đạt. | Tám hạng mục đầy đủ, hai vòng thử khả dụng có bốn số đo với vòng hai cải thiện ≥ 3 số, và không vi phạm bốn điều kiện tự động không đạt. | L200 |
-| L202 · Gate 5 - defend a metric definition and prove self-service | KT | Bảo vệ một định nghĩa chỉ số trước chất vấn, chứng minh nó không đếm trùng, và trình ra bằng chứng người khác dùng được sản phẩm. | Đạt ≥ 70/100, phần B và C đều ≥ 60%. Chỉ số nào không khớp đối soát của hội đồng thì phần B của chỉ số đó bằng không; bằng chứng tự phục vụ bằng chỉ số phù phiếm thì phần E bằng không. | L201 |
+| L185 · [[wiki.data-product.decision-first-discovery|Decision-first discovery]]| LT | Chuyển một yêu cầu mơ hồ thành phát biểu quyết định đủ bốn phần và nhận ra yêu cầu không dẫn tới hành động nào. | Bốn phần đầy đủ ở ≥ 4/5 yêu cầu, và nhận ra đúng yêu cầu không dẫn tới hành động kèm cách xử lý. | M13: M12 |
+| L186 · [[wiki.data-product.metric-tree|Question decomposition and the metric tree]]| TH | Dựng cây chỉ số từ một quyết định sao cho mọi lá có chủ và có đòn bẩy, và mọi nút trỏ tới một hợp đồng. | Mọi lá có chủ và đòn bẩy cụ thể, mọi nút dẫn tới một hợp đồng, và chỉ số dẫn dắt được đánh dấu tách khỏi chỉ số kết quả. | L185 |
+| L187 · [[wiki.data-product.requirements-traceability|Requirements traceability]]| TH | Dựng ma trận truy ngược năm mắt và trả lời được cả hai chiều cho ba truy vấn kiểm tra. | Trả lời đúng cả ba câu hỏi chỉ bằng ma trận, và tìm được ít nhất một bảng không phục vụ quyết định nào. | L186 |
+| L188 · [[wiki.data-product.product-anatomy|Product anatomy - what makes a dataset a product]]| LT | Chấm một tập dữ liệu theo tám thuộc tính và chỉ ra nó ở mức trưởng thành nào. | Chấm đúng ≥ 2/3 tập dữ liệu theo tám thuộc tính kèm bằng chứng, và sáu khái niệm được phân loại bằng ví dụ thật. | L187 |
+| L189 · [[wiki.data-product.interface-design|Interface design for an analytical product]]| TH | Thiết kế giao diện cho một sản phẩm với tập cột công khai tối thiểu và chứng minh nó đủ cho ba câu hỏi nghiệp vụ. | Ba câu hỏi nghiệp vụ trả lời được bằng tập cột công khai, không cột nội bộ nào lộ ra, và người dùng thử không phải hỏi nghĩa cột. | L188 |
+| L190 · [[wiki.data-product.contract-compatibility|Contract compatibility for consumers]]| TH | Thực hiện một thay đổi phá vỡ theo quy trình hai giai đoạn mà không làm bên tiêu thụ nào lỗi. | Không bên tiêu thụ nào lỗi qua toàn bộ quá trình, danh sách người dùng được xác định trước khi bỏ, và thay đổi mức hai có thông báo. | L189 |
+| L191 · [[wiki.data-product.documentation-hierarchy|The documentation hierarchy]]| TH | Viết bộ tài liệu bốn tầng và chứng minh người lạ tìm được sản phẩm rồi dùng được trong giới hạn thời gian. | Người lạ quyết định được trong 30 giây và chạy được truy vấn đầu trong 10 phút, và bốn tầng tài liệu đều có nội dung. | L190 |
+| L192 · [[wiki.data-product.findability-test|Search, discovery and the findability test]]| TH | Đo tỉ lệ tìm thấy bằng phép thử với người dùng thật và cải thiện được tỉ lệ đó sau một vòng sửa. | Có tỉ lệ tìm thấy ở cả hai vòng với vòng sau cao hơn, và danh sách từ khoá thất bại được dùng để sửa. | L191 |
+| L193 · [[wiki.data-product.documentation-tests|Documentation tests]]| TH | Dựng bốn loại kiểm tài liệu chạy tự động và chặn được tài liệu lạc hậu ở mức nộp mã. | Bốn vi phạm đều bị chặn ở đúng loại kiểm, và ba thứ cần rà soát người được liệt kê rõ. | L192 |
+| L194 · [[wiki.data-product.self-service-enablement-boundary|Self-service UX and the enablement boundary]]| LT | Chấm mức tự phục vụ hiện tại theo bốn điều kiện và xác định ranh giới hỗ trợ cho một đội cho trước. | Bốn điều kiện được chấm có bằng chứng, phân đúng ≥ 7/10 câu hỏi vào ba mức, và ranh giới hỗ trợ nêu rõ hai phía. | L193 |
+| L195 · [[wiki.data-product.task-based-usability-testing|Task-based usability testing]]| TH | Chạy được hai vòng thử khả dụng và chứng minh bốn số đo cải thiện ở vòng hai. | Bốn số đo đủ ở cả hai vòng, ≥ 3 số cải thiện, và chỗ không cải thiện có giải thích. | L194 |
+| L196 · [[wiki.data-product.serving-access-security|Serving, access and security for consumers]]| TH | Mở ba đường phục vụ với chính sách nhất quán và đạt ba yêu cầu phi chức năng. | Phép thử phủ định cho kết quả giống nhau ở cả ba đường, ba yêu cầu phi chức năng đạt, và dữ liệu môi trường thử đã che. | L195 |
+| L197 · [[wiki.data-product.adoption-metrics|Adoption metrics that are not vanity]]| TH | Chọn bộ chỉ số mức dùng hợp lệ cho một sản phẩm và giải thích vì sao ba chỉ số phù phiếm bị loại. | Bốn chỉ số hợp lệ đo được từ dữ liệu thật, ba chỉ số phù phiếm được chỉ ra dẫn tới kết luận sai thế nào, và mỗi chỉ số có cảnh báo hành vi xấu. | L196 |
+| L198 · [[wiki.data-product.cost-to-serve|Cost to serve]]| TH | Tính chi phí bốn thành phần cho ba sản phẩm và đề xuất khai tử có căn cứ cho ít nhất một cái. | Bốn thành phần có số hoặc ước lượng có căn cứ cho cả ba sản phẩm, và đề xuất khai tử dẫn được từ bảng kèm phương án thay thế. | L197 |
+| L199 · [[wiki.data-product.reverse-etl-shadow-system|Reverse ETL and the shadow operational system]]| LT | Nhận ra một hệ vận hành ngầm đang hình thành và nêu bốn ràng buộc phải tôn trọng khi đẩy ngược. | Nhận đúng ≥ 2/3 trường hợp có rủi ro kèm ràng buộc bị vi phạm, và vẽ đúng chỗ vòng phản hồi hình thành. | L198 |
+| L200 · [[wiki.data-product.lifecycle-operating-model|Lifecycle and the operating model]]| TH | Vận hành vòng đời sáu giai đoạn với cửa chứng nhận và vòng phản hồi đọc được từ dữ liệu hỗ trợ. | Sản phẩm thiếu điều kiện bị chặn chứng nhận, và ba câu hỏi lặp lại được chuyển thành thay đổi thiết kế cụ thể. | L199 |
+| L201 · [[wiki.data-product.customer-health-capstone|Capstone - a governed customer health data product]]| DA | Nộp sản phẩm đủ tám hạng mục, không vi phạm bốn điều kiện tự động không đạt. | Tám hạng mục đầy đủ, hai vòng thử khả dụng có bốn số đo với vòng hai cải thiện ≥ 3 số, và không vi phạm bốn điều kiện tự động không đạt. | L200 |
+| L202 · [[wiki.data-product.gate-5-metric-self-service|Gate 5 - defend a metric definition and prove self-service]]| KT | Bảo vệ một định nghĩa chỉ số trước chất vấn, chứng minh nó không đếm trùng, và trình ra bằng chứng người khác dùng được sản phẩm. | Đạt ≥ 70/100, phần B và C đều ≥ 60%. Chỉ số nào không khớp đối soát của hội đồng thì phần B của chỉ số đó bằng không; bằng chứng tự phục vụ bằng chỉ số phù phiếm thì phần E bằng không. | L201 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M13 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M13 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -119,7 +119,7 @@ flowchart LR
   class A185,A186,A187,A188,A189,A190,A191,A192,A193,A194,A195,A196,A197,A198,A199,A200,A201,A202 atom;
 ```
 
-### Bài 185: Decision-first discovery
+### Lesson 185: Decision-first discovery
 
 Bài mở module bằng cách đảo ngược thứ tự quen thuộc: bắt đầu từ quyết định chứ từ dữ liệu có sẵn. Bốn câu hỏi phải trả lời trước khi dựng bất cứ thứ gì: quyết định nào sẽ được đưa ra, ai đưa ra, theo nhịp nào, và hành động thay đổi ra sao tuỳ kết quả. Câu cuối là câu lọc mạnh nhất: nếu mọi kết quả đều dẫn tới cùng một hành động thì phân tích đó không cần làm. Phân biệt ba loại yêu cầu và cách xử lý khác nhau: yêu cầu có quyết định rõ, yêu cầu tò mò không gắn hành động, và yêu cầu thực ra là một yêu cầu vận hành chứ phân tích. Nối với Bài 1: phát biểu bài toán sáu phần áp vào đây với phần phi mục tiêu đặc biệt quan trọng. Ba câu hỏi để phát hiện yêu cầu là dashboard theo thói quen chứ theo nhu cầu quyết định thật.
 
@@ -127,7 +127,7 @@ Người học phải chuyển một yêu cầu mơ hồ thành phát biểu quy
 
 Cách đánh giá: Tầng *áp dụng*. Bài mở module, áp một khung phỏng vấn vào tình huống mới. Kiểm bằng năm yêu cầu trong đó ít nhất một không dẫn tới hành động; đạt khi bốn phần đầy đủ ở ít nhất bốn yêu cầu và nhận ra đúng yêu cầu nên từ chối.
 
-### Bài 186: Question decomposition and the metric tree
+### Lesson 186: Question decomposition and the metric tree
 
 Một quyết định phân rã thành câu hỏi, câu hỏi phân rã thành chỉ số, và chỉ số phân rã thành thành phần điều khiển được. Cây chỉ số là công cụ trung tâm: chỉ số đầu ra ở gốc, các thành phần nhân hoặc cộng ở dưới, cho tới khi tới các lá mà một đội cụ thể tác động được. Phép thử của một cây tốt: mọi lá có người sở hữu và có đòn bẩy tác động được, nếu không thì cây chỉ là phép chia số học không dẫn tới hành động. Ví dụ phân rã doanh thu thành số khách nhân tần suất nhân giá trị đơn nhân biên lợi nhuận, rồi mỗi thành phần lại phân rã tiếp. Phân biệt chỉ số dẫn dắt với chỉ số kết quả và vì sao dashboard chỉ có chỉ số kết quả thì luôn tới muộn. Mỗi chỉ số trong cây phải trỏ tới một hợp đồng sáu phần ở Bài 166 chứ chỉ một cái tên.
 
@@ -135,7 +135,7 @@ Người học phải dựng cây chỉ số từ một quyết định sao cho 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có phép thử khách quan ở mọi lá. Kiểm bằng rà soát cây; đạt khi mọi lá có chủ và đòn bẩy, và mọi nút dẫn được tới một hợp đồng chỉ số.
 
-### Bài 187: Requirements traceability
+### Lesson 187: Requirements traceability
 
 Khả năng truy ngược là thứ phân biệt một sản phẩm dữ liệu với một đống bảng. Chuỗi truy ngược đầy đủ có năm mắt: quyết định, câu hỏi, chỉ số, mô hình, và bảng nguồn. Từ bất kỳ mắt nào phải đi được cả hai chiều: từ một cột trong bảng nguồn trả lời được nó phục vụ quyết định nào, và từ một quyết định liệt kê được mọi thứ nó phụ thuộc. Công dụng thực tế và đo được: khi một nguồn đổi lược đồ thì biết ngay quyết định nào bị ảnh hưởng để báo đúng người; và khi cần cắt chi phí thì biết bảng nào không phục vụ quyết định nào để bỏ. Cách ghi lại chuỗi truy ngược: ma trận truy ngược trong kho mã chứ trong tài liệu rời, để nó được rà soát cùng mã. Quan hệ với lineage kỹ thuật ở M19: lineage nối bảng với bảng, còn truy ngược nối bảng với quyết định, và cần cả hai.
 
@@ -143,7 +143,7 @@ Người học phải dựng ma trận truy ngược năm mắt và trả lời 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu bằng việc trả lời câu hỏi hai chiều. Kiểm bằng ba câu hỏi truy ngược; đạt khi trả lời đúng cả ba chỉ bằng ma trận và tìm được ít nhất một bảng không phục vụ quyết định nào.
 
-### Bài 188: Product anatomy - what makes a dataset a product
+### Lesson 188: Product anatomy - what makes a dataset a product
 
 Bài phân biệt sáu thứ hay bị gọi chung là sản phẩm dữ liệu: tập dữ liệu, mart, dashboard, mô hình ngữ nghĩa, giao diện chỉ số, và sản phẩm dữ liệu. Tám thuộc tính làm một tập dữ liệu thành sản phẩm: có chủ sở hữu tên cụ thể, có người tiêu thụ xác định, có giao diện ổn định, có hợp đồng, có cam kết mức dịch vụ, có tài liệu, có chính sách truy cập, và có kế hoạch khai tử. Thiếu thuộc tính cuối là dấu hiệu rõ nhất của một thứ chưa phải sản phẩm: không ai nghĩ tới việc nó sẽ chết thì nó sẽ sống mãi mà không ai dùng. So sánh với sản phẩm phần mềm: điểm giống là vòng đời và hợp đồng, điểm khác là người tiêu thụ thường không biết mình cần gì cho tới khi thấy số. Ba mức trưởng thành và cách nhận ra đội đang ở mức nào.
 
@@ -151,7 +151,7 @@ Người học phải chấm một tập dữ liệu theo tám thuộc tính và
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết đặt tiêu chuẩn cho phần còn lại của module. Kiểm bằng bài chấm ba tập dữ liệu; đạt khi chấm đúng ít nhất hai theo tám thuộc tính và chỉ đúng thuộc tính thiếu quan trọng nhất.
 
-### Bài 189: Interface design for an analytical product
+### Lesson 189: Interface design for an analytical product
 
 Giao diện của một sản phẩm dữ liệu là thứ người tiêu thụ dựa vào, nên nó là phần phải ổn định nhất. Bốn dạng giao diện và điều kiện dùng: bảng trong kho, khung nhìn, giao diện chỉ số qua tầng ngữ nghĩa ở M12, và tệp xuất ra. Nguyên tắc thiết kế: lộ ra ít nhất có thể, vì mọi cột lộ ra đều thành hợp đồng mà ai đó sẽ dựa vào, theo đúng nguyên tắc che giấu thông tin ở Bài 90. Ba quyết định phải chốt: hạt của giao diện, tập cột công khai so với cột nội bộ, và quy ước đặt tên. Quy ước đặt tên nhất quán quan trọng hơn quy ước đẹp; đặt tên theo từ vựng nghiệp vụ ở Bài 89 chứ theo tên cột nguồn. Ba cách người tiêu thụ sẽ dùng sai giao diện nếu không thiết kế trước, và cách chặn từng cái bằng thiết kế chứ bằng tài liệu.
 
@@ -159,7 +159,7 @@ Người học phải thiết kế giao diện cho một sản phẩm với tậ
 
 Cách đánh giá: Tầng *áp dụng*. Objective có hai ràng buộc đối nghịch là tối thiểu và đủ dùng. Kiểm bằng ba câu hỏi nghiệp vụ; đạt khi cả ba trả lời được bằng tập cột công khai và không cột nội bộ nào bị lộ.
 
-### Bài 190: Contract compatibility for consumers
+### Lesson 190: Contract compatibility for consumers
 
 Hợp đồng của sản phẩm dữ liệu gồm những gì và đổi nó thế nào cho an toàn. Năm phần: lược đồ, ngữ nghĩa từng trường, cam kết chất lượng, cam kết độ tươi, và quy trình thay đổi. Ba mức thay đổi theo đúng phân loại ở Bài 94 và 182: tương thích, làm đổi số, và phá vỡ. Quy tắc: thêm cột thì an toàn, đổi nghĩa một cột mà giữ nguyên tên là mức nguy hiểm nhất vì không có gì báo hiệu. Quy trình đổi hai giai đoạn cho thay đổi phá vỡ, theo Bài 97: thêm cái mới, chạy song song, thông báo, cho cửa sổ chuyển, rồi mới bỏ cái cũ. Cửa sổ chuyển đủ dài là bao lâu và ai quyết. Phát hiện ai đang dùng cái sắp bỏ: đây là chỗ nhật ký truy vấn và lineage ở M19 trả cổ tức, vì không biết ai dùng thì không dám bỏ gì cả.
 
@@ -167,7 +167,7 @@ Người học phải thực hiện một thay đổi phá vỡ theo quy trình 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu bằng việc bên tiêu thụ không lỗi lần nào. Kiểm bằng thí nghiệm đổi có tải; đạt khi không bên tiêu thụ nào lỗi và danh sách người dùng cái cũ được xác định trước khi bỏ.
 
-### Bài 191: The documentation hierarchy
+### Lesson 191: The documentation hierarchy
 
 Tài liệu cho sản phẩm dữ liệu có bốn tầng phục vụ bốn nhu cầu khác nhau, và viết gộp làm cả bốn không dùng được. Tầng khám phá trả lời sản phẩm này là gì và có phải thứ tôi cần không, đọc trong 30 giây. Tầng bắt đầu trả lời làm sao dùng ngay, gồm ba truy vấn mẫu chạy được. Tầng tham chiếu mô tả từng trường, từng chỉ số, hạt, và độ tươi. Tầng ngữ cảnh giải thích quyết định thiết kế và hạn chế diễn giải tức kết luận nào dữ liệu này không cho phép rút ra, phần đã nêu ở Bài 163 và là phần chặn nhiều kết luận sai nhất. Nguyên tắc chung: tài liệu nằm cạnh mã và được rà soát cùng mã, chứ trong một trang wiki rời sẽ lạc hậu sau ba tháng. Ba thứ không nên có trong tài liệu vì chúng chắc chắn lạc hậu.
 
@@ -175,7 +175,7 @@ Người học phải viết bộ tài liệu bốn tầng và chứng minh ngư
 
 Cách đánh giá: Tầng *áp dụng*. Objective đo bằng thời gian và kết quả của người đọc, chứ bằng độ dài tài liệu. Kiểm bằng phép thử tính giờ; đạt khi người lạ quyết định được sản phẩm có phù hợp trong 30 giây và chạy được truy vấn đầu trong 10 phút.
 
-### Bài 192: Search, discovery and the findability test
+### Lesson 192: Search, discovery and the findability test
 
 Sản phẩm tốt mà không ai tìm thấy thì bằng không tồn tại, và khả năng tìm thấy là thứ đo được chứ giả định. Bốn yếu tố quyết định: tên đặt theo từ người dùng tìm chứ theo từ kỹ thuật, mô tả một dòng chứa từ khoá họ dùng, nhãn phân loại theo miền nghiệp vụ, và chỉ dấu mức độ tin cậy như đã chứng nhận hay còn thử nghiệm. Phép thử khả năng tìm thấy: cho năm người dùng thật một nhu cầu và tính tỉ lệ họ tìm ra đúng sản phẩm trong ba phút mà không hỏi ai; tỉ lệ đó là chỉ số, không phải số sản phẩm đã đăng ký trong danh mục. Ba lý do khiến người dùng dựng bản sao riêng thay vì dùng sản phẩm có sẵn, và cả ba đều là lỗi của khả năng tìm thấy chứ của người dùng. Quan hệ với danh mục dữ liệu ở M19: danh mục là công cụ, còn khả năng tìm thấy là kết quả.
 
@@ -183,7 +183,7 @@ Người học phải đo tỉ lệ tìm thấy bằng phép thử với ngườ
 
 Cách đánh giá: Tầng *đánh giá*. Objective đo bằng hành vi người dùng chứ bằng cấu hình công cụ. Kiểm bằng phép thử hai vòng; đạt khi có số đo cả hai vòng và vòng sau cao hơn vòng trước.
 
-### Bài 193: Documentation tests
+### Lesson 193: Documentation tests
 
 Tài liệu sai còn nguy hiểm hơn không có tài liệu, vì người đọc tin nó. Bốn loại kiểm tự động giữ tài liệu khớp thực tế: mọi cột công khai có mô tả, mọi truy vấn mẫu trong tài liệu chạy được và trả về dòng, mọi chỉ số nhắc trong tài liệu tồn tại trong tầng ngữ nghĩa, và cam kết độ tươi trong tài liệu khớp lịch làm mới thật. Loại thứ hai là loại có giá trị cao nhất và hay bị bỏ: truy vấn mẫu hỏng là thứ người mới gặp đầu tiên và mất niềm tin ngay. Những kiểm tra này chạy trong tích hợp liên tục và chặn hợp nhất theo Bài 96, nên tài liệu không thể lạc hậu quá một lần nộp mã. Nguyên tắc: tài liệu là mã, nên nó được kiểm như mã. Ba thứ không kiểm tự động được và cần rà soát người, gồm cả phần hạn chế diễn giải.
 
@@ -191,7 +191,7 @@ Người học phải dựng bốn loại kiểm tài liệu chạy tự động
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cửa chặn tự động có tiêu chí nghiệm thu bằng phép thử tiêm. Kiểm bằng bốn vi phạm tiêm; đạt khi cả bốn bị chặn ở đúng loại kiểm.
 
-### Bài 194: Self-service UX and the enablement boundary
+### Lesson 194: Self-service UX and the enablement boundary
 
 Tự phục vụ là mục tiêu hay được tuyên bố và hiếm khi đạt, vì nó thường bị hiểu thành cấp quyền truy cập cho nhiều người hơn. Bốn điều kiện thật của tự phục vụ: người dùng tìm được sản phẩm theo Bài 192, hiểu được nghĩa mà không hỏi, dùng được mà không viết SQL phức tạp, và tin được số. Thiếu điều kiện nào thì họ quay lại hỏi đội dữ liệu, và khi đó tự phục vụ chỉ tồn tại trên giấy. Ranh giới hỗ trợ: đội dữ liệu chịu trách nhiệm tới đâu và người dùng tự lo từ đâu; ranh giới mơ hồ làm đội dữ liệu thành bộ phận trả lời câu hỏi lặt vặt. Ba mức tự phục vụ theo độ khó câu hỏi, và việc không phải câu hỏi nào cũng nên tự phục vụ: câu hỏi cần suy luận nhân quả thì vẫn cần người phân tích, và nói rõ điều đó là trung thực chứ thất bại.
 
@@ -199,7 +199,7 @@ Người học phải chấm mức tự phục vụ hiện tại theo bốn đi�
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết chuẩn bị cho phép thử khả dụng ở Bài 195. Kiểm bằng bài chấm cộng bài phân loại; đạt khi chấm bốn điều kiện có bằng chứng và phân đúng ít nhất bảy trong mười câu hỏi theo ba mức.
 
-### Bài 195: Task-based usability testing
+### Lesson 195: Task-based usability testing
 
 Bài đặt ra phương pháp đo duy nhất được chấp nhận trong module này. Phép thử khả dụng theo tác vụ: đưa người dùng thật một tác vụ nghiệp vụ, không hướng dẫn, tính giờ và ghi lại mọi chỗ họ vấp; không hỏi họ thấy có dễ dùng không, vì câu trả lời đó không dự đoán được hành vi. Bốn số đo: tỉ lệ hoàn thành, thời gian tới kết quả đúng, số lần phải hỏi người khác, và số lần ra kết quả sai mà họ tin là đúng; số đo thứ tư là số đo quan trọng nhất và hay bị bỏ, vì kết quả sai mà tự tin nguy hiểm hơn không ra kết quả. Cỡ mẫu đủ dùng: năm người phát hiện phần lớn vấn đề nghiêm trọng. Quy trình: chuẩn bị tác vụ, chạy, tổng hợp theo mức nghiêm trọng, sửa, rồi chạy lại vòng hai với người khác.
 
@@ -207,7 +207,7 @@ Người học phải chạy được hai vòng thử khả dụng và chứng m
 
 Cách đánh giá: Tầng *đánh giá*. Objective đo bằng hành vi người dùng thật, và đây là tiêu chí nghiệm thu chính của cả module. Kiểm bằng hai vòng thử; đạt khi có đủ bốn số đo ở cả hai vòng và ít nhất ba số cải thiện.
 
-### Bài 196: Serving, access and security for consumers
+### Lesson 196: Serving, access and security for consumers
 
 Đưa sản phẩm tới người dùng an toàn và đủ nhanh. Ba đường phục vụ và người dùng tương ứng: công cụ BI cho người không viết mã, SQL trực tiếp cho người phân tích, và giao diện lập trình cho hệ khác. Chính sách truy cập kế thừa từ tầng ngữ nghĩa ở Bài 180, nhưng phải kiểm lại ở từng đường vì cấu hình có thể lệch. Ba yêu cầu phi chức năng phải đo: thời gian phản hồi ở phân vị 95, số người dùng đồng thời chịu được, và hành vi khi quá tải, theo Bài 179 và 87. Phân loại dữ liệu và che dữ liệu nhạy cảm cho môi trường không phải sản xuất. Ba lỗi hay gặp khi mở quyền: cấp theo cá nhân thay vì theo vai nên không quản được, cấp quyền tạm rồi quên thu hồi, và sao chép dữ liệu ra ngoài phạm vi kiểm soát. Nhật ký truy cập là đầu vào cho đo mức dùng ở Bài 197.
 
@@ -215,7 +215,7 @@ Người học phải mở ba đường phục vụ với chính sách nhất qu
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu gồm cả bảo mật lẫn hiệu năng. Kiểm bằng phép thử phủ định ở cả ba đường cộng phép thử tải; đạt khi chính sách nhất quán ở ba đường và ba yêu cầu phi chức năng đạt.
 
-### Bài 197: Adoption metrics that are not vanity
+### Lesson 197: Adoption metrics that are not vanity
 
 Đo mức dùng sai cách dẫn tới tối ưu sai thứ, nên bài này tách chỉ số hợp lệ khỏi chỉ số phù phiếm. Ba chỉ số phù phiếm và lý do vô nghĩa: số bảng đã dựng đo khối lượng chứ giá trị; số dashboard đã tạo thường tương quan nghịch với chất lượng; số người có quyền truy cập không nói gì về việc họ có dùng không. Bốn chỉ số hợp lệ: số người dùng hoạt động theo tần suất tự nhiên của quyết định, tỉ lệ câu hỏi được trả lời mà không cần đội dữ liệu can thiệp, số quyết định có dẫn chứng từ sản phẩm, và tỉ lệ người dùng quay lại sau lần đầu. Chỉ số thứ hai là chỉ số trung tâm vì nó đo đúng định nghĩa tự phục vụ ở Bài 194. Đo niềm tin: tỉ lệ người dùng tự kiểm chứng lại số bằng nguồn khác là chỉ số nghịch đảo của niềm tin. Ba cách đo làm hỏng hành vi nếu đội bị chấm theo chúng.
 
@@ -223,7 +223,7 @@ Người học phải chọn bộ chỉ số mức dùng hợp lệ cho một s�
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi phán đoán về chất lượng của chính phép đo, chứ chỉ đo. Kiểm bằng bài chọn cộng dựng đo; đạt khi loại đúng ba chỉ số phù phiếm và bốn chỉ số hợp lệ đều đo được từ dữ liệu có sẵn.
 
-### Bài 198: Cost to serve
+### Lesson 198: Cost to serve
 
 Một sản phẩm dữ liệu có chi phí và không đo thì không biết nó có đáng giữ không. Bốn thành phần chi phí: tính toán để dựng, lưu trữ, tính toán để phục vụ truy vấn, và thời gian người để vận hành cùng hỗ trợ. Thành phần thứ tư thường lớn nhất và hầu như không bao giờ được tính. Chi phí trên mỗi đơn vị giá trị: chia chi phí cho số quyết định được phục vụ hoặc số người dùng hoạt động, và con số đó là thứ so sánh được giữa các sản phẩm. Ba sản phẩm nên cân nhắc khai tử: chi phí cao mà ít người dùng, trùng lặp với sản phẩm khác, và không truy được về quyết định nào theo Bài 187. Quyết định khai tử là quyết định có bên liên quan nên cần quy trình ở Bài 200. Cảnh báo về tối ưu chi phí quá đà: cắt độ tươi để giảm chi phí làm sản phẩm mất giá trị cho quyết định cần dữ liệu mới.
 
@@ -231,7 +231,7 @@ Người học phải tính chi phí bốn thành phần cho ba sản phẩm và
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi nối chi phí với giá trị, chứ chỉ cắt chi phí. Kiểm bằng bảng chi phí ba sản phẩm; đạt khi cả bốn thành phần có số hoặc ước lượng có căn cứ và đề xuất khai tử dẫn được từ bảng.
 
-### Bài 199: Reverse ETL and the shadow operational system
+### Lesson 199: Reverse ETL and the shadow operational system
 
 Đẩy dữ liệu từ kho phân tích ngược về hệ vận hành là nhu cầu có thật, và cũng là chỗ dễ tạo ra một hệ vận hành ngầm nguy hiểm. Bốn ràng buộc phải tôn trọng khi làm: ranh giới trách nhiệm tức kho phân tích không được trở thành nguồn sự thật cho nghiệp vụ; tính bất biến khi đẩy lại theo Bài 105; quyền riêng tư vì dữ liệu tổng hợp đẩy ngược có thể chứa thông tin không được phép dùng cho mục đích vận hành; và vòng phản hồi tức dữ liệu đẩy về hệ vận hành rồi lại được nạp lên kho tạo vòng lặp làm hỏng phân tích. Vấn đề thứ tư tinh vi nhất và khó phát hiện nhất. Ba dấu hiệu một hệ vận hành ngầm đang hình thành: nghiệp vụ phụ thuộc kho phân tích để chạy quy trình hằng ngày, kho phân tích có cam kết mức dịch vụ của hệ vận hành mà không có năng lực vận hành tương ứng, và không ai biết dữ liệu gốc nằm ở đâu.
 
@@ -239,7 +239,7 @@ Người học phải nhận ra một hệ vận hành ngầm đang hình thành
 
 Cách đánh giá: Tầng *phân tích*. Objective là nhận ra một rủi ro kiến trúc trước khi nó cố định. Kiểm bằng ba kiến trúc; đạt khi nhận ra đúng ít nhất hai trường hợp có rủi ro và chỉ ra ràng buộc bị vi phạm.
 
-### Bài 200: Lifecycle and the operating model
+### Lesson 200: Lifecycle and the operating model
 
 Bài chốt phần quản trị của module. Vòng đời sản phẩm dữ liệu sáu giai đoạn: đề xuất, dựng, chứng nhận, vận hành, khai tử, và gỡ. Điều kiện chuyển giai đoạn lấy từ các bài trước: được chứng nhận khi có đủ tám thuộc tính ở Bài 188, hợp đồng ở Bài 190, tài liệu bốn tầng ở Bài 191, và qua phép thử khả dụng ở Bài 195. Mô hình vận hành: ai trực khi sản phẩm hỏng, cam kết thời gian phản hồi theo mức nghiêm trọng, và kênh nhận phản hồi từ người dùng. Vòng phản hồi vận hành là thứ phân biệt sản phẩm sống với sản phẩm bị bỏ: thu thập câu hỏi người dùng hỏi, phân loại, và dùng chúng làm đầu vào cho việc sửa tài liệu và sửa thiết kế. Câu hỏi lặp lại nhiều lần là lỗi thiết kế chứ nhu cầu đào tạo, và đó là cách đọc đúng dữ liệu hỗ trợ.
 
@@ -247,7 +247,7 @@ Người học phải vận hành vòng đời sáu giai đoạn với cửa ch�
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một quy trình có cửa chặn và một vòng cải tiến đo được. Kiểm bằng ba sản phẩm đi qua vòng đời; đạt khi sản phẩm thiếu điều kiện bị chặn chứng nhận và câu hỏi lặp lại được chuyển thành thay đổi thiết kế.
 
-### Bài 201: Capstone - a governed customer health data product
+### Lesson 201: Capstone - a governed customer health data product
 
 Bài dự án khép module, lấy đúng yêu cầu capstone của hợp đồng nguồn. Dựng một sản phẩm dữ liệu về sức khoẻ khách hàng. Sản phẩm nộp gồm tám hạng mục: phát biểu quyết định bốn phần và cây chỉ số có chủ ở mọi lá; ma trận truy ngược năm mắt; hợp đồng năm phần; giao diện có tập cột công khai tối thiểu; bộ tài liệu bốn tầng có hạn chế diễn giải; chính sách truy cập ba đường có phép thử phủ định; kết quả hai vòng thử khả dụng với bốn số đo; và bảng chi phí bốn thành phần cùng kế hoạch khai tử. Bốn điều kiện tự động không đạt lấy từ phần *Critical failures* của nguồn: có chỉ số không truy được về quyết định, chưa chạy phép thử khả dụng, thiếu hạn chế diễn giải, hoặc dùng chỉ số phù phiếm làm bằng chứng mức dùng.
 
@@ -255,11 +255,11 @@ Người học phải nộp sản phẩm đủ tám hạng mục, không vi ph�
 
 Cách đánh giá: Tầng *sáng tạo*. Bài tổng hợp toàn module thành một sản phẩm có người dùng thật. Kiểm bằng rà soát tám hạng mục cộng kết quả thử khả dụng; đạt khi hai vòng thử có bốn số đo và vòng hai cải thiện ở ít nhất ba số.
 
-### Bài 202: Gate 5 - defend a metric definition and prove self-service
+### Lesson 202: Gate 5 - defend a metric definition and prove self-service
 
 Cổng của Phase 5, và là cổng đầu tiên kiểm phần năng lực Analytics Engineer. Bài kiểm ba module: mô hình hoá ở M11, ngữ nghĩa và chỉ số ở M12, và sản phẩm cùng tự phục vụ ở M13. Không có nội dung mới.
 
-Người học phải bảo vệ một định nghĩa chỉ số trước chất vấn, chứng minh nó không đếm trùng, và trình ra bằng chứng người khác dùng được sản phẩm. Bằng chứng thực hành: Buổi 120 phút: 75 phút làm bài độc lập, 45 phút chữa bài. Bài chấm sáu phần: A (20đ) phát biểu hạt cho mọi bảng và chứng minh bằng phép đếm · B (25đ) hợp đồng sáu phần cho ba chỉ số, và đối soát với truy vấn do hội đồng viết từ hợp đồng, khớp ở ba mức gộp · C (20đ) chứng minh không đếm trùng bằng bốn bước, gồm một chỉ số có bẫy vực cài sẵn · D (15đ) ma trận tương thích chỉ số nhân chiều, cưỡng chế được bằng máy · E (15đ) bằng chứng thử khả dụng theo tác vụ với bốn số đo · F (5đ) truy ngược một chỉ số bất kỳ về quyết định nghiệp vụ. Bài hoàn tất khi đạt ≥ 70/100, phần B và C đều ≥ 60%. Chỉ số nào không khớp đối soát của hội đồng thì phần B của chỉ số đó bằng không; bằng chứng tự phục vụ bằng chỉ số phù phiếm thì phần E bằng không.
+Người học phải bảo vệ một định nghĩa chỉ số trước chất vấn, chứng minh nó không đếm trùng, và trình ra bằng chứng người khác dùng được sản phẩm. Bằng chứng thực hành: Bài chấm sáu phần: A (20đ) phát biểu hạt cho mọi bảng và chứng minh bằng phép đếm · B (25đ) hợp đồng sáu phần cho ba chỉ số, và đối soát với truy vấn do hội đồng viết từ hợp đồng, khớp ở ba mức gộp · C (20đ) chứng minh không đếm trùng bằng bốn bước, gồm một chỉ số có bẫy vực cài sẵn · D (15đ) ma trận tương thích chỉ số nhân chiều, cưỡng chế được bằng máy · E (15đ) bằng chứng thử khả dụng theo tác vụ với bốn số đo · F (5đ) truy ngược một chỉ số bất kỳ về quyết định nghiệp vụ. Bài hoàn tất khi đạt ≥ 70/100, phần B và C đều ≥ 60%. Chỉ số nào không khớp đối soát của hội đồng thì phần B của chỉ số đó bằng không; bằng chứng tự phục vụ bằng chỉ số phù phiếm thì phần E bằng không.
 
 Cách đánh giá: Tầng *đánh giá*. Cổng đo năng lực thiết kế và bảo vệ dưới chất vấn, nên hình thức là bảo vệ trực tiếp có đối soát tại chỗ.
 
@@ -313,7 +313,7 @@ Không cộng điểm để bù cho lỗi loại trực tiếp. Người học p
 | Reverse ETL and the shadow operational system | L199 | Cho ba kiến trúc có đẩy dữ liệu ngược. Với mỗi cái, kiểm bốn ràng buộc và chỉ ra cái nào bị vi phạm. Với kiến trúc có vòng phản hồi, vẽ đường đi của dữ liệu và chỉ ra chỗ vòng lặp hình thành. Đề xuất cách chặn cho từng vi phạm. | Coi đẩy ngược là một pipeline bình thường · để kho phân tích thành nguồn sự thật cho nghiệp vụ · không chặn vòng phản hồi · hứa cam kết mức dịch vụ của hệ vận hành trên hạ tầng phân tích. |
 | Lifecycle and the operating model | L200 | Dựng vòng đời sáu giai đoạn với danh mục chứng nhận. Đưa ba sản phẩm qua, trong đó một cái thiếu phép thử khả dụng và phải bị chặn. Thu thập câu hỏi người dùng trong hai tuần, phân loại, và chỉ ra ba câu hỏi lặp lại; chuyển chúng thành thay đổi thiết kế chứ tài liệu đào tạo. | Chứng nhận sản phẩm chưa qua phép thử khả dụng · trả lời câu hỏi lặp lại bằng cách mở lớp hướng dẫn · không có kênh phản hồi · gỡ sản phẩm khi còn người dùng. |
 | Capstone - a governed customer health data product | L201 | Dựng sản phẩm theo tám hạng mục. Chạy hai vòng thử khả dụng với người dùng thật. Trình bày 15 phút và trả lời chất vấn: chỉ số này phục vụ quyết định nào, ai sở hữu lá nào trong cây, và bằng chứng nào cho thấy người khác dùng được. | Dựng sản phẩm rồi mới tìm quyết định cho nó · dùng số người có quyền truy cập làm bằng chứng · bỏ phép thử khả dụng vì tốn thời gian · viết hạn chế diễn giải chung chung. |
-| Gate 5 - defend a metric definition and prove self-service | L202 | Buổi 120 phút: 75 phút làm bài độc lập, 45 phút chữa bài. Bài chấm sáu phần: A (20đ) phát biểu hạt cho mọi bảng và chứng minh bằng phép đếm · B (25đ) hợp đồng sáu phần cho ba chỉ số, và đối soát với truy vấn do hội đồng viết từ hợp đồng, khớp ở ba mức gộp · C (20đ) chứng minh không đếm trùng bằng bốn bước, gồm một chỉ số có bẫy vực cài sẵn · D (15đ) ma trận tương thích chỉ số nhân chiều, cưỡng chế được bằng máy · E (15đ) bằng chứng thử khả dụng theo tác vụ với bốn số đo · F (5đ) truy ngược một chỉ số bất kỳ về quyết định nghiệp vụ. | Dùng số dashboard làm bằng chứng tự phục vụ · đối soát bằng truy vấn do chính mình viết · bỏ phần truy ngược vì hết giờ · khai báo chỉ số theo cột có sẵn. |
+| Gate 5 - defend a metric definition and prove self-service | L202 | Bài chấm sáu phần: A (20đ) phát biểu hạt cho mọi bảng và chứng minh bằng phép đếm · B (25đ) hợp đồng sáu phần cho ba chỉ số, và đối soát với truy vấn do hội đồng viết từ hợp đồng, khớp ở ba mức gộp · C (20đ) chứng minh không đếm trùng bằng bốn bước, gồm một chỉ số có bẫy vực cài sẵn · D (15đ) ma trận tương thích chỉ số nhân chiều, cưỡng chế được bằng máy · E (15đ) bằng chứng thử khả dụng theo tác vụ với bốn số đo · F (5đ) truy ngược một chỉ số bất kỳ về quyết định nghiệp vụ. | Dùng số dashboard làm bằng chứng tự phục vụ · đối soát bằng truy vấn do chính mình viết · bỏ phần truy ngược vì hết giờ · khai báo chỉ số theo cột có sẵn. |
 
 ## Ngộ nhận và lỗi loại trực tiếp
 

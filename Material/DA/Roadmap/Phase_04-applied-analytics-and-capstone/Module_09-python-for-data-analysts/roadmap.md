@@ -37,18 +37,18 @@ Nếu chưa có bằng chứng đầu vào, người học phải hoàn thành l
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L069 · Environment, Jupyter and Python basics | TH | Viết script Python đọc một tệp dữ liệu và tính các chỉ số cơ bản, cho kết quả khớp với kết quả tính bằng SQL trên cùng dữ liệu. | Script chạy được trong môi trường ảo, và kết quả khớp với truy vấn SQL tương ứng trên cùng dữ liệu. | M09: M03 |
-| L070 · pandas (1) - reading, filtering, selecting | TH | Nạp một bộ dữ liệu chưa từng thấy và hoàn thành khảo sát cấu trúc trong 10 phút, trả lời được câu hỏi về hạt và chất lượng. | Trả lời đúng ≥ 8/10 câu hỏi khám phá trên `DS2` trong 10 phút, có tính giờ. | L069 |
-| L071 · pandas (2) - grouping, joining, pivoting | TH | Thực hiện bằng pandas mọi phép biến đổi đã làm được bằng SQL, và nêu tiêu chí quyết định phép nào nên chạy ở cơ sở dữ liệu. | Cả 10 kết quả khớp từng dòng với truy vấn SQL, và bảng so thời gian chạy được nộp kèm kết luận về nơi nên chạy phép gộp. | L070 |
-| L072 · Data cleaning with pandas | TH | Viết một quy trình làm sạch cho ra kết quả giống hệt ở mỗi lần chạy, và khớp từng dòng với kết quả làm bằng SQL. | Hai lần chạy cho kết quả giống hệt, và kết quả khớp từng dòng với bản làm bằng SQL ở Bài 36. | L071 · L036 |
-| L073 · Visualization with Python | TH | Dựng một bộ biểu đồ khảo sát cho bộ dữ liệu chưa từng xem trong 30 phút, đạt kiểm tra màu và nhãn bằng công cụ. | Nộp 8 biểu đồ trong 30 phút, và cả 8 qua được kiểm tra mù màu và ngưỡng tương phản. | L072 · L048 |
-| L074 · Database connections and automation | TH | Viết script kéo dữ liệu, biến đổi và xuất báo cáo, chạy được bằng một lệnh trên máy chưa cấu hình sẵn. | Script chạy bằng một lệnh và xuất đúng tệp Excel 4 sheet, và quét mã không tìm thấy thông tin xác thực nào. | L073 |
-| L075 · Testing, logging and reproducibility | TH | Bổ sung kiểm thử và kiểm tra chất lượng cho một quy trình sao cho nó phát hiện được lỗi dữ liệu đầu vào thay vì chạy tiếp và cho kết quả sai. | Quy trình bắt được ≥ 4/5 loại lỗi tiêm vào, và kho mã không chứa tệp dữ liệu hay thông tin xác thực. | L074 |
-| L076 · Python project | DA | Đóng gói một quy trình phân tích thành kho mã mà một người chưa từng thấy nó chạy lại được bằng một lệnh và cho ra kết quả giống hệt. | Một học viên khác chạy lại kho mã thành công bằng một lệnh, cho ra kết quả giống hệt, và không đặt câu hỏi nào. Đây là exit criterion của Mô-đun 9. | L075 |
+| L069 · [[wiki.da.environment-jupyter-and-python-basics|Environment, Jupyter and Python basics]]| TH | Viết script Python đọc một tệp dữ liệu và tính các chỉ số cơ bản, cho kết quả khớp với kết quả tính bằng SQL trên cùng dữ liệu. | Script chạy được trong môi trường ảo, và kết quả khớp với truy vấn SQL tương ứng trên cùng dữ liệu. | M09: M03 |
+| L070 · [[wiki.da.pandas-1-reading-filtering-selecting|pandas (1) - reading, filtering, selecting]]| TH | Nạp một bộ dữ liệu chưa từng thấy và hoàn thành khảo sát cấu trúc trong 10 phút, trả lời được câu hỏi về hạt và chất lượng. | Trả lời đúng ≥ 8/10 câu hỏi khám phá trên `DS2` trong 10 phút, có tính giờ. | L069 |
+| L071 · [[wiki.da.pandas-2-grouping-joining-pivoting|pandas (2) - grouping, joining, pivoting]]| TH | Thực hiện bằng pandas mọi phép biến đổi đã làm được bằng SQL, và nêu tiêu chí quyết định phép nào nên chạy ở cơ sở dữ liệu. | Cả 10 kết quả khớp từng dòng với truy vấn SQL, và bảng so thời gian chạy được nộp kèm kết luận về nơi nên chạy phép gộp. | L070 |
+| L072 · [[wiki.da.data-cleaning-with-pandas|Data cleaning with pandas]]| TH | Viết một quy trình làm sạch cho ra kết quả giống hệt ở mỗi lần chạy, và khớp từng dòng với kết quả làm bằng SQL. | Hai lần chạy cho kết quả giống hệt, và kết quả khớp từng dòng với bản làm bằng SQL ở Bài 36. | L071 · L036 |
+| L073 · [[wiki.da.visualization-with-python|Visualization with Python]]| TH | Dựng một bộ biểu đồ khảo sát cho bộ dữ liệu chưa từng xem trong 30 phút, đạt kiểm tra màu và nhãn bằng công cụ. | Nộp 8 biểu đồ trong 30 phút, và cả 8 qua được kiểm tra mù màu và ngưỡng tương phản. | L072 · L048 |
+| L074 · [[wiki.da.database-connections-and-automation|Database connections and automation]]| TH | Viết script kéo dữ liệu, biến đổi và xuất báo cáo, chạy được bằng một lệnh trên máy chưa cấu hình sẵn. | Script chạy bằng một lệnh và xuất đúng tệp Excel 4 sheet, và quét mã không tìm thấy thông tin xác thực nào. | L073 |
+| L075 · [[wiki.da.testing-logging-and-reproducibility|Testing, logging and reproducibility]]| TH | Bổ sung kiểm thử và kiểm tra chất lượng cho một quy trình sao cho nó phát hiện được lỗi dữ liệu đầu vào thay vì chạy tiếp và cho kết quả sai. | Quy trình bắt được ≥ 4/5 loại lỗi tiêm vào, và kho mã không chứa tệp dữ liệu hay thông tin xác thực. | L074 |
+| L076 · [[wiki.da.python-project|Python project]]| DA | Đóng gói một quy trình phân tích thành kho mã mà một người chưa từng thấy nó chạy lại được bằng một lệnh và cho ra kết quả giống hệt. | Một học viên khác chạy lại kho mã thành công bằng một lệnh, cho ra kết quả giống hệt, và không đặt câu hỏi nào. Đây là exit criterion của Mô-đun 9. | L075 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DA-M09 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DA-M09 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -79,7 +79,7 @@ flowchart LR
   class A069,A070,A071,A072,A073,A074,A075,A076 atom;
 ```
 
-### Bài 69: Environment, Jupyter and Python basics
+### Lesson 69: Environment, Jupyter and Python basics
 
 Cài Python, môi trường ảo và vấn đề xung đột phiên bản thư viện mà môi trường ảo giải quyết. Jupyter Notebook và VS Code, cùng điều kiện chọn giữa hai công cụ. Kiểu dữ liệu cơ bản và sai số của số dấu phẩy động trong tính toán tiền tệ. Bốn cấu trúc dữ liệu `list`, `dict`, `set`, `tuple` và tiêu chí chọn theo thao tác cần thực hiện. Điều kiện, vòng lặp, hiểu danh sách. Hàm.
 
@@ -87,7 +87,7 @@ Người học phải viết script Python đọc một tệp dữ liệu và t�
 
 Cách đánh giá: Tầng *áp dụng*. Kiểm bằng đối chiếu chéo công cụ ngay từ bài đầu module, để thiết lập thói quen áp dụng suốt M9. Script dùng thư viện chuẩn, chưa dùng pandas, nên bài đo được năng lực lập trình tách khỏi năng lực dùng thư viện.
 
-### Bài 70: pandas (1) - reading, filtering, selecting
+### Lesson 70: pandas (1) - reading, filtering, selecting
 
 `DataFrame` và `Series`. Đọc từ CSV, Excel và SQL. Bộ lệnh khảo sát nhanh: `head`, `info`, `describe`, `shape`, `dtypes`, `value_counts`, và ánh xạ của chúng sang bảy truy vấn khảo sát ở Bài 29. Chọn cột và dòng bằng `[]`, `.loc`, `.iloc`. Lọc theo một và nhiều điều kiện. Sắp xếp. Đổi tên cột và đổi kiểu dữ liệu.
 
@@ -95,15 +95,15 @@ Người học phải nạp một bộ dữ liệu chưa từng thấy và hoàn
 
 Cách đánh giá: Tầng *áp dụng*. Có ràng buộc thời gian vì mục tiêu là khảo sát thành thục, tương đương Bài 29 nhưng bằng công cụ khác. Kiểm bằng 10 câu hỏi khám phá có tính giờ; đạt khi ≥ 8/10 đúng trong 10 phút.
 
-### Bài 71: pandas (2) - grouping, joining, pivoting
+### Lesson 71: pandas (2) - grouping, joining, pivoting
 
 `groupby` và các phép tổng hợp; `agg` với nhiều hàm cùng lúc. `merge` với bốn kiểu tương ứng bốn kiểu `JOIN`, và tham số `validate` để phát hiện nhân bản dòng. `concat`. `pivot_table` và `melt`. `sort_values` và `nlargest`. Mỗi thao tác được giới thiệu kèm truy vấn SQL tương đương từ Bài 22 tới 24.
 
-Người học phải thực hiện bằng pandas mọi phép biến đổi đã làm được bằng SQL, và nêu tiêu chí quyết định phép nào nên chạy ở cơ sở dữ liệu. Bằng chứng thực hành: Làm lại 10 truy vấn SQL từ Bài 22–24 bằng pandas. So kết quả từng dòng. Đo và so thời gian chạy của hai cách. Bài hoàn tất khi cả 10 kết quả khớp từng dòng với truy vấn SQL, và bảng so thời gian chạy được nộp kèm kết luận về nơi nên chạy phép gộp.
+Người học phải thực hiện bằng pandas mọi phép biến đổi đã làm được bằng SQL, và nêu tiêu chí quyết định phép nào nên chạy ở cơ sở dữ liệu. Bằng chứng thực hành: Làm lại 10 truy vấn SQL từ Bài 22-24 bằng pandas. So kết quả từng dòng. Đo và so thời gian chạy của hai cách. Bài hoàn tất khi cả 10 kết quả khớp từng dòng với truy vấn SQL, và bảng so thời gian chạy được nộp kèm kết luận về nơi nên chạy phép gộp.
 
 Cách đánh giá: Tầng *áp dụng*. Kiểm bằng hai số đo: kết quả khớp từng dòng với truy vấn SQL gốc, và thời gian chạy của cả hai cách. Số đo thứ hai cung cấp bằng chứng cho tiêu chí quyết định nơi chạy phép gộp, thay vì để người học kết luận theo cảm tính.
 
-### Bài 72: Data cleaning with pandas
+### Lesson 72: Data cleaning with pandas
 
 Xử lý giá trị thiếu: `isna`, `fillna`, `dropna`, và câu hỏi ngữ nghĩa quyết định chọn cách nào, nối tiếp ba nghĩa của `NULL` ở Bài 19. Xử lý trùng lặp: `duplicated`, `drop_duplicates` với tham số `keep`. Chuẩn hoá chuỗi qua bộ truy cập `.str`. Xử lý ngày bằng `to_datetime` với tham số `format` và `errors`. Ép kiểu có kiểm soát. Phát hiện giá trị ngoại lai.
 
@@ -111,7 +111,7 @@ Người học phải viết một quy trình làm sạch cho ra kết quả gi�
 
 Cách đánh giá: Tầng *áp dụng*. Kiểm bằng hai điều kiện: chạy hai lần cho kết quả giống hệt, và khớp từng dòng với bản làm bằng SQL ở Bài 36. Điều kiện thứ nhất bắt được lỗi khử trùng không xác định thứ tự, loại lỗi không hiện ra nếu chỉ chạy một lần.
 
-### Bài 73: Visualization with Python
+### Lesson 73: Visualization with Python
 
 `matplotlib` ở mức nền: figure, axes, vẽ nhiều biểu đồ trên một hình. `seaborn` cho biểu đồ thống kê: phân bố, hộp, tán xạ, nhiệt, cặp biến. Định dạng theo đúng nguyên tắc màu và nhãn ở Bài 48. Lưu hình ở độ phân giải dùng được cho tài liệu in. Ba điều kiện chọn Python thay vì Power BI: khảo sát nhanh, biểu đồ thống kê không có sẵn trong công cụ BI, báo cáo chạy lặp theo lịch.
 
@@ -119,7 +119,7 @@ Người học phải dựng một bộ biểu đồ khảo sát cho bộ dữ l
 
 Cách đánh giá: Tầng *áp dụng*. Kiểm bằng hai tiêu chí đo được: hoàn thành trong giới hạn thời gian, và toàn bộ 8 biểu đồ qua được bộ lọc mù màu cùng ngưỡng tương phản của Bài 48. Nguyên tắc thiết kế đã kiểm ở M6 nên bài này chỉ kiểm việc áp dụng nhất quán.
 
-### Bài 74: Database connections and automation
+### Lesson 74: Database connections and automation
 
 Kết nối cơ sở dữ liệu từ Python: chuỗi kết nối, con trỏ, đóng tài nguyên đúng cách. Truy vấn tham số hoá và cơ chế tấn công chèn SQL khi ghép chuỗi. Quản lý bí mật: biến môi trường, tệp `.env`, và nguyên tắc không ghi thông tin xác thực trong mã nguồn. Quy tắc phân công tính toán: đẩy phép lọc và phép gộp xuống cơ sở dữ liệu, kéo về lượng dữ liệu nhỏ nhất đủ dùng. Xuất kết quả ra tệp Excel nhiều sheet.
 
@@ -127,7 +127,7 @@ Người học phải viết script kéo dữ liệu, biến đổi và xuất b
 
 Cách đánh giá: Tầng *áp dụng*. Kiểm bằng phép thử vận hành: script chạy được bằng một lệnh sau khi đặt biến môi trường, và không chứa thông tin xác thực trong mã. Điều kiện thứ hai kiểm bằng quét mã, không bằng tự khai báo.
 
-### Bài 75: Testing, logging and reproducibility
+### Lesson 75: Testing, logging and reproducibility
 
 Tách script thành hàm, mỗi hàm một trách nhiệm. Viết kiểm thử cho logic biến đổi trên dữ liệu nhỏ tự dựng. Ghi nhật ký có phân mức thay cho lệnh in. Bốn phép kiểm chất lượng đặt trong quy trình: số dòng, tỉ lệ `NULL`, phạm vi giá trị, tính duy nhất của khoá. Tệp cấu hình thay cho giá trị viết cứng. Git ở mức commit, branch, `.gitignore`, và nguyên tắc không đưa dữ liệu và thông tin xác thực vào kho mã.
 
@@ -135,7 +135,7 @@ Người học phải bổ sung kiểm thử và kiểm tra chất lượng cho 
 
 Cách đánh giá: Tầng *áp dụng*. Kiểm bằng phép thử tiêm lỗi: giảng viên đưa năm loại lỗi vào dữ liệu đầu vào, quy trình phải bắt được ít nhất bốn. Hình thức này đo khả năng phát hiện lỗi chưa biết trước, không đo số lượng kiểm thử đã viết.
 
-### Bài 76: Python project
+### Lesson 76: Python project
 
 Không có nội dung mới. Dự án gộp toàn bộ M9 vào một kho mã duy nhất.
 
@@ -168,7 +168,7 @@ Không cộng điểm để bù cho lỗi loại trực tiếp. Người học p
 |---|---|---|---|
 | Environment, Jupyter and Python basics | L069 | Đọc `orders.csv` bằng thư viện chuẩn `csv`. Đếm bản ghi theo trạng thái. Tìm bản ghi có giá trị bất thường. Đối chiếu kết quả với truy vấn SQL tương ứng. | Dùng `float` cho giá trị tiền tệ · cài thư viện vào môi trường toàn cục · so sánh chuỗi mà không chuẩn hoá khoảng trắng. |
 | pandas (1) - reading, filtering, selecting | L070 | Nạp `DS2` gồm 2,2 triệu dòng. Khảo sát cấu trúc và trả lời 10 câu hỏi khám phá cơ bản trong giới hạn thời gian. | Dùng `[]` chuỗi liên tiếp rồi gán giá trị vào bản sao thay vì bản gốc · nhầm `.loc` với `.iloc` khi chỉ mục không liên tục · nạp toàn bộ tệp lớn khi chỉ cần một phần cột. |
-| pandas (2) - grouping, joining, pivoting | L071 | Làm lại 10 truy vấn SQL từ Bài 22–24 bằng pandas. So kết quả từng dòng. Đo và so thời gian chạy của hai cách. | Bỏ tham số `validate` nên không phát hiện nhân bản dòng khi `merge` · kéo toàn bộ bảng về rồi gộp trong pandas · dùng `apply` theo dòng ở nơi có phép vector hoá. |
+| pandas (2) - grouping, joining, pivoting | L071 | Làm lại 10 truy vấn SQL từ Bài 22-24 bằng pandas. So kết quả từng dòng. Đo và so thời gian chạy của hai cách. | Bỏ tham số `validate` nên không phát hiện nhân bản dòng khi `merge` · kéo toàn bộ bảng về rồi gộp trong pandas · dùng `apply` theo dòng ở nơi có phép vector hoá. |
 | Data cleaning with pandas | L072 | Làm sạch `orders_dirty.csv` bằng pandas. Kết quả phải khớp từng dòng với bản làm bằng SQL ở Bài 36, và hai lần chạy phải cho kết quả giống hệt. | `drop_duplicates` trên dữ liệu chưa sắp xếp nên giữ bản ghi khác nhau giữa các lần chạy · `to_datetime` không chỉ định `format` nên pandas tự suy đoán · `fillna(0)` cho cột mà giá trị thiếu nghĩa là chưa nhập. |
 | Visualization with Python | L073 | Dựng 8 biểu đồ khảo sát cho `DS3`, áp đúng nguyên tắc màu và nhãn của Bài 48. Kiểm bằng công cụ. | Dùng bảng màu mặc định không an toàn cho người mù màu · vẽ biểu đồ tán xạ trên 5 triệu điểm mà không lấy mẫu hoặc gộp · lưu hình ở độ phân giải màn hình rồi đưa vào tài liệu in. |
 | Database connections and automation | L074 | Viết script tự động: kết nối `DS2`, tính bộ chỉ số tháng, xuất tệp Excel có 4 sheet kèm biểu đồ. Chạy bằng một lệnh. | Ghép tham số vào chuỗi truy vấn · để chuỗi kết nối trong mã rồi đưa lên kho mã · kéo toàn bộ bảng về rồi lọc trong Python. |

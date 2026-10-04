@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: WAL bảo đảm write-ahead và durability thế nào, group commit khấu hao sync cost ra sao, và từng commit mode thực sự cam kết điều gì?
 source_ids:
   - src.manual.postgresql-17.10
@@ -61,13 +61,13 @@ Backend chèn record vào shared WAL buffers. Ghi buffers sang kernel page cache
 
 Trong synchronous local commit, transaction chỉ được coi là durable sau khi WAL được flush ít nhất tới LSN commit. Data pages chưa cần flush. Nếu crash sau acknowledgement, REDO dựng lại thay đổi từ WAL.
 
-“Vừa chạy statement cuối” chưa phải commit. Transaction có thể ở trạng thái partially committed trong mô hình học thuật: logic đã xong nhưng commit durability chưa hoàn tất. Client timeout/disconnect quanh ranh giới commit tạo outcome ambiguity; retry mù có thể lặp business effect. Application cần idempotency/reconciliation riêng.
+Vừa chạy statement cuối chưa phải commit. Transaction có thể ở trạng thái partially committed trong mô hình học thuật: logic đã xong nhưng commit durability chưa hoàn tất. Client timeout/disconnect quanh ranh giới commit tạo outcome ambiguity; retry mù có thể lặp business effect. Application cần idempotency/reconciliation riêng.
 
 ## 6. Group commit
 
 Nếu nhiều sessions đến ranh giới commit gần nhau, một process có thể flush WAL tới position cao nhất, qua đó làm durable commit records của nhiều transaction. Fixed cost của sync được khấu hao, tăng throughput. PostgreSQL có thể hình thành group tự nhiên ngay cả khi `commit_delay=0` khi sessions xếp hàng trong lúc flush đang diễn ra.
 
-`commit_delay` mở rộng cửa sổ cho siblings tham gia group khi điều kiện concurrency thỏa. Nó có thể tăng throughput trên workload commit-bound, nhưng cố ý thêm wait và có thể tăng latency đến mức throughput cũng giảm. Không nói group commit “tăng throughput và chỉ tăng latency nhẹ” nếu chưa đo distribution.
+`commit_delay` mở rộng cửa sổ cho siblings tham gia group khi điều kiện concurrency thỏa. Nó có thể tăng throughput trên workload commit-bound, nhưng cố ý thêm wait và có thể tăng latency đến mức throughput cũng giảm. Không nói group commit tăng throughput và chỉ tăng latency nhẹ nếu chưa đo distribution.
 
 ## 7. Ba mode cần phân biệt
 
@@ -77,7 +77,7 @@ Async commit không đồng nghĩa tắt fsync. Nó nới acknowledgment boundar
 
 ## 8. Synchronous replication là trục khác
 
-`synchronous_commit` còn có các mức remote semantics tùy PostgreSQL configuration, chẳng hạn chờ remote write/flush/apply. Local WAL durability và replica acknowledgment là hai câu hỏi. Bài này đo ba cấu hình phải đặt tên exact value và topology; không gộp “ba mức durability” thành ba nhãn chung.
+`synchronous_commit` còn có các mức remote semantics tùy PostgreSQL configuration, chẳng hạn chờ remote write/flush/apply. Local WAL durability và replica acknowledgment là hai câu hỏi. Bài này đo ba cấu hình phải đặt tên exact value và topology; không gộp ba mức durability thành ba nhãn chung.
 
 Replication commit có thêm network, standby I/O và availability trade-off. Chờ remote flush giảm một số failure windows nhưng không thay backup, corruption protection hoặc business idempotency.
 
@@ -119,12 +119,12 @@ Alert phải gắn failure mode: sync latency tăng; requested checkpoints tăng
 
 ## 15. Các ngộ nhận cần loại
 
-- “Commit ghi tất cả data pages”: PostgreSQL synchronous commit chủ yếu chờ WAL flush.
-- “Một transaction bằng một fsync”: group commit có thể dùng một sync cho nhiều commit.
-- “Group commit luôn giảm latency”: nó tối ưu amortized sync cost, có thể thêm wait.
-- “Async commit gây corruption”: documented risk là mất recent transactions, khác `fsync=off`.
-- “Sequential WAL luôn rẻ”: sync/hardware/cache/queue vẫn quyết định latency.
-- “LSN là thời gian”: LSN là vị trí byte logic trong WAL stream.
+- Commit ghi tất cả data pages: PostgreSQL synchronous commit chủ yếu chờ WAL flush.
+- Một transaction bằng một fsync: group commit có thể dùng một sync cho nhiều commit.
+- Group commit luôn giảm latency: nó tối ưu amortized sync cost, có thể thêm wait.
+- Async commit gây corruption: documented risk là mất recent transactions, khác `fsync=off`.
+- Sequential WAL luôn rẻ: sync/hardware/cache/queue vẫn quyết định latency.
+- LSN là thời gian: LSN là vị trí byte logic trong WAL stream.
 
 ## 16. Câu hỏi tự kiểm tra
 
@@ -144,20 +144,20 @@ Alert phải gắn failure mode: sync latency tăng; requested checkpoints tăng
 - Không có số TPS/p95 hoặc số transaction mất; mọi số thuộc artifact lab.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-10-MANUAL]] — WAL, async commit, checkpoint, group commit và internals.
-2. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]] — WAL/LSN/page ordering, synchronous/asynchronous modes và monitoring.
-3. [[SRC-PETROV-DATABASE-INTERNALS-1E]] — recovery, WAL semantics và group/force model tổng quát.
-4. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — WAL rule, group commit và transaction durability.
+1. [[SRC-POSTGRESQL-17-10-MANUAL]]: WAL, async commit, checkpoint, group commit và internals.
+2. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]]: WAL/LSN/page ordering, synchronous/asynchronous modes và monitoring.
+3. [[SRC-PETROV-DATABASE-INTERNALS-1E]]: recovery, WAL semantics và group/force model tổng quát.
+4. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: WAL rule, group commit và transaction durability.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 918–926 | WAL, async, checkpoint, group commit | §§1–14 | Đã giữ version-specific semantics |
-| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 164–196 | LSN, page ordering, modes, counters | §§2–14 | Đã đối chiếu manual 17.10 |
-| [[SRC-PETROV-DATABASE-INTERNALS-1E]], PDF 117–124 | WAL/recovery model | §§1–6, 9 | Đã phân biệt generic và PostgreSQL |
-| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]], PDF 2418–2462 | WAL buffering/group commit | §§2, 5–7 | Đã giữ assumptions |
-| DE-L137 contract | bảng throughput/p95 và crash test | §§11–13 | Chưa chạy, chuyển after-note |
+| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 918-926 | WAL, async, checkpoint, group commit | §§1-14 | Đã giữ version-specific semantics |
+| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 164-196 | LSN, page ordering, modes, counters | §§2-14 | Đã đối chiếu manual 17.10 |
+| [[SRC-PETROV-DATABASE-INTERNALS-1E]], PDF 117-124 | WAL/recovery model | §§1-6, 9 | Đã phân biệt generic và PostgreSQL |
+| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]], PDF 2418-2462 | WAL buffering/group commit | §§2, 5-7 | Đã giữ assumptions |
+| DE-L137 contract | bảng throughput/p95 và crash test | §§11-13 | Chưa chạy, chuyển after-note |
 
 ## Key takeaways
 - WAL cho phép commit bền vững trước khi data pages được flush.
@@ -168,7 +168,7 @@ Alert phải gắn failure mode: sync latency tăng; requested checkpoints tăng
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.wal-group-commit`
+## Execution capsule: kiểm chứng `wiki.database.wal-group-commit`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.wal-group-commit`, sơ đồ, ví dụ và artifact về **Write-ahead log và group commit** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -190,7 +190,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “WAL bảo đảm write-ahead và durability thế nào, group commit khấu hao sync cost ra sao, và từng commit mode thực sự cam kết điều gì?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: WAL bảo đảm write-ahead và durability thế nào, group commit khấu hao sync cost ra sao, và từng commit mode thực sự cam kết điều gì? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Write-ahead log và group commit** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

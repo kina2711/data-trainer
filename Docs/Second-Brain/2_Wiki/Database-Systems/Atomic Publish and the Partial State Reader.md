@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Thiết kế publication thế nào để reader thấy old hoặc new complete state nhưng không thấy trạng thái dở dang?
 source_ids:
   - src.web.postgresql-transactions
@@ -223,7 +223,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.transformation.atomic-publish-partial-state-reader`
+## Execution capsule: kiểm chứng `wiki.transformation.atomic-publish-partial-state-reader`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.transformation.atomic-publish-partial-state-reader`, sơ đồ, ví dụ và artifact về **Atomic Publish and the Partial State Reader** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -245,7 +245,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Thiết kế publication thế nào để reader thấy old hoặc new complete state nhưng không thấy trạng thái dở dang?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Thiết kế publication thế nào để reader thấy old hoặc new complete state nhưng không thấy trạng thái dở dang? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Atomic Publish and the Partial State Reader** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

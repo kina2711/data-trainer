@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao thiết kế public analytical interface tối thiểu nhưng đủ trả ba business questions, ổn định trước thay đổi nội bộ và khó bị dùng sai?
 source_ids:
   - src.book.sommerville-software-engineering.10e
@@ -39,7 +39,7 @@ Mỗi row/response cell đại diện entity/event/snapshot nào, time/as-of và
 
 ## 3. Minimal public surface
 
-Expose fields cần cho approved questions và stable composition; giữ pipeline metadata, raw codes, security attributes và implementation intermediates internal. Mỗi public field tăng compatibility/security/documentation cost. Minimal không nghĩa thiếu diagnostic fields cần trust như data cutoff/version/quality flag. Decide public/internal bằng consumer need và misuse risk, không chỉ “dùng hiện tại”. Extension points có governance tránh request nào cũng thêm cột.
+Expose fields cần cho approved questions và stable composition; giữ pipeline metadata, raw codes, security attributes và implementation intermediates internal. Mỗi public field tăng compatibility/security/documentation cost. Minimal không nghĩa thiếu diagnostic fields cần trust như data cutoff/version/quality flag. Decide public/internal bằng consumer need và misuse risk, không chỉ dùng hiện tại. Extension points có governance tránh request nào cũng thêm cột.
 
 ## 4. Information hiding và vocabulary
 
@@ -230,7 +230,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.interface-design`
+## Execution capsule: kiểm chứng `wiki.data-product.interface-design`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.interface-design`, sơ đồ, ví dụ và artifact về **Interface Design for an Analytical Product** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

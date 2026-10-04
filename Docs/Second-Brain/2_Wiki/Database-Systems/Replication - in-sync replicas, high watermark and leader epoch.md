@@ -38,7 +38,7 @@ In-sync membership reflects lag/timing policy, not an immutable set; min ISR plu
 
 ## 3. High watermark
 
-Records below committed visibility boundary are safe for normal consumers under replication protocol; log end may be ahead. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Replication - in-sync replicas, high watermark and leader epoch`, câu hỏi thực dụng là: ISR, high watermark và leader epoch phối hợp xác định committed visibility và recovery như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Records below committed visibility boundary are safe for normal consumers under replication protocol; log end may be ahead. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Replication - in-sync replicas, high watermark and leader epoch`, câu hỏi thực dụng là: ISR, high watermark và leader epoch phối hợp xác định committed visibility và recovery như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Leader epoch
 
@@ -221,7 +221,7 @@ Với `wiki.streaming.kafka-isr-high-watermark-epoch`, command thành công khô
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.streaming.kafka-isr-high-watermark-epoch`
+## Execution capsule: kiểm chứng `wiki.streaming.kafka-isr-high-watermark-epoch`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.streaming.kafka-isr-high-watermark-epoch`, sơ đồ, ví dụ và artifact về **Replication - in-sync replicas, high watermark and leader epoch** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

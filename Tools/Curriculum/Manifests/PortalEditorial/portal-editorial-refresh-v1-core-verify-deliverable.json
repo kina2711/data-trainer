@@ -1,0 +1,48 @@
+{
+  "task_id": "portal-editorial-refresh-v1",
+  "verified_at": "2026-10-04",
+  "status": "pass",
+  "inventory": {
+    "roadmaps": 56,
+    "canonical_notes": 645,
+    "published_lessons": 10,
+    "lesson_scenes": 90,
+    "lesson_assets": 52,
+    "books": 47
+  },
+  "checks": [
+    {
+      "command": "npm run brain:test",
+      "result": "pass"
+    },
+    {
+      "command": "npm run lectures:first10:test",
+      "result": "pass: 10 lessons, 90 scenes, 180 slide sections, 100 quiz questions"
+    },
+    {
+      "command": "npm run lectures:authoring:test",
+      "result": "pass: lesson-authoring-v1 and blader/humanizer@3.1.0"
+    },
+    {
+      "command": "npm run portal:editorial:test",
+      "result": "pass: typography, course timing, scientific style, links, note depth and English UI titles"
+    },
+    {
+      "command": "python3 Tools/Curriculum/Build/validate_all_atomic_notes.py",
+      "result": "pass: 645 atomic deep notes, 645 code examples, 645 Mermaid diagrams, 645 self-checks and 644 declared reference mirrors in byte parity"
+    },
+    {
+      "command": "git diff --check",
+      "result": "pass"
+    }
+  ],
+  "browser_evidence": {
+    "route": "http://127.0.0.1:4310/#lesson=DA-L001&asset=note",
+    "asset_tabs": ["Curriculum", "Teaching Guide", "Slides", "Quiz", "Assignment", "Post-Lesson"],
+    "lesson_to_note": "verified",
+    "note_to_book_control": "verified: src.book.knaflic-storytelling-with-data.1e",
+    "book_route": "http://127.0.0.1:4310/#book=src.book.knaflic-storytelling-with-data.1e"
+  },
+  "content_hash": "86fc8f4c531e8fa981f3647a74f490e7c1be563087f6167991c33861eeb6896b",
+  "release_state": "implemented-awaiting-owner-acceptance"
+}

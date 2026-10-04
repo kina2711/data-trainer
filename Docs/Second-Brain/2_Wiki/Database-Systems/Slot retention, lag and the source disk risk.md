@@ -38,7 +38,7 @@ Time lag, byte lag, restart LSN và confirmed-flush LSN trả lời các câu h�
 
 ## 3. Failure growth
 
-Connector dừng, network lỗi hoặc transaction dài có thể làm retained WAL tăng dù database vẫn phục vụ query. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Slot retention, lag and the source disk risk`, câu hỏi thực dụng là: Replication slot biến consumer lag thành rủi ro source disk như thế nào và guardrail nào ngăn sự cố? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Connector dừng, network lỗi hoặc transaction dài có thể làm retained WAL tăng dù database vẫn phục vụ query. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Slot retention, lag and the source disk risk`, câu hỏi thực dụng là: Replication slot biến consumer lag thành rủi ro source disk như thế nào và guardrail nào ngăn sự cố? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Guardrails
 
@@ -221,7 +221,7 @@ Với `wiki.cdc.slot-retention-source-disk-risk`, command thành công không t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.cdc.slot-retention-source-disk-risk`
+## Execution capsule: kiểm chứng `wiki.cdc.slot-retention-source-disk-risk`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.cdc.slot-retention-source-disk-risk`, sơ đồ, ví dụ và artifact về **Slot retention, lag and the source disk risk** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

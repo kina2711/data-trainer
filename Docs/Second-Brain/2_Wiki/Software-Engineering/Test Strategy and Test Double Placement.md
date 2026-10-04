@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Đặt một phép kiểm ở tầng nào và đặt test double ở boundary nào để bộ kiểm vừa bắt lỗi tích hợp vừa không vỡ khi tái cấu trúc nội bộ?
 source_ids:
   - src.book.richardson-microservices-patterns.1e
@@ -48,7 +48,7 @@ Mỗi phép kiểm cần trả lời bốn câu:
 3. boundary nào được thay bằng double mà không xóa đúng rủi ro đang kiểm?
 4. khi fail, evidence có chỉ ra vị trí đủ hẹp không?
 
-“Unit”, “integration” hay “end-to-end” là mô tả scope. Chúng không tự bảo đảm chất lượng.
+Unit, integration hay end-to-end là mô tả scope. Chúng không tự bảo đảm chất lượng.
 
 ## 2. Năm scope hữu dụng
 
@@ -61,7 +61,7 @@ Mỗi phép kiểm cần trả lời bốn câu:
 | End-to-end | đường nghiệp vụ qua hệ đã triển khai | wiring và emergent behavior toàn tuyến | chậm, dễ nhiễu |
 
 > [!source-fact]
-> Richardson phân biệt unit, integration, component và end-to-end chủ yếu theo scope; scope càng lớn thường càng chậm, phức tạp và kém ổn định. *Microservices Patterns*, Chapter 9, PDF 321–328.
+> Richardson phân biệt unit, integration, component và end-to-end chủ yếu theo scope; scope càng lớn thường càng chậm, phức tạp và kém ổn định. *Microservices Patterns*, Chapter 9, PDF 321-328.
 
 ## 3. Test pyramid là allocation heuristic
 
@@ -85,7 +85,7 @@ Với pipeline dữ liệu, integration layer thường dày hơn ứng dụng t
 - version drift của dependency.
 
 > [!synthesis]
-> Richardson cung cấp test pyramid; Sommerville nhấn mạnh interface error không lộ ra qua unit test của từng object. Vì vậy “nhiều unit, rất ít mọi thứ khác” là thiếu bằng chứng cho pipeline có nhiều boundary dữ liệu.
+> Richardson cung cấp test pyramid; Sommerville nhấn mạnh interface error không lộ ra qua unit test của từng object. Vì vậy nhiều unit, rất ít mọi thứ khác là thiếu bằng chứng cho pipeline có nhiều boundary dữ liệu.
 
 ## 4. Test double là gì?
 
@@ -112,7 +112,7 @@ Ví dụ khi unit-test `ImportOrders`:
 - mock từng call của list/dict/domain entity: sai scope;
 - dùng database fake rồi kết luận SQL đúng: xóa rủi ro cần kiểm.
 
-### Owner không đồng nghĩa “công ty mình viết”
+### Owner không đồng nghĩa công ty mình viết
 
 Boundary cần xét theo unit đang kiểm. Một adapter do cùng đội viết vẫn nằm ngoài core test, nhưng phải được kiểm thật ở integration test riêng.
 
@@ -161,7 +161,7 @@ Public input, output và side effect không đổi. Không test nào được s�
 | 9 | pipeline tối thiểu từ CSV tới DB | component/E2E hẹp | dependency ngoài scope | kiểm wiring chính |
 | 10 | deploy toàn hệ xử lý một golden order | E2E | hạn chế double | smoke đường quan trọng |
 
-Không có đáp án chỉ dựa vào “test này nghe giống integration”. Bằng chứng cần quyết định.
+Không có đáp án chỉ dựa vào test này nghe giống integration. Bằng chứng cần quyết định.
 
 ## 9. Integration test không phải test mọi thứ cùng lúc
 
@@ -174,7 +174,7 @@ PostgresOrderRepository + PostgreSQL container + migration
 Nó không cần CLI, CSV reader hay scheduler. Khi fail, ta biết boundary database có vấn đề.
 
 > [!source-fact]
-> Sommerville cho rằng component interface testing cần tập trung vào interface của nhóm object vì lỗi interaction có thể không phát hiện được khi test từng object riêng. *Software Engineering*, Chapter 8, PDF 238–240.
+> Sommerville cho rằng component interface testing cần tập trung vào interface của nhóm object vì lỗi interaction có thể không phát hiện được khi test từng object riêng. *Software Engineering*, Chapter 8, PDF 238-240.
 
 ## 10. Contract test không thay business test
 
@@ -200,7 +200,7 @@ Không phù hợp để phủ mọi edge case vì:
 - flakiness làm đội bỏ qua tín hiệu.
 
 > [!source-fact]
-> Newman khuyến nghị giảm test có scope lớn, dùng service/contract tests để nhận feedback nhanh hơn; consumer-driven contracts có thể phát hiện breaking change trước production mà không dựng E2E đắt đỏ. *Building Microservices*, Chapter 9, PDF 353–372.
+> Newman khuyến nghị giảm test có scope lớn, dùng service/contract tests để nhận feedback nhanh hơn; consumer-driven contracts có thể phát hiện breaking change trước production mà không dựng E2E đắt đỏ. *Building Microservices*, Chapter 9, PDF 353-372.
 
 ## 12. Determinism
 
@@ -300,12 +300,12 @@ Nộp:
 
 ## 19. Ngộ nhận thường gặp
 
-- “Unit test phải test một function”: unit là scope hành vi có ý nghĩa.
-- “Mock làm test nhanh nên mock càng nhiều càng tốt”: mock sai boundary làm test brittle.
-- “Integration test luôn chậm”: scope hẹp và fixture tốt có thể chạy nhanh, nhưng vẫn đắt hơn core.
-- “E2E giống người dùng nên đáng tin nhất”: nó kiểm đường rộng nhưng định vị kém và bỏ sót tổ hợp.
-- “Coverage cao nghĩa là test tốt”: coverage không chứng minh assertion hoặc rủi ro đúng.
-- “Refactor làm test đỏ là bình thường”: nếu behavior giữ nguyên, đó là tín hiệu test bám implementation.
+- Unit test phải test một function: unit là scope hành vi có ý nghĩa.
+- Mock làm test nhanh nên mock càng nhiều càng tốt: mock sai boundary làm test brittle.
+- Integration test luôn chậm: scope hẹp và fixture tốt có thể chạy nhanh, nhưng vẫn đắt hơn core.
+- E2E giống người dùng nên đáng tin nhất: nó kiểm đường rộng nhưng định vị kém và bỏ sót tổ hợp.
+- Coverage cao nghĩa là test tốt: coverage không chứng minh assertion hoặc rủi ro đúng.
+- Refactor làm test đỏ là bình thường: nếu behavior giữ nguyên, đó là tín hiệu test bám implementation.
 
 ## 20. Câu hỏi tự kiểm tra
 
@@ -324,10 +324,10 @@ Nộp:
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], Ch. 9–10 pp. 321–348 | service/component/integration test scope và test double | §§2, 4–11 | Đã trình bày scope và double placement theo boundary |
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], Ch. 9 pp. 353–372 | test pyramid, service/contract/E2E trade-off | §§3, 8–11 | Đã trình bày allocation heuristic và chi phí feedback |
-| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], Ch. 8 pp. 228–242 | unit/component/interface/system testing | §§1–2, 9, 15 | Đã trình bày interface risk và fixture contract |
-| Tổng hợp bài DE-L093 | 10 scenario, refactor-resilience test, determinism và evidence pack | §§7–8, 12–18 | Đã gắn `synthesis`; lựa chọn tầng dựa trên rủi ro chứ không dựa tên gọi |
+| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], Ch. 9-10 pp. 321-348 | service/component/integration test scope và test double | §§2, 4-11 | Đã trình bày scope và double placement theo boundary |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], Ch. 9 pp. 353-372 | test pyramid, service/contract/E2E trade-off | §§3, 8-11 | Đã trình bày allocation heuristic và chi phí feedback |
+| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], Ch. 8 pp. 228-242 | unit/component/interface/system testing | §§1-2, 9, 15 | Đã trình bày interface risk và fixture contract |
+| Tổng hợp bài DE-L093 | 10 scenario, refactor-resilience test, determinism và evidence pack | §§7-8, 12-18 | Đã gắn `synthesis`; lựa chọn tầng dựa trên rủi ro chứ không dựa tên gọi |
 
 Tool/framework cụ thể không được coi là định nghĩa của tầng test. Note giữ semantics của scope để chuyển được giữa ngôn ngữ và runtime.
 
@@ -354,9 +354,9 @@ Tool/framework cụ thể không được coi là định nghĩa của tầng te
 - Bài tiếp theo: [[Consumer-Provider Contract Testing|Kiểm thử hợp đồng giữa producer và consumer]].
 
 ## Reference
-1. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]] — Chris Richardson, *Microservices Patterns*, Chapters 9–10, PDF 321–348.
-2. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — Sam Newman, *Building Microservices*, Second Edition, Chapter 9, PDF 353–372.
-3. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]] — Ian Sommerville, *Software Engineering*, Chapter 8, PDF 228–242.
+1. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]]: Chris Richardson, *Microservices Patterns*, Chapters 9-10, PDF 321-348.
+2. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: Sam Newman, *Building Microservices*, Second Edition, Chapter 9, PDF 353-372.
+3. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]]: Ian Sommerville, *Software Engineering*, Chapter 8, PDF 228-242.
 
 ## Lịch sử biên tập
 
@@ -366,7 +366,7 @@ Tool/framework cụ thể không được coi là định nghĩa của tầng te
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.software-engineering.test-strategy-double-boundary`
+## Execution capsule: kiểm chứng `wiki.software-engineering.test-strategy-double-boundary`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.software-engineering.test-strategy-double-boundary`, sơ đồ, ví dụ và artifact về **Chiến lược kiểm thử và vị trí đặt test double** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

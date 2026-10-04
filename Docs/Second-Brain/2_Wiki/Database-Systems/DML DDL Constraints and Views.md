@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao sửa dữ liệu, cưỡng chế bất biến và thay đổi schema trên bảng lớn mà có semantics, lock budget và rollback rõ?
 source_ids:
   - src.manual.postgresql-17.10
@@ -32,7 +32,7 @@ relationships:
 
 ## 1. Bắt đầu từ bất biến
 
-DML và DDL không phải hai danh sách cú pháp độc lập. DML làm thay đổi trạng thái; DDL định nghĩa cấu trúc và các bất biến mà mọi writer phải tuân theo. Thiết kế bắt đầu bằng phát biểu có thể kiểm: “mỗi event chỉ có một row cho business key”, “amount không âm”, “order phải trỏ tới customer tồn tại”, “mỗi email chuẩn hóa là duy nhất trong tenant”.
+DML và DDL không phải hai danh sách cú pháp độc lập. DML làm thay đổi trạng thái; DDL định nghĩa cấu trúc và các bất biến mà mọi writer phải tuân theo. Thiết kế bắt đầu bằng phát biểu có thể kiểm: mỗi event chỉ có một row cho business key, amount không âm, order phải trỏ tới customer tồn tại, mỗi email chuẩn hóa là duy nhất trong tenant.
 
 Ứng dụng có thể kiểm sớm để trả lỗi đẹp, nhưng database constraint là ranh giới cuối cho nhiều writer và concurrency. Query kiểm `SELECT` rồi mới `INSERT` không nguyên tử: hai transaction có thể cùng thấy chưa tồn tại. Unique constraint/index biến race thành một quyết định tuần tự có thể bắt lỗi hoặc dùng conflict clause.
 
@@ -64,7 +64,7 @@ Idempotent write cần request/business key ổn định, unique constraint và 
 
 ## 5. MERGE và source uniqueness
 
-`MERGE` mô tả nhiều nhánh matched/not matched trên source–target join. Nó không biến source duplicate thành deterministic. Nếu nhiều source rows cùng match một target, cardinality violation hoặc outcome phụ thuộc điều kiện/engine; pipeline phải canonicalize source về một row/business key trước.
+`MERGE` mô tả nhiều nhánh matched/not matched trên source-target join. Nó không biến source duplicate thành deterministic. Nếu nhiều source rows cùng match một target, cardinality violation hoặc outcome phụ thuộc điều kiện/engine; pipeline phải canonicalize source về một row/business key trước.
 
 Quy trình: profile duplicates; chọn winner bằng version/event time + deterministic tie-break; quarantine conflicts; assert uniqueness; mới MERGE. Target cần unique constraint phù hợp để bảo vệ concurrent writers.
 
@@ -82,7 +82,7 @@ DDL transactional của PostgreSQL giúp rollback nhiều thay đổi, nhưng lo
 
 PostgreSQL cho phép thêm foreign key hoặc check constraint ở trạng thái `NOT VALID`: constraint áp cho rows mới/thay đổi nhưng chưa chứng nhận dữ liệu cũ. Sau remediation, `VALIDATE CONSTRAINT` quét dữ liệu hiện có với lock nhẹ hơn so với đường add-and-validate trực tiếp trong nhiều trường hợp.
 
-Đây không phải “không khóa”. Add phase vẫn cần lock để sửa catalog; validation lấy lock và tiêu thụ I/O/CPU. Long transaction có thể làm lock acquisition chờ. Lab phải đo wait/hold time và traffic impact, không chỉ elapsed command.
+Đây không phải không khóa. Add phase vẫn cần lock để sửa catalog; validation lấy lock và tiêu thụ I/O/CPU. Long transaction có thể làm lock acquisition chờ. Lab phải đo wait/hold time và traffic impact, không chỉ elapsed command.
 
 Quy trình: precheck violations; add `NOT VALID` với lock timeout; theo dõi; backfill/quarantine; validate trong cửa sổ; xác nhận `convalidated`; giữ rollback/abort path. Với NOT NULL, có thể dùng validated check làm bằng chứng trước khi set not null theo behavior phiên bản.
 
@@ -118,7 +118,7 @@ Mỗi view cần owner, purpose, grain, source dependencies, freshness và consu
 
 Không materialize chỉ để che query view rối. Sửa grain/logic trước, rồi benchmark materialization.
 
-## 12. Expand–migrate–contract
+## 12. Expand-migrate-contract
 
 Thay schema an toàn khi old/new application cùng chạy: expand bằng additive compatible structure; deploy writer dual/write hoặc backfill có kiểm soát; migrate/read switch; observe; contract xóa cũ sau khi không còn consumer.
 
@@ -128,7 +128,7 @@ Destructive rename/drop trong một deployment thường phá rolling release. D
 
 ## 13. Lock budget và thí nghiệm năm triệu dòng
 
-“Không khóa quá ngưỡng” cần số: lock acquisition < X ms, blocking sessions ≤ Y, p95 write latency tăng ≤ Z%, replication lag ≤ budget. Chọn ngưỡng theo SLO, không chép từ nguồn.
+Không khóa quá ngưỡng cần số: lock acquisition < X ms, blocking sessions ≤ Y, p95 write latency tăng ≤ Z%, replication lag ≤ budget. Chọn ngưỡng theo SLO, không chép từ nguồn.
 
 Lab tạo bảng năm triệu rows và concurrent workload kiểm soát. So add constraint trực tiếp với add NOT VALID + validate. Ghi PostgreSQL version, machine, table size, active workload, lock modes/waits, elapsed, CPU/I/O, errors và plan remediation.
 
@@ -146,7 +146,7 @@ Chạy thêm hai sessions đồng thời. Sequential replay không chứng minh 
 
 Reviewer hỏi: invariant là gì; constraint nào enforce; NULL semantics; business key; source duplicate; affected-row guard; transaction boundary; lock mode/budget; rewrite/scan; replica/WAL; compatibility window; backfill/reconciliation; view grain; materialized freshness; rollback và observability.
 
-Một migration “chạy xong” nhưng vượt latency SLO không đạt. Một MERGE không duplicate trên fixture sạch chưa đạt. Evidence phải chứa negative/concurrent cases.
+Một migration chạy xong nhưng vượt latency SLO không đạt. Một MERGE không duplicate trên fixture sạch chưa đạt. Evidence phải chứa negative/concurrent cases.
 
 ## 16. Câu hỏi tự kiểm tra
 
@@ -166,29 +166,29 @@ Một migration “chạy xong” nhưng vượt latency SLO không đạt. Mộ
 - Lab năm triệu dòng chưa chạy; kết quả benchmark phải nằm trong `after-note.md`.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-10-MANUAL]] — DDL/DML, constraints, views và materialized views.
-2. [[SRC-MASTERING-POSTGRESQL-17-6E]] — transactional DDL, locks và runtime statistics.
-3. [[SRC-POSTGRESQL-17-CONSTRAINTS]] — constraint semantics PostgreSQL 17.
+1. [[SRC-POSTGRESQL-17-10-MANUAL]]: DDL/DML, constraints, views và materialized views.
+2. [[SRC-MASTERING-POSTGRESQL-17-6E]]: transactional DDL, locks và runtime statistics.
+3. [[SRC-POSTGRESQL-17-CONSTRAINTS]]: constraint semantics PostgreSQL 17.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 97–117, 147–153, 1356–1368 | modifying tables, RETURNING, view/materialized view | §§2–12 | Đã giữ và giới hạn theo phiên bản |
-| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 49–62 | transactional DDL, lock modes | §§6–7, 13 | Đã nối với lock budget |
+| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 97-117, 147-153, 1356-1368 | modifying tables, RETURNING, view/materialized view | §§2-12 | Đã giữ và giới hạn theo phiên bản |
+| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 49-62 | transactional DDL, lock modes | §§6-7, 13 | Đã nối với lock budget |
 | [[SRC-POSTGRESQL-17-CONSTRAINTS]] | UNIQUE/CHECK/FK | §§1, 8 | Đã giữ NULL/concurrency caveat |
-| Tổng hợp DE-L125 | replay, source duplicate, online migration evidence | §§13–15 | Đã thành lab kiểm được |
+| Tổng hợp DE-L125 | replay, source duplicate, online migration evidence | §§13-15 | Đã thành lab kiểm được |
 
 ## Key takeaways
 - Idempotency đến từ business key, constraint và side-effect contract; không đến từ tên lệnh.
 - MERGE cần source unique/canonical và target invariant.
 - Mọi DDL phải được đánh giá theo lock, scan/rewrite, compatibility và rollback.
 - `NOT VALID`/`VALIDATE` giảm blast radius trong trường hợp phù hợp nhưng không phải zero-lock.
-- Materialized view là cache có freshness SLO, không phải view “nhanh hơn” miễn phí.
+- Materialized view là cache có freshness SLO, không phải view nhanh hơn miễn phí.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.dml-ddl-constraints-views`
+## Execution capsule: kiểm chứng `wiki.database.dml-ddl-constraints-views`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.dml-ddl-constraints-views`, sơ đồ, ví dụ và artifact về **DML, DDL, constraints và views** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -210,7 +210,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Làm sao sửa dữ liệu, cưỡng chế bất biến và thay đổi schema trên bảng lớn mà có semantics, lock budget và rollback rõ?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Làm sao sửa dữ liệu, cưỡng chế bất biến và thay đổi schema trên bảng lớn mà có semantics, lock budget và rollback rõ? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **DML, DDL, constraints và views** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

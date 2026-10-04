@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao biến tài liệu data product thành artifact có bốn nhóm kiểm tự động, mutation tests và merge gate nhưng vẫn giữ phần review cần phán đoán của con người?
 source_ids:
   - src.web.dbt-documentation
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Test contract thay vì test file tồn tại
 
-Một README tồn tại hoặc site docs build thành công chỉ chứng minh pipeline tạo được artifact. Documentation test phải nối public contract với nội dung được công bố và hành vi người dùng. Bốn nhóm tối thiểu của bài là public-field coverage, executable examples, semantic-reference integrity và freshness-promise consistency. Mỗi rule có stable code, severity, owner, input artifacts, failure message và remediation link. Rule phải chỉ ra field/query/metric/schedule cụ thể; thông báo “docs invalid” không đủ để sửa.
+Một README tồn tại hoặc site docs build thành công chỉ chứng minh pipeline tạo được artifact. Documentation test phải nối public contract với nội dung được công bố và hành vi người dùng. Bốn nhóm tối thiểu của bài là public-field coverage, executable examples, semantic-reference integrity và freshness-promise consistency. Mỗi rule có stable code, severity, owner, input artifacts, failure message và remediation link. Rule phải chỉ ra field/query/metric/schedule cụ thể; thông báo docs invalid không đủ để sửa.
 
 ## 2. Public-field coverage
 
@@ -55,11 +55,11 @@ Tiêm bốn mutations độc lập: public column không description; example qu
 
 ## 7. Ba phần bắt buộc review người
 
-Thứ nhất, liệu discovery/context có trả đúng user need và tránh ngôn ngữ mơ hồ. Thứ hai, interpretation limits, causal caveat, trade-off và design rationale có đầy đủ hay không. Thứ ba, ví dụ có đại diện use case, dễ dùng và không khuyến khích practice nguy hiểm. Automated lint hỗ trợ nhưng không chứng minh clarity hoặc truth. Review có checklist, named reviewer, exact artifact hash và expiry; “đã đọc” không phải evidence. Escaped documentation defect phải tạo regression rule nếu có thể tự động hóa mà không làm rule quá nhiễu.
+Thứ nhất, liệu discovery/context có trả đúng user need và tránh ngôn ngữ mơ hồ. Thứ hai, interpretation limits, causal caveat, trade-off và design rationale có đầy đủ hay không. Thứ ba, ví dụ có đại diện use case, dễ dùng và không khuyến khích practice nguy hiểm. Automated lint hỗ trợ nhưng không chứng minh clarity hoặc truth. Review có checklist, named reviewer, exact artifact hash và expiry; đã đọc không phải evidence. Escaped documentation defect phải tạo regression rule nếu có thể tự động hóa mà không làm rule quá nhiễu.
 
 ## 8. Ma trận kiểm chứng từng mệnh đề
 
-Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được. Một trang tài liệu tồn tại, catalog có search box hoặc người dùng nói ‘dễ’ không tự là bằng chứng.
+Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được. Một trang tài liệu tồn tại, catalog có search box hoặc người dùng nói dễ không tự là bằng chứng.
 
 ### 8.1. file existence không chứng minh documentation correctness
 
@@ -231,7 +231,7 @@ Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.documentation-tests`
+## Execution capsule: kiểm chứng `wiki.data-product.documentation-tests`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.documentation-tests`, sơ đồ, ví dụ và artifact về **Documentation Tests** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

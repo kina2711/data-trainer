@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao đọc một kho mã, dựng đồ thị phụ thuộc và chứng minh ranh giới nào làm thay đổi lan rộng hoặc khiến lõi nghiệp vụ phụ thuộc sai chiều?
 source_ids:
   - src.book.newman-building-microservices.2e
@@ -37,7 +37,7 @@ relationships:
 # Độ gắn kết, độ phụ thuộc và chiều phụ thuộc
 
 > [!abstract] Câu hỏi trung tâm
-> Một sơ đồ nhiều hộp chưa chứng minh hệ thống có mô-đun. Cần biết mã nào thay đổi cùng nhau, mô-đun nào đang biết chi tiết của mô-đun nào, và một thay đổi giả định sẽ lan qua bao nhiêu tệp. Chương này dùng import graph, edge ledger và replacement scenario để biến nhận xét “mã đang dính nhau” thành bằng chứng có thể kiểm tra.
+> Một sơ đồ nhiều hộp chưa chứng minh hệ thống có mô-đun. Cần biết mã nào thay đổi cùng nhau, mô-đun nào đang biết chi tiết của mô-đun nào, và một thay đổi giả định sẽ lan qua bao nhiêu tệp. Chương này dùng import graph, edge ledger và replacement scenario để biến nhận xét mã đang dính nhau thành bằng chứng có thể kiểm tra.
 
 ## 1. Triệu chứng: thay database nhưng sửa cả lõi nghiệp vụ
 
@@ -50,22 +50,22 @@ Một pipeline ghi order vào PostgreSQL. Yêu cầu mới là chạy cùng logi
 - API handler vì bắt exception của driver;
 - batch job vì dùng câu SQL của service.
 
-Sáu điểm sửa không phải sáu sự cố riêng. Chúng là bằng chứng rằng quyết định “lưu ở PostgreSQL” đã lọt qua boundary và trở thành assumption của nhiều mô-đun.
+Sáu điểm sửa không phải sáu sự cố riêng. Chúng là bằng chứng rằng quyết định lưu ở PostgreSQL đã lọt qua boundary và trở thành assumption của nhiều mô-đun.
 
 > [!source-fact]
-> Newman dẫn lại cách nhìn của Parnas: kết nối giữa các mô-đun chính là những assumption mà chúng đặt lên nhau. Giảm số assumption làm thay đổi cục bộ hơn. *Building Microservices*, Chapter 2, PDF 59–60.
+> Newman dẫn lại cách nhìn của Parnas: kết nối giữa các mô-đun chính là những assumption mà chúng đặt lên nhau. Giảm số assumption làm thay đổi cục bộ hơn. *Building Microservices*, Chapter 2, PDF 59-60.
 
 ## 2. Ba câu hỏi khác nhau
 
-### Cohesion — cái gì thuộc cùng một boundary?
+### Cohesion: cái gì thuộc cùng một boundary?
 
-Cohesion xét quan hệ giữa các phần **bên trong** một boundary. Cách diễn đạt thực dụng của Newman là “code thay đổi cùng nhau thì ở cùng nhau”. Related behavior được đặt gần nhau để một thay đổi nghiệp vụ không phải sửa nhiều mô-đun.
+Cohesion xét quan hệ giữa các phần **bên trong** một boundary. Cách diễn đạt thực dụng của Newman là code thay đổi cùng nhau thì ở cùng nhau. Related behavior được đặt gần nhau để một thay đổi nghiệp vụ không phải sửa nhiều mô-đun.
 
-### Coupling — boundary này giả định gì về boundary khác?
+### Coupling: boundary này giả định gì về boundary khác?
 
 Coupling xét quan hệ **qua** boundary. Một mô-đun coupled với mô-đun khác khi nó dựa vào tên, type, schema, thứ tự gọi, timing, trạng thái, failure hoặc implementation detail của mô-đun kia.
 
-### Dependency direction — bên nào phải biết bên nào?
+### Dependency direction: bên nào phải biết bên nào?
 
 Direction hỏi source-level knowledge chạy theo hướng nào. Nếu policy nghiệp vụ import ORM và driver, lõi biết mechanism. Nếu adapter import interface/type do lõi công bố, mechanism biết policy. Hai hệ thống có thể tạo cùng runtime behavior nhưng mang khả năng thay đổi khác nhau.
 
@@ -102,7 +102,7 @@ Nó nên giấu:
 - dependency transitively không thuộc contract.
 
 > [!source-fact]
-> Sommerville yêu cầu interface nêu signature và semantics của service, nhưng không lộ data representation. Representation có thể đổi từ array sang list mà object dùng interface không đổi. *Software Engineering* 10e, Chapter 7, trang in 208–209, PDF 210–211.
+> Sommerville yêu cầu interface nêu signature và semantics của service, nhưng không lộ data representation. Representation có thể đổi từ array sang list mà object dùng interface không đổi. *Software Engineering* 10e, Chapter 7, trang in 208-209, PDF 210-211.
 
 ### Assumption ledger
 
@@ -119,7 +119,7 @@ Số cạnh chưa đủ. Cần biết assumption trên cạnh là ổn định h
 
 ## 4. Cohesion được kiểm bằng lịch sử thay đổi
 
-Một mô-đun cohesive khi các thành phần bên trong phục vụ cùng capability hoặc cùng lý do thay đổi. “Cùng là utility” hay “cùng dùng pandas” chưa phải lý do nghiệp vụ.
+Một mô-đun cohesive khi các thành phần bên trong phục vụ cùng capability hoặc cùng lý do thay đổi. Cùng là utility hay cùng dùng pandas chưa phải lý do nghiệp vụ.
 
 ### Dấu hiệu cohesion mạnh
 
@@ -138,7 +138,7 @@ Một mô-đun cohesive khi các thành phần bên trong phục vụ cùng capa
 - tên như `Common`, `Manager`, `Processor`, `Helper` không nói lý do thay đổi.
 
 > [!source-fact]
-> Newman cảnh báo service chỉ bọc CRUD có thể là dấu hiệu cohesion yếu và coupling chặt: behavior quản lý dữ liệu đã bị đẩy sang nhiều caller. Chapter 2, PDF 73–75.
+> Newman cảnh báo service chỉ bọc CRUD có thể là dấu hiệu cohesion yếu và coupling chặt: behavior quản lý dữ liệu đã bị đẩy sang nhiều caller. Chapter 2, PDF 73-75.
 
 ### Co-change là bằng chứng, không phải phán quyết
 
@@ -150,7 +150,7 @@ Từ lịch sử Git, đếm hai tệp xuất hiện trong cùng commit có th�
 - generated code;
 - test phải đổi vì behavior công khai đổi đúng chủ ý.
 
-Vì thế, co-change dùng để đặt câu hỏi “tại sao hai thứ này luôn đổi cùng nhau?”, không tự động ra lệnh gộp mô-đun.
+Vì thế, co-change dùng để đặt câu hỏi tại sao hai thứ này luôn đổi cùng nhau?, không tự động ra lệnh gộp mô-đun.
 
 ## 5. Coupling có nhiều lớp
 
@@ -168,7 +168,7 @@ Import graph chỉ bắt static/source dependency. Một audit có giá trị ph
 Một cạnh runtime không buộc source dependency cùng chiều. Core có thể gọi object được inject qua port; runtime control đi từ core tới adapter instance, còn source code của adapter phụ thuộc vào abstraction do core sở hữu.
 
 > [!inference]
-> Vì `DE-L090` yêu cầu đọc import để vẽ graph, kết quả bài chỉ chứng minh static dependency trừ khi học viên bổ sung trace, schema usage hoặc history. Không được dùng import graph để tuyên bố “không có coupling” ở các lớp còn lại.
+> Vì `DE-L090` yêu cầu đọc import để vẽ graph, kết quả bài chỉ chứng minh static dependency trừ khi học viên bổ sung trace, schema usage hoặc history. Không được dùng import graph để tuyên bố không có coupling ở các lớp còn lại.
 
 ## 6. Năm dạng coupling từ Newman
 
@@ -217,7 +217,7 @@ Các phép thử thực dụng:
 5. Đổi third-party library: type hoặc exception của library xuất hiện ở bao nhiêu signature?
 
 > [!source-fact]
-> *The Pragmatic Programmer* đề nghị đếm module bị ảnh hưởng khi đổi một requirement, quan sát lượng code phải import để chạy unit test và phân tích số source file chạm bởi mỗi bug fix. Topic 10, PDF 79–83.
+> *The Pragmatic Programmer* đề nghị đếm module bị ảnh hưởng khi đổi một requirement, quan sát lượng code phải import để chạy unit test và phân tích số source file chạm bởi mỗi bug fix. Topic 10, PDF 79-83.
 
 Orthogonality không đồng nghĩa hoàn toàn độc lập. Module vẫn hợp tác qua contract. Mục tiêu là loại secondary effect giữa những thứ không liên quan.
 
@@ -355,7 +355,7 @@ Với change scenario `s`, định nghĩa cục bộ:
 A(s) = số tệp phải sửa / số tệp chứa decision cần thay
 ```
 
-Nếu decision “PostgreSQL” đáng lẽ nằm một adapter nhưng đổi nó chạm sáu tệp, amplification là `6/1`. Tỉ lệ này chỉ so được khi hai repo dùng cùng scenario và quy tắc đếm.
+Nếu decision PostgreSQL đáng lẽ nằm một adapter nhưng đổi nó chạm sáu tệp, amplification là `6/1`. Tỉ lệ này chỉ so được khi hai repo dùng cùng scenario và quy tắc đếm.
 
 ### 10.4 Co-change rate
 
@@ -367,13 +367,13 @@ Loại merge, formatting, generated output và mechanical rename trước khi di
 
 ### 10.5 Import burden của unit test
 
-Ghi số service, container, module hoặc fixture phải dựng để test một policy. Test “unit” cần database thật có thể là integration test bị đặt sai tên hoặc là core đã coupled vào storage.
+Ghi số service, container, module hoặc fixture phải dựng để test một policy. Test unit cần database thật có thể là integration test bị đặt sai tên hoặc là core đã coupled vào storage.
 
 ## 11. Hai kho mã mẫu
 
 Hai repo dưới đây là mô hình giảng dạy có cùng behavior: nhận order, kiểm invariant, lưu và trả kết quả. Chúng chưa phải benchmark trên repository thật.
 
-### Repo A — mechanism xuyên qua lõi
+### Repo A: mechanism xuyên qua lõi
 
 ```text
 repo-a/
@@ -400,7 +400,7 @@ tests -> services + db.session
 
 Sai chiều: `domain -> db.models`, `services -> db.session`, public service nhận `Session`, test core phụ thuộc database fixture.
 
-### Repo B — policy giữ port, wiring ở ngoài
+### Repo B: policy giữ port, wiring ở ngoài
 
 ```text
 repo-b/
@@ -462,9 +462,9 @@ Tệp mới: `adapters/parquet_order_repository.py`, `tests/integration/test_par
 Kết quả mô hình: 1 tệp sửa, 2 tệp mới; contract test cho repository chạy lại trên adapter mới.
 
 > [!synthesis]
-> So sánh trên kết hợp phép thử change isolation của Hunt–Thomas, information hiding của Newman và interface representation hiding của Sommerville. Các con số là kết quả của repo mẫu được mô tả ở đây, chưa phải số đo từ source repository của dự án.
+> So sánh trên kết hợp phép thử change isolation của Hunt-Thomas, information hiding của Newman và interface representation hiding của Sommerville. Các con số là kết quả của repo mẫu được mô tả ở đây, chưa phải số đo từ source repository của dự án.
 
-## 13. Vì sao “ít tệp sửa” chưa đủ
+## 13. Vì sao ít tệp sửa chưa đủ
 
 Repo B có thể gian lận nếu:
 
@@ -501,39 +501,39 @@ Quyết định phải ghi scenario và bằng chứng, tránh tranh luận theo
 
 ## 15. Quy trình làm DE-L090
 
-### Bước 1 — Chọn hai repo và cùng một scenario
+### Bước 1: Chọn hai repo và cùng một scenario
 
 Hai repo phải có behavior tương đương. Scenario thay database phải giữ business input/output và tiêu chí acceptance.
 
-### Bước 2 — Chốt node và edge convention
+### Bước 2: Chốt node và edge convention
 
 Ghi `A -> B` là A phụ thuộc B. Chọn package-level, sau đó drill down boundary sai.
 
-### Bước 3 — Parse import
+### Bước 3: Parse import
 
 Lưu file:line cho mỗi edge. Resolve alias, relative path và generated code policy.
 
-### Bước 4 — Vẽ graph và tìm cycle
+### Bước 4: Vẽ graph và tìm cycle
 
 Đánh dấu strongly connected component, fan-in/fan-out và core/mechanism boundary.
 
-### Bước 5 — Viết policy chiều phụ thuộc
+### Bước 5: Viết policy chiều phụ thuộc
 
-Không đánh dấu “sai” trước khi có rule theo responsibility và change scenario.
+Không đánh dấu sai trước khi có rule theo responsibility và change scenario.
 
-### Bước 6 — Lập edge ledger
+### Bước 6: Lập edge ledger
 
 Với mỗi edge đáng ngờ, ghi assumption, volatility, contract status và hậu quả nếu dependency đổi.
 
-### Bước 7 — Thực hiện replacement trên nhánh tạm hoặc simulation có diff
+### Bước 7: Thực hiện replacement trên nhánh tạm hoặc simulation có diff
 
 Đếm file sửa, file mới, test sửa và contract thay. Không chỉ ước lượng bằng mắt.
 
-### Bước 8 — Chạy behavior tests
+### Bước 8: Chạy behavior tests
 
 Chứng minh hai adapter cho cùng business outcome. Core tests của thiết kế tốt không được sửa chỉ để chấp nhận storage mới.
 
-### Bước 9 — So sánh và giải thích
+### Bước 9: So sánh và giải thích
 
 Nêu edge sai chiều, change amplification và exception. Không kết luận từ tổng số edge đơn thuần.
 
@@ -542,12 +542,12 @@ Nêu edge sai chiều, change amplification và exception. Không kết luận t
 | Artifact | Nội dung tối thiểu | Fail khi |
 |---|---|---|
 | `dependency-graph.mmd` | node/edge convention, hai graph, cycle | vẽ tay không nối import evidence |
-| `edge-ledger.csv` | from, to, file:line, assumption, allowed, reason | chỉ ghi “bad dependency” |
+| `edge-ledger.csv` | from, to, file:line, assumption, allowed, reason | chỉ ghi bad dependency |
 | `dependency-policy.md` | layer/module rule và ngoại lệ | rule được viết sau để hợp thức hóa graph |
 | `replacement-scenario.md` | input, invariant, change, counting rule | hai repo nhận hai bài khác nhau |
 | `changed-files.txt` | file sửa/mới/xóa và lý do | chỉ báo một tổng số |
 | `test-evidence.txt` | command, exit status, business result | test core bị sửa mà không giải thích |
-| `comparison.md` | edge sai chiều và số tệp chênh | kết luận “B tốt hơn” không có trace |
+| `comparison.md` | edge sai chiều và số tệp chênh | kết luận B tốt hơn không có trace |
 
 `DE-L090` hoàn tất khi graph đúng cho cả hai repo, mọi wrong-way edge có bằng chứng, và replacement scenario tạo chênh lệch số tệp sửa rõ rệt theo cùng quy tắc đếm.
 
@@ -570,31 +570,31 @@ Nêu edge sai chiều, change amplification và exception. Không kết luận t
 
 ## 18. Ngộ nhận thường gặp
 
-### “Càng ít dependency càng tốt”
+### Càng ít dependency càng tốt
 
 Không có dependency thì module không hợp tác. Cần giảm assumption không cần thiết và giữ edge theo responsibility, không săn con số bằng không.
 
-### “Interface luôn làm coupling lỏng”
+### Interface luôn làm coupling lỏng
 
 Interface chứa type của database, quá rộng hoặc thay liên tục vẫn tạo coupling chặt. Abstraction phải phản ánh nhu cầu của policy-owning consumer.
 
-### “Runtime gọi ra ngoài nên source dependency phải đi ra ngoài”
+### Runtime gọi ra ngoài nên source dependency phải đi ra ngoài
 
 Dependency inversion tách hai chiều: control flow có thể gọi adapter, source code của adapter phụ thuộc port do core sở hữu.
 
-### “Tách microservice sẽ giảm coupling”
+### Tách microservice sẽ giảm coupling
 
 Boundary network có thể làm temporal, pass-through và schema coupling nặng hơn. Newman xem microservice là modular decomposition kèm thêm distributed-system cost.
 
-### “Shared database luôn sai”
+### Shared database luôn sai
 
 Nguồn giữ qualifier: shared static read-only data ít đổi có thể chấp nhận. Nhiều writer cùng quản lý state và invariant là tình huống rủi ro hơn.
 
-### “Một commit chạm hai module nghĩa là phải gộp”
+### Một commit chạm hai module nghĩa là phải gộp
 
 Mechanical change, migration và cross-cutting contract change cũng tạo co-change. Cần đọc lý do.
 
-### “Layered folder nghĩa là dependency đúng chiều”
+### Layered folder nghĩa là dependency đúng chiều
 
 Tên thư mục không chặn import ngược, type leak hoặc global access. Graph lấy từ code mới là bằng chứng.
 
@@ -615,10 +615,10 @@ Tên thư mục không chặn import ngược, type leak hoặc global access. G
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], Ch. 2 pp. 57–77 | information hiding, cohesion, coupling và các dạng coupling | §§2–7 | Đã trình bày theo change boundary và assumption |
-| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]], Topic 10 pp. 76–83 | orthogonality và tác động của thay đổi cục bộ | §§7, 11–13 | Đã trình bày bằng replacement scenario |
-| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], Ch. 7 pp. 208–212 | architectural decomposition, component relation và interface | §§3, 8–10, 14 | Đã trình bày dependency direction và giới hạn số đo |
-| Tổng hợp bài DE-L090 | import graph, metric suite, hai repository case và evidence pack | §§9–17 | Đã gắn `synthesis`; metric không được dùng làm chân lý độc lập |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], Ch. 2 pp. 57-77 | information hiding, cohesion, coupling và các dạng coupling | §§2-7 | Đã trình bày theo change boundary và assumption |
+| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]], Topic 10 pp. 76-83 | orthogonality và tác động của thay đổi cục bộ | §§7, 11-13 | Đã trình bày bằng replacement scenario |
+| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], Ch. 7 pp. 208-212 | architectural decomposition, component relation và interface | §§3, 8-10, 14 | Đã trình bày dependency direction và giới hạn số đo |
+| Tổng hợp bài DE-L090 | import graph, metric suite, hai repository case và evidence pack | §§9-17 | Đã gắn `synthesis`; metric không được dùng làm chân lý độc lập |
 
 Các số đo coupling chỉ là proxy cho boundary. Note giữ lịch sử thay đổi, ownership và semantics như bằng chứng bổ sung thay vì hứa một threshold phổ quát.
 
@@ -647,9 +647,9 @@ Các số đo coupling chỉ là proxy cho boundary. Note giữ lịch sử thay
 - Bài kế tiếp sử dụng graph và direction policy: `DE-L091`.
 
 ## Reference
-1. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — Sam Newman, *Building Microservices*, Second Edition, Chapter 2, PDF 57–77.
-2. [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]] — David Thomas và Andrew Hunt, *The Pragmatic Programmer*, 20th Anniversary Edition, Topic 10, PDF 76–83.
-3. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]] — Ian Sommerville, *Software Engineering*, 10th Global Edition, Chapter 7, PDF 208–212.
+1. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: Sam Newman, *Building Microservices*, Second Edition, Chapter 2, PDF 57-77.
+2. [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]]: David Thomas và Andrew Hunt, *The Pragmatic Programmer*, 20th Anniversary Edition, Topic 10, PDF 76-83.
+3. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]]: Ian Sommerville, *Software Engineering*, 10th Global Edition, Chapter 7, PDF 208-212.
 
 ## Lịch sử biên tập
 
@@ -659,7 +659,7 @@ Các số đo coupling chỉ là proxy cho boundary. Note giữ lịch sử thay
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.software-engineering.cohesion-coupling-dependency-direction`
+## Execution capsule: kiểm chứng `wiki.software-engineering.cohesion-coupling-dependency-direction`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.software-engineering.cohesion-coupling-dependency-direction`, sơ đồ, ví dụ và artifact về **Độ gắn kết, độ phụ thuộc và chiều phụ thuộc** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

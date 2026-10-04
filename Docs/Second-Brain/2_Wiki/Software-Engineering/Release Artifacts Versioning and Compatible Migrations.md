@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao phát hành đúng artifact đã kiểm thử và thay đổi lược đồ khi phiên bản cũ lẫn mới còn chạy đồng thời?
 source_ids:
   - src.book.newman-building-microservices.2e
@@ -29,7 +29,7 @@ relationships:
 # Artifact phát hành, phiên bản và di trú tương thích
 
 > [!abstract] Câu hỏi trung tâm
-> Release đáng tin không bắt đầu bằng “build lại ở production”. Nó bắt đầu bằng một artifact bất biến đã qua kiểm thử, có danh tính và provenance; sau đó mọi thay đổi dữ liệu phải giữ được vùng tương thích trong lúc bản cũ và bản mới cùng tồn tại.
+> Release đáng tin không bắt đầu bằng build lại ở production. Nó bắt đầu bằng một artifact bất biến đã qua kiểm thử, có danh tính và provenance; sau đó mọi thay đổi dữ liệu phải giữ được vùng tương thích trong lúc bản cũ và bản mới cùng tồn tại.
 
 ## 1. Tách build, release và deploy
 
@@ -37,10 +37,10 @@ relationships:
 - **Release:** phê duyệt một artifact version cụ thể cho một phạm vi sử dụng.
 - **Deploy:** đặt artifact đã phê duyệt vào một environment.
 
-Cùng một commit nhưng build hai lần có thể khác vì dependency resolution, base image, compiler hoặc timestamp. Vì vậy, “build lại cho staging rồi build lại cho production” làm mất bằng chứng rằng thứ được kiểm thử là thứ đang chạy.
+Cùng một commit nhưng build hai lần có thể khác vì dependency resolution, base image, compiler hoặc timestamp. Vì vậy, build lại cho staging rồi build lại cho production làm mất bằng chứng rằng thứ được kiểm thử là thứ đang chạy.
 
 > [!source-fact]
-> Newman khuyến nghị build deployment artifact một lần, lưu trong repository và dùng chính artifact đó qua các stage; configuration theo environment nằm ngoài artifact. *Building Microservices*, 2e, PDF 257–261.
+> Newman khuyến nghị build deployment artifact một lần, lưu trong repository và dùng chính artifact đó qua các stage; configuration theo environment nằm ngoài artifact. *Building Microservices*, 2e, PDF 257-261.
 
 ## 2. Release identity
 
@@ -74,7 +74,7 @@ Cần tách:
 - configuration version;
 - data model hoặc semantic version nếu consumer phụ thuộc.
 
-Semantic versioning có ích khi public contract và quy tắc compatibility được xác định. Nó không tự làm thay đổi trở nên tương thích. “Chỉ tăng major” vẫn có thể làm consumer hỏng nếu rollout không có giai đoạn coexistence.
+Semantic versioning có ích khi public contract và quy tắc compatibility được xác định. Nó không tự làm thay đổi trở nên tương thích. Chỉ tăng major vẫn có thể làm consumer hỏng nếu rollout không có giai đoạn coexistence.
 
 ## 4. Vùng tương thích khi rollout
 
@@ -124,7 +124,7 @@ Backfill production cần:
 - xử lý record được cập nhật đồng thời;
 - trạng thái hoàn tất có thể audit.
 
-Dual-write có nguy cơ một bên thành công, một bên lỗi. Nếu không có transaction chung, phải ghi mismatch metric hoặc outbox/reconciliation path. Không nói “ghi cả hai” như thể atomicity tự xuất hiện.
+Dual-write có nguy cơ một bên thành công, một bên lỗi. Nếu không có transaction chung, phải ghi mismatch metric hoặc outbox/reconciliation path. Không nói ghi cả hai như thể atomicity tự xuất hiện.
 
 ## 7. Release notes phục vụ vận hành
 
@@ -139,7 +139,7 @@ Release note không phải danh sách commit. Nó cần:
 - thao tác không thể đảo ngược.
 
 > [!source-fact]
-> *Accelerate* dùng lead time, deployment frequency, time to restore và change fail rate để đo delivery performance; sách tránh đánh đổi tốc độ và ổn định thành hai cực loại trừ nhau. PDF 45–51.
+> *Accelerate* dùng lead time, deployment frequency, time to restore và change fail rate để đo delivery performance; sách tránh đánh đổi tốc độ và ổn định thành hai cực loại trừ nhau. PDF 45-51.
 
 ## 8. Phép thử có tải cho DE-L097
 
@@ -198,7 +198,7 @@ flowchart LR
   P --> O[Observed version endpoint]
 ```
 
-Runtime nên xuất release ID hoặc digest qua metric/build-info endpoint có kiểm soát. Nếu incident chỉ biết “version 2.3” nhưng tag đã bị ghi đè, không thể nối behavior về source và test report.
+Runtime nên xuất release ID hoặc digest qua metric/build-info endpoint có kiểm soát. Nếu incident chỉ biết version 2.3 nhưng tag đã bị ghi đè, không thể nối behavior về source và test report.
 
 ## 13. Version compatibility là quan hệ có hướng
 
@@ -285,7 +285,7 @@ Một release candidate nên mang theo:
 - deploy/rollback runbook;
 - owner phê duyệt đúng digest.
 
-Evidence này cho phép trả lời “cái gì đang chạy, được kiểm bằng gì, dữ liệu đang ở state nào và còn lùi được không”.
+Evidence này cho phép trả lời cái gì đang chạy, được kiểm bằng gì, dữ liệu đang ở state nào và còn lùi được không.
 
 ## 19. Case study đổi cột dưới tải
 
@@ -307,7 +307,7 @@ Giả sử API đang đọc/ghi `customer_name`, cần chuyển sang `customer_d
 2. Khi nào artifact version khác API version?
 3. Bốn cặp writer-reader nào quyết định khả năng coexist và rollback?
 4. Vì sao dual-write chưa đủ nếu thiếu reconciliation?
-5. Bước nào của expand–migrate–contract thường làm rollback binary mất an toàn?
+5. Bước nào của expand-migrate-contract thường làm rollback binary mất an toàn?
 
 ## 21. Giới hạn
 
@@ -327,21 +327,21 @@ Giả sử API đang đọc/ghi `customer_name`, cần chuyển sang `customer_d
 - Bài kế tiếp dùng compatibility window để rollout và rollback: [[Deployment Strategies and Rollback|Chiến lược triển khai và rollback]].
 
 ## Reference
-1. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — expand/contract và artifact creation, PDF 193–197, 257–261.
-2. [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]] — delivery performance và CD capabilities, PDF 45–51, 74–81, 228–232.
-3. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]] — configuration management, change management và system building, Chapter 25.
+1. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: expand/contract và artifact creation, PDF 193-197, 257-261.
+2. [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]]: delivery performance và CD capabilities, PDF 45-51, 74-81, 228-232.
+3. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]]: configuration management, change management và system building, Chapter 25.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 193–197 | backward compatibility, coexistence và expand/contract | §§3–6, 13–17 | Đã trình bày compatibility có hướng và migration state |
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 257–261 | build artifact, identity và promotion | §§1–2, 10–12, 18 | Đã trình bày build-once, digest, config separation và provenance |
-| [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]], pp. 45–51, 74–81, 228–232 | delivery performance, CD và feedback | §§7–8, 18–19 | Đã trình bày evidence, continuous load và release feedback |
-| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], Ch. 25 | configuration, change và system building | §§1–3, 10–12, 18 | Đã trình bày manifest và configuration boundary |
-| Tổng hợp bài DE-L097 | concurrent backfill, state machine, rollback matrix và case đổi cột | §§15–19 | Đã gắn `synthesis`; DDL behavior cụ thể cần tài liệu database/version |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 193-197 | backward compatibility, coexistence và expand/contract | §§3-6, 13-17 | Đã trình bày compatibility có hướng và migration state |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 257-261 | build artifact, identity và promotion | §§1-2, 10-12, 18 | Đã trình bày build-once, digest, config separation và provenance |
+| [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]], pp. 45-51, 74-81, 228-232 | delivery performance, CD và feedback | §§7-8, 18-19 | Đã trình bày evidence, continuous load và release feedback |
+| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], Ch. 25 | configuration, change và system building | §§1-3, 10-12, 18 | Đã trình bày manifest và configuration boundary |
+| Tổng hợp bài DE-L097 | concurrent backfill, state machine, rollback matrix và case đổi cột | §§15-19 | Đã gắn `synthesis`; DDL behavior cụ thể cần tài liệu database/version |
 
-Không có tuyên bố “zero downtime” chung cho mọi database. Note yêu cầu mixed-version test, reconciliation và evidence theo từng transition.
+Không có tuyên bố zero downtime chung cho mọi database. Note yêu cầu mixed-version test, reconciliation và evidence theo từng transition.
 
 ## Key takeaways
 - Build một lần, định danh bằng digest, promote đúng artifact đã kiểm thử.
@@ -351,7 +351,7 @@ Không có tuyên bố “zero downtime” chung cho mọi database. Note yêu c
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.software-engineering.release-artifacts-versioning-compatible-migrations`
+## Execution capsule: kiểm chứng `wiki.software-engineering.release-artifacts-versioning-compatible-migrations`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.software-engineering.release-artifacts-versioning-compatible-migrations`, sơ đồ, ví dụ và artifact về **Artifact phát hành, phiên bản và di trú tương thích** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -1,5 +1,9 @@
 # Mô-đun 8: Kỹ nghệ backend và API
 
+## Second Brain References
+
+- [[wiki.backend.request-lifecycle-end-to-end|Request lifecycle end to end]]
+
 Module này là module cuối trước khi vào tầng dữ liệu, và nó là nơi người học lần đầu chịu trách nhiệm về một hệ có trạng thái dưới tải thật. Ghi chú về phụ thuộc. Hợp đồng nguồn nêu module này cần SQL cơ bản và cho phép học song song phần đầu của M9. Ở đây SQL chỉ dùng ở mức đọc ghi và giao dịch; phần kế hoạch thực thi, chỉ mục và tối ưu thuộc M9 và M10, nên bài 95 chỉ dùng giao dịch chứ chưa đòi đọc kế hoạch. Dự án của module là một giao diện điều khiển công việc, và nó được dùng lại làm nguồn dữ liệu cho pipeline tham chiếu từ M16 trở đi.
 
 ## Điều kiện đầu vào
@@ -56,7 +60,7 @@ Vận hành đúng một giao diện lập trình web có trạng thái dưới 
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M08 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M08 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -95,7 +99,7 @@ flowchart LR
   class A101,A102,A103,A104,A105,A106,A107,A108,A109,A110,A111,A112 atom;
 ```
 
-### Bài 101: The request lifecycle end to end
+### Lesson 101: The request lifecycle end to end
 
 Bài mở module bằng cách nối mọi thứ đã học ở M5 và M6 thành một đường đi duy nhất: socket nhận kết nối, máy chủ phân luồng, bộ định tuyến chọn hàm xử lý, các lớp trung gian chạy trước và sau, hàm xử lý gọi tầng ứng dụng, tầng ứng dụng gọi kho dữ liệu, rồi phản hồi đi ngược lại. Mỗi chặng có một hạn chờ và một chỗ có thể hỏng, và vẽ được đường này là điều kiện để chẩn đoán về sau. Ba mô hình xử lý đồng thời của máy chủ và hệ quả: một tiến trình nhiều luồng, nhiều tiến trình, và vòng lặp sự kiện; chọn theo đúng quy tắc ở Bài 29. Lớp trung gian làm gì và thứ tự chạy của chúng quan trọng ra sao, đặc biệt lớp ghi nhật ký và lớp xác thực. Điểm kiểm sức khoẻ và điểm kiểm sẵn sàng là hai thứ khác nhau, theo phân biệt đã nêu ở Bài 82.
 
@@ -103,7 +107,7 @@ Người học phải vẽ đường đi của một yêu cầu qua bảy chặn
 
 Cách đánh giá: Tầng *hiểu*. Bài mở module, tổng hợp kiến thức đã có thành một bản đồ. Kiểm bằng bài vẽ có chú thích; đạt khi đủ bảy chặng, mỗi chặng có hạn chờ và ít nhất một chế độ hỏng.
 
-### Bài 102: API contract - resources, errors and versioning
+### Lesson 102: API contract - resources, errors and versioning
 
 Hợp đồng của giao diện là thứ người khác dựa vào, nên đổi nó là đổi thứ ngoài tầm kiểm soát của mình. Tài nguyên và đường dẫn: đặt tên theo danh từ nghiệp vụ, theo từ vựng miền ở Bài 89. Ngữ nghĩa phương thức và tính bất biến theo Bài 81, nay là quyết định thiết kế chứ chỉ kiến thức. Xác thực đầu vào ở ranh giới theo Bài 18, và trả lỗi nêu rõ trường nào sai chứ một thông báo chung. Phong bì lỗi thống nhất: mã lỗi ổn định cho máy đọc, thông điệp cho người đọc, và mã theo dõi để đối chiếu nhật ký. Phân trang, lọc và sắp xếp: ba kiểu phân trang và vì sao phân trang theo con trỏ an toàn hơn theo số trang khi dữ liệu đang đổi, nối lại Bài 84. Đánh phiên bản: ba cách và đánh đổi; nguyên tắc chung là thêm thì được, bớt và đổi kiểu thì cần phiên bản mới, cùng bộ quy tắc với Bài 94.
 
@@ -111,7 +115,7 @@ Người học phải thiết kế hợp đồng cho một tài nguyên có phâ
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một thiết kế có tiêu chí nghiệm thu bằng phép kiểm hợp đồng ở Bài 94. Kiểm bằng ba thay đổi hợp đồng; đạt khi thêm trường không làm bên tiêu thụ lỗi và hai thay đổi phá vỡ bị phép kiểm chặn.
 
-### Bài 103: Transaction boundaries and the unit of work
+### Lesson 103: Transaction boundaries and the unit of work
 
 Ranh giới giao dịch là quyết định thiết kế chứ chi tiết cài đặt, và đặt sai là nguồn của dữ liệu không nhất quán. Nguyên tắc: một ca sử dụng là một giao dịch, mở ở tầng ứng dụng chứ ở tầng kho dữ liệu, vì tầng kho không biết ca sử dụng gồm mấy thao tác. Ba lỗi hay gặp: mỗi thao tác một giao dịch nên nửa chừng lỗi thì dữ liệu dở dang; giữ giao dịch mở trong lúc gọi hệ ngoài nên khoá bị giữ rất lâu; và gọi hệ ngoài bên trong giao dịch rồi giao dịch lùi mà tác động bên ngoài không lùi được. Lỗi thứ ba là bài toán hai hệ và lời giải của nó là mẫu hộp thư đi, đặt ở Bài 109. Hồ kết nối và quan hệ với ranh giới giao dịch: giao dịch giữ một kết nối, nên giao dịch dài làm cạn hồ, và triệu chứng là yêu cầu xếp hàng chờ kết nối chứ chờ cơ sở dữ liệu. Vấn đề truy vấn lặp và cách phát hiện bằng đếm số truy vấn cho mỗi yêu cầu.
 
@@ -119,7 +123,7 @@ Người học phải đặt đúng ranh giới giao dịch cho ba ca sử dụn
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một quyết định thiết kế kiểm được bằng thí nghiệm lỗi giữa chừng. Kiểm bằng ba ca sử dụng có tiêm lỗi; đạt khi không ca nào để lại trạng thái dở dang và số truy vấn cho mỗi yêu cầu nằm trong ngưỡng.
 
-### Bài 104: Concurrency control - optimistic and pessimistic
+### Lesson 104: Concurrency control - optimistic and pessimistic
 
 Hai máy khách cùng sửa một bản ghi là tình huống bình thường, và không xử lý thì một bản cập nhật biến mất mà không ai biết. Cập nhật mất là chế độ hỏng cụ thể: cả hai đọc giá trị cũ, cả hai ghi, bản ghi sau đè bản trước. Hai cách chống và điều kiện dùng. Khoá lạc quan: mỗi bản ghi có số phiên bản, khi ghi thì kiểm phiên bản còn như lúc đọc không, khác thì từ chối và báo máy khách thử lại; hợp khi xung đột hiếm. Khoá bi quan: khoá bản ghi lúc đọc, giữ tới khi ghi xong; hợp khi xung đột nhiều, đổi lại giảm đồng thời và có nguy cơ khoá chết theo Bài 70. Mức cô lập giao dịch ở mức đủ dùng, phần chi tiết thuộc M10. Cách kiểm thử: phép kiểm tuần tự không bao giờ phát hiện được lỗi loại này, nên bắt buộc phải có phép kiểm chạy song song thật.
 
@@ -127,7 +131,7 @@ Người học phải chống được cập nhật mất bằng một trong hai
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cơ chế chỉ kiểm được bằng phép chạy song song, điểm mà phép kiểm thông thường bỏ sót. Kiểm bằng 1000 lần ghi đồng thời; đạt khi không có cập nhật nào bị mất và số lần từ chối khớp số xung đột thật.
 
-### Bài 105: Idempotency keys and deduplication state
+### Lesson 105: Idempotency keys and deduplication state
 
 Máy khách thử lại là chuyện chắc chắn xảy ra theo Bài 83, nên giao diện phải định nghĩa rõ thử lại nghĩa là gì. Khoá bất biến: máy khách sinh một khoá cho mỗi ý định, gửi kèm; máy chủ lưu khoá cùng kết quả, và lần gọi lại với cùng khoá thì trả lại kết quả cũ thay vì làm lại. Ba chi tiết quyết định đúng sai. Một là lưu khoá và thực hiện tác động phải nằm trong cùng một giao dịch, nếu không thì có khe hở giữa hai bước; đây là ứng dụng trực tiếp của Bài 103. Hai là thời gian giữ khoá và điều gì xảy ra sau khi hết hạn. Ba là hành vi khi hai yêu cầu cùng khoá tới đồng thời chứ nối tiếp: bản sau phải chờ hoặc bị từ chối, chứ tạo hai bản ghi. Hợp đồng phải ghi rõ trong tài liệu để máy khách biết mình được thử lại trong điều kiện nào và trong bao lâu.
 
@@ -135,7 +139,7 @@ Người học phải cài khoá bất biến đúng cả ba chi tiết và ch�
 
 Cách đánh giá: Tầng *sáng tạo*. Objective đòi ghép giao dịch, lưu trạng thái và xử lý đồng thời thành một cơ chế mà thư viện không cho sẵn. Kiểm bằng ba thí nghiệm; đạt khi cả ba đều không sinh tác động kép.
 
-### Bài 106: Authentication, authorization and ownership checks
+### Lesson 106: Authentication, authorization and ownership checks
 
 Hai việc khác nhau hay bị gộp: xác thực trả lời bạn là ai, uỷ quyền trả lời bạn được làm gì. Ba cách xác thực và đánh đổi: phiên lưu phía máy chủ, thẻ mang theo, và chuẩn uỷ quyền mở ở mức khái niệm. Giới hạn của thẻ tự chứa: nó không thu hồi được trước khi hết hạn, nên thời hạn phải ngắn và phải có cơ chế làm mới; đây là chi tiết hay bị bỏ và gây rủi ro thật. Uỷ quyền theo vai và kiểm quyền sở hữu là hai tầng phải có cả hai: có vai đọc công việc không có nghĩa được đọc công việc của người khác; thiếu tầng thứ hai là lỗ hổng phổ biến nhất trong giao diện tự viết. Nguyên tắc kiểm ở đâu: kiểm ở tầng ứng dụng chứ ở hàm xử lý, để mọi đường vào đều đi qua. Phép thử phủ định bắt buộc: với mỗi điểm vào, viết một phép kiểm chứng minh người không có quyền bị từ chối.
 
@@ -143,7 +147,7 @@ Người học phải cài hai tầng uỷ quyền và chứng minh bằng phép
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cơ chế bảo mật kiểm được bằng phép thử phủ định, chứ bằng việc đường đi thuận chạy được. Kiểm bằng phép thử phủ định cho mọi điểm vào; đạt khi mọi truy cập trái phép bị từ chối và có ghi nhật ký.
 
-### Bài 107: Resilience - timeouts, circuit breakers and bulkheads
+### Lesson 107: Resilience - timeouts, circuit breakers and bulkheads
 
 Bài áp các cơ chế đã học ở Bài 83 và 87 vào một dịch vụ có trạng thái. Hạn chờ ở mọi lời gọi ra ngoài, gồm cả lời gọi tới cơ sở dữ liệu, vì cơ sở dữ liệu chậm là nguyên nhân sập dịch vụ phổ biến hơn mạng chậm. Thử lại có giới hạn và chỉ cho thao tác bất biến theo Bài 105. Bộ ngắt mạch bảo vệ bản thân khỏi việc lãng phí tài nguyên vào lời gọi chắc chắn thất bại. Vách ngăn là cơ chế ít được dùng nhưng rất hiệu quả: chia hồ tài nguyên theo loại việc, để một loại việc chậm không chiếm hết hồ kết nối và làm chết mọi loại còn lại; với dịch vụ dữ liệu thì tách hồ cho truy vấn nhanh và truy vấn nặng là cách đơn giản nhất. Giảm tải và hàng đợi có giới hạn theo Bài 87. Thứ tự áp dụng: đặt hạn chờ trước, rồi mới tới các cơ chế còn lại, vì không có hạn chờ thì mọi cơ chế khác vô nghĩa.
 
@@ -151,7 +155,7 @@ Người học phải dựng bốn cơ chế chịu lỗi và chứng minh dịc
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một tập cấu hình kiểm được bằng thí nghiệm hỏng hạ nguồn. Kiểm bằng ba kịch bản hỏng; đạt khi dịch vụ vẫn phục vụ phần không phụ thuộc và không cạn hồ kết nối.
 
-### Bài 108: Observability for an API - RED metrics and tracing
+### Lesson 108: Observability for an API - RED metrics and tracing
 
 Ba chỉ số tối thiểu cho mọi điểm vào: tốc độ yêu cầu, tỉ lệ lỗi, và phân bố thời gian xử lý. Báo phân vị chứ trung bình theo Bài 59 và 86. Chia theo điểm vào và theo mã trạng thái, vì tổng gộp che mất một điểm vào đang hỏng. Nhật ký có cấu trúc kèm mã yêu cầu theo Bài 20, và mã đó phải truyền sang cả lời gọi hạ nguồn để nối được toàn tuyến. Theo vết phân tán ở mức dùng được: một mã theo dõi đi qua nhiều thành phần cho biết thời gian tiêu ở đâu, và đây là thứ duy nhất trả lời được câu chậm ở chặng nào khi có nhiều chặng. Điểm kiểm sức khoẻ và sẵn sàng theo Bài 101, nay gắn với hành vi thật: sẵn sàng phải kiểm được kết nối cơ sở dữ liệu, nếu không thì bộ cân bằng tải gửi lưu lượng tới một bản sao đã hỏng. Ba câu hỏi chẩn đoán mà bộ chỉ số phải trả lời được.
 
@@ -159,7 +163,7 @@ Người học phải dựng bộ chỉ số và theo vết đủ để trả l�
 
 Cách đánh giá: Tầng *áp dụng*. Objective đo bằng khả năng trả lời câu hỏi chứ bằng số lượng biểu đồ. Kiểm bằng ba câu hỏi chẩn đoán trong lúc có sự cố tiêm sẵn; đạt khi trả lời được ít nhất hai chỉ bằng bảng điều khiển và theo vết.
 
-### Bài 109: The outbox pattern - one atomic write
+### Lesson 109: The outbox pattern - one atomic write
 
 Bài giải bài toán đã nêu ở Bài 103: ghi cơ sở dữ liệu rồi phát một sự kiện là hai thao tác trên hai hệ, nên chết giữa chừng làm hai bên lệch nhau và không có giao dịch nào bao được cả hai. Mẫu hộp thư đi biến hai thao tác thành một: ghi dữ liệu và ghi bản ghi sự kiện vào một bảng trong cùng một giao dịch, rồi một tiến trình riêng đọc bảng đó và phát đi. Vì chỉ còn một thao tác nguyên tử nên không có khe hở. Ba chi tiết cài đặt: đánh dấu đã phát thế nào để không phát lại vô hạn, xử lý khi phát thành công nhưng đánh dấu thất bại, và dọn bảng hộp thư để nó không phình. Bên nhận vẫn phải chịu được nhận trùng, vì mẫu này cho ít nhất một lần chứ đúng một lần. Ở M22, tiến trình đọc bảng hộp thư sẽ được thay bằng đọc thẳng nhật ký giao dịch; ở đây làm bản đơn giản trước.
 
@@ -167,7 +171,7 @@ Người học phải cài mẫu hộp thư đi và chứng minh bằng thí ngh
 
 Cách đánh giá: Tầng *sáng tạo*. Objective đòi ghép giao dịch với một tiến trình phát riêng thành một mẫu giải bài toán hai hệ. Kiểm bằng 20 lần giết tiến trình; đạt khi số sự kiện phát ra khớp số bản ghi tạo ra, không thiếu.
 
-### Bài 110: Load testing and capacity notes
+### Lesson 110: Load testing and capacity notes
 
 Đo dịch vụ dưới tải là cách duy nhất biết nó chịu được bao nhiêu, và làm sai cách thì số đo vô nghĩa. Bốn đại lượng phải đo cùng nhau: thông lượng, thời gian xử lý ở ba phân vị, tỉ lệ lỗi, và mức bão hoà của tài nguyên nút thắt, thường là hồ kết nối. Chỉ đo thông lượng mà không đo tỉ lệ lỗi là cách báo cáo một con số đẹp trong khi dịch vụ đang từ chối phần lớn yêu cầu. Quy trình: tăng tải theo bậc, ở mỗi bậc chờ ổn định rồi mới đo, và tìm điểm mà thời gian xử lý bắt đầu tăng phi tuyến; điểm đó là công suất thật chứ điểm dịch vụ sập. Phân biệt ba loại phép thử: tải thường, tải đỉnh, và tải kéo dài để phát hiện rò rỉ. Ghi chú công suất viết ra thành tài liệu gồm công suất đo được, nút thắt, và ước lượng khi nào cần mở rộng; đây là đầu vào cho M27.
 
@@ -175,7 +179,7 @@ Người học phải đo được công suất thật của dịch vụ và xá
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi đọc đường cong và định vị nút thắt chứ chỉ chạy công cụ tải. Kiểm bằng đường cong bốn đại lượng; đạt khi xác định đúng điểm công suất và chỉ đúng tài nguyên nút thắt.
 
-### Bài 111: The job-control API project
+### Lesson 111: The job-control API project
 
 Bài dự án khép module, và sản phẩm của nó được dùng lại làm nguồn dữ liệu cho pipeline tham chiếu từ M16. Xây giao diện điều khiển công việc: nộp công việc có khoá bất biến, truy trạng thái, huỷ, và một tiến trình thợ nhận việc theo cơ chế thuê có thời hạn, có thử lại và có hàng đợi thư chết. PostgreSQL là nguồn sự thật; chỉ thêm kho đệm nếu phép đo chứng minh cần, chứ thêm vì mặc định. Năm phép thử hỏng bắt buộc: nộp trùng, thợ chết sau khi đã gây tác động, cơ sở dữ liệu hết giờ, thuê hết hạn trong khi thợ vẫn sống, và triển khai phiên bản mới trong lúc có công việc đang chạy. Phép thử cuối là phép thử khó nhất và nối thẳng tới Bài 97 và 98. Nộp kèm ghi chú công suất theo Bài 110, mô hình mối đe doạ ngắn, và sổ tay chẩn đoán ba mục.
 
@@ -183,11 +187,11 @@ Người học phải nộp giao diện chạy đúng qua cả năm phép thử 
 
 Cách đánh giá: Tầng *sáng tạo*. Bài tổng hợp toàn module thành một dịch vụ có trạng thái chịu được sự cố. Kiểm bằng năm phép thử hỏng cộng rà soát tài liệu; đạt khi không phép thử nào sinh tác động kép hoặc mất công việc.
 
-### Bài 112: Gate 3 - a correct service under concurrency and failure
+### Lesson 112: Gate 3 - a correct service under concurrency and failure
 
 Cổng của Phase 3. Bài kiểm hai năng lực: thiết kế mã sửa được ở M7, và vận hành dịch vụ có trạng thái ở M8. Không có nội dung mới.
 
-Người học phải nộp một dịch vụ giữ đúng bất biến dưới truy cập đồng thời và dưới sự cố, với bằng chứng từ phép kiểm chạy song song. Bằng chứng thực hành: Buổi 155 phút: 110 phút làm bài độc lập, 45 phút chữa bài. Nhận một đặc tả dịch vụ nhỏ. Bài chấm sáu phần: A (15đ) đồ thị phụ thuộc không có cạnh sai chiều và phép kiểm lõi không cần cơ sở dữ liệu · B (25đ) không sinh tác động kép khi máy khách thử lại, chứng minh bằng ba thí nghiệm · C (20đ) bất biến giữ đúng dưới 50 luồng đồng thời, chứng minh bằng phép kiểm chạy song song · D (15đ) hạn chờ và giới hạn thử lại đặt đủ, không khuếch đại · E (15đ) chẩn đoán một sự cố tiêm sẵn bằng chỉ số và theo vết · F (10đ) phép thử phủ định cho mọi điểm vào đều từ chối đúng. Bài hoàn tất khi đạt ≥ 70/100, phần B và C đều ≥ 60%. Bất biến nào chỉ được chứng minh bằng phép kiểm tuần tự thì không tính điểm ở phần C.
+Người học phải nộp một dịch vụ giữ đúng bất biến dưới truy cập đồng thời và dưới sự cố, với bằng chứng từ phép kiểm chạy song song. Bằng chứng thực hành: Nhận một đặc tả dịch vụ nhỏ. Bài chấm sáu phần: A (15đ) đồ thị phụ thuộc không có cạnh sai chiều và phép kiểm lõi không cần cơ sở dữ liệu · B (25đ) không sinh tác động kép khi máy khách thử lại, chứng minh bằng ba thí nghiệm · C (20đ) bất biến giữ đúng dưới 50 luồng đồng thời, chứng minh bằng phép kiểm chạy song song · D (15đ) hạn chờ và giới hạn thử lại đặt đủ, không khuếch đại · E (15đ) chẩn đoán một sự cố tiêm sẵn bằng chỉ số và theo vết · F (10đ) phép thử phủ định cho mọi điểm vào đều từ chối đúng. Bài hoàn tất khi đạt ≥ 70/100, phần B và C đều ≥ 60%. Bất biến nào chỉ được chứng minh bằng phép kiểm tuần tự thì không tính điểm ở phần C.
 
 Cách đánh giá: Tầng *đánh giá*. Cổng đo năng lực xây hệ đúng dưới điều kiện thật, nên hình thức là bài làm có tiêm lỗi và có chất vấn.
 
@@ -229,7 +233,7 @@ Không cộng điểm để bù cho lỗi loại trực tiếp. Người học p
 | The outbox pattern - one atomic write | L109 | Cài bản ngây thơ ghi cơ sở dữ liệu rồi phát sự kiện, giết tiến trình giữa hai thao tác 20 lần và đếm mức lệch. Cài lại bằng hộp thư đi và lặp thí nghiệm. Xử lý trường hợp phát thành công nhưng đánh dấu thất bại. Thêm việc dọn bảng hộp thư theo lịch. | Ghi hai hệ trong hai thao tác rời · dùng giao dịch phân tán khi hộp thư đi đủ · quên dọn bảng hộp thư · giả định bên nhận không bao giờ nhận trùng. |
 | Load testing and capacity notes | L110 | Chạy tải tăng theo sáu bậc trên giao diện. Ở mỗi bậc đo cả bốn đại lượng. Vẽ đường cong và xác định điểm công suất. Chỉ ra tài nguyên nút thắt bằng số đo. Chạy tải kéo dài 30 phút và kiểm bộ nhớ cùng số kết nối có tăng đơn điệu không. Viết ghi chú công suất một trang. | Báo thông lượng đỉnh mà không báo tỉ lệ lỗi · đo ngay khi vừa tăng tải · không đo mức bão hoà hồ kết nối · bỏ phép thử kéo dài nên không phát hiện rò rỉ. |
 | The job-control API project | L111 | Xây giao diện theo đặc tả. Chạy năm phép thử hỏng và ghi kết quả từng cái. Chạy tải và viết ghi chú công suất. Viết mô hình mối đe doạ ngắn nêu ba mối đe doạ chính và cách chặn. Viết sổ tay ba mục gồm bão hoà, cơ sở dữ liệu hỏng, và triển khai lỗi. | Thêm kho đệm mà chưa đo · không có cơ chế thuê nên hai thợ cùng nhận một việc · bỏ phép thử triển khai khi đang chạy · sổ tay viết sau khi bảo vệ. |
-| Gate 3 - a correct service under concurrency and failure | L112 | Buổi 155 phút: 110 phút làm bài độc lập, 45 phút chữa bài. Nhận một đặc tả dịch vụ nhỏ. Bài chấm sáu phần: A (15đ) đồ thị phụ thuộc không có cạnh sai chiều và phép kiểm lõi không cần cơ sở dữ liệu · B (25đ) không sinh tác động kép khi máy khách thử lại, chứng minh bằng ba thí nghiệm · C (20đ) bất biến giữ đúng dưới 50 luồng đồng thời, chứng minh bằng phép kiểm chạy song song · D (15đ) hạn chờ và giới hạn thử lại đặt đủ, không khuếch đại · E (15đ) chẩn đoán một sự cố tiêm sẵn bằng chỉ số và theo vết · F (10đ) phép thử phủ định cho mọi điểm vào đều từ chối đúng. | Chỉ kiểm tuần tự rồi kết luận đúng · bỏ phần chẩn đoán vì hết giờ · thử lại mà không có khoá bất biến · để lõi phụ thuộc cơ sở dữ liệu. |
+| Gate 3 - a correct service under concurrency and failure | L112 | Nhận một đặc tả dịch vụ nhỏ. Bài chấm sáu phần: A (15đ) đồ thị phụ thuộc không có cạnh sai chiều và phép kiểm lõi không cần cơ sở dữ liệu · B (25đ) không sinh tác động kép khi máy khách thử lại, chứng minh bằng ba thí nghiệm · C (20đ) bất biến giữ đúng dưới 50 luồng đồng thời, chứng minh bằng phép kiểm chạy song song · D (15đ) hạn chờ và giới hạn thử lại đặt đủ, không khuếch đại · E (15đ) chẩn đoán một sự cố tiêm sẵn bằng chỉ số và theo vết · F (10đ) phép thử phủ định cho mọi điểm vào đều từ chối đúng. | Chỉ kiểm tuần tự rồi kết luận đúng · bỏ phần chẩn đoán vì hết giờ · thử lại mà không có khoá bất biến · để lõi phụ thuộc cơ sở dữ liệu. |
 
 ## Ngộ nhận và lỗi loại trực tiếp
 

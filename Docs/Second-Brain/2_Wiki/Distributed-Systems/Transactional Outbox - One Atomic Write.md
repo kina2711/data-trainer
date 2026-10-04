@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao giữ thay đổi nghiệp vụ và ý định phát sự kiện trong cùng một lần ghi nguyên tử mà không dùng distributed transaction?
 source_ids:
   - src.book.richardson-microservices-patterns.1e
@@ -25,10 +25,10 @@ relationships:
 
 ---
 
-# Transactional outbox — một lần ghi nguyên tử
+# Transactional outbox: một lần ghi nguyên tử
 
 > [!abstract] Câu hỏi trung tâm
-> Một request vừa phải thay đổi trạng thái trong database vừa phải phát event. Nếu process chết giữa hai thao tác, làm thế nào để không tạo trạng thái “đã ghi nhưng không có event” hoặc “có event nhưng chưa ghi”?
+> Một request vừa phải thay đổi trạng thái trong database vừa phải phát event. Nếu process chết giữa hai thao tác, làm thế nào để không tạo trạng thái đã ghi nhưng không có event hoặc có event nhưng chưa ghi?
 
 ## 1. Dual write là lỗi mô hình, không phải lỗi hiếm
 
@@ -77,7 +77,7 @@ Giữ database transaction mở trong khi gọi broker cho phép lock batch như
 
 Relay có thể publish thành công, rồi chết trước `UPDATE outbox SET published_at=...`. Khi khởi động lại, nó phát lại cùng `event_id`. Vì vậy delivery thực tế là at-least-once.
 
-Consumer phải lưu processed-message ID cùng transaction với side effect cục bộ, hoặc downstream operation phải nhận idempotency key. Trình tự “check đã thấy chưa; xử lý; rồi ghi đã thấy” không atomic vẫn race. Nếu external side effect không hỗ trợ idempotency, cần reconciliation hoặc protocol riêng; không được ghi nhãn exactly-once.
+Consumer phải lưu processed-message ID cùng transaction với side effect cục bộ, hoặc downstream operation phải nhận idempotency key. Trình tự check đã thấy chưa; xử lý; rồi ghi đã thấy không atomic vẫn race. Nếu external side effect không hỗ trợ idempotency, cần reconciliation hoặc protocol riêng; không được ghi nhãn exactly-once.
 
 ## 7. Ordering cần scope rõ
 
@@ -127,7 +127,7 @@ Replay phải chọn theo event ID/range, có dry-run, authorization và audit. 
 2. Tại sao relay có thể phát trùng ngay cả khi broker không hỏng?
 3. Per-aggregate ordering cần những trường và partition rule nào?
 4. Cleanup dựa riêng vào `created_at` có thể làm mất message ra sao?
-5. Evidence nào phân biệt “không mất intent” với “exactly-once side effect”?
+5. Evidence nào phân biệt không mất intent với exactly-once side effect?
 
 ## 15. Giới hạn và điều chưa cho phép kết luận
 
@@ -142,10 +142,10 @@ Một giới hạn khác là thay đổi schema event trong thời gian outbox c
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], PDF 120–139 | transactional messaging, outbox, relay và duplicate | §§1–6 | Đã trình bày, không đổi at-least-once thành exactly-once |
-| [[SRC-MICROSERVICES-IO-TRANSACTIONAL-OUTBOX]] | forces, local atomic write, ordering, idempotent consumer | §§2–7 | Đã giữ giới hạn của pattern |
-| [[SRC-MICROSERVICES-IO-POLLING-PUBLISHER]] | polling relay và giới hạn ordering | §§5–7 | Đã phân biệt pattern với claim algorithm |
-| Tổng hợp DE-L109 | schema, kill matrix, cleanup, runbook | §§3, 8–13 | Đã gắn thành synthesis và evidence kiểm được |
+| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], PDF 120-139 | transactional messaging, outbox, relay và duplicate | §§1-6 | Đã trình bày, không đổi at-least-once thành exactly-once |
+| [[SRC-MICROSERVICES-IO-TRANSACTIONAL-OUTBOX]] | forces, local atomic write, ordering, idempotent consumer | §§2-7 | Đã giữ giới hạn của pattern |
+| [[SRC-MICROSERVICES-IO-POLLING-PUBLISHER]] | polling relay và giới hạn ordering | §§5-7 | Đã phân biệt pattern với claim algorithm |
+| Tổng hợp DE-L109 | schema, kill matrix, cleanup, runbook | §§3, 8-13 | Đã gắn thành synthesis và evidence kiểm được |
 
 ## Key takeaways
 - Outbox hợp nhất business change và ý định phát event trong một local commit.
@@ -155,16 +155,16 @@ Một giới hạn khác là thay đổi schema event trong thời gian outbox c
 - Chỉ claim điều đã chứng minh: no lost intent và controlled duplicate, không phải exactly-once tuyệt đối.
 
 ## Reference
-1. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]] — PDF 120–139.
-2. [[SRC-MICROSERVICES-IO-TRANSACTIONAL-OUTBOX]] — pattern forces và result.
-3. [[SRC-MICROSERVICES-IO-POLLING-PUBLISHER]] — polling relay.
+1. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]]: PDF 120-139.
+2. [[SRC-MICROSERVICES-IO-TRANSACTIONAL-OUTBOX]]: pattern forces và result.
+3. [[SRC-MICROSERVICES-IO-POLLING-PUBLISHER]]: polling relay.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.distributed-systems.transactional-outbox`
+## Execution capsule: kiểm chứng `wiki.distributed-systems.transactional-outbox`
 
 > [!important] Phân loại mệnh đề
-> Với `wiki.distributed-systems.transactional-outbox`, sơ đồ, ví dụ và artifact về **Transactional outbox — một lần ghi nguyên tử** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
+> Với `wiki.distributed-systems.transactional-outbox`, sơ đồ, ví dụ và artifact về **Transactional outbox: một lần ghi nguyên tử** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
 
 ### Sơ đồ cơ chế và điểm kiểm soát
 
@@ -179,15 +179,15 @@ flowchart LR
     R --> B
 ```
 
-Đọc sơ đồ `wiki.distributed-systems.transactional-outbox` từ trái sang phải: source chỉ cung cấp claim ban đầu cho **Transactional outbox — một lần ghi nguyên tử**; quyết định chỉ được đi tiếp sau khi boundary, evidence và điều kiện đảo quyết định đã hiện hữu.
+Đọc sơ đồ `wiki.distributed-systems.transactional-outbox` từ trái sang phải: source chỉ cung cấp claim ban đầu cho **Transactional outbox: một lần ghi nguyên tử**; quyết định chỉ được đi tiếp sau khi boundary, evidence và điều kiện đảo quyết định đã hiện hữu.
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Làm sao giữ thay đổi nghiệp vụ và ý định phát sự kiện trong cùng một lần ghi nguyên tử mà không dùng distributed transaction?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Làm sao giữ thay đổi nghiệp vụ và ý định phát sự kiện trong cùng một lần ghi nguyên tử mà không dùng distributed transaction? cho một phạm vi nhỏ, có owner và deadline rõ.
 
-**Decision.** Đội áp dụng **Transactional outbox — một lần ghi nguyên tử** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
+**Decision.** Đội áp dụng **Transactional outbox: một lần ghi nguyên tử** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 
-**Outcome.** Với `wiki.distributed-systems.transactional-outbox`, nếu observation vi phạm hard constraint hoặc oracle độc lập không xác nhận **Transactional outbox — một lần ghi nguyên tử**, đội thu hẹp claim hay đảo quyết định. Nếu đạt, kết luận vẫn kèm scope, version và review date; một lần thành công không được nâng thành quy luật phổ quát.
+**Outcome.** Với `wiki.distributed-systems.transactional-outbox`, nếu observation vi phạm hard constraint hoặc oracle độc lập không xác nhận **Transactional outbox: một lần ghi nguyên tử**, đội thu hẹp claim hay đảo quyết định. Nếu đạt, kết luận vẫn kèm scope, version và review date; một lần thành công không được nâng thành quy luật phổ quát.
 
 ### Artifact thực thi tối thiểu
 
@@ -208,7 +208,7 @@ evidence_to_keep:
   - "independent review result"
 ```
 
-Artifact của `wiki.distributed-systems.transactional-outbox` buộc người dùng ghi boundary, oracle và reversal trigger cho **Transactional outbox — một lần ghi nguyên tử**. Các giá trị minh họa phải được thay bằng evidence thật trước khi dùng cho quyết định.
+Artifact của `wiki.distributed-systems.transactional-outbox` buộc người dùng ghi boundary, oracle và reversal trigger cho **Transactional outbox: một lần ghi nguyên tử**. Các giá trị minh họa phải được thay bằng evidence thật trước khi dùng cho quyết định.
 
 ### Tự kiểm tra trước khi tái sử dụng
 

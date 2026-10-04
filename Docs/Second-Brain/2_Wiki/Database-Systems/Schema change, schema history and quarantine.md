@@ -38,7 +38,7 @@ History phải khôi phục schema đúng tại log position, không chỉ lưu 
 
 ## 3. Compatibility
 
-Add, drop, rename, type và default change cần phân loại theo producer, envelope, serialization và sink contract. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Schema change, schema history and quarantine`, câu hỏi thực dụng là: CDC giữ schema history và quarantine incompatible event thế nào để replay không diễn giải bytes theo schema hiện tại? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Add, drop, rename, type và default change cần phân loại theo producer, envelope, serialization và sink contract. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Schema change, schema history and quarantine`, câu hỏi thực dụng là: CDC giữ schema history và quarantine incompatible event thế nào để replay không diễn giải bytes theo schema hiện tại? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Unknown types
 
@@ -221,7 +221,7 @@ Với `wiki.cdc.schema-history-quarantine`, command thành công không tự ch�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.cdc.schema-history-quarantine`
+## Execution capsule: kiểm chứng `wiki.cdc.schema-history-quarantine`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.cdc.schema-history-quarantine`, sơ đồ, ví dụ và artifact về **Schema change, schema history and quarantine** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

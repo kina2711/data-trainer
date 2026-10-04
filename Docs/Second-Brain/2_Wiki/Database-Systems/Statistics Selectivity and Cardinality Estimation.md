@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Planner ước lượng số dòng từ statistics thế nào, vì sao sai và cách chọn remediation có bằng chứng ra sao?
 source_ids:
   - src.manual.postgresql-17.10
@@ -98,7 +98,7 @@ Nếu ANALYZE không cải thiện, đừng lặp vô hạn; kiểm skew/correla
 
 Skew nghĩa một số values có frequency lớn. Uniform estimator cho non-MCV hoặc generic parameter có thể sai. Tạo lab với hot value chiếm tỷ lệ lớn và many cold values; compare hot/cold plan.
 
-Tăng per-column statistics target có thể đưa hot values vào MCV/histogram chi tiết. Partial index/partition/query-specific design có thể giúp workload, nhưng không dùng index để “sửa estimate” nếu root là stats thiếu.
+Tăng per-column statistics target có thể đưa hot values vào MCV/histogram chi tiết. Partial index/partition/query-specific design có thể giúp workload, nhưng không dùng index để sửa estimate nếu root là stats thiếu.
 
 Data drift cần refresh cadence và monitoring estimate errors.
 
@@ -132,7 +132,7 @@ Dùng symmetric-ish factor: `max(actual/estimated, estimated/actual)` khi cả h
 
 Actual rows trong node nhiều loops cần diễn giải total. Lấy machine-readable plan giúp tính. Không chỉ so root; root estimate đúng có thể do lỗi bù nhau.
 
-Ngưỡng “giảm rõ rệt” phải định trước, ví dụ factor từ >100× xuống <10× cho lab; production threshold theo plan sensitivity.
+Ngưỡng giảm rõ rệt phải định trước, ví dụ factor từ >100× xuống <10× cho lab; production threshold theo plan sensitivity.
 
 ## 14. Ba tình huống lab
 
@@ -186,18 +186,18 @@ Một lỗi khác là dùng `ANALYZE` trên sample nhỏ rồi coi kết quả d
 - Ba lab chưa chạy; before/after factors thuộc `after-note.md`.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-10-MANUAL]] — planner statistics và multivariate examples.
-2. [[SRC-MASTERING-POSTGRESQL-17-6E]] — optimizer stats và plan examples.
-3. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]] — basic/expression/multivariate statistics internals.
+1. [[SRC-POSTGRESQL-17-10-MANUAL]]: planner statistics và multivariate examples.
+2. [[SRC-MASTERING-POSTGRESQL-17-6E]]: optimizer stats và plan examples.
+3. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]]: basic/expression/multivariate statistics internals.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 572–580, 2643–2650 | pg_stats, extended stats examples | §§2–16 | Đã giữ limitations |
-| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 223–270 | estimate/cost/plan diagnosis | §§1, 12–15 | Đã tách claim workload |
-| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 271–303 | MCV/histogram/expression/multivariate | §§3–12 | Đã đối chiếu 17.10 |
-| Tổng hợp DE-L128 | stale, skew, correlation experiments | §§13–17 | Đã thành before/after protocol |
+| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 572-580, 2643-2650 | pg_stats, extended stats examples | §§2-16 | Đã giữ limitations |
+| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 223-270 | estimate/cost/plan diagnosis | §§1, 12-15 | Đã tách claim workload |
+| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 271-303 | MCV/histogram/expression/multivariate | §§3-12 | Đã đối chiếu 17.10 |
+| Tổng hợp DE-L128 | stale, skew, correlation experiments | §§13-17 | Đã thành before/after protocol |
 
 ## Key takeaways
 - Cardinality estimates định hình scan, join, aggregate, memory và parallel choices.
@@ -208,7 +208,7 @@ Một lỗi khác là dùng `ANALYZE` trên sample nhỏ rồi coi kết quả d
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.statistics-selectivity-cardinality`
+## Execution capsule: kiểm chứng `wiki.database.statistics-selectivity-cardinality`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.statistics-selectivity-cardinality`, sơ đồ, ví dụ và artifact về **Thống kê, độ chọn lọc và ước lượng số dòng** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

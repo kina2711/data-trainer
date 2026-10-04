@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Thứ tự xử lý logic của SELECT giải thích name scope, WHERE/HAVING, aggregate và window errors thế nào mà không bị nhầm với physical execution plan?
 source_ids:
   - src.course.hcmut-sql
@@ -56,13 +56,13 @@ trả mọi order. Đưa `p.status='paid'` xuống WHERE chỉ trả order có p
 
 WHERE nhận từng row của table expression và chỉ giữ TRUE. Aggregate chưa tồn tại ở đây; select-list alias cũng chưa phải output name. Filter sớm đúng nghĩa giảm input cho grouping. Điều kiện trên raw date/status/customer thuộc WHERE.
 
-NULL predicate có thể UNKNOWN và bị loại. `WHERE amount <> 0` khác “giữ NULL”. Không giải thích missing row chỉ bằng processing order; kết hợp three-valued logic.
+NULL predicate có thể UNKNOWN và bị loại. `WHERE amount <> 0` khác giữ NULL. Không giải thích missing row chỉ bằng processing order; kết hợp three-valued logic.
 
 ## 5. GROUP BY tạo groups
 
 GROUP BY phân chia rows theo grouping expressions. Sau grouping, mỗi output group chỉ được tham chiếu grouping keys hoặc aggregate của rows, trừ functional-dependency relaxations DBMS hỗ trợ trong phạm vi cụ thể. Chọn non-grouped arbitrary column không phải SQL portable.
 
-Không group để “xóa duplicate” nếu grain sai. Xác định desired grain và measure trước. NULL grouping keys thường vào một group theo SQL grouping rule.
+Không group để xóa duplicate nếu grain sai. Xác định desired grain và measure trước. NULL grouping keys thường vào một group theo SQL grouping rule.
 
 ## 6. Aggregate được tính trên group
 
@@ -119,7 +119,7 @@ Correlated subquery thấy outer names theo scope, có thể tạo semantic và 
 
 Optimizer có thể push predicates, reorder inner joins, prune columns và decorrelate nếu equivalence giữ. Nó không cần thực hiện full Cartesian product vật lý chỉ vì conceptual join có thể được giải thích như product + filter. `EXPLAIN` cho physical evidence; logical order giải thích semantics.
 
-Không nói “WHERE luôn chạy trước JOIN trên máy”. Đúng hơn: WHERE thuộc logical transformation sau FROM table expression, nhưng optimizer có thể push safe predicate vào scan/join.
+Không nói WHERE luôn chạy trước JOIN trên máy. Đúng hơn: WHERE thuộc logical transformation sau FROM table expression, nhưng optimizer có thể push safe predicate vào scan/join.
 
 ## 15. Tám lỗi chẩn đoán
 
@@ -165,16 +165,16 @@ Với lỗi alias, hỏi name được tạo ở query level nào. Với missing
 - Query result đúng trên một dataset không chứng minh điều kiện đặt đúng grain.
 
 ## Reference
-1. [[SRC-HCMUT-SQL]] — PDF 29–32, 69–79.
-2. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] — table expression pipeline và SELECT.
-3. [[SRC-HCMUT-RELATIONAL-ALGEBRA]] — logical expression foundation.
+1. [[SRC-HCMUT-SQL]]: PDF 29-32, 69-79.
+2. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]]: table expression pipeline và SELECT.
+3. [[SRC-HCMUT-RELATIONAL-ALGEBRA]]: logical expression foundation.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-HCMUT-SQL]], PDF 29–32, 69–79 | SELECT, WHERE, GROUP, HAVING, ORDER | §§2–11 | Đã trình bày theo query levels |
-| [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | pipeline, join/alias/window semantics | §§2–14 | Đã giữ PostgreSQL scope |
+| [[SRC-HCMUT-SQL]], PDF 29-32, 69-79 | SELECT, WHERE, GROUP, HAVING, ORDER | §§2-11 | Đã trình bày theo query levels |
+| [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | pipeline, join/alias/window semantics | §§2-14 | Đã giữ PostgreSQL scope |
 | [[SRC-HCMUT-RELATIONAL-ALGEBRA]] | logical expression versus implementation | §§1, 14 | Đã nối nhưng không đồng nhất physical plan |
 | Tổng hợp DE-L118 | eight-query diagnostic | §15 | Đã ghi thành acceptance evidence |
 
@@ -187,7 +187,7 @@ Với lỗi alias, hỏi name được tạo ở query level nào. Với missing
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.logical-query-processing-order`
+## Execution capsule: kiểm chứng `wiki.database.logical-query-processing-order`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.logical-query-processing-order`, sơ đồ, ví dụ và artifact về **Thứ tự xử lý logic của truy vấn** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -209,7 +209,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Thứ tự xử lý logic của SELECT giải thích name scope, WHERE/HAVING, aggregate và window errors thế nào mà không bị nhầm với physical execution plan?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Thứ tự xử lý logic của SELECT giải thích name scope, WHERE/HAVING, aggregate và window errors thế nào mà không bị nhầm với physical execution plan? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Thứ tự xử lý logic của truy vấn** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

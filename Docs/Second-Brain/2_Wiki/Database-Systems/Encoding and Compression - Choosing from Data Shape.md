@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Chọn encoding và block codec theo distribution, order, range, nulls và execution path như thế nào, rồi chứng minh bằng size, decode throughput và query measurements?
 source_ids:
   - src.book.kleppmann-ddia.1e
@@ -233,7 +233,7 @@ Mỗi kết luận cần input, observation và failure signal có thể lưu. T
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.olap.encoding-compression-data-shape`
+## Execution capsule: kiểm chứng `wiki.olap.encoding-compression-data-shape`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.olap.encoding-compression-data-shape`, sơ đồ, ví dụ và artifact về **Encoding and Compression - Choosing from Data Shape** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -255,7 +255,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Chọn encoding và block codec theo distribution, order, range, nulls và execution path như thế nào, rồi chứng minh bằng size, decode throughput và query measurements?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Chọn encoding và block codec theo distribution, order, range, nulls và execution path như thế nào, rồi chứng minh bằng size, decode throughput và query measurements? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Encoding and Compression - Choosing from Data Shape** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

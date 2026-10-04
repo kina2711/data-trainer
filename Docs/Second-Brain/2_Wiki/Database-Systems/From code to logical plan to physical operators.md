@@ -37,7 +37,7 @@ Optimizer rewrite relational expressions theo equivalence rules; logical plan ch
 
 ## 3. Physical planning
 
-Planner chọn candidate strategies và cost/statistics/configuration ảnh hưởng physical operators được chọn. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `From code to logical plan to physical operators`, câu hỏi thực dụng là: Spark SQL biến code thành analyzed/optimized logical plan và physical operators như thế nào, và evidence nào chứng minh plan đã chạy? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Planner chọn candidate strategies và cost/statistics/configuration ảnh hưởng physical operators được chọn. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `From code to logical plan to physical operators`, câu hỏi thực dụng là: Spark SQL biến code thành analyzed/optimized logical plan và physical operators như thế nào, và evidence nào chứng minh plan đã chạy? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Execution operators
 
@@ -218,7 +218,7 @@ Với `wiki.spark.logical-physical-plan`, command thành công không tự chứ
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.spark.logical-physical-plan`
+## Execution capsule: kiểm chứng `wiki.spark.logical-physical-plan`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.spark.logical-physical-plan`, sơ đồ, ví dụ và artifact về **From code to logical plan to physical operators** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -38,7 +38,7 @@ Offset/time indexes thu hẹp search tới position/segment, sau đó sequential
 
 ## 3. Page cache
 
-Kafka dựa nhiều vào OS page cache và sequential I/O; JVM heap metrics không đại diện toàn working set. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Broker internals - segment, index, page cache and retention`, câu hỏi thực dụng là: Segment, index, page cache và retention phối hợp ra sao trên Kafka broker mà không đồng nhất log với một file? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Kafka dựa nhiều vào OS page cache và sequential I/O; JVM heap metrics không đại diện toàn working set. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Broker internals - segment, index, page cache and retention`, câu hỏi thực dụng là: Segment, index, page cache và retention phối hợp ra sao trên Kafka broker mà không đồng nhất log với một file? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Batch and zero-copy
 
@@ -221,7 +221,7 @@ Với `wiki.streaming.kafka-segment-index-cache-retention`, command thành công
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.streaming.kafka-segment-index-cache-retention`
+## Execution capsule: kiểm chứng `wiki.streaming.kafka-segment-index-cache-retention`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.streaming.kafka-segment-index-cache-retention`, sơ đồ, ví dụ và artifact về **Broker internals - segment, index, page cache and retention** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

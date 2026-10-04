@@ -38,7 +38,7 @@ Tombstone là transport/log-compaction signal khác delete envelope; consumer ph
 
 ## 3. Truncate
 
-Truncate có scope cả table và có thể thiếu row keys, vì vậy không được xử lý như chuỗi delete thông thường. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Deletes, truncates, primary key updates and tombstones`, câu hỏi thực dụng là: Delete, truncate, primary-key update và tombstone biểu diễn state transition khác nhau thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Truncate có scope cả table và có thể thiếu row keys, vì vậy không được xử lý như chuỗi delete thông thường. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Deletes, truncates, primary key updates and tombstones`, câu hỏi thực dụng là: Delete, truncate, primary-key update và tombstone biểu diễn state transition khác nhau thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Primary-key update
 
@@ -221,7 +221,7 @@ Với `wiki.cdc.deletes-truncates-pk-tombstones`, command thành công không t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.cdc.deletes-truncates-pk-tombstones`
+## Execution capsule: kiểm chứng `wiki.cdc.deletes-truncates-pk-tombstones`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.cdc.deletes-truncates-pk-tombstones`, sơ đồ, ví dụ và artifact về **Deletes, truncates, primary key updates and tombstones** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

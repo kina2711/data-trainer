@@ -66,29 +66,29 @@ Thiết kế đường dẫn theo lô có tính đúng qua chạy lại, nạp b
 | L253 · dbt mental model - parse, compile, run, build | LT | Phân biệt bốn pha theo đồ thị, hành động và hiện vật, và đọc được câu lệnh SQL đã kết xuất. | Bảng bốn lệnh đúng ở cả ba cột, và câu lệnh kết xuất của một mô hình được đối chiếu đầy đủ với mã nguồn. | L252 |
 | L254 · Project layers - staging, intermediate and marts | TH | Dựng dự án ba tầng sao cho người rà soát xác định được bốn thuộc tính của mọi mô hình chỉ từ tệp. | Người rà soát độc lập xác định đúng bốn thuộc tính ở ≥ 8/10 mô hình chỉ từ tệp và tài liệu. | L253 |
 | L255 · Materializations - four choices, one ADR | TH | So bốn cách trên cùng mô hình theo bốn chiều và nộp bản ghi quyết định dựa trên số đo. | Bảng bốn nhân bốn có số đo ở ba chiều đầu, và bản ghi quyết định nêu ngưỡng khối lượng làm lựa chọn đổi. | L254 |
-| L256 · Generic tests and their limits | TH | Cài bốn phép kiểm cho một mô hình và chỉ ra bằng dữ liệu những lỗi chúng không bắt được. | Bốn lỗi trong tầm bị bắt đúng, ≥ 3 lỗi ngoài tầm được chỉ ra và có phép kiểm bổ sung, và một ca hỏng được điều tra từ bản ghi lưu. | L255 |
-| L257 · Singular tests for business invariants | TH | Viết bốn phép kiểm bất biến nghiệp vụ và chứng minh chúng bắt đúng lỗi mà không báo giả. | Bốn phép kiểm bắt đúng lỗi nhắm tới và không báo giả trên 30 ngày dữ liệu sạch. | L256 |
+| L256 · [[wiki.transformation.dbt-generic-tests-limits|Generic tests and their limits]]| TH | Cài bốn phép kiểm cho một mô hình và chỉ ra bằng dữ liệu những lỗi chúng không bắt được. | Bốn lỗi trong tầm bị bắt đúng, ≥ 3 lỗi ngoài tầm được chỉ ra và có phép kiểm bổ sung, và một ca hỏng được điều tra từ bản ghi lưu. | L255 |
+| L257 · [[wiki.transformation.dbt-singular-business-invariants|Singular tests for business invariants]]| TH | Viết bốn phép kiểm bất biến nghiệp vụ và chứng minh chúng bắt đúng lỗi mà không báo giả. | Bốn phép kiểm bắt đúng lỗi nhắm tới và không báo giả trên 30 ngày dữ liệu sạch. | L256 |
 | L258 · Jinja and macros - where abstraction stops paying | TH | Viết macro có giao diện kiểm được và nhận ra khi nào không nên tách macro. | Hai macro có kiểm tham số và phép kiểm kết xuất, lý do không tách cái thứ ba được lập luận, và chi phí gọi cơ sở dữ liệu lúc phân tích được đo. | L257 |
 | L259 · Incremental models - the is_incremental contract | TH | Cài mô hình tăng dần chạy đúng ở cả hai chế độ và giải thích điều kiện chuyển chế độ. | Kết quả chạy tăng dần bảy ngày khớp kết quả nạp lại toàn bộ, và lỗi trong khối lọc được chứng minh là ẩn ở chế độ đầu. | L258 |
-| L260 · Incremental strategies by adapter | TH | Chọn chiến lược cho ba mô hình theo hình dạng dữ liệu và xác minh bằng câu lệnh sinh ra. | Ba chiến lược được đối chiếu với câu lệnh sinh ra, có số đo chi phí, và bản ghi thắng ở mỗi chiến lược được xác định. | L259 |
+| L260 · [[wiki.transformation.dbt-incremental-strategies-adapter|Incremental strategies by adapter]]| TH | Chọn chiến lược cho ba mô hình theo hình dạng dữ liệu và xác minh bằng câu lệnh sinh ra. | Ba chiến lược được đối chiếu với câu lệnh sinh ra, có số đo chi phí, và bản ghi thắng ở mỗi chiến lược được xác định. | L259 |
 | L261 · The seven-part incremental proof | TH | Viết chứng minh bảy phần cho ba mô hình tăng dần, mỗi phần kèm một phép kiểm chạy được. | Ba mô hình có đủ bảy phần, mỗi phần dẫn tới một phép kiểm tự động, và rà soát chéo không tìm thấy giả định chưa kiểm. | L260 |
-| L262 · The incremental failure matrix | TH | Chạy trọn sáu chế độ hỏng cho ba mô hình và chứng minh hành vi khớp kỳ vọng đã viết trước. | Toàn bộ 18 ô khớp hành vi kỳ vọng viết trước, và sáu phép thử chạy được tự động trong tích hợp liên tục. | L261 |
-| L263 · Snapshots and SCD2 invariants | TH | Cài ghi lịch sử đạt ba bất biến và chỉ ra ca dùng mà cơ chế này không đủ. | Ba bất biến giữ qua 500 lần cập nhật, và số thay đổi bị bỏ sót giữa hai lần chạy được định lượng. | L262 |
+| L262 · [[wiki.transformation.incremental-failure-matrix|The incremental failure matrix]]| TH | Chạy trọn sáu chế độ hỏng cho ba mô hình và chứng minh hành vi khớp kỳ vọng đã viết trước. | Toàn bộ 18 ô khớp hành vi kỳ vọng viết trước, và sáu phép thử chạy được tự động trong tích hợp liên tục. | L261 |
+| L263 · [[wiki.transformation.snapshots-scd2-invariants|Snapshots and SCD2 invariants]]| TH | Cài ghi lịch sử đạt ba bất biến và chỉ ra ca dùng mà cơ chế này không đủ. | Ba bất biến giữ qua 500 lần cập nhật, và số thay đổi bị bỏ sót giữa hai lần chạy được định lượng. | L262 |
 | L264 · Model contracts, versions and consumer migration | TH | Thực hiện một thay đổi phá vỡ có phiên bản, kiểm kê bên tiêu thụ và đường quay lại, không làm hỏng bên nào. | Không bên tiêu thụ nào lỗi suốt quá trình, phiên bản cũ chỉ gỡ sau khi kiểm kê rỗng, và đường quay lại thực hiện được. | L263 |
 | L265 · Documentation, exposures and lineage artifacts | TH | Khai báo tài liệu và bên tiêu thụ đầy đủ, và chặn được mô hình công khai thiếu tài liệu ở cửa hợp nhất. | Ba vi phạm bị chặn ở cửa hợp nhất, và dòng dõi trả lời được câu hỏi ảnh hưởng từ một cột nguồn tới bảng điều khiển. | L264 |
 | L266 · dbt artifacts - manifest, run results and catalog | TH | Đọc ba hiện vật để trả lời năm câu hỏi vận hành, gồm câu phân biệt chạy xong với dữ liệu đúng. | Trả lời đúng ≥ 4/5 câu hỏi chỉ bằng ba hiện vật, và nơi lưu hiện vật sản xuất được thiết lập kèm chính sách giữ. | L265 |
 | L267 · Selection grammar and state-aware CI | TH | Dựng tích hợp liên tục chỉ dựng phần đổi cộng hạ lưu, và chứng minh nó không bỏ sót nhờ một lần kiểm đầy đủ theo lịch. | Tập nút được chọn khớp tập đúng ở cả ba thay đổi, và lần kiểm đầy đủ theo lịch bắt được lỗi do dữ liệu. | L266 |
-| L268 · dbt performance and cost per model | TH | Rút ngắn đường găng và giảm chi phí ba mô hình, giải thích bằng kế hoạch chứ bằng phỏng đoán. | Đường găng ngắn lại có số đo, ba mô hình giảm chi phí với kế hoạch giải thích, và kết quả đối soát không đổi. | L267 |
-| L269 · Orchestration primitives before the tool | LT | Phân biệt phụ thuộc dữ liệu với thứ tự chạy trong một đồ thị cho trước và thay giả định thời gian bằng tín hiệu. | Phân đúng ≥ 6/8 cạnh, mức song song tăng thêm được đo, và mọi giả định thời gian được thay bằng tín hiệu dữ liệu. | L268 |
+| L268 · [[wiki.transformation.dbt-performance-cost-per-model|dbt performance and cost per model]]| TH | Rút ngắn đường găng và giảm chi phí ba mô hình, giải thích bằng kế hoạch chứ bằng phỏng đoán. | Đường găng ngắn lại có số đo, ba mô hình giảm chi phí với kế hoạch giải thích, và kết quả đối soát không đổi. | L267 |
+| L269 · [[wiki.orchestration.primitives-before-tool|Orchestration primitives before the tool]]| LT | Phân biệt phụ thuộc dữ liệu với thứ tự chạy trong một đồ thị cho trước và thay giả định thời gian bằng tín hiệu. | Phân đúng ≥ 6/8 cạnh, mức song song tăng thêm được đo, và mọi giả định thời gian được thay bằng tín hiệu dữ liệu. | L268 |
 | L270 · Logical date, data interval and the timezone traps | TH | Tái hiện lỗi dùng thời điểm hiện tại khi nạp bù và cài lịch chịu được chuyển giờ mùa hè. | Lỗi dùng thời điểm hiện tại được tái hiện và định lượng, bản sửa cho dữ liệu đúng theo từng phân vùng, và lịch qua hai lần chuyển giờ không có kỳ lặp hay kỳ thiếu. | L269 |
-| L271 · Mastering one orchestrator - Airflow or Dagster | TH | Dựng một đồ thị chạy được trên bộ điều phối đã chọn, đúng ranh giới mặt điều khiển và mặt dữ liệu. | Đồ thị chạy đúng với dữ liệu thật, không có xử lý nặng trong mặt điều khiển, và mức tăng siêu dữ liệu sau 100 lần chạy được đo. | L270 |
-| L272 · Retry, concurrency, pools and the side-effect boundary | TH | Cấu hình hàng đợi và đồng thời để cách ly nạp bù, và chứng minh thử lại không nhân đôi tác dụng phụ. | Cam kết hằng ngày giữ được suốt nạp bù, đối soát chứng minh không có tác dụng phụ trùng, và chuyển kiểu bộ cảm biến làm hết cạn tiến trình. | L271 |
-| L273 · Control-plane diagnosis - the required incident list | TH | Chẩn đoán sáu sự cố mặt điều khiển bằng đường truy vết và sửa được ít nhất bốn với số đo. | Truy đúng chặng gây ra ở ≥ 5/6 sự cố, ≥ 4 sự cố được sửa với số đo trước sau, và mỗi sự cố có một mục trong sổ tay. | L272 |
-| L274 · Pipeline capstone - daily, backfill and full rebuild | DA | Nộp đường dẫn chạy được cả ba chế độ, với đối soát chứng minh tính đầy đủ và một kế hoạch năng lực có số. | Đối soát đạt ở cả ba chế độ, sáu tình huống diễn tập đều phục hồi với đối soát khớp, và kế hoạch năng lực có số cho cả bốn hạng mục. | L273 |
+| L271 · [[wiki.orchestration.master-one-orchestrator|Mastering one orchestrator - Airflow or Dagster]]| TH | Dựng một đồ thị chạy được trên bộ điều phối đã chọn, đúng ranh giới mặt điều khiển và mặt dữ liệu. | Đồ thị chạy đúng với dữ liệu thật, không có xử lý nặng trong mặt điều khiển, và mức tăng siêu dữ liệu sau 100 lần chạy được đo. | L270 |
+| L272 · [[wiki.orchestration.retry-concurrency-pools-side-effects|Retry, concurrency, pools and the side-effect boundary]]| TH | Cấu hình hàng đợi và đồng thời để cách ly nạp bù, và chứng minh thử lại không nhân đôi tác dụng phụ. | Cam kết hằng ngày giữ được suốt nạp bù, đối soát chứng minh không có tác dụng phụ trùng, và chuyển kiểu bộ cảm biến làm hết cạn tiến trình. | L271 |
+| L273 · [[wiki.orchestration.control-plane-diagnosis|Control-plane diagnosis - the required incident list]]| TH | Chẩn đoán sáu sự cố mặt điều khiển bằng đường truy vết và sửa được ít nhất bốn với số đo. | Truy đúng chặng gây ra ở ≥ 5/6 sự cố, ≥ 4 sự cố được sửa với số đo trước sau, và mỗi sự cố có một mục trong sổ tay. | L272 |
+| L274 · [[wiki.orchestration.capstone-daily-backfill-rebuild|Pipeline capstone - daily, backfill and full rebuild]]| DA | Nộp đường dẫn chạy được cả ba chế độ, với đối soát chứng minh tính đầy đủ và một kế hoạch năng lực có số. | Đối soát đạt ở cả ba chế độ, sáu tình huống diễn tập đều phục hồi với đối soát khớp, và kế hoạch năng lực có số cho cả bốn hạng mục. | L273 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M17 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M17 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -159,7 +159,7 @@ flowchart LR
   class A247,A248,A249,A250,A251,A252,A253,A254,A255,A256,A257,A258,A259,A260,A261,A262,A263,A264,A265,A266,A267,A268,A269,A270,A271,A272,A273,A274 atom;
 ```
 
-### Bài 247: ETL against ELT - where the compute lives
+### Lesson 247: ETL against ELT - where the compute lives
 
 Hai kiến trúc khác nhau ở một điểm duy nhất là nơi phép biến đổi chạy, và mọi khác biệt còn lại suy ra từ đó. Biến đổi trước khi nạp thắng khi dữ liệu không được phép vào đích ở dạng thô, khi đích có ràng buộc về lược đồ, hoặc khi phép biến đổi cần môi trường chạy chuyên biệt mà đích không có; ví dụ rõ nhất là khử định danh dữ liệu cá nhân trước khi hạ cánh. Nạp thô rồi biến đổi thắng khi cần giữ lịch sử thô để chạy lại và khi đích có năng lực tính toán co giãn; đổi lại chi phí tính toán chuyển sang đích và dữ liệu thô phải được quản trị. Không được kết luận nạp thô rồi biến đổi hiện đại hơn nên tốt hơn; đó là một lựa chọn có điều kiện chứ một tiến bộ. Kiến trúc lai: kiểm tra và che dữ liệu nhạy cảm ở mức nhẹ trước, phần nặng sau. Năm chiều để chọn gồm nơi tính toán, độ nhạy dữ liệu, độ trễ, quản trị và mức phụ thuộc nhà cung cấp.
 
@@ -167,7 +167,7 @@ Người học phải chọn kiến trúc cho ba khối lượng công việc th
 
 Cách đánh giá: Tầng *đánh giá*. Bài mở module, đòi chọn theo ràng buộc chứ theo xu hướng. Kiểm bằng ba bối cảnh cộng một thay đổi ràng buộc do người chấm đưa ra; đạt khi thiết kế thích ứng mà không mất khả năng chạy lại.
 
-### Bài 248: Load semantics - append, upsert, merge, replace and swap
+### Lesson 248: Load semantics - append, upsert, merge, replace and swap
 
 Năm ngữ nghĩa nạp, mỗi cái có điều kiện đúng riêng và hành vi khi chạy lại riêng. Thêm mới là rẻ nhất và trùng lặp khi chạy lại trừ khi có khử trùng. Ghi đè theo khoá đòi khoá duy nhất thật, và khoá không duy nhất làm kết quả phụ thuộc thứ tự. Trộn kết hợp thêm, sửa và xoá trong một thao tác, nên nó cần quy tắc chọn thắng xác định khi nguồn có nhiều bản ghi cùng khoá. Thay thế toàn bộ phân vùng là cách luỹ đẳng đơn giản nhất và thường bị bỏ qua: ghi đè cả phân vùng làm chạy lại tự nhiên luỹ đẳng, đổi lại tốn hơn khi phân vùng lớn. Hoán đổi ghi ra bảng tạm rồi đổi con trỏ, cho công bố nguyên tử theo Bài 226. Bảng đối chiếu năm ngữ nghĩa với hành vi chạy lại là đầu ra của bài, và nó được dùng lại ở Bài 261.
 
@@ -175,7 +175,7 @@ Người học phải cài cả năm ngữ nghĩa nạp và lập bảng hành v
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là chạy lại hai lần cho cùng trạng thái. Kiểm bằng phép thử chạy lại; đạt khi bảng năm hàng có kết quả thực nghiệm và mọi ngữ nghĩa được tuyên bố luỹ đẳng đều qua phép thử chạy hai lần.
 
-### Bài 249: Atomic publish and the partial-state reader
+### Lesson 249: Atomic publish and the partial-state reader
 
 Bên đọc không được phép thấy trạng thái nửa vời, và bảo đảm đó phải chứng minh chứ giả định. Ba cách công bố nguyên tử: giao dịch trong cơ sở dữ liệu, hoán đổi tên bảng hoặc con trỏ, và chốt giao dịch của định dạng bảng mở theo Bài 226. Ranh giới nguyên tử nằm ở đâu là câu hỏi phải trả lời được cho từng cách. Ghi thẳng vào bảng đang phục vụ là cách chắc chắn tạo trạng thái nửa vời: bên đọc chạy giữa chừng thấy một nửa dữ liệu mới một nửa cũ, và số ra sai mà không có lỗi nào. Phát hiện bằng cách chạy truy vấn liên tục trong lúc nạp và ghi lại mọi kết quả bất thường. Nguyên tử ở mức một bảng không có nghĩa nguyên tử xuyên nhiều bảng; khi nhiều bảng phải đổi cùng lúc thì cần một cơ chế khác và phải nói rõ giới hạn. Dấu hiệu hoàn tất cho bên tiêu thụ.
 
@@ -183,7 +183,7 @@ Người học phải chứng minh bằng thực nghiệm rằng bên đọc kh�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu bằng phép quan sát liên tục trong lúc ghi. Kiểm bằng phép thử đọc song song; đạt khi không lần đọc nào trong hàng nghìn lần thấy trạng thái nửa vời, và ca ghi thẳng bị chứng minh là thấy.
 
-### Bài 250: Idempotency for batch - deterministic keys and overwrite
+### Lesson 250: Idempotency for batch - deterministic keys and overwrite
 
 Luỹ đẳng ở tầng theo lô có bốn cơ chế, và chọn theo hình dạng dữ liệu chứ theo thói quen. Khoá xác định sinh từ nội dung bản ghi cộng vị trí nguồn, nên cùng đầu vào cho cùng khoá; băm phải tính trên giá trị đã chuẩn hoá theo Bài 242. Ghi đè cả phân vùng là cơ chế mạnh nhất và đơn giản nhất khi phân vùng đủ nhỏ. Trộn theo khoá duy nhất. Khử trùng ở bước đọc bằng cách giữ bản ghi thắng theo quy tắc xác định. Dấu hiệu hoàn tất cho biết một phân vùng đã xong, nên lần chạy sau bỏ qua; nó phải ghi sau dữ liệu và trong cùng ranh giới nguyên tử. Bốn cơ chế này nối thẳng với khoá chống trùng ở Bài 105, khác biệt là ở đây đơn vị là phân vùng chứ yêu cầu. Thực thi ít nhất một lần cộng tác dụng phụ luỹ đẳng là mô hình thực tế, và nó mạnh hơn một tuyên bố đúng một lần không có ranh giới.
 
@@ -191,7 +191,7 @@ Người học phải chọn và cài cơ chế luỹ đẳng cho bốn đườn
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là trạng thái hội tụ sau nhiều lần chạy ngẫu nhiên. Kiểm bằng phép thử chạy lại hỗn loạn; đạt khi trạng thái sau 20 lần chạy chồng chéo khớp trạng thái sau một lần chạy sạch.
 
-### Bài 251: Event time, processing time and late data
+### Lesson 251: Event time, processing time and late data
 
 Ba trục thời gian trong một đường dẫn theo lô và trộn chúng là nguồn của báo cáo lệch. Thời gian sự kiện là lúc việc xảy ra; thời gian xử lý là lúc hệ ta chạy; thời gian nạp là lúc dữ liệu vào đích. Phân vùng theo trục nào là một quyết định có hậu quả: phân vùng theo thời gian sự kiện cho báo cáo đúng nhưng dữ liệu tới muộn làm phân vùng cũ phải cập nhật lại; phân vùng theo thời gian nạp thì phân vùng bất biến nhưng báo cáo theo ngày phải quét nhiều phân vùng. Dữ liệu tới muộn cần một cửa sổ cập nhật lại có độ rộng tính từ phân bố độ trễ quan sát được, và phần đuôi vượt cửa sổ phải có chính sách rõ chứ bỏ im lặng. Hiệu chỉnh và bản ghi đánh dấu xoá. Nối với hai trục thời gian ở Bài 158: ở đây trục thứ ba là thời gian xử lý của bộ điều phối.
 
@@ -199,7 +199,7 @@ Người học phải chọn trục phân vùng cho hai đường dẫn và xử
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi rút tham số từ dữ liệu quan sát chứ đặt tuỳ ý. Kiểm bằng đối soát báo cáo sau khi dữ liệu muộn tới; đạt khi báo cáo phân vùng cũ tự đúng lại trong cửa sổ và phần vượt cửa sổ có chính sách áp dụng được.
 
-### Bài 252: Backfill - plan, isolate, validate, promote
+### Lesson 252: Backfill - plan, isolate, validate, promote
 
 Nạp bù là thao tác rủi ro nhất trong vận hành đường dẫn, nên nó có quy trình bốn bước bắt buộc. Lập kế hoạch: chia theo phân vùng, ước lượng chi phí bằng số phân vùng nhân chi phí trung bình và chi phí đỉnh, và xác định ngưỡng dừng cùng trần chi phí. Cách ly: hàng đợi riêng, hạn mức riêng, và đích riêng nếu có thể, để lần chạy hằng ngày và hệ nguồn không bị ảnh hưởng, nguyên tắc đã đặt ở Bài 243. Kiểm chứng: đối soát kết quả nạp bù ở đích cách ly trước khi cho ra bảng phục vụ. Thăng cấp: hoán đổi nguyên tử, và có đường quay lại. Tiến độ từng phần và điểm kiểm tra cho phép dừng giữa chừng mà không mất công. Mã và cấu hình tại thời điểm chạy lại có thể khác lúc chạy gốc, nên kết quả nạp bù có thể khác kết quả lịch sử, và phải nói rõ điều đó chứ coi là như nhau.
 
@@ -207,7 +207,7 @@ Người học phải lập và thực hiện kế hoạch nạp bù 90 phân v�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là cam kết hằng ngày không vỡ và đối soát đạt trước khi thăng cấp. Kiểm bằng thí nghiệm nạp bù đầy đủ; đạt khi độ tươi hằng ngày trong cam kết, đối soát đạt ở đích cách ly, và quay lại được sau khi thăng cấp.
 
-### Bài 253: dbt mental model - parse, compile, run, build
+### Lesson 253: dbt mental model - parse, compile, run, build
 
 Bài mở phần dbt bằng việc nói rõ công cụ này là gì và không là gì. Nó là khung xây dựng phép biến đổi, không phải công cụ nạp dữ liệu và không phải bộ điều phối đa hệ; dùng nó ngoài phạm vi đó là nguồn của phần lớn thiết kế tồi. Bốn pha và khác biệt giữa chúng: phân tích dự án thành đồ thị, kết xuất mẫu thành câu lệnh SQL, chạy để thực thi, và lệnh xây dựng chạy cả mô hình lẫn phép kiểm theo thứ tự đồ thị. Trả lời được bốn lệnh khác nhau ở đồ thị nào, hành động gì và sinh hiện vật gì là một câu hỏi bắt buộc của module. Hàm tham chiếu mô hình và hàm tham chiếu nguồn dựng nên đồ thị, nên không bao giờ viết cứng tên bảng. Ranh giới bộ chuyển đổi: cái gì mang đi được giữa các kho dữ liệu và cái gì phụ thuộc kho cụ thể. Bố cục kho mã và vì sao nó phản ánh ba tầng mô hình.
 
@@ -215,7 +215,7 @@ Người học phải phân biệt bốn pha theo đồ thị, hành động và
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết mở phần công cụ sau sáu bài nguyên lý. Kiểm bằng bài đối chiếu bốn lệnh; đạt khi bảng bốn lệnh đúng ở cả ba cột và câu lệnh kết xuất được đối chiếu với mã nguồn.
 
-### Bài 254: Project layers - staging, intermediate and marts
+### Lesson 254: Project layers - staging, intermediate and marts
 
 Ba tầng với ba nhiệm vụ tách bạch, và trộn chúng làm đồ thị không đọc được. Tầng chuẩn bị ánh xạ một đối một với nguồn: đổi tên, ép kiểu, dọn dẹp, và không có phép gộp nghiệp vụ; nó là chỗ duy nhất biết tên cột gốc của nguồn. Tầng trung gian chứa các đơn vị logic dùng lại được, phép kết và phép xoay; nó không được tiêu thụ trực tiếp. Tầng phục vụ có hạt rõ ràng theo Bài 150 và là hợp đồng với bên tiêu thụ. Quy ước đặt tên, cấu hình theo thư mục, nhãn và nhóm. Mô hình khổng lồ là dấu hiệu thiếu tầng trung gian. Tiêu chí ra của bài lấy thẳng từ hợp đồng nguồn và đo được: một người rà soát chỉ đọc tệp và tài liệu mô hình phải xác định được hạt, chủ sở hữu, nguồn thượng lưu và bên tiêu thụ. Độ tươi của nguồn và quyền sở hữu khai báo ở tầng chuẩn bị.
 
@@ -223,7 +223,7 @@ Người học phải dựng dự án ba tầng sao cho người rà soát xác 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có phép thử khách quan là kết quả của người rà soát độc lập. Kiểm bằng phép thử rà soát chéo; đạt khi người rà soát xác định đúng bốn thuộc tính ở ít nhất tám trên mười mô hình.
 
-### Bài 255: Materializations - four choices, one ADR
+### Lesson 255: Materializations - four choices, one ADR
 
 Bốn cách hiện thực hoá một mô hình, khác nhau ở bốn chiều chi phí. Khung nhìn không tốn dung lượng và luôn tươi, nhưng chi phí dồn sang mỗi lần truy vấn. Bảng tốn chi phí dựng và dung lượng, đổi lại truy vấn rẻ. Dạng phù du được nhúng thẳng vào mô hình hạ nguồn, nên không tồn tại trong kho và không gỡ lỗi được bằng cách truy vấn nó, đây là đánh đổi chính của nó. Tăng dần chỉ xử lý phần mới, rẻ nhất khi chạy nhưng phức tạp nhất về tính đúng, nội dung của bốn bài sau. Bốn chiều so: chi phí dựng, chi phí truy vấn, dung lượng, và mức dễ gỡ lỗi cùng phụ thuộc. Quy tắc thực dụng: bắt đầu bằng khung nhìn hoặc bảng, chỉ chuyển sang tăng dần khi có bằng chứng chi phí dựng là vấn đề. Cách hiện thực hoá tự viết chỉ sau khi bốn cách mặc định không đủ và có người bảo trì.
 
@@ -231,7 +231,7 @@ Người học phải so bốn cách trên cùng mô hình theo bốn chiều v�
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi chọn theo số đo và chống việc mặc định dùng tăng dần. Kiểm bằng bảng bốn cách nhân bốn chiều; đạt khi ba chiều đầu có số đo thật và lựa chọn kèm ngưỡng chuyển đổi.
 
-### Bài 256: Generic tests and their limits
+### Lesson 256: Generic tests and their limits
 
 Bốn phép kiểm có sẵn và giới hạn của từng cái, vì hiểu giới hạn quan trọng hơn biết cách bật. Kiểm không rỗng bắt cột thiếu giá trị nhưng không bắt giá trị canh chừng như chuỗi rỗng hay ngày 1900-01-01, đúng vấn đề ở Bài 231. Kiểm duy nhất bắt trùng khoá nhưng chỉ trên một cột trừ khi khai báo trên biểu thức, nên khoá tổ hợp hay bị kiểm sai. Kiểm quan hệ bắt khoá mồ côi nhưng không bắt chiều ngược lại là bản ghi cha không có con. Kiểm giá trị được chấp nhận bắt giá trị lạ nhưng danh sách giá trị lạc hậu khi nguồn thêm mã mới, nên nó vừa là phép kiểm vừa là cảnh báo lược đồ. Mức nghiêm trọng và ngưỡng: một phép kiểm luôn đỏ vì một ca ngoại lệ đã biết sẽ bị tắt, nên ngưỡng có căn cứ tốt hơn tắt. Lưu bản ghi hỏng để điều tra thay vì chỉ đếm.
 
@@ -239,7 +239,7 @@ Người học phải cài bốn phép kiểm cho một mô hình và chỉ ra b
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi nhận ra giới hạn của công cụ kiểm. Kiểm bằng phép thử tiêm; đạt khi bốn lỗi trong tầm bị bắt và ít nhất ba lỗi ngoài tầm được chỉ ra kèm cách kiểm bổ sung.
 
-### Bài 257: Singular tests for business invariants
+### Lesson 257: Singular tests for business invariants
 
 Phép kiểm viết riêng là nơi diễn đạt những quy tắc mà phép kiểm có sẵn không nói được, và chúng thường là phép kiểm có giá trị nhất. Bốn nhóm bất biến nghiệp vụ: bảo toàn tổng giữa hai tầng; bất biến về khoảng thời gian như không chồng lấn ở chiều biến đổi chậm theo Bài 157; bất biến về vòng đời như trạng thái chỉ đi theo một chiều; và bất biến đối soát giữa mô hình với nguồn. Viết phép kiểm theo nguyên tắc trả về dòng vi phạm chứ trả về đúng sai, để bản thân kết quả là đầu mối điều tra. Phép kiểm tốt phải hỏng khi có lỗi và chỉ khi có lỗi, nên phải thử cả hai chiều: tiêm lỗi để xem nó đỏ, và chạy trên dữ liệu sạch để xem nó không báo giả. Cân bằng số lượng: quá nhiều phép kiểm ồn làm người trực bỏ qua cảnh báo. Phân biệt phép kiểm chất lượng với phép kiểm đơn vị của logic biến đổi.
 
@@ -247,7 +247,7 @@ Người học phải viết bốn phép kiểm bất biến nghiệp vụ và c
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu hai chiều. Kiểm bằng phép thử tiêm cộng phép thử trên dữ liệu sạch; đạt khi cả bốn bắt đúng lỗi tương ứng và không cái nào báo giả trên 30 ngày dữ liệu sạch.
 
-### Bài 258: Jinja and macros - where abstraction stops paying
+### Lesson 258: Jinja and macros - where abstraction stops paying
 
 Hệ mẫu cho phép sinh câu lệnh SQL theo tham số, và nó vừa là công cụ mạnh vừa là nguồn của mã không đọc được. Ngữ cảnh kết xuất và khác biệt giữa thứ chạy lúc phân tích với thứ chạy lúc thực thi là chỗ hay nhầm nhất; gọi cơ sở dữ liệu lúc phân tích làm dự án chậm và khó đoán. Macro là hàm sinh chuỗi: nó cần giao diện rõ, kiểm tham số, tài liệu và đầu ra xác định. Điều phối theo bộ chuyển đổi cho phép cùng một macro sinh câu lệnh khác nhau cho từng kho dữ liệu. Trừu tượng hoá quá sớm làm dòng dõi và việc gỡ lỗi khó hơn nhiều so với phần lặp lại mà nó tiết kiệm, nên quy tắc là chỉ tách macro khi một khuôn mẫu đã lặp ổn định ở ba chỗ trở lên. Macro không được che giấu hạt hay quy tắc nghiệp vụ. Ghim phiên bản gói và rà soát khi nâng cấp.
 
@@ -255,7 +255,7 @@ Người học phải viết macro có giao diện kiểm được và nhận ra
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi phán đoán về mức trừu tượng chứ chỉ viết được macro. Kiểm bằng ba khuôn mẫu lặp; đạt khi tách đúng hai và giải thích được vì sao cái thứ ba không nên tách.
 
-### Bài 259: Incremental models - the is_incremental contract
+### Lesson 259: Incremental models - the is_incremental contract
 
 Bài mở phần nặng nhất của module. Mô hình tăng dần chạy hai chế độ khác nhau, và điều kiện chuyển chế độ phải hiểu chính xác: lần đầu hoặc khi nạp lại toàn bộ thì chạy như bảng thường; các lần sau thì chỉ xử lý phần mới dựa trên một điều kiện lọc. Khối lọc chỉ có hiệu lực ở chế độ thứ hai, nên một lỗi trong khối đó không lộ ra khi chạy trên đích rỗng, và đó là lý do phải kiểm cả hai chế độ. Khoá duy nhất quyết định hành vi khi bản ghi đã tồn tại. Nguồn của mốc tiến độ có thể lấy từ đích hoặc từ một bảng trạng thái riêng, và hai cách có hành vi khác nhau khi đích bị cắt. Tối ưu quét đích so với lọc nguồn là hai việc khác nhau: lọc nguồn giảm dữ liệu đọc, giới hạn quét đích giảm chi phí trộn, và cần cả hai. Chính sách nạp lại toàn bộ phải viết ra.
 
@@ -263,7 +263,7 @@ Người học phải cài mô hình tăng dần chạy đúng ở cả hai ch�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là hai chế độ cho kết quả nhất quán. Kiểm bằng đối chứng; đạt khi kết quả chạy tăng dần bảy ngày khớp kết quả nạp lại toàn bộ trên cùng dữ liệu.
 
-### Bài 260: Incremental strategies by adapter
+### Lesson 260: Incremental strategies by adapter
 
 Bốn chiến lược cập nhật và điều kiện dùng, cộng một khác biệt quan trọng là chúng không giống nhau giữa các kho dữ liệu. Thêm mới đơn thuần: nhanh nhất, chỉ đúng khi nguồn không bao giờ sửa. Trộn theo khoá: xử lý được cả thêm và sửa, đòi khoá duy nhất thật và có quy tắc chọn thắng. Xoá rồi chèn: xoá các khoá trùng rồi chèn lại, hành vi giống trộn nhưng chi phí và tính nguyên tử khác. Ghi đè phân vùng: thay cả phân vùng, luỹ đẳng tự nhiên theo Bài 250 và thường là lựa chọn đúng khi dữ liệu phân vùng theo thời gian. Chế độ xử lý theo lô nhỏ có ở một số phiên bản. Chiến lược nào có sẵn và nó cài đặt ra sao phụ thuộc bộ chuyển đổi, nên đọc câu lệnh sinh ra là bắt buộc chứ tin tên chiến lược. Quan hệ giữa chiến lược với cách phân vùng và gom cụm ở đích theo Bài 209.
 
@@ -271,7 +271,7 @@ Người học phải chọn chiến lược cho ba mô hình theo hình dạng 
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi kiểm chứng hành vi công cụ thay vì tin tên gọi. Kiểm bằng bài đọc câu lệnh sinh ra; đạt khi ba chiến lược được đối chiếu với câu lệnh thật và chi phí đo được cho từng cái.
 
-### Bài 261: The seven-part incremental proof
+### Lesson 261: The seven-part incremental proof
 
 Bài đặt ra nghĩa vụ chứng minh mà hợp đồng nguồn yêu cầu, và không mô hình tăng dần nào được miễn. Bảy phần, mỗi phần là một câu hỏi phải trả lời bằng văn bản kèm phép kiểm: đầy đủ tức cơ chế nào bảo đảm mọi thay đổi hợp lệ cuối cùng được xét; duy nhất tức bản trùng được nhận dạng và chọn thắng xác định ra sao; luỹ đẳng tức cùng đầu vào và điểm kiểm tra chạy lại cho trạng thái tương đương thế nào; xoá tức bản ghi bị xoá ở nguồn được phản ánh hay cố ý giữ, và trong bao lâu; thứ tự tức thời gian nào quyết định bản mới nhất và quy tắc phá hoà là gì; nguyên tử tức bên đọc có thể thấy kết quả nửa vời không và ranh giới ở đâu; phục hồi tức hỏng ở mỗi ranh giới dẫn tới thao tác nào. Quy tắc chốt của bài: điều kiện lọc theo mốc lớn nhất không được chấp nhận nếu chưa chứng minh xong đồng hồ, cập nhật muộn, giá trị mốc bằng nhau, xoá, và hành vi khi đích rỗng.
 
@@ -279,7 +279,7 @@ Người học phải viết chứng minh bảy phần cho ba mô hình tăng d�
 
 Cách đánh giá: Tầng *đánh giá*. Objective là một nghĩa vụ chứng minh, nên tiêu chí là tính đầy đủ và kiểm được của lập luận. Kiểm bằng rà soát chéo; đạt khi ba mô hình có đủ bảy phần và mỗi phần dẫn tới một phép kiểm tự động chứ dừng ở lời văn.
 
-### Bài 262: The incremental failure matrix
+### Lesson 262: The incremental failure matrix
 
 Bài kiểm chứng phần chứng minh ở bài trước bằng thực nghiệm, vì lập luận đúng trên giấy vẫn có thể sai khi chạy. Sáu chế độ hỏng bắt buộc cùng hành vi kỳ vọng của từng cái: tiến trình chết trước khi chốt thì đích không được ở trạng thái nửa vời hoặc chạy lại phải sửa được; chết sau khi chốt nhưng trước khi ghi điểm kiểm tra thì chạy lại không được trùng; bản ghi nguồn cập nhật muộn thì cửa sổ chồng lấn hoặc cơ chế bắt thay đổi phải bắt được; nguồn xoá bản ghi thì chính sách phải rõ chứ mặc định bỏ qua; hai bản ghi cùng khoá thì có bản thắng xác định hoặc đi cách ly; lược đồ thêm, bớt hoặc đổi kiểu thì hợp đồng và đường di trú phải phản ứng. Hành vi kỳ vọng viết trước khi chạy thí nghiệm. Mỗi ô của ma trận là một phép thử tự động, để hồi quy được phát hiện ở lần nộp mã sau.
 
@@ -287,7 +287,7 @@ Người học phải chạy trọn sáu chế độ hỏng cho ba mô hình và
 
 Cách đánh giá: Tầng *áp dụng*. Objective là tiêu chí ra của module, nên nghiệm thu là toàn bộ ma trận đạt. Kiểm bằng ma trận sáu nhân ba; đạt khi mọi ô có kết quả khớp hành vi kỳ vọng và cả sáu chế độ chạy được tự động.
 
-### Bài 263: Snapshots and SCD2 invariants
+### Lesson 263: Snapshots and SCD2 invariants
 
 Cơ chế ghi lịch sử thay đổi của một bảng nguồn, và nó là cách cài chiều biến đổi chậm loại hai ở Bài 157 bằng công cụ. Hai chiến lược phát hiện thay đổi: theo dấu thời gian cập nhật, rẻ và đòi trường đó tin cậy; theo so sánh cột, đắt hơn và dùng khi nguồn không có dấu thời gian tin cậy. Hành vi khi bản ghi biến mất khỏi nguồn phải chọn tường minh chứ để mặc định. Ba bất biến bắt buộc kiểm, lấy thẳng từ Bài 157: mỗi khoá nghiệp vụ có đúng một dòng hiện hành; không có khoảng hiệu lực chồng nhau; và mọi khoảng có thời điểm bắt đầu trước thời điểm kết thúc. Hiệu chỉnh tới muộn là ca khó: một thay đổi được biết sau khi đã ghi thay đổi sau nó, nên phải chèn vào giữa chuỗi. Cơ chế này không thay được mọi ca dùng bắt thay đổi từ nhật ký: nó chỉ thấy trạng thái tại thời điểm chạy, nên thay đổi xảy ra giữa hai lần chạy bị bỏ sót.
 
@@ -295,7 +295,7 @@ Người học phải cài ghi lịch sử đạt ba bất biến và chỉ ra c
 
 Cách đánh giá: Tầng *áp dụng*. Objective có ba bất biến kiểm được cộng một giới hạn phải nhận ra. Kiểm bằng ba phép kiểm bất biến cộng thí nghiệm bỏ sót; đạt khi ba bất biến giữ qua 500 lần cập nhật và ca bỏ sót được định lượng.
 
-### Bài 264: Model contracts, versions and consumer migration
+### Lesson 264: Model contracts, versions and consumer migration
 
 Mô hình ở tầng phục vụ là hợp đồng, nên đổi nó phải theo quy trình, giống hệt Bài 190 nhưng cưỡng chế bằng công cụ. Hợp đồng mô hình khai báo tên cột, kiểu và ràng buộc; khi mô hình sinh ra sai hợp đồng thì lần xây dựng hỏng ngay thay vì đẩy dữ liệu sai xuống hạ nguồn. Ba mức thay đổi theo Bài 220, và mức phá vỡ cần mô hình có phiên bản: hai phiên bản cùng tồn tại trong một cửa sổ chuyển đổi, bên tiêu thụ chuyển dần, rồi phiên bản cũ bị gỡ. Kiểm kê bên tiêu thụ trước khi đổi là bước bắt buộc và nó dựa vào khai báo bên tiêu thụ cùng nhật ký truy vấn. Đổi lược đồ phá vỡ mà không có kiểm kê bên tiêu thụ, đường di trú và đường quay lại là một trong những chế độ hỏng tự động chưa đạt của module. Đổi tên hoặc bỏ cột sao cho bên tiêu thụ cũ và mới cùng sống là bài tập trung tâm.
 
@@ -303,7 +303,7 @@ Người học phải thực hiện một thay đổi phá vỡ có phiên bản
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là không bên tiêu thụ nào hỏng suốt quá trình. Kiểm bằng thí nghiệm chuyển đổi có bên tiêu thụ chạy thật; đạt khi không bên nào lỗi và phiên bản cũ chỉ bị gỡ sau khi kiểm kê rỗng.
 
-### Bài 265: Documentation, exposures and lineage artifacts
+### Lesson 265: Documentation, exposures and lineage artifacts
 
 Tài liệu nằm cạnh mã và được rà soát cùng mã, theo đúng nguyên tắc ở Bài 191. Bốn thứ phải khai báo cho mỗi mô hình phục vụ: hạt, chủ sở hữu, ngữ nghĩa từng cột, và cảnh báo diễn giải. Khai báo bên tiêu thụ nối mô hình với bảng điều khiển, báo cáo hoặc hệ hạ nguồn dùng nó; đây là thứ làm kiểm kê ở Bài 264 chạy được, và thiếu nó thì không ai dám đổi gì. Dòng dõi sinh ra từ đồ thị phụ thuộc là dòng dõi kỹ thuật, còn dòng dõi tới quyết định là nội dung Bài 187; cần cả hai và chúng không thay nhau. Kiểm tài liệu trong tích hợp liên tục theo Bài 193: một mô hình công khai không có tài liệu là một lỗi chặn hợp nhất, chứ một việc để sau. Ba thứ không nên đưa vào tài liệu vì chúng chắc chắn lạc hậu.
 
@@ -311,7 +311,7 @@ Người học phải khai báo tài liệu và bên tiêu thụ đầy đủ, v
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cửa chặn tự động có tiêu chí nghiệm thu bằng phép thử tiêm. Kiểm bằng ba vi phạm tiêm; đạt khi cả ba bị chặn và đồ thị dòng dõi phủ đủ bên tiêu thụ đã khai báo.
 
-### Bài 266: dbt artifacts - manifest, run results and catalog
+### Lesson 266: dbt artifacts - manifest, run results and catalog
 
 Ba tệp hiện vật là nơi công cụ ghi lại mọi thứ nó biết, và đọc được chúng là điều kiện để gỡ lỗi cùng để dựng tích hợp liên tục thông minh. Tệp kê khai chứa toàn bộ nút, phụ thuộc, cấu hình, tổng kiểm tra và siêu dữ liệu; nó là đầu vào cho việc so sánh trạng thái giữa hai lần chạy. Tệp kết quả chạy chứa trạng thái, thời gian và phản hồi của kho dữ liệu cho từng nút; nó là bằng chứng vận hành và cũng có giới hạn, chẳng hạn nó nói nút chạy xong chứ không nói dữ liệu đúng. Tệp danh mục chứa thông tin cột lấy từ kho dữ liệu. Phân biệt việc điều phối báo thành công với việc dữ liệu đúng là một câu hỏi bắt buộc của module, và ba hiện vật này giúp thấy rõ ranh giới đó. Giữ hiện vật của lần chạy sản xuất là điều kiện để so sánh trạng thái, nên nó cần nơi lưu và chính sách giữ.
 
@@ -319,7 +319,7 @@ Người học phải đọc ba hiện vật để trả lời năm câu hỏi v
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi lấy bằng chứng từ hiện vật thay vì từ giao diện. Kiểm bằng năm câu hỏi; đạt khi trả lời đúng ít nhất bốn chỉ bằng ba tệp hiện vật.
 
-### Bài 267: Selection grammar and state-aware CI
+### Lesson 267: Selection grammar and state-aware CI
 
 Cú pháp chọn nút quyết định lần chạy nào động tới cái gì, và hiểu sai nó làm tích hợp liên tục vừa chậm vừa bỏ sót. Toán tử đồ thị chọn nút cùng thượng lưu và hạ lưu; nhãn và nhóm chọn theo phân loại; chọn theo trạng thái so tệp kê khai hiện tại với tệp kê khai tham chiếu để tìm nút đã đổi. Luôn xem danh sách nút được chọn trước khi chạy ở môi trường sản xuất, vì một biểu thức chọn sai có thể dựng lại toàn bộ hoặc bỏ qua phần quan trọng. Tích hợp liên tục chỉ dựng phần đổi cộng hạ lưu là cách tiết kiệm chính, nhưng nó dựa vào tệp kê khai tham chiếu, nên quyền giữ và tính đúng của tệp đó là điểm yếu: tham chiếu sai môi trường làm phép so cho kết quả sai. Quy tắc bù: vẫn phải có một lần kiểm đầy đủ theo lịch, vì chỉ dựng phần đổi không phát hiện được lỗi do dữ liệu. Cách ly môi trường và quyền tối thiểu.
 
@@ -327,7 +327,7 @@ Người học phải dựng tích hợp liên tục chỉ dựng phần đổi 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có hai ràng buộc: nhanh và không bỏ sót. Kiểm bằng ba thay đổi tiêm; đạt khi tập nút được chọn khớp tập đúng ở cả ba và lần kiểm đầy đủ bắt được một lỗi do dữ liệu mà lần chạy phần đổi bỏ qua.
 
-### Bài 268: dbt performance and cost per model
+### Lesson 268: dbt performance and cost per model
 
 Hiệu năng của một dự án biến đổi có hai phần tách biệt: đường găng của đồ thị và chi phí của từng mô hình. Đường găng là chuỗi phụ thuộc dài nhất; rút ngắn nó là việc tái cấu trúc đồ thị chứ tối ưu truy vấn. Tăng số luồng không tăng tốc quá mức đồng thời mà kho dữ liệu cho phép, và vượt ngưỡng đó thì thời gian chờ hàng đợi cùng tràn đĩa tăng, nên nhiều luồng hơn có thể làm chậm hơn và đắt hơn, đúng hiện tượng ở Bài 214. Với từng mô hình, đo số dòng vào ra, số byte quét, mức tràn đĩa và chi phí; đọc kế hoạch theo Bài 130 và 206. Quét toàn bộ âm thầm trong một mô hình tăng dần là lỗi tốn kém hay gặp: mô hình chạy đúng nhưng quét cả bảng mỗi lần. Chi phí trên mỗi đơn vị gồm chi phí mỗi lần làm mới và chi phí mỗi dòng nguồn.
 
@@ -335,7 +335,7 @@ Người học phải rút ngắn đường găng và giảm chi phí ba mô hì
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi tách hai nguyên nhân chậm và chống việc tăng luồng theo phản xạ. Kiểm bằng cặp số đo trước sau; đạt khi đường găng ngắn lại và ba mô hình giảm chi phí với kế hoạch giải thích được, mà kết quả không đổi.
 
-### Bài 269: Orchestration primitives before the tool
+### Lesson 269: Orchestration primitives before the tool
 
 Bài mở phần điều phối bằng những khái niệm chung cho mọi công cụ, học một lần rồi mới chọn. Đồ thị phụ thuộc và phân biệt phụ thuộc dữ liệu với thứ tự chạy: hai việc chạy nối nhau không có nghĩa việc sau cần dữ liệu của việc trước, và nhầm hai thứ này tạo ra đồ thị cứng nhắc không song song được. Kỳ dữ liệu và phân vùng: một lần chạy xử lý một khoảng dữ liệu, và khoảng đó khác thời điểm chạy. Vòng đời một lần chạy từ lúc được lập lịch tới lúc kết thúc. Thử lại, hết giờ và huỷ; ranh giới tác dụng phụ. Đồng thời, hàng đợi và mức ưu tiên. Nạp bù và quan sát ở mức phân vùng. Vòng đời bí mật và tài nguyên. Phụ thuộc vào thời gian thay vì vào tín hiệu dữ liệu sẵn sàng là lỗi thiết kế phổ biến nhất: chạy lúc hai giờ sáng vì tin rằng nguồn xong lúc một giờ là một giả định không được kiểm.
 
@@ -343,7 +343,7 @@ Người học phải phân biệt phụ thuộc dữ liệu với thứ tự ch
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết đặt từ vựng chung trước khi chọn công cụ. Kiểm bằng bài phân tích một đồ thị; đạt khi phân đúng ít nhất sáu trong tám cạnh và mọi giả định thời gian được thay bằng tín hiệu dữ liệu.
 
-### Bài 270: Logical date, data interval and the timezone traps
+### Lesson 270: Logical date, data interval and the timezone traps
 
 Khái niệm khó nhất của phần điều phối và là nguồn của lỗi nạp bù im lặng. Một lần chạy gắn với một khoảng dữ liệu, và khoảng đó thường kết thúc tại thời điểm lần chạy được kích hoạt chứ bắt đầu tại đó; hiểu ngược làm mọi phân vùng lệch một kỳ. Dùng thời điểm hiện tại trong mã xử lý là lỗi chí mạng: khi nạp bù, thời điểm hiện tại là hôm nay chứ ngày của phân vùng, nên nạp bù ghi cùng một dữ liệu hôm nay vào mọi phân vùng lịch sử, và kết quả trông có vẻ chạy xong. Múi giờ và giờ mùa hè: ở những múi giờ có áp dụng giờ mùa hè, mỗi lần chuyển làm một ngày có 23 hoặc 25 giờ, nên lịch chạy hằng giờ có kỳ lặp hoặc kỳ thiếu. Số lần chuyển trong năm và ngày chuyển do quy định của từng vùng đặt ra và có thể đổi, nên lịch phải tra từ cơ sở dữ liệu múi giờ chứ gán cứng; chọn múi giờ chuẩn cho lịch và quy đổi ở biên là cách tránh. Chạy bù tự động cho khoảng quá khứ và rủi ro tạo hàng nghìn lần chạy cùng lúc.
 
@@ -351,7 +351,7 @@ Người học phải tái hiện lỗi dùng thời điểm hiện tại khi n�
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi nhận ra một lỗi làm mọi lần chạy đều báo thành công. Kiểm bằng nạp bù 30 phân vùng cộng thí nghiệm chuyển giờ; đạt khi lỗi được tái hiện và định lượng, bản sửa cho dữ liệu đúng theo từng phân vùng, và lịch không có kỳ lặp hay kỳ thiếu.
 
-### Bài 271: Mastering one orchestrator - Airflow or Dagster
+### Lesson 271: Mastering one orchestrator - Airflow or Dagster
 
 Bài áp quy tắc chọn công cụ của module: thành thạo bộ điều phối mà nơi làm việc dùng, bộ còn lại chỉ tới mức hiểu kiến trúc. Với bộ điều phối theo việc: các thành phần gồm bộ xử lý tệp định nghĩa, bộ lập lịch, cơ sở dữ liệu siêu dữ liệu, giao diện, bộ thực thi và tiến trình chạy; vòng đời một thể hiện việc; cơ sở dữ liệu siêu dữ liệu là phụ thuộc vận hành thật; kênh truyền giá trị giữa các việc chỉ dành cho siêu dữ liệu nhỏ, không phải nơi chuyển dữ liệu. Với bộ điều phối theo tài sản: khoá tài sản, sự kiện hiện thực hoá, phân vùng như lát cắt độc lập, tài nguyên và bộ quản lý vào ra tách phần lưu trữ khỏi logic, phép kiểm tài sản. Điểm chung phải nắm ở cả hai: ranh giới giữa mặt điều khiển với mặt dữ liệu, và không đặt xử lý dữ liệu nặng trong tiến trình lập lịch. Tích hợp với dbt và nguyên tắc chỉ một nguồn sự thật về điều phối.
 
@@ -359,7 +359,7 @@ Người học phải dựng một đồ thị chạy được trên bộ điề
 
 Cách đánh giá: Tầng *áp dụng*. Objective là năng lực dựng trên một công cụ tới mức vận hành. Kiểm bằng rà soát kiến trúc cộng phép thử tải; đạt khi không có xử lý dữ liệu nặng trong mặt điều khiển và đồ thị chạy đúng với dữ liệu thật.
 
-### Bài 272: Retry, concurrency, pools and the side-effect boundary
+### Lesson 272: Retry, concurrency, pools and the side-effect boundary
 
 Cơ chế tin cậy của bộ điều phối và giới hạn của chúng. Mỗi việc phải là một giao dịch: luỹ đẳng, công bố nguyên tử, đọc ghi đúng phân vùng của nó. Thử lại, hết giờ và cam kết thời hạn; việc mồ côi và nhịp tim. Bộ cảm biến chờ theo kiểu giữ tiến trình so với kiểu nhả tiến trình: kiểu giữ làm cạn tiến trình chạy khi có nhiều bộ cảm biến, và đây là chế độ hỏng đặc trưng. Hàng đợi, mức ưu tiên và số lần chạy đồng thời tối đa dùng để cách ly nạp bù khỏi lần chạy hằng ngày, quy tắc đã đặt ở Bài 252 và nay được cưỡng chế bằng cấu hình. Cơn bão thử lại và cách chặn. Điểm quan trọng nhất và là một câu hỏi bắt buộc của module: thử lại của bộ điều phối có thể nhân đôi tác dụng phụ dù trạng thái cuối của việc là thành công, nên trạng thái việc không chứng minh được hiệu ứng ở đích.
 
@@ -367,7 +367,7 @@ Người học phải cấu hình hàng đợi và đồng thời để cách ly
 
 Cách đánh giá: Tầng *áp dụng*. Objective có hai tiêu chí: cách ly đạt và tác dụng phụ không nhân đôi. Kiểm bằng thí nghiệm chạy chung; đạt khi nạp bù không làm vỡ cam kết hằng ngày và đối soát chứng minh không có tác dụng phụ trùng.
 
-### Bài 273: Control-plane diagnosis - the required incident list
+### Lesson 273: Control-plane diagnosis - the required incident list
 
 Bài chẩn đoán ở tầng mặt điều khiển, chạy theo đường truy vết chứ đoán. Đường truy vết chung ba chặng: từ tệp định nghĩa tới biểu diễn đã lưu trong siêu dữ liệu; từ bộ lập lịch tới việc được xếp hàng; và từ tiến trình chạy tới trạng thái cùng nhật ký cuối. Sáu sự cố bắt buộc diễn tập, và mỗi cái có một triệu chứng đặc trưng: thông lượng lập lịch sụp vì phân tích tệp định nghĩa quá nặng; cơ sở dữ liệu siêu dữ liệu hoặc nhật ký sự kiện bị nghẽn kết nối; việc kẹt ở trạng thái đã xếp hàng; việc mồ côi sau khi tiến trình chạy chết; bộ cảm biến làm cạn tiến trình; và nạp bù làm bão hoà nguồn. Với bộ điều phối theo tài sản, thêm ba ca: con trỏ của bộ cảm biến phát lại, tải lại định nghĩa thất bại, và ánh xạ phân vùng bỏ sót dữ liệu. Truy vấn bảng siêu dữ liệu chỉ để chẩn đoán và chỉ đọc; ứng dụng phải dùng giao diện ổn định.
 
@@ -375,7 +375,7 @@ Người học phải chẩn đoán sáu sự cố mặt điều khiển bằng 
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi chẩn đoán có phương pháp trong một hệ nhiều thành phần. Kiểm bằng sáu sự cố tái hiện; đạt khi truy đúng chặng gây ra ở ít nhất năm và sửa được ít nhất bốn với số đo trước sau.
 
-### Bài 274: Pipeline capstone - daily, backfill and full rebuild
+### Lesson 274: Pipeline capstone - daily, backfill and full rebuild
 
 Bài dự án tổng hợp module, lấy đúng yêu cầu capstone của hợp đồng nguồn. Một đường dẫn hoàn chỉnh từ cơ sở dữ liệu quan hệ và giao diện lập trình, qua vùng thô bất biến, qua ba tầng mô hình, tới engine phân tích, có kiểm chất lượng và đối soát. Điều phối bằng bộ điều phối đã chọn. Ba chế độ phải chạy được: tăng dần hằng ngày, nạp bù theo yêu cầu, và dựng lại toàn bộ. Kiểm soát bắt buộc: hợp đồng lược đồ, dữ liệu tới muộn, xoá, khử trùng, và đối soát từ nguồn tới đích. Phần sản xuất gồm đóng gói, tích hợp liên tục, quản lý bí mật, nhật ký cùng số đo, cảnh báo, cam kết dịch vụ, sổ tay vận hành và ghi chú chi phí. Bài toán năng lực đi kèm: với 2.000 mô hình, 400 luồng công việc, cam kết 30 phút và 180 ngày nạp bù, xác định đường găng, vùng đồng thời an toàn, ngưỡng dừng và trần chi phí. Mọi việc xanh không chứng minh dữ liệu đầy đủ, nên nghiệm thu là đối soát.
 

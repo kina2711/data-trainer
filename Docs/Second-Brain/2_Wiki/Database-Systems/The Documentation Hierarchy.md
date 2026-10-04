@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Bộ tài liệu cho data product phải tách theo nhu cầu đọc nào, đồng bộ với product ra sao và được kiểm bằng hành vi nào thay vì số trang?
 source_ids:
   - src.web.diataxis-framework
@@ -59,7 +59,7 @@ Test có hai lớp. Lớp consumer: người chưa biết product quyết địn
 
 ## 8. Ma trận kiểm chứng từng mệnh đề
 
-Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được. Một trang tài liệu tồn tại, catalog có search box hoặc người dùng nói ‘dễ’ không tự là bằng chứng.
+Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được. Một trang tài liệu tồn tại, catalog có search box hoặc người dùng nói dễ không tự là bằng chứng.
 
 ### 8.1. bốn tầng phục vụ bốn reader jobs khác nhau
 
@@ -231,7 +231,7 @@ Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.documentation-hierarchy`
+## Execution capsule: kiểm chứng `wiki.data-product.documentation-hierarchy`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.documentation-hierarchy`, sơ đồ, ví dụ và artifact về **The Documentation Hierarchy** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

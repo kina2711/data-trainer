@@ -38,7 +38,7 @@ One DB transaction spans rows/tables; separate topics/partitions cannot offer on
 
 ## 3. Per-key order
 
-Kafka partition key may preserve order for same row identity, not automatically cross-key invariants. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Ordering scope and the multi-table transaction limit`, câu hỏi thực dụng là: CDC ordering guarantee nằm ở log, connector, topic/partition và consumer scope nào khi một transaction chạm nhiều tables? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Kafka partition key may preserve order for same row identity, not automatically cross-key invariants. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Ordering scope and the multi-table transaction limit`, câu hỏi thực dụng là: CDC ordering guarantee nằm ở log, connector, topic/partition và consumer scope nào khi một transaction chạm nhiều tables? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Transaction metadata
 
@@ -221,7 +221,7 @@ Với `wiki.cdc.ordering-transaction-scope`, command thành công không tự ch
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.cdc.ordering-transaction-scope`
+## Execution capsule: kiểm chứng `wiki.cdc.ordering-transaction-scope`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.cdc.ordering-transaction-scope`, sơ đồ, ví dụ và artifact về **Ordering scope and the multi-table transaction limit** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

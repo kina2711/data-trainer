@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Hàm chuỗi: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`, `REPLACE`, `POSITION`, `LENGTH`, `SPLIT_PART`. Hàm số: `ROUND`, `CEIL`, `FLOOR`, `ABS`, `POWER`, phân biệt chia nguyên và chia thực. Hàm ngày: `CURRENT_DATE`, `EXTRACT`, `DATE_TRUNC`, phép cộng trừ khoảng thời gian, chênh lệch hai ngày. Ép kiểu có kiểm soát lỗi: `CAST` và `TRY_CAST`. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L020 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **String, numeric and date functions**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Thực hiện chuẩn hoá dữ liệu bẩn trong truy vấn thay vì xuất ra công cụ khác, và chứng minh kết quả khớp với bản chuẩn hoá đối chứng. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Hàm chuỗi: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`, `REPLACE`, `POSITION`, `LENGTH`, `SPLIT_PART`. Hàm số: `ROUND`, `CEIL`, `FLOOR`, `ABS`, `POWER`, phân biệt chia nguyên và chia thực. Hàm ngày: `CURRENT_DATE`, `EXTRACT`, `DATE_TRUNC`, phép cộng trừ khoảng thời gian, chênh lệch hai ngày. Ép kiểu có kiểm soát lỗi: `CAST` và `TRY_CAST`.
 
@@ -44,7 +44,7 @@ Cơ chế của `string-numeric-and-date-functions` được kiểm qua năm l�
 
 Lỗi cần loại trừ trong bài này là: Dùng `CAST` không bắt lỗi trên dữ liệu bẩn nên truy vấn dừng giữa chừng · chia nguyên khi cần chia thực · `DATE_TRUNC` sai đơn vị làm lệch kỳ báo cáo. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Dùng `CAST` không bắt lỗi tr
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L020: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Kết quả chuẩn hoá trên `DS2` khớp từng dòng với bản đối chứng, và không có dòng nào bị loại trong im lặng do lỗi ép kiểu.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L020: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Kết quả chuẩn hoá trên `DS2` khớp từng dòng với bản đối chứng, và không có dòng nào bị loại trong im lặng do lỗi ép kiểu.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: String, numeric and date functions
+## Worked Case: String, numeric and date functions
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Trên `DS2`: chuẩn hoá cột tên khách, tách họ và tên, gom ngày về đầu tháng, tính tuổi đơn hàng theo ngày.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `String, numeric and date functions`, learner ghi exp
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L020 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `String, numeric and date functions` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L020 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Hàm chuỗi: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`, `REPLACE`, `POSITION`, `LENGTH`, `SPLIT_PART`. Hàm số: `ROUND`, `CEIL`, `FLOOR`, `ABS`, `POWER`, phân biệt chia nguyên và chia thực. Hàm ngày: `CURRENT_DATE`, `EXTRACT`, `DATE_TRUNC`, phép cộng trừ khoảng thời gian, chênh lệch hai ngày. Ép kiểu có kiểm soát lỗi: `CAST` và `TRY_CAST`.
+**Mệnh đề của probe 1: `population`.** Hàm chuỗi: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`, `REPLACE`, `POSITION`, `LENGTH`, `SPLIT_PART`. Hàm số: `ROUND`, `CEIL`, `FLOOR`, `ABS`, `POWER`, phân biệt chia nguyên và chia thực. Hàm ngày: `CURRENT_DATE`, `EXTRACT`, `DATE_TRUNC`, phép cộng trừ khoảng thời gian, chênh lệch hai ngày. Ép kiểu có kiểm soát lỗi: `CAST` và `TRY_CAST`.
 
 **Thiết kế.** Probe 1 của L020 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L020 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Thực hiện chuẩn hoá dữ liệu bẩn trong truy vấn thay vì xuất ra công cụ khác, và chứng minh kết quả khớp với bản chuẩn hoá đối chứng.
+**Mệnh đề của probe 2: `grain`.** Thực hiện chuẩn hoá dữ liệu bẩn trong truy vấn thay vì xuất ra công cụ khác, và chứng minh kết quả khớp với bản chuẩn hoá đối chứng.
 
 **Thiết kế.** Probe 2 của L020 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L020 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Dùng `CAST` không bắt lỗi trên dữ liệu bẩn nên truy vấn dừng giữa chừng · chia nguyên khi cần chia thực · `DATE_TRUNC` sai đơn vị làm lệch kỳ báo cáo.
+**Mệnh đề của probe 3: `identity`.** Dùng `CAST` không bắt lỗi trên dữ liệu bẩn nên truy vấn dừng giữa chừng · chia nguyên khi cần chia thực · `DATE_TRUNC` sai đơn vị làm lệch kỳ báo cáo.
 
 **Thiết kế.** Probe 3 của L020 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L020 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Kết quả chuẩn hoá trên `DS2` khớp từng dòng với bản đối chứng, và không có dòng nào bị loại trong im lặng do lỗi ép kiểu.
+**Mệnh đề của probe 4: `time cutoff`.** Kết quả chuẩn hoá trên `DS2` khớp từng dòng với bản đối chứng, và không có dòng nào bị loại trong im lặng do lỗi ép kiểu.
 
 **Thiết kế.** Probe 4 của L020 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L020 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Hàm chuỗi: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`, `REPLACE`, `POSITION`, `LENGTH`, `SPLIT_PART`. Hàm số: `ROUND`, `CEIL`, `FLOOR`, `ABS`, `POWER`, phân biệt chia nguyên và chia thực. Hàm ngày: `CURRENT_DATE`, `EXTRACT`, `DATE_TRUNC`, phép cộng trừ khoảng thời gian, chênh lệch hai ngày. Ép kiểu có kiểm soát lỗi: `CAST` và `TRY_CAST`.
+**Mệnh đề của probe 5: `missing versus zero`.** Hàm chuỗi: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`, `REPLACE`, `POSITION`, `LENGTH`, `SPLIT_PART`. Hàm số: `ROUND`, `CEIL`, `FLOOR`, `ABS`, `POWER`, phân biệt chia nguyên và chia thực. Hàm ngày: `CURRENT_DATE`, `EXTRACT`, `DATE_TRUNC`, phép cộng trừ khoảng thời gian, chênh lệch hai ngày. Ép kiểu có kiểm soát lỗi: `CAST` và `TRY_CAST`.
 
 **Thiết kế.** Probe 5 của L020 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L020 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Thực hiện chuẩn hoá dữ liệu bẩn trong truy vấn thay vì xuất ra công cụ khác, và chứng minh kết quả khớp với bản chuẩn hoá đối chứng.
+**Mệnh đề của probe 6: `duplicate`.** Thực hiện chuẩn hoá dữ liệu bẩn trong truy vấn thay vì xuất ra công cụ khác, và chứng minh kết quả khớp với bản chuẩn hoá đối chứng.
 
 **Thiết kế.** Probe 6 của L020 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L020 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Dùng `CAST` không bắt lỗi trên dữ liệu bẩn nên truy vấn dừng giữa chừng · chia nguyên khi cần chia thực · `DATE_TRUNC` sai đơn vị làm lệch kỳ báo cáo.
+**Mệnh đề của probe 7: `join fan-out`.** Dùng `CAST` không bắt lỗi trên dữ liệu bẩn nên truy vấn dừng giữa chừng · chia nguyên khi cần chia thực · `DATE_TRUNC` sai đơn vị làm lệch kỳ báo cáo.
 
 **Thiết kế.** Probe 7 của L020 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L020 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Kết quả chuẩn hoá trên `DS2` khớp từng dòng với bản đối chứng, và không có dòng nào bị loại trong im lặng do lỗi ép kiểu.
+**Mệnh đề của probe 8: `changed definition`.** Kết quả chuẩn hoá trên `DS2` khớp từng dòng với bản đối chứng, và không có dòng nào bị loại trong im lặng do lỗi ép kiểu.
 
 **Thiết kế.** Probe 8 của L020 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L020 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Hàm chuỗi: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`, `REPLACE`, `POSITION`, `LENGTH`, `SPLIT_PART`. Hàm số: `ROUND`, `CEIL`, `FLOOR`, `ABS`, `POWER`, phân biệt chia nguyên và chia thực. Hàm ngày: `CURRENT_DATE`, `EXTRACT`, `DATE_TRUNC`, phép cộng trừ khoảng thời gian, chênh lệch hai ngày. Ép kiểu có kiểm soát lỗi: `CAST` và `TRY_CAST`.
+**Mệnh đề của probe 9: `independent oracle`.** Hàm chuỗi: `CONCAT`, `SUBSTRING`, `TRIM`, `UPPER`, `LOWER`, `REPLACE`, `POSITION`, `LENGTH`, `SPLIT_PART`. Hàm số: `ROUND`, `CEIL`, `FLOOR`, `ABS`, `POWER`, phân biệt chia nguyên và chia thực. Hàm ngày: `CURRENT_DATE`, `EXTRACT`, `DATE_TRUNC`, phép cộng trừ khoảng thời gian, chênh lệch hai ngày. Ép kiểu có kiểm soát lỗi: `CAST` và `TRY_CAST`.
 
 **Thiết kế.** Probe 9 của L020 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L020 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Thực hiện chuẩn hoá dữ liệu bẩn trong truy vấn thay vì xuất ra công cụ khác, và chứng minh kết quả khớp với bản chuẩn hoá đối chứng.
+**Mệnh đề của probe 10: `replay`.** Thực hiện chuẩn hoá dữ liệu bẩn trong truy vấn thay vì xuất ra công cụ khác, và chứng minh kết quả khớp với bản chuẩn hoá đối chứng.
 
 **Thiết kế.** Probe 10 của L020 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L020 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Dùng `CAST` không bắt lỗi trên dữ liệu bẩn nên truy vấn dừng giữa chừng · chia nguyên khi cần chia thực · `DATE_TRUNC` sai đơn vị làm lệch kỳ báo cáo.
+**Mệnh đề của probe 11: `fresh snapshot`.** Dùng `CAST` không bắt lỗi trên dữ liệu bẩn nên truy vấn dừng giữa chừng · chia nguyên khi cần chia thực · `DATE_TRUNC` sai đơn vị làm lệch kỳ báo cáo.
 
 **Thiết kế.** Probe 11 của L020 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L020 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Kết quả chuẩn hoá trên `DS2` khớp từng dòng với bản đối chứng, và không có dòng nào bị loại trong im lặng do lỗi ép kiểu.
+**Mệnh đề của probe 12: `novel scenario`.** Kết quả chuẩn hoá trên `DS2` khớp từng dòng với bản đối chứng, và không có dòng nào bị loại trong im lặng do lỗi ép kiểu.
 
 **Thiết kế.** Probe 12 của L020 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Kết quả chuẩn hoá trên `DS2` khớp từng dòng với bản đối ch�
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql`
-2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e`
+1. [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql`
+2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới String, numeric and date functions | các mục cơ chế, case và probe | Đã phủ | ngoài objective L020 |
-| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới String, numeric and date functions | các mục cơ chế, case và probe | Đã phủ | ngoài objective L020 |
+| [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới String, numeric and date functions | các mục cơ chế, case và probe | Đã phủ | ngoài objective L020 |
+| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới String, numeric and date functions | các mục cơ chế, case và probe | Đã phủ | ngoài objective L020 |
 
 ## Key takeaways
 - Thực hiện chuẩn hoá dữ liệu bẩn trong truy vấn thay vì xuất ra công cụ khác, và chứng minh kết quả khớp với bản chuẩn hoá đối chứng.
@@ -226,7 +226,7 @@ Kết quả chuẩn hoá trên `DS2` khớp từng dòng với bản đối ch�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.string-numeric-and-date-functions`
+## Execution capsule: kiểm chứng `wiki.da.string-numeric-and-date-functions`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.string-numeric-and-date-functions`, sơ đồ, ví dụ và artifact về **String, numeric and date functions** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

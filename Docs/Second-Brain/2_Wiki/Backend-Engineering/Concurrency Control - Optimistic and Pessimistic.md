@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Khi nhiều request cùng sửa một trạng thái, chọn kiểm soát lạc quan, khóa bi quan hay nguyên tử hóa phép ghi thế nào để không mất cập nhật mà vẫn kiểm soát được contention?
 source_ids:
   - src.book.mastering-postgresql-17.6e
@@ -41,14 +41,14 @@ t2  A ghi quantity = 9, commit
 t3  B ghi quantity = 9, commit
 ```
 
-Đây là lost update theo mô hình read–modify–write. Lỗi không nằm ở việc thiếu `BEGIN`/`COMMIT`; lỗi nằm ở chỗ điều kiện “giá trị chưa đổi kể từ lúc tôi đọc” không được kiểm, hoặc việc đọc và thay đổi không được serialize.
+Đây là lost update theo mô hình read-modify-write. Lỗi không nằm ở việc thiếu `BEGIN`/`COMMIT`; lỗi nằm ở chỗ điều kiện giá trị chưa đổi kể từ lúc tôi đọc không được kiểm, hoặc việc đọc và thay đổi không được serialize.
 
 > [!synthesis]
 > L103 bảo vệ một use case khỏi trạng thái dở dang. L104 bổ sung điều kiện khi nhiều use case hợp lệ chạy đồng thời. Hai bài giải hai lớp lỗi khác nhau.
 
 ## 2. Phải mô tả invariant trước khi chọn cơ chế
 
-“Không có race condition” là mục tiêu quá mơ hồ. Cần viết invariant có thể kiểm:
+Không có race condition là mục tiêu quá mơ hồ. Cần viết invariant có thể kiểm:
 
 - tồn kho không âm;
 - số phiên bản tăng đúng một lần cho mỗi thay đổi được chấp nhận;
@@ -57,7 +57,7 @@ t3  B ghi quantity = 9, commit
 - trạng thái chỉ đi theo cạnh hợp lệ của state machine;
 - nếu hai editor sửa hai field độc lập, policy phải nói rõ merge hay conflict.
 
-Từ invariant mới suy ra atomic unit và conflict domain. Nếu chỉ một cột cần tăng, một câu `UPDATE ... SET quantity = quantity + 1` có thể tốt hơn cả optimistic lẫn pessimistic read–modify–write. Nếu một quyết định phụ thuộc nhiều row, predicate hoặc external state, bài toán rộng hơn một row lock.
+Từ invariant mới suy ra atomic unit và conflict domain. Nếu chỉ một cột cần tăng, một câu `UPDATE ... SET quantity = quantity + 1` có thể tốt hơn cả optimistic lẫn pessimistic read-modify-write. Nếu một quyết định phụ thuộc nhiều row, predicate hoặc external state, bài toán rộng hơn một row lock.
 
 ## 3. Ba họ giải pháp không nên trộn
 
@@ -103,7 +103,7 @@ Kết quả có ba nhánh:
 2. `row_count = 0`, row còn tồn tại: conflict;
 3. `row_count = 0`, row không tồn tại: not found hoặc đã bị xóa.
 
-Không được gộp nhánh 2 và 3 thành một lỗi mơ hồ nếu API contract cần phân biệt. Cũng không “đọc lại rồi ghi đè tự động” vì hành động đó có thể xóa thay đổi hợp lệ của actor khác.
+Không được gộp nhánh 2 và 3 thành một lỗi mơ hồ nếu API contract cần phân biệt. Cũng không đọc lại rồi ghi đè tự động vì hành động đó có thể xóa thay đổi hợp lệ của actor khác.
 
 ## 6. Version token phải gắn với phạm vi xung đột
 
@@ -124,7 +124,7 @@ Khi optimistic write thất bại, policy phải nói rõ:
 - lỗi trả về có resource version hiện tại hay link để đọc lại không;
 - metric nào đếm conflict thật.
 
-Retry cùng câu `UPDATE` với `expected_version` cũ sẽ tiếp tục thất bại. Retry đúng nghĩa là tải trạng thái mới và tái đánh giá command. Với operation mang ý định như “tăng 1”, server có thể áp lại an toàn hơn operation “đặt bằng 9”. Với chỉnh sửa văn bản hoặc phê duyệt nghiệp vụ, tự động áp lại có thể sai.
+Retry cùng câu `UPDATE` với `expected_version` cũ sẽ tiếp tục thất bại. Retry đúng nghĩa là tải trạng thái mới và tái đánh giá command. Với operation mang ý định như tăng 1, server có thể áp lại an toàn hơn operation đặt bằng 9. Với chỉnh sửa văn bản hoặc phê duyệt nghiệp vụ, tự động áp lại có thể sai.
 
 ## 8. Khi optimistic phù hợp
 
@@ -136,7 +136,7 @@ Optimistic control hợp khi:
 - cost của retry thấp hơn cost giữ lock;
 - hệ cần scale read mà không khóa trước.
 
-Nó kém phù hợp khi một “hot row” bị tranh chấp liên tục, operation rất đắt phải tính lại, hoặc conflict phải hiếm đến mức không thể chấp nhận. Khi tỷ lệ conflict tăng, work bị bỏ và retry làm arrival rate tăng thêm.
+Nó kém phù hợp khi một hot row bị tranh chấp liên tục, operation rất đắt phải tính lại, hoặc conflict phải hiếm đến mức không thể chấp nhận. Khi tỷ lệ conflict tăng, work bị bỏ và retry làm arrival rate tăng thêm.
 
 ## 9. Pessimistic row locking
 
@@ -161,7 +161,7 @@ COMMIT;
 Transaction khác muốn khóa hoặc sửa row xung đột phải chờ, trả lỗi ngay với `NOWAIT`, hoặc bỏ qua row đã khóa với `SKIP LOCKED` tùy contract. `SKIP LOCKED` hữu ích cho worker tranh nhau lấy job nhưng làm kết quả truy vấn không phải snapshot đầy đủ; không dùng nó để âm thầm bỏ dữ liệu trong API thông thường.
 
 > [!source-fact]
-> PostgreSQL mô tả row-level lock chặn writer/locker khác trên cùng row cho tới khi transaction kết thúc; `NOWAIT` tránh chờ và `SKIP LOCKED` cung cấp góc nhìn không nhất quán phù hợp cho queue-like access. PostgreSQL Documentation, “Explicit Locking” và `SELECT`, truy cập 2026-09-28.
+> PostgreSQL mô tả row-level lock chặn writer/locker khác trên cùng row cho tới khi transaction kết thúc; `NOWAIT` tránh chờ và `SKIP LOCKED` cung cấp góc nhìn không nhất quán phù hợp cho queue-like access. PostgreSQL Documentation, Explicit Locking và `SELECT`, truy cập 2026-09-28.
 
 ## 10. Lock lifetime chính là transaction lifetime
 
@@ -193,13 +193,13 @@ Giảm deadlock bằng:
 - lưu deadlock evidence thay vì retry vô hạn rồi che lỗi.
 
 > [!source-fact]
-> *Mastering PostgreSQL 17* trình bày `SELECT FOR UPDATE`, `NOWAIT`, `SKIP LOCKED` và deadlock tại Chapter 2, PDF 49–62; PostgreSQL tự giải quyết deadlock bằng cách abort một participant.
+> *Mastering PostgreSQL 17* trình bày `SELECT FOR UPDATE`, `NOWAIT`, `SKIP LOCKED` và deadlock tại Chapter 2, PDF 49-62; PostgreSQL tự giải quyết deadlock bằng cách abort một participant.
 
 ## 12. Isolation level không thay cho access pattern rõ
 
 Tên isolation level không đủ để kết luận một invariant được bảo vệ. Cần kiểm documentation của engine và chạy anomaly test. PostgreSQL `Read Committed`, `Repeatable Read` và `Serializable` có semantics cụ thể; `Serializable` có thể abort transaction với serialization failure, buộc application retry toàn transaction.
 
-Một row lock cũng không tự bảo vệ predicate “không có booking trùng khoảng thời gian” nếu tập row tương lai chưa tồn tại. Có thể cần unique/exclusion constraint, serializable transaction hoặc model dữ liệu khác. Constraint ở database thường là lớp bảo vệ cuối cho invariant biểu diễn được.
+Một row lock cũng không tự bảo vệ predicate không có booking trùng khoảng thời gian nếu tập row tương lai chưa tồn tại. Có thể cần unique/exclusion constraint, serializable transaction hoặc model dữ liệu khác. Constraint ở database thường là lớp bảo vệ cuối cho invariant biểu diễn được.
 
 ## 13. So sánh bằng contention, không bằng benchmark rỗng
 
@@ -284,22 +284,22 @@ Evidence pack gồm:
 - Một số conflict cần quyết định nghiệp vụ của con người; không thể sửa bằng retry tự động.
 
 ## Reference
-1. [[SRC-MASTERING-POSTGRESQL-17-6E]] — transaction, row locking, `FOR UPDATE`, `NOWAIT`, `SKIP LOCKED` và deadlock; PDF 49–62.
-2. [[SRC-POSTGRESQL-CONCURRENCY-CONTROL]] — isolation, explicit locking, row-level locks và deadlock trong PostgreSQL hiện hành; truy cập 2026-09-28.
+1. [[SRC-MASTERING-POSTGRESQL-17-6E]]: transaction, row locking, `FOR UPDATE`, `NOWAIT`, `SKIP LOCKED` và deadlock; PDF 49-62.
+2. [[SRC-POSTGRESQL-CONCURRENCY-CONTROL]]: isolation, explicit locking, row-level locks và deadlock trong PostgreSQL hiện hành; truy cập 2026-09-28.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 49–62 | lock mode, row lock, `FOR UPDATE`, `NOWAIT`, `SKIP LOCKED`, deadlock | §§9–11 | Đã trình bày cùng giới hạn PostgreSQL |
-| [[SRC-POSTGRESQL-CONCURRENCY-CONTROL]], isolation + explicit locking | read/write anomaly, row lock lifetime, deadlock, serialization failure | §§1, 9–12 | Đã đối chiếu tài liệu chính thức hiện hành |
-| Tổng hợp DE-L104 | atomic statement, version token, conflict contract, benchmark và evidence pack | §§2–8, 13–16 | Đã gắn synthesis; threshold để lab đo |
+| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 49-62 | lock mode, row lock, `FOR UPDATE`, `NOWAIT`, `SKIP LOCKED`, deadlock | §§9-11 | Đã trình bày cùng giới hạn PostgreSQL |
+| [[SRC-POSTGRESQL-CONCURRENCY-CONTROL]], isolation + explicit locking | read/write anomaly, row lock lifetime, deadlock, serialization failure | §§1, 9-12 | Đã đối chiếu tài liệu chính thức hiện hành |
+| Tổng hợp DE-L104 | atomic statement, version token, conflict contract, benchmark và evidence pack | §§2-8, 13-16 | Đã gắn synthesis; threshold để lab đo |
 
 Phạm vi đọc bao phủ lost update, optimistic version check, pessimistic row locking, lock lifetime, deadlock, retry contract và phép đo contention. Distributed lock và consensus bị loại trừ vì không cần cho objective L104.
 
 ## Key takeaways
 - Transaction của từng request đúng chưa đủ; concurrency invariant phải được bảo vệ tại điểm ghi.
-- Thử atomic conditional update trước khi thêm read–modify–write phức tạp.
+- Thử atomic conditional update trước khi thêm read-modify-write phức tạp.
 - Optimistic control phát hiện conflict và cần merge/retry contract rõ; không tự động biến conflict thành thành công.
 - Pessimistic lock giữ tới cuối transaction, vì vậy critical section phải ngắn và có lock order ổn định.
 - So sánh cơ chế bằng completed operations, latency, conflict, lock wait và invariant violations ở nhiều mức contention.
@@ -307,7 +307,7 @@ Phạm vi đọc bao phủ lost update, optimistic version check, pessimistic ro
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.backend.concurrency-control-optimistic-pessimistic`
+## Execution capsule: kiểm chứng `wiki.backend.concurrency-control-optimistic-pessimistic`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.backend.concurrency-control-optimistic-pessimistic`, sơ đồ, ví dụ và artifact về **Kiểm soát đồng thời lạc quan và bi quan** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -329,7 +329,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Khi nhiều request cùng sửa một trạng thái, chọn kiểm soát lạc quan, khóa bi quan hay nguyên tử hóa phép ghi thế nào để không mất cập nhật mà vẫn kiểm soát được contention?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Khi nhiều request cùng sửa một trạng thái, chọn kiểm soát lạc quan, khóa bi quan hay nguyên tử hóa phép ghi thế nào để không mất cập nhật mà vẫn kiểm soát được contention? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Kiểm soát đồng thời lạc quan và bi quan** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

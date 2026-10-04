@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Ba loại thang màu: định tính, tuần tự, phân kỳ, và hậu quả cụ thể khi dùng sai loại. Khả năng tiếp cận cho người mù màu và cách kiểm tra bằng bộ lọc mô phỏng. Ngưỡng độ tương phản. Nhãn trực tiếp thay cho chú giải và lý do kỹ thuật của lựa chọn đó. Chú thích mang nội dung diễn giải: tiêu đề nêu điều đáng chú ý thay vì nêu biểu đồ đang hiển thị dữ liệu gì. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L048 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Color, labels and accessibility**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Lập một bộ nguyên tắc màu và nhãn kiểm chứng được bằng công cụ, và áp nó để sửa ba dashboard không đạt. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Ba loại thang màu: định tính, tuần tự, phân kỳ, và hậu quả cụ thể khi dùng sai loại. Khả năng tiếp cận cho người mù màu và cách kiểm tra bằng bộ lọc mô phỏng. Ngưỡng độ tương phản. Nhãn trực tiếp thay cho chú giải và lý do kỹ thuật của lựa chọn đó. Chú thích mang nội dung diễn giải: tiêu đề nêu điều đáng chú ý thay vì nêu biểu đồ đang hiển thị dữ liệu gì.
 
@@ -44,7 +44,7 @@ Cơ chế của `color-labels-and-accessibility` được kiểm qua năm lớp:
 
 Lỗi cần loại trừ trong bài này là: Dùng thang tuần tự cho dữ liệu định tính · phân biệt hạng mục chỉ bằng màu đỏ và xanh lá · tiêu đề chỉ mô tả dữ liệu thay vì nêu kết luận. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Dùng thang tuần tự cho dữ l
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L048: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Cả ba dashboard sau khi sửa qua được bộ lọc mù màu và đạt ngưỡng độ tương phản, kiểm bằng công cụ.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L048: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Cả ba dashboard sau khi sửa qua được bộ lọc mù màu và đạt ngưỡng độ tương phản, kiểm bằng công cụ.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Color, labels and accessibility
+## Worked Case: Color, labels and accessibility
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Kiểm tra ba dashboard cho sẵn qua bộ lọc mù màu và phép đo độ tương phản. Sửa phần không đạt và kiểm lại.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Color, labels and accessibility`, learner ghi expect
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L048 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Color, labels and accessibility` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L048 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Ba loại thang màu: định tính, tuần tự, phân kỳ, và hậu quả cụ thể khi dùng sai loại. Khả năng tiếp cận cho người mù màu và cách kiểm tra bằng bộ lọc mô phỏng. Ngưỡng độ tương phản. Nhãn trực tiếp thay cho chú giải và lý do kỹ thuật của lựa chọn đó. Chú thích mang nội dung diễn giải: tiêu đề nêu điều đáng chú ý thay vì nêu biểu đồ đang hiển thị dữ liệu gì.
+**Mệnh đề của probe 1: `population`.** Ba loại thang màu: định tính, tuần tự, phân kỳ, và hậu quả cụ thể khi dùng sai loại. Khả năng tiếp cận cho người mù màu và cách kiểm tra bằng bộ lọc mô phỏng. Ngưỡng độ tương phản. Nhãn trực tiếp thay cho chú giải và lý do kỹ thuật của lựa chọn đó. Chú thích mang nội dung diễn giải: tiêu đề nêu điều đáng chú ý thay vì nêu biểu đồ đang hiển thị dữ liệu gì.
 
 **Thiết kế.** Probe 1 của L048 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L048 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Lập một bộ nguyên tắc màu và nhãn kiểm chứng được bằng công cụ, và áp nó để sửa ba dashboard không đạt.
+**Mệnh đề của probe 2: `grain`.** Lập một bộ nguyên tắc màu và nhãn kiểm chứng được bằng công cụ, và áp nó để sửa ba dashboard không đạt.
 
 **Thiết kế.** Probe 2 của L048 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L048 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Dùng thang tuần tự cho dữ liệu định tính · phân biệt hạng mục chỉ bằng màu đỏ và xanh lá · tiêu đề chỉ mô tả dữ liệu thay vì nêu kết luận.
+**Mệnh đề của probe 3: `identity`.** Dùng thang tuần tự cho dữ liệu định tính · phân biệt hạng mục chỉ bằng màu đỏ và xanh lá · tiêu đề chỉ mô tả dữ liệu thay vì nêu kết luận.
 
 **Thiết kế.** Probe 3 của L048 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L048 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Cả ba dashboard sau khi sửa qua được bộ lọc mù màu và đạt ngưỡng độ tương phản, kiểm bằng công cụ.
+**Mệnh đề của probe 4: `time cutoff`.** Cả ba dashboard sau khi sửa qua được bộ lọc mù màu và đạt ngưỡng độ tương phản, kiểm bằng công cụ.
 
 **Thiết kế.** Probe 4 của L048 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L048 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Ba loại thang màu: định tính, tuần tự, phân kỳ, và hậu quả cụ thể khi dùng sai loại. Khả năng tiếp cận cho người mù màu và cách kiểm tra bằng bộ lọc mô phỏng. Ngưỡng độ tương phản. Nhãn trực tiếp thay cho chú giải và lý do kỹ thuật của lựa chọn đó. Chú thích mang nội dung diễn giải: tiêu đề nêu điều đáng chú ý thay vì nêu biểu đồ đang hiển thị dữ liệu gì.
+**Mệnh đề của probe 5: `missing versus zero`.** Ba loại thang màu: định tính, tuần tự, phân kỳ, và hậu quả cụ thể khi dùng sai loại. Khả năng tiếp cận cho người mù màu và cách kiểm tra bằng bộ lọc mô phỏng. Ngưỡng độ tương phản. Nhãn trực tiếp thay cho chú giải và lý do kỹ thuật của lựa chọn đó. Chú thích mang nội dung diễn giải: tiêu đề nêu điều đáng chú ý thay vì nêu biểu đồ đang hiển thị dữ liệu gì.
 
 **Thiết kế.** Probe 5 của L048 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L048 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Lập một bộ nguyên tắc màu và nhãn kiểm chứng được bằng công cụ, và áp nó để sửa ba dashboard không đạt.
+**Mệnh đề của probe 6: `duplicate`.** Lập một bộ nguyên tắc màu và nhãn kiểm chứng được bằng công cụ, và áp nó để sửa ba dashboard không đạt.
 
 **Thiết kế.** Probe 6 của L048 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L048 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Dùng thang tuần tự cho dữ liệu định tính · phân biệt hạng mục chỉ bằng màu đỏ và xanh lá · tiêu đề chỉ mô tả dữ liệu thay vì nêu kết luận.
+**Mệnh đề của probe 7: `join fan-out`.** Dùng thang tuần tự cho dữ liệu định tính · phân biệt hạng mục chỉ bằng màu đỏ và xanh lá · tiêu đề chỉ mô tả dữ liệu thay vì nêu kết luận.
 
 **Thiết kế.** Probe 7 của L048 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L048 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Cả ba dashboard sau khi sửa qua được bộ lọc mù màu và đạt ngưỡng độ tương phản, kiểm bằng công cụ.
+**Mệnh đề của probe 8: `changed definition`.** Cả ba dashboard sau khi sửa qua được bộ lọc mù màu và đạt ngưỡng độ tương phản, kiểm bằng công cụ.
 
 **Thiết kế.** Probe 8 của L048 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L048 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Ba loại thang màu: định tính, tuần tự, phân kỳ, và hậu quả cụ thể khi dùng sai loại. Khả năng tiếp cận cho người mù màu và cách kiểm tra bằng bộ lọc mô phỏng. Ngưỡng độ tương phản. Nhãn trực tiếp thay cho chú giải và lý do kỹ thuật của lựa chọn đó. Chú thích mang nội dung diễn giải: tiêu đề nêu điều đáng chú ý thay vì nêu biểu đồ đang hiển thị dữ liệu gì.
+**Mệnh đề của probe 9: `independent oracle`.** Ba loại thang màu: định tính, tuần tự, phân kỳ, và hậu quả cụ thể khi dùng sai loại. Khả năng tiếp cận cho người mù màu và cách kiểm tra bằng bộ lọc mô phỏng. Ngưỡng độ tương phản. Nhãn trực tiếp thay cho chú giải và lý do kỹ thuật của lựa chọn đó. Chú thích mang nội dung diễn giải: tiêu đề nêu điều đáng chú ý thay vì nêu biểu đồ đang hiển thị dữ liệu gì.
 
 **Thiết kế.** Probe 9 của L048 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L048 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Lập một bộ nguyên tắc màu và nhãn kiểm chứng được bằng công cụ, và áp nó để sửa ba dashboard không đạt.
+**Mệnh đề của probe 10: `replay`.** Lập một bộ nguyên tắc màu và nhãn kiểm chứng được bằng công cụ, và áp nó để sửa ba dashboard không đạt.
 
 **Thiết kế.** Probe 10 của L048 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L048 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Dùng thang tuần tự cho dữ liệu định tính · phân biệt hạng mục chỉ bằng màu đỏ và xanh lá · tiêu đề chỉ mô tả dữ liệu thay vì nêu kết luận.
+**Mệnh đề của probe 11: `fresh snapshot`.** Dùng thang tuần tự cho dữ liệu định tính · phân biệt hạng mục chỉ bằng màu đỏ và xanh lá · tiêu đề chỉ mô tả dữ liệu thay vì nêu kết luận.
 
 **Thiết kế.** Probe 11 của L048 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L048 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Cả ba dashboard sau khi sửa qua được bộ lọc mù màu và đạt ngưỡng độ tương phản, kiểm bằng công cụ.
+**Mệnh đề của probe 12: `novel scenario`.** Cả ba dashboard sau khi sửa qua được bộ lọc mù màu và đạt ngưỡng độ tương phản, kiểm bằng công cụ.
 
 **Thiết kế.** Probe 12 của L048 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Cả ba dashboard sau khi sửa qua được bộ lọc mù màu và đạt ngư
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-STORYTELLING-WITH-DATA]] — `src.book.knaflic-storytelling-with-data.1e`
-2. [[SRC-DEFINITIVE-GUIDE-DAX-3E]] — `src.book.ferrari-russo-definitive-guide-dax.3e`
+1. [[SRC-STORYTELLING-WITH-DATA]]: `src.book.knaflic-storytelling-with-data.1e`
+2. [[SRC-DEFINITIVE-GUIDE-DAX-3E]]: `src.book.ferrari-russo-definitive-guide-dax.3e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-STORYTELLING-WITH-DATA]] — `src.book.knaflic-storytelling-with-data.1e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Color, labels and accessibility | các mục cơ chế, case và probe | Đã phủ | ngoài objective L048 |
-| [[SRC-DEFINITIVE-GUIDE-DAX-3E]] — `src.book.ferrari-russo-definitive-guide-dax.3e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Color, labels and accessibility | các mục cơ chế, case và probe | Đã phủ | ngoài objective L048 |
+| [[SRC-STORYTELLING-WITH-DATA]]: `src.book.knaflic-storytelling-with-data.1e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Color, labels and accessibility | các mục cơ chế, case và probe | Đã phủ | ngoài objective L048 |
+| [[SRC-DEFINITIVE-GUIDE-DAX-3E]]: `src.book.ferrari-russo-definitive-guide-dax.3e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Color, labels and accessibility | các mục cơ chế, case và probe | Đã phủ | ngoài objective L048 |
 
 ## Key takeaways
 - Lập một bộ nguyên tắc màu và nhãn kiểm chứng được bằng công cụ, và áp nó để sửa ba dashboard không đạt.
@@ -226,7 +226,7 @@ Cả ba dashboard sau khi sửa qua được bộ lọc mù màu và đạt ngư
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.color-labels-and-accessibility`
+## Execution capsule: kiểm chứng `wiki.da.color-labels-and-accessibility`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.color-labels-and-accessibility`, sơ đồ, ví dụ và artifact về **Color, labels and accessibility** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

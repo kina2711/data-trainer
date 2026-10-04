@@ -43,24 +43,24 @@ Dự đoán được vị trí, thứ tự và quyền sở hữu của bất k�
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L321 · Event, command and state - and three messaging shapes | LT | Phân loại thông điệp và chọn hình thái hạ tầng cho bốn tình huống, nêu hệ quả của việc giữ lại bản ghi. | Phân đúng ≥ 6/8 thông điệp kèm hệ quả của ba cái đặt tên sai, và chọn đúng hình thái ở ≥ 3/4 tình huống. | M21: M20 |
-| L322 · Topic, partition, key and the ordering boundary | TH | Dự đoán đúng phân vùng, thứ tự và nhóm sở hữu cho một tập tình huống khoá, và chứng minh hậu quả của việc tăng phân vùng. | Dự đoán đúng ≥ 8/10 tình huống trước khi chạy, và ca khoá chuyển phân vùng sau khi tăng được tái hiện bằng dữ liệu. | L321 |
-| L323 · Broker internals - segment, index, page cache and retention | TH | Truy đường đi của một bản ghi trên hệ thật và tính được thời hạn đọc lại từ cấu hình cùng dung lượng. | Đường đi của bản ghi được truy đủ chặng trên hệ thật, và thời hạn đọc lại tính từ cấu hình khớp quan sát. | L322 |
-| L324 · Log compaction and the tombstone lifecycle | TH | Dựng lại trạng thái từ một chủ đề đã nén và tái hiện ca bia mộ hết hạn trước bên tiêu thụ chậm. | Trạng thái dựng lại khớp nguồn tuyệt đối, và ca bia mộ hết hạn được tái hiện kèm số khoá thừa đếm được. | L323 |
-| L325 · Producer - acks, retry, idempotent producer and the sequence | TH | Tính lượng mất và số bản trùng tối đa cho ba cấu hình, và chứng minh bằng thí nghiệm giết máy chủ. | Số đo mất và trùng khớp tính toán ở cả ba cấu hình, và bên sản xuất luỹ đẳng đưa số bản trùng về không trong phạm vi phiên. | L324 |
-| L326 · Producer transactions and the scope of the guarantee | TH | Cài mẫu đọc rồi xử lý rồi ghi có giao dịch và phát biểu chính xác ranh giới bảo đảm. | Không bản trùng nào trong phạm vi hệ qua mọi ranh giới giết, và bước ghi ra hệ ngoài được chỉ rõ nằm ngoài bảo đảm kèm cơ chế bù. | L325 |
-| L327 · Consumer - the poll loop, group, assignment and rebalance | TH | Dự đoán quyền sở hữu phân vùng qua các lần thay đổi thành viên và tái hiện bão tái cân bằng do xử lý chậm. | Dự đoán đúng ≥ 5/6 tình huống phân bổ, và số lần tái cân bằng giảm có số đo sau khi áp biện pháp. | L326 |
-| L328 · Offset commit - the two failure windows | TH | Tái hiện cả hai cửa sổ hỏng bằng thực nghiệm và chọn một cửa sổ rồi bù bằng đích luỹ đẳng. | Hai cửa sổ hỏng có số đo mất và trùng qua 100 lần giết, và bản có đích luỹ đẳng đưa số trùng quan sát được về không. | L327 |
-| L329 · Replication - in-sync replicas, high watermark and leader epoch | TH | Tính lượng dữ liệu có thể mất theo ba tổ hợp cấu hình và chứng minh bằng thí nghiệm giết máy chủ. | Lượng mất đo được khớp tính toán ở cả ba tổ hợp, và ca bầu chọn không sạch được tái hiện kèm số bản ghi đã xác nhận bị mất. | L328 |
-| L330 · Controller quorum and metadata | LT | Phân biệt sự cố mặt phẳng điều khiển với sự cố mặt phẳng dữ liệu từ triệu chứng và số đo. | Phân đúng ≥ 3/4 tình huống, và quan sát thật trên cụm xác nhận đúng việc cụm còn làm được khi mất số đông điều khiển. | L329 |
-| L331 · Schema registry, compatibility and consumer rollout order | TH | Thực hiện một thay đổi lược đồ theo đúng thứ tự triển khai và chứng minh không bên nào ngừng đọc được. | Không bên tiêu thụ nào lỗi suốt quá trình triển khai, và bên tiêu thụ mới đọc lại toàn bộ nhật ký cũ với đối soát khớp. | L330 |
-| L332 · Capacity - partition count from throughput, not a rule | TH | Tính số phân vùng từ bốn yếu tố đầu vào và kiểm bằng phép thử tải ở ba mức. | Con số tính ra đạt thông lượng mục tiêu trong phép thử, và đường cong ba mức cho thấy điểm tăng phân vùng phản tác dụng. | L331 |
-| L333 · Security, quota and multi-tenancy | TH | Cài xác thực, phân quyền và hạn mức, rồi chứng minh một bên đọc lại không làm vỡ cam kết của bên khác. | Phép thử phủ định bị chặn hết, độ trễ của đội không liên quan giữ trong cam kết suốt lần đọc lại, và xoay thông tin xác thực không gây gián đoạn. | L332 |
-| L334 · Game day - kill the leader, the controller and the consumer | DA | Chạy tám tình huống với hành vi kỳ vọng viết trước và nộp sổ tay vận hành có bằng chứng đối soát. | ≥ 7/8 tình huống phục hồi với đối soát khớp, ba số đo đầy đủ cho mỗi tình huống, và sổ tay có đủ năm mục bắt buộc. | L333 |
+| L321 · [[wiki.streaming.event-command-state-shapes|Event, command and state - and three messaging shapes]]| LT | Phân loại thông điệp và chọn hình thái hạ tầng cho bốn tình huống, nêu hệ quả của việc giữ lại bản ghi. | Phân đúng ≥ 6/8 thông điệp kèm hệ quả của ba cái đặt tên sai, và chọn đúng hình thái ở ≥ 3/4 tình huống. | M21: M20 |
+| L322 · [[wiki.streaming.topic-partition-key-order|Topic, partition, key and the ordering boundary]]| TH | Dự đoán đúng phân vùng, thứ tự và nhóm sở hữu cho một tập tình huống khoá, và chứng minh hậu quả của việc tăng phân vùng. | Dự đoán đúng ≥ 8/10 tình huống trước khi chạy, và ca khoá chuyển phân vùng sau khi tăng được tái hiện bằng dữ liệu. | L321 |
+| L323 · [[wiki.streaming.kafka-segment-index-cache-retention|Broker internals - segment, index, page cache and retention]]| TH | Truy đường đi của một bản ghi trên hệ thật và tính được thời hạn đọc lại từ cấu hình cùng dung lượng. | Đường đi của bản ghi được truy đủ chặng trên hệ thật, và thời hạn đọc lại tính từ cấu hình khớp quan sát. | L322 |
+| L324 · [[wiki.streaming.kafka-compaction-tombstone|Log compaction and the tombstone lifecycle]]| TH | Dựng lại trạng thái từ một chủ đề đã nén và tái hiện ca bia mộ hết hạn trước bên tiêu thụ chậm. | Trạng thái dựng lại khớp nguồn tuyệt đối, và ca bia mộ hết hạn được tái hiện kèm số khoá thừa đếm được. | L323 |
+| L325 · [[wiki.streaming.kafka-producer-idempotence|Producer - acks, retry, idempotent producer and the sequence]]| TH | Tính lượng mất và số bản trùng tối đa cho ba cấu hình, và chứng minh bằng thí nghiệm giết máy chủ. | Số đo mất và trùng khớp tính toán ở cả ba cấu hình, và bên sản xuất luỹ đẳng đưa số bản trùng về không trong phạm vi phiên. | L324 |
+| L326 · [[wiki.streaming.kafka-producer-transactions|Producer transactions and the scope of the guarantee]]| TH | Cài mẫu đọc rồi xử lý rồi ghi có giao dịch và phát biểu chính xác ranh giới bảo đảm. | Không bản trùng nào trong phạm vi hệ qua mọi ranh giới giết, và bước ghi ra hệ ngoài được chỉ rõ nằm ngoài bảo đảm kèm cơ chế bù. | L325 |
+| L327 · [[wiki.streaming.kafka-consumer-poll-rebalance|Consumer - the poll loop, group, assignment and rebalance]]| TH | Dự đoán quyền sở hữu phân vùng qua các lần thay đổi thành viên và tái hiện bão tái cân bằng do xử lý chậm. | Dự đoán đúng ≥ 5/6 tình huống phân bổ, và số lần tái cân bằng giảm có số đo sau khi áp biện pháp. | L326 |
+| L328 · [[wiki.streaming.kafka-offset-commit-failure-windows|Offset commit - the two failure windows]]| TH | Tái hiện cả hai cửa sổ hỏng bằng thực nghiệm và chọn một cửa sổ rồi bù bằng đích luỹ đẳng. | Hai cửa sổ hỏng có số đo mất và trùng qua 100 lần giết, và bản có đích luỹ đẳng đưa số trùng quan sát được về không. | L327 |
+| L329 · [[wiki.streaming.kafka-isr-high-watermark-epoch|Replication - in-sync replicas, high watermark and leader epoch]]| TH | Tính lượng dữ liệu có thể mất theo ba tổ hợp cấu hình và chứng minh bằng thí nghiệm giết máy chủ. | Lượng mất đo được khớp tính toán ở cả ba tổ hợp, và ca bầu chọn không sạch được tái hiện kèm số bản ghi đã xác nhận bị mất. | L328 |
+| L330 · [[wiki.streaming.kafka-kraft-controller-quorum|Controller quorum and metadata]]| LT | Phân biệt sự cố mặt phẳng điều khiển với sự cố mặt phẳng dữ liệu từ triệu chứng và số đo. | Phân đúng ≥ 3/4 tình huống, và quan sát thật trên cụm xác nhận đúng việc cụm còn làm được khi mất số đông điều khiển. | L329 |
+| L331 · [[wiki.streaming.schema-compatibility-rollout|Schema registry, compatibility and consumer rollout order]]| TH | Thực hiện một thay đổi lược đồ theo đúng thứ tự triển khai và chứng minh không bên nào ngừng đọc được. | Không bên tiêu thụ nào lỗi suốt quá trình triển khai, và bên tiêu thụ mới đọc lại toàn bộ nhật ký cũ với đối soát khớp. | L330 |
+| L332 · [[wiki.streaming.kafka-partition-capacity|Capacity - partition count from throughput, not a rule]]| TH | Tính số phân vùng từ bốn yếu tố đầu vào và kiểm bằng phép thử tải ở ba mức. | Con số tính ra đạt thông lượng mục tiêu trong phép thử, và đường cong ba mức cho thấy điểm tăng phân vùng phản tác dụng. | L331 |
+| L333 · [[wiki.streaming.kafka-security-quota-tenancy|Security, quota and multi-tenancy]]| TH | Cài xác thực, phân quyền và hạn mức, rồi chứng minh một bên đọc lại không làm vỡ cam kết của bên khác. | Phép thử phủ định bị chặn hết, độ trễ của đội không liên quan giữ trong cam kết suốt lần đọc lại, và xoay thông tin xác thực không gây gián đoạn. | L332 |
+| L334 · [[wiki.streaming.kafka-game-day|Game day - kill the leader, the controller and the consumer]]| DA | Chạy tám tình huống với hành vi kỳ vọng viết trước và nộp sổ tay vận hành có bằng chứng đối soát. | ≥ 7/8 tình huống phục hồi với đối soát khớp, ba số đo đầy đủ cho mỗi tình huống, và sổ tay có đủ năm mục bắt buộc. | L333 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M21 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M21 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -103,7 +103,7 @@ flowchart LR
   class A321,A322,A323,A324,A325,A326,A327,A328,A329,A330,A331,A332,A333,A334 atom;
 ```
 
-### Bài 321: Event, command and state - and three messaging shapes
+### Lesson 321: Event, command and state - and three messaging shapes
 
 Bài mở module bằng hai phép phân biệt quyết định thiết kế. Thứ nhất, ba loại thông điệp: sự kiện kể lại một việc đã xảy ra và không kỳ vọng ai làm gì; lệnh yêu cầu một việc được làm và có một người nhận xác định; trạng thái mô tả hiện trạng của một thực thể. Đặt tên sai loại dẫn tới ghép nối sai: gọi một lệnh là sự kiện làm bên sản xuất phụ thuộc ngầm vào việc bên nào đó phải xử lý. Thứ hai, ba hình thái hạ tầng: hàng đợi giao mỗi thông điệp cho một bên tiêu thụ rồi xoá; phát hành và đăng ký gửi cho mọi bên đăng ký tại thời điểm đó; nhật ký phân tán ghi bản ghi vào một chuỗi bền vững có thứ tự và giữ lại theo thời hạn chứ theo việc đã đọc hay chưa. Ba hệ quả của việc giữ lại: nhiều nhóm đọc độc lập, đọc lại được từ một vị trí cũ, và nhóm mới bắt đầu từ đầu được.
 
@@ -111,7 +111,7 @@ Người học phải phân loại thông điệp và chọn hình thái hạ t�
 
 Cách đánh giá: Tầng *hiểu*. Bài mở module, đặt từ vựng. Kiểm bằng bài phân loại cộng bài chọn; đạt khi phân đúng ít nhất sáu trong tám thông điệp và chọn đúng hình thái ở ít nhất ba trong bốn tình huống.
 
-### Bài 322: Topic, partition, key and the ordering boundary
+### Lesson 322: Topic, partition, key and the ordering boundary
 
 Bài dạy mô hình định vị, và nó là bài phải nắm chắc nhất vì mọi thứ sau đều dựa vào. Chủ đề chia thành phân vùng; mỗi bản ghi có vị trí tăng dần trong phân vùng của nó; khoá quyết định phân vùng qua một hàm băm, nên cùng khoá thì cùng phân vùng. Hệ quả trung tâm và là ranh giới bảo đảm: thứ tự chỉ được giữ trong một phân vùng, không giữ giữa các phân vùng; muốn hai bản ghi có thứ tự với nhau thì chúng phải cùng khoá. Bản ghi không khoá được rải theo cách khác và không có thứ tự với nhau. Vị trí không phải định danh của bản ghi: nó là vị trí trong một phân vùng cụ thể, nên cùng một con số ở hai phân vùng là hai bản ghi khác nhau. Tăng số phân vùng làm hàm băm cho kết quả khác, nên khoá cũ có thể chuyển sang phân vùng khác và thứ tự lịch sử bị phá.
 
@@ -119,7 +119,7 @@ Người học phải dự đoán đúng phân vùng, thứ tự và nhóm sở 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là dự đoán khớp thực tế. Kiểm bằng mười tình huống; đạt khi dự đoán đúng ít nhất tám trước khi chạy, và ca phá thứ tự khi tăng phân vùng được tái hiện.
 
-### Bài 323: Broker internals - segment, index, page cache and retention
+### Lesson 323: Broker internals - segment, index, page cache and retention
 
 Bên trong một máy chủ, và hiểu nó giải thích cả hiệu năng lẫn các giới hạn vận hành. Đường đi của một bản ghi: lô bản ghi tới người dẫn phân vùng, ghi nối vào đoạn nhật ký hiện tại, cập nhật chỉ mục, nằm trong bộ đệm trang của hệ điều hành, rồi nút theo sau kéo về. Ghi nối vào cuối tệp là lý do thông lượng cao, và nó dùng lại đúng nguyên lý tuần tự nhanh hơn ngẫu nhiên ở Bài 52. Bộ đệm trang đóng vai trò chính nên bộ nhớ trống của máy quan trọng hơn kích thước bộ nhớ tiến trình. Đoạn nhật ký cuộn theo kích thước hoặc thời gian; thời hạn giữ theo thời gian hoặc dung lượng quyết định đọc lại được bao xa. Hai hệ quả vận hành: dung lượng đĩa là ràng buộc cứng, và đầy đĩa làm máy chủ ngừng nhận ghi; nên theo dõi dung lượng là việc bắt buộc chứ tuỳ chọn.
 
@@ -127,7 +127,7 @@ Người học phải truy đường đi của một bản ghi trên hệ thật
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi đọc trạng thái thật thay vì mô tả kiến trúc. Kiểm bằng bài truy vết cộng bài tính; đạt khi truy đủ các chặng trên hệ thật và thời hạn đọc lại tính được khớp quan sát trong sai số thoả thuận.
 
-### Bài 324: Log compaction and the tombstone lifecycle
+### Lesson 324: Log compaction and the tombstone lifecycle
 
 Cơ chế giữ lại bản ghi mới nhất cho mỗi khoá thay vì giữ theo thời gian, dùng khi chủ đề biểu diễn trạng thái chứ chuỗi sự kiện. Quá trình nén giữ lại bản ghi cuối cùng của mỗi khoá và xoá các bản cũ hơn, nên chủ đề trở thành một bản chụp trạng thái có thể đọc lại từ đầu để dựng lại toàn bộ. Bản ghi bia mộ có khoá và giá trị rỗng, báo rằng khoá đã bị xoá; nó phải nằm lại một khoảng đủ lâu để mọi bên tiêu thụ kịp thấy. Bia mộ hết hạn trước khi một bên tiêu thụ chậm kịp đọc làm bên đó không bao giờ biết khoá đã bị xoá, nên trạng thái dựng lại của nó thừa một bản ghi; đây là chế độ hỏng đặc trưng và phải tái hiện. Quan hệ với chủ đề theo thời gian: hai chế độ cho hai mục đích, và trộn chúng trên một chủ đề gây nhầm lẫn về nghĩa.
 
@@ -135,7 +135,7 @@ Người học phải dựng lại trạng thái từ một chủ đề đã né
 
 Cách đánh giá: Tầng *áp dụng*. Objective có một ca hỏng cụ thể cần tái hiện. Kiểm bằng đối soát trạng thái dựng lại; đạt khi trạng thái dựng lại khớp nguồn tuyệt đối, và ca bia mộ hết hạn được tái hiện kèm số khoá thừa.
 
-### Bài 325: Producer - acks, retry, idempotent producer and the sequence
+### Lesson 325: Producer - acks, retry, idempotent producer and the sequence
 
 Bên sản xuất quyết định một bản ghi bền vững tới mức nào, và ba tham số kiểm soát điều đó. Mức xác nhận: không chờ ai thì nhanh nhất và mất khi người dẫn chết; chờ người dẫn thì mất khi người dẫn chết trước khi nút theo sau kéo về; chờ toàn bộ bản sao đồng bộ thì bền nhất và chậm nhất. Thử lại và hết giờ giao hàng: một lần thử lại sau khi máy chủ đã ghi thành công nhưng phản hồi thất lạc sẽ tạo bản trùng, đúng ca không biết kết cục ở Bài 310. Bên sản xuất luỹ đẳng giải ca này bằng số thứ tự và nhiệm kỳ cho mỗi phân vùng, nên máy chủ nhận ra và bỏ bản trùng; giới hạn của nó là chỉ trong phạm vi một phiên và một phân vùng. Số yêu cầu đang bay ảnh hưởng thứ tự khi có thử lại. Gom lô, nén và thời gian chờ gom là ba nút điều chỉnh giữa thông lượng, độ trễ và bộ nhớ.
 
@@ -143,7 +143,7 @@ Người học phải tính lượng mất và số bản trùng tối đa cho b
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi nối cấu hình với một con số về rủi ro. Kiểm bằng ba cấu hình đo song song; đạt khi số đo khớp con số tính trước trong sai số thoả thuận ở cả ba.
 
-### Bài 326: Producer transactions and the scope of the guarantee
+### Lesson 326: Producer transactions and the scope of the guarantee
 
 Giao dịch ở đây cho phép ghi nguyên tử qua nhiều phân vùng và ghi cả vị trí tiêu thụ trong cùng một giao dịch, nên nó giải được mẫu đọc rồi xử lý rồi ghi. Định danh giao dịch cùng cơ chế chặn ngăn một tiến trình cũ ghi tiếp sau khi đã có tiến trình mới, dùng lại đúng ý tưởng thẻ chặn ở Bài 317. Bên tiêu thụ phải đặt ở chế độ chỉ đọc bản đã chốt, nếu không nó vẫn thấy bản ghi của giao dịch chưa chốt. Ranh giới bảo đảm phải phát biểu chính xác và đây là điểm ra của bài: giao dịch chỉ bao những gì nằm trong hệ này; nó không bao một lần ghi vào cơ sở dữ liệu bên ngoài, không bao một lời gọi dịch vụ, không bao một lần gửi thư. Muốn đầu cuối thì phải cộng thêm đích luỹ đẳng hoặc hộp thư đi theo Bài 318. Chi phí của giao dịch về độ trễ và về thông lượng phải đo.
 
@@ -151,7 +151,7 @@ Người học phải cài mẫu đọc rồi xử lý rồi ghi có giao dịch
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi nêu đúng phạm vi bảo đảm chứ chỉ bật tính năng. Kiểm bằng phép thử giết tiến trình cộng bài phát biểu; đạt khi không bản trùng nào trong phạm vi hệ, và ca ghi ra hệ ngoài được chỉ ra là nằm ngoài bảo đảm kèm cách bù.
 
-### Bài 327: Consumer - the poll loop, group, assignment and rebalance
+### Lesson 327: Consumer - the poll loop, group, assignment and rebalance
 
 Bên tiêu thụ làm việc theo vòng lặp lấy dữ liệu, và mô hình nhóm quyết định ai đọc phân vùng nào. Một nhóm chia các phân vùng cho các thành viên, mỗi phân vùng thuộc đúng một thành viên tại một thời điểm, nên mức song song tối đa bằng số phân vùng; thêm thành viên vượt số phân vùng không tăng thông lượng. Điều phối viên nhóm quản lý thành viên qua nhịp tim và thời hạn phiên. Tái cân bằng xảy ra khi thành viên vào, ra, hoặc quá hạn; ca hay gặp và phải tái hiện: xử lý một lô quá lâu làm thành viên quá hạn giữa chừng và bị coi là chết, gây tái cân bằng, rồi lô đó bị giao cho người khác xử lý lại. Ba cách giảm: giảm số bản ghi mỗi lần lấy, tăng thời hạn, hoặc tách việc nặng ra khỏi vòng lặp. Kiểu gán hợp tác và thành viên tĩnh chỉ cần biết là có.
 
@@ -159,7 +159,7 @@ Người học phải dự đoán quyền sở hữu phân vùng qua các lần 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là dự đoán khớp và ca hỏng được chặn có số đo. Kiểm bằng sáu tình huống cộng thí nghiệm xử lý chậm; đạt khi dự đoán đúng ít nhất năm và bão tái cân bằng được chặn với số lần tái cân bằng giảm có số đo.
 
-### Bài 328: Offset commit - the two failure windows
+### Lesson 328: Offset commit - the two failure windows
 
 Bài chốt ngữ nghĩa giao nhận bằng hai cửa sổ hỏng, và đây là bài quyết định của module. Nếu ghi vị trí trước khi thực hiện tác dụng phụ rồi tiến trình chết ở giữa, bản ghi đó không bao giờ được xử lý: mất dữ liệu. Nếu thực hiện tác dụng phụ trước rồi ghi vị trí và chết ở giữa, bản ghi đó được xử lý lại: trùng lặp. Không có thứ tự nào tránh được cả hai, nên phải chọn một cửa sổ và bù bằng thiết kế: chọn trùng lặp rồi làm đích luỹ đẳng là lựa chọn đúng trong phần lớn trường hợp, theo kết luận ở Bài 318. Ghi vị trí tự động theo chu kỳ làm cửa sổ rộng và khó suy luận, nên ghi thủ công sau khi xử lý là mặc định nên chọn. Độ trễ tiêu thụ đọc được theo ba cách: theo số bản ghi, theo thời gian, và theo tốc độ xử lý; ba cách cho ba kết luận khác nhau. Chính sách bản ghi độc và hàng đợi bản ghi lỗi.
 
@@ -167,7 +167,7 @@ Người học phải tái hiện cả hai cửa sổ hỏng bằng thực nghi�
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi chứng minh đánh đổi thay vì phát biểu nó. Kiểm bằng hai thí nghiệm giết tiến trình; đạt khi số mất và số trùng được đếm ở hai thứ tự, và bản có đích luỹ đẳng đưa số trùng quan sát được về không.
 
-### Bài 329: Replication - in-sync replicas, high watermark and leader epoch
+### Lesson 329: Replication - in-sync replicas, high watermark and leader epoch
 
 Sao chép bên trong, và nó quyết định khi nào một bản ghi hiển thị với bên tiêu thụ. Tập bản sao đồng bộ là những nút theo sau đang bắt kịp người dẫn; một nút tụt quá ngưỡng bị loại khỏi tập. Mốc nước cao là vị trí mà mọi bản sao đồng bộ đã có; bên tiêu thụ chỉ thấy bản ghi dưới mốc nước cao, nên có độ trễ giữa lúc ghi xong và lúc đọc được. Ngưỡng số bản sao đồng bộ tối thiểu kết hợp với mức xác nhận toàn bộ mới cho bảo đảm bền vững thật: đặt ngưỡng bằng một thì mức xác nhận toàn bộ không còn nghĩa. Nhiệm kỳ người dẫn giải bài toán nút theo sau có phần nhật ký không thuộc nhiệm kỳ hiện tại, theo đúng cơ chế ở Bài 316. Bầu chọn người dẫn không sạch cho phép một nút không đồng bộ lên làm người dẫn để giữ khả dụng, và nó đánh đổi bằng mất dữ liệu đã xác nhận; bật hay tắt là một quyết định nghiệp vụ.
 
@@ -175,7 +175,7 @@ Người học phải tính lượng dữ liệu có thể mất theo ba tổ h�
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi nối ba tham số thành một con số rủi ro. Kiểm bằng ba tổ hợp; đạt khi lượng mất đo được khớp tính toán ở cả ba và ca bầu chọn không sạch được tái hiện kèm số bản ghi mất.
 
-### Bài 330: Controller quorum and metadata
+### Lesson 330: Controller quorum and metadata
 
 Mặt phẳng điều khiển quản lý siêu dữ liệu của cụm: danh sách máy chủ, phân vùng nào có người dẫn nào, và cấu hình. Nó dựa trên một nhật ký được sao chép cùng số đông, tức chính cơ chế đồng thuận ở Bài 316 áp dụng cho siêu dữ liệu chứ cho dữ liệu người dùng. Hệ quả vận hành: số đông điều khiển mất số đông thì cụm không bầu được người dẫn mới và không đổi được cấu hình, dù dữ liệu vẫn còn nguyên trên đĩa; cụm vẫn phục vụ đọc ghi trên các phân vùng chưa đổi người dẫn nhưng không tự hồi phục được, và phân biệt hai trạng thái này khi trực là quan trọng. Đăng ký máy chủ và nhiệm kỳ. Kiến trúc cũ dùng một hệ phối hợp riêng chỉ cần biết ở mức lịch sử. Ba chỉ số phải theo dõi cho mặt phẳng điều khiển và vì sao chúng khác chỉ số của mặt phẳng dữ liệu.
 
@@ -183,7 +183,7 @@ Người học phải phân biệt sự cố mặt phẳng điều khiển với
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết chuẩn bị cho bài diễn tập. Kiểm bằng bốn tình huống chẩn đoán; đạt khi phân đúng ít nhất ba và nêu đúng việc cụm còn làm được gì trong mỗi tình huống.
 
-### Bài 331: Schema registry, compatibility and consumer rollout order
+### Lesson 331: Schema registry, compatibility and consumer rollout order
 
 Hợp đồng dữ liệu trên nhật ký phân tán có một khó khăn riêng: bản ghi cũ vẫn nằm trong nhật ký và vẫn được đọc lại, nên bên tiêu thụ mới phải đọc được cả bản ghi viết bằng lược đồ cũ. Sổ đăng ký lược đồ giữ phiên bản và cưỡng chế quy tắc tương thích tại thời điểm đăng ký, nên thay đổi phá vỡ bị chặn trước khi tới môi trường chạy. Mức tương thích quyết định thứ tự triển khai, theo đúng Bài 220: tương thích ngược thì nâng cấp bên tiêu thụ trước, tương thích xuôi thì nâng cấp bên sản xuất trước; chọn sai thứ tự làm một phía không đọc được dữ liệu của phía kia. Khác biệt so với hợp đồng theo yêu cầu phản hồi ở M8: ở đây không điều phối được thời điểm, vì dữ liệu cũ tồn tại suốt thời hạn giữ. Cách xử lý bản ghi không giải mã được: đưa vào hàng đợi bản ghi lỗi kèm nguyên nhân, không bỏ im lặng.
 
@@ -191,7 +191,7 @@ Người học phải thực hiện một thay đổi lược đồ theo đúng 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là không gián đoạn ở cả hai phía. Kiểm bằng thí nghiệm triển khai có tải; đạt khi không bên tiêu thụ nào lỗi suốt quá trình và bản ghi cũ trong nhật ký vẫn đọc được sau khi nâng cấp.
 
-### Bài 332: Capacity - partition count from throughput, not a rule
+### Lesson 332: Capacity - partition count from throughput, not a rule
 
 Số phân vùng là quyết định khó đảo ngược nhất, nên nó phải tính chứ chọn theo quy tắc ngón tay. Bốn yếu tố đầu vào: thông lượng mục tiêu, mức song song tiêu thụ cần, thời gian phục hồi khi một máy chủ chết, và chi phí siêu dữ liệu trên mỗi phân vùng. Quá ít phân vùng thì không đủ song song và có phân vùng nóng; quá nhiều thì tăng chi phí siêu dữ liệu, kéo dài thời gian bầu chọn khi máy chủ chết, và tăng độ trễ đầu cuối vì lô nhỏ đi. Tăng số phân vùng về sau phá thứ tự theo khoá theo Bài 322, nên việc di trú phải có kế hoạch chứ làm tại chỗ. Khoá nóng là bài toán khác với thiếu phân vùng và cần cách khác: thêm phân vùng không chia nhỏ được một khoá. Kích thước bản ghi, thời hạn giữ và dung lượng cho ra ràng buộc lưu trữ. Đọc lại toàn bộ là một hợp đồng phải tính vào năng lực.
 
@@ -199,7 +199,7 @@ Người học phải tính số phân vùng từ bốn yếu tố đầu vào v
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi tính từ ràng buộc chứ chọn theo quy tắc. Kiểm bằng phép thử tải ba mức; đạt khi con số tính ra đạt thông lượng mục tiêu và đường cong cho thấy điểm tăng phân vùng bắt đầu phản tác dụng.
 
-### Bài 333: Security, quota and multi-tenancy
+### Lesson 333: Security, quota and multi-tenancy
 
 Cụm dùng chung nhiều đội đặt ra ba yêu cầu mà một cụm lab không có. Mã hoá đường truyền và xác thực cho cả máy khách lẫn giữa các máy chủ. Quyền truy cập ở mức chủ đề và mức nhóm, theo nguyên tắc quyền tối thiểu ở Bài 106: một bên tiêu thụ chỉ cần quyền đọc một chủ đề và quyền quản lý nhóm của nó. Hạn mức theo người dùng hoặc theo máy khách giới hạn băng thông và tốc độ yêu cầu, để một đội chạy đọc lại toàn bộ không làm chậm mọi đội khác; đây là ca cụ thể phải tái hiện vì đọc lại là thao tác hợp lệ nhưng nặng. Xoay thông tin xác thực mà không gián đoạn. Phân loại dữ liệu trên chủ đề và hệ quả về thời hạn giữ cùng quyền xem, nối với Bài 306. Ba chế độ hỏng của cụm dùng chung và cách cô lập.
 
@@ -207,7 +207,7 @@ Người học phải cài xác thực, phân quyền và hạn mức, rồi ch�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là cách ly đo được dưới tải. Kiểm bằng phép thử đọc lại; đạt khi bên bị ảnh hưởng giữ độ trễ trong cam kết, và phép thử phủ định về quyền bị chặn hết.
 
-### Bài 334: Game day - kill the leader, the controller and the consumer
+### Lesson 334: Game day - kill the leader, the controller and the consumer
 
 Bài dự án khép module. Chạy diễn tập trên cụm đã dựng, với hành vi kỳ vọng viết trước theo đúng kỷ luật ở Bài 246. Tám tình huống bắt buộc: giết người dẫn của một phân vùng đang có tải; giết một máy chủ mang nhiều người dẫn; làm mất số đông điều khiển; giết bên tiêu thụ giữa lúc đã thực hiện tác dụng phụ nhưng chưa ghi vị trí; làm tập bản sao đồng bộ co lại; làm đầy đĩa một máy chủ; đưa một bản ghi độc vào chủ đề; và triển khai một thay đổi lược đồ phá vỡ. Với mỗi tình huống ghi ba số: thời gian phát hiện, thời gian phục hồi, và số bản ghi mất hoặc trùng đo bằng đối soát. Phục hồi bằng cách đặt lại vị trí về cuối là lối tắt bị cấm, vì nó bỏ qua dữ liệu chưa xử lý mà không ai biết; mọi lần đặt lại vị trí phải kèm đối soát. Nộp sổ tay vận hành gồm cả năm mục bắt buộc.
 

@@ -34,31 +34,31 @@ reference_path: Material/DE/Reference/Library/Knowledge-Notes/PACK-ENGINEERING-F
 > [!abstract] Câu hỏi trung tâm
 > Làm thế nào mô hình, kiểm chứng và áp dụng CI cho Python package từ clean checkout tới immutable artifact?
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 pipeline restore declared environment, lint/type/test/build, clean-install artifact rồi publish only from passed revision Với `wiki.de-foundation.continuous-integration-python-package`, điểm phải khóa là state transition và invariant; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
 Không có mô hình này, lỗi thường lộ ở consumer sau cùng: output sai, latency vọt, resource không được giải phóng hoặc lịch sử không còn tái hiện được. Chi phí thật của `Continuous integration for a Python package` vì thế nằm ở thời gian chẩn đoán và phạm vi phục hồi, không nằm ở số dòng syntax.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 cache là optimization không phải source; matrix phải phản ánh supported versions; secrets không vào untrusted job Với `wiki.de-foundation.continuous-integration-python-package`, điểm phải khóa là identity, ownership và boundary; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
 Hãy tách declared state, executed state và published state của `CI cho Python package từ clean checkout tới immutable artifact`. Một command thành công chỉ là executed signal; muốn kết luận cần đối soát consumer-visible invariant và trạng thái còn lại sau restart hoặc replay.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 tests chạy source tree nhưng wheel thiếu file; mutable dependency làm rerun khác; approval trên revision cũ Với `wiki.de-foundation.continuous-integration-python-package`, điểm phải khóa là failure path và recovery; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
 Quy tắc mặc định cho `Continuous integration for a Python package` là chọn phương án đơn giản nhất qua được hard constraints, rồi ghi rõ điều kiện đảo. Bảng quyết định tối thiểu gồm workload, identity, state owner, time/memory budget, failure domain và khả năng rollback.
 
-## Case Study Thực Chiến: Continuous integration for a Python package
+## Worked Case: Continuous integration for a Python package
 
 separate fast feedback và release gate; artifact build một lần rồi promote cùng digest Với `wiki.de-foundation.continuous-integration-python-package`, điểm phải khóa là decision trade-off và reversal trigger; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
 Case dùng fixture nhỏ nhưng phải giữ cơ chế chi phối. Trước khi chạy, learner viết expected transition; sau khi chạy, họ đối chiếu raw artifact với oracle và giải thích mọi khác biệt thay vì sửa expected cho khớp output.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 checkout SHA, resolved dependencies, test reports, wheel hash, clean-install smoke và status checks Với `wiki.de-foundation.continuous-integration-python-package`, điểm phải khóa là evidence package và oracle; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
@@ -82,7 +82,7 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 **Thiết kế phép thử cho `wiki.de-foundation.continuous-integration-python-package`.** Với `wiki.de-foundation.continuous-integration-python-package`, tạo positive và negative control chỉ khác một điều kiện; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 2: identity, ownership và boundary
 
@@ -90,7 +90,7 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 **Thiết kế phép thử cho `wiki.de-foundation.continuous-integration-python-package`.** Với `wiki.de-foundation.continuous-integration-python-package`, tạo boundary case ngay trước và sau ngưỡng; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 3: failure path và recovery
 
@@ -98,7 +98,7 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 **Thiết kế phép thử cho `wiki.de-foundation.continuous-integration-python-package`.** Với `wiki.de-foundation.continuous-integration-python-package`, tạo replay cùng identity với state khác; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 4: decision trade-off và reversal trigger
 
@@ -106,7 +106,7 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 **Thiết kế phép thử cho `wiki.de-foundation.continuous-integration-python-package`.** Với `wiki.de-foundation.continuous-integration-python-package`, tạo failure inject trước và sau durable transition; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 5: evidence package và oracle
 
@@ -114,7 +114,7 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 **Thiết kế phép thử cho `wiki.de-foundation.continuous-integration-python-package`.** Với `wiki.de-foundation.continuous-integration-python-package`, tạo changed scale làm cost model đổi; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 6: changed-constraint transfer
 
@@ -122,7 +122,7 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 **Thiết kế phép thử cho `wiki.de-foundation.continuous-integration-python-package`.** Với `wiki.de-foundation.continuous-integration-python-package`, tạo adversarial order hoặc skew; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 7: state transition và invariant
 
@@ -130,7 +130,7 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 **Thiết kế phép thử cho `wiki.de-foundation.continuous-integration-python-package`.** Với `wiki.de-foundation.continuous-integration-python-package`, tạo fresh environment không cache; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 8: identity, ownership và boundary
 
@@ -138,7 +138,7 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 **Thiết kế phép thử cho `wiki.de-foundation.continuous-integration-python-package`.** Với `wiki.de-foundation.continuous-integration-python-package`, tạo independent oracle không dùng chung implementation; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 9: failure path và recovery
 
@@ -146,7 +146,7 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 **Thiết kế phép thử cho `wiki.de-foundation.continuous-integration-python-package`.** Với `wiki.de-foundation.continuous-integration-python-package`, tạo partial progress rồi restart; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 10: decision trade-off và reversal trigger
 
@@ -154,7 +154,7 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 **Thiết kế phép thử cho `wiki.de-foundation.continuous-integration-python-package`.** Với `wiki.de-foundation.continuous-integration-python-package`, tạo missing evidence phải abstain; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 11: evidence package và oracle
 
@@ -162,7 +162,7 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 **Thiết kế phép thử cho `wiki.de-foundation.continuous-integration-python-package`.** Với `wiki.de-foundation.continuous-integration-python-package`, tạo reviewer tái hiện từ package; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 12: changed-constraint transfer
 
@@ -170,7 +170,7 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 **Thiết kế phép thử cho `wiki.de-foundation.continuous-integration-python-package`.** Với `wiki.de-foundation.continuous-integration-python-package`, tạo constraint đổi đủ để quyết định đảo; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ## Tự Kiểm Tra Nhanh
 
@@ -202,9 +202,9 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-PYPA-PACKAGING-PROJECTS]] — `src.web.pypa-packaging-projects` | PyPA Packaging Projects; accessed 2026-10-02 | cơ chế và boundary liên quan trực tiếp tới `CI cho Python package từ clean checkout tới immutable artifact` | các mục cơ chế, quyết định và probe | Đã phủ | phần ngoài objective DE-L031 |
-| [[SRC-GITHUB-STATUS-CHECKS]] — `src.web.github-status-checks` | GitHub status checks; accessed 2026-10-01 | cơ chế và boundary liên quan trực tiếp tới `CI cho Python package từ clean checkout tới immutable artifact` | các mục cơ chế, quyết định và probe | Đã phủ | phần ngoài objective DE-L031 |
-| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]] — `src.book.sommerville-software-engineering.10e` | Chapters 4, 7, 8 và 25; PDF 103–132, 169–212, 228–242, 732–756 | cơ chế và boundary liên quan trực tiếp tới `CI cho Python package từ clean checkout tới immutable artifact` | các mục cơ chế, quyết định và probe | Đã phủ | phần ngoài objective DE-L031 |
+| [[SRC-PYPA-PACKAGING-PROJECTS]]: `src.web.pypa-packaging-projects` | PyPA Packaging Projects; accessed 2026-10-02 | cơ chế và boundary liên quan trực tiếp tới `CI cho Python package từ clean checkout tới immutable artifact` | các mục cơ chế, quyết định và probe | Đã phủ | phần ngoài objective DE-L031 |
+| [[SRC-GITHUB-STATUS-CHECKS]]: `src.web.github-status-checks` | GitHub status checks; accessed 2026-10-01 | cơ chế và boundary liên quan trực tiếp tới `CI cho Python package từ clean checkout tới immutable artifact` | các mục cơ chế, quyết định và probe | Đã phủ | phần ngoài objective DE-L031 |
+| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]]: `src.book.sommerville-software-engineering.10e` | Chapters 4, 7, 8 và 25; PDF 103-132, 169-212, 228-242, 732-756 | cơ chế và boundary liên quan trực tiếp tới `CI cho Python package từ clean checkout tới immutable artifact` | các mục cơ chế, quyết định và probe | Đã phủ | phần ngoài objective DE-L031 |
 
 ## Key takeaways
 - separate fast feedback và release gate; artifact build một lần rồi promote cùng digest
@@ -214,7 +214,7 @@ Protocol riêng của `Continuous integration for a Python package` là: checkou
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.de-foundation.continuous-integration-python-package`
+## Execution capsule: kiểm chứng `wiki.de-foundation.continuous-integration-python-package`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.de-foundation.continuous-integration-python-package`, sơ đồ, ví dụ và artifact về **Continuous integration for a Python package** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Capstone ba nguồn phải tạo chuỗi bằng chứng nào để chứng minh raw zone complete, replayable và vận hành được?
 source_ids:
   - src.book.reis-housley-fundamentals-data-engineering
@@ -226,7 +226,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ingestion.three-source-ingestion-capstone`
+## Execution capsule: kiểm chứng `wiki.ingestion.three-source-ingestion-capstone`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ingestion.three-source-ingestion-capstone`, sơ đồ, ví dụ và artifact về **Three Source Ingestion Capstone** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -248,7 +248,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Capstone ba nguồn phải tạo chuỗi bằng chứng nào để chứng minh raw zone complete, replayable và vận hành được?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Capstone ba nguồn phải tạo chuỗi bằng chứng nào để chứng minh raw zone complete, replayable và vận hành được? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Three Source Ingestion Capstone** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

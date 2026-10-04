@@ -1,178 +1,208 @@
 ---
 marp: true
-theme: volt
+theme: default
 paginate: true
-size: 16:9
-header: 'DA · Lesson 1'
-footer: 'Foundation · runnable scene package'
+title: "DA-L001: What a Data Analyst actually does all day"
 ---
-
-<!-- _class: lead -->
 
 # What a Data Analyst actually does all day
 
-**DA-L001 · 120 phút (ước tính)**
+DA-L001
 
-> Data Analyst tạo giá trị ở đâu trong vòng đời từ yêu cầu đến quyết định?
+**Câu hỏi trung tâm:** DA tạo giá trị ở đâu từ yêu cầu tới quyết định?
 
----
-
-## Chuẩn đầu ra
-
-Phân loại nhiệm vụ theo sáu vai trò dữ liệu và bảo vệ ranh giới trách nhiệm bằng outcome, artifact và consumer.
-
-**Evidence:** Bảng phân vai 15 nhiệm vụ kèm lý do dựa trên outcome và artifact, không dựa trên tên công cụ.
-
-**Không suy ra mastery từ việc có mặt hoặc xem hết slide.**
+<!-- scene: S01 | source: note.md heading 'Giá trị bắt đầu từ quyết định, không bắt đầu từ dashboard' -->
 
 ---
 
-<!-- scene: S01 · source: note.md: heading 'II. Bối cảnh và vấn đề đặt ra' -->
-## Tình huống mở
+## Mục tiêu kiểm chứng được
 
-Giám đốc nói doanh thu tháng 10 giảm 12% và hỏi vì sao. Một dashboard đẹp có thể vẫn hoàn toàn vô dụng nếu mốc so sánh, dữ liệu thiếu và quyết định cần hỗ trợ chưa rõ.
-
-**Think–pair–share · 4 phút**
-
-1. Bạn sẽ làm gì đầu tiên?
-2. Quyết định nào có thể bị ảnh hưởng?
-3. Bằng chứng nào đang thiếu?
+- khóa consumer, decision, question, evidence và action
+- phân vai bằng trách nhiệm và artifact
+- audit một claim trước khi khuyến nghị
+- viết memo có owner và reversal trigger
 
 ---
 
-<!-- scene: S02 · source: note.md: heading 'III. Cơ sở lý thuyết và cơ chế vận hành' -->
-## Mental model trung tâm
+## Một dashboard, ba hành động khác nhau
 
-> DA không được định nghĩa bởi công cụ. DA biến một câu hỏi mơ hồ thành kết luận có kiểm chứng và hành động có chủ sở hữu.
+Dashboard báo revenue tháng 10 giảm 12%.
 
-- Làm rõ quyết định, population, mốc so sánh và deadline trước khi chạm dữ liệu.
-- Kiểm chứng con số và định nghĩa trước khi giải thích biến động.
-- Tách nhiệm vụ theo artifact: pipeline, semantic model, dashboard, phân tích, dự báo hay đặc tả quy trình.
+- Thiếu dữ liệu: mở incident
+- Khách mới giảm: điều tra acquisition
+- Khách cũ giảm: điều tra retention
+
+**Output giống nhau. Cơ chế và owner khác nhau.**
+
+---
+
+## Câu hỏi phải đứng trước query
+
+> Nếu kết quả là A, B hoặc chưa đủ chắc chắn, ai sẽ thay đổi quyết định gì?
+
+| Khóa | Case |
+|---|---|
+| Consumer | Trưởng bộ phận bán lẻ |
+| Decision | Giữ hay cắt ngân sách |
+| Evidence | Transaction và coverage |
 
 ---
 
 ## Luồng kiểm soát
 
-| 1. Câu hỏi hoặc thay đổi | 2. Boundary | 3. Evidence | 4. Decision gate | 5. Theo dõi |
-|---|---|---|---|---|
-| Nêu outcome cần quyết định | Khóa scope và semantics | Dùng phép kiểm độc lập | Áp dụng có giới hạn hoặc dừng | Quan sát reversal trigger |
+ Ask -> Prepare -> Process -> Analyze -> Share -> Act
+ ^ |
+ +------------------------------------------------+
+
+<!-- scene: S02 | source: note.md heading 'Sáu pha tạo thành một vòng kiểm soát' -->
 
 ---
 
-## Bước đầu tiên có tính quyết định
+## Checkpoint 1
 
-**Hỏi người nhận sẽ dùng câu trả lời để quyết định điều gì và 12% được so với mốc nào.**
+Ở pha Process, bạn phát hiện Đà Nẵng thiếu 11 ngày dữ liệu.
 
-Không làm bước này, output sau đó có thể đúng cú pháp nhưng sai đối tượng, sai thời gian hoặc sai quyết định.
+Chọn hành động đầu tiên và giải thích:
 
----
+1. Vẽ chart đẹp hơn
+2. Tiếp tục tìm nguyên nhân kinh doanh
+3. Quay lại source, cutoff và coverage
 
-<!-- scene: S03 · source: note.md: heading 'III. Cơ sở lý thuyết và cơ chế vận hành' -->
-## Check 1 · trả lời không nhìn tài liệu
-
-**Phần giá trị cao nhất của DA là gì?**
-
-<details>
-<summary>Đáp án và tín hiệu chẩn đoán</summary>
-
-Biến câu hỏi thành kết luận kiểm chứng được và hành động cụ thể.
-
-Nếu câu trả lời chỉ nêu tên công cụ, hãy quay lại mental model và nói rõ boundary + evidence + action.
-</details>
+<!-- scene: S03 | expected: option 3 -->
 
 ---
 
-<!-- scene: S04 · source: UNSOURCED guided practice synthesis -->
-## Guided practice · 12 phút làm + 6 phút chữa
+## Vai trò không phải danh sách công cụ
 
-Phân loại tám thẻ việc: sửa pipeline mất dữ liệu, định nghĩa revenue, dashboard ngày, phân tích churn, dự báo churn, đặc tả hoàn tiền, đối soát hai báo cáo, trình bày khuyến nghị.
-
-**Definition of done:** Ít nhất 6/8 thẻ đúng và mỗi lý do gọi tên outcome hoặc artifact bàn giao.
-
-Người dạy không chữa bằng đáp án ngay. yêu cầu mỗi nhóm nêu assumption và phép kiểm trước.
+| Vai | Sở hữu |
+|---|---|
+| DA | conclusion và recommendation |
+| DE | data flow và recovery |
+| AE | model và metric dùng chung |
+| BI | trải nghiệm theo dõi |
+| BA | requirement và process |
+| DS | estimate và forecast |
 
 ---
 
-<!-- scene: S05 · source: note.md: heading 'IV. Khung quyết định và tiêu chí lựa chọn' -->
-## Quy tắc quyết định
+## Phân vai bằng critical failure
 
-Nếu yêu cầu hỏi chuyện gì xảy ra, vì sao và nên làm gì thì DA sở hữu phân tích. nếu lỗi nằm ở ingestion, định nghĩa dùng chung, theo dõi định kỳ, dự báo hoặc quy trình thì phải có vai tương ứng đồng sở hữu.
+Nếu artifact hỏng:
 
-**Boundary:** Ở công ty nhỏ một người có thể đội nhiều mũ. vẫn phải gọi đúng vai đang thực hiện để biết invariant và bàn giao nào thuộc trách nhiệm đó.
+- Ai giải thích hậu quả cho consumer?
+- Invariant nào bị phá?
+- Ai sửa cơ chế?
+- Ai xác nhận handoff hoàn tất?
+
+SQL và Python không trả lời bốn câu này.
+
+<!-- scene: S05 | source: note.md heading 'Ranh giới vai trò nằm ở thứ phải chịu trách nhiệm' -->
+
+---
+
+## Guided practice: tám thẻ việc
+
+- sửa pipeline mất dữ liệu
+- định nghĩa net revenue
+- dashboard ngày
+- phân tích churn
+- dự báo churn
+- đặc tả hoàn tiền
+- đối soát hai báo cáo
+- trình bày khuyến nghị
+
+Nộp: role, artifact, consumer, failure, handoff.
+
+<!-- scene: S04 | source: UNSOURCED guided practice -->
+
+---
+
+## Case: 12% có thật không?
+
+| Tháng | Dashboard |
+|---|---:|
+| 09 | 3,00 tỷ |
+| 10 | 2,64 tỷ |
+
+Quan sát ban đầu: giảm 12%.
+
+Chưa được phép kể câu chuyện nguyên nhân.
+
+---
+
+## Reconciliation trước explanation
+
+| Tháng 10 | Giá trị |
+|---|---:|
+| Dashboard cũ | 2,64 tỷ |
+| Bổ sung Đà Nẵng | 0,24 tỷ |
+| Reconciled | 2,88 tỷ |
+
+Mức giảm trong boundary: 4%.
+
+---
+
+## Decomposition không phải causal proof
+
+| Nhóm | Tháng 09 | Tháng 10 | Chênh |
+|---|---:|---:|---:|
+| Khách cũ | 2,10 | 2,12 | +0,02 |
+| Khách mới | 0,90 | 0,76 | -0,14 |
+
+Biến động tập trung ở khách mới.
+
+**Chưa đủ để nói marketing gây ra giảm.**
+
+<!-- scene: S07 | source: note.md heading 'Một con số chỉ có giá trị khi giữ được chuỗi lập luận' -->
 
 ---
 
 ## Changed constraint
 
-<!-- scene: S06 · source: UNSOURCED changed-constraint synthesis -->
+Công ty chỉ có một người dữ liệu.
 
-Nếu công ty chỉ có một người dữ liệu, phạm vi thực thi rộng lên nhưng tiêu chí bàn giao của từng vai không biến mất.
+- Phạm vi thực thi rộng hơn
+- Tiêu chí hoàn thành không biến mất
+- Mỗi mũ vẫn có artifact và invariant
 
-**Thảo luận:** lựa chọn nào còn defensible? Bằng chứng nào làm bạn đảo quyết định?
-
----
-
-## Worked example · đi từng bước
-
-<!-- scene: S07 · source: note.md: heading 'V. Nghiên cứu tình huống: quay lại câu "doanh thu giảm 12%"' -->
-
-1. Chuẩn hóa doanh thu theo số ngày và phát hiện chi nhánh Đà Nẵng thiếu 11 ngày dữ liệu.
-2. Tách mức giảm báo cáo 12% khỏi mức giảm thật 4% sau kiểm chứng.
-3. Xác định phần giảm tập trung ở khách mới, không phải khách cũ.
-4. Khuyến nghị ngân sách có mục tiêu và mở incident dữ liệu riêng cho chi nhánh.
+<!-- scene: S06 | source: UNSOURCED changed-constraint scenario -->
 
 ---
 
-## Evidence phải giữ lại
-
-Bảng phân vai 15 nhiệm vụ kèm lý do dựa trên outcome và artifact, không dựa trên tên công cụ.
-
-Một output không có boundary, oracle hoặc limitation chỉ là kết quả chưa review.
-
----
-
-## Failure modes
-
-- **Critical:** Gán vai theo công cụ, hoặc gửi output không nói quyết định nào sẽ thay đổi.
-- Chỉ kiểm happy path và sửa expected sau khi nhìn output.
-- Gộp author claim, curriculum synthesis và learner conclusion thành một giọng.
-- Dùng số lượng biểu đồ/test để thay thế oracle độc lập.
-
----
-
-## Independent practice · không có đáp án mẫu
-
-Phân loại 15 nhiệm vụ của một đội thương mại điện tử. đánh dấu ba vùng cần đồng sở hữu và viết RACI tối thiểu.
-
-**Nộp:** artifact + evidence + limitation + reversal trigger.
-
----
-
-<!-- scene: S08 · source: UNSOURCED curriculum transfer scenario -->
 ## Transfer challenge
 
-Một startup 20 người tuyển 'Data Analyst' nhưng JD gồm Airflow, dbt, Power BI và churn model. Hãy tách bốn vai, rủi ro và thứ tự tuyển/bàn giao.
+Viết memo cho case revenue:
 
-Được phép có nhiều lựa chọn. Điểm nằm ở boundary, trade-off, evidence và blast radius: không nằm ở việc đoán ý người dạy.
+- tách incident dữ liệu khỏi business action
+- giữ claim trong strength của evidence
+- có owner, deadline và trigger đảo quyết định
 
----
-
-<!-- scene: S09 · source: note.md: heading 'VI. Giới hạn và ngộ nhận phổ biến' -->
-## Exit ticket · 3 phút
-
-**Data Analyst khác Data Engineer ở đâu, và vì sao ranh giới vẫn có thể chồng lấn?**
-
-<details><summary>Đáp án tối thiểu</summary>
-
-DA sở hữu câu trả lời và khuyến nghị. DE sở hữu dòng dữ liệu tin cậy. Chồng lấn xuất hiện ở kiểm chứng và lỗi dữ liệu, nên cần phân biệt lỗi hệ thống với logic nghiệp vụ.
-</details>
+<!-- scene: S08 | source: UNSOURCED curriculum transfer scenario -->
 
 ---
 
-## Sau buổi học
+## Exit check
 
-1. Làm `quiz.md`. đạt **8/10**.
-2. Nếu trượt một concept, đọc remediation trong `after-note.md` rồi retest đúng concept đó.
-3. Hoàn thành `homework.md`. đạt **≥ 75/100** và không có critical failure.
+DA và DE cùng điều tra dữ liệu thiếu. Khác nhau ở điều gì?
 
-**Bắc cầu:** L002: theo dấu một con số qua vòng đời dữ liệu.
+- fitness-for-decision và conclusion
+- ingestion, delivery và recovery
+- evidence chung nhưng failure ownership khác
+
+<!-- scene: S09 -->
+
+---
+
+## Mang theo sau buổi học
+
+Không hỏi cần dashboard nào? trước.
+
+> Quyết định nào đang bị chặn, bằng chứng nào đủ và ai chịu trách nhiệm cho hành động tiếp theo?
+
+---
+
+## References
+
+- [[wiki.da.operating-as-a-data-analyst|Operating as a Data Analyst]]
+- [[wiki.data-product.decision-first-discovery|Decision-First Discovery]]
+- [[wiki.da.revenue-and-commerce-analytics|Revenue and commerce analytics]]

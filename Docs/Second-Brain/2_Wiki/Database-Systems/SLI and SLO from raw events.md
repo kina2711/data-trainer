@@ -38,7 +38,7 @@ Guarantee của SLI numerator, denominator và SLO window từ raw events chỉ 
 
 ## 3. Failure mode
 
-Phân tích SLI numerator, denominator và SLO window từ raw events cần tìm earliest observable failure, propagation path, blast radius và state còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `SLI and SLO from raw events`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành SLI numerator, denominator và SLO window từ raw events mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân tích SLI numerator, denominator và SLO window từ raw events cần tìm earliest observable failure, propagation path, blast radius và state còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `SLI and SLO from raw events`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành SLI numerator, denominator và SLO window từ raw events mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision rule
 
@@ -46,7 +46,7 @@ Quyết định về SLI numerator, denominator và SLO window từ raw events p
 
 ## 5. Evidence
 
-Bằng chứng cho SLI numerator, denominator và SLO window từ raw events gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `SLI and SLO from raw events`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành SLI numerator, denominator và SLO window từ raw events mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Bằng chứng cho SLI numerator, denominator và SLO window từ raw events gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `SLI and SLO from raw events`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành SLI numerator, denominator và SLO window từ raw events mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 6. Recovery lab
 
@@ -88,9 +88,9 @@ Với `wiki.sre.sli-slo-raw-events`, command thành công không tự chứng mi
 
 **Bằng chứng cần giữ.** Đối với probe 4 của `SLI and SLO from raw events`, lưu checkpoint, external ledger và trạng thái sau restart. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
 
-### 7.5. SLI and SLO from raw events: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho sli numerator, denominator và slo window từ raw events gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle
+### 7.5. SLI and SLO from raw events: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho sli numerator, denominator và slo window từ raw events gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle
 
-**Mệnh đề cần kiểm.** SLI and SLO from raw events: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho sli numerator, denominator và slo window từ raw events gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle.
+**Mệnh đề cần kiểm.** SLI and SLO from raw events: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho sli numerator, denominator và slo window từ raw events gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle.
 
 **Thiết kế phép thử cho `wiki.sre.sli-slo-raw-events`.** Trong ngữ cảnh `wiki.sre.sli-slo-raw-events`, đảo thứ tự input và concurrency nhưng giữ logical population. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `SLI and SLO from raw events` công bố.
 
@@ -136,9 +136,9 @@ Với `wiki.sre.sli-slo-raw-events`, command thành công không tự chứng mi
 
 **Bằng chứng cần giữ.** Đối với probe 10 của `SLI and SLO from raw events`, package phải đủ để người khác dựng lại decision và limitation. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
 
-### 7.11. SLI and SLO from raw events: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho sli numerator, denominator và slo window từ raw events gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle
+### 7.11. SLI and SLO from raw events: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho sli numerator, denominator và slo window từ raw events gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle
 
-**Mệnh đề cần kiểm.** SLI and SLO from raw events: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho sli numerator, denominator và slo window từ raw events gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle.
+**Mệnh đề cần kiểm.** SLI and SLO from raw events: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho sli numerator, denominator và slo window từ raw events gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle.
 
 **Thiết kế phép thử cho `wiki.sre.sli-slo-raw-events`.** Trong ngữ cảnh `wiki.sre.sli-slo-raw-events`, so với oracle độc lập không dùng chung query hoặc parser. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `SLI and SLO from raw events` công bố.
 
@@ -221,7 +221,7 @@ Với `wiki.sre.sli-slo-raw-events`, command thành công không tự chứng mi
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.sre.sli-slo-raw-events`
+## Execution capsule: kiểm chứng `wiki.sre.sli-slo-raw-events`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.sre.sli-slo-raw-events`, sơ đồ, ví dụ và artifact về **SLI and SLO from raw events** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

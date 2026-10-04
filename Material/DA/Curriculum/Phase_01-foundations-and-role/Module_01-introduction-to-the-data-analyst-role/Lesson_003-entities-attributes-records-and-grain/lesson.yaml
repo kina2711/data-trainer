@@ -5,7 +5,6 @@ status: ready-for-owner-review
 lifecycle_profile: learning
 risk_tier: R2-standard
 target_level: Foundation
-duration_minutes_estimate: 120
 central_question: Mỗi dòng đại diện cho điều gì và phép tính nào hợp lệ ở grain đó?
 objective: Phát biểu và kiểm chứng grain, khóa ứng viên, rồi định lượng fan-out khi ghép hai bảng khác grain.
 prerequisites:
@@ -13,63 +12,59 @@ prerequisites:
 learner_memory:
   resolved: false
   assumption: No prior mastery claimed; teach and assess the named prerequisites.
+editorial:
+  standard: lesson-authoring-v1
+  humanizer: blader/humanizer@3.1.0
+  status: pass
 scenes:
 - id: S01
   type: explain
-  minutes: 10
   claim: Một đơn có ba dòng sản phẩm. Join orders với order_items rồi SUM(order_total) làm doanh thu tăng gấp ba
     dù query chạy hoàn hảo.
-  source_span: note.md — heading 'Nỗi Đau & Động Lực'
+  source_span: 'note.md: heading Problem Definition and Operational Relevance'
   misconception_displaced: Có thể bắt đầu bằng công cụ/output trước khi khóa câu hỏi và boundary.
 - id: S02
   type: explain
-  minutes: 18
   claim: Grain là lời cam kết mỗi dòng đại diện cho điều gì; mọi phép đếm, join và aggregate phải được chứng minh
     tương thích với lời cam kết đó.
-  source_span: note.md — heading 'Cơ Chế Tác Động'
+  source_span: 'note.md: heading Mechanism'
   misconception_displaced: Suy grain từ tên bảng, dùng DISTINCT để che fan-out hoặc coi primary key kỹ thuật là
     nghĩa nghiệp vụ.
 - id: S03
   type: check
-  minutes: 7
   question: Grain là gì?
   answer: Lời cam kết một dòng đại diện cho đối tượng/sự kiện nào trong boundary đã nêu.
   wrong_answer_reveals: Người học nhớ từ khóa nhưng chưa nắm claim trung tâm.
-  source_span: note.md — heading 'Cơ Chế Tác Động'
+  source_span: 'note.md: heading Mechanism'
 - id: S04
   type: practice
-  minutes: 18
   task: Cho năm schema nhỏ; viết grain, candidate key, cardinality dự kiến và một query/profile chứng minh cho từng
     bảng.
   success_condition: 5/5 câu grain có entity + thời gian/trạng thái phù hợp và mỗi câu có phép kiểm uniqueness/fan-out
     tương ứng.
-  source_span: UNSOURCED — guided practice synthesized from the lesson objective and source-backed mechanism
+  source_span: 'UNSOURCED: guided practice synthesized from the lesson objective and source-backed mechanism'
 - id: S05
   type: explain
-  minutes: 15
   claim: Nếu hai bảng khác grain, hoặc aggregate bảng nhiều về grain một trước join, hoặc giữ measure ở bảng sở
     hữu; không SUM measure phía một sau join many.
-  source_span: note.md — heading 'Bản Đồ Quyết Định'
+  source_span: 'note.md: heading Decision Framework'
   misconception_displaced: Một rule hoặc tool luôn đúng bất kể changed constraint.
 - id: S06
   type: decide
-  minutes: 12
   situation: Nếu yêu cầu chuyển từ đơn sang khách-tháng, phải công bố grain mới và rule phân bổ trước khi tổng hợp.
   trade_off: Khóa duy nhất về kỹ thuật chưa đủ nếu một dòng vẫn trộn nhiều trạng thái nghiệp vụ hoặc snapshot time
     khác nhau.
   defensible_choices: Lựa chọn phải giữ hard constraints, nêu evidence và reversal trigger.
-  source_span: UNSOURCED — changed-constraint decision scenario synthesized for transfer
+  source_span: 'UNSOURCED: changed-constraint decision scenario synthesized for transfer'
 - id: S07
   type: explain
-  minutes: 15
   claim: 'Worked example: Orders ở grain một dòng/đơn; items ở grain một dòng/sản phẩm trong đơn. Dự đoán join one-to-many
     và đánh dấu order_total không additive sau join. Aggregate items về order_id hoặc chỉ lấy order_total một lần
     trên orders. Đối soát doanh thu và số đơn trước/sau join bằng oracle riêng.'
-  source_span: 'note.md — heading ''Case Study Thực Chiến: một chỉ số bán hàng đổi nghĩa giữa đường'''
+  source_span: 'note.md: heading Worked Case: một chỉ số bán hàng đổi nghĩa giữa đường'
   misconception_displaced: Một case thành công tự chứng minh cơ chế tổng quát.
 - id: S08
   type: apply
-  minutes: 18
   task: Một bảng customer_address lưu lịch sử hiệu lực. Chọn grain và join rule để gán đúng địa chỉ tại thời điểm
     order.
   assumes:
@@ -80,15 +75,14 @@ scenes:
   - S07
   success_condition: Artifact nêu boundary, evidence, lựa chọn, rejected alternative và condition làm quyết định
     đảo.
-  source_span: UNSOURCED — curriculum transfer scenario synthesized from the lesson contract
+  source_span: 'UNSOURCED: curriculum transfer scenario synthesized from the lesson contract'
 - id: S09
   type: check
-  minutes: 7
   question: Tại sao DISTINCT không phải cách sửa mặc định cho fan-out?
   answer: DISTINCT có thể xóa record hợp lệ và che mismatch grain; phải sửa cardinality hoặc aggregate về grain
     đúng.
   wrong_answer_reveals: Người học chưa chuyển mental model sang tình huống mới.
-  source_span: note.md — heading 'Góc Khuất & Ngộ Nhận'
+  source_span: 'note.md: heading Limits and Common Errors'
 assessment:
   formative: quiz.md — 10 questions, pass >= 8/10; failed concepts receive targeted remediation and one retest.
   authentic: homework.md — artifact scored on a 100-point analytic rubric; pass >= 75 and no critical failure.
@@ -101,5 +95,4 @@ publish:
   after_note: true
   answer_key: true
 unused_source_spans:
-- Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension/remediation; the 120-minute session
-  samples rather than recites every probe.
+- Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension and remediation.

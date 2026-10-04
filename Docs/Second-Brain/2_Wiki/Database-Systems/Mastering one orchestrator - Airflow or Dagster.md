@@ -38,7 +38,7 @@ DAG run, task instance, logical interval, code version và external artifact ph�
 
 ## 3. Local-to-production gap
 
-Local executor không đại diện queue, worker loss, secret backend, remote logging hay scheduler contention của deployment thật. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Mastering one orchestrator - Airflow or Dagster`, câu hỏi thực dụng là: Làm chủ một orchestrator được chứng minh bằng những năng lực vận hành nào thay vì số lượng DAG đã viết? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Local executor không đại diện queue, worker loss, secret backend, remote logging hay scheduler contention của deployment thật. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Mastering one orchestrator - Airflow or Dagster`, câu hỏi thực dụng là: Làm chủ một orchestrator được chứng minh bằng những năng lực vận hành nào thay vì số lượng DAG đã viết? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Failure laboratory
 
@@ -221,7 +221,7 @@ Với `wiki.orchestration.master-one-orchestrator`, command thành công không 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.orchestration.master-one-orchestrator`
+## Execution capsule: kiểm chứng `wiki.orchestration.master-one-orchestrator`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.orchestration.master-one-orchestrator`, sơ đồ, ví dụ và artifact về **Mastering one orchestrator - Airflow or Dagster** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

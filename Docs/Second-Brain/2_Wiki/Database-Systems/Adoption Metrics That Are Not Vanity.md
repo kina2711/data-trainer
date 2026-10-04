@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Bộ đo adoption nào nối product goals với hành vi và decision outcomes, tránh activity counts, denominator sai, trust proxy mơ hồ và incentive gaming?
 source_ids:
   - src.paper.google-heart-ux-metrics
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Đi từ goal tới signal rồi metric
 
-HEART cung cấp năm góc nhìn Happiness, Engagement, Adoption, Retention và Task Success; Goals–Signals–Metrics buộc nêu mục tiêu trước tín hiệu và phép tính. Với data product, goal có thể là một cohort ra quyết định định kỳ bằng metric certified mà không cần handoff thủ công. Signal gồm use đúng persona/cadence, task hoàn tất đúng và decision record có evidence. Metric chỉ hợp lệ khi có population, event, grain, time window, owner, quality và action threshold; log dễ lấy không phải lý do đủ để chọn.
+HEART cung cấp năm góc nhìn Happiness, Engagement, Adoption, Retention và Task Success; Goals-Signals-Metrics buộc nêu mục tiêu trước tín hiệu và phép tính. Với data product, goal có thể là một cohort ra quyết định định kỳ bằng metric certified mà không cần handoff thủ công. Signal gồm use đúng persona/cadence, task hoàn tất đúng và decision record có evidence. Metric chỉ hợp lệ khi có population, event, grain, time window, owner, quality và action threshold; log dễ lấy không phải lý do đủ để chọn.
 
 ## 2. Adoption và active use theo nhịp quyết định
 
@@ -65,121 +65,121 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Mệnh đề cần kiểm.** goal signal metric đi trước event instrumentation.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.2. HEART categories không bắt buộc dùng đủ năm
 
 **Mệnh đề cần kiểm.** HEART categories không bắt buộc dùng đủ năm.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.3. access grant khác activation
 
 **Mệnh đề cần kiểm.** access grant khác activation.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.4. active cadence khớp decision cycle
 
 **Mệnh đề cần kiểm.** active cadence khớp decision cycle.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.5. bots và scheduled refresh tách cohort
 
 **Mệnh đề cần kiểm.** bots và scheduled refresh tách cohort.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.6. retention dùng value event không dùng page view
 
 **Mệnh đề cần kiểm.** retention dùng value event không dùng page view.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.7. breadth và depth không chứng minh correctness
 
 **Mệnh đề cần kiểm.** breadth và depth không chứng minh correctness.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.8. support-free denominator gồm abandon và escalation
 
 **Mệnh đề cần kiểm.** support-free denominator gồm abandon và escalation.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.9. sample audit chặn confident-wrong self-service
 
 **Mệnh đề cần kiểm.** sample audit chặn confident-wrong self-service.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.10. level-three escalation không bị tính là failure
 
 **Mệnh đề cần kiểm.** level-three escalation không bị tính là failure.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.11. decision evidence coverage không chứng minh causal impact
 
 **Mệnh đề cần kiểm.** decision evidence coverage không chứng minh causal impact.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.12. cross-check rate không phải trust inverse trực tiếp
 
 **Mệnh đề cần kiểm.** cross-check rate không phải trust inverse trực tiếp.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.13. trust cần calibrated reliance
 
 **Mệnh đề cần kiểm.** trust cần calibrated reliance.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.14. dashboard count là activity không mặc nhiên inverse quality
 
 **Mệnh đề cần kiểm.** dashboard count là activity không mặc nhiên inverse quality.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.15. mỗi KPI cần gaming hypothesis và guardrail
 
 **Mệnh đề cần kiểm.** mỗi KPI cần gaming hypothesis và guardrail.
 
-**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals–signals–metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Từ versioned access/task/decision/support events, tính goals-signals-metrics theo cohort và natural cadence. Inject bots, scheduled refresh, abandon, confident-wrong và mandatory cross-check; kiểm denominator, segmentation, gaming và guardrails. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.adoption-metrics`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ## 9. Quy trình phản biện
 
@@ -196,7 +196,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 1. Invariant hoặc decision nào đang được bảo vệ?
 2. Chủ thể, resource, event hay cost unit được định danh bằng gì?
 3. Denominator, time window và unknown/unallocated set là gì?
-4. Failure nào vẫn cho tín hiệu xanh hoặc “completed”?
+4. Failure nào vẫn cho tín hiệu xanh hoặc completed?
 5. Thay đổi nào làm policy, metric, allocation hoặc state transition phải xem lại?
 6. Ai có quyền duyệt, ai vận hành và bằng chứng nào còn chưa chạy?
 
@@ -230,7 +230,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.adoption-metrics`
+## Execution capsule: kiểm chứng `wiki.data-product.adoption-metrics`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.adoption-metrics`, sơ đồ, ví dụ và artifact về **Adoption Metrics That Are Not Vanity** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -252,7 +252,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Bộ đo adoption nào nối product goals với hành vi và decision outcomes, tránh activity counts, denominator sai, trust proxy mơ hồ và incentive gaming?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Bộ đo adoption nào nối product goals với hành vi và decision outcomes, tránh activity counts, denominator sai, trust proxy mơ hồ và incentive gaming? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Adoption Metrics That Are Not Vanity** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Cơ chế ghi lại các bước biến đổi và hệ quả về khả năng chạy lại. Nạp từ tệp, thư mục, web và cơ sở dữ liệu. Các bước biến đổi: bỏ cột, lọc, tách cột, đổi kiểu, thay giá trị, điền xuống. Unpivot chuyển bảng rộng thành dạng dài. Merge ghép ngang và Append nối dọc. Gộp mọi tệp trong một thư mục theo một lược đồ chung. Làm mới bằng một thao tác. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L014 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Power Query - ETL inside Excel**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Dựng một quy trình nạp và làm sạch chạy lại được bằng một thao tác, và chứng minh nó xử lý đúng một tệp nguồn mới thêm vào mà không cần sửa bước nào. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Cơ chế ghi lại các bước biến đổi và hệ quả về khả năng chạy lại. Nạp từ tệp, thư mục, web và cơ sở dữ liệu. Các bước biến đổi: bỏ cột, lọc, tách cột, đổi kiểu, thay giá trị, điền xuống. Unpivot chuyển bảng rộng thành dạng dài. Merge ghép ngang và Append nối dọc. Gộp mọi tệp trong một thư mục theo một lược đồ chung. Làm mới bằng một thao tác.
 
@@ -44,7 +44,7 @@ Cơ chế của `power-query-etl-inside-excel` được kiểm qua năm lớp: i
 
 Lỗi cần loại trừ trong bài này là: Sửa dữ liệu bằng tay sau khi nạp nên mất khả năng chạy lại · đặt bước lọc trước bước đổi kiểu nên lọc theo chuỗi thay vì theo số · đường dẫn tuyệt đối làm quy trình hỏng trên máy khác. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Sửa dữ liệu bằng tay sau k
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L014: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Thêm tệp tháng thứ 13 và bấm làm mới cho ra bảng đúng, không sửa bước nào.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L014: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Thêm tệp tháng thứ 13 và bấm làm mới cho ra bảng đúng, không sửa bước nào.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Power Query - ETL inside Excel
+## Worked Case: Power Query - ETL inside Excel
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Gộp 12 tệp báo cáo tháng, mỗi tệp một sheet có tiêu đề hai tầng, thành một bảng dài duy nhất. Kiểm chứng bằng cách thêm tệp tháng thứ 13 và làm mới.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Power Query - ETL inside Excel`, learner ghi expecte
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L014 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Power Query - ETL inside Excel` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L014 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Cơ chế ghi lại các bước biến đổi và hệ quả về khả năng chạy lại. Nạp từ tệp, thư mục, web và cơ sở dữ liệu. Các bước biến đổi: bỏ cột, lọc, tách cột, đổi kiểu, thay giá trị, điền xuống. Unpivot chuyển bảng rộng thành dạng dài. Merge ghép ngang và Append nối dọc. Gộp mọi tệp trong một thư mục theo một lược đồ chung. Làm mới bằng một thao tác.
+**Mệnh đề của probe 1: `population`.** Cơ chế ghi lại các bước biến đổi và hệ quả về khả năng chạy lại. Nạp từ tệp, thư mục, web và cơ sở dữ liệu. Các bước biến đổi: bỏ cột, lọc, tách cột, đổi kiểu, thay giá trị, điền xuống. Unpivot chuyển bảng rộng thành dạng dài. Merge ghép ngang và Append nối dọc. Gộp mọi tệp trong một thư mục theo một lược đồ chung. Làm mới bằng một thao tác.
 
 **Thiết kế.** Probe 1 của L014 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L014 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Dựng một quy trình nạp và làm sạch chạy lại được bằng một thao tác, và chứng minh nó xử lý đúng một tệp nguồn mới thêm vào mà không cần sửa bước nào.
+**Mệnh đề của probe 2: `grain`.** Dựng một quy trình nạp và làm sạch chạy lại được bằng một thao tác, và chứng minh nó xử lý đúng một tệp nguồn mới thêm vào mà không cần sửa bước nào.
 
 **Thiết kế.** Probe 2 của L014 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L014 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Sửa dữ liệu bằng tay sau khi nạp nên mất khả năng chạy lại · đặt bước lọc trước bước đổi kiểu nên lọc theo chuỗi thay vì theo số · đường dẫn tuyệt đối làm quy trình hỏng trên máy khác.
+**Mệnh đề của probe 3: `identity`.** Sửa dữ liệu bằng tay sau khi nạp nên mất khả năng chạy lại · đặt bước lọc trước bước đổi kiểu nên lọc theo chuỗi thay vì theo số · đường dẫn tuyệt đối làm quy trình hỏng trên máy khác.
 
 **Thiết kế.** Probe 3 của L014 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L014 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Thêm tệp tháng thứ 13 và bấm làm mới cho ra bảng đúng, không sửa bước nào.
+**Mệnh đề của probe 4: `time cutoff`.** Thêm tệp tháng thứ 13 và bấm làm mới cho ra bảng đúng, không sửa bước nào.
 
 **Thiết kế.** Probe 4 của L014 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L014 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Cơ chế ghi lại các bước biến đổi và hệ quả về khả năng chạy lại. Nạp từ tệp, thư mục, web và cơ sở dữ liệu. Các bước biến đổi: bỏ cột, lọc, tách cột, đổi kiểu, thay giá trị, điền xuống. Unpivot chuyển bảng rộng thành dạng dài. Merge ghép ngang và Append nối dọc. Gộp mọi tệp trong một thư mục theo một lược đồ chung. Làm mới bằng một thao tác.
+**Mệnh đề của probe 5: `missing versus zero`.** Cơ chế ghi lại các bước biến đổi và hệ quả về khả năng chạy lại. Nạp từ tệp, thư mục, web và cơ sở dữ liệu. Các bước biến đổi: bỏ cột, lọc, tách cột, đổi kiểu, thay giá trị, điền xuống. Unpivot chuyển bảng rộng thành dạng dài. Merge ghép ngang và Append nối dọc. Gộp mọi tệp trong một thư mục theo một lược đồ chung. Làm mới bằng một thao tác.
 
 **Thiết kế.** Probe 5 của L014 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L014 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Dựng một quy trình nạp và làm sạch chạy lại được bằng một thao tác, và chứng minh nó xử lý đúng một tệp nguồn mới thêm vào mà không cần sửa bước nào.
+**Mệnh đề của probe 6: `duplicate`.** Dựng một quy trình nạp và làm sạch chạy lại được bằng một thao tác, và chứng minh nó xử lý đúng một tệp nguồn mới thêm vào mà không cần sửa bước nào.
 
 **Thiết kế.** Probe 6 của L014 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L014 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Sửa dữ liệu bằng tay sau khi nạp nên mất khả năng chạy lại · đặt bước lọc trước bước đổi kiểu nên lọc theo chuỗi thay vì theo số · đường dẫn tuyệt đối làm quy trình hỏng trên máy khác.
+**Mệnh đề của probe 7: `join fan-out`.** Sửa dữ liệu bằng tay sau khi nạp nên mất khả năng chạy lại · đặt bước lọc trước bước đổi kiểu nên lọc theo chuỗi thay vì theo số · đường dẫn tuyệt đối làm quy trình hỏng trên máy khác.
 
 **Thiết kế.** Probe 7 của L014 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L014 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Thêm tệp tháng thứ 13 và bấm làm mới cho ra bảng đúng, không sửa bước nào.
+**Mệnh đề của probe 8: `changed definition`.** Thêm tệp tháng thứ 13 và bấm làm mới cho ra bảng đúng, không sửa bước nào.
 
 **Thiết kế.** Probe 8 của L014 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L014 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Cơ chế ghi lại các bước biến đổi và hệ quả về khả năng chạy lại. Nạp từ tệp, thư mục, web và cơ sở dữ liệu. Các bước biến đổi: bỏ cột, lọc, tách cột, đổi kiểu, thay giá trị, điền xuống. Unpivot chuyển bảng rộng thành dạng dài. Merge ghép ngang và Append nối dọc. Gộp mọi tệp trong một thư mục theo một lược đồ chung. Làm mới bằng một thao tác.
+**Mệnh đề của probe 9: `independent oracle`.** Cơ chế ghi lại các bước biến đổi và hệ quả về khả năng chạy lại. Nạp từ tệp, thư mục, web và cơ sở dữ liệu. Các bước biến đổi: bỏ cột, lọc, tách cột, đổi kiểu, thay giá trị, điền xuống. Unpivot chuyển bảng rộng thành dạng dài. Merge ghép ngang và Append nối dọc. Gộp mọi tệp trong một thư mục theo một lược đồ chung. Làm mới bằng một thao tác.
 
 **Thiết kế.** Probe 9 của L014 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L014 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Dựng một quy trình nạp và làm sạch chạy lại được bằng một thao tác, và chứng minh nó xử lý đúng một tệp nguồn mới thêm vào mà không cần sửa bước nào.
+**Mệnh đề của probe 10: `replay`.** Dựng một quy trình nạp và làm sạch chạy lại được bằng một thao tác, và chứng minh nó xử lý đúng một tệp nguồn mới thêm vào mà không cần sửa bước nào.
 
 **Thiết kế.** Probe 10 của L014 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L014 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Sửa dữ liệu bằng tay sau khi nạp nên mất khả năng chạy lại · đặt bước lọc trước bước đổi kiểu nên lọc theo chuỗi thay vì theo số · đường dẫn tuyệt đối làm quy trình hỏng trên máy khác.
+**Mệnh đề của probe 11: `fresh snapshot`.** Sửa dữ liệu bằng tay sau khi nạp nên mất khả năng chạy lại · đặt bước lọc trước bước đổi kiểu nên lọc theo chuỗi thay vì theo số · đường dẫn tuyệt đối làm quy trình hỏng trên máy khác.
 
 **Thiết kế.** Probe 11 của L014 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L014 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Thêm tệp tháng thứ 13 và bấm làm mới cho ra bảng đúng, không sửa bước nào.
+**Mệnh đề của probe 12: `novel scenario`.** Thêm tệp tháng thứ 13 và bấm làm mới cho ra bảng đúng, không sửa bước nào.
 
 **Thiết kế.** Probe 12 của L014 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Thêm tệp tháng thứ 13 và bấm làm mới cho ra bảng đúng, không s�
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]] — `src.web.govuk-data-analytics-tools-guidance`
-2. [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]] — `src.book.kimball-ross-data-warehouse-toolkit.3e`
+1. [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]]: `src.web.govuk-data-analytics-tools-guidance`
+2. [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]]: `src.book.kimball-ross-data-warehouse-toolkit.3e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]] — `src.web.govuk-data-analytics-tools-guidance` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Power Query - ETL inside Excel | các mục cơ chế, case và probe | Đã phủ | ngoài objective L014 |
-| [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]] — `src.book.kimball-ross-data-warehouse-toolkit.3e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Power Query - ETL inside Excel | các mục cơ chế, case và probe | Đã phủ | ngoài objective L014 |
+| [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]]: `src.web.govuk-data-analytics-tools-guidance` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Power Query - ETL inside Excel | các mục cơ chế, case và probe | Đã phủ | ngoài objective L014 |
+| [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]]: `src.book.kimball-ross-data-warehouse-toolkit.3e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Power Query - ETL inside Excel | các mục cơ chế, case và probe | Đã phủ | ngoài objective L014 |
 
 ## Key takeaways
 - Dựng một quy trình nạp và làm sạch chạy lại được bằng một thao tác, và chứng minh nó xử lý đúng một tệp nguồn mới thêm vào mà không cần sửa bước nào.
@@ -226,7 +226,7 @@ Thêm tệp tháng thứ 13 và bấm làm mới cho ra bảng đúng, không s�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.power-query-etl-inside-excel`
+## Execution capsule: kiểm chứng `wiki.da.power-query-etl-inside-excel`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.power-query-etl-inside-excel`, sơ đồ, ví dụ và artifact về **Power Query - ETL inside Excel** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

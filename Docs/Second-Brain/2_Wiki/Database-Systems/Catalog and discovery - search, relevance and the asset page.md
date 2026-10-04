@@ -38,7 +38,7 @@ Name, description, glossary, owners, platform, schema, tags và usage có author
 
 ## 3. Ranking
 
-Exact field/name match, semantic text, certification, usage và recency cần trọng số có thể giải thích; popularity dễ củng cố asset cũ. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Catalog and discovery - search, relevance and the asset page`, câu hỏi thực dụng là: Catalog giúp người dùng tìm đúng asset bằng relevance và asset page có bằng chứng như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Exact field/name match, semantic text, certification, usage và recency cần trọng số có thể giải thích; popularity dễ củng cố asset cũ. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Catalog and discovery - search, relevance and the asset page`, câu hỏi thực dụng là: Catalog giúp người dùng tìm đúng asset bằng relevance và asset page có bằng chứng như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Asset page
 
@@ -221,7 +221,7 @@ Với `wiki.metadata.catalog-search-asset-page`, command thành công không t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.metadata.catalog-search-asset-page`
+## Execution capsule: kiểm chứng `wiki.metadata.catalog-search-asset-page`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.metadata.catalog-search-asset-page`, sơ đồ, ví dụ và artifact về **Catalog and discovery - search, relevance and the asset page** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

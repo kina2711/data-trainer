@@ -32,31 +32,31 @@ reference_path: Material/DE/Reference/Library/Knowledge-Notes/PACK-ENGINEERING-F
 > [!abstract] Câu hỏi trung tâm
 > Làm thế nào mô hình, kiểm chứng và áp dụng delayed recall và evidence habit để giữ kiến thức có thể tái sử dụng?
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 retrieval sau khoảng cách thời gian buộc tái tạo mô hình; evidence package nối dự đoán, execution và correction Với `wiki.de-foundation.delayed-recall-evidence-habit`, điểm phải khóa là state transition và invariant; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
 Không có mô hình này, lỗi thường lộ ở consumer sau cùng: output sai, latency vọt, resource không được giải phóng hoặc lịch sử không còn tái hiện được. Chi phí thật của `Delayed recall and the evidence habit` vì thế nằm ở thời gian chẩn đoán và phạm vi phục hồi, không nằm ở số dòng syntax.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 đọc lại hoặc nhận ra đáp án là exposure, không phải recall; note tồn tại không chứng minh mastery Với `wiki.de-foundation.delayed-recall-evidence-habit`, điểm phải khóa là identity, ownership và boundary; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
 Hãy tách declared state, executed state và published state của `delayed recall và evidence habit để giữ kiến thức có thể tái sử dụng`. Một command thành công chỉ là executed signal; muốn kết luận cần đối soát consumer-visible invariant và trạng thái còn lại sau restart hoặc replay.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 ôn ngay tạo fluency illusion; chép output không ghi hypothesis biến lab thành thủ tục Với `wiki.de-foundation.delayed-recall-evidence-habit`, điểm phải khóa là failure path và recovery; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
 Quy tắc mặc định cho `Delayed recall and the evidence habit` là chọn phương án đơn giản nhất qua được hard constraints, rồi ghi rõ điều kiện đảo. Bảng quyết định tối thiểu gồm workload, identity, state owner, time/memory budget, failure domain và khả năng rollback.
 
-## Case Study Thực Chiến: Delayed recall and the evidence habit
+## Worked Case: Delayed recall and the evidence habit
 
 đặt câu hỏi changed-scenario, trì hoãn lần kiểm, chấm reasoning và ghi lỗi có khả năng tái diễn Với `wiki.de-foundation.delayed-recall-evidence-habit`, điểm phải khóa là decision trade-off và reversal trigger; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
 Case dùng fixture nhỏ nhưng phải giữ cơ chế chi phối. Trước khi chạy, learner viết expected transition; sau khi chạy, họ đối chiếu raw artifact với oracle và giải thích mọi khác biệt thay vì sửa expected cho khớp output.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 prompt, response trước khi xem đáp án, rubric, correction và retest date Với `wiki.de-foundation.delayed-recall-evidence-habit`, điểm phải khóa là evidence package và oracle; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
@@ -80,7 +80,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 **Thiết kế phép thử cho `wiki.de-foundation.delayed-recall-evidence-habit`.** Với `wiki.de-foundation.delayed-recall-evidence-habit`, tạo positive và negative control chỉ khác một điều kiện; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 2: identity, ownership và boundary
 
@@ -88,7 +88,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 **Thiết kế phép thử cho `wiki.de-foundation.delayed-recall-evidence-habit`.** Với `wiki.de-foundation.delayed-recall-evidence-habit`, tạo boundary case ngay trước và sau ngưỡng; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 3: failure path và recovery
 
@@ -96,7 +96,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 **Thiết kế phép thử cho `wiki.de-foundation.delayed-recall-evidence-habit`.** Với `wiki.de-foundation.delayed-recall-evidence-habit`, tạo replay cùng identity với state khác; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 4: decision trade-off và reversal trigger
 
@@ -104,7 +104,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 **Thiết kế phép thử cho `wiki.de-foundation.delayed-recall-evidence-habit`.** Với `wiki.de-foundation.delayed-recall-evidence-habit`, tạo failure inject trước và sau durable transition; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 5: evidence package và oracle
 
@@ -112,7 +112,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 **Thiết kế phép thử cho `wiki.de-foundation.delayed-recall-evidence-habit`.** Với `wiki.de-foundation.delayed-recall-evidence-habit`, tạo changed scale làm cost model đổi; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 6: changed-constraint transfer
 
@@ -120,7 +120,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 **Thiết kế phép thử cho `wiki.de-foundation.delayed-recall-evidence-habit`.** Với `wiki.de-foundation.delayed-recall-evidence-habit`, tạo adversarial order hoặc skew; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 7: state transition và invariant
 
@@ -128,7 +128,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 **Thiết kế phép thử cho `wiki.de-foundation.delayed-recall-evidence-habit`.** Với `wiki.de-foundation.delayed-recall-evidence-habit`, tạo fresh environment không cache; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 8: identity, ownership và boundary
 
@@ -136,7 +136,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 **Thiết kế phép thử cho `wiki.de-foundation.delayed-recall-evidence-habit`.** Với `wiki.de-foundation.delayed-recall-evidence-habit`, tạo independent oracle không dùng chung implementation; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 9: failure path và recovery
 
@@ -144,7 +144,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 **Thiết kế phép thử cho `wiki.de-foundation.delayed-recall-evidence-habit`.** Với `wiki.de-foundation.delayed-recall-evidence-habit`, tạo partial progress rồi restart; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 10: decision trade-off và reversal trigger
 
@@ -152,7 +152,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 **Thiết kế phép thử cho `wiki.de-foundation.delayed-recall-evidence-habit`.** Với `wiki.de-foundation.delayed-recall-evidence-habit`, tạo missing evidence phải abstain; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 11: evidence package và oracle
 
@@ -160,7 +160,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 **Thiết kế phép thử cho `wiki.de-foundation.delayed-recall-evidence-habit`.** Với `wiki.de-foundation.delayed-recall-evidence-habit`, tạo reviewer tái hiện từ package; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 12: changed-constraint transfer
 
@@ -168,7 +168,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 **Thiết kế phép thử cho `wiki.de-foundation.delayed-recall-evidence-habit`.** Với `wiki.de-foundation.delayed-recall-evidence-habit`, tạo constraint đổi đủ để quyết định đảo; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ## Tự Kiểm Tra Nhanh
 
@@ -198,7 +198,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]] — `src.book.hunt-thomas-pragmatic-programmer.20ae` | Topic 10 PDF 76–83; Topics 23–25 PDF 148–166; Topic 40 PDF 276–280 | cơ chế và boundary liên quan trực tiếp tới `delayed recall và evidence habit để giữ kiến thức có thể tái sử dụng` | các mục cơ chế, quyết định và probe | Đã phủ | phần ngoài objective DE-L012 |
+| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]]: `src.book.hunt-thomas-pragmatic-programmer.20ae` | Topic 10 PDF 76-83; Topics 23-25 PDF 148-166; Topic 40 PDF 276-280 | cơ chế và boundary liên quan trực tiếp tới `delayed recall và evidence habit để giữ kiến thức có thể tái sử dụng` | các mục cơ chế, quyết định và probe | Đã phủ | phần ngoài objective DE-L012 |
 
 ## Key takeaways
 - đặt câu hỏi changed-scenario, trì hoãn lần kiểm, chấm reasoning và ghi lỗi có khả năng tái diễn
@@ -208,7 +208,7 @@ Protocol riêng của `Delayed recall and the evidence habit` là: prompt, respo
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.de-foundation.delayed-recall-evidence-habit`
+## Execution capsule: kiểm chứng `wiki.de-foundation.delayed-recall-evidence-habit`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.de-foundation.delayed-recall-evidence-habit`, sơ đồ, ví dụ và artifact về **Delayed recall and the evidence habit** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

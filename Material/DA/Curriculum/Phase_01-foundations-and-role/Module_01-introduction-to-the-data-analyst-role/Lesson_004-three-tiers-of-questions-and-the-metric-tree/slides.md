@@ -11,7 +11,7 @@ footer: 'Foundation · runnable scene package'
 
 # Three tiers of questions and the metric tree
 
-**DA-L004 · 120 phút (ước tính)**
+**DA-L004**
 
 > Làm sao đi từ outcome biến động tới driver có owner và hành động?
 
@@ -27,12 +27,12 @@ Dựng metric tree cân bằng số học, nối descriptive-diagnostic-prescrip
 
 ---
 
-<!-- scene: S01 · source: note.md: heading 'Nỗi Đau & Động Lực' -->
+<!-- scene: S01 · source: note.md: heading Problem Definition and Operational Relevance -->
 ## Tình huống mở
 
 Revenue giảm 8%. Chia theo mọi dimension tạo 40 biểu đồ nhưng không cho biết driver nào có thể can thiệp.
 
-**Think–pair–share · 4 phút**
+**Independent analysis followed by peer review**
 
 1. Bạn sẽ làm gì đầu tiên?
 2. Quyết định nào có thể bị ảnh hưởng?
@@ -40,7 +40,7 @@ Revenue giảm 8%. Chia theo mọi dimension tạo 40 biểu đồ nhưng không
 
 ---
 
-<!-- scene: S02 · source: note.md: heading 'Cơ Chế Tác Động' -->
+<!-- scene: S02 · source: note.md: heading Mechanism -->
 ## Mental model trung tâm
 
 > Metric tree là mô hình giả thuyết định lượng: outcome được phân rã thành driver có thể đo, có owner và lever. ba tầng câu hỏi dẫn từ quan sát tới quyết định.
@@ -67,7 +67,7 @@ Không làm bước này, output sau đó có thể đúng cú pháp nhưng sai 
 
 ---
 
-<!-- scene: S03 · source: note.md: heading 'Cơ Chế Tác Động' -->
+<!-- scene: S03 · source: note.md: heading Mechanism -->
 ## Check 1 · trả lời không nhìn tài liệu
 
 **Ba tầng câu hỏi là gì?**
@@ -83,7 +83,7 @@ Nếu câu trả lời chỉ nêu tên công cụ, hãy quay lại mental model 
 ---
 
 <!-- scene: S04 · source: UNSOURCED guided practice synthesis -->
-## Guided practice · 12 phút làm + 6 phút chữa
+## Guided practice
 
 Dựng cây revenue cho marketplace từ GMV tới traffic, conversion, orders, AOV, take rate và refunds. đánh dấu stock/flow/rate.
 
@@ -93,7 +93,7 @@ Người dạy không chữa bằng đáp án ngay. yêu cầu mỗi nhóm nêu 
 
 ---
 
-<!-- scene: S05 · source: note.md: heading 'Bản Đồ Quyết Định' -->
+<!-- scene: S05 · source: note.md: heading Decision Framework -->
 ## Quy tắc quyết định
 
 Chỉ đưa driver vào nhánh hành động khi definition và grain ổn định, có owner/lever, và contribution đủ lớn so với uncertainty và cost can thiệp.
@@ -114,7 +114,7 @@ Nếu margin thay revenue làm outcome, discount có thể đổi từ lever tí
 
 ## Worked example · đi từng bước
 
-<!-- scene: S07 · source: note.md: heading 'Case Study Thực Chiến: một chỉ số bán hàng đổi nghĩa giữa đường' -->
+<!-- scene: S07 · source: note.md: heading Worked Case: một chỉ số bán hàng đổi nghĩa giữa đường -->
 
 1. Revenue = Orders × Average Order Value.
 2. Orders = Traffic × Conversion Rate. AOV = Items/Order × Price/Item.
@@ -157,8 +157,8 @@ Conversion giảm nhưng revenue tăng do AOV. Quyết định ưu tiên driver 
 
 ---
 
-<!-- scene: S09 · source: note.md: heading 'Góc Khuất & Ngộ Nhận' -->
-## Exit ticket · 3 phút
+<!-- scene: S09 · source: note.md: heading Limits and Common Errors -->
+## Exit check
 
 **Một metric tree cộng đúng đã đủ để kết luận nguyên nhân chưa?**
 
@@ -169,10 +169,18 @@ Chưa. Identity mô tả đóng góp số học. causal claim cần thiết kế
 
 ---
 
-## Sau buổi học
+## Post-Lesson
 
 1. Làm `quiz.md`. đạt **8/10**.
 2. Nếu trượt một concept, đọc remediation trong `after-note.md` rồi retest đúng concept đó.
 3. Hoàn thành `homework.md`. đạt **≥ 75/100** và không có critical failure.
 
 **Bắc cầu:** L005: biến yêu cầu mơ hồ thành analytical contract trả lời được.
+
+---
+
+## References
+
+- [[wiki.da-foundation.three-question-tiers-and-metric-tree|Three question tiers and the metric tree]]
+- [[wiki.data-product.metric-tree|Question decomposition and the metric tree]]
+- [[wiki.data-product.decision-first-discovery|Decision-First Discovery]]

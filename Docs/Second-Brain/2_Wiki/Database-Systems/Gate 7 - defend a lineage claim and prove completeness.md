@@ -38,7 +38,7 @@ Xây inventory jobs, statements, assets và fields đáng lẽ quan sát từ in
 
 ## 3. Observed coverage
 
-Báo extracted, inferred, manual, rejected và unknown theo producer/method, không gộp thành một phần trăm. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Gate 7 - defend a lineage claim and prove completeness`, câu hỏi thực dụng là: Một lineage claim được bảo vệ và completeness được chứng minh bằng population, method và unknowns như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Báo extracted, inferred, manual, rejected và unknown theo producer/method, không gộp thành một phần trăm. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Gate 7 - defend a lineage claim and prove completeness`, câu hỏi thực dụng là: Một lineage claim được bảo vệ và completeness được chứng minh bằng population, method và unknowns như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Accuracy sample
 
@@ -221,7 +221,7 @@ Với `wiki.metadata.gate7-lineage-completeness`, command thành công không t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.metadata.gate7-lineage-completeness`
+## Execution capsule: kiểm chứng `wiki.metadata.gate7-lineage-completeness`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.metadata.gate7-lineage-completeness`, sơ đồ, ví dụ và artifact về **Gate 7 - defend a lineage claim and prove completeness** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

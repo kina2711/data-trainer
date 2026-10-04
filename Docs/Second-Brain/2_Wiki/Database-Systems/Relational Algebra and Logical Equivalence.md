@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Dùng đại số quan hệ và điều kiện tương đương nào để viết lại SQL đúng nghĩa nhưng giảm dữ liệu trung gian và mở đường cho optimizer?
 source_ids:
   - src.course.hcmut-relational-algebra
@@ -49,7 +49,7 @@ Rename giải quyết tên thuộc tính và self-join. Closure cho phép output
 
 ## 3. Set semantics và SQL bag semantics
 
-Nhiều luật algebra được phát biểu trên set. SQL không có `DISTINCT` dùng bag: projection không loại duplicate, UNION ALL khác UNION, EXCEPT ALL khác EXCEPT. NULL thêm three-valued logic. Vì vậy “tương đương trong algebra” chưa đủ; phải kiểm:
+Nhiều luật algebra được phát biểu trên set. SQL không có `DISTINCT` dùng bag: projection không loại duplicate, UNION ALL khác UNION, EXCEPT ALL khác EXCEPT. NULL thêm three-valued logic. Vì vậy tương đương trong algebra chưa đủ; phải kiểm:
 
 1. duplicate multiplicity;
 2. NULL/UNKNOWN;
@@ -74,7 +74,7 @@ Pushdown qua aggregate chỉ hợp lệ nếu predicate phụ thuộc grouping k
 
 ## 5. Projection pushdown
 
-Giữ chỉ columns cần thiết sớm giúp giảm row width, memory và I/O. Nhưng phải giữ join keys, filter columns, grouping/order keys và columns cần về sau. Projection trong SQL bag không tự DISTINCT; thêm DISTINCT để “giảm row” có thể đổi multiplicity và tốn sort/hash.
+Giữ chỉ columns cần thiết sớm giúp giảm row width, memory và I/O. Nhưng phải giữ join keys, filter columns, grouping/order keys và columns cần về sau. Projection trong SQL bag không tự DISTINCT; thêm DISTINCT để giảm row có thể đổi multiplicity và tốn sort/hash.
 
 `SELECT *` làm dataflow rộng, coupling schema và network payload. Tuy nhiên optimizer có thể tự pruning columns; viết cột rõ vẫn cải thiện contract và tránh downstream accidental use.
 
@@ -94,7 +94,7 @@ Viết lại cần chứng minh cardinality: subquery có unique key không, NUL
 
 Nếu join nhân rows vì relationship 1:N nhưng output cần grain customer, `DISTINCT` có thể che lỗi tạm thời hoặc làm mất legitimate duplicates. Phải định nghĩa grain từng input/output, aggregate/deduplicate bên N theo rule có thứ tự, hoặc dùng EXISTS nếu chỉ cần existence.
 
-DISTINCT hợp lệ khi contract thật là set. Evidence phải có duplicate diagnostics trước và sau, không chỉ output “trông đúng”.
+DISTINCT hợp lệ khi contract thật là set. Evidence phải có duplicate diagnostics trước và sau, không chỉ output trông đúng.
 
 ## 9. Sargability và hàm bọc cột
 
@@ -105,7 +105,7 @@ created_at >= TIMESTAMP '2026-01-01'
 AND created_at < TIMESTAMP '2026-01-02'
 ```
 
-Hai dạng chỉ tương đương khi timezone/type/boundary được xác định. Expression index là alternative nhưng tăng write/storage cost. Sargability là khả năng predicate khớp access path, không phải luật tuyệt đối “không dùng function”.
+Hai dạng chỉ tương đương khi timezone/type/boundary được xác định. Expression index là alternative nhưng tăng write/storage cost. Sargability là khả năng predicate khớp access path, không phải luật tuyệt đối không dùng function.
 
 ## 10. Aggregate rewrite
 
@@ -143,9 +143,9 @@ Không giả định optimizer thiếu khả năng; dùng plan để biết rewr
 
 Giả sử query lấy customer cùng doanh thu, nhưng join trực tiếp customer→orders→lines→payments. Lines và payments đều 1:N theo order nên tích chéo làm doanh thu nhân. Rewrite đúng không phải đổi thứ tự JOIN trong text hoặc thêm DISTINCT. Trước hết xác định output grain customer; aggregate lines về order, aggregate payments về order nếu measure cần, sau đó join hai relations một-row-mỗi-order rồi group customer. Algebraically, ta thay join của hai bag chi tiết bằng join của hai grouped projections có key order_id.
 
-Nếu yêu cầu chỉ là “customer có ít nhất một paid order”, correlated `EXISTS` diễn đạt semi-join và giữ mỗi customer một lần. Rewrite sang inner join chỉ tương đương khi projection/multiplicity không quan trọng hoặc có uniqueness proof. Bộ test phải có customer zero, one và many paid orders; order nhiều lines/payments; duplicate business key; NULL status. Đối soát cả key counts và measure.
+Nếu yêu cầu chỉ là customer có ít nhất một paid order, correlated `EXISTS` diễn đạt semi-join và giữ mỗi customer một lần. Rewrite sang inner join chỉ tương đương khi projection/multiplicity không quan trọng hoặc có uniqueness proof. Bộ test phải có customer zero, one và many paid orders; order nhiều lines/payments; duplicate business key; NULL status. Đối soát cả key counts và measure.
 
-Plan review ghi estimated/actual rows tại từng node. Nếu estimates sai ngay ở base filter, xem statistics/skew. Nếu sai tại join dù keys đã declared, xem condition/correlation. Sau rewrite, yêu cầu không chỉ execution time thấp hơn mà intermediate rows/buffers giảm theo causal prediction. Nếu plan vốn đã decorrelate thành semi join, hai query có thể cùng plan; kết luận khi đó là optimizer đã làm rewrite, không phải bản text thứ hai “nhanh hơn”.
+Plan review ghi estimated/actual rows tại từng node. Nếu estimates sai ngay ở base filter, xem statistics/skew. Nếu sai tại join dù keys đã declared, xem condition/correlation. Sau rewrite, yêu cầu không chỉ execution time thấp hơn mà intermediate rows/buffers giảm theo causal prediction. Nếu plan vốn đã decorrelate thành semi join, hai query có thể cùng plan; kết luận khi đó là optimizer đã làm rewrite, không phải bản text thứ hai nhanh hơn.
 
 ## 13.2. Hồ sơ chứng minh tương đương
 
@@ -170,18 +170,18 @@ Nếu rewrite đổi type coercion hoặc timestamp boundary, property test sinh
 - Volatile function, error timing, LIMIT/order và concurrency có thể làm rewrite observably khác.
 
 ## Reference
-1. [[SRC-HCMUT-RELATIONAL-ALGEBRA]] — PDF 4–50.
-2. [[SRC-HCMUT-SQL]] — PDF 29–32, 61–79.
-3. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] — table expressions và SELECT processing.
+1. [[SRC-HCMUT-RELATIONAL-ALGEBRA]]: PDF 4-50.
+2. [[SRC-HCMUT-SQL]]: PDF 29-32, 61-79.
+3. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]]: table expressions và SELECT processing.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-HCMUT-RELATIONAL-ALGEBRA]], PDF 4–50 | operators, set operations và joins | §§1–6 | Đã giữ formal model và nêu bag gap |
-| [[SRC-HCMUT-SQL]], PDF 29–32, 61–79 | SELECT/JOIN/GROUP semantics | §§3, 7–10 | Đã nối algebra với SQL |
-| [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | logical pipeline và joins | §§4, 6–7 | Đã giữ PostgreSQL scope |
-| Tổng hợp DE-L115 | rewrite/proof/cost workflow | §§8–13 | Đã ghi thành evidence kiểm được |
+| [[SRC-HCMUT-RELATIONAL-ALGEBRA]], PDF 4-50 | operators, set operations và joins | §§1-6 | Đã giữ formal model và nêu bag gap |
+| [[SRC-HCMUT-SQL]], PDF 29-32, 61-79 | SELECT/JOIN/GROUP semantics | §§3, 7-10 | Đã nối algebra với SQL |
+| [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | logical pipeline và joins | §§4, 6-7 | Đã giữ PostgreSQL scope |
+| Tổng hợp DE-L115 | rewrite/proof/cost workflow | §§8-13 | Đã ghi thành evidence kiểm được |
 
 ## Key takeaways
 - Logical expression không phải physical execution order.
@@ -192,7 +192,7 @@ Nếu rewrite đổi type coercion hoặc timestamp boundary, property test sinh
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.relational-algebra-logical-equivalence`
+## Execution capsule: kiểm chứng `wiki.database.relational-algebra-logical-equivalence`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.relational-algebra-logical-equivalence`, sơ đồ, ví dụ và artifact về **Đại số quan hệ và tương đương logic** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -55,7 +55,7 @@ Score ability to express these primitives, inspect state, isolate queues, versio
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
-Trong `Orchestration Primitives Before the Tool`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước–sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dựng artifact/workflow fixture có exact versions và intervals; inject one failure or changed assumption; capture resolved graph/state/query IDs or scheduler context and compare with independent coverage oracle.
+Trong `Orchestration Primitives Before the Tool`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước-sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dựng artifact/workflow fixture có exact versions và intervals; inject one failure or changed assumption; capture resolved graph/state/query IDs or scheduler context and compare with independent coverage oracle.
 
 ### 7.1. Orchestration probe 1: work identity, state transition, retry/timeout, dependency evidence và recovery phải rõ
 
@@ -71,7 +71,7 @@ Trong `Orchestration Primitives Before the Tool`, mỗi claim phải nối đư�
 
 **Thiết kế phép thử cho `wiki.orchestration.primitives-before-tool`.** Với `Orchestration probe 2: work identity, state transition, retry/timeout, dependency evidence và recovery phải rõ`, Giữ nguyên input rồi đổi đúng một tham số cấu hình liên quan. Nếu output đổi theo nhiều hướng cùng lúc, phép thử chưa cô lập được nguyên nhân và phải thu hẹp lại. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Orchestration probe 2: work identity, state transition, retry/timeout, dependency evidence và recovery phải rõ` phải cho thấy: Báo cả giá trị trước–sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Orchestration probe 2: work identity, state transition, retry/timeout, dependency evidence và recovery phải rõ` phải cho thấy: Báo cả giá trị trước-sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.3. Orchestration probe 3: work identity, state transition, retry/timeout, dependency evidence và recovery phải rõ
 
@@ -119,7 +119,7 @@ Trong `Orchestration Primitives Before the Tool`, mỗi claim phải nối đư�
 
 **Thiết kế phép thử cho `wiki.orchestration.primitives-before-tool`.** Với `Orchestration probe 8: work identity, state transition, retry/timeout, dependency evidence và recovery phải rõ`, Dùng một schema change tương thích và một thay đổi phá vỡ key, type hoặc meaning. Kết quả phải chỉ ra khác biệt giữa parse được, chạy được và vẫn giữ đúng semantics. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Orchestration probe 8: work identity, state transition, retry/timeout, dependency evidence và recovery phải rõ` phải cho thấy: Lưu schema trước–sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Orchestration probe 8: work identity, state transition, retry/timeout, dependency evidence và recovery phải rõ` phải cho thấy: Lưu schema trước-sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.9. Orchestration probe 9: work identity, state transition, retry/timeout, dependency evidence và recovery phải rõ
 
@@ -226,7 +226,7 @@ Trong `Orchestration Primitives Before the Tool`, mỗi claim phải nối đư�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.orchestration.primitives-before-tool`
+## Execution capsule: kiểm chứng `wiki.orchestration.primitives-before-tool`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.orchestration.primitives-before-tool`, sơ đồ, ví dụ và artifact về **Orchestration Primitives Before the Tool** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

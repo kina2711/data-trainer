@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Khi nào một hệ nên giữ dạng monolith, khi nào cần modular monolith, và bằng chứng nào đủ để tách thành nhiều dịch vụ triển khai độc lập?
 source_ids:
   - src.book.newman-building-microservices.2e
@@ -46,7 +46,7 @@ Hệ vẫn build và deploy như một đơn vị, nhưng code và dữ liệu �
 Mỗi dịch vụ có lifecycle deploy, runtime và ownership riêng. Ranh giới process buộc communication đi qua network hoặc messaging. Quyền tự chủ tăng, đồng thời failure, consistency, observability và security trở thành bài toán phân tán.
 
 > [!source-fact]
-> Newman phân biệt monolith triển khai như một đơn vị với modular monolith có module boundary bên trong, đồng thời nhấn mạnh information hiding và khả năng deploy độc lập là các trục khác nhau. *Building Microservices*, 2e, PDF 32–37 và 56–77.
+> Newman phân biệt monolith triển khai như một đơn vị với modular monolith có module boundary bên trong, đồng thời nhấn mạnh information hiding và khả năng deploy độc lập là các trục khác nhau. *Building Microservices*, 2e, PDF 32-37 và 56-77.
 
 ## 2. Một artifact không đồng nghĩa một khối code rối
 
@@ -76,7 +76,7 @@ Nhóm code thành module khi chúng:
 Không chia theo layer kỹ thuật thành `controllers`, `services`, `repositories` rồi gọi đó là module nghiệp vụ. Cách chia này khiến một feature đi xuyên mọi thư mục và ranh giới change vẫn không rõ.
 
 > [!synthesis]
-> Quy tắc “change together, own together” tổng hợp information hiding của Sommerville, coupling của Newman và decomposition theo business capability/subdomain của Richardson. Đây là decision heuristic, không phải thuật toán tạo ra một ranh giới duy nhất.
+> Quy tắc change together, own together tổng hợp information hiding của Sommerville, coupling của Newman và decomposition theo business capability/subdomain của Richardson. Đây là decision heuristic, không phải thuật toán tạo ra một ranh giới duy nhất.
 
 ## 4. Ranh giới dữ liệu là phép thử thật
 
@@ -91,7 +91,7 @@ Ba mức cần phân biệt:
 Tách database không bắt buộc mỗi service có một máy chủ vật lý. Điều bắt buộc là write ownership và contract truy cập rõ. Cross-service report có thể dùng API, replicated read model hoặc analytical pipeline thay vì cho phép ghi chung.
 
 > [!source-fact]
-> Richardson trình bày Database per Service như cách giữ dữ liệu private cho service và xem Shared Database là pattern đánh đổi khác, với coupling ở schema và transaction. *Microservices Patterns*, PDF 44–55.
+> Richardson trình bày Database per Service như cách giữ dữ liệu private cho service và xem Shared Database là pattern đánh đổi khác, với coupling ở schema và transaction. *Microservices Patterns*, PDF 44-55.
 
 ## 5. Thuế vận hành của phân tán
 
@@ -126,7 +126,7 @@ Một workload có failure/resource profile cần cô lập, ví dụ parser kh�
 
 ### Technology/lifecycle khác
 
-Một capability cần runtime hoặc release cadence khác vì lý do kỹ thuật có bằng chứng. “Muốn thử framework mới” không phải bằng chứng.
+Một capability cần runtime hoặc release cadence khác vì lý do kỹ thuật có bằng chứng. Muốn thử framework mới không phải bằng chứng.
 
 ## 7. Ba điều kiện cần trước khi tách
 
@@ -153,7 +153,7 @@ Distributed monolith là trạng thái nhiều deployment nhưng vẫn coupling 
 
 ## 9. Modular monolith như một lựa chọn chủ động
 
-Modular monolith không phải “microservice chưa hoàn thành”. Nó phù hợp khi:
+Modular monolith không phải microservice chưa hoàn thành. Nó phù hợp khi:
 
 - một hoặc vài đội cần tốc độ thay đổi nhưng chưa cần release độc lập;
 - transaction nhất quán trong process/database còn có giá trị lớn;
@@ -178,7 +178,7 @@ flowchart LR
   G -->|không| I[Dừng hoặc hợp nhất lại]
 ```
 
-Tách từng boundary giảm blast radius và cho phép kiểm giả thuyết. “Chuyển toàn bộ sang microservices” là programme rủi ro cao, khó quy thuộc lợi ích.
+Tách từng boundary giảm blast radius và cho phép kiểm giả thuyết. Chuyển toàn bộ sang microservices là programme rủi ro cao, khó quy thuộc lợi ích.
 
 ## 11. Trigger phải đo được
 
@@ -206,7 +206,7 @@ ADR nên có:
 - ngày review và owner;
 - migration/reversal path.
 
-“Chưa cần microservices” không đủ. ADR phải nói điều gì sẽ khiến quyết định thay đổi.
+Chưa cần microservices không đủ. ADR phải nói điều gì sẽ khiến quyết định thay đổi.
 
 ## 13. Ba tình huống đánh giá
 
@@ -229,7 +229,7 @@ Hai đội deploy khác cadence; boundary ổn định, mỗi capability sở h�
 - tạo service nhưng chia sẻ write model;
 - bỏ chi phí on-call/platform khỏi business case;
 - xem network như function call chậm;
-- trigger mơ hồ như “khi hệ lớn hơn”;
+- trigger mơ hồ như khi hệ lớn hơn;
 - không đặt review date nên ADR thành tài liệu chết;
 - không đo kết quả sau tách.
 
@@ -247,7 +247,7 @@ Hai đội deploy khác cadence; boundary ổn định, mỗi capability sở h�
 1. Modular monolith khác monolith rối ở invariant nào, ngoài cấu trúc thư mục?
 2. Hai service cùng ghi một bảng mất quyền tự chủ ở đâu?
 3. Khi nào scaling là lý do thật để tách?
-4. Một trigger “khi traffic tăng” thiếu trường gì để kiểm được?
+4. Một trigger khi traffic tăng thiếu trường gì để kiểm được?
 5. Distributed monolith giữ lại hai nhóm chi phí nào?
 
 ## 17. Giới hạn
@@ -265,20 +265,20 @@ Hai đội deploy khác cadence; boundary ổn định, mỗi capability sở h�
 - Bài tổng hợp tiếp theo: [[Delivery Project - Modular Package with a Release Path|Dự án delivery: modular package có đường phát hành]].
 
 ## Reference
-1. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — modular monolith, information hiding, coupling và decomposition, PDF 32–37, 56–77, 98–112.
-2. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]] — monolithic architecture, microservice trade-offs, decomposition và database patterns, PDF 32–55, 81–95.
-3. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]] — architectural design, decomposition và information hiding, PDF 169–200.
+1. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: modular monolith, information hiding, coupling và decomposition, PDF 32-37, 56-77, 98-112.
+2. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]]: monolithic architecture, microservice trade-offs, decomposition và database patterns, PDF 32-55, 81-95.
+3. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]]: architectural design, decomposition và information hiding, PDF 169-200.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 32–37 | monolith, modular monolith và deployability | §§1–2, 9–10 | Đã trình bày artifact boundary tách khỏi code modularity |
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 56–77, 98–112 | information hiding, coupling và decomposition | §§3–7, 10–12 | Đã trình bày change boundary, data ownership và trigger |
-| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], pp. 32–55 | monolith/microservice benefits và drawbacks | §§1, 5–8 | Đã trình bày operational tax và dấu hiệu tách sớm |
-| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], pp. 81–95 | decomposition và database boundary | §§3–7, 11 | Đã trình bày ownership, consistency và measurable trigger |
-| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], pp. 169–200 | architectural decomposition và information hiding | §§2–4, 9–12 | Đã dùng làm nền cho decision record |
-| Tổng hợp bài DE-L099 | ba tình huống, ba điều kiện cần, ADR và evidence | §§7, 11–15 | Đã gắn `synthesis`; không lấy xu hướng làm trigger |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 32-37 | monolith, modular monolith và deployability | §§1-2, 9-10 | Đã trình bày artifact boundary tách khỏi code modularity |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 56-77, 98-112 | information hiding, coupling và decomposition | §§3-7, 10-12 | Đã trình bày change boundary, data ownership và trigger |
+| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], pp. 32-55 | monolith/microservice benefits và drawbacks | §§1, 5-8 | Đã trình bày operational tax và dấu hiệu tách sớm |
+| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], pp. 81-95 | decomposition và database boundary | §§3-7, 11 | Đã trình bày ownership, consistency và measurable trigger |
+| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], pp. 169-200 | architectural decomposition và information hiding | §§2-4, 9-12 | Đã dùng làm nền cho decision record |
+| Tổng hợp bài DE-L099 | ba tình huống, ba điều kiện cần, ADR và evidence | §§7, 11-15 | Đã gắn `synthesis`; không lấy xu hướng làm trigger |
 
 Note không giả định microservice là đích đến. Quyết định tách chỉ hợp lệ khi có pain đo được, boundary đủ rõ và năng lực vận hành tương ứng.
 
@@ -290,7 +290,7 @@ Note không giả định microservice là đích đến. Quyết định tách 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.software-engineering.monolith-modular-monolith-cost-of-splitting`
+## Execution capsule: kiểm chứng `wiki.software-engineering.monolith-modular-monolith-cost-of-splitting`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.software-engineering.monolith-modular-monolith-cost-of-splitting`, sơ đồ, ví dụ và artifact về **Monolith, modular monolith và chi phí tách dịch vụ** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

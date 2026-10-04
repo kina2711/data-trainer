@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao tách batching ở query engine khỏi compiler auto-vectorization và SIMD instructions, rồi đo contribution mà không giả định hai speedup cộng tuyến tính?
 source_ids:
   - src.paper.monetdb-x100-hyper-pipelining
@@ -234,7 +234,7 @@ Mỗi mệnh đề hiệu năng cần counterfactual, correctness oracle và cou
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.olap.vectorized-execution-not-simd`
+## Execution capsule: kiểm chứng `wiki.olap.vectorized-execution-not-simd`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.olap.vectorized-execution-not-simd`, sơ đồ, ví dụ và artifact về **Vectorized Execution Is Not SIMD** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -256,7 +256,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Làm sao tách batching ở query engine khỏi compiler auto-vectorization và SIMD instructions, rồi đo contribution mà không giả định hai speedup cộng tuyến tính?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Làm sao tách batching ở query engine khỏi compiler auto-vectorization và SIMD instructions, rồi đo contribution mà không giả định hai speedup cộng tuyến tính? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Vectorized Execution Is Not SIMD** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

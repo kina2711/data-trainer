@@ -38,7 +38,7 @@ Phải tái hiện DAG không parse, schedule không tạo run, queued không đ
 
 ## 3. Boundary evidence
 
-Mỗi incident cần expected transition, component owner, metric/log/query và điểm handoff sang data plane. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Control-plane diagnosis - the required incident list`, câu hỏi thực dụng là: Danh sách incident tối thiểu nào chứng minh người vận hành chẩn đoán được control plane thay vì chỉ đọc task log? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Mỗi incident cần expected transition, component owner, metric/log/query và điểm handoff sang data plane. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Control-plane diagnosis - the required incident list`, câu hỏi thực dụng là: Danh sách incident tối thiểu nào chứng minh người vận hành chẩn đoán được control plane thay vì chỉ đọc task log? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Diagnosis order
 
@@ -221,7 +221,7 @@ Với `wiki.orchestration.control-plane-diagnosis`, command thành công không 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.orchestration.control-plane-diagnosis`
+## Execution capsule: kiểm chứng `wiki.orchestration.control-plane-diagnosis`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.orchestration.control-plane-diagnosis`, sơ đồ, ví dụ và artifact về **Control-plane diagnosis - the required incident list** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

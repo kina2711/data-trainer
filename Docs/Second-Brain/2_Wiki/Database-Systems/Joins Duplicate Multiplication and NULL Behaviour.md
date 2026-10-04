@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao viết và kiểm chứng join nhiều bảng để không mất row, không nhân measure, không phá outer semantics và không che lỗi bằng DISTINCT?
 source_ids:
   - src.course.hcmut-relational-algebra
@@ -35,7 +35,7 @@ relationships:
 
 Conceptually, cross join tạo mọi cặp R×S; qualified join giữ cặp mà ON là TRUE. PostgreSQL nêu N×M rows cho cross join. Physical engine không nhất thiết materialize product: hash/merge/nested-loop thực thi cùng logical relation theo plan.
 
-Trước join, viết grain: “một row mỗi invoice”, “một row mỗi invoice line”, “một row mỗi product version”. Không biết grain thì không thể dự đoán multiplicity.
+Trước join, viết grain: một row mỗi invoice, một row mỗi invoice line, một row mỗi product version. Không biết grain thì không thể dự đoán multiplicity.
 
 ## 2. Inner join
 
@@ -45,15 +45,15 @@ Mỗi left row xuất hiện một lần cho mỗi right match. Zero match làm 
 
 ## 3. Left, right và full outer join
 
-Left join thực hiện matches rồi thêm một null-extended row cho mỗi left row không match. Nó bảo toàn **ít nhất một output row** mỗi left row, không bảo đảm đúng một—multi-match vẫn nhân. Right là converse; full giữ unmatched cả hai phía.
+Left join thực hiện matches rồi thêm một null-extended row cho mỗi left row không match. Nó bảo toàn **ít nhất một output row** mỗi left row, không bảo đảm đúng một:multi-match vẫn nhân. Right là converse; full giữ unmatched cả hai phía.
 
-Null-extended columns không phân biệt “không có match” với matched row có nullable column nếu chỉ kiểm một nullable field. Kiểm right-side key declared NOT NULL, hoặc marker rõ.
+Null-extended columns không phân biệt không có match với matched row có nullable column nếu chỉ kiểm một nullable field. Kiểm right-side key declared NOT NULL, hoặc marker rõ.
 
 ## 4. ON và WHERE với outer join
 
 Right predicate trong ON quyết định row nào eligible để match nhưng vẫn preserve left row. Cùng predicate trong WHERE chạy sau join và loại null-extended rows vì UNKNOWN/FALSE. Đây là lỗi left join âm thầm thành inner-like.
 
-Nếu yêu cầu “mọi customer và paid orders nếu có”, status nằm ON. Nếu yêu cầu “chỉ customer có paid order”, inner/EXISTS rõ hơn. Không chọn placement vì performance trước semantics.
+Nếu yêu cầu mọi customer và paid orders nếu có, status nằm ON. Nếu yêu cầu chỉ customer có paid order, inner/EXISTS rõ hơn. Không chọn placement vì performance trước semantics.
 
 ## 5. Semi join
 
@@ -112,7 +112,7 @@ Một audit query nhóm theo left ID và đếm matches, báo distribution 0/1/>
 
 ## 12. Reconciliation tổng
 
-Chọn control total từ authoritative base trước join: invoice amount, quantity hoặc count IDs. Sau pipeline, reconcile đúng grain và tolerance. Nếu currency/rounding, ghi unit và rule. “Tổng cuối giống dashboard cũ” không đủ nếu dashboard cũ cũng sai.
+Chọn control total từ authoritative base trước join: invoice amount, quantity hoặc count IDs. Sau pipeline, reconcile đúng grain và tolerance. Nếu currency/rounding, ghi unit và rule. Tổng cuối giống dashboard cũ không đủ nếu dashboard cũ cũng sai.
 
 Kiểm both directions bằng anti-joins: base missing from output và output without base. Lưu reason categories cho legitimate exclusions.
 
@@ -154,7 +154,7 @@ Thêm sample IDs cho các nhóm 0, 1 và >1 match. Với SCD, lưu intervals c�
 
 ## 17.2. Case study năm bảng
 
-Invoice có lines, customer, product_version và payments. Desired grain customer-product. Trước hết tính line revenue ở line grain; temporal join product version theo half-open interval và assert mỗi line đúng một version; join customer many-to-one; aggregate revenue về customer-product. Payments không được join vào line detail nếu chỉ cần paid status—dùng EXISTS hoặc aggregate payment về invoice trước.
+Invoice có lines, customer, product_version và payments. Desired grain customer-product. Trước hết tính line revenue ở line grain; temporal join product version theo half-open interval và assert mỗi line đúng một version; join customer many-to-one; aggregate revenue về customer-product. Payments không được join vào line detail nếu chỉ cần paid status:dùng EXISTS hoặc aggregate payment về invoice trước.
 
 Cố ý tạo hai product versions overlap cho một line: match count thành 2, revenue tăng gấp đôi. Cố ý tạo hai payments: direct join lines×payments nhân tiếp. `SELECT DISTINCT` không cứu SUM vì inflation xảy ra trước projection. Audit ledger bắt edge đầu tiên vi phạm. Fix constraint interval/aggregate grain rồi rerun reconciliation.
 
@@ -162,11 +162,11 @@ Cố ý tạo hai product versions overlap cho một line: match count thành 2,
 
 PK/UNIQUE/FK/exclusion constraint là bằng chứng schema về cardinality; profiling chỉ là bằng chứng trạng thái hiện tại. Row count trước/sau hữu ích nhưng có thể mất 10 row và nhân 10 row khác, tổng vẫn bằng. Control total có thể khớp trong khi phân bổ customer sai. Vì vậy cần constraint + match distribution + anti-join + per-key reconciliation + aggregate totals.
 
-Kết luận “không mất, không nhân” phải ghi phạm vi dataset/snapshot và invariants. Nếu upstream chưa enforce unique, tạo data-quality gate và quarantine; không nâng sample sạch thành guarantee.
+Kết luận không mất, không nhân phải ghi phạm vi dataset/snapshot và invariants. Nếu upstream chưa enforce unique, tạo data-quality gate và quarantine; không nâng sample sạch thành guarantee.
 
 ## 18. Câu hỏi tự kiểm tra
 
-1. Left join bảo đảm “ít nhất một” hay “đúng một” output row mỗi left row?
+1. Left join bảo đảm ít nhất một hay đúng một output row mỗi left row?
 2. Formula fanout theo key là gì?
 3. EXISTS khác inner join + DISTINCT ở semantics/cardinality nào?
 4. Vì sao SUM(DISTINCT amount) không chữa join multiplication?
@@ -181,20 +181,20 @@ Kết luận “không mất, không nhân” phải ghi phạm vi dataset/snaps
 - Plan/performance observations phụ thuộc PostgreSQL version, stats và data distribution.
 
 ## Reference
-1. [[SRC-HCMUT-RELATIONAL-ALGEBRA]] — PDF 28–50.
-2. [[SRC-HCMUT-SQL]] — PDF 61–79.
-3. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] — join types và ON/WHERE example.
-4. [[SRC-POSTGRESQL-17-NULL-COMPARISON]] — NULL comparison semantics.
+1. [[SRC-HCMUT-RELATIONAL-ALGEBRA]]: PDF 28-50.
+2. [[SRC-HCMUT-SQL]]: PDF 61-79.
+3. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]]: join types và ON/WHERE example.
+4. [[SRC-POSTGRESQL-17-NULL-COMPARISON]]: NULL comparison semantics.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-HCMUT-RELATIONAL-ALGEBRA]], PDF 28–50 | product, theta/equi/natural/outer join | §§1–6 | Đã nối formal operators với SQL |
-| [[SRC-HCMUT-SQL]], PDF 61–79 | joined relations, aggregate/group | §§2–4, 9 | Đã giữ aggregate effect |
-| [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | join types, ON versus WHERE | §§2–6, 15 | Đã dùng official semantics |
-| [[SRC-POSTGRESQL-17-NULL-COMPARISON]] | UNKNOWN/null-safe predicates | §§6–7 | Đã giữ giới hạn null-safe equality |
-| Tổng hợp DE-L119 | grain, fanout, reconciliation, temporal join | §§8–17 | Đã ghi thành workflow kiểm được |
+| [[SRC-HCMUT-RELATIONAL-ALGEBRA]], PDF 28-50 | product, theta/equi/natural/outer join | §§1-6 | Đã nối formal operators với SQL |
+| [[SRC-HCMUT-SQL]], PDF 61-79 | joined relations, aggregate/group | §§2-4, 9 | Đã giữ aggregate effect |
+| [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | join types, ON versus WHERE | §§2-6, 15 | Đã dùng official semantics |
+| [[SRC-POSTGRESQL-17-NULL-COMPARISON]] | UNKNOWN/null-safe predicates | §§6-7 | Đã giữ giới hạn null-safe equality |
+| Tổng hợp DE-L119 | grain, fanout, reconciliation, temporal join | §§8-17 | Đã ghi thành workflow kiểm được |
 
 ## Key takeaways
 - Join multiplicity được quyết định bởi matches theo key, không bởi số table.
@@ -205,7 +205,7 @@ Kết luận “không mất, không nhân” phải ghi phạm vi dataset/snaps
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.joins-duplicate-multiplication-null`
+## Execution capsule: kiểm chứng `wiki.database.joins-duplicate-multiplication-null`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.joins-duplicate-multiplication-null`, sơ đồ, ví dụ và artifact về **Phép kết, nhân dòng và hành vi NULL** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Phân biệt ETL và ELT bằng nơi, thời điểm và trust boundary của compute như thế nào thay vì tranh luận theo khẩu hiệu?
 source_ids:
   - src.book.reis-housley-fundamentals-data-engineering
@@ -34,7 +34,7 @@ ETL biến đổi trước khi load vào analytical target; ELT load representat
 
 ## 2. Năm trục quyết định
 
-Data gravity/egress, source and target compute capacity, security/privacy boundary, latency/replay requirements và tooling/governance. Thêm transformation complexity, skill set, observability, portability và unit cost. Không chọn vì cloud warehouse “mạnh” hoặc ETL “cũ”. Mỗi criterion có measurement, constraint và reversal condition.
+Data gravity/egress, source and target compute capacity, security/privacy boundary, latency/replay requirements và tooling/governance. Thêm transformation complexity, skill set, observability, portability và unit cost. Không chọn vì cloud warehouse mạnh hoặc ETL cũ. Mỗi criterion có measurement, constraint và reversal condition.
 
 ## 3. ETL trade-offs
 
@@ -42,7 +42,7 @@ Pre-load transform giảm dữ liệu nhạy cảm/volume vào target và cho ph
 
 ## 4. ELT trade-offs
 
-Land-first giữ fidelity/replay và tận dụng scalable target SQL, lineage/testing ecosystem; đổi lại raw-zone access/retention, storage/scan cost và target lock-in. “Load raw” vẫn phải qua security, integrity và envelope controls. ELT không cho phép publish partial models hoặc bỏ source impact. Compute location không tự quyết correctness.
+Land-first giữ fidelity/replay và tận dụng scalable target SQL, lineage/testing ecosystem; đổi lại raw-zone access/retention, storage/scan cost và target lock-in. Load raw vẫn phải qua security, integrity và envelope controls. ELT không cho phép publish partial models hoặc bỏ source impact. Compute location không tự quyết correctness.
 
 ## 5. Benchmark đúng câu hỏi
 
@@ -220,7 +220,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.transformation.etl-elt-compute-location`
+## Execution capsule: kiểm chứng `wiki.transformation.etl-elt-compute-location`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.transformation.etl-elt-compute-location`, sơ đồ, ví dụ và artifact về **ETL and ELT Where the Compute Lives** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

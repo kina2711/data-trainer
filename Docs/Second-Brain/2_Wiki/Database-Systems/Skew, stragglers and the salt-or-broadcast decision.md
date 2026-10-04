@@ -38,7 +38,7 @@ Guarantee của partition skew, straggler diagnosis và quyết định salt-or-
 
 ## 3. Failure mode
 
-Phân tích partition skew, straggler diagnosis và quyết định salt-or-broadcast cần chỉ ra earliest controllable failure, blast radius và trạng thái còn quan sát được sau lỗi. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Skew, stragglers and the salt-or-broadcast decision`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành partition skew, straggler diagnosis và quyết định salt-or-broadcast mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân tích partition skew, straggler diagnosis và quyết định salt-or-broadcast cần chỉ ra earliest controllable failure, blast radius và trạng thái còn quan sát được sau lỗi. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Skew, stragglers and the salt-or-broadcast decision`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành partition skew, straggler diagnosis và quyết định salt-or-broadcast mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision rule
 
@@ -46,7 +46,7 @@ Quyết định về partition skew, straggler diagnosis và quyết định sal
 
 ## 5. Evidence
 
-Bằng chứng cho partition skew, straggler diagnosis và quyết định salt-or-broadcast gồm resolved configuration, runtime identity, metrics/logs, state trước–sau và independent oracle. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `Skew, stragglers and the salt-or-broadcast decision`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành partition skew, straggler diagnosis và quyết định salt-or-broadcast mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Bằng chứng cho partition skew, straggler diagnosis và quyết định salt-or-broadcast gồm resolved configuration, runtime identity, metrics/logs, state trước-sau và independent oracle. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `Skew, stragglers and the salt-or-broadcast decision`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành partition skew, straggler diagnosis và quyết định salt-or-broadcast mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 6. Recovery lab
 
@@ -88,9 +88,9 @@ Với `wiki.spark.skew-straggler-decision`, command thành công không tự ch�
 
 **Bằng chứng cần giữ.** Đối với probe 4 của `Skew, stragglers and the salt-or-broadcast decision`, lưu checkpoint, external ledger và trạng thái sau restart. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
 
-### 7.5. Skew, stragglers and the salt-or-broadcast decision: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho partition skew, straggler diagnosis và quyết định salt-or-broadcast gồm resolved configuration, runtime identity, metrics/logs, state trước–sau và independent oracle
+### 7.5. Skew, stragglers and the salt-or-broadcast decision: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho partition skew, straggler diagnosis và quyết định salt-or-broadcast gồm resolved configuration, runtime identity, metrics/logs, state trước-sau và independent oracle
 
-**Mệnh đề cần kiểm.** Skew, stragglers and the salt-or-broadcast decision: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho partition skew, straggler diagnosis và quyết định salt-or-broadcast gồm resolved configuration, runtime identity, metrics/logs, state trước–sau và independent oracle.
+**Mệnh đề cần kiểm.** Skew, stragglers and the salt-or-broadcast decision: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho partition skew, straggler diagnosis và quyết định salt-or-broadcast gồm resolved configuration, runtime identity, metrics/logs, state trước-sau và independent oracle.
 
 **Thiết kế phép thử cho `wiki.spark.skew-straggler-decision`.** Trong ngữ cảnh `wiki.spark.skew-straggler-decision`, đảo thứ tự input và concurrency nhưng giữ logical population. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Skew, stragglers and the salt-or-broadcast decision` công bố.
 
@@ -136,9 +136,9 @@ Với `wiki.spark.skew-straggler-decision`, command thành công không tự ch�
 
 **Bằng chứng cần giữ.** Đối với probe 10 của `Skew, stragglers and the salt-or-broadcast decision`, package phải đủ để người khác dựng lại decision và limitation. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
 
-### 7.11. Skew, stragglers and the salt-or-broadcast decision: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho partition skew, straggler diagnosis và quyết định salt-or-broadcast gồm resolved configuration, runtime identity, metrics/logs, state trước–sau và independent oracle
+### 7.11. Skew, stragglers and the salt-or-broadcast decision: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho partition skew, straggler diagnosis và quyết định salt-or-broadcast gồm resolved configuration, runtime identity, metrics/logs, state trước-sau và independent oracle
 
-**Mệnh đề cần kiểm.** Skew, stragglers and the salt-or-broadcast decision: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho partition skew, straggler diagnosis và quyết định salt-or-broadcast gồm resolved configuration, runtime identity, metrics/logs, state trước–sau và independent oracle.
+**Mệnh đề cần kiểm.** Skew, stragglers and the salt-or-broadcast decision: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho partition skew, straggler diagnosis và quyết định salt-or-broadcast gồm resolved configuration, runtime identity, metrics/logs, state trước-sau và independent oracle.
 
 **Thiết kế phép thử cho `wiki.spark.skew-straggler-decision`.** Trong ngữ cảnh `wiki.spark.skew-straggler-decision`, so với oracle độc lập không dùng chung query hoặc parser. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Skew, stragglers and the salt-or-broadcast decision` công bố.
 
@@ -221,7 +221,7 @@ Với `wiki.spark.skew-straggler-decision`, command thành công không tự ch�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.spark.skew-straggler-decision`
+## Execution capsule: kiểm chứng `wiki.spark.skew-straggler-decision`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.spark.skew-straggler-decision`, sơ đồ, ví dụ và artifact về **Skew, stragglers and the salt-or-broadcast decision** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Phân biệt quan hệ hình thức với bảng SQL, xác định candidate key và functional dependency thế nào để đặt đúng ràng buộc trong database?
 source_ids:
   - src.course.hcmut-relational-data-model
@@ -34,7 +34,7 @@ relationships:
 
 Một relation schema $R(A_1,\ldots,A_n)$ đặt tên tập thuộc tính và domain. Một relation state là tập tuple phù hợp schema tại một thời điểm. Trong mô hình hình thức, tuple không có thứ tự, thứ tự thuộc tính không mang ý nghĩa, và vì là tập nên không có hai tuple hoàn toàn giống nhau.
 
-SQL table gần với relation nhưng không đồng nhất. Nếu không có key/unique constraint, table có thể chứa duplicate rows. Query result thường có bag semantics và không có thứ tự đảm bảo nếu thiếu `ORDER BY`. Vì vậy câu “bảng không có thứ tự và không trùng” phải tách: không có logical order là nguyên lý đúng; không trùng chỉ đúng khi schema/constraint bảo đảm hoặc đang nói relation hình thức.
+SQL table gần với relation nhưng không đồng nhất. Nếu không có key/unique constraint, table có thể chứa duplicate rows. Query result thường có bag semantics và không có thứ tự đảm bảo nếu thiếu `ORDER BY`. Vì vậy câu bảng không có thứ tự và không trùng phải tách: không có logical order là nguyên lý đúng; không trùng chỉ đúng khi schema/constraint bảo đảm hoặc đang nói relation hình thức.
 
 `NULL` còn làm logic SQL khác logic hai giá trị của mô hình giản lược. Bài này dùng PostgreSQL 17 cho phép thử và luôn kiểm semantics constraint cụ thể.
 
@@ -103,7 +103,7 @@ FD tổng quát không phải lúc nào biểu diễn bằng một constraint đ
 
 Application validation cho error message sớm và domain UX. Database constraint là tuyến cuối cho mọi write path: API khác, migration, import, admin tool và concurrent request. Chỉ validation ứng dụng tạo race check-then-insert và dễ bị bypass.
 
-Hai tầng nên dùng cùng invariant. App có thể kiểm trước, nhưng vẫn bắt unique/FK/check violation và ánh xạ thành domain error. Không bỏ constraint vì “service duy nhất đang ghi”; hệ thống tiến hoá và script vận hành vẫn là write path.
+Hai tầng nên dùng cùng invariant. App có thể kiểm trước, nhưng vẫn bắt unique/FK/check violation và ánh xạ thành domain error. Không bỏ constraint vì service duy nhất đang ghi; hệ thống tiến hoá và script vận hành vẫn là write path.
 
 ## 10. Surrogate và natural key
 
@@ -113,7 +113,7 @@ Không đưa dữ liệu nhạy cảm như national ID vào mọi foreign key ch
 
 ## 11. Referential integrity và update semantics
 
-Foreign key không chỉ “có cột ID”. Nó quy định referenced key, nullability và action khi parent update/delete: restrict, cascade, set null hay policy khác. Cascade rộng có thể xoá ngoài ý muốn; restrict có thể làm workflow khó. Quyết định dựa trên aggregate lifecycle.
+Foreign key không chỉ có cột ID. Nó quy định referenced key, nullability và action khi parent update/delete: restrict, cascade, set null hay policy khác. Cascade rộng có thể xoá ngoài ý muốn; restrict có thể làm workflow khó. Quyết định dựa trên aggregate lifecycle.
 
 Orphan query trước migration, index phục vụ join/check khi cần và transaction test cho concurrent delete/insert là phần triển khai. Constraint name phải rõ để error mapping ổn định.
 
@@ -153,9 +153,9 @@ Với mỗi bảng: mô tả valid states; liệt kê superkey/candidate key; n�
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-HCMUT-RELATIONAL-DATA-MODEL]], PDF 4–28 | relation, tuple, domain, keys và integrity | §§1–3, 8, 11 | Đã giữ và tách khỏi SQL bag semantics |
-| [[SRC-HCMUT-FUNCTIONAL-DEPENDENCIES]], PDF 5–37 | FD, Armstrong axioms và closure | §§5–7 | Đã trình bày, không suy từ sample |
-| [[SRC-POSTGRESQL-17-CONSTRAINTS]] | CHECK, NOT NULL, UNIQUE, PK, FK | §§8–11 | Đã ghi rõ scope PostgreSQL 17 |
+| [[SRC-HCMUT-RELATIONAL-DATA-MODEL]], PDF 4-28 | relation, tuple, domain, keys và integrity | §§1-3, 8, 11 | Đã giữ và tách khỏi SQL bag semantics |
+| [[SRC-HCMUT-FUNCTIONAL-DEPENDENCIES]], PDF 5-37 | FD, Armstrong axioms và closure | §§5-7 | Đã trình bày, không suy từ sample |
+| [[SRC-POSTGRESQL-17-CONSTRAINTS]] | CHECK, NOT NULL, UNIQUE, PK, FK | §§8-11 | Đã ghi rõ scope PostgreSQL 17 |
 | Tổng hợp DE-L113 | discovery/profile/enforcement và hai write path | §§4, 9, 12 | Đã gắn nhãn synthesis và evidence |
 
 ## Key takeaways
@@ -166,13 +166,13 @@ Với mỗi bảng: mô tả valid states; liệt kê superkey/candidate key; n�
 - Constraint phải ở database để mọi write path cùng chịu invariant.
 
 ## Reference
-1. [[SRC-HCMUT-RELATIONAL-DATA-MODEL]] — PDF 4–28.
-2. [[SRC-HCMUT-FUNCTIONAL-DEPENDENCIES]] — PDF 5–37.
-3. [[SRC-POSTGRESQL-17-CONSTRAINTS]] — PostgreSQL 17 constraints.
+1. [[SRC-HCMUT-RELATIONAL-DATA-MODEL]]: PDF 4-28.
+2. [[SRC-HCMUT-FUNCTIONAL-DEPENDENCIES]]: PDF 5-37.
+3. [[SRC-POSTGRESQL-17-CONSTRAINTS]]: PostgreSQL 17 constraints.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.relations-keys-functional-dependencies`
+## Execution capsule: kiểm chứng `wiki.database.relations-keys-functional-dependencies`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.relations-keys-functional-dependencies`, sơ đồ, ví dụ và artifact về **Quan hệ, khoá và phụ thuộc hàm** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

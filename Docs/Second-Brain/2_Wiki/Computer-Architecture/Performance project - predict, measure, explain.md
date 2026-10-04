@@ -33,19 +33,19 @@ reference_path: Material/DE/Reference/Library/Knowledge-Notes/PACK-ENGINEERING-F
 > [!abstract] Câu hỏi trung tâm
 > Làm thế nào mô hình, đo và ra quyết định đúng về Performance project - predict, measure, explain?
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 Sửa nhiều chỗ cùng lúc · tối ưu trước khi đo · giấu dự đoán sai · cải thiện tốc độ mà đổi kết quả tính ra. Đây không phải danh sách lỗi cú pháp. Mỗi lỗi làm người vận hành chọn nhầm owner hoặc chữa symptom ở layer sau, khiến thời gian phục hồi tăng dù command vừa chạy trả về thành công.
 
 Năng lực cần giữ sau bài là: Tăng tốc một chương trình ít nhất một mức bậc, mỗi lần sửa dẫn được về một số đo, và kết quả tính ra không đổi. Nếu learner chỉ nhắc lại định nghĩa nhưng không phân biệt được hai state gần nhau trên số đo, bài chưa đạt.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Bài dự án khép module, và điểm chấm nằm ở chất lượng lập luận chứ ở con số đẹp. Nhận một chương trình xử lý dữ liệu chạy chậm. Quy trình bắt buộc theo đúng thứ tự: đọc mã và **viết dự đoán nút thắt trước khi đo**, đo để xác nhận hoặc bác bỏ dự đoán, sửa đúng một thứ, đo lại, rồi lặp. Ghi lại mọi dự đoán sai và lý do sai, vì đó là phần có giá trị học tập cao nhất và cũng là phần hay bị giấu đi. Yêu cầu đạt: cải thiện ít nhất một mức bậc, kết quả tính ra không đổi, và mỗi lần sửa dẫn được về một số đo. Nộp kèm báo cáo hiệu năng sáu phần theo lesson 59 và sơ đồ đường đi của dữ liệu từ ứng dụng tới thiết bị theo yêu cầu của module. Cấm một điều: sửa nhiều chỗ cùng lúc, vì khi đó không biết chỗ nào có tác dụng.
 
 Tách ba lớp khi đọc cơ chế `wiki.de-foundation.performance-project-predict-measure-explain`: declared state là điều cấu hình hoặc API yêu cầu; executed state là việc runtime thực sự làm; consumer-visible state là điều client hay operator quan sát. Ba lớp có thể lệch nhau vì cache, buffering, retry, scheduling, queue hoặc failure giữa hai transition. Evidence phải chỉ ra lớp nào đang được đo.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Bước | Câu hỏi phải khóa | Điều kiện đạt |
 |---|---|---|
@@ -56,15 +56,15 @@ Tách ba lớp khi đọc cơ chế `wiki.de-foundation.performance-project-pred
 
 Quy tắc mặc định là chọn phép giải thích đơn giản nhất qua được hard constraints, rồi viết trước reversal trigger. Với `Performance project - predict, measure, explain`, absence of error không phải pass; pass cần observation đúng grain, một oracle độc lập và changed-constraint case đủ làm model có cơ hội thất bại.
 
-## Case Study Thực Chiến: Performance project - predict, measure, explain
+## Worked Case: Performance project - predict, measure, explain
 
 Nhận chương trình chậm. Viết dự đoán trước. Đo, sửa từng thứ một, đo lại sau mỗi lần. Ghi nhật ký gồm cả dự đoán sai. Nộp báo cáo sáu phần và sơ đồ đường đi dữ liệu. Đối soát kết quả tính ra với bản gốc.
 
-Trong case `wiki.de-foundation.performance-project-predict-measure-explain`, learner ghi expected transition, input snapshot, version và giới hạn an toàn trước khi chạy. Sau execution, họ giữ raw counter, timestamp, exit status, state trước–sau và giải thích delta bằng mechanism ở trên. Đánh giá không cho phép sửa expected result sau khi nhìn output mà không ghi change record.
+Trong case `wiki.de-foundation.performance-project-predict-measure-explain`, learner ghi expected transition, input snapshot, version và giới hạn an toàn trước khi chạy. Sau execution, họ giữ raw counter, timestamp, exit status, state trước-sau và giải thích delta bằng mechanism ở trên. Đánh giá không cho phép sửa expected result sau khi nhìn output mà không ghi change record.
 
 Biến thể khó hơn đổi một constraint có khả năng đảo kết luận: workload shape, memory pressure, connection reuse, retry budget, permission hoặc dependency direction. Tầng *sáng tạo*. Bài tổng hợp toàn module thành một quy trình tối ưu có bằng chứng. Kiểm bằng cặp số đo trước sau cộng rà soát nhật ký; đạt khi cải thiện đạt ngưỡng, kết quả không đổi, và mọi lần sửa có số đo dẫn chứng.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Sửa nhiều chỗ cùng lúc. **Thực tế:** tín hiệu chỉ chứng minh điều nó đo trong đúng scope; state ở layer khác vẫn có thể trái ngược. **Vì sao nghe hợp lý:** happy path nhỏ thường không chạm queue, cache, partial progress hoặc restart.
 
@@ -88,7 +88,7 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 **Thiết kế phép thử cho `wiki.de-foundation.performance-project-predict-measure-explain`.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, tạo positive và negative control chỉ khác một điều kiện; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P1 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P1 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 2: identity, ownership và boundary
 
@@ -96,7 +96,7 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 **Thiết kế phép thử cho `wiki.de-foundation.performance-project-predict-measure-explain`.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, tạo boundary case ngay trước và sau ngưỡng; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P2 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P2 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 3: failure path và recovery
 
@@ -104,7 +104,7 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 **Thiết kế phép thử cho `wiki.de-foundation.performance-project-predict-measure-explain`.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, tạo replay cùng identity nhưng đổi state; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P3 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P3 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 4: decision trade-off và reversal trigger
 
@@ -112,7 +112,7 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 **Thiết kế phép thử cho `wiki.de-foundation.performance-project-predict-measure-explain`.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, tạo failure inject trước và sau transition bền vững; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P4 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P4 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 5: evidence package và oracle
 
@@ -120,7 +120,7 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 **Thiết kế phép thử cho `wiki.de-foundation.performance-project-predict-measure-explain`.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, tạo changed scale làm cost model đổi; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P5 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P5 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 6: changed-constraint transfer
 
@@ -128,7 +128,7 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 **Thiết kế phép thử cho `wiki.de-foundation.performance-project-predict-measure-explain`.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, tạo adversarial order, skew hoặc packet timing; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P6 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P6 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 7: state transition và invariant
 
@@ -136,7 +136,7 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 **Thiết kế phép thử cho `wiki.de-foundation.performance-project-predict-measure-explain`.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, tạo fresh environment không cache; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P7 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P7 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 8: identity, ownership và boundary
 
@@ -144,7 +144,7 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 **Thiết kế phép thử cho `wiki.de-foundation.performance-project-predict-measure-explain`.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, tạo independent oracle không dùng chung implementation; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P8 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P8 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 9: failure path và recovery
 
@@ -152,7 +152,7 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 **Thiết kế phép thử cho `wiki.de-foundation.performance-project-predict-measure-explain`.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, tạo partial progress rồi restart; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P9 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P9 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 10: decision trade-off và reversal trigger
 
@@ -160,7 +160,7 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 **Thiết kế phép thử cho `wiki.de-foundation.performance-project-predict-measure-explain`.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, tạo missing evidence phải abstain; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P10 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P10 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 11: evidence package và oracle
 
@@ -168,7 +168,7 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 **Thiết kế phép thử cho `wiki.de-foundation.performance-project-predict-measure-explain`.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, tạo reviewer tái hiện từ evidence package; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P11 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P11 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 12: changed-constraint transfer
 
@@ -176,7 +176,7 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 **Thiết kế phép thử cho `wiki.de-foundation.performance-project-predict-measure-explain`.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, tạo constraint đổi đủ để quyết định đảo; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P12 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P12 cần giữ.** Với `wiki.de-foundation.performance-project-predict-measure-explain`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ## Tự Kiểm Tra Nhanh
 
@@ -208,8 +208,8 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-PATTERSON-HENNESSY-COD-5E]] — `src.book.patterson-hennessy-cod.5e` | Chapter 5 và §6.3; PDF 397–538 | mechanism và boundary liên quan trực tiếp tới `Performance project - predict, measure, explain` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L060 |
-| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]] — `src.book.hunt-thomas-pragmatic-programmer.20ae` | Topics 10, 23–25 và 40; PDF 76–280 | mechanism và boundary liên quan trực tiếp tới `Performance project - predict, measure, explain` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L060 |
+| [[SRC-PATTERSON-HENNESSY-COD-5E]]: `src.book.patterson-hennessy-cod.5e` | Chapter 5 và §6.3; PDF 397-538 | mechanism và boundary liên quan trực tiếp tới `Performance project - predict, measure, explain` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L060 |
+| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]]: `src.book.hunt-thomas-pragmatic-programmer.20ae` | Topics 10, 23-25 và 40; PDF 76-280 | mechanism và boundary liên quan trực tiếp tới `Performance project - predict, measure, explain` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L060 |
 
 ## Key takeaways
 - Tăng tốc một chương trình ít nhất một mức bậc, mỗi lần sửa dẫn được về một số đo, và kết quả tính ra không đổi.
@@ -219,7 +219,7 @@ Protocol riêng của `Performance project - predict, measure, explain` dùng đ
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.de-foundation.performance-project-predict-measure-explain`
+## Execution capsule: kiểm chứng `wiki.de-foundation.performance-project-predict-measure-explain`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.de-foundation.performance-project-predict-measure-explain`, sơ đồ, ví dụ và artifact về **Performance project - predict, measure, explain** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

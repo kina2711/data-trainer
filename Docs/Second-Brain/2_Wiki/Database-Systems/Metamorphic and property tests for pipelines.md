@@ -38,7 +38,7 @@ Permutation, duplication, partitioning, scale, rename-compatible và irrelevant-
 
 ## 3. Domain properties
 
-Conservation, idempotence, monotonicity, boundedness và referential closure phải gắn domain chứ không chọn vì dễ viết. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Metamorphic and property tests for pipelines`, câu hỏi thực dụng là: Khi không có expected output đầy đủ, metamorphic relation và property nào vẫn có thể phát hiện pipeline sai? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Conservation, idempotence, monotonicity, boundedness và referential closure phải gắn domain chứ không chọn vì dễ viết. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Metamorphic and property tests for pipelines`, câu hỏi thực dụng là: Khi không có expected output đầy đủ, metamorphic relation và property nào vẫn có thể phát hiện pipeline sai? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Generator discipline
 
@@ -221,7 +221,7 @@ Với `wiki.data-quality.metamorphic-property-tests`, command thành công khôn
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-quality.metamorphic-property-tests`
+## Execution capsule: kiểm chứng `wiki.data-quality.metamorphic-property-tests`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-quality.metamorphic-property-tests`, sơ đồ, ví dụ và artifact về **Metamorphic and property tests for pipelines** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

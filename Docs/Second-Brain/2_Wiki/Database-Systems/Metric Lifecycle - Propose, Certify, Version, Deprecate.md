@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Metric đi qua propose–review–certify–deprecate–remove bằng gates nào, và breaking semantic change được di trú mà không đổi nghĩa lịch sử ra sao?
 source_ids:
   - src.book.geewax-api-design-patterns.1e
@@ -27,7 +27,7 @@ relationships:
 # Metric Lifecycle - Propose, Certify, Version, Deprecate
 
 > [!abstract] Câu hỏi trung tâm
-> Metric đi qua propose–review–certify–deprecate–remove bằng gates nào, và breaking semantic change được di trú mà không đổi nghĩa lịch sử ra sao?
+> Metric đi qua propose-review-certify-deprecate-remove bằng gates nào, và breaking semantic change được di trú mà không đổi nghĩa lịch sử ra sao?
 
 ## 1. State machine thay cho nhãn trang trí
 
@@ -35,7 +35,7 @@ Năm trạng thái cần entry criteria, allowed actions, transitions, owner và
 
 ## 2. Certification bundle
 
-Gate chứng nhận gồm contract sáu phần, owner, grain/path proof, compatibility matrix, independent reconciliation, security tests và serving SLO theo scope. Evidence gắn exact metric version, semantic graph, mart/source snapshot, tool version và reviewer. “Dashboard được đồng thuận” chỉ là consumer acceptance, không thay correctness oracle. Nếu dependency thay, certificate có invalidation rule thay vì sống mãi.
+Gate chứng nhận gồm contract sáu phần, owner, grain/path proof, compatibility matrix, independent reconciliation, security tests và serving SLO theo scope. Evidence gắn exact metric version, semantic graph, mart/source snapshot, tool version và reviewer. Dashboard được đồng thuận chỉ là consumer acceptance, không thay correctness oracle. Nếu dependency thay, certificate có invalidation rule thay vì sống mãi.
 
 ## 3. Ba lớp thay đổi
 
@@ -43,7 +43,7 @@ Non-result change gồm documentation, owner hoặc performance rewrite đã par
 
 ## 4. Không sửa đè công thức
 
-In-place overwrite làm cùng metric ID/version trỏ tới hai meanings theo thời gian; historical dashboards không thể biết số đã tính bằng contract nào, cache/audit cũng mất traceability. Semantic-result hoặc breaking change cần immutable new version hoặc effective-dated definition có explicit as-of semantics. Alias “current” có thể chuyển sau migration, nhưng saved artifacts phải resolve pinned version hoặc lưu definition fingerprint.
+In-place overwrite làm cùng metric ID/version trỏ tới hai meanings theo thời gian; historical dashboards không thể biết số đã tính bằng contract nào, cache/audit cũng mất traceability. Semantic-result hoặc breaking change cần immutable new version hoặc effective-dated definition có explicit as-of semantics. Alias current có thể chuyển sau migration, nhưng saved artifacts phải resolve pinned version hoặc lưu definition fingerprint.
 
 ## 5. Parallel run và reconciliation
 
@@ -230,7 +230,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.metric-lifecycle`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.metric-lifecycle`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.metric-lifecycle`, sơ đồ, ví dụ và artifact về **Metric Lifecycle - Propose, Certify, Version, Deprecate** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -274,7 +274,7 @@ Artifact của `wiki.semantic-layer.metric-lifecycle` buộc người dùng ghi 
 
 ### Tự kiểm tra trước khi tái sử dụng
 
-1. Bạn có thể trả lời `Metric đi qua propose–review–certify–deprecate–remove bằng gates nào, và breaking semantic change được di trú mà không đổi nghĩa lịch sử ra sao?` bằng một câu mà không kéo thêm concept thứ hai không?
+1. Bạn có thể trả lời `Metric đi qua propose-review-certify-deprecate-remove bằng gates nào, và breaking semantic change được di trú mà không đổi nghĩa lịch sử ra sao?` bằng một câu mà không kéo thêm concept thứ hai không?
 2. Source locator nào đỡ cho claim, và phần nào chỉ là synthesis trong note?
 3. Observation nào khiến bạn dừng, thu hẹp hoặc đảo quyết định?
 4. Artifact nào cho phép một reviewer độc lập tái hiện kết quả?

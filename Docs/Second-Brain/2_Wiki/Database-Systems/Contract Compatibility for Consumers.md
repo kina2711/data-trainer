@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao phân loại và di trú schema, semantic, quality và freshness contract changes theo hành vi consumer mà không làm consumer lỗi hoặc hiểu sai?
 source_ids:
   - src.book.geewax-api-design-patterns.1e
@@ -45,7 +45,7 @@ Compatible: không đổi result/behavior cho supported use. Semantic-result cha
 
 dbt current docs phát hiện remove column, type change, constraint removal/modify và contracted unversioned changes; thêm column/constraint không bị tool gọi breaking. Đây là schema gate hữu ích, không phát hiện rename-via-copy semantic drift, changed formula, grain, null, timezone hay SLO. CI kết hợp schema diff, semantic regression, representative consumer contract tests và owner review.
 
-## 5. Expand–migrate–contract
+## 5. Expand-migrate-contract
 
 Expand thêm new field/version/interface while old remains; backfill/dual-write or compute both; publish migration mapping. Migrate consumers với telemetry, parity/delta tests and support window. Contract/remove old only after inventory, owner approval, no unresolved use and rollback/archive. Duration theo consumer cadence, migration effort, stakes and observability coverage; kỹ thuật không tự đặt một con số chung.
 
@@ -55,7 +55,7 @@ Query logs, lineage, catalog subscriptions, scheduled BI/jobs, service accounts,
 
 ## 7. Lab ba changes dưới tải
 
-One additive schema candidate tested against strict and tolerant consumers; one semantic-result change with notification/regression; one breaking change using v2 and expand–migrate–contract. Run representative workload continuously, record errors and silent deltas. Success requires zero unsupported break for declared consumers, known old-version users before removal, and evidence that meaning—not just availability—remained correct.
+One additive schema candidate tested against strict and tolerant consumers; one semantic-result change with notification/regression; one breaking change using v2 and expand-migrate-contract. Run representative workload continuously, record errors and silent deltas. Success requires zero unsupported break for declared consumers, known old-version users before removal, and evidence that meaning:not just availability:remained correct.
 
 ## 8. Ma trận kiểm chứng từng mệnh đề
 
@@ -65,7 +65,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** contract has schema semantics quality freshness change process.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -73,7 +73,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** compatibility is consumer-observed.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -81,7 +81,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** add column is not universally safe.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -89,7 +89,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** strict parsers can break on additive fields.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -97,7 +97,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** semantic-result change can stay technically green.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -105,7 +105,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** security tightening may intentionally break access.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -113,7 +113,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** dbt schema checker has bounded scope.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -121,7 +121,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** formula and grain need semantic regression.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -129,7 +129,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** expand phase keeps old interface.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -137,7 +137,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** migrate phase needs telemetry and parity.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -145,7 +145,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** contract phase needs approval and rollback.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -153,7 +153,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** window depends on consumer cadence and stakes.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -161,7 +161,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** query logs miss offline exports.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -169,7 +169,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** unknown consumers remain explicit uncertainty.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -177,7 +177,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 **Mệnh đề cần kiểm.** zero errors does not prove zero semantic drift.
 
-**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand–migrate–contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
+**Cách kiểm.** Run additive, semantic-result and breaking changes against tolerant/strict representative consumers. Record schema diff, semantic delta, usage inventory, migration window, expand-migrate-contract steps and rollback evidence. Với riêng mệnh đề này, ghi input/context, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
 **Bằng chứng đạt cho `wiki.data-product.contract-compatibility`.** Lưu contract/decision version, fixture hoặc interview evidence, command/checklist output, reviewer và artifact hash. Nếu chưa thực hiện lab, trạng thái chỉ là protocol; không ghi thành kết quả đã quan sát.
 
@@ -230,7 +230,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.contract-compatibility`
+## Execution capsule: kiểm chứng `wiki.data-product.contract-compatibility`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.contract-compatibility`, sơ đồ, ví dụ và artifact về **Contract Compatibility for Consumers** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

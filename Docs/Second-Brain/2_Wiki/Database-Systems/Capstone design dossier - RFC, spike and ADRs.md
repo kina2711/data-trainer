@@ -38,7 +38,7 @@ Kết luận về capstone dossier nối RFC, spike evidence và ADRs chỉ đú
 
 ## 3. Failure mode
 
-Phân tích capstone dossier nối RFC, spike evidence và ADRs cần tìm earliest failure, propagation path, blast radius và state hoặc claim còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Capstone design dossier - RFC, spike and ADRs`, câu hỏi thực dụng là: Làm thế nào thiết kế, kiểm chứng và bảo vệ capstone dossier nối RFC, spike evidence và ADRs mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân tích capstone dossier nối RFC, spike evidence và ADRs cần tìm earliest failure, propagation path, blast radius và state hoặc claim còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Capstone design dossier - RFC, spike and ADRs`, câu hỏi thực dụng là: Làm thế nào thiết kế, kiểm chứng và bảo vệ capstone dossier nối RFC, spike evidence và ADRs mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision rule
 
@@ -221,7 +221,7 @@ Với `wiki.system-design.capstone-dossier`, command thành công không tự ch
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.system-design.capstone-dossier`
+## Execution capsule: kiểm chứng `wiki.system-design.capstone-dossier`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.system-design.capstone-dossier`, sơ đồ, ví dụ và artifact về **Capstone design dossier - RFC, spike and ADRs** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao chứng minh BI, SQL và API cùng thi hành một access policy, đáp ứng workload contract và không biến dữ liệu thử nghiệm thành một bản sao nhạy cảm không kiểm soát?
 source_ids:
   - src.web.owasp-authorization-cheat-sheet
@@ -67,7 +67,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.2. BI extract có thể lệch live warehouse policy
 
@@ -75,7 +75,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.3. deny by default cần explicit grants
 
@@ -83,7 +83,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.4. RBAC quá rộng vẫn vi phạm least privilege
 
@@ -91,7 +91,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.5. temporary access cần expiry và review
 
@@ -99,7 +99,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.6. service account là principal riêng
 
@@ -107,7 +107,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.7. negative tests chạy trên BI SQL và API
 
@@ -115,7 +115,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.8. admin path không đại diện ordinary principal
 
@@ -123,7 +123,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.9. p95 cần workload và observation window
 
@@ -131,7 +131,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.10. cache test cần security context và freshness
 
@@ -139,7 +139,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.11. overload cần bounded failure behavior
 
@@ -147,7 +147,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.12. unlimited queue có thể khuếch đại timeout
 
@@ -155,7 +155,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.13. mask direct identifier chưa đủ de-identification
 
@@ -163,7 +163,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.14. quasi-identifiers tạo re-identification risk
 
@@ -171,7 +171,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.15. export tạo policy boundary mới
 
@@ -179,7 +179,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Dựng policy matrix và synthetic principals; chạy positive/negative cases ở BI, SQL và API. Chạy workload scenarios có p95/concurrency/overload thresholds, result/security assertions và de-identification risk review trên fixture non-production. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.serving-access-security`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ## 9. Quy trình phản biện
 
@@ -196,7 +196,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 1. Invariant hoặc decision nào đang được bảo vệ?
 2. Chủ thể, resource, event hay cost unit được định danh bằng gì?
 3. Denominator, time window và unknown/unallocated set là gì?
-4. Failure nào vẫn cho tín hiệu xanh hoặc “completed”?
+4. Failure nào vẫn cho tín hiệu xanh hoặc completed?
 5. Thay đổi nào làm policy, metric, allocation hoặc state transition phải xem lại?
 6. Ai có quyền duyệt, ai vận hành và bằng chứng nào còn chưa chạy?
 
@@ -230,7 +230,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.serving-access-security`
+## Execution capsule: kiểm chứng `wiki.data-product.serving-access-security`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.serving-access-security`, sơ đồ, ví dụ và artifact về **Serving, Access and Security for Consumers** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -252,7 +252,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Làm sao chứng minh BI, SQL và API cùng thi hành một access policy, đáp ứng workload contract và không biến dữ liệu thử nghiệm thành một bản sao nhạy cảm không kiểm soát?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Làm sao chứng minh BI, SQL và API cùng thi hành một access policy, đáp ứng workload contract và không biến dữ liệu thử nghiệm thành một bản sao nhạy cảm không kiểm soát? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Serving, Access and Security for Consumers** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

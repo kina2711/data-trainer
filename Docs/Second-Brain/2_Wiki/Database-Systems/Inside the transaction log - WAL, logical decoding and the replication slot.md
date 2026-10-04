@@ -38,7 +38,7 @@ Decoder reconstructs logical changes từ WAL với transaction boundaries và p
 
 ## 3. Replication slot
 
-Slot giữ restart position và ngăn WAL cần thiết bị recycle, đổi reliability lấy source disk liability. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Inside the transaction log - WAL, logical decoding and the replication slot`, câu hỏi thực dụng là: WAL, logical decoding, output plugin và replication slot phối hợp để CDC đọc committed changes thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Slot giữ restart position và ngăn WAL cần thiết bị recycle, đổi reliability lấy source disk liability. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Inside the transaction log - WAL, logical decoding and the replication slot`, câu hỏi thực dụng là: WAL, logical decoding, output plugin và replication slot phối hợp để CDC đọc committed changes thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Publication and identity
 
@@ -221,7 +221,7 @@ Với `wiki.cdc.wal-logical-decoding-slot`, command thành công không tự ch�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.cdc.wal-logical-decoding-slot`
+## Execution capsule: kiểm chứng `wiki.cdc.wal-logical-decoding-slot`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.cdc.wal-logical-decoding-slot`, sơ đồ, ví dụ và artifact về **Inside the transaction log - WAL, logical decoding and the replication slot** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

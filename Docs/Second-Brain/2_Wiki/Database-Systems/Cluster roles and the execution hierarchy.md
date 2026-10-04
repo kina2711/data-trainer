@@ -37,7 +37,7 @@ Driver chạy user main, tạo context/session, xây execution và điều phố
 
 ## 3. Cluster manager
 
-Standalone, YARN hoặc Kubernetes cấp resources; scheduler backend biến allocation thành executors cho application. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Cluster roles and the execution hierarchy`, câu hỏi thực dụng là: Driver, cluster manager, executors, jobs, stages và tasks liên hệ thế nào trong một Spark application? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Standalone, YARN hoặc Kubernetes cấp resources; scheduler backend biến allocation thành executors cho application. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Cluster roles and the execution hierarchy`, câu hỏi thực dụng là: Driver, cluster manager, executors, jobs, stages và tasks liên hệ thế nào trong một Spark application? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Executor
 
@@ -218,7 +218,7 @@ Với `wiki.spark.cluster-roles-execution-hierarchy`, command thành công khôn
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.spark.cluster-roles-execution-hierarchy`
+## Execution capsule: kiểm chứng `wiki.spark.cluster-roles-execution-hierarchy`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.spark.cluster-roles-execution-hierarchy`, sơ đồ, ví dụ và artifact về **Cluster roles and the execution hierarchy** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

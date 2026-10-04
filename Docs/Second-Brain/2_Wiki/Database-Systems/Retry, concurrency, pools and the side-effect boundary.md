@@ -38,7 +38,7 @@ Commit ở API, database, object store hay message broker có thể hoàn tất 
 
 ## 3. Idempotency identity
 
-Replay an toàn cần business operation key, conflict policy và durable ledger chứ không chỉ task instance ID. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Retry, concurrency, pools and the side-effect boundary`, câu hỏi thực dụng là: Retry, concurrency và pools phải được đặt quanh side-effect boundary thế nào để replay không nhân tác động? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Replay an toàn cần business operation key, conflict policy và durable ledger chứ không chỉ task instance ID. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Retry, concurrency, pools and the side-effect boundary`, câu hỏi thực dụng là: Retry, concurrency và pools phải được đặt quanh side-effect boundary thế nào để replay không nhân tác động? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Concurrency contract
 
@@ -221,7 +221,7 @@ Với `wiki.orchestration.retry-concurrency-pools-side-effects`, command thành 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.orchestration.retry-concurrency-pools-side-effects`
+## Execution capsule: kiểm chứng `wiki.orchestration.retry-concurrency-pools-side-effects`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.orchestration.retry-concurrency-pools-side-effects`, sơ đồ, ví dụ và artifact về **Retry, concurrency, pools and the side-effect boundary** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

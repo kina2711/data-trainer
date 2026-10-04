@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Bốn thuộc tính ACID được kiểm bằng phản ví dụ nào, trách nhiệm nằm ở engine hay ứng dụng, và transaction chuyển trạng thái qua commit/abort ra sao?
 source_ids:
   - src.book.silberschatz-database-system-concepts.7e
@@ -29,11 +29,11 @@ relationships:
 # ACID và máy trạng thái transaction
 
 > [!abstract] Câu hỏi trung tâm
-> Với một transaction cụ thể, điều gì phải “tất cả hoặc không”, invariant nào phải đúng, concurrent schedules nào được chấp nhận, success phải sống qua failure nào, và trạng thái nào cho phép phát biểu các cam kết đó?
+> Với một transaction cụ thể, điều gì phải tất cả hoặc không, invariant nào phải đúng, concurrent schedules nào được chấp nhận, success phải sống qua failure nào, và trạng thái nào cho phép phát biểu các cam kết đó?
 
 ## 1. ACID là contract, không phải nhãn sản phẩm
 
-Atomicity, consistency, isolation và durability mô tả bốn khía cạnh khác nhau của transaction. Một database tự nhận “ACID” chưa nói isolation level, durability mode, external side effects, distributed boundary hoặc invariant application. Mỗi chữ phải được viết thành failure example và evidence.
+Atomicity, consistency, isolation và durability mô tả bốn khía cạnh khác nhau của transaction. Một database tự nhận ACID chưa nói isolation level, durability mode, external side effects, distributed boundary hoặc invariant application. Mỗi chữ phải được viết thành failure example và evidence.
 
 Một transaction có thể atomic trong một database nhưng operation business vẫn không atomic nếu còn message, API hoặc filesystem ngoài transaction. Một constraint có thể giữ structural consistency nhưng không biết business rule. Durability có thể local-only hoặc phụ thuộc replication acknowledgment.
 
@@ -67,19 +67,19 @@ Atomicity: A=100, B=200; trừ 50 ở A rồi crash trước cộng B; state 50/
 
 Isolation: T1 đọc tổng 100; T2 thêm row và commit; T1 đọc lại thành 150 trong mode cho phép nonrepeatable/phantom behavior. Durability: DB trả success cho ID `tx-42`, process crash, restart không còn `tx-42` dù contract là synchronous durable; đó là violation nếu storage assumptions giữ.
 
-Phản ví dụ phải chỉ exact invariant, schedule, commit/abort và observed state. Câu “dữ liệu sai” không đủ chấm.
+Phản ví dụ phải chỉ exact invariant, schedule, commit/abort và observed state. Câu dữ liệu sai không đủ chấm.
 
 ## 7. Máy trạng thái học thuật
 
 Mô hình textbook gồm Active, Partially Committed, Failed, Aborted, Committed và có thể Terminated. Active khi statements chạy. Sau statement cuối, transaction là Partially Committed: execution logic xong nhưng commit record/durability chưa chắc xong. Failure chuyển Active/Partially Committed sang Failed; rollback hoàn tất chuyển Aborted. Commit protocol thành công chuyển Partially Committed sang Committed.
 
-Aborted transaction có thể restart nếu failure transient và policy cho phép, hoặc terminate. Committed transaction không được “abort ngược”; muốn đảo business effect phải có compensating transaction mới, với semantics và audit riêng.
+Aborted transaction có thể restart nếu failure transient và policy cho phép, hoặc terminate. Committed transaction không được abort ngược; muốn đảo business effect phải có compensating transaction mới, với semantics và audit riêng.
 
 ## 8. State của client không đồng nhất state của database
 
 Client thường chỉ thấy idle, in transaction, error và command result qua driver. Network timeout sau server commit nhưng trước client nhận ACK tạo trạng thái bất định: server có thể committed còn client nghĩ failed. Không thể giải bằng rollback từ connection đã mất.
 
-Gắn operation ID/business key, query outcome và retry idempotently. Transaction state machine cần hai perspectives: server durable state và client knowledge state. “Không nhận response” không phải bằng chứng abort.
+Gắn operation ID/business key, query outcome và retry idempotently. Transaction state machine cần hai perspectives: server durable state và client knowledge state. Không nhận response không phải bằng chứng abort.
 
 ## 9. PostgreSQL transaction block và failed state
 
@@ -91,19 +91,19 @@ Savepoint tạo điểm rollback nội bộ nhưng không biến external side e
 
 Partially committed không có nghĩa một nửa business rows đã được public. Nó là trạng thái giữa final operation và durable commit. Engine có thể đã tạo row versions/WAL nhưng visibility/durability boundary chưa hoàn tất.
 
-Sự phân biệt này giải thích crash “đúng lúc đang commit”: outcome không thể dự đoán từ client timing. Nếu commit record durable trước crash, transaction có thể sống; nếu chưa, không. Client ACK còn là boundary khác.
+Sự phân biệt này giải thích crash đúng lúc đang commit: outcome không thể dự đoán từ client timing. Nếu commit record durable trước crash, transaction có thể sống; nếu chưa, không. Client ACK còn là boundary khác.
 
 ## 11. Atomicity và durability dùng chung recovery substrate
 
 WAL giữ đủ evidence để redo committed changes và theo design có thể hỗ trợ undo. PostgreSQL dùng REDO cùng transaction status/MVCC để versions của incomplete transaction không visible. Durability chọn commit flush boundary; atomicity chọn visibility/abort behavior.
 
-Không nên nói atomicity chỉ “do undo” vì engine design khác. Cũng không nói durability chỉ “do WAL”: reliable sync/storage, checkpoint/recovery và checksum/backup controls cùng quan trọng.
+Không nên nói atomicity chỉ do undo vì engine design khác. Cũng không nói durability chỉ do WAL: reliable sync/storage, checkpoint/recovery và checksum/backup controls cùng quan trọng.
 
 ## 12. Isolation là thuộc tính được cấu hình
 
 SQL isolation không phải on/off. Default PostgreSQL Read Committed không phải mức cao nhất. Hai SELECT trong cùng transaction có thể thấy snapshots khác nhau. Repeatable Read giữ snapshot transaction nhưng cần retry update conflicts và không tự bảo vệ mọi invariant. Serializable cung cấp guarantee mạnh hơn bằng detection/abort.
 
-Hạ isolation không phải chữ duy nhất có thể “tắt” vô hại. Async commit hạ durability contract; bỏ constraint làm yếu consistency controls. Phát biểu đúng là isolation thường có standardized levels và explicit performance trade-offs, không phải chỉ isolation mới có cấu hình.
+Hạ isolation không phải chữ duy nhất có thể tắt vô hại. Async commit hạ durability contract; bỏ constraint làm yếu consistency controls. Phát biểu đúng là isolation thường có standardized levels và explicit performance trade-offs, không phải chỉ isolation mới có cấu hình.
 
 ## 13. Retry là phần của contract
 
@@ -115,7 +115,7 @@ External side effects trước commit khiến retry lặp. Outbox hoặc defer s
 
 ACID consistency là invariant preservation của transaction. CAP consistency thường nói linearizable/single-copy behavior trong distributed system. Hai chữ cùng tên nhưng không thay thế nhau. Eventual consistency cũng là replication/convergence concept, không có nghĩa application invariants tự đúng.
 
-Bài giảng phải nói rõ ngữ cảnh. Không dùng “database consistent” mà không nói invariant, snapshot/ordering hoặc replicas.
+Bài giảng phải nói rõ ngữ cảnh. Không dùng database consistent mà không nói invariant, snapshot/ordering hoặc replicas.
 
 ## 15. Transaction boundary và services
 
@@ -137,12 +137,12 @@ Mỗi transition gắn observable: driver status, server log, row visibility, tr
 
 ## 18. Các ngộ nhận cần loại
 
-- “ACID do engine bảo đảm hết”: consistency còn phụ thuộc invariant/code; external effects ngoài boundary.
-- “Atomicity nghĩa không có state trung gian”: state nội bộ có, nhưng không được lộ trái contract.
-- “Isolation mặc định là serializable”: PostgreSQL mặc định Read Committed.
-- “Committed có thể rollback”: cần compensating transaction mới.
-- “Timeout nghĩa transaction fail”: outcome có thể bất định.
-- “Durable nghĩa không bao giờ mất”: luôn có failure model và storage assumptions.
+- ACID do engine bảo đảm hết: consistency còn phụ thuộc invariant/code; external effects ngoài boundary.
+- Atomicity nghĩa không có state trung gian: state nội bộ có, nhưng không được lộ trái contract.
+- Isolation mặc định là serializable: PostgreSQL mặc định Read Committed.
+- Committed có thể rollback: cần compensating transaction mới.
+- Timeout nghĩa transaction fail: outcome có thể bất định.
+- Durable nghĩa không bao giờ mất: luôn có failure model và storage assumptions.
 
 ## 19. Câu hỏi tự kiểm tra
 
@@ -158,24 +158,24 @@ Mỗi transition gắn observable: driver status, server log, row visibility, tr
 - Chưa chạy bốn failure examples hoặc state observation lab.
 - Transaction states exposed qua driver khác nhau; cần kiểm adapter cụ thể.
 - Distributed transaction, 2PC và saga chỉ được đặt ranh giới.
-- Isolation anomalies chi tiết thuộc L140–L142.
+- Isolation anomalies chi tiết thuộc L140-L142.
 - Không chứng nhận durability ngoài failure model được test.
 
 ## Reference
-1. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — ACID definitions, transaction states và schedules.
-2. [[SRC-PETROV-DATABASE-INTERNALS-1E]] — WAL/recovery, serializability và isolation trade-off.
-3. [[SRC-POSTGRESQL-17-10-MANUAL]] — PostgreSQL MVCC/isolation và WAL durability modes.
-4. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]] — PostgreSQL WAL, recovery và commit behavior.
+1. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: ACID definitions, transaction states và schedules.
+2. [[SRC-PETROV-DATABASE-INTERNALS-1E]]: WAL/recovery, serializability và isolation trade-off.
+3. [[SRC-POSTGRESQL-17-10-MANUAL]]: PostgreSQL MVCC/isolation và WAL durability modes.
+4. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]]: PostgreSQL WAL, recovery và commit behavior.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]], PDF 2144–2192 | ACID, states, schedules, compensation | §§1–7, 10, 17 | Đã chuyển thành observable contract |
-| [[SRC-PETROV-DATABASE-INTERNALS-1E]], PDF 117–130 | recovery, serializability, isolation | §§4, 11–12 | Đã giữ generic boundary |
-| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 543–550, 918–926 | MVCC levels và durability modes | §§4–5, 9–12 | Đã giữ PostgreSQL-specific behavior |
-| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 164–196 | commit/recovery state | §§5, 10–11 | Đã đối chiếu manual 17.10 |
-| DE-L139 contract | bốn phản ví dụ và state machine | §§6, 16–17 | Chưa chạy, chuyển after-note |
+| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]], PDF 2144-2192 | ACID, states, schedules, compensation | §§1-7, 10, 17 | Đã chuyển thành observable contract |
+| [[SRC-PETROV-DATABASE-INTERNALS-1E]], PDF 117-130 | recovery, serializability, isolation | §§4, 11-12 | Đã giữ generic boundary |
+| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 543-550, 918-926 | MVCC levels và durability modes | §§4-5, 9-12 | Đã giữ PostgreSQL-specific behavior |
+| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 164-196 | commit/recovery state | §§5, 10-11 | Đã đối chiếu manual 17.10 |
+| DE-L139 contract | bốn phản ví dụ và state machine | §§6, 16-17 | Chưa chạy, chuyển after-note |
 
 ## Key takeaways
 - ACID phải được phát biểu thành boundary, failure example và evidence.
@@ -186,7 +186,7 @@ Mỗi transition gắn observable: driver status, server log, row visibility, tr
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.acid-transaction-state-machine`
+## Execution capsule: kiểm chứng `wiki.database.acid-transaction-state-machine`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.acid-transaction-state-machine`, sơ đồ, ví dụ và artifact về **ACID và máy trạng thái transaction** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

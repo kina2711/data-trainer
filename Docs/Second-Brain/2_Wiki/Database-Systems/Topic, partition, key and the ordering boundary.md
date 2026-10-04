@@ -37,7 +37,7 @@ Offset và order chỉ có nghĩa trong một partition; không có total order 
 
 ## 3. Key choice
 
-Partition key gom records cần relative order/state cùng nhau; null/random key tăng distribution nhưng mất affinity. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Topic, partition, key and the ordering boundary`, câu hỏi thực dụng là: Topic, partition và key xác định ordering, parallelism và reprocessing boundary như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Partition key gom records cần relative order/state cùng nhau; null/random key tăng distribution nhưng mất affinity. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Topic, partition, key and the ordering boundary`, câu hỏi thực dụng là: Topic, partition và key xác định ordering, parallelism và reprocessing boundary như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Skew and parallelism
 
@@ -218,7 +218,7 @@ Với `wiki.streaming.topic-partition-key-order`, command thành công không t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.streaming.topic-partition-key-order`
+## Execution capsule: kiểm chứng `wiki.streaming.topic-partition-key-order`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.streaming.topic-partition-key-order`, sơ đồ, ví dụ và artifact về **Topic, partition, key and the ordering boundary** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một high-watermark extractor cần năm giả định nào và kiểm chúng bằng failure injection ra sao?
 source_ids:
   - src.web.airbyte-incremental-append-deduped
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Năm giả định
 
-Một: cursor orders every relevant row/change in extraction scope. Hai: every relevant mutation advances cursor. Ba: boundary ties have deterministic unique tie-breaker or inclusive replay. Bốn: deletions are visible elsewhere or explicitly out of scope. Năm: bootstrap, target publication and checkpoint advance form recoverable protocol. Timezone, precision and source retention qualify assumptions one–three.
+Một: cursor orders every relevant row/change in extraction scope. Hai: every relevant mutation advances cursor. Ba: boundary ties have deterministic unique tie-breaker or inclusive replay. Bốn: deletions are visible elsewhere or explicitly out of scope. Năm: bootstrap, target publication and checkpoint advance form recoverable protocol. Timezone, precision and source retention qualify assumptions one-three.
 
 ## 2. Composite cursor
 
@@ -223,7 +223,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ingestion.high-watermark-assumptions-overlap-deduplication`
+## Execution capsule: kiểm chứng `wiki.ingestion.high-watermark-assumptions-overlap-deduplication`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ingestion.high-watermark-assumptions-overlap-deduplication`, sơ đồ, ví dụ và artifact về **High Watermark Assumptions and Overlap Deduplication** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -245,7 +245,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Một high-watermark extractor cần năm giả định nào và kiểm chúng bằng failure injection ra sao?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Một high-watermark extractor cần năm giả định nào và kiểm chúng bằng failure injection ra sao? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **High Watermark Assumptions and Overlap Deduplication** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

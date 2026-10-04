@@ -11,7 +11,7 @@ footer: 'Foundation · runnable scene package'
 
 # Where data comes from and the stages it passes through
 
-**DA-L002 · 120 phút (ước tính)**
+**DA-L002**
 
 > Một con số đã bị biến đổi ở đâu từ sự kiện nghiệp vụ đến quyết định?
 
@@ -27,12 +27,12 @@ Tái dựng vòng đời bảy chặng và định vị cơ chế sai lệch cù
 
 ---
 
-<!-- scene: S01 · source: note.md: heading 'Nỗi Đau & Động Lực' -->
+<!-- scene: S01 · source: note.md: heading Problem Definition and Operational Relevance -->
 ## Tình huống mở
 
 Dashboard báo khách hoạt động giảm, nhưng source ghi đơn tạo, vận hành đếm đơn thanh toán còn CRM đếm phiên truy cập. Ba số đúng theo code nhưng không cùng khái niệm.
 
-**Think–pair–share · 4 phút**
+**Independent analysis followed by peer review**
 
 1. Bạn sẽ làm gì đầu tiên?
 2. Quyết định nào có thể bị ảnh hưởng?
@@ -40,7 +40,7 @@ Dashboard báo khách hoạt động giảm, nhưng source ghi đơn tạo, vậ
 
 ---
 
-<!-- scene: S02 · source: note.md: heading 'Cơ Chế Tác Động' -->
+<!-- scene: S02 · source: note.md: heading Mechanism -->
 ## Mental model trung tâm
 
 > Con số phân tích là một chuỗi biến đổi có lineage. muốn tin kết luận phải nối event, record, storage, transform, metric, presentation và decision bằng các phép đối soát.
@@ -67,7 +67,7 @@ Không làm bước này, output sau đó có thể đúng cú pháp nhưng sai 
 
 ---
 
-<!-- scene: S03 · source: note.md: heading 'Cơ Chế Tác Động' -->
+<!-- scene: S03 · source: note.md: heading Mechanism -->
 ## Check 1 · trả lời không nhìn tài liệu
 
 **Ba lớp nào dễ bị đánh đồng?**
@@ -83,7 +83,7 @@ Nếu câu trả lời chỉ nêu tên công cụ, hãy quay lại mental model 
 ---
 
 <!-- scene: S04 · source: UNSOURCED guided practice synthesis -->
-## Guided practice · 12 phút làm + 6 phút chữa
+## Guided practice
 
 Xếp 14 thẻ artifact vào bảy chặng và nối mỗi chặng với một failure mode: missing event, duplicate, timezone, filter, join fan-out, stale cache, wrong action.
 
@@ -93,7 +93,7 @@ Người dạy không chữa bằng đáp án ngay. yêu cầu mỗi nhóm nêu 
 
 ---
 
-<!-- scene: S05 · source: note.md: heading 'Bản Đồ Quyết Định' -->
+<!-- scene: S05 · source: note.md: heading Decision Framework -->
 ## Quy tắc quyết định
 
 Khi hai số lệch, đi ngược lineage và kiểm boundary đầu tiên chúng bắt đầu khác. chỉ sửa downstream sau khi cơ chế upstream đã được xác nhận.
@@ -114,7 +114,7 @@ Khi dữ liệu đến muộn, phải tách event time, processing time và cuto
 
 ## Worked example · đi từng bước
 
-<!-- scene: S07 · source: note.md: heading 'Case Study Thực Chiến: một chỉ số bán hàng đổi nghĩa giữa đường' -->
+<!-- scene: S07 · source: note.md: heading Worked Case: một chỉ số bán hàng đổi nghĩa giữa đường -->
 
 1. Đặt ba định nghĩa 'active customer' cạnh nhau trên cùng snapshot.
 2. Theo một khách từ click, order_created, payment_success tới mart và dashboard.
@@ -157,8 +157,8 @@ Dashboard retention giảm đúng ngày đổi SDK. Thiết kế thứ tự ki�
 
 ---
 
-<!-- scene: S09 · source: note.md: heading 'Góc Khuất & Ngộ Nhận' -->
-## Exit ticket · 3 phút
+<!-- scene: S09 · source: note.md: heading Limits and Common Errors -->
+## Exit check
 
 **Vì sao lineage không đồng nghĩa dữ liệu đúng?**
 
@@ -169,10 +169,18 @@ Lineage chỉ nói đường đi. correctness cần invariant và reconciliation
 
 ---
 
-## Sau buổi học
+## Post-Lesson
 
 1. Làm `quiz.md`. đạt **8/10**.
 2. Nếu trượt một concept, đọc remediation trong `after-note.md` rồi retest đúng concept đó.
 3. Hoàn thành `homework.md`. đạt **≥ 75/100** và không có critical failure.
 
 **Bắc cầu:** L003: khóa entity, record và grain trước khi đếm hoặc join.
+
+---
+
+## References
+
+- [[wiki.da-foundation.data-lifecycle-seven-stages|Data lifecycle and its seven stages]]
+- [[wiki.data-product.decision-first-discovery|Decision-First Discovery]]
+- [[wiki.da.reconciliation-and-the-discipline-of-verification|Reconciliation and the discipline of verification]]

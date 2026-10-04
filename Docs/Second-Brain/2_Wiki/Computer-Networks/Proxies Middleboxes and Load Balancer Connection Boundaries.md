@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-27
 last_verified: 2026-09-27
 review_after: 2027-03-27
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Khi request đi qua NAT, firewall, proxy hoặc load balancer, connection và identity bị biến đổi ở đâu, log của từng hop chứng minh được gì, và phải ghép bằng chứng thế nào để không quy sai nguyên nhân?
 source_ids:
   - src.book.kurose-ross-networking.8e
@@ -35,7 +35,7 @@ relationships:
 # Proxy, middlebox và load balancer: ranh giới kết nối
 
 > [!abstract] Câu hỏi trung tâm
-> Một request client gửi tới public IP có thể bị rewrite, lọc, inspect, trả từ cache, terminate TLS, chia thành TCP leg mới hoặc phân phối tới một backend nội bộ. Mỗi thiết bị nhìn một phần khác nhau của flow và tạo log theo state riêng. Tên gọi “load balancer” hay “proxy” chưa đủ để biết connection có bị kết thúc hay identity nào còn được bảo toàn; phải đọc đúng data path và mode triển khai.
+> Một request client gửi tới public IP có thể bị rewrite, lọc, inspect, trả từ cache, terminate TLS, chia thành TCP leg mới hoặc phân phối tới một backend nội bộ. Mỗi thiết bị nhìn một phần khác nhau của flow và tạo log theo state riêng. Tên gọi load balancer hay proxy chưa đủ để biết connection có bị kết thúc hay identity nào còn được bảo toàn; phải đọc đúng data path và mode triển khai.
 
 ## Mô hình tổng quát
 
@@ -56,7 +56,7 @@ flowchart LR
     B2 --> D
 ```
 
-Sơ đồ cố ý dùng cụm “tùy mode”. NAT, packet-filtering firewall và reverse proxy đều là middlebox, song không có cùng connection semantics. Trước khi đọc trace phải xác định thiết bị đang forward, translate hay terminate protocol nào.
+Sơ đồ cố ý dùng cụm tùy mode. NAT, packet-filtering firewall và reverse proxy đều là middlebox, song không có cùng connection semantics. Trước khi đọc trace phải xác định thiết bị đang forward, translate hay terminate protocol nào.
 
 ## 1. Middlebox là một họ thiết bị, không phải một hành vi duy nhất
 
@@ -71,7 +71,7 @@ Ba nhóm chức năng rộng:
 Một box có thể làm nhiều nhóm cùng lúc. Load balancer có thể kèm NAT; firewall có thể redirect sang DPI; proxy có thể cache và terminate TLS. Tên sản phẩm không thay thế sơ đồ xử lý packet.
 
 > [!source-fact]
-> Định nghĩa middlebox, các ví dụ và ba nhóm service nằm tại §4.5, trang in 390–391.
+> Định nghĩa middlebox, các ví dụ và ba nhóm service nằm tại §4.5, trang in 390-391.
 
 ## 2. Sáu động từ cần dùng khi mô tả data path
 
@@ -99,7 +99,7 @@ NAT rewrite IP address và port trong packet. Điều này tạo ít nhất hai 
 Thiết bị cần mapping để xử lý chiều đi và chiều về. Backend có thể không thấy source tuple nguyên gốc từ client, tùy topology và mode. Vì thế ghép log chỉ bằng `source_ip:source_port` qua NAT/LB có thể sai; cần thêm request ID, timestamp và mapping/flow log nếu hệ thống cung cấp.
 
 > [!source-fact]
-> NAT như middlebox rewrite network-layer address và transport-layer port được nêu tại §4.5, trang in 390–391.
+> NAT như middlebox rewrite network-layer address và transport-layer port được nêu tại §4.5, trang in 390-391.
 
 > [!uncertainty]
 > Nguồn không đặc tả timeout của NAT mapping, source-NAT mode, direct-server-return hay cách giữ client IP của từng sản phẩm. Các quyết định ấy phải lấy từ cấu hình và tài liệu triển khai thực tế.
@@ -108,10 +108,10 @@ Thiết bị cần mapping để xử lý chiều đi và chiều về. Backend 
 
 Firewall có thể lọc bằng header, redirect traffic để xử lý thêm hoặc dùng field ở network, transport và application layer. IDS có thể tìm pattern định trước rồi lọc packet. Những hành vi này vi phạm giả định router chỉ nhìn IP header, nhưng chưa đủ để kết luận firewall đã terminate TCP.
 
-Khi SYN không tới server, các khả năng gồm rule drop, route, NAT mapping, backlog, capture point sai hoặc packet bị loại ở hop khác. “Không có backend log” chỉ nói application/backend không ghi nhận; nó không xác định box nào đã drop.
+Khi SYN không tới server, các khả năng gồm rule drop, route, NAT mapping, backlog, capture point sai hoặc packet bị loại ở hop khác. Không có backend log chỉ nói application/backend không ghi nhận; nó không xác định box nào đã drop.
 
 > [!source-fact]
-> Firewall block/redirect, DPI và IDS pattern filtering được liệt kê trong nhóm security service tại §4.5, trang in 390–391.
+> Firewall block/redirect, DPI và IDS pattern filtering được liệt kê trong nhóm security service tại §4.5, trang in 390-391.
 
 ## 5. Cache, proxy và TCP splitter tạo ranh giới mạnh hơn
 
@@ -142,7 +142,7 @@ Sidebar của sách tóm lược end-to-end argument: có những chức năng c
 Reliable delivery là ví dụ: link layer có thể sửa lỗi cục bộ, song endpoint vẫn cần error control vì packet còn có thể mất ở phần khác của path. Tương tự, firewall/DPI không thay application validation; load balancer health check không tự chứng minh business transaction hoàn tất.
 
 > [!source-fact]
-> IP narrow waist và end-to-end argument được trình bày trong sidebar đi kèm §4.5, trang in 391–393.
+> IP narrow waist và end-to-end argument được trình bày trong sidebar đi kèm §4.5, trang in 391-393.
 
 > [!synthesis]
 > Liên hệ health check với business outcome là phép áp dụng nguyên lý; sách không trình bày health check của load balancer trong phạm vi đã đọc.
@@ -154,12 +154,12 @@ Middlebox phần cứng chuyên dụng tạo chi phí mua sắm, vận hành và
 Virtualization thay cách triển khai và quản lý, không làm biến mất state, ordering, capacity hoặc failure mode. Một firewall ảo vẫn có rule/counter; một virtual load balancer vẫn cần mapping và resources; scale-out còn tạo câu hỏi phân phối state giữa instance.
 
 > [!source-fact]
-> Chi phí của box chuyên dụng, NFV và cloud middlebox được nêu tại §4.5, trang in 390–391.
+> Chi phí của box chuyên dụng, NFV và cloud middlebox được nêu tại §4.5, trang in 390-391.
 
 > [!inference]
 > Nhu cầu phân phối state khi scale-out là hệ quả kiến trúc cần kiểm bằng implementation; nguồn chỉ giới thiệu hướng NFV/cloud, không đặc tả state replication.
 
-## 9. Data center có traffic ngoài–trong và traffic nội bộ
+## 9. Data center có traffic ngoài-trong và traffic nội bộ
 
 Data center network nối các rack với nhau và với border router. Sách tách hai nhóm traffic:
 
@@ -169,11 +169,11 @@ Data center network nối các rack với nhau và với border router. Sách t�
 Load balancer nằm trên đường external request đi vào application hosts. Sau khi nhận request, một host còn có thể gọi các host khác, tạo fan-out nội bộ. Vì thế latency client quan sát gồm cả edge path, load-balancing decision, backend processing và dependency traffic; access log ở LB không bao phủ toàn chuỗi.
 
 > [!source-fact]
-> Hai loại traffic, border router và internal interconnect nằm tại §6.6.1, trang in 535–536.
+> Hai loại traffic, border router và internal interconnect nằm tại §6.6.1, trang in 535-536.
 
 ## 10. Load balancer công bố một địa chỉ, chọn một host nội bộ
 
-Trong mô hình data center của sách, mỗi application có public IP để client gửi request và nhận response. Request đi tới load balancer; box chọn một host đang phục vụ application dựa trên load hiện tại. Sách gọi loại thiết bị này là “layer-4 switch” vì decision dùng destination IP cùng destination port.
+Trong mô hình data center của sách, mỗi application có public IP để client gửi request và nhận response. Request đi tới load balancer; box chọn một host đang phục vụ application dựa trên load hiện tại. Sách gọi loại thiết bị này là layer-4 switch vì decision dùng destination IP cùng destination port.
 
 Load balancer còn làm NAT-like translation:
 
@@ -187,9 +187,9 @@ Client → application public IP:port
 Mapping chiều về là phần của correctness: response phải mang view phù hợp để client tiếp tục coi mình đang nói với application public endpoint.
 
 > [!source-fact]
-> Public application address, lựa chọn host, layer-4 decision và NAT-like translation nằm tại phần Load Balancing của §6.6.1, trang in 536–537.
+> Public application address, lựa chọn host, layer-4 decision và NAT-like translation nằm tại phần Load Balancing của §6.6.1, trang in 536-537.
 
-## 11. “Layer-4 load balancer” chưa nói nó có terminate TCP hay không
+## 11. Layer-4 load balancer chưa nói nó có terminate TCP hay không
 
 Nguồn mô tả decision từ IP/port và translation, nhưng không đưa wire-level connection state machine. Do đó không được tự suy ra box là transparent NAT, full proxy, TCP splice hay một mode khác.
 
@@ -214,7 +214,7 @@ Nếu load balancer/reverse proxy terminate TLS, client xác thực edge certifi
 - protocol/cipher/session riêng;
 - timeout, close và telemetry riêng.
 
-TLS client–edge thành công không chứng minh edge–backend được mã hóa, xác thực đúng hoặc còn sống. Ngược lại, origin TLS khỏe không chứng minh client hoàn tất handshake với edge.
+TLS client-edge thành công không chứng minh edge-backend được mã hóa, xác thực đúng hoặc còn sống. Ngược lại, origin TLS khỏe không chứng minh client hoàn tất handshake với edge.
 
 > [!synthesis]
 > TLS termination không được mô tả trong §6.6.1; phần này nối load-balancer boundary với kiến thức đã chưng cất tại [[TLS Certificates and Endpoint Authentication|TLS certificate và xác thực endpoint]]. Cấu hình thật cần nguồn của sản phẩm.
@@ -241,7 +241,7 @@ $$
 dù NIC host có thể là 10 Gbps. Tốc độ NIC không phải throughput end-to-end khi topology bị oversubscribed. Placement cùng path diversity ảnh hưởng performance.
 
 > [!source-fact]
-> Hierarchical topology, 40-flow example và phép chia 2.5 Gbps nằm tại §6.6.1, trang in 537–538.
+> Hierarchical topology, 40-flow example và phép chia 2.5 Gbps nằm tại §6.6.1, trang in 537-538.
 
 ## 15. Redundancy thay failure domain, không xóa failure
 
@@ -256,7 +256,7 @@ Các câu hỏi cần bằng chứng:
 - capacity còn lại sau failure có chịu được tải không.
 
 > [!source-fact]
-> Redundant equipment/link, multiple disjoint paths và lợi ích capacity/reliability nằm tại §6.6.1, trang in 537–538.
+> Redundant equipment/link, multiple disjoint paths và lợi ích capacity/reliability nằm tại §6.6.1, trang in 537-538.
 
 > [!inference]
 > Danh sách failover questions là kiểm tra vận hành suy ra từ stateful middlebox và redundancy; nguồn không cung cấp protocol failover hay test plan.
@@ -272,7 +272,7 @@ Các câu hỏi cần bằng chứng:
 | Client → L4 LB | Virtual/public endpoint | Backend tùy mode | Chưa kết luận | mode, mapping, socket/flow table |
 | Client → TLS proxy | Edge TLS endpoint | Origin TLS/plain endpoint | Có | certificate/session/log mỗi leg |
 
-Bảng dùng “có thể” ở L4 LB vì tên layer không xác định implementation. Nếu không lập connection table, đội vận hành dễ ghép ACK của leg này với timeout của leg khác.
+Bảng dùng có thể ở L4 LB vì tên layer không xác định implementation. Nếu không lập connection table, đội vận hành dễ ghép ACK của leg này với timeout của leg khác.
 
 ## 17. Source identity thay đổi qua từng hop
 
@@ -284,7 +284,7 @@ Ba trường cần tách:
 - claimed client identity trong forwarded metadata;
 - authenticated principal do TLS/application xác lập.
 
-Chúng có thể khác nhau hợp lệ. Log cần ghi nguồn của từng trường thay vì gom thành một cột “client”.
+Chúng có thể khác nhau hợp lệ. Log cần ghi nguồn của từng trường thay vì gom thành một cột client.
 
 > [!synthesis]
 > Nguồn giải thích translation và topology hiding nhưng không nói về forwarded headers. Quy tắc trust header là mở rộng vận hành, cần tài liệu proxy đang dùng.
@@ -306,9 +306,9 @@ Nguồn không đặc tả retry/timeout của load balancer. Đây là stop con
 
 ## 19. Health check không đồng nghĩa request thật thành công
 
-Một health check có thể chỉ kiểm port mở hoặc endpoint nhẹ. Request thật có thể phụ thuộc database, credential, tenant data, downstream service và payload size mà probe không chạm tới. Load balancer chọn một host “healthy” theo probe vẫn có thể trả lỗi application.
+Một health check có thể chỉ kiểm port mở hoặc endpoint nhẹ. Request thật có thể phụ thuộc database, credential, tenant data, downstream service và payload size mà probe không chạm tới. Load balancer chọn một host healthy theo probe vẫn có thể trả lỗi application.
 
-Khi báo “LB gửi vào host khỏe”, phải nêu health check đo điều gì, tần suất, success threshold và thời điểm gần request. Phần này cần tài liệu triển khai; source chỉ nói chọn host theo load hiện tại.
+Khi báo LB gửi vào host khỏe, phải nêu health check đo điều gì, tần suất, success threshold và thời điểm gần request. Phần này cần tài liệu triển khai; source chỉ nói chọn host theo load hiện tại.
 
 > [!uncertainty]
 > Health-check semantics, scheduling algorithm, session affinity, outlier ejection và connection draining nằm ngoài phạm vi nguồn. Không viết mặc định cho chúng.
@@ -352,7 +352,7 @@ sequenceDiagram
 | LB log `200`, client không đủ body | downstream reset, timeout, truncation, client close | byte counts, leg A trace, proxy close reason |
 | Backend `200`, edge trả `502/504` | response/read timeout, parse/protocol, upstream close | backend completion time, edge upstream log, leg B trace |
 | Chỉ một backend lỗi | target-specific config/state/dependency | selected target, per-host logs/metrics, health state |
-| Source IP ở backend “sai” | NAT/SNAT/proxy mode | tuple/mapping, trusted forwarded metadata |
+| Source IP ở backend sai | NAT/SNAT/proxy mode | tuple/mapping, trusted forwarded metadata |
 | TLS đúng ngoài edge, sai tới origin | hai TLS leg khác policy/certificate | session/certificate/log của từng leg |
 | Throughput liên rack thấp | shared uplink/oversubscription, congestion | topology, path, flow count, interface counters |
 | Failover gây reset | state không chuyển, path thay, drain chưa xong | connection table, failover event, reset source |
@@ -373,13 +373,13 @@ Hai connection độc lập. Client retransmission/RTT không phản ánh backen
 
 ### TLS passthrough
 
-Edge chọn target mà không terminate TLS theo mode cụ thể; backend có thể là TLS peer của client. Không suy ra passthrough chỉ vì sản phẩm được gọi L4—phải kiểm configuration và certificate quan sát.
+Edge chọn target mà không terminate TLS theo mode cụ thể; backend có thể là TLS peer của client. Không suy ra passthrough chỉ vì sản phẩm được gọi L4:phải kiểm configuration và certificate quan sát.
 
 ### Multi-region hoặc multi-edge
 
 DNS/anycast/routing có thể đưa hai client vào edge khác nhau. Một lần tái hiện thành công không phủ edge, target pool hay policy khác; cần ghi endpoint thực và route của lần lỗi.
 
-### East–west fan-out
+### East-west fan-out
 
 External request chỉ là đầu chuỗi. Backend có thể gọi nhiều service nội bộ; bottleneck ở link giữa rack hoặc downstream queue vẫn làm user latency tăng dù ingress LB khỏe.
 
@@ -422,7 +422,7 @@ Chỉ dựa vào §§4.5 và 6.6.1 chưa thể:
 4. Cache hit làm thay đổi ý nghĩa của việc origin không có log ra sao?
 5. TCP splitter tạo những state độc lập nào ở hai leg?
 6. Load balancer trong §6.6.1 chọn backend và rewrite address theo flow nào?
-7. Vì sao nhãn “layer-4” chưa đủ kết luận connection termination?
+7. Vì sao nhãn layer-4 chưa đủ kết luận connection termination?
 8. TLS termination tạo hai trust boundary như thế nào?
 9. Backend source IP, forwarded client IP và authenticated principal khác nhau ở đâu?
 10. Vì sao health check success chưa chứng minh business request thành công?
@@ -443,9 +443,9 @@ Chỉ dựa vào §§4.5 và 6.6.1 chưa thể:
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §4.5 | middlebox taxonomy, NAT/firewall/cache/proxy và tác động tới layering | §§1–8 | Đã trình bày theo hành vi thay vì tên thiết bị |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §6.6.1 | data-center topology, load balancing, hierarchy và redundancy | §§9–15 | Đã trình bày cả scale benefit và failure domain |
-| Tổng hợp từ hai lát nguồn | connection boundary, source identity, timeout/retry ownership và evidence graph | §§16–22 | Đã gắn `synthesis`; không quy chúng thành phát biểu nguyên văn của sách |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §4.5 | middlebox taxonomy, NAT/firewall/cache/proxy và tác động tới layering | §§1-8 | Đã trình bày theo hành vi thay vì tên thiết bị |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §6.6.1 | data-center topology, load balancing, hierarchy và redundancy | §§9-15 | Đã trình bày cả scale benefit và failure domain |
+| Tổng hợp từ hai lát nguồn | connection boundary, source identity, timeout/retry ownership và evidence graph | §§16-22 | Đã gắn `synthesis`; không quy chúng thành phát biểu nguyên văn của sách |
 
 Configuration semantics của proxy hoặc load balancer cụ thể không có trong hai lát nguồn. Note giữ chúng ở phần yêu cầu tài liệu bổ sung, không tạo default giả định.
 
@@ -457,7 +457,7 @@ Configuration semantics của proxy hoặc load balancer cụ thể không có t
 - Chẩn đoán phải lập connection table, ánh xạ tuple và correlation ID qua từng hop, rồi ghép client, intermediary và backend evidence theo cùng cửa sổ thời gian.
 
 ## Reference
-1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §4.5, printed pp. 390–393, PDF pp. 392–395; §6.6.1, printed pp. 535–538, PDF pp. 537–540.
+1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §4.5, printed pp. 390-393, PDF pp. 392-395; §6.6.1, printed pp. 535-538, PDF pp. 537-540.
 2. Hồ sơ nguồn: [[SRC-KUROSE-ROSS-NETWORKING-8E]].
 3. Source note: `Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-03.md`.
 
@@ -469,7 +469,7 @@ Configuration semantics của proxy hoặc load balancer cụ thể không có t
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.network.proxy-middlebox-load-balancer-boundaries`
+## Execution capsule: kiểm chứng `wiki.network.proxy-middlebox-load-balancer-boundaries`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.network.proxy-middlebox-load-balancer-boundaries`, sơ đồ, ví dụ và artifact về **Proxy, middlebox và load balancer: ranh giới kết nối** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

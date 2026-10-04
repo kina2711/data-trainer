@@ -1,4 +1,4 @@
-# DA Lesson 5 — Practice, feedback and retest
+# DA Lesson 5: Practice, feedback and retest
 
 ## Thực hành có hướng dẫn
 
@@ -15,10 +15,10 @@ Phỏng vấn role-play: stakeholder chỉ nói 'campaign vừa rồi có hiệu
 
 ## Retrieval checks và đáp án tối thiểu
 
-- **Trường đầu tiên của analytical contract là gì?** — Decision và hành động mà kết quả sẽ hỗ trợ.
-- **Vì sao comparison phải ghi rõ?** — So với kỳ trước, cùng kỳ hay target có thể tạo kết luận trái nhau.
-- **Một unknown khi nào là blocker?** — Khi nó làm đổi semantics, blast radius hoặc acceptance criteria.
-- **Non-goal có tác dụng gì?** — Ngăn scope mở rộng âm thầm và làm rõ phần chưa được kết luận.
+- **Trường đầu tiên của analytical contract là gì?**: Decision và hành động mà kết quả sẽ hỗ trợ.
+- **Vì sao comparison phải ghi rõ?**: So với kỳ trước, cùng kỳ hay target có thể tạo kết luận trái nhau.
+- **Một unknown khi nào là blocker?**: Khi nó làm đổi semantics, blast radius hoặc acceptance criteria.
+- **Non-goal có tác dụng gì?**: Ngăn scope mở rộng âm thầm và làm rõ phần chưa được kết luận.
 
 ## Novel-scenario retest
 
@@ -26,7 +26,7 @@ CEO muốn câu trả lời trong hai giờ nhưng identity khách đa thiết b
 
 **Pass condition:** câu trả lời nêu boundary, evidence, lựa chọn, ít nhất một alternative, blast radius/consumer harm và reversal trigger. Không chấm theo việc trùng wording của đáp án mẫu.
 
-## Bài làm sau buổi học
+## Post-Lesson Work
 
 - Làm `quiz.md`, ngưỡng 8/10.
 - Làm `homework.md`, ngưỡng 75/100 và không có critical failure.
@@ -43,8 +43,14 @@ CEO muốn câu trả lời trong hai giờ nhưng identity khách đa thiết b
 
 ## Giới hạn
 
-Gói này chưa được dạy trên cohort thật; thời lượng là ước tính. Điểm quiz/homework chỉ là evidence trong scope của DA-L005, không phải chứng nhận vai trò hay kinh nghiệm production.
+Gói này chưa được dạy trên cohort thật. Điểm quiz và homework chỉ là evidence trong scope của DA-L005, không phải chứng nhận vai trò hoặc kinh nghiệm production.
 
 ## Bắc cầu
 
-DA-L006 — cấu trúc dữ liệu đúng trong Excel theo contract đã khóa.
+DA-L006: cấu trúc dữ liệu đúng trong Excel theo contract đã khóa.
+
+## References
+
+- [[wiki.da-foundation.vague-request-to-answerable-question|From a vague request to an answerable question]]
+- [[wiki.semantic-layer.metric-contract|From a business question to a metric contract]]
+- [[wiki.data-product.requirements-traceability|Requirements traceability]]

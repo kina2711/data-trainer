@@ -1,0 +1,27 @@
+task_id: academy-build-scene-package
+instance_id: da-de-l001-teaching-version
+audited_at: 2026-10-04
+result: pass-approved
+scope:
+  lessons: [DA-L001, DE-L001]
+  new_assets: 2
+checks:
+  alignment:
+    result: pass
+    evidence: Each teaching version preserves the central question, worked case, misconceptions, checks and Second Brain references of its lesson.
+  beginner_language:
+    result: pass
+    evidence: Essential terms are introduced before use; explanations use short steps, concrete inputs and observable outputs.
+  delivery_support:
+    result: pass
+    evidence: Both assets include spoken explanation, pause-and-question prompts, a full worked example, knowledge checks and closing takeaways.
+  editorial:
+    result: pass
+    evidence: The two files passed blader/humanizer v3.1.0 review across all 26 listed patterns. Staged openings, not-X-but-Y phrasing, redundant explanation and decorative emphasis were removed while code, data and link targets were preserved. No curly quotation marks, long dashes, decorative icons, ornamental metaphors, public course-duration language or hidden age claim remain.
+  application:
+    result: pass
+    evidence: Web asset tabs, wiki links and Mermaid rendering were checked in the local browser after rebuilding the index. Node tests and Electron startup were also checked.
+release_gate:
+  status: approved
+  owner_action: completed by kina2711 on 2026-10-04
+  later_lessons: allowed under lesson-authoring-v1 and mandatory Humanizer review

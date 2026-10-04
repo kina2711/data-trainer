@@ -11,7 +11,7 @@ footer: 'Foundation · runnable scene package'
 
 # Decomposition: responsibility, interface, state and failure domain
 
-**DE-L002 · 120 phút (ước tính)**
+**DE-L002**
 
 > Làm sao chia hệ thành boundary thay đổi và hỏng theo cách có thể kiểm chứng?
 
@@ -27,12 +27,12 @@ Phân rã hệ theo responsibility, interface, state, dependency direction và f
 
 ---
 
-<!-- scene: S01 · source: note.md: heading '1. Ranh giới bắt đầu từ responsibility' -->
+<!-- scene: S01 · source: note.md: heading 1. Ranh giới bắt đầu từ responsibility -->
 ## Tình huống mở
 
 Tách monolith thành ba service nhưng cả ba dùng chung database và credential: network tăng, blast radius không giảm.
 
-**Think–pair–share · 4 phút**
+**Independent analysis followed by peer review**
 
 1. Bạn sẽ làm gì đầu tiên?
 2. Quyết định nào có thể bị ảnh hưởng?
@@ -40,7 +40,7 @@ Tách monolith thành ba service nhưng cả ba dùng chung database và credent
 
 ---
 
-<!-- scene: S02 · source: note.md: heading '2. Interface là lời hứa tối thiểu' -->
+<!-- scene: S02 · source: note.md: heading 2. Interface là lời hứa tối thiểu -->
 ## Mental model trung tâm
 
 > Boundary tốt gom invariant và lý do thay đổi, thu hẹp interface, có owner state rõ và làm failure propagation quan sát/kiểm soát được.
@@ -67,7 +67,7 @@ Không làm bước này, output sau đó có thể đúng cú pháp nhưng sai 
 
 ---
 
-<!-- scene: S03 · source: note.md: heading '2. Interface là lời hứa tối thiểu' -->
+<!-- scene: S03 · source: note.md: heading 2. Interface là lời hứa tối thiểu -->
 ## Check 1 · trả lời không nhìn tài liệu
 
 **Responsibility nên được tìm bằng gì?**
@@ -83,7 +83,7 @@ Nếu câu trả lời chỉ nêu tên công cụ, hãy quay lại mental model 
 ---
 
 <!-- scene: S04 · source: UNSOURCED guided practice synthesis -->
-## Guided practice · 12 phút làm + 6 phút chữa
+## Guided practice
 
 Phân rã order-payment-fulfillment trên bốn trục. inject timeout payment và database outage rồi trace impact.
 
@@ -93,7 +93,7 @@ Người dạy không chữa bằng đáp án ngay. yêu cầu mỗi nhóm nêu 
 
 ---
 
-<!-- scene: S05 · source: note.md: heading '3. State quyết định độ khó thay thế' -->
+<!-- scene: S05 · source: note.md: heading 3. State quyết định độ khó thay thế -->
 ## Quy tắc quyết định
 
 Tách boundary khi change cadence, invariant/state ownership hoặc fault containment khác nhau và cost network/operation được biện minh.
@@ -114,7 +114,7 @@ Tách boundary khi change cadence, invariant/state ownership hoặc fault contai
 
 ## Worked example · đi từng bước
 
-<!-- scene: S07 · source: note.md: heading '4. Failure domain không đồng nghĩa deployment unit' -->
+<!-- scene: S07 · source: note.md: heading 4. Failure domain không đồng nghĩa deployment unit -->
 
 1. Tách order intent, payment adapter và fulfillment theo invariant/lifecycle.
 2. Order là authoritative owner của state machine. payment trả outcome contract thay vì ORM object.
@@ -157,8 +157,8 @@ Hai team cần đổi schema với cadence khác nhưng dùng chung dedup ledger
 
 ---
 
-<!-- scene: S09 · source: note.md: heading '8. Failure modes và ngộ nhận' -->
-## Exit ticket · 3 phút
+<!-- scene: S09 · source: note.md: heading 8. Failure modes và ngộ nhận -->
+## Exit check
 
 **Vì sao tách process chưa chắc giảm failure domain?**
 
@@ -169,10 +169,18 @@ Các process có thể vẫn chung dependency/state/credential. fault ở shared
 
 ---
 
-## Sau buổi học
+## Post-Lesson
 
 1. Làm `quiz.md`. đạt **8/10**.
 2. Nếu trượt một concept, đọc remediation trong `after-note.md` rồi retest đúng concept đó.
 3. Hoàn thành `homework.md`. đạt **≥ 75/100** và không có critical failure.
 
 **Bắc cầu:** DE-L003: ghi trade-off và reversal trigger bằng ADR.
+
+---
+
+## References
+
+- [[wiki.engineering-foundation.decomposition-four-axes|Decomposition across four axes]]
+- [[wiki.data-product.requirements-traceability|Requirements traceability]]
+- [[wiki.backend.idempotency-keys-deduplication-state|Idempotency keys and deduplication state]]

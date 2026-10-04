@@ -1,0 +1,27 @@
+{
+  "task_id": "portal-editorial-refresh-v1",
+  "checked_at": "2026-10-04",
+  "status": "pass",
+  "approved_scope": [
+    "56 published DA and DE roadmap documents",
+    "645 canonical Second Brain notes",
+    "10 published DA and DE lesson packages and their public assets",
+    "unified portal navigation, labels, index builder and regression tests",
+    "editorial build and validation tooling"
+  ],
+  "observed_write_classes": [
+    "Roadmap prose normalization, course-timing removal and Second Brain links",
+    "Second Brain prose normalization and Humanizer evidence upgrade",
+    "declared Reference-library mirrors synchronized byte-for-byte with canonical Wiki notes",
+    "lesson generator, manifests, curriculum, teaching guide, slides, quiz, assignment and post-lesson assets",
+    "English portal labels and direct lesson-note-book navigation",
+    "generated portal index and automated validation evidence"
+  ],
+  "out_of_scope_preserved": [
+    "private source files and book binaries",
+    "3_Toi personal data",
+    "technical time semantics including event time, timeout, retention, latency and SLO thresholds",
+    "pre-existing unrelated worktree changes"
+  ],
+  "scope_result": "No write class outside the requested editorial, learning-content and portal scope was introduced by this refresh."
+}

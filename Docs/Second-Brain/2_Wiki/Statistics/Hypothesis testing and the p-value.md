@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Giả thuyết không và giả thuyết đối. Định nghĩa chính xác của trị số p và bốn phát biểu bị gán nhầm cho nó. Sai lầm loại I và loại II diễn đạt bằng hậu quả nghiệp vụ. Mức ý nghĩa và lực kiểm định. Phân biệt ý nghĩa thống kê và ý nghĩa thực tiễn. Kích thước hiệu ứng. Cơ chế khiến cỡ mẫu rất lớn làm mọi khác biệt đạt ngưỡng ý nghĩa thống kê. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L041 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Hypothesis testing and the p-value**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Phát biểu ý nghĩa của một trị số p cho người nhận không có nền thống kê, không chứa phát biểu sai. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Giả thuyết không và giả thuyết đối. Định nghĩa chính xác của trị số p và bốn phát biểu bị gán nhầm cho nó. Sai lầm loại I và loại II diễn đạt bằng hậu quả nghiệp vụ. Mức ý nghĩa và lực kiểm định. Phân biệt ý nghĩa thống kê và ý nghĩa thực tiễn. Kích thước hiệu ứng. Cơ chế khiến cỡ mẫu rất lớn làm mọi khác biệt đạt ngưỡng ý nghĩa thống kê.
 
@@ -44,7 +44,7 @@ Cơ chế của `hypothesis-testing-and-the-p-value` được kiểm qua năm l�
 
 Lỗi cần loại trừ trong bài này là: Phát biểu trị số p là xác suất giả thuyết không đúng · kết luận không có tác dụng khi trị số p vượt ngưỡng · báo cáo ý nghĩa thống kê mà không báo kích thước hiệu ứng. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Phát biểu trị số p là xác
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L041: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Chỉ đúng chỗ sai của ≥ 7/8 phát biểu, và phần trình bày cho người nghe không chuyên không chứa phát biểu sai nào.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L041: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Chỉ đúng chỗ sai của ≥ 7/8 phát biểu, và phần trình bày cho người nghe không chuyên không chứa phát biểu sai nào.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Hypothesis testing and the p-value
+## Worked Case: Hypothesis testing and the p-value
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Mô phỏng phân phối trị số p dưới giả thuyết không. Phân tích 8 phát biểu kết quả và chỉ ra chỗ sai của từng phát biểu.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Hypothesis testing and the p-value`, learner ghi exp
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L041 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Hypothesis testing and the p-value` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L041 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Giả thuyết không và giả thuyết đối. Định nghĩa chính xác của trị số p và bốn phát biểu bị gán nhầm cho nó. Sai lầm loại I và loại II diễn đạt bằng hậu quả nghiệp vụ. Mức ý nghĩa và lực kiểm định. Phân biệt ý nghĩa thống kê và ý nghĩa thực tiễn. Kích thước hiệu ứng. Cơ chế khiến cỡ mẫu rất lớn làm mọi khác biệt đạt ngưỡng ý nghĩa thống kê.
+**Mệnh đề của probe 1: `population`.** Giả thuyết không và giả thuyết đối. Định nghĩa chính xác của trị số p và bốn phát biểu bị gán nhầm cho nó. Sai lầm loại I và loại II diễn đạt bằng hậu quả nghiệp vụ. Mức ý nghĩa và lực kiểm định. Phân biệt ý nghĩa thống kê và ý nghĩa thực tiễn. Kích thước hiệu ứng. Cơ chế khiến cỡ mẫu rất lớn làm mọi khác biệt đạt ngưỡng ý nghĩa thống kê.
 
 **Thiết kế.** Probe 1 của L041 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L041 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Phát biểu ý nghĩa của một trị số p cho người nhận không có nền thống kê, không chứa phát biểu sai.
+**Mệnh đề của probe 2: `grain`.** Phát biểu ý nghĩa của một trị số p cho người nhận không có nền thống kê, không chứa phát biểu sai.
 
 **Thiết kế.** Probe 2 của L041 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L041 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Phát biểu trị số p là xác suất giả thuyết không đúng · kết luận không có tác dụng khi trị số p vượt ngưỡng · báo cáo ý nghĩa thống kê mà không báo kích thước hiệu ứng.
+**Mệnh đề của probe 3: `identity`.** Phát biểu trị số p là xác suất giả thuyết không đúng · kết luận không có tác dụng khi trị số p vượt ngưỡng · báo cáo ý nghĩa thống kê mà không báo kích thước hiệu ứng.
 
 **Thiết kế.** Probe 3 của L041 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L041 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Chỉ đúng chỗ sai của ≥ 7/8 phát biểu, và phần trình bày cho người nghe không chuyên không chứa phát biểu sai nào.
+**Mệnh đề của probe 4: `time cutoff`.** Chỉ đúng chỗ sai của ≥ 7/8 phát biểu, và phần trình bày cho người nghe không chuyên không chứa phát biểu sai nào.
 
 **Thiết kế.** Probe 4 của L041 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L041 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Giả thuyết không và giả thuyết đối. Định nghĩa chính xác của trị số p và bốn phát biểu bị gán nhầm cho nó. Sai lầm loại I và loại II diễn đạt bằng hậu quả nghiệp vụ. Mức ý nghĩa và lực kiểm định. Phân biệt ý nghĩa thống kê và ý nghĩa thực tiễn. Kích thước hiệu ứng. Cơ chế khiến cỡ mẫu rất lớn làm mọi khác biệt đạt ngưỡng ý nghĩa thống kê.
+**Mệnh đề của probe 5: `missing versus zero`.** Giả thuyết không và giả thuyết đối. Định nghĩa chính xác của trị số p và bốn phát biểu bị gán nhầm cho nó. Sai lầm loại I và loại II diễn đạt bằng hậu quả nghiệp vụ. Mức ý nghĩa và lực kiểm định. Phân biệt ý nghĩa thống kê và ý nghĩa thực tiễn. Kích thước hiệu ứng. Cơ chế khiến cỡ mẫu rất lớn làm mọi khác biệt đạt ngưỡng ý nghĩa thống kê.
 
 **Thiết kế.** Probe 5 của L041 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L041 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Phát biểu ý nghĩa của một trị số p cho người nhận không có nền thống kê, không chứa phát biểu sai.
+**Mệnh đề của probe 6: `duplicate`.** Phát biểu ý nghĩa của một trị số p cho người nhận không có nền thống kê, không chứa phát biểu sai.
 
 **Thiết kế.** Probe 6 của L041 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L041 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Phát biểu trị số p là xác suất giả thuyết không đúng · kết luận không có tác dụng khi trị số p vượt ngưỡng · báo cáo ý nghĩa thống kê mà không báo kích thước hiệu ứng.
+**Mệnh đề của probe 7: `join fan-out`.** Phát biểu trị số p là xác suất giả thuyết không đúng · kết luận không có tác dụng khi trị số p vượt ngưỡng · báo cáo ý nghĩa thống kê mà không báo kích thước hiệu ứng.
 
 **Thiết kế.** Probe 7 của L041 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L041 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Chỉ đúng chỗ sai của ≥ 7/8 phát biểu, và phần trình bày cho người nghe không chuyên không chứa phát biểu sai nào.
+**Mệnh đề của probe 8: `changed definition`.** Chỉ đúng chỗ sai của ≥ 7/8 phát biểu, và phần trình bày cho người nghe không chuyên không chứa phát biểu sai nào.
 
 **Thiết kế.** Probe 8 của L041 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L041 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Giả thuyết không và giả thuyết đối. Định nghĩa chính xác của trị số p và bốn phát biểu bị gán nhầm cho nó. Sai lầm loại I và loại II diễn đạt bằng hậu quả nghiệp vụ. Mức ý nghĩa và lực kiểm định. Phân biệt ý nghĩa thống kê và ý nghĩa thực tiễn. Kích thước hiệu ứng. Cơ chế khiến cỡ mẫu rất lớn làm mọi khác biệt đạt ngưỡng ý nghĩa thống kê.
+**Mệnh đề của probe 9: `independent oracle`.** Giả thuyết không và giả thuyết đối. Định nghĩa chính xác của trị số p và bốn phát biểu bị gán nhầm cho nó. Sai lầm loại I và loại II diễn đạt bằng hậu quả nghiệp vụ. Mức ý nghĩa và lực kiểm định. Phân biệt ý nghĩa thống kê và ý nghĩa thực tiễn. Kích thước hiệu ứng. Cơ chế khiến cỡ mẫu rất lớn làm mọi khác biệt đạt ngưỡng ý nghĩa thống kê.
 
 **Thiết kế.** Probe 9 của L041 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L041 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Phát biểu ý nghĩa của một trị số p cho người nhận không có nền thống kê, không chứa phát biểu sai.
+**Mệnh đề của probe 10: `replay`.** Phát biểu ý nghĩa của một trị số p cho người nhận không có nền thống kê, không chứa phát biểu sai.
 
 **Thiết kế.** Probe 10 của L041 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L041 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Phát biểu trị số p là xác suất giả thuyết không đúng · kết luận không có tác dụng khi trị số p vượt ngưỡng · báo cáo ý nghĩa thống kê mà không báo kích thước hiệu ứng.
+**Mệnh đề của probe 11: `fresh snapshot`.** Phát biểu trị số p là xác suất giả thuyết không đúng · kết luận không có tác dụng khi trị số p vượt ngưỡng · báo cáo ý nghĩa thống kê mà không báo kích thước hiệu ứng.
 
 **Thiết kế.** Probe 11 của L041 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L041 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Chỉ đúng chỗ sai của ≥ 7/8 phát biểu, và phần trình bày cho người nghe không chuyên không chứa phát biểu sai nào.
+**Mệnh đề của probe 12: `novel scenario`.** Chỉ đúng chỗ sai của ≥ 7/8 phát biểu, và phần trình bày cho người nghe không chuyên không chứa phát biểu sai nào.
 
 **Thiết kế.** Probe 12 của L041 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Chỉ đúng chỗ sai của ≥ 7/8 phát biểu, và phần trình bày cho ng
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-OPENINTRO-STATISTICS-4E]] — `src.book.openintro-statistics.4e`
-2. [[SRC-GOOGLE-HEART-UX-METRICS]] — `src.paper.google-heart-ux-metrics`
+1. [[SRC-OPENINTRO-STATISTICS-4E]]: `src.book.openintro-statistics.4e`
+2. [[SRC-GOOGLE-HEART-UX-METRICS]]: `src.paper.google-heart-ux-metrics`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-OPENINTRO-STATISTICS-4E]] — `src.book.openintro-statistics.4e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Hypothesis testing and the p-value | các mục cơ chế, case và probe | Đã phủ | ngoài objective L041 |
-| [[SRC-GOOGLE-HEART-UX-METRICS]] — `src.paper.google-heart-ux-metrics` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Hypothesis testing and the p-value | các mục cơ chế, case và probe | Đã phủ | ngoài objective L041 |
+| [[SRC-OPENINTRO-STATISTICS-4E]]: `src.book.openintro-statistics.4e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Hypothesis testing and the p-value | các mục cơ chế, case và probe | Đã phủ | ngoài objective L041 |
+| [[SRC-GOOGLE-HEART-UX-METRICS]]: `src.paper.google-heart-ux-metrics` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Hypothesis testing and the p-value | các mục cơ chế, case và probe | Đã phủ | ngoài objective L041 |
 
 ## Key takeaways
 - Phát biểu ý nghĩa của một trị số p cho người nhận không có nền thống kê, không chứa phát biểu sai.
@@ -226,7 +226,7 @@ Chỉ đúng chỗ sai của ≥ 7/8 phát biểu, và phần trình bày cho ng
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.hypothesis-testing-and-the-p-value`
+## Execution capsule: kiểm chứng `wiki.da.hypothesis-testing-and-the-p-value`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.hypothesis-testing-and-the-p-value`, sơ đồ, ví dụ và artifact về **Hypothesis testing and the p-value** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

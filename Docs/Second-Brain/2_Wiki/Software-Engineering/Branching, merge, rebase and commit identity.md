@@ -72,7 +72,7 @@ Mọi rewrite cần backup ref, kiểm remote state và dùng lease khi force pu
 
 Ba bản sao của cùng repository tích hợp một feature và hotfix. Bản A merge giữ topology, bản B rebase feature lên hotfix, bản C squash feature. Nhóm so `git log --graph`, commit IDs, khả năng revert từng bước và hành vi của một clone đã fetch lịch sử cũ. Sau đó họ xử lý một conflict bằng cách kiểm invariant thay vì chọn ours/theirs nguyên khối.
 
-Tình huống của `wiki.engineering-foundation.git-history-integration` phải được chạy trong sandbox hoặc fixture có version. Nếu chưa chạy, các kết quả mong đợi chỉ là protocol đánh giá; không được ghi thành observation. Người học giữ input, command, state trước–sau, raw output và một oracle độc lập đủ để reviewer tái hiện câu hỏi riêng của bài `Branching, merge, rebase and commit identity`.
+Tình huống của `wiki.engineering-foundation.git-history-integration` phải được chạy trong sandbox hoặc fixture có version. Nếu chưa chạy, các kết quả mong đợi chỉ là protocol đánh giá; không được ghi thành observation. Người học giữ input, command, state trước-sau, raw output và một oracle độc lập đủ để reviewer tái hiện câu hỏi riêng của bài `Branching, merge, rebase and commit identity`.
 
 ## 8. Failure modes và ngộ nhận
 
@@ -159,17 +159,17 @@ Mỗi probe dưới đây bắt đầu bằng dự đoán viết trước. Kết
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-CHACON-STRAUB-PRO-GIT-2E]] — `src.book.chacon-straub-pro-git.2e` | Chapter 1 PDF 42–43; Chapter 3 PDF 129–174; Chapter 7 PDF 422–434; Chapter 10 PDF 762–790 | object graph, refs, merge, rebase, reset và identity | §§1–9 | Đã phủ | Nội dung ngoài objective DE-L005 |
+| [[SRC-CHACON-STRAUB-PRO-GIT-2E]]: `src.book.chacon-straub-pro-git.2e` | Chapter 1 PDF 42-43; Chapter 3 PDF 129-174; Chapter 7 PDF 422-434; Chapter 10 PDF 762-790 | object graph, refs, merge, rebase, reset và identity | §§1-9 | Đã phủ | Nội dung ngoài objective DE-L005 |
 
 ## Key takeaways
-- Lựa chọn integration là quyết định về graph, identity và collaborators; lịch sử ‘đẹp’ không được đánh đổi bằng blast radius không được công bố.
+- Lựa chọn integration là quyết định về graph, identity và collaborators; lịch sử đẹp không được đánh đổi bằng blast radius không được công bố.
 - Một kết luận chỉ có giá trị trong scope, version và state đã ghi.
 - Counterexample và changed-constraint test mạnh hơn việc lặp lại định nghĩa.
 - Trước khi lab chạy, note này đã có provenance và protocol nhưng chưa phải chứng nhận production.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.engineering-foundation.git-history-integration`
+## Execution capsule: kiểm chứng `wiki.engineering-foundation.git-history-integration`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.engineering-foundation.git-history-integration`, sơ đồ, ví dụ và artifact về **Branching, merge, rebase and commit identity** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

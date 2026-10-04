@@ -1,0 +1,36 @@
+task_id: academy-build-scene-package
+instance_id: da-de-l001-deep-rewrite-v2-library
+audited_at: 2026-10-04
+result: pass-awaiting-owner-approval
+scope:
+  lessons: [DA-L001, DE-L001]
+  public_assets: 10
+  second_brain_notes: 645
+  library_books: 47
+checks:
+  depth:
+    result: pass
+    evidence: DA-L001 has 3344 words; DE-L001 has 3353 words; both include worked cases, code, diagrams, failure modes, transfer checks and evidence contracts.
+  schedule_language:
+    result: pass
+    evidence: Public lesson assets and published lesson payload do not expose course duration or study scheduling.
+    caveat: Domain timing semantics such as event time, cutoff, timeout, freshness and SLO windows remain where required for technical correctness.
+  lesson_to_brain:
+    result: pass
+    evidence: DA-L001 has 3 canonical wiki links and DE-L001 has 4; links use routable note hashes.
+  brain_to_library:
+    result: pass
+    evidence: Canonical note source IDs resolve to governed source metadata; book sources render as Library controls on desktop and narrow screens.
+  book_privacy:
+    result: pass
+    evidence: Published JSON excludes canonical local paths and book files; the desktop IPC resolves approved local paths from the private manifest.
+  editorial_police:
+    result: pass
+    evidence: No curly quotation marks, em dash, en dash, decorative icons, banned ornamental wording or public duration labels in the two public lesson packages.
+  application:
+    result: pass
+    evidence: Node tests, Electron smoke test, 390px mobile check and 1440px desktop check passed.
+release_gate:
+  status: waiting
+  owner_action: Review and approve or request changes for DA-L001 and DE-L001.
+  next_lessons: blocked-by-policy-until-owner-approval

@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Cây quyết định chọn kiểm định theo loại dữ liệu và thiết kế nghiên cứu. Kiểm định t hai mẫu, kiểm định chi bình phương, kiểm định tỉ lệ. Kiểm định phi tham số khi giả định phân bố không thoả. Mỗi kiểm định kèm tập giả định, cách kiểm tra từng giả định, và hậu quả cụ thể khi vi phạm. Vấn đề so sánh bội và các phương pháp hiệu chỉnh. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L042 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Choosing a test and checking its assumptions**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Chọn kiểm định phù hợp cho một tình huống, kiểm tra từng giả định trước khi chạy, và đổi phương pháp khi giả định không thoả. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Cây quyết định chọn kiểm định theo loại dữ liệu và thiết kế nghiên cứu. Kiểm định t hai mẫu, kiểm định chi bình phương, kiểm định tỉ lệ. Kiểm định phi tham số khi giả định phân bố không thoả. Mỗi kiểm định kèm tập giả định, cách kiểm tra từng giả định, và hậu quả cụ thể khi vi phạm. Vấn đề so sánh bội và các phương pháp hiệu chỉnh.
 
@@ -44,7 +44,7 @@ Cơ chế của `choosing-a-test-and-checking-its-assumptions` được kiểm q
 
 Lỗi cần loại trừ trong bài này là: Chạy kiểm định t trên dữ liệu lệch mạnh cỡ mẫu nhỏ · bỏ hiệu chỉnh khi so sánh nhiều nhóm · kiểm tra giả định sau khi đã thấy kết quả. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Chạy kiểm định t trên dữ
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L042: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Chọn đúng kiểm định cho ≥ 5/6 tình huống, phát hiện được tình huống vi phạm giả định, và đổi sang phương pháp phù hợp.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L042: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Chọn đúng kiểm định cho ≥ 5/6 tình huống, phát hiện được tình huống vi phạm giả định, và đổi sang phương pháp phù hợp.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Choosing a test and checking its assumptions
+## Worked Case: Choosing a test and checking its assumptions
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Sáu tình huống nghiệp vụ. Với mỗi tình huống: chọn kiểm định, kiểm tra giả định, chạy, diễn giải. Ít nhất một tình huống có giả định bị vi phạm và đòi đổi phương pháp.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Choosing a test and checking its assumptions`, learn
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L042 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Choosing a test and checking its assumptions` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L042 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Cây quyết định chọn kiểm định theo loại dữ liệu và thiết kế nghiên cứu. Kiểm định t hai mẫu, kiểm định chi bình phương, kiểm định tỉ lệ. Kiểm định phi tham số khi giả định phân bố không thoả. Mỗi kiểm định kèm tập giả định, cách kiểm tra từng giả định, và hậu quả cụ thể khi vi phạm. Vấn đề so sánh bội và các phương pháp hiệu chỉnh.
+**Mệnh đề của probe 1: `population`.** Cây quyết định chọn kiểm định theo loại dữ liệu và thiết kế nghiên cứu. Kiểm định t hai mẫu, kiểm định chi bình phương, kiểm định tỉ lệ. Kiểm định phi tham số khi giả định phân bố không thoả. Mỗi kiểm định kèm tập giả định, cách kiểm tra từng giả định, và hậu quả cụ thể khi vi phạm. Vấn đề so sánh bội và các phương pháp hiệu chỉnh.
 
 **Thiết kế.** Probe 1 của L042 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L042 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Chọn kiểm định phù hợp cho một tình huống, kiểm tra từng giả định trước khi chạy, và đổi phương pháp khi giả định không thoả.
+**Mệnh đề của probe 2: `grain`.** Chọn kiểm định phù hợp cho một tình huống, kiểm tra từng giả định trước khi chạy, và đổi phương pháp khi giả định không thoả.
 
 **Thiết kế.** Probe 2 của L042 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L042 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Chạy kiểm định t trên dữ liệu lệch mạnh cỡ mẫu nhỏ · bỏ hiệu chỉnh khi so sánh nhiều nhóm · kiểm tra giả định sau khi đã thấy kết quả.
+**Mệnh đề của probe 3: `identity`.** Chạy kiểm định t trên dữ liệu lệch mạnh cỡ mẫu nhỏ · bỏ hiệu chỉnh khi so sánh nhiều nhóm · kiểm tra giả định sau khi đã thấy kết quả.
 
 **Thiết kế.** Probe 3 của L042 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L042 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Chọn đúng kiểm định cho ≥ 5/6 tình huống, phát hiện được tình huống vi phạm giả định, và đổi sang phương pháp phù hợp.
+**Mệnh đề của probe 4: `time cutoff`.** Chọn đúng kiểm định cho ≥ 5/6 tình huống, phát hiện được tình huống vi phạm giả định, và đổi sang phương pháp phù hợp.
 
 **Thiết kế.** Probe 4 của L042 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L042 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Cây quyết định chọn kiểm định theo loại dữ liệu và thiết kế nghiên cứu. Kiểm định t hai mẫu, kiểm định chi bình phương, kiểm định tỉ lệ. Kiểm định phi tham số khi giả định phân bố không thoả. Mỗi kiểm định kèm tập giả định, cách kiểm tra từng giả định, và hậu quả cụ thể khi vi phạm. Vấn đề so sánh bội và các phương pháp hiệu chỉnh.
+**Mệnh đề của probe 5: `missing versus zero`.** Cây quyết định chọn kiểm định theo loại dữ liệu và thiết kế nghiên cứu. Kiểm định t hai mẫu, kiểm định chi bình phương, kiểm định tỉ lệ. Kiểm định phi tham số khi giả định phân bố không thoả. Mỗi kiểm định kèm tập giả định, cách kiểm tra từng giả định, và hậu quả cụ thể khi vi phạm. Vấn đề so sánh bội và các phương pháp hiệu chỉnh.
 
 **Thiết kế.** Probe 5 của L042 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L042 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Chọn kiểm định phù hợp cho một tình huống, kiểm tra từng giả định trước khi chạy, và đổi phương pháp khi giả định không thoả.
+**Mệnh đề của probe 6: `duplicate`.** Chọn kiểm định phù hợp cho một tình huống, kiểm tra từng giả định trước khi chạy, và đổi phương pháp khi giả định không thoả.
 
 **Thiết kế.** Probe 6 của L042 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L042 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Chạy kiểm định t trên dữ liệu lệch mạnh cỡ mẫu nhỏ · bỏ hiệu chỉnh khi so sánh nhiều nhóm · kiểm tra giả định sau khi đã thấy kết quả.
+**Mệnh đề của probe 7: `join fan-out`.** Chạy kiểm định t trên dữ liệu lệch mạnh cỡ mẫu nhỏ · bỏ hiệu chỉnh khi so sánh nhiều nhóm · kiểm tra giả định sau khi đã thấy kết quả.
 
 **Thiết kế.** Probe 7 của L042 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L042 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Chọn đúng kiểm định cho ≥ 5/6 tình huống, phát hiện được tình huống vi phạm giả định, và đổi sang phương pháp phù hợp.
+**Mệnh đề của probe 8: `changed definition`.** Chọn đúng kiểm định cho ≥ 5/6 tình huống, phát hiện được tình huống vi phạm giả định, và đổi sang phương pháp phù hợp.
 
 **Thiết kế.** Probe 8 của L042 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L042 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Cây quyết định chọn kiểm định theo loại dữ liệu và thiết kế nghiên cứu. Kiểm định t hai mẫu, kiểm định chi bình phương, kiểm định tỉ lệ. Kiểm định phi tham số khi giả định phân bố không thoả. Mỗi kiểm định kèm tập giả định, cách kiểm tra từng giả định, và hậu quả cụ thể khi vi phạm. Vấn đề so sánh bội và các phương pháp hiệu chỉnh.
+**Mệnh đề của probe 9: `independent oracle`.** Cây quyết định chọn kiểm định theo loại dữ liệu và thiết kế nghiên cứu. Kiểm định t hai mẫu, kiểm định chi bình phương, kiểm định tỉ lệ. Kiểm định phi tham số khi giả định phân bố không thoả. Mỗi kiểm định kèm tập giả định, cách kiểm tra từng giả định, và hậu quả cụ thể khi vi phạm. Vấn đề so sánh bội và các phương pháp hiệu chỉnh.
 
 **Thiết kế.** Probe 9 của L042 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L042 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Chọn kiểm định phù hợp cho một tình huống, kiểm tra từng giả định trước khi chạy, và đổi phương pháp khi giả định không thoả.
+**Mệnh đề của probe 10: `replay`.** Chọn kiểm định phù hợp cho một tình huống, kiểm tra từng giả định trước khi chạy, và đổi phương pháp khi giả định không thoả.
 
 **Thiết kế.** Probe 10 của L042 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L042 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Chạy kiểm định t trên dữ liệu lệch mạnh cỡ mẫu nhỏ · bỏ hiệu chỉnh khi so sánh nhiều nhóm · kiểm tra giả định sau khi đã thấy kết quả.
+**Mệnh đề của probe 11: `fresh snapshot`.** Chạy kiểm định t trên dữ liệu lệch mạnh cỡ mẫu nhỏ · bỏ hiệu chỉnh khi so sánh nhiều nhóm · kiểm tra giả định sau khi đã thấy kết quả.
 
 **Thiết kế.** Probe 11 của L042 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L042 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Chọn đúng kiểm định cho ≥ 5/6 tình huống, phát hiện được tình huống vi phạm giả định, và đổi sang phương pháp phù hợp.
+**Mệnh đề của probe 12: `novel scenario`.** Chọn đúng kiểm định cho ≥ 5/6 tình huống, phát hiện được tình huống vi phạm giả định, và đổi sang phương pháp phù hợp.
 
 **Thiết kế.** Probe 12 của L042 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Chọn đúng kiểm định cho ≥ 5/6 tình huống, phát hiện được t�
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-OPENINTRO-STATISTICS-4E]] — `src.book.openintro-statistics.4e`
-2. [[SRC-GOOGLE-HEART-UX-METRICS]] — `src.paper.google-heart-ux-metrics`
+1. [[SRC-OPENINTRO-STATISTICS-4E]]: `src.book.openintro-statistics.4e`
+2. [[SRC-GOOGLE-HEART-UX-METRICS]]: `src.paper.google-heart-ux-metrics`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-OPENINTRO-STATISTICS-4E]] — `src.book.openintro-statistics.4e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Choosing a test and checking its assumptions | các mục cơ chế, case và probe | Đã phủ | ngoài objective L042 |
-| [[SRC-GOOGLE-HEART-UX-METRICS]] — `src.paper.google-heart-ux-metrics` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Choosing a test and checking its assumptions | các mục cơ chế, case và probe | Đã phủ | ngoài objective L042 |
+| [[SRC-OPENINTRO-STATISTICS-4E]]: `src.book.openintro-statistics.4e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Choosing a test and checking its assumptions | các mục cơ chế, case và probe | Đã phủ | ngoài objective L042 |
+| [[SRC-GOOGLE-HEART-UX-METRICS]]: `src.paper.google-heart-ux-metrics` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Choosing a test and checking its assumptions | các mục cơ chế, case và probe | Đã phủ | ngoài objective L042 |
 
 ## Key takeaways
 - Chọn kiểm định phù hợp cho một tình huống, kiểm tra từng giả định trước khi chạy, và đổi phương pháp khi giả định không thoả.
@@ -226,7 +226,7 @@ Chọn đúng kiểm định cho ≥ 5/6 tình huống, phát hiện được t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.choosing-a-test-and-checking-its-assumptions`
+## Execution capsule: kiểm chứng `wiki.da.choosing-a-test-and-checking-its-assumptions`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.choosing-a-test-and-checking-its-assumptions`, sơ đồ, ví dụ và artifact về **Choosing a test and checking its assumptions** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

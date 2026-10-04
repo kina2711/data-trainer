@@ -49,30 +49,30 @@ Viết Python có hợp đồng, có kiểm thử, đóng gói được, quan s�
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L013 · Names, objects and mutability | LT | Dự đoán đúng kết quả của các đoạn mã có chia sẻ đối tượng thay đổi được, và giải thích bằng quan hệ tên với đối tượng. | Dự đoán đúng ≥ 8/10 đoạn, và mỗi đoạn sai được giải thích lại bằng quan hệ tên với đối tượng. | M02: M01 |
-| L014 · Iterators, generators and lazy evaluation | TH | Viết lại một đoạn xử lý nạp toàn bộ thành dạng dòng chảy, và chứng minh bằng số đo rằng bộ nhớ không tăng theo kích thước đầu vào. | Bản dòng chảy giữ bộ nhớ đỉnh gần như không đổi qua cả ba kích thước, trong khi bản nạp toàn bộ tăng tuyến tính. | L013 |
-| L015 · Exceptions, resource lifetime and context managers | TH | Viết mã xử lý lỗi không nuốt ngoại lệ và không rò rỉ tài nguyên, chứng minh bằng thí nghiệm gây lỗi giữa chừng. | Sau 100 lần gây lỗi không còn kết nối nào mở, và mọi lỗi ở ranh giới đều giữ được nguyên nhân gốc trong dấu vết. | L014 |
-| L016 · CPython internals that change your decisions | LT | Giải thích bằng cơ chế vì sao luồng vẫn hữu ích cho khối lượng công việc thiên vào ra, và đo được để chứng minh. | Bảng sáu ô có số đo thật, và giải thích đúng vì sao luồng thắng ở khối lượng công việc thiên vào ra. | L015 |
-| L017 · Packaging - project layout, build and reproducible environments | TH | Đóng gói một công cụ thành gói cài được với môi trường khoá phiên bản, và người khác tái tạo được trên máy trống. | Người khác cài từ gói dựng sẵn và chạy được trên máy trống mà không phải sửa gì, và môi trường tái tạo cho cùng danh sách phiên bản. | L016 |
-| L018 · Type hints and validation at the boundary | TH | Thêm chú thích kiểu cho một gói tới mức bộ kiểm tĩnh sạch, và xác thực dữ liệu lúc chạy ở đúng ranh giới. | Bộ kiểm tĩnh sạch, 10 bản ghi sai đều bị chặn tại ranh giới với thông báo nêu đúng trường, và mã bên trong không kiểm lại kiểu. | L017 |
-| L019 · Testing - unit, integration, property and contract | TH | Viết đủ bốn loại phép kiểm cho một gói, và chứng minh phép kiểm tính chất bắt được ca biên mà phép kiểm đơn vị bỏ sót. | Bộ kiểm bắt ≥ 4/5 lỗi tiêm, phép kiểm tính chất bắt ≥ 1 ca mà phép kiểm đơn vị bỏ sót, và 20 lần chạy cho kết quả giống nhau. | L018 |
-| L020 · Structured logging, correlation and actionable errors | TH | Dựng nhật ký có cấu trúc kèm mã theo dõi, và truy được toàn bộ đường đi của một bản ghi chỉ bằng mã đó. | Truy được đủ đường đi của cả 3 bản lỗi bằng một truy vấn theo mã theo dõi, và phép quét không tìm thấy bí mật trong nhật ký. | L019 |
-| L021 · Profiling before optimising | TH | Định vị nút thắt của một chương trình bằng số đo, sửa đúng nó, và định lượng phần cải thiện. | Định vị đúng nút thắt bằng số đo, cải thiện có số, bộ kiểm vẫn xanh, và chỉ ra được chỗ sai của phép so sánh sai cách. | L020 |
-| L022 · Threads - shared memory, races and locks | TH | Tái hiện được một điều kiện tranh đoạt một cách xác định và sửa bằng cơ chế đồng bộ đúng. | Tái hiện sai 10/10 lần trước khi sửa, 0/1000 lần sau khi sửa, và chẩn đoán được khoá chết bằng bốn điều kiện. | L021 |
-| L023 · Processes - isolation, serialization and cost | TH | Chọn giữa tiến trình và tuần tự cho một khối lượng công việc cho trước, dẫn bằng số đo gồm cả chi phí truyền. | Bảng ba kích thước nhân hai chế độ đủ thời gian và bộ nhớ, chỉ ra đúng điểm giao, và không còn tiến trình mồ côi sau khi giết tiến trình chính. | L022 |
-| L024 · Asyncio - the event loop, cancellation and timeouts | TH | Viết một trình thu thập bất đồng bộ có giới hạn đồng thời, hết giờ và huỷ bỏ đúng, không có lời gọi chặn nào trong vòng lặp. | Không lời gọi chặn nào trong vòng lặp, hết giờ kích hoạt đúng ngưỡng, và sau khi huỷ thì mọi kết nối đã đóng. | L023 |
-| L025 · Coroutine, task and future - the state model | TH | Truy được trạng thái của một tác vụ qua đủ năm giai đoạn và chỉ ra hai cách một lỗi bị nuốt. | Năm trạng thái được quan sát bằng công cụ, và hai ca lỗi bị nuốt được tái hiện cùng chỉ ra cách phát hiện. | L024 |
-| L026 · Structured concurrency - TaskGroup, ownership and cancellation safety | TH | Dựng phạm vi đồng thời có cấu trúc đạt bốn bảo đảm và chứng minh không còn tác vụ mồ côi khi tắt. | Số tác vụ còn sống và số kết nối rò đều bằng không ở cả ba kịch bản, và bản không có cấu trúc được định lượng số tác vụ mồ côi. | L025 |
-| L027 · End-to-end deadlines and backpressure | TH | Cài truyền hạn chót đầu cuối và áp lực ngược, chứng minh yêu cầu không vượt ngân sách và bể không bị cạn. | Phân vị 99 của thời gian yêu cầu nằm trong ngân sách hạn chót, và không lần nào bể kết nối cạn dưới tải. | L026 |
-| L028 · Async failure injection - six failure modes | TH | Tái hiện sáu chế độ hỏng bằng phép thử tự động và chứng minh phòng thủ tương ứng có hiệu lực. | Sáu phép thử tiêm chạy tự động, ≥ 5 phòng thủ có số đo trước sau, và tắt có kiểm soát không để giao dịch dở dang. | L027 |
-| L029 · Choosing a concurrency model from the workload | LT | Chọn mô hình đồng thời cho bốn khối lượng công việc cho trước, mỗi lần dẫn về một số đo đã tự đo. | Chọn đúng ≥ 3/4 khối lượng công việc với số đo dẫn chứng, và nhận ra đúng trường hợp không nên đồng thời. | L028 |
-| L030 · A resilient worker - retry, backoff, idempotency and shutdown | TH | Viết một tiến trình xử lý đạt bốn tính chất và chứng minh bằng thí nghiệm giết tiến trình rằng không mất và không trùng việc. | Sau 20 lần giết và khởi động lại, đối soát khớp tuyệt đối; lỗi dữ liệu không bị thử lại; và tắt có kiểm soát xong trong hạn. | L029 |
-| L031 · Continuous integration for a Python package | TH | Dựng quy trình tích hợp liên tục sáu bước có cửa chặn hợp nhất, với thời gian phản hồi dưới ngưỡng. | Năm yêu cầu hỏng đều bị chặn ở đúng bước, thời gian chạy dưới ngưỡng sau khi bật bộ nhớ đệm, và cửa chặn hợp nhất hoạt động. | L030 |
-| L032 · Python project - a packaged, tested, observable tool | DA | Nộp một gói đạt cả tám điểm danh mục kiểm, qua được phép thử cài trên máy trống và phép thử giết tiến trình. | Tám điểm đều dẫn được tới tệp hoặc số đo, người khác cài và chạy được trên máy trống, và 20 lần giết tiến trình vẫn đối soát khớp. | L031 |
+| L013 · [[wiki.de-foundation.names-objects-mutability|Names, objects and mutability]]| LT | Dự đoán đúng kết quả của các đoạn mã có chia sẻ đối tượng thay đổi được, và giải thích bằng quan hệ tên với đối tượng. | Dự đoán đúng ≥ 8/10 đoạn, và mỗi đoạn sai được giải thích lại bằng quan hệ tên với đối tượng. | M02: M01 |
+| L014 · [[wiki.de-foundation.iterators-generators-lazy-evaluation|Iterators, generators and lazy evaluation]]| TH | Viết lại một đoạn xử lý nạp toàn bộ thành dạng dòng chảy, và chứng minh bằng số đo rằng bộ nhớ không tăng theo kích thước đầu vào. | Bản dòng chảy giữ bộ nhớ đỉnh gần như không đổi qua cả ba kích thước, trong khi bản nạp toàn bộ tăng tuyến tính. | L013 |
+| L015 · [[wiki.de-foundation.exceptions-resource-lifetime-context-managers|Exceptions, resource lifetime and context managers]]| TH | Viết mã xử lý lỗi không nuốt ngoại lệ và không rò rỉ tài nguyên, chứng minh bằng thí nghiệm gây lỗi giữa chừng. | Sau 100 lần gây lỗi không còn kết nối nào mở, và mọi lỗi ở ranh giới đều giữ được nguyên nhân gốc trong dấu vết. | L014 |
+| L016 · [[wiki.de-foundation.cpython-internals-decisions|CPython internals that change your decisions]]| LT | Giải thích bằng cơ chế vì sao luồng vẫn hữu ích cho khối lượng công việc thiên vào ra, và đo được để chứng minh. | Bảng sáu ô có số đo thật, và giải thích đúng vì sao luồng thắng ở khối lượng công việc thiên vào ra. | L015 |
+| L017 · [[wiki.de-foundation.packaging-project-layout-reproducible-environments|Packaging - project layout, build and reproducible environments]]| TH | Đóng gói một công cụ thành gói cài được với môi trường khoá phiên bản, và người khác tái tạo được trên máy trống. | Người khác cài từ gói dựng sẵn và chạy được trên máy trống mà không phải sửa gì, và môi trường tái tạo cho cùng danh sách phiên bản. | L016 |
+| L018 · [[wiki.de-foundation.type-hints-validation-boundary|Type hints and validation at the boundary]]| TH | Thêm chú thích kiểu cho một gói tới mức bộ kiểm tĩnh sạch, và xác thực dữ liệu lúc chạy ở đúng ranh giới. | Bộ kiểm tĩnh sạch, 10 bản ghi sai đều bị chặn tại ranh giới với thông báo nêu đúng trường, và mã bên trong không kiểm lại kiểu. | L017 |
+| L019 · [[wiki.de-foundation.testing-unit-integration-property-contract|Testing - unit, integration, property and contract]]| TH | Viết đủ bốn loại phép kiểm cho một gói, và chứng minh phép kiểm tính chất bắt được ca biên mà phép kiểm đơn vị bỏ sót. | Bộ kiểm bắt ≥ 4/5 lỗi tiêm, phép kiểm tính chất bắt ≥ 1 ca mà phép kiểm đơn vị bỏ sót, và 20 lần chạy cho kết quả giống nhau. | L018 |
+| L020 · [[wiki.de-foundation.structured-logging-correlation-actionable-errors|Structured logging, correlation and actionable errors]]| TH | Dựng nhật ký có cấu trúc kèm mã theo dõi, và truy được toàn bộ đường đi của một bản ghi chỉ bằng mã đó. | Truy được đủ đường đi của cả 3 bản lỗi bằng một truy vấn theo mã theo dõi, và phép quét không tìm thấy bí mật trong nhật ký. | L019 |
+| L021 · [[wiki.de-foundation.profiling-before-optimising|Profiling before optimising]]| TH | Định vị nút thắt của một chương trình bằng số đo, sửa đúng nó, và định lượng phần cải thiện. | Định vị đúng nút thắt bằng số đo, cải thiện có số, bộ kiểm vẫn xanh, và chỉ ra được chỗ sai của phép so sánh sai cách. | L020 |
+| L022 · [[wiki.de-foundation.threads-shared-memory-races-locks|Threads - shared memory, races and locks]]| TH | Tái hiện được một điều kiện tranh đoạt một cách xác định và sửa bằng cơ chế đồng bộ đúng. | Tái hiện sai 10/10 lần trước khi sửa, 0/1000 lần sau khi sửa, và chẩn đoán được khoá chết bằng bốn điều kiện. | L021 |
+| L023 · [[wiki.de-foundation.processes-isolation-serialization-cost|Processes - isolation, serialization and cost]]| TH | Chọn giữa tiến trình và tuần tự cho một khối lượng công việc cho trước, dẫn bằng số đo gồm cả chi phí truyền. | Bảng ba kích thước nhân hai chế độ đủ thời gian và bộ nhớ, chỉ ra đúng điểm giao, và không còn tiến trình mồ côi sau khi giết tiến trình chính. | L022 |
+| L024 · [[wiki.de-foundation.asyncio-event-loop-cancellation-timeouts|Asyncio - the event loop, cancellation and timeouts]]| TH | Viết một trình thu thập bất đồng bộ có giới hạn đồng thời, hết giờ và huỷ bỏ đúng, không có lời gọi chặn nào trong vòng lặp. | Không lời gọi chặn nào trong vòng lặp, hết giờ kích hoạt đúng ngưỡng, và sau khi huỷ thì mọi kết nối đã đóng. | L023 |
+| L025 · [[wiki.de-foundation.coroutine-task-future-state-model|Coroutine, task and future - the state model]]| TH | Truy được trạng thái của một tác vụ qua đủ năm giai đoạn và chỉ ra hai cách một lỗi bị nuốt. | Năm trạng thái được quan sát bằng công cụ, và hai ca lỗi bị nuốt được tái hiện cùng chỉ ra cách phát hiện. | L024 |
+| L026 · [[wiki.de-foundation.structured-concurrency-taskgroup-ownership-cancellation|Structured concurrency - TaskGroup, ownership and cancellation safety]]| TH | Dựng phạm vi đồng thời có cấu trúc đạt bốn bảo đảm và chứng minh không còn tác vụ mồ côi khi tắt. | Số tác vụ còn sống và số kết nối rò đều bằng không ở cả ba kịch bản, và bản không có cấu trúc được định lượng số tác vụ mồ côi. | L025 |
+| L027 · [[wiki.de-foundation.end-to-end-deadlines-backpressure|End-to-end deadlines and backpressure]]| TH | Cài truyền hạn chót đầu cuối và áp lực ngược, chứng minh yêu cầu không vượt ngân sách và bể không bị cạn. | Phân vị 99 của thời gian yêu cầu nằm trong ngân sách hạn chót, và không lần nào bể kết nối cạn dưới tải. | L026 |
+| L028 · [[wiki.de-foundation.async-failure-injection-six-modes|Async failure injection - six failure modes]]| TH | Tái hiện sáu chế độ hỏng bằng phép thử tự động và chứng minh phòng thủ tương ứng có hiệu lực. | Sáu phép thử tiêm chạy tự động, ≥ 5 phòng thủ có số đo trước sau, và tắt có kiểm soát không để giao dịch dở dang. | L027 |
+| L029 · [[wiki.de-foundation.choosing-concurrency-model-workload|Choosing a concurrency model from the workload]]| LT | Chọn mô hình đồng thời cho bốn khối lượng công việc cho trước, mỗi lần dẫn về một số đo đã tự đo. | Chọn đúng ≥ 3/4 khối lượng công việc với số đo dẫn chứng, và nhận ra đúng trường hợp không nên đồng thời. | L028 |
+| L030 · [[wiki.de-foundation.resilient-worker-retry-backoff-idempotency-shutdown|A resilient worker - retry, backoff, idempotency and shutdown]]| TH | Viết một tiến trình xử lý đạt bốn tính chất và chứng minh bằng thí nghiệm giết tiến trình rằng không mất và không trùng việc. | Sau 20 lần giết và khởi động lại, đối soát khớp tuyệt đối; lỗi dữ liệu không bị thử lại; và tắt có kiểm soát xong trong hạn. | L029 |
+| L031 · [[wiki.de-foundation.continuous-integration-python-package|Continuous integration for a Python package]]| TH | Dựng quy trình tích hợp liên tục sáu bước có cửa chặn hợp nhất, với thời gian phản hồi dưới ngưỡng. | Năm yêu cầu hỏng đều bị chặn ở đúng bước, thời gian chạy dưới ngưỡng sau khi bật bộ nhớ đệm, và cửa chặn hợp nhất hoạt động. | L030 |
+| L032 · [[wiki.de-foundation.python-project-packaged-tested-observable-tool|Python project - a packaged, tested, observable tool]]| DA | Nộp một gói đạt cả tám điểm danh mục kiểm, qua được phép thử cài trên máy trống và phép thử giết tiến trình. | Tám điểm đều dẫn được tới tệp hoặc số đo, người khác cài và chạy được trên máy trống, và 20 lần giết tiến trình vẫn đối soát khớp. | L031 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M02 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M02 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -127,7 +127,7 @@ flowchart LR
   class A013,A014,A015,A016,A017,A018,A019,A020,A021,A022,A023,A024,A025,A026,A027,A028,A029,A030,A031,A032 atom;
 ```
 
-### Bài 13: Names, objects and mutability
+### Lesson 13: Names, objects and mutability
 
 Phần lớn lỗi khó hiểu của người mới học Python bắt nguồn từ việc nhầm tên với đối tượng. Gán không sao chép giá trị mà gắn một tên vào một đối tượng, nên hai tên có thể trỏ cùng một đối tượng và sửa qua tên này thì tên kia thấy. Phân biệt đồng nhất với bằng nhau, và vì sao hai thứ này khác nhau với đối tượng thay đổi được. Đối tượng thay đổi được và không thay đổi được: hệ quả trực tiếp là giá trị mặc định của tham số hàm được tạo một lần khi định nghĩa hàm, nên dùng danh sách rỗng làm mặc định là một trong những bẫy kinh điển. Sao chép nông và sao chép sâu, cùng chi phí của từng loại. Phạm vi tên và bao đóng: hàm lồng nhau bắt giữ tên chứ giá trị, nên vòng lặp tạo hàm cho kết quả bất ngờ nếu không hiểu điều này. Cách tự kiểm chứng mọi khẳng định trên bằng lệnh xem đồng nhất, thay vì tin lời giảng.
 
@@ -135,7 +135,7 @@ Người học phải dự đoán đúng kết quả của các đoạn mã có 
 
 Cách đánh giá: Tầng *hiểu*. Bài mở module, nền cho mọi bài sau; chưa đòi viết sản phẩm. Kiểm bằng bài dự đoán viết trước khi chạy; đạt khi đúng ≥ 8/10 đoạn và giải thích được bằng tên và đối tượng chứ bằng mô tả hiện tượng.
 
-### Bài 14: Iterators, generators and lazy evaluation
+### Lesson 14: Iterators, generators and lazy evaluation
 
 Đọc cả tệp vào bộ nhớ là cách viết chạy tốt trên tệp mẫu và chết trên tệp thật, nên đánh giá lười là kỹ thuật nền của mọi module xử lý dữ liệu về sau. Phân biệt đối tượng lặp được với bộ lặp: một cái tạo ra bộ lặp, một cái giữ trạng thái đang ở đâu; từ đó suy ra vì sao duyệt một bộ lặp hai lần thì lần hai rỗng. Hàm sinh là một máy trạng thái: mỗi lần gặp lệnh nhường thì dừng lại và giữ nguyên trạng thái cục bộ, lần gọi sau chạy tiếp từ đó. Hệ quả cho dữ liệu: xử lý theo dòng chảy dùng bộ nhớ không đổi bất kể kích thước đầu vào. Áp lực ngược tự nhiên: bên tiêu thụ quyết định nhịp, nên không có chuyện bên sản xuất dồn quá nhanh. Chuỗi hàm sinh nối nhau tạo thành một đường ống trong bộ nhớ, và đây là mô hình sẽ gặp lại ở tầng lớn hơn tại M23.
 
@@ -143,7 +143,7 @@ Người học phải viết lại một đoạn xử lý nạp toàn bộ thàn
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một phép biến đổi mã có kết quả đo được bằng bộ nhớ. Kiểm bằng cặp số đo trên ba kích thước đầu vào; đạt khi bản dòng chảy giữ bộ nhớ gần như không đổi.
 
-### Bài 15: Exceptions, resource lifetime and context managers
+### Lesson 15: Exceptions, resource lifetime and context managers
 
 Hai lỗi vận hành phổ biến nhất trong mã xử lý dữ liệu đều nằm ở đây: nuốt ngoại lệ, và rò rỉ tài nguyên. Phân loại ngoại lệ và nguyên tắc bắt cụ thể chứ bắt chung: bắt mọi thứ rồi bỏ qua là cách biến một lỗi rõ ràng thành dữ liệu sai âm thầm. Nối chuỗi ngoại lệ để giữ nguyên nhân gốc khi dịch lỗi sang ngôn ngữ của tầng trên. Dịch lỗi ở ranh giới: bên trong dùng ngoại lệ chi tiết, ra tới ranh giới thì dịch sang lỗi có nghĩa với người gọi. Trình quản lý ngữ cảnh bảo đảm dọn dẹp chạy kể cả khi có ngoại lệ, và đây là cách duy nhất đúng để quản lý tệp, kết nối cơ sở dữ liệu và khoá. Tự viết trình quản lý ngữ cảnh cho một tài nguyên của mình. Nguyên tắc thông báo lỗi dùng được: nêu cái gì hỏng, ở đâu, với dữ liệu nào, và người đọc nên làm gì tiếp.
 
@@ -151,7 +151,7 @@ Người học phải viết mã xử lý lỗi không nuốt ngoại lệ và k
 
 Cách đánh giá: Tầng *áp dụng*. Objective là hai tính chất kiểm được bằng thực nghiệm chứ bằng đọc mã. Kiểm bằng thí nghiệm gây lỗi; đạt khi không kết nối nào còn mở sau 100 lần lỗi và mọi lỗi đều lộ ra kèm nguyên nhân gốc.
 
-### Bài 16: CPython internals that change your decisions
+### Lesson 16: CPython internals that change your decisions
 
 Bốn chi tiết bên trong máy thực thi có ảnh hưởng thật tới quyết định thiết kế, phần còn lại thì không nên bận tâm ở mức này. Đếm tham chiếu cộng bộ dọn rác chu trình: đối tượng được giải phóng ngay khi không còn tham chiếu, nên vòng tham chiếu là chỗ duy nhất cần bộ dọn chu trình; hệ quả thực tế là giữ một tham chiếu quên xoá thì bộ nhớ không về. Cấp phát bộ nhớ theo khối nhỏ và vì sao bộ nhớ trả về hệ điều hành chậm hơn người ta tưởng. Khoá thông dịch toàn cục: chỉ một luồng chạy mã Python tại một thời điểm, nhưng phát biểu thường gặp rằng luồng vô dụng là sai, vì khoá được nhả trong lúc chờ vào ra và trong nhiều thư viện tính toán. Từ đó rút ra quy tắc chọn ở Bài 29 chứ chọn theo cảm tính. Mã byte ở mức khái niệm, đủ để biết vì sao một số phép viết nhanh hơn phép khác.
 
@@ -159,7 +159,7 @@ Người học phải giải thích bằng cơ chế vì sao luồng vẫn hữu
 
 Cách đánh giá: Tầng *hiểu*. Objective là bác bỏ một hiểu lầm phổ biến bằng cơ chế cộng số đo. Kiểm bằng thí nghiệm hai loại khối lượng công việc; đạt khi số đo cho thấy đúng chiều và giải thích đúng vai trò của khoá.
 
-### Bài 17: Packaging - project layout, build and reproducible environments
+### Lesson 17: Packaging - project layout, build and reproducible environments
 
 Script chạy được trên máy mình không phải phần mềm, và ranh giới giữa hai thứ nằm ở chỗ người khác chạy lại được. Bố cục dự án và cách Python tìm mô đun: đường dẫn tìm kiếm, nhập tuyệt đối so với nhập tương đối, và nhập vòng cùng cách phá vòng. Tệp cấu hình dự án và hậu trường dựng gói: khác biệt giữa gói nguồn và gói dựng sẵn. Môi trường ảo giải bài toán xung đột phụ thuộc, còn tệp khoá phiên bản giải bài toán tái tạo: không khoá phiên bản thì bản dựng hôm nay khác bản dựng hôm qua, đúng vấn đề ghim phiên bản sẽ gặp lại ở M25. Đánh số phiên bản theo ngữ nghĩa và ý nghĩa với người dùng gói. Cấu hình theo thứ tự ưu tiên và ranh giới biến môi trường; bí mật không bao giờ vào kho mã hay vào nhật ký, quy tắc này lặp lại ở M24 và M26.
 
@@ -167,7 +167,7 @@ Người học phải đóng gói một công cụ thành gói cài được v�
 
 Cách đánh giá: Tầng *áp dụng*. Objective là tiêu chí *clone, một lệnh, cùng kết quả* ở mức gói. Kiểm bằng phép thử tái tạo do người khác chạy; đạt khi họ cài và chạy được mà không phải sửa gì.
 
-### Bài 18: Type hints and validation at the boundary
+### Lesson 18: Type hints and validation at the boundary
 
 Chú thích kiểu không làm chương trình chạy nhanh hơn, nó làm lỗi lộ ra sớm hơn và làm mã đọc được mà không phải đoán. Cú pháp đủ dùng: kiểu hợp, kiểu tuỳ chọn, kiểu tổng quát cho vùng chứa, và giao thức cho kiểu vịt có kiểm tra. Bộ kiểm kiểu tĩnh chạy trong tích hợp liên tục và ngưỡng chặn. Ranh giới quan trọng và hay bị nhầm: chú thích kiểu là kiểm ở thời điểm dịch, không kiểm dữ liệu lúc chạy; dữ liệu từ tệp, từ mạng hay từ cơ sở dữ liệu phải xác thực lúc chạy tại ranh giới nhận. Xác thực ở ranh giới chứ rải khắp nơi: vào tới trong thì dữ liệu đã đúng hình dạng và mã bên trong không phải kiểm lại. Lớp dữ liệu để mô tả bản ghi có cấu trúc thay vì dùng từ điển, và vì sao điều đó quan trọng với mã xử lý dữ liệu: từ điển sai khoá chỉ lộ ra lúc chạy, còn lớp dữ liệu lộ ra lúc kiểm.
 
@@ -175,7 +175,7 @@ Người học phải thêm chú thích kiểu cho một gói tới mức bộ k
 
 Cách đánh giá: Tầng *áp dụng*. Objective gồm hai cơ chế khác nhau mà người học hay gộp làm một. Kiểm bằng bộ kiểm tĩnh cộng thí nghiệm dữ liệu bẩn; đạt khi bộ kiểm sạch và dữ liệu sai hình dạng bị chặn ngay tại ranh giới.
 
-### Bài 19: Testing - unit, integration, property and contract
+### Lesson 19: Testing - unit, integration, property and contract
 
 Bốn loại phép kiểm trả lời bốn câu hỏi khác nhau, và dùng một loại cho mọi việc là cách vừa chậm vừa không bắt được lỗi. Phép kiểm đơn vị kiểm một đơn vị logic, nhanh, chạy mọi lúc. Phép kiểm tích hợp kiểm hai thành phần nói chuyện đúng với nhau, và đây là nơi bắt phần lớn lỗi thật trong mã dữ liệu. Phép kiểm tính chất sinh đầu vào ngẫu nhiên và kiểm một bất biến luôn đúng, rất hợp với mã biến đổi dữ liệu vì nó tìm ra ca biên mà con người không nghĩ ra. Phép kiểm hợp đồng kiểm hai bên vẫn hiểu giống nhau về giao diện. Bộ thay thế và ranh giới đặt chúng: chỉ thay thế ở ranh giới hệ ngoài, thay thế bên trong là tự kiểm mã giả của mình. Tính xác định: cố định thời gian và ngẫu nhiên, dùng thư mục tạm; phép kiểm chạy lúc được lúc không thì tệ hơn không có. Độ phủ không đồng nghĩa chất lượng.
 
@@ -183,7 +183,7 @@ Người học phải viết đủ bốn loại phép kiểm cho một gói, và
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi chọn đúng loại phép kiểm cho từng mục tiêu, chứ tăng độ phủ. Kiểm bằng bài tiêm lỗi; đạt khi bộ kiểm bắt được ít nhất bốn trong năm lỗi và phép kiểm tính chất bắt ít nhất một ca mà phép kiểm đơn vị bỏ sót.
 
-### Bài 20: Structured logging, correlation and actionable errors
+### Lesson 20: Structured logging, correlation and actionable errors
 
 Nhật ký là thứ duy nhất còn lại khi sự cố đã qua, nên thiết kế nhật ký là thiết kế khả năng chẩn đoán về sau. Nhật ký có cấu trúc thay vì chuỗi tự do: có cấu trúc thì truy vấn và tổng hợp được, còn chuỗi tự do thì chỉ đọc mắt được. Bốn mức và quy tắc dùng từng mức, cùng lý do để mức gỡ lỗi chạy trong sản xuất là cách làm hoá đơn tăng mà không ai đọc. Mã theo dõi nối mọi dòng thuộc cùng một lần chạy hoặc cùng một bản ghi; đây là cơ chế sẽ dùng lại xuyên suốt tới M26 để truy ngược một bản ghi sai về lô nạp sinh ra nó. Ghi cái gì ở ranh giới: đầu vào tóm tắt, quyết định đã lấy, và kết quả. Không ghi bí mật và không ghi dữ liệu cá nhân, quy tắc nối tới M26. Thông báo lỗi dùng được nêu bốn thứ: cái gì hỏng, ở đâu, với dữ liệu nào, và nên làm gì.
 
@@ -191,7 +191,7 @@ Người học phải dựng nhật ký có cấu trúc kèm mã theo dõi, và 
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một thiết kế kiểm được bằng phép truy ngược thật. Kiểm bằng bài truy ngược; đạt khi truy được đủ đường đi của bản ghi bằng một truy vấn theo mã theo dõi.
 
-### Bài 21: Profiling before optimising
+### Lesson 21: Profiling before optimising
 
 Tối ưu dựa trên phỏng đoán là cách tốn thời gian vào chỗ không quan trọng, nên quy tắc không thoả hiệp là đo trước khi sửa. Ba loại đo cho ba loại nút thắt: đo CPU theo hàm để biết thời gian tiêu ở đâu, đo bộ nhớ theo dòng để tìm chỗ giữ dữ liệu, và đo vào ra để biết đang chờ đĩa hay chờ mạng. Đo lấy mẫu so với đo có dụng cụ: cái đầu nhẹ và dùng được trong sản xuất, cái sau chi tiết hơn nhưng làm chương trình chậm nên số đo lệch. Cách chạy so sánh đúng: có giai đoạn khởi động, lặp nhiều lần, có mốc so sánh, và cố định dữ liệu; ba cách làm số đo vô nghĩa gồm đầu vào quá nhỏ, bộ nhớ đệm đã ấm, và không lặp. Nguyên tắc rút ra và dùng lại ở M23: sửa nút thắt lớn nhất, đo lại, rồi mới sang nút thắt kế tiếp; sửa nhiều chỗ cùng lúc thì không biết chỗ nào có tác dụng.
 
@@ -199,7 +199,7 @@ Người học phải định vị nút thắt của một chương trình bằn
 
 Cách đánh giá: Tầng *phân tích*. Objective là truy từ tổng thời gian về một hàm cụ thể bằng dữ liệu đo. Kiểm bằng cặp số đo trước sau; đạt khi định vị đúng nút thắt và cải thiện đo được mà kết quả không đổi.
 
-### Bài 22: Threads - shared memory, races and locks
+### Lesson 22: Threads - shared memory, races and locks
 
 Luồng dùng chung bộ nhớ, nên nhanh khi chia sẻ dữ liệu và nguy hiểm vì hai luồng có thể sửa cùng một chỗ. Điều kiện tranh đoạt: kết quả phụ thuộc vào thứ tự thực thi, nên chương trình chạy đúng 99 lần và sai lần thứ 100, và đây là loại lỗi khó tái hiện nhất. Vùng tranh chấp và khoá; khoá chết khi hai luồng giữ chéo nhau và chờ nhau, cùng bốn điều kiện cần để nó xảy ra. Thao tác nguyên tử và vì sao một phép tăng biến đơn giản không nguyên tử. Hàng đợi có giới hạn là cách chia việc giữa các luồng an toàn hơn chia sẻ biến, vì nó gói việc đồng bộ vào một chỗ. Khi nào luồng là lựa chọn đúng: khối lượng công việc thiên vào ra, theo đúng kết luận đã đo ở Bài 16. Tắt có kiểm soát: luồng phải nhận được tín hiệu dừng và kết thúc công việc đang dở chứ bị cắt ngang.
 
@@ -207,7 +207,7 @@ Người học phải tái hiện được một điều kiện tranh đoạt m�
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi biến một lỗi ngẫu nhiên thành lỗi tái hiện được, kỹ năng khó và dùng lại ở M5. Kiểm bằng bài tái hiện cộng sửa; đạt khi tái hiện được 10/10 lần trước khi sửa và 0/1000 lần sau khi sửa.
 
-### Bài 23: Processes - isolation, serialization and cost
+### Lesson 23: Processes - isolation, serialization and cost
 
 Tiến trình có bộ nhớ riêng, nên không có điều kiện tranh đoạt trên biến dùng chung, đổi lại mọi thứ truyền qua lại phải tuần tự hoá. Ba chi phí phải tính trước khi chọn: thời gian khởi động một tiến trình, bộ nhớ nhân lên theo số tiến trình, và chi phí tuần tự hoá dữ liệu qua lại. Hệ quả thực tế hay bị bất ngờ: chia một việc nhỏ cho nhiều tiến trình có thể chậm hơn làm tuần tự, vì chi phí truyền lớn hơn phần tiết kiệm. Khi nào tiến trình là lựa chọn đúng: khối lượng công việc thiên CPU, theo bảng đo ở Bài 16. Hồ tiến trình và cách chia việc theo khối thay vì theo từng phần tử để giảm số lần truyền. Điều gì không truyền được qua ranh giới tiến trình và cách xử lý. Tắt có kiểm soát với hồ tiến trình: tiến trình con phải được dừng sạch, nếu không thì chúng thành tiến trình mồ côi.
 
@@ -215,7 +215,7 @@ Người học phải chọn giữa tiến trình và tuần tự cho một kh�
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi cân chi phí song song với phần tiết kiệm, chứ mặc định song song là nhanh. Kiểm bằng bảng ba kích thước công việc; đạt khi chỉ ra đúng điểm giao mà dưới đó tuần tự thắng.
 
-### Bài 24: Asyncio - the event loop, cancellation and timeouts
+### Lesson 24: Asyncio - the event loop, cancellation and timeouts
 
 Mô hình thứ ba, hợp nhất với khối lượng công việc có rất nhiều thao tác chờ mạng cùng lúc. Vòng lặp sự kiện chạy trên một luồng và chuyển qua lại giữa các tác vụ ở những điểm chờ; nên hàng nghìn kết nối đồng thời không tốn hàng nghìn luồng. Chi tiết quyết định thành bại: một lời gọi chặn nằm trong hàm bất đồng bộ sẽ khoá cả vòng lặp, nên mọi thứ khác đứng im, và đây là lỗi phổ biến nhất khi mới dùng. Cách phát hiện lời gọi chặn và cách đẩy nó sang luồng riêng. Huỷ bỏ là công dân hạng nhất: tác vụ phải xử lý được việc bị huỷ giữa chừng và dọn dẹp tài nguyên. Hết giờ đặt ở mọi lời gọi ra ngoài, không có ngoại lệ, vì không đặt là chờ vô hạn. Giới hạn đồng thời bằng cờ hiệu có giới hạn để không mở 10.000 kết nối cùng lúc và làm sập bên kia.
 
@@ -223,7 +223,7 @@ Người học phải viết một trình thu thập bất đồng bộ có gi�
 
 Cách đánh giá: Tầng *áp dụng*. Objective gồm ba cơ chế bắt buộc kiểm được bằng thực nghiệm. Kiểm bằng ba phép thử; đạt khi không lời gọi chặn nào lọt, hết giờ kích hoạt đúng, và huỷ bỏ dọn sạch tài nguyên.
 
-### Bài 25: Coroutine, task and future - the state model
+### Lesson 25: Coroutine, task and future - the state model
 
 Bài mở phần bất đồng bộ sâu bằng việc tách bốn thứ hay bị gọi chung là tác vụ. Hàm hiệp trình là hàm được khai báo bất đồng bộ; gọi nó không chạy gì cả, chỉ tạo ra một đối tượng hiệp trình, và quên chờ nó là nguồn của lỗi im lặng đầu tiên mà người mới gặp. Đối tượng chờ được là bất cứ thứ gì đặt sau từ khoá chờ. Tác vụ là một hiệp trình đã được giao cho vòng lặp sự kiện chạy, nên nó có vòng đời độc lập. Tương lai là chỗ giữ kết quả chưa có. Năm trạng thái phải truy được: vừa tạo, đang chạy, đang tạm dừng, đã xong, và đã bị huỷ; phân biệt đã xong vì trả kết quả, vì ném ngoại lệ, và vì bị huỷ. Ngoại lệ trong một tác vụ không ai chờ thì bị nuốt tới lúc chương trình kết thúc mới in ra. Liệt kê tác vụ đang sống là công cụ chẩn đoán chính.
 
@@ -231,7 +231,7 @@ Người học phải truy được trạng thái của một tác vụ qua đ�
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi quan sát trạng thái thời gian chạy chứ đọc tài liệu. Kiểm bằng bài truy trạng thái; đạt khi năm trạng thái được quan sát bằng công cụ và hai ca lỗi bị nuốt được tái hiện.
 
-### Bài 26: Structured concurrency - TaskGroup, ownership and cancellation safety
+### Lesson 26: Structured concurrency - TaskGroup, ownership and cancellation safety
 
 Tác vụ tạo ra rồi bỏ mặc là nguồn của rò rỉ và của lỗi biến mất, nên bài này đặt ra một kỷ luật sở hữu. Đồng thời có cấu trúc buộc mọi tác vụ con thuộc một phạm vi cha, và phạm vi cha không được rời khỏi khi còn tác vụ con đang chạy. Bốn bảo đảm kéo theo: một tác vụ con hỏng thì các anh em bị huỷ; ngoại lệ được gom lại chứ mất; phạm vi chờ dọn dẹp xong mới thoát; và không còn tác vụ mồ côi khi tắt. Huỷ bỏ an toàn là phần khó: tín hiệu huỷ tới ở một điểm chờ bất kỳ, nên mọi tài nguyên phải nằm trong khối dọn dẹp hoặc trình quản lý ngữ cảnh bất đồng bộ; nuốt tín hiệu huỷ để chạy nốt là lỗi nghiêm trọng vì nó làm việc tắt treo. Dọn dẹp trong lúc bị huỷ cần được che chắn để bản thân nó không bị huỷ giữa chừng.
 
@@ -239,7 +239,7 @@ Người học phải dựng phạm vi đồng thời có cấu trúc đạt b�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu đếm được là số tác vụ còn sống và số tài nguyên chưa đóng. Kiểm bằng ba kịch bản tắt; đạt khi số tác vụ còn sống bằng không và số kết nối rò bằng không ở cả ba.
 
-### Bài 27: End-to-end deadlines and backpressure
+### Lesson 27: End-to-end deadlines and backpressure
 
 Hai cơ chế giữ một dịch vụ bất đồng bộ không sụp dưới tải, và cả hai đều bị hiểu nhầm là hết giờ. Hết giờ cục bộ đặt cho từng lời gọi; hạn chót đầu cuối là tổng ngân sách cho cả yêu cầu. Khác biệt có hậu quả cụ thể: ba chặng mỗi chặng hết giờ 10 giây cho phép một yêu cầu chạy 30 giây, và nếu mỗi chặng còn thử lại thì con số nhân lên nữa; hết giờ cục bộ cộng thử lại tạo ra khuếch đại thời gian chờ. Cách đúng là truyền ngân sách còn lại xuống từng chặng, và chặng nào thấy ngân sách cạn thì bỏ sớm thay vì thử. Áp lực ngược giới hạn phía sản xuất bằng hàng đợi có giới hạn, cờ hiệu và bể kết nối có giới hạn; khi đầy thì phải chọn tường minh một trong bốn hành vi là từ chối, chờ, loại bớt, hoặc giảm chất lượng. Giữ một kết nối qua một điểm chờ dài làm cạn bể, là chế độ hỏng đặc trưng.
 
@@ -247,7 +247,7 @@ Người học phải cài truyền hạn chót đầu cuối và áp lực ngư
 
 Cách đánh giá: Tầng *áp dụng*. Objective có hai tiêu chí nghiệm thu đo được dưới tải. Kiểm bằng phép thử tải có chặng chậm; đạt khi phân vị 99 của thời gian yêu cầu nằm trong ngân sách và không lần nào bể kết nối cạn.
 
-### Bài 28: Async failure injection - six failure modes
+### Lesson 28: Async failure injection - six failure modes
 
 Bài khép phần bất đồng bộ bằng cách tiêm lỗi có chủ ý, vì sáu chế độ hỏng dưới đây đều không lộ ra khi chạy thuận lợi. Vòng lặp trễ vì một lời gọi chặn hoặc một vòng tính toán dài: bằng chứng là số đo độ trễ của vòng lặp, phòng thủ là đẩy sang luồng hoặc tiến trình riêng. Tác vụ mồ côi vì tạo rồi bỏ: bằng chứng là danh sách tác vụ còn sống lúc tắt. Rò rỉ khi huỷ vì dọn dẹp không chạy: bằng chứng là số bộ mô tả tệp tăng dần. Khuếch đại thời gian chờ theo Bài 27. Cạn bể kết nối. Bão thử lại khi nhiều tác vụ cùng thử lại một lúc: bằng chứng là đỉnh tải đồng bộ, phòng thủ là ngân sách thử lại cùng nhiễu ngẫu nhiên. Mỗi chế độ hỏng phải có một phép thử tự động tái hiện được, nếu không nó sẽ quay lại. Sáu tình huống tiêm gồm lời gọi chặn, ổ cắm treo, ngoại lệ trong tác vụ, huỷ giữa một giao dịch, hàng đợi đầy, và tín hiệu tắt.
 
@@ -255,7 +255,7 @@ Người học phải tái hiện sáu chế độ hỏng bằng phép thử t�
 
 Cách đánh giá: Tầng *đánh giá*. Objective tổng hợp bốn bài trước thành một hệ phòng vệ có bằng chứng. Kiểm bằng sáu phép thử tiêm; đạt khi cả sáu tái hiện được tự động và ít nhất năm có phòng thủ chứng minh bằng số đo trước sau.
 
-### Bài 29: Choosing a concurrency model from the workload
+### Lesson 29: Choosing a concurrency model from the workload
 
 Bài chốt phần đồng thời, và nó biến ba bài trước thành một quy tắc quyết định. Ba câu hỏi theo thứ tự: công việc này chờ hay tính, có cần chia sẻ trạng thái không, và quy mô đồng thời là bao nhiêu. Bảng quyết định: thiên CPU thì nhiều tiến trình; thiên vào ra với vài chục đồng thời thì luồng đủ và đơn giản hơn; thiên vào ra với hàng nghìn đồng thời thì bất đồng bộ. Lựa chọn thứ tư hay bị bỏ qua và thường đúng nhất: không đồng thời, vì mã tuần tự dễ đọc và dễ gỡ hơn nhiều, và phần lớn công việc dữ liệu theo lô không cần đồng thời trong tiến trình mà cần chia việc ở tầng trên, đúng cách M17 và M23 làm. Ba dấu hiệu cho thấy đã chọn sai. Mọi kết luận ở bài này phải dẫn về bảng số đo của chính mình ở Bài 16, 22, 23 và 24 chứ về lời khuyên chung.
 
@@ -263,7 +263,7 @@ Người học phải chọn mô hình đồng thời cho bốn khối lượng 
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi áp một quy tắc quyết định có bằng chứng, chuẩn bị cho mọi module vận hành sau. Kiểm bằng bốn khối lượng công việc trong đó ít nhất một không nên đồng thời; đạt khi chọn đúng ít nhất ba và nhận ra trường hợp không nên đồng thời.
 
-### Bài 30: A resilient worker - retry, backoff, idempotency and shutdown
+### Lesson 30: A resilient worker - retry, backoff, idempotency and shutdown
 
 Bài ghép mọi thứ của module thành mẫu sẽ dùng lại ở M16, M21 và M26. Bốn tính chất của một tiến trình xử lý đáng tin. Thử lại có lùi theo hàm mũ và nhiễu ngẫu nhiên: thử lại ngay lập tức làm sự cố nặng thêm vì mọi tiến trình cùng thử lại một lúc; nhiễu ngẫu nhiên phá sự đồng pha đó. Chỉ thử lại lỗi tạm thời, còn lỗi dữ liệu thì thử lại vô ích và phải tách ra. Khoá bất biến: vì thử lại nghĩa là cùng một việc chạy hai lần, nên ghi phải cho cùng kết quả khi lặp; đây là nguyên tắc nền của cả chương trình và sẽ quay lại ở M17 và M21. Hàng đợi có giới hạn giữa các giai đoạn để tạo áp lực ngược thay vì dồn vô hạn. Tắt có kiểm soát: nhận tín hiệu, ngừng nhận việc mới, hoàn tất việc đang dở trong hạn, rồi thoát với mã đúng.
 
@@ -271,7 +271,7 @@ Người học phải viết một tiến trình xử lý đạt bốn tính ch�
 
 Cách đánh giá: Tầng *sáng tạo*. Objective đòi ghép bốn cơ chế rời thành một mẫu chạy được dưới sự cố. Kiểm bằng thí nghiệm giết tiến trình 20 lần; đạt khi đối soát khớp tuyệt đối và tắt có kiểm soát hoàn tất trong hạn.
 
-### Bài 31: Continuous integration for a Python package
+### Lesson 31: Continuous integration for a Python package
 
 Tích hợp liên tục biến kỷ luật cá nhân thành ràng buộc của cả kho, và bài này dựng bộ khung dùng cho mọi module sau. Các bước tối thiểu theo thứ tự chạy nhanh trước: định dạng và soát lỗi tĩnh, kiểm kiểu, phép kiểm đơn vị, phép kiểm tích hợp, dựng gói, và quét bí mật. Cửa chặn hợp nhất: nhánh chính chỉ nhận thay đổi khi mọi bước xanh, nếu không thì quy trình chỉ là trang trí. Chạy trên nhiều phiên bản Python nếu gói tuyên bố hỗ trợ nhiều phiên bản. Bộ nhớ đệm phụ thuộc để vòng lặp phản hồi đủ nhanh, vì quy trình chạy 20 phút là quy trình người ta tìm cách vòng qua. Quét bí mật cả lịch sử kho chứ chỉ mã hiện tại, vì xoá ở lần nộp sau không xoá được ở lần nộp trước. Mã thoát và thông báo hỏng phải nói được hỏng ở bước nào, nối lại nguyên tắc thông báo lỗi ở Bài 15.
 
@@ -279,7 +279,7 @@ Người học phải dựng quy trình tích hợp liên tục sáu bước có
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cấu hình có hai ràng buộc đo được là tính chặn và thời gian. Kiểm bằng phép thử nộp mã hỏng; đạt khi mọi loại hỏng đều bị chặn và thời gian chạy dưới ngưỡng.
 
-### Bài 32: Python project - a packaged, tested, observable tool
+### Lesson 32: Python project - a packaged, tested, observable tool
 
 Bài dự án khép module. Nâng công cụ CSV ở Bài 11 thành một gói đạt chuẩn sản xuất. Danh mục kiểm tám điểm, mỗi điểm đến từ một bài: đóng gói cài được và môi trường khoá phiên bản; chú thích kiểu sạch với bộ kiểm tĩnh; xác thực dữ liệu tại ranh giới; đủ bốn loại phép kiểm; nhật ký có cấu trúc và mã theo dõi; hồ sơ đo hiệu năng có trước và sau; mô hình đồng thời chọn có số đo; và quy trình tích hợp liên tục xanh có cửa chặn. Phép thử nghiệm thu gồm hai phần: một học viên khác cài từ gói dựng sẵn trên máy trống và chạy được; và công cụ chịu được 20 lần giết tiến trình giữa chừng mà đối soát vẫn khớp. Bằng chứng nộp kèm: bảng danh mục kiểm tám điểm, mỗi điểm dẫn tới một tệp hoặc một số đo cụ thể.
 

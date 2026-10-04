@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Đọc footer Parquet thế nào để phân biệt đơn vị bố trí, pruning và I/O thực tế?
 source_ids:
   - src.spec.apache-parquet-file-format
@@ -44,7 +44,7 @@ Min, max, null count và distinct count nếu có được gắn ở scope cụ 
 
 ## 4. Kích thước row group
 
-Row group lớn tăng sequential I/O và thường cải thiện compression do nhiều giá trị chung, nhưng writer cần buffer lớn hơn, selective query có granularity thô hơn và parallelism bị giới hạn khi có ít groups. Row group nhỏ tăng scheduling/metadata overhead và có thể làm dictionary kém hiệu quả, nhưng tạo nhiều đơn vị pruning và tasks. Con số 512 MB–1 GB trong tài liệu Parquet gắn bối cảnh HDFS; object store, memory, query selectivity và engine concurrency cần benchmark riêng. Quyết định phải dựa vào workload, không sao chép default.
+Row group lớn tăng sequential I/O và thường cải thiện compression do nhiều giá trị chung, nhưng writer cần buffer lớn hơn, selective query có granularity thô hơn và parallelism bị giới hạn khi có ít groups. Row group nhỏ tăng scheduling/metadata overhead và có thể làm dictionary kém hiệu quả, nhưng tạo nhiều đơn vị pruning và tasks. Con số 512 MB-1 GB trong tài liệu Parquet gắn bối cảnh HDFS; object store, memory, query selectivity và engine concurrency cần benchmark riêng. Quyết định phải dựa vào workload, không sao chép default.
 
 ## 5. Page, encoding và codec
 
@@ -226,7 +226,7 @@ Mỗi claim phải chỉ rõ metadata scope, writer/reader version, exact fixtur
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.storage.parquet-file-row-group-column-chunk-page`
+## Execution capsule: kiểm chứng `wiki.storage.parquet-file-row-group-column-chunk-page`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.storage.parquet-file-row-group-column-chunk-page`, sơ đồ, ví dụ và artifact về **Parquet File Row Group Column Chunk and Page** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -248,7 +248,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Đọc footer Parquet thế nào để phân biệt đơn vị bố trí, pruning và I/O thực tế?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Đọc footer Parquet thế nào để phân biệt đơn vị bố trí, pruning và I/O thực tế? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Parquet File Row Group Column Chunk and Page** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

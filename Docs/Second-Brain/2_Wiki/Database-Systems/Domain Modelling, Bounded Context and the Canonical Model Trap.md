@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Khi nhiều đội dùng cùng một từ với nghĩa khác nhau, làm thế nào giữ mô hình riêng của từng context nhưng vẫn tích hợp được mà không dựng một canonical model khổng lồ?
 source_ids:
   - src.book.boyle-ddd-golang.1e
@@ -57,7 +57,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** customer có identity khác nhau giữa sales và support.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -65,7 +65,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** cùng tên cột không chứng minh cùng nghĩa.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -73,7 +73,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** khác tên không chứng minh khác nghĩa.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -81,7 +81,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** lifecycle và valid time là một phần của definition.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -89,7 +89,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** canonical model dạng union tạo nhiều optional fields.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -97,7 +97,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** một model toàn cục làm tăng change blast radius.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -105,7 +105,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** published contract phải nhỏ hơn internal model.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -113,7 +113,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** mapping phải có cardinality và effective period.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -121,7 +121,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** anti-corruption layer bảo vệ vocabulary nội bộ.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -129,7 +129,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** rename không thay semantic mapping.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -137,7 +137,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** shared kernel chỉ phù hợp phạm vi nhỏ và ổn định.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -145,7 +145,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** context boundary không bắt buộc trùng org chart.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -153,7 +153,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** owner phải chịu compatibility và deprecation.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -161,7 +161,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** glossary phải giữ nhiều định nghĩa theo context.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -169,7 +169,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 **Mệnh đề cần kiểm.** integration test phải kiểm meaning chứ không chỉ schema.
 
-**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term–identity–lifecycle–time–owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
+**Cách kiểm.** Dùng ba context sales, support và billing. Lập bảng term-identity-lifecycle-time-owner; viết contract trao đổi và mapping cardinality/effective period. Thử một schema change cục bộ để đo số artifacts và teams bị ảnh hưởng. Tách phép kiểm cấu trúc khỏi xác nhận của owner về business meaning. Lưu input snapshot, assumptions, executable query/test, output thô, control totals và phản ví dụ.
 
 **Điều kiện kết luận cho `wiki.data-modeling.bounded-context-contract-integration`.** Chỉ đánh dấu đạt khi artifact thực thi cho kết quả lặp lại ở cùng cutoff và không vi phạm grain, identity, time hoặc ownership contract. Nếu chưa thực thi, trạng thái là thiết kế kiểm chứng, không phải kết quả production.
 
@@ -179,7 +179,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 2. Gắn từng định nghĩa với context, owner, version và canonical artifact; không dùng tên cột thay nghĩa.
 3. Tách nội dung lấy trực tiếp từ nguồn, quyết định thiết kế và phần tổng hợp của giáo trình.
 4. Dựng normal case cùng các ca biên có thể tạo kết quả hợp lệ cú pháp nhưng sai nghĩa.
-5. Đo row count, distinct keys, unmatched/disposition counts, control totals và semantic diff trước–sau transform.
+5. Đo row count, distinct keys, unmatched/disposition counts, control totals và semantic diff trước-sau transform.
 6. Thử replay, late correction hoặc schema/contract change phù hợp với bài; ghi change blast radius.
 7. Giữ failed run, assumptions và limitation trong hồ sơ. Chúng cho người khác khả năng bác bỏ kết luận.
 
@@ -222,7 +222,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-modeling.bounded-context-contract-integration`
+## Execution capsule: kiểm chứng `wiki.data-modeling.bounded-context-contract-integration`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-modeling.bounded-context-contract-integration`, sơ đồ, ví dụ và artifact về **Domain Modelling, Bounded Context and the Canonical Model Trap** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

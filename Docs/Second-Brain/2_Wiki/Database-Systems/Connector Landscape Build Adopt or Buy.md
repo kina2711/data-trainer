@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Quyết định tự xây, dùng open-source hay mua connector dựa trên semantics, vận hành và exit cost nào?
 source_ids:
   - src.book.reis-housley-fundamentals-data-engineering
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Bắt đầu từ contract
 
-Lập source profile: auth, entities, key/cursor/delete, snapshot/CDC/pagination/file semantics, schema drift, rate limits, volume, latency, replay và compliance. Connector coverage được chấm từng capability với evidence. Danh sách logo hay “supported source” không chứng minh hard delete, historical backfill hoặc exact field coverage.
+Lập source profile: auth, entities, key/cursor/delete, snapshot/CDC/pagination/file semantics, schema drift, rate limits, volume, latency, replay và compliance. Connector coverage được chấm từng capability với evidence. Danh sách logo hay supported source không chứng minh hard delete, historical backfill hoặc exact field coverage.
 
 ## 2. Ba lựa chọn
 
@@ -51,7 +51,7 @@ PoC phải dùng representative source và failure suite: initial load, incremen
 
 ## 6. ADR quyết định
 
-ADR ghi context, options, evidence, decision, rejected reasons, assumptions, consequences, cost model và reversal triggers. Cost gồm engineering/on-call, source impact, destination compute, egress, re-sync và incident. Review sau 30/90 ngày bằng observed metrics. Không gọi quyết định “chuẩn” ngoài exact source và constraints.
+ADR ghi context, options, evidence, decision, rejected reasons, assumptions, consequences, cost model và reversal triggers. Cost gồm engineering/on-call, source impact, destination compute, egress, re-sync và incident. Review sau 30/90 ngày bằng observed metrics. Không gọi quyết định chuẩn ngoài exact source và constraints.
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
@@ -223,7 +223,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ingestion.connector-landscape-build-adopt-buy`
+## Execution capsule: kiểm chứng `wiki.ingestion.connector-landscape-build-adopt-buy`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ingestion.connector-landscape-build-adopt-buy`, sơ đồ, ví dụ và artifact về **Connector Landscape Build Adopt or Buy** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -245,7 +245,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Quyết định tự xây, dùng open-source hay mua connector dựa trên semantics, vận hành và exit cost nào?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Quyết định tự xây, dùng open-source hay mua connector dựa trên semantics, vận hành và exit cost nào? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Connector Landscape Build Adopt or Buy** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

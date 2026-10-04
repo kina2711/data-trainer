@@ -38,7 +38,7 @@ Rule phải chỉ đúng asset, partition, filter và exclusions; tên bảng đ
 
 ## 3. Predicate and metric
 
-Logic phải nêu phép đo, typed comparison, null semantics và cách xử lý lỗi thực thi. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Rule anatomy - seven parts`, câu hỏi thực dụng là: Một data-quality rule cần đủ bảy phần nào để có thể chạy, giải thích, vận hành và thay đổi an toàn? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Logic phải nêu phép đo, typed comparison, null semantics và cách xử lý lỗi thực thi. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Rule anatomy - seven parts`, câu hỏi thực dụng là: Một data-quality rule cần đủ bảy phần nào để có thể chạy, giải thích, vận hành và thay đổi an toàn? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Threshold and severity
 
@@ -221,7 +221,7 @@ Với `wiki.data-quality.rule-anatomy`, command thành công không tự chứng
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-quality.rule-anatomy`
+## Execution capsule: kiểm chứng `wiki.data-quality.rule-anatomy`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-quality.rule-anatomy`, sơ đồ, ví dụ và artifact về **Rule anatomy - seven parts** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

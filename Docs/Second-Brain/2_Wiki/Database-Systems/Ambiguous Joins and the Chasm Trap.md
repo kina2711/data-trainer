@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Hai đường join hợp lệ về cú pháp hoặc hai fact tables cùng qua một dimension làm metric sai như thế nào, và phải chặn ở graph/query plan ra sao?
 source_ids:
   - src.web.dbt-semantic-models
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Hai lỗi khác nhau nhưng cùng im lặng
 
-Ambiguous join xuất hiện khi semantic graph có nhiều path giữa source metric và requested dimension; mỗi path có thể hợp lệ kỹ thuật nhưng mang role khác. Chasm trap xuất hiện khi hai fact-like sets độc lập cùng nối qua một dimension và bị join trong cùng rowset trước aggregate. Cả hai thường không gây SQL error. Kết quả có thể gần “hợp lý”, nên validation phải dựa trên grain, cardinality và oracle totals thay vì nhìn dashboard.
+Ambiguous join xuất hiện khi semantic graph có nhiều path giữa source metric và requested dimension; mỗi path có thể hợp lệ kỹ thuật nhưng mang role khác. Chasm trap xuất hiện khi hai fact-like sets độc lập cùng nối qua một dimension và bị join trong cùng rowset trước aggregate. Cả hai thường không gây SQL error. Kết quả có thể gần hợp lý, nên validation phải dựa trên grain, cardinality và oracle totals thay vì nhìn dashboard.
 
 ## 2. Phép toán của bẫy vực
 
@@ -43,11 +43,11 @@ Cách một: aggregate mỗi fact về common grain như customer-month rồi jo
 
 ## 4. Bẫy hố và mất dòng
 
-Fan trap thường mô tả một đường one-to-many tiếp tục one-to-many làm aggregate cấp trên bị nhân; chasm nhấn hai facts cùng dimension. Roadmap còn gọi “bẫy hố” cho trường hợp đi sai hướng làm mất rows. Tên gọi giữa tools có thể khác, nên note dùng invariant: join phải bảo toàn population và multiplicity đã khai. Outer/inner choice, filter placement và optional relationship quyết định mất dòng; kiểm unmatched ledger bên cạnh fanout.
+Fan trap thường mô tả một đường one-to-many tiếp tục one-to-many làm aggregate cấp trên bị nhân; chasm nhấn hai facts cùng dimension. Roadmap còn gọi bẫy hố cho trường hợp đi sai hướng làm mất rows. Tên gọi giữa tools có thể khác, nên note dùng invariant: join phải bảo toàn population và multiplicity đã khai. Outer/inner choice, filter placement và optional relationship quyết định mất dòng; kiểm unmatched ledger bên cạnh fanout.
 
 ## 5. Nhiều path là nhiều meaning
 
-Order nối customer qua purchaser; shipment nối customer qua recipient; support ticket nối qua requester. Query “tickets theo customer của order” có thể muốn purchaser, recipient hoặc requester. Path ngắn nhất không phải mặc định đúng. Graph phải có role-qualified entities/dimensions, allowed paths hoặc metric-specific constraints. Khi không đủ thông tin, engine nên reject và yêu cầu chọn role thay vì chọn deterministic nhưng sai.
+Order nối customer qua purchaser; shipment nối customer qua recipient; support ticket nối qua requester. Query tickets theo customer của order có thể muốn purchaser, recipient hoặc requester. Path ngắn nhất không phải mặc định đúng. Graph phải có role-qualified entities/dimensions, allowed paths hoặc metric-specific constraints. Khi không đủ thông tin, engine nên reject và yêu cầu chọn role thay vì chọn deterministic nhưng sai.
 
 ## 6. Thiết kế fixture định lượng
 
@@ -205,7 +205,7 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 - Chưa chạy MetricFlow, warehouse queries, execution plans hoặc labs; note mô tả protocol và expected evidence.
 - dbt/MetricFlow docs được kiểm ngày 2026-10-01; commands và YAML phụ thuộc engine/version/environment.
 - Thuật ngữ fan/chasm có thể khác giữa sản phẩm; invariant của bài là grain, multiplicity, population và semantic path.
-- Kimball–Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
+- Kimball-Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
 - Owner chưa phê duyệt semantic meaning nên note giữ trạng thái `review`.
 
 ## Reference
@@ -223,14 +223,14 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 
 ## Key takeaways
 - Join correctness phải được chứng minh bằng grain, multiplicity, unmatched ledger và independent oracle.
-- Metric–dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
+- Metric-dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
 - Parse/validate/compile không thay reconciliation với business contract.
 - Generated SQL phải được đọc theo population, path, aggregation và time/filter semantics.
 - Chưa chạy protocol thì note là tài liệu học thuật có truy nguồn, không phải chứng nhận production.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.ambiguous-joins-chasm-trap`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.ambiguous-joins-chasm-trap`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.ambiguous-joins-chasm-trap`, sơ đồ, ví dụ và artifact về **Ambiguous Joins and the Chasm Trap** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -252,7 +252,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Hai đường join hợp lệ về cú pháp hoặc hai fact tables cùng qua một dimension làm metric sai như thế nào, và phải chặn ở graph/query plan ra sao?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Hai đường join hợp lệ về cú pháp hoặc hai fact tables cùng qua một dimension làm metric sai như thế nào, và phải chặn ở graph/query plan ra sao? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Ambiguous Joins and the Chasm Trap** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

@@ -38,7 +38,7 @@ Unicode form, whitespace, case và locale chỉ áp khi business identity cho ph
 
 ## 3. Temporal normalization
 
-Convert instant bằng known timezone, giữ original local/offset khi ambiguity có ý nghĩa. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Normalization before comparison`, câu hỏi thực dụng là: Canonicalization nào cần làm trước reconciliation mà không xóa khác biệt có ý nghĩa? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Convert instant bằng known timezone, giữ original local/offset khi ambiguity có ý nghĩa. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Normalization before comparison`, câu hỏi thực dụng là: Canonicalization nào cần làm trước reconciliation mà không xóa khác biệt có ý nghĩa? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Null and absence
 
@@ -221,7 +221,7 @@ Với `wiki.data-quality.normalization-before-comparison`, command thành công 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-quality.normalization-before-comparison`
+## Execution capsule: kiểm chứng `wiki.data-quality.normalization-before-comparison`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-quality.normalization-before-comparison`, sơ đồ, ví dụ và artifact về **Normalization before comparison** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

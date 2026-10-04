@@ -38,7 +38,7 @@ Guarantee của structured logs, correlation, retention, access và redaction ch
 
 ## 3. Failure mode
 
-Phân tích structured logs, correlation, retention, access và redaction cần tìm earliest observable failure, propagation path, blast radius và state còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Logs - structure, correlation, retention and redaction`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành structured logs, correlation, retention, access và redaction mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân tích structured logs, correlation, retention, access và redaction cần tìm earliest observable failure, propagation path, blast radius và state còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Logs - structure, correlation, retention and redaction`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành structured logs, correlation, retention, access và redaction mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision rule
 
@@ -46,7 +46,7 @@ Quyết định về structured logs, correlation, retention, access và redacti
 
 ## 5. Evidence
 
-Bằng chứng cho structured logs, correlation, retention, access và redaction gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `Logs - structure, correlation, retention and redaction`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành structured logs, correlation, retention, access và redaction mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Bằng chứng cho structured logs, correlation, retention, access và redaction gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `Logs - structure, correlation, retention and redaction`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành structured logs, correlation, retention, access và redaction mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 6. Recovery lab
 
@@ -88,9 +88,9 @@ Với `wiki.observability.structured-logs`, command thành công không tự ch�
 
 **Bằng chứng cần giữ.** Đối với probe 4 của `Logs - structure, correlation, retention and redaction`, lưu checkpoint, external ledger và trạng thái sau restart. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
 
-### 7.5. Logs - structure, correlation, retention and redaction: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho structured logs, correlation, retention, access và redaction gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle
+### 7.5. Logs - structure, correlation, retention and redaction: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho structured logs, correlation, retention, access và redaction gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle
 
-**Mệnh đề cần kiểm.** Logs - structure, correlation, retention and redaction: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho structured logs, correlation, retention, access và redaction gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle.
+**Mệnh đề cần kiểm.** Logs - structure, correlation, retention and redaction: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho structured logs, correlation, retention, access và redaction gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle.
 
 **Thiết kế phép thử cho `wiki.observability.structured-logs`.** Trong ngữ cảnh `wiki.observability.structured-logs`, đảo thứ tự input và concurrency nhưng giữ logical population. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Logs - structure, correlation, retention and redaction` công bố.
 
@@ -136,9 +136,9 @@ Với `wiki.observability.structured-logs`, command thành công không tự ch�
 
 **Bằng chứng cần giữ.** Đối với probe 10 của `Logs - structure, correlation, retention and redaction`, package phải đủ để người khác dựng lại decision và limitation. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
 
-### 7.11. Logs - structure, correlation, retention and redaction: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho structured logs, correlation, retention, access và redaction gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle
+### 7.11. Logs - structure, correlation, retention and redaction: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho structured logs, correlation, retention, access và redaction gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle
 
-**Mệnh đề cần kiểm.** Logs - structure, correlation, retention and redaction: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho structured logs, correlation, retention, access và redaction gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle.
+**Mệnh đề cần kiểm.** Logs - structure, correlation, retention and redaction: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho structured logs, correlation, retention, access và redaction gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle.
 
 **Thiết kế phép thử cho `wiki.observability.structured-logs`.** Trong ngữ cảnh `wiki.observability.structured-logs`, so với oracle độc lập không dùng chung query hoặc parser. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Logs - structure, correlation, retention and redaction` công bố.
 
@@ -221,7 +221,7 @@ Với `wiki.observability.structured-logs`, command thành công không tự ch�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.observability.structured-logs`
+## Execution capsule: kiểm chứng `wiki.observability.structured-logs`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.observability.structured-logs`, sơ đồ, ví dụ và artifact về **Logs - structure, correlation, retention and redaction** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

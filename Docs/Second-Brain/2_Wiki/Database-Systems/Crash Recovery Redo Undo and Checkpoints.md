@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Crash recovery chọn điểm bắt đầu, REDO và xử lý transaction chưa commit thế nào, và PostgreSQL khác mô hình ARIES redo/undo ở đâu?
 source_ids:
   - src.manual.postgresql-17.10
@@ -53,7 +53,7 @@ Steal policy cho phép page chứa thay đổi chưa commit được ghi xuống
 
 PostgreSQL recovery phát lại WAL. Với transaction chưa commit khi crash, transaction status không có commit/abort bit nhưng transaction không còn chạy; visibility logic coi versions của nó là aborted/invisible. Sách *PostgreSQL 14 Internals* ghi rõ phase rollback cổ điển không cần trong PostgreSQL.
 
-Dead tuples/versions không biến mất vật lý ngay. VACUUM sau đó thu hồi. Nói “PostgreSQL undo các thay đổi chưa commit trong crash recovery” là sai mức cơ chế, dù outcome logic là effects không visible. Rollback trong runtime và crash recovery cũng không nên gộp.
+Dead tuples/versions không biến mất vật lý ngay. VACUUM sau đó thu hồi. Nói PostgreSQL undo các thay đổi chưa commit trong crash recovery là sai mức cơ chế, dù outcome logic là effects không visible. Rollback trong runtime và crash recovery cũng không nên gộp.
 
 ## 5. Checkpoint là giới hạn recovery work
 
@@ -65,7 +65,7 @@ Checkpoint không đơn giản là một timestamp. PostgreSQL lưu checkpoint r
 
 Checkpointer đánh dấu/tập hợp pages dirty ở checkpoint start rồi ghi chúng trong thời gian trải rộng. Pages có thể tiếp tục bị sửa; pages mới dirty sau start thuộc chu kỳ khác theo cơ chế. Chỉ khi required pages và metadata được xử lý, checkpoint mới hoàn tất và recovery point mới được công nhận.
 
-Vì vậy câu “checkpoint đẩy mọi trang bẩn xuống ngay rồi ghi mốc” gây hiểu sai burst và concurrency. PostgreSQL dùng `checkpoint_completion_target` để trải I/O; end-of-checkpoint sync vẫn có thể tạo stall tùy OS cache.
+Vì vậy câu checkpoint đẩy mọi trang bẩn xuống ngay rồi ghi mốc gây hiểu sai burst và concurrency. PostgreSQL dùng `checkpoint_completion_target` để trải I/O; end-of-checkpoint sync vẫn có thể tạo stall tùy OS cache.
 
 ## 7. Checkpoint frequency trade-off
 
@@ -83,7 +83,7 @@ Metrics cần tách buffers checkpoint, clean/background và backend; tên view 
 
 Case A: transaction chưa commit. Sau restart, effects không visible; PostgreSQL có thể còn physical tuple version cho VACUUM. Case B: synchronous commit đã trả success. Commit WAL đã durable theo contract nên REDO phải giữ effects. Case C: crash đúng lúc commit; nếu client chưa nhận success, outcome có thể committed hoặc not committed tùy commit record flush/ack boundary.
 
-Case C không được mô tả đơn giản “phụ thuộc commit record có xuống disk” từ phía application vì client không biết. Cần business transaction ID và reconciliation query. Retry phải idempotent hoặc dùng unique key/state machine.
+Case C không được mô tả đơn giản phụ thuộc commit record có xuống disk từ phía application vì client không biết. Cần business transaction ID và reconciliation query. Retry phải idempotent hoặc dùng unique key/state machine.
 
 ## 10. Recovery log và evidence
 
@@ -125,12 +125,12 @@ Data checksums giúp phát hiện một số corruption; không thay full-page i
 
 ## 16. Các ngộ nhận cần loại
 
-- “Recovery luôn redo rồi undo”: phụ thuộc engine; PostgreSQL không có crash-time physical undo phase cổ điển.
-- “Checkpoint dừng hệ và flush tức thì”: PostgreSQL checkpoint được trải theo thời gian.
-- “Checkpoint xong thì cache rỗng”: pages được ghi, không nhất thiết bị evict.
-- “Commit ACK mất thì transaction chắc chắn fail”: outcome có thể bất định.
-- “Restart thành công là recovery đúng”: cần invariant và ID reconciliation.
-- “RTO bằng checkpoint timeout”: còn WAL rate và recovery throughput.
+- Recovery luôn redo rồi undo: phụ thuộc engine; PostgreSQL không có crash-time physical undo phase cổ điển.
+- Checkpoint dừng hệ và flush tức thì: PostgreSQL checkpoint được trải theo thời gian.
+- Checkpoint xong thì cache rỗng: pages được ghi, không nhất thiết bị evict.
+- Commit ACK mất thì transaction chắc chắn fail: outcome có thể bất định.
+- Restart thành công là recovery đúng: cần invariant và ID reconciliation.
+- RTO bằng checkpoint timeout: còn WAL rate và recovery throughput.
 
 ## 17. Câu hỏi tự kiểm tra
 
@@ -150,20 +150,20 @@ Data checksums giúp phát hiện một số corruption; không thay full-page i
 - PITR, replica failover và backup restore nằm ngoài lab này.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-10-MANUAL]] — checkpoint, WAL internals và REDO.
-2. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]] — checkpoint interval, startup recovery và không cần rollback phase.
-3. [[SRC-PETROV-DATABASE-INTERNALS-1E]] — steal/force, fuzzy checkpoint và ARIES.
-4. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — failure classification, log recovery, REDO/UNDO và checkpoint.
+1. [[SRC-POSTGRESQL-17-10-MANUAL]]: checkpoint, WAL internals và REDO.
+2. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]]: checkpoint interval, startup recovery và không cần rollback phase.
+3. [[SRC-PETROV-DATABASE-INTERNALS-1E]]: steal/force, fuzzy checkpoint và ARIES.
+4. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: failure classification, log recovery, REDO/UNDO và checkpoint.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 918–926 | WAL/checkpoint/REDO | §§2, 5–8, 15 | Đã giữ version-specific behavior |
-| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 164–196 | checkpoint phases, recovery, MVCC loser handling | §§4–12 | Đã sửa scaffold undo misconception |
-| [[SRC-PETROV-DATABASE-INTERNALS-1E]], PDF 117–124 | ARIES/fuzzy checkpoint/steal-force | §§3, 14 | Đã gắn nhãn mô hình tổng quát |
-| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]], PDF 2418–2462 | failure/recovery/checkpoint algorithms | §§1–3, 9, 14 | Đã giữ assumptions |
-| DE-L138 contract | ba crash cases và hai checkpoint cycles | §§9–12 | Chưa chạy, chuyển after-note |
+| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 918-926 | WAL/checkpoint/REDO | §§2, 5-8, 15 | Đã giữ version-specific behavior |
+| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 164-196 | checkpoint phases, recovery, MVCC loser handling | §§4-12 | Đã sửa scaffold undo misconception |
+| [[SRC-PETROV-DATABASE-INTERNALS-1E]], PDF 117-124 | ARIES/fuzzy checkpoint/steal-force | §§3, 14 | Đã gắn nhãn mô hình tổng quát |
+| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]], PDF 2418-2462 | failure/recovery/checkpoint algorithms | §§1-3, 9, 14 | Đã giữ assumptions |
+| DE-L138 contract | ba crash cases và hai checkpoint cycles | §§9-12 | Chưa chạy, chuyển after-note |
 
 ## Key takeaways
 - REDO phục hồi changes đã log nhưng data pages chưa bền vững.
@@ -174,7 +174,7 @@ Data checksums giúp phát hiện một số corruption; không thay full-page i
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.crash-recovery-redo-undo-checkpoints`
+## Execution capsule: kiểm chứng `wiki.database.crash-recovery-redo-undo-checkpoints`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.crash-recovery-redo-undo-checkpoints`, sơ đồ, ví dụ và artifact về **Crash recovery: REDO, UNDO và checkpoint** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

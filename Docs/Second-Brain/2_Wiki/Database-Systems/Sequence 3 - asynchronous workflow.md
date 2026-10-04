@@ -38,7 +38,7 @@ Kết luận về asynchronous workflow, durable command, retry, dedup và compe
 
 ## 3. Failure mode
 
-Phân tích asynchronous workflow, durable command, retry, dedup và compensation cần tìm earliest failure, propagation path, blast radius và state hoặc claim còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Sequence 3 - asynchronous workflow`, câu hỏi thực dụng là: Làm thế nào thiết kế, kiểm chứng và bảo vệ asynchronous workflow, durable command, retry, dedup và compensation mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân tích asynchronous workflow, durable command, retry, dedup và compensation cần tìm earliest failure, propagation path, blast radius và state hoặc claim còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Sequence 3 - asynchronous workflow`, câu hỏi thực dụng là: Làm thế nào thiết kế, kiểm chứng và bảo vệ asynchronous workflow, durable command, retry, dedup và compensation mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision rule
 
@@ -221,7 +221,7 @@ Với `wiki.system-design.async-workflow`, command thành công không tự ch�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.system-design.async-workflow`
+## Execution capsule: kiểm chứng `wiki.system-design.async-workflow`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.system-design.async-workflow`, sơ đồ, ví dụ và artifact về **Sequence 3 - asynchronous workflow** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

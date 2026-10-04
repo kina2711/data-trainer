@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-27
 last_verified: 2026-09-27
 review_after: 2027-03-27
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Certificate, proof of private-key possession, freshness và TLS phối hợp thế nào để một endpoint xác thực peer và bảo vệ byte stream khỏi nghe lén, sửa đổi, replay cùng truncation?
 source_ids:
   - src.book.kurose-ross-networking.8e
@@ -57,7 +57,7 @@ flowchart LR
     REC --> APP
 ```
 
-Sơ đồ không đồng nhất certificate với authorization. Certificate góp phần trả lời “public key này được ràng buộc với identity nào theo trust policy?”, còn ứng dụng vẫn phải trả lời “identity ấy được phép làm gì?”.
+Sơ đồ không đồng nhất certificate với authorization. Certificate góp phần trả lời public key này được ràng buộc với identity nào theo trust policy?, còn ứng dụng vẫn phải trả lời identity ấy được phép làm gì?.
 
 ## 1. Bốn thuộc tính cần tách riêng
 
@@ -65,13 +65,13 @@ Sơ đồ không đồng nhất certificate với authorization. Certificate gó
 |---|---|---|
 | Confidentiality | Người ngoài có đọc được dữ liệu không? | Symmetric encryption với session key |
 | Integrity | Dữ liệu có bị sửa, chèn, xóa hoặc đảo không? | Hash/MAC, record sequence và transcript check |
-| Authentication | Peer có chứng minh identity/key possession không? | Certificate, signature hoặc challenge–response |
+| Authentication | Peer có chứng minh identity/key possession không? | Certificate, signature hoặc challenge-response |
 | Freshness | Đây có phải phiên/thông điệp hiện tại không? | Nonce và sequence state |
 
 Một hệ thống có thể đạt một thuộc tính nhưng thiếu thuộc tính khác. Mã hóa password chặn người nghe đọc password, song ciphertext cố định vẫn có thể bị replay. Signature xác nhận integrity và key possession theo giả định, nhưng không tự mã hóa nội dung.
 
 > [!source-fact]
-> Digital signature, CA, endpoint authentication và ba mục tiêu TLS—confidentiality, integrity, authentication—được trình bày tại §§8.3.3, 8.4 và 8.6, trang in 658–680 theo hai dải đã nêu trong Reference.
+> Digital signature, CA, endpoint authentication và ba mục tiêu TLS:confidentiality, integrity, authentication:được trình bày tại §§8.3.3, 8.4 và 8.6, trang in 658-680 theo hai dải đã nêu trong Reference.
 
 ## 2. Digital signature ký digest, không che nội dung
 
@@ -88,14 +88,14 @@ rồi tạo signature trên digest bằng private key. Receiver nhận message `
 Nếu message đổi thành `m'`, digest thay đổi và verification thất bại với giả định hash/signature an toàn. Message trong flow minh họa vẫn ở cleartext; signature cung cấp integrity và bằng chứng gắn với private key, không cung cấp confidentiality.
 
 > [!source-fact]
-> Ký hash thay cho toàn message, cách receiver tính lại digest và so sánh được mô tả tại §8.3.3, trang in 659–661.
+> Ký hash thay cho toàn message, cách receiver tính lại digest và so sánh được mô tả tại §8.3.3, trang in 659-661.
 
 > [!uncertainty]
-> Sách diễn giải signature theo ngôn ngữ “mã hóa bằng private key”, phù hợp với mô hình RSA sư phạm của chương. Không dùng cách diễn đạt này làm định nghĩa tổng quát cho mọi signature scheme hoặc làm hướng dẫn triển khai cryptography.
+> Sách diễn giải signature theo ngôn ngữ mã hóa bằng private key, phù hợp với mô hình RSA sư phạm của chương. Không dùng cách diễn đạt này làm định nghĩa tổng quát cho mọi signature scheme hoặc làm hướng dẫn triển khai cryptography.
 
 ## 3. Signature hợp lệ vẫn dựa trên một chuỗi giả định
 
-Kết luận “message do Bob ký” chỉ vững khi các điều kiện sau đứng vững:
+Kết luận message do Bob ký chỉ vững khi các điều kiện sau đứng vững:
 
 1. public key dùng để verify thật sự thuộc Bob;
 2. private key chưa bị lộ, chia sẻ hoặc đánh cắp;
@@ -126,7 +126,7 @@ MAC dùng secret chung giữa các bên. Bên nào có secret cũng có khả n�
 
 ## 5. Public key tự gửi kèm không chứng minh ownership
 
-Kẻ tấn công có thể tuyên bố mình là Bob, gửi public key của chính nó và tạo signature bằng private key tương ứng. Verification toán học vẫn thành công vì message, signature và key khớp nhau; phần sai nằm ở giả định “key này là của Bob”.
+Kẻ tấn công có thể tuyên bố mình là Bob, gửi public key của chính nó và tạo signature bằng private key tương ứng. Verification toán học vẫn thành công vì message, signature và key khớp nhau; phần sai nằm ở giả định key này là của Bob.
 
 Đây là ranh giới giữa:
 
@@ -137,7 +137,7 @@ Kẻ tấn công có thể tuyên bố mình là Bob, gửi public key của ch�
 Ba câu hỏi cần bằng chứng khác nhau. Kiểm signature chỉ giải quyết câu đầu nếu public key chưa được xác thực độc lập.
 
 > [!source-fact]
-> Ví dụ mạo danh bằng cách thay public key và nhu cầu xác minh key thật của entity nằm trong phần Public Key Certification, trang in 662–663.
+> Ví dụ mạo danh bằng cách thay public key và nhu cầu xác minh key thật của entity nằm trong phần Public Key Certification, trang in 662-663.
 
 ## 6. CA ký binding giữa identity và public key
 
@@ -151,7 +151,7 @@ Client có public key của CA sẽ kiểm chữ ký certificate, rồi lấy pu
 Các field X.509 được sách chọn để giới thiệu gồm version, serial number, signature algorithm, issuer, validity period, subject và subject public key cùng thuật toán/tham số.
 
 > [!source-fact]
-> Hai vai trò của CA, certificate binding và các field X.509 minh họa nằm tại phần Public Key Certification, trang in 662–664.
+> Hai vai trò của CA, certificate binding và các field X.509 minh họa nằm tại phần Public Key Certification, trang in 662-664.
 
 ### Điều certificate không tự chứng minh
 
@@ -160,7 +160,7 @@ Một certificate tồn tại chưa chứng minh verifier sẽ tin nó. Còn ph�
 > [!uncertainty]
 > §8.3 giới thiệu certificate ở mức nguyên lý. Hostname verification, SAN, chain building, revocation, name constraints, key usage, algorithm policy và trust-store behavior cần chuẩn cùng tài liệu thư viện hiện hành; không suy ra cấu hình từ bảng field trong sách.
 
-## 7. Endpoint authentication cần chứng minh peer đang “live”
+## 7. Endpoint authentication cần chứng minh peer đang live
 
 Endpoint authentication diễn ra trong lúc hai bên giao tiếp. Nó khác với việc kiểm một message cũ đã được ai ký. Protocol phải chống kẻ nghe lén ghi lại một authentication exchange rồi phát lại về sau.
 
@@ -168,14 +168,14 @@ Sách xây bốn phiên bản để lộ dần failure mode:
 
 | Protocol | Ý tưởng | Lỗi quyết định |
 |---|---|---|
-| `ap1.0` | Gửi “I am Alice” | Assertion không có bằng chứng |
+| `ap1.0` | Gửi I am Alice | Assertion không có bằng chứng |
 | `ap2.0` | Tin source IP | IP source có thể bị spoof; routing filter không phải giả định phổ quát |
 | `ap3.0` | Gửi password rõ | Eavesdropper lấy được secret |
 | `ap3.1` | Mã hóa password | Ciphertext ghi lại vẫn có thể replay |
 | `ap4.0` | Challenge nonce, trả lời bằng shared key | Gắn proof với challenge mới của phiên |
 
 > [!source-fact]
-> Chuỗi `ap1.0` tới `ap4.0`, IP spoofing, password sniffing, playback và nonce nằm tại §8.4, trang in 664–668.
+> Chuỗi `ap1.0` tới `ap4.0`, IP spoofing, password sniffing, playback và nonce nằm tại §8.4, trang in 664-668.
 
 ## 8. Source address không phải identity proof
 
@@ -193,12 +193,12 @@ Trong hệ thống có proxy, NAT, service mesh hoặc load balancer, source IP 
 
 `ap3.1` bảo vệ nội dung password khỏi người nghe không có key, nhưng cùng ciphertext có thể được phát lại. Bob không phân biệt được exchange hiện tại với bản ghi của lần trước.
 
-Điểm này áp dụng rộng hơn password: một token, signature hoặc encrypted blob có thể đúng về mật mã nhưng cũ. Protocol cần đưa freshness vào phần được xác thực—nonce, counter, timestamp có policy, hoặc session context—và cần quy tắc từ chối reuse.
+Điểm này áp dụng rộng hơn password: một token, signature hoặc encrypted blob có thể đúng về mật mã nhưng cũ. Protocol cần đưa freshness vào phần được xác thực:nonce, counter, timestamp có policy, hoặc session context:và cần quy tắc từ chối reuse.
 
 > [!source-fact]
-> Playback attack đối với encrypted password nằm tại §8.4, trang in 667–668.
+> Playback attack đối với encrypted password nằm tại §8.4, trang in 667-668.
 
-## 10. Nonce biến authentication thành challenge–response
+## 10. Nonce biến authentication thành challenge-response
 
 Trong `ap4.0`:
 
@@ -220,7 +220,7 @@ sequenceDiagram
 Response đúng cung cấp hai bằng chứng trong mô hình: peer biết secret và đã xử lý challenge mới. Điều này vẫn phụ thuộc nonce không lặp theo phạm vi cần thiết, random source phù hợp, secret còn an toàn và protocol bind đúng identity/context vào response.
 
 > [!source-fact]
-> Định nghĩa nonce cùng bốn bước challenge–response của `ap4.0` nằm tại §8.4, trang in 668.
+> Định nghĩa nonce cùng bốn bước challenge-response của `ap4.0` nằm tại §8.4, trang in 668.
 
 ## 11. TLS nằm trên TCP nhưng cung cấp API gần transport
 
@@ -235,7 +235,7 @@ name resolution → TCP connection → TLS handshake → application protocol ov
 TCP reliability vẫn vận chuyển TLS bytes. TLS không sửa routing, congestion hay TCP reset; nó bảo vệ ngữ nghĩa bảo mật của phiên và record trên connection đã có.
 
 > [!source-fact]
-> Mục tiêu TLS, khả năng dùng cho ứng dụng chạy trên TCP và vị trí application-layer/API view nằm tại §8.6, trang in 674–675.
+> Mục tiêu TLS, khả năng dùng cho ứng dụng chạy trên TCP và vị trí application-layer/API view nằm tại §8.6, trang in 674-675.
 
 ## 12. Security goal của TLS không dừng ở biểu tượng HTTPS
 
@@ -248,9 +248,9 @@ Nguồn dùng tình huống thương mại điện tử để tách ba failure:
 URL `https` cho biết scheme yêu cầu HTTP over TLS, song biểu tượng hoặc handshake thành công không tự chứng minh site đáng tin về nghiệp vụ. Client còn phải validate identity theo URL/policy; application còn phải kiểm account, authorization, input và transaction.
 
 > [!source-fact]
-> Ba rủi ro và các security service TLS hướng tới nằm tại đầu §8.6, trang in 674–675.
+> Ba rủi ro và các security service TLS hướng tới nằm tại đầu §8.6, trang in 674-675.
 
-## 13. “Almost-TLS” là mô hình giải thích, không phải protocol để triển khai
+## 13. Almost-TLS là mô hình giải thích, không phải protocol để triển khai
 
 Sách dựng một phiên bản đơn giản gồm ba pha:
 
@@ -258,10 +258,10 @@ Sách dựng một phiên bản đơn giản gồm ba pha:
 2. **Key derivation**: từ master secret sinh key riêng theo hướng và theo mục đích.
 3. **Data transfer**: chia byte stream thành record, bảo vệ từng record rồi giao xuống TCP.
 
-Mô hình giúp trả lời vì sao cần certificate, session key, record và direction-specific key. Nó được tác giả gọi rõ là “almost-TLS”; mọi chi tiết wire protocol phải lấy từ phiên bản TLS thực đang dùng.
+Mô hình giúp trả lời vì sao cần certificate, session key, record và direction-specific key. Nó được tác giả gọi rõ là almost-TLS; mọi chi tiết wire protocol phải lấy từ phiên bản TLS thực đang dùng.
 
 > [!source-fact]
-> Ba pha của “almost-TLS” và flow certificate/master secret nằm tại §8.6.1, trang in 676–677.
+> Ba pha của almost-TLS và flow certificate/master secret nằm tại §8.6.1, trang in 676-677.
 
 ## 14. Session key được tách theo hướng và mục đích
 
@@ -278,7 +278,7 @@ Tách key giảm việc dùng cùng key cho nhiều mục đích và hai hướn
 > Bốn key theo hướng/mục đích và key derivation từ master secret nằm tại §8.6.1, trang in 677.
 
 > [!uncertainty]
-> Cấu trúc “hai encryption key + hai HMAC key” phản ánh cipher/MAC model mà nguồn dạy. TLS hiện đại có key schedule và AEAD khác; giữ nguyên nguyên tắc tách context, không tái dùng sơ đồ bốn key như đặc tả TLS 1.3.
+> Cấu trúc hai encryption key + hai HMAC key phản ánh cipher/MAC model mà nguồn dạy. TLS hiện đại có key schedule và AEAD khác; giữ nguyên nguyên tắc tách context, không tái dùng sơ đồ bốn key như đặc tả TLS 1.3.
 
 ## 15. Record layer tạo framing trên TCP byte stream
 
@@ -289,7 +289,7 @@ Record lịch sử trong nguồn có type, version, length, data và HMAC. Lengt
 Không được dựa vào một TCP segment tương ứng một TLS record. Segment có thể chứa một phần record hoặc nhiều record; offload và capture point còn thay hình dạng packet quan sát được.
 
 > [!source-fact]
-> Lý do cần record, các field minh họa và record extraction từ TCP byte stream nằm tại §8.6.1, trang in 677–678.
+> Lý do cần record, các field minh họa và record extraction từ TCP byte stream nằm tại §8.6.1, trang in 677-678.
 
 ## 16. Integrity cần bind cả thứ tự record
 
@@ -298,7 +298,7 @@ Nếu integrity check chỉ phủ data từng record, attacker có thể thử �
 Nhờ đó, record đúng nội dung nhưng sai vị trí hoặc lặp lại không còn khớp state receiver. Đây là ví dụ quan trọng: integrity của tập phần tử riêng lẻ chưa đủ cho integrity của cả stream có thứ tự.
 
 > [!source-fact]
-> Attack đảo/xóa/replay và việc bind TLS sequence number vào HMAC được trình bày tại §8.6.1, trang in 677–678.
+> Attack đảo/xóa/replay và việc bind TLS sequence number vào HMAC được trình bày tại §8.6.1, trang in 677-678.
 
 ## 17. Transcript integrity bảo vệ negotiation
 
@@ -307,7 +307,7 @@ Handshake phải thương lượng algorithm trước khi có session keys đầ
 Nguyên tắc cần giữ là **negotiation cũng phải được authenticate**. Nếu chỉ bảo vệ application data sau handshake, attacker có thể can thiệp chính tham số quyết định cách bảo vệ dữ liệu.
 
 > [!source-fact]
-> Algorithm negotiation, nonces, master-secret derivation và integrity check trên handshake transcript nằm tại §8.6.2, trang in 679–680.
+> Algorithm negotiation, nonces, master-secret derivation và integrity check trên handshake transcript nằm tại §8.6.2, trang in 679-680.
 
 ## 18. Nonce bảo vệ phiên; sequence state bảo vệ record trong phiên
 
@@ -319,7 +319,7 @@ Sách tách hai replay scope:
 Counter không thay nonce cho cross-session freshness. Ngược lại, nonce của handshake không thay sequence state cho ordering/replay bên trong một stream dài.
 
 > [!source-fact]
-> Connection replay, vai trò của nonces và record sequence numbers được phân biệt tại §8.6.2, trang in 679–680.
+> Connection replay, vai trò của nonces và record sequence numbers được phân biệt tại §8.6.2, trang in 679-680.
 
 ## 19. TLS closure phải được xác thực
 
@@ -330,7 +330,7 @@ Nguồn giải thích closure record có type được bảo vệ bởi integrit
 > [!source-fact]
 > Truncation attack và authenticated TLS closure nằm tại cuối §8.6.2, trang in 680.
 
-## 20. Ranh giới lịch sử: phần “real TLS” trong sách không phải TLS hiện hành
+## 20. Ranh giới lịch sử: phần real TLS trong sách không phải TLS hiện hành
 
 §8.6 dẫn RFC 4346, tức TLS 1.1, và mô tả một handshake kiểu cũ với RSA-encrypted pre-master secret, HMAC MD5/SHA-1, CBC IV cùng record MAC theo cấu trúc lịch sử. Những cơ chế này hữu ích để hiểu vì sao cần identity, freshness, key derivation, transcript integrity và authenticated closure.
 
@@ -345,7 +345,7 @@ Không dùng chương này để:
 Mọi quyết định trên phải dừng lại để lấy chuẩn IETF và tài liệu chính thức của implementation/version đang vận hành.
 
 > [!source-fact]
-> Nguồn tự ghi RFC 4346, RSA, MD5/SHA-1, CBC và gọi phần đầu là “almost-TLS”; các locator nằm tại §8.6, trang in 674–680.
+> Nguồn tự ghi RFC 4346, RSA, MD5/SHA-1, CBC và gọi phần đầu là almost-TLS; các locator nằm tại §8.6, trang in 674-680.
 
 > [!synthesis]
 > Việc phân loại các chi tiết ấy là lịch sử và đặt stop condition cho production là đánh giá biên tập dựa trên phiên bản nguồn. Note chưa thêm mô tả TLS 1.3 vì chưa đọc nguồn chuẩn hiện hành trong đơn vị này.
@@ -368,7 +368,7 @@ sequenceDiagram
     C->>S: Authenticated TLS closure, then TCP close
 ```
 
-Sơ đồ dùng tên chức năng, không phải danh sách TLS 1.3 wire messages. Khi debug, cần xác định failure ở boundary nào trước khi gọi chung là “SSL error”.
+Sơ đồ dùng tên chức năng, không phải danh sách TLS 1.3 wire messages. Khi debug, cần xác định failure ở boundary nào trước khi gọi chung là SSL error.
 
 ### Trình tự thu bằng chứng
 
@@ -376,7 +376,7 @@ Sơ đồ dùng tên chức năng, không phải danh sách TLS 1.3 wire message
 2. Xác nhận DNS result và endpoint thực sau proxy/load balancer.
 3. Xác nhận TCP handshake, reset hoặc timeout.
 4. Ghi protocol version/cipher đã thương lượng từ API/tool đáng tin cậy.
-5. Thu certificate chain, identity cần so, validity và verification error—không ghi private key.
+5. Thu certificate chain, identity cần so, validity và verification error:không ghi private key.
 6. Tách handshake failure khỏi application status sau handshake.
 7. Với mTLS, kiểm riêng certificate/proof của cả client và server.
 8. Với close/reset, xác định có authenticated TLS closure hay chỉ TCP termination.
@@ -468,10 +468,10 @@ Chỉ dựa vào các section đã đọc chưa thể:
 
 1. Digital signature bảo vệ thuộc tính nào và không bảo vệ thuộc tính nào?
 2. Vì sao signature verify đúng với public key do attacker gửi kèm vẫn có thể là mạo danh?
-3. CA thêm bằng chứng gì vào binding identity–public key?
+3. CA thêm bằng chứng gì vào binding identity-public key?
 4. MAC và digital signature khác nhau ở người có khả năng tạo/verify ra sao?
 5. Vì sao encrypted password trong `ap3.1` vẫn bị replay?
-6. Nonce chứng minh freshness của challenge–response như thế nào?
+6. Nonce chứng minh freshness của challenge-response như thế nào?
 7. TLS record giải quyết ranh giới nào mà TCP byte stream không cung cấp?
 8. Bind sequence state vào integrity check ngăn reorder/replay ra sao?
 9. Transcript integrity bảo vệ algorithm negotiation thế nào?
@@ -493,11 +493,11 @@ Chỉ dựa vào các section đã đọc chưa thể:
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §8.3.3 | digital signature, digest và integrity/authenticity boundary | §§1–4 | Đã trình bày cùng khác biệt với MAC |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], Public Key Certification | CA, certificate, identity binding và trust assumptions | §§5–7 | Đã trình bày chuỗi giả định; không coi public key tự gửi là identity proof |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §8.4 | endpoint authentication, nonce và replay | §§7–9 | Đã trình bày challenge–response và giới hạn source address |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §8.6 | TLS handshake/record concepts trong phiên bản sách | §§10–20 | Đã trình bày mechanics và đánh dấu phần mô tả lịch sử |
-| Tổng hợp chẩn đoán | connection boundary, matrix failure và tầng kết luận | §§21–25 | Đã gắn `synthesis`; không thay TLS 1.3/X.509 standard hiện hành |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §8.3.3 | digital signature, digest và integrity/authenticity boundary | §§1-4 | Đã trình bày cùng khác biệt với MAC |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], Public Key Certification | CA, certificate, identity binding và trust assumptions | §§5-7 | Đã trình bày chuỗi giả định; không coi public key tự gửi là identity proof |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §8.4 | endpoint authentication, nonce và replay | §§7-9 | Đã trình bày challenge-response và giới hạn source address |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §8.6 | TLS handshake/record concepts trong phiên bản sách | §§10-20 | Đã trình bày mechanics và đánh dấu phần mô tả lịch sử |
+| Tổng hợp chẩn đoán | connection boundary, matrix failure và tầng kết luận | §§21-25 | Đã gắn `synthesis`; không thay TLS 1.3/X.509 standard hiện hành |
 
 TLS 1.3, X.509 path validation và behavior của thư viện cụ thể cần nguồn chuẩn hiện hành. Note không chuyển phần mô tả lịch sử của sách thành cấu hình production.
 
@@ -505,11 +505,11 @@ TLS 1.3, X.509 path validation và behavior của thư viện cụ thể cần n
 - Mã hóa, integrity, peer authentication và application authorization là bốn thuộc tính khác nhau; một thuộc tính thành công không chứng minh ba thuộc tính còn lại.
 - Certificate gắn identity với public key thông qua chuỗi tin cậy và quy tắc validation; chữ ký hợp lệ chưa đủ nếu hostname, thời hạn, usage hoặc trust anchor không phù hợp.
 - TLS handshake xác thực peer và thiết lập key theo phiên; record layer bảo vệ confidentiality, integrity và thứ tự trong phạm vi connection đã thương lượng.
-- Nonce chống replay trong challenge–response theo ngữ cảnh phiên, còn sequence state bảo vệ record trong phiên. Mã hóa một credential cố định không tự giải quyết replay.
+- Nonce chống replay trong challenge-response theo ngữ cảnh phiên, còn sequence state bảo vệ record trong phiên. Mã hóa một credential cố định không tự giải quyết replay.
 - Khi proxy terminate TLS, phải kiểm riêng connection ngoài và trong, identity được xác thực ở mỗi phía, cách truyền client identity và nơi authorization thực sự diễn ra.
 
 ## Reference
-1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §8.3.3 and Public Key Certification, §8.4, §8.6; printed pp. 658–668 and 674–680; PDF pp. 660–670 and 676–682.
+1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §8.3.3 and Public Key Certification, §8.4, §8.6; printed pp. 658-668 and 674-680; PDF pp. 660-670 and 676-682.
 2. Hồ sơ nguồn: [[SRC-KUROSE-ROSS-NETWORKING-8E]].
 3. Source note: `Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-03.md`.
 
@@ -521,7 +521,7 @@ TLS 1.3, X.509 path validation và behavior của thư viện cụ thể cần n
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.security.tls-certificates-endpoint-authentication`
+## Execution capsule: kiểm chứng `wiki.security.tls-certificates-endpoint-authentication`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.security.tls-certificates-endpoint-authentication`, sơ đồ, ví dụ và artifact về **TLS, certificate và xác thực endpoint** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -37,7 +37,7 @@ Vote và up-to-date log rule nhằm ngăn candidate thiếu committed entries tr
 
 ## 3. Log matching
 
-Index/term và consistency check khiến logs chia sẻ prefix tại matching entry; conflict suffix bị leader repair. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Consensus - the replicated log, term, election and commit`, câu hỏi thực dụng là: Replicated log, term, election và commit rule phối hợp thế nào để Raft giữ safety khi leader đổi? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Index/term và consistency check khiến logs chia sẻ prefix tại matching entry; conflict suffix bị leader repair. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Consensus - the replicated log, term, election and commit`, câu hỏi thực dụng là: Replicated log, term, election và commit rule phối hợp thế nào để Raft giữ safety khi leader đổi? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Commit rule
 
@@ -218,7 +218,7 @@ Với `wiki.distributed.raft-log-term-election-commit`, command thành công kh�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.distributed.raft-log-term-election-commit`
+## Execution capsule: kiểm chứng `wiki.distributed.raft-log-term-election-commit`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.distributed.raft-log-term-election-commit`, sơ đồ, ví dụ và artifact về **Consensus - the replicated log, term, election and commit** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

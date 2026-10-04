@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** `UNION` so với `UNION ALL` và chi phí khử trùng. `INTERSECT` và `EXCEPT` dùng để đối chiếu hai nguồn. Ba loại trùng lặp: trùng toàn bộ cột, trùng khoá nghiệp vụ, trùng mờ. Khử trùng bằng `ROW_NUMBER` và tiêu chí quyết định giữ dòng nào. Bản ghi mồ côi và toàn vẹn tham chiếu. Bộ truy vấn kiểm tra chất lượng dùng lại được trên bảng bất kỳ. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L028 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Set operations and data quality in SQL**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Lập báo cáo chất lượng dữ liệu định lượng trên sáu chiều cho một bảng chưa từng thấy, và định vị đúng loại lỗi có trong dữ liệu. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 `UNION` so với `UNION ALL` và chi phí khử trùng. `INTERSECT` và `EXCEPT` dùng để đối chiếu hai nguồn. Ba loại trùng lặp: trùng toàn bộ cột, trùng khoá nghiệp vụ, trùng mờ. Khử trùng bằng `ROW_NUMBER` và tiêu chí quyết định giữ dòng nào. Bản ghi mồ côi và toàn vẹn tham chiếu. Bộ truy vấn kiểm tra chất lượng dùng lại được trên bảng bất kỳ.
 
@@ -44,7 +44,7 @@ Cơ chế của `set-operations-and-data-quality-in-sql` được kiểm qua nă
 
 Lỗi cần loại trừ trong bài này là: Dùng `UNION` thay `UNION ALL` rồi mất dòng trùng hợp lệ · khử trùng không xác định được thứ tự nên kết quả đổi giữa các lần chạy · báo cáo tỉ lệ lỗi mà không nêu mẫu số. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Dùng `UNION` thay `UNION ALL` r�
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L028: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Phát hiện ≥ 5/7 loại lỗi cài sẵn trong `DS2` và định lượng đúng số bản ghi của mỗi loại đã phát hiện.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L028: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Phát hiện ≥ 5/7 loại lỗi cài sẵn trong `DS2` và định lượng đúng số bản ghi của mỗi loại đã phát hiện.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Set operations and data quality in SQL
+## Worked Case: Set operations and data quality in SQL
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Trên `DS2`, có 7 loại lỗi cài sẵn và không cho biết trước là lỗi gì. Tìm và định lượng.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Set operations and data quality in SQL`, learner ghi
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L028 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Set operations and data quality in SQL` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L028 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** `UNION` so với `UNION ALL` và chi phí khử trùng. `INTERSECT` và `EXCEPT` dùng để đối chiếu hai nguồn. Ba loại trùng lặp: trùng toàn bộ cột, trùng khoá nghiệp vụ, trùng mờ. Khử trùng bằng `ROW_NUMBER` và tiêu chí quyết định giữ dòng nào. Bản ghi mồ côi và toàn vẹn tham chiếu. Bộ truy vấn kiểm tra chất lượng dùng lại được trên bảng bất kỳ.
+**Mệnh đề của probe 1: `population`.** `UNION` so với `UNION ALL` và chi phí khử trùng. `INTERSECT` và `EXCEPT` dùng để đối chiếu hai nguồn. Ba loại trùng lặp: trùng toàn bộ cột, trùng khoá nghiệp vụ, trùng mờ. Khử trùng bằng `ROW_NUMBER` và tiêu chí quyết định giữ dòng nào. Bản ghi mồ côi và toàn vẹn tham chiếu. Bộ truy vấn kiểm tra chất lượng dùng lại được trên bảng bất kỳ.
 
 **Thiết kế.** Probe 1 của L028 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L028 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Lập báo cáo chất lượng dữ liệu định lượng trên sáu chiều cho một bảng chưa từng thấy, và định vị đúng loại lỗi có trong dữ liệu.
+**Mệnh đề của probe 2: `grain`.** Lập báo cáo chất lượng dữ liệu định lượng trên sáu chiều cho một bảng chưa từng thấy, và định vị đúng loại lỗi có trong dữ liệu.
 
 **Thiết kế.** Probe 2 của L028 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L028 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Dùng `UNION` thay `UNION ALL` rồi mất dòng trùng hợp lệ · khử trùng không xác định được thứ tự nên kết quả đổi giữa các lần chạy · báo cáo tỉ lệ lỗi mà không nêu mẫu số.
+**Mệnh đề của probe 3: `identity`.** Dùng `UNION` thay `UNION ALL` rồi mất dòng trùng hợp lệ · khử trùng không xác định được thứ tự nên kết quả đổi giữa các lần chạy · báo cáo tỉ lệ lỗi mà không nêu mẫu số.
 
 **Thiết kế.** Probe 3 của L028 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L028 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Phát hiện ≥ 5/7 loại lỗi cài sẵn trong `DS2` và định lượng đúng số bản ghi của mỗi loại đã phát hiện.
+**Mệnh đề của probe 4: `time cutoff`.** Phát hiện ≥ 5/7 loại lỗi cài sẵn trong `DS2` và định lượng đúng số bản ghi của mỗi loại đã phát hiện.
 
 **Thiết kế.** Probe 4 của L028 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L028 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** `UNION` so với `UNION ALL` và chi phí khử trùng. `INTERSECT` và `EXCEPT` dùng để đối chiếu hai nguồn. Ba loại trùng lặp: trùng toàn bộ cột, trùng khoá nghiệp vụ, trùng mờ. Khử trùng bằng `ROW_NUMBER` và tiêu chí quyết định giữ dòng nào. Bản ghi mồ côi và toàn vẹn tham chiếu. Bộ truy vấn kiểm tra chất lượng dùng lại được trên bảng bất kỳ.
+**Mệnh đề của probe 5: `missing versus zero`.** `UNION` so với `UNION ALL` và chi phí khử trùng. `INTERSECT` và `EXCEPT` dùng để đối chiếu hai nguồn. Ba loại trùng lặp: trùng toàn bộ cột, trùng khoá nghiệp vụ, trùng mờ. Khử trùng bằng `ROW_NUMBER` và tiêu chí quyết định giữ dòng nào. Bản ghi mồ côi và toàn vẹn tham chiếu. Bộ truy vấn kiểm tra chất lượng dùng lại được trên bảng bất kỳ.
 
 **Thiết kế.** Probe 5 của L028 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L028 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Lập báo cáo chất lượng dữ liệu định lượng trên sáu chiều cho một bảng chưa từng thấy, và định vị đúng loại lỗi có trong dữ liệu.
+**Mệnh đề của probe 6: `duplicate`.** Lập báo cáo chất lượng dữ liệu định lượng trên sáu chiều cho một bảng chưa từng thấy, và định vị đúng loại lỗi có trong dữ liệu.
 
 **Thiết kế.** Probe 6 của L028 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L028 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Dùng `UNION` thay `UNION ALL` rồi mất dòng trùng hợp lệ · khử trùng không xác định được thứ tự nên kết quả đổi giữa các lần chạy · báo cáo tỉ lệ lỗi mà không nêu mẫu số.
+**Mệnh đề của probe 7: `join fan-out`.** Dùng `UNION` thay `UNION ALL` rồi mất dòng trùng hợp lệ · khử trùng không xác định được thứ tự nên kết quả đổi giữa các lần chạy · báo cáo tỉ lệ lỗi mà không nêu mẫu số.
 
 **Thiết kế.** Probe 7 của L028 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L028 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Phát hiện ≥ 5/7 loại lỗi cài sẵn trong `DS2` và định lượng đúng số bản ghi của mỗi loại đã phát hiện.
+**Mệnh đề của probe 8: `changed definition`.** Phát hiện ≥ 5/7 loại lỗi cài sẵn trong `DS2` và định lượng đúng số bản ghi của mỗi loại đã phát hiện.
 
 **Thiết kế.** Probe 8 của L028 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L028 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** `UNION` so với `UNION ALL` và chi phí khử trùng. `INTERSECT` và `EXCEPT` dùng để đối chiếu hai nguồn. Ba loại trùng lặp: trùng toàn bộ cột, trùng khoá nghiệp vụ, trùng mờ. Khử trùng bằng `ROW_NUMBER` và tiêu chí quyết định giữ dòng nào. Bản ghi mồ côi và toàn vẹn tham chiếu. Bộ truy vấn kiểm tra chất lượng dùng lại được trên bảng bất kỳ.
+**Mệnh đề của probe 9: `independent oracle`.** `UNION` so với `UNION ALL` và chi phí khử trùng. `INTERSECT` và `EXCEPT` dùng để đối chiếu hai nguồn. Ba loại trùng lặp: trùng toàn bộ cột, trùng khoá nghiệp vụ, trùng mờ. Khử trùng bằng `ROW_NUMBER` và tiêu chí quyết định giữ dòng nào. Bản ghi mồ côi và toàn vẹn tham chiếu. Bộ truy vấn kiểm tra chất lượng dùng lại được trên bảng bất kỳ.
 
 **Thiết kế.** Probe 9 của L028 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L028 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Lập báo cáo chất lượng dữ liệu định lượng trên sáu chiều cho một bảng chưa từng thấy, và định vị đúng loại lỗi có trong dữ liệu.
+**Mệnh đề của probe 10: `replay`.** Lập báo cáo chất lượng dữ liệu định lượng trên sáu chiều cho một bảng chưa từng thấy, và định vị đúng loại lỗi có trong dữ liệu.
 
 **Thiết kế.** Probe 10 của L028 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L028 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Dùng `UNION` thay `UNION ALL` rồi mất dòng trùng hợp lệ · khử trùng không xác định được thứ tự nên kết quả đổi giữa các lần chạy · báo cáo tỉ lệ lỗi mà không nêu mẫu số.
+**Mệnh đề của probe 11: `fresh snapshot`.** Dùng `UNION` thay `UNION ALL` rồi mất dòng trùng hợp lệ · khử trùng không xác định được thứ tự nên kết quả đổi giữa các lần chạy · báo cáo tỉ lệ lỗi mà không nêu mẫu số.
 
 **Thiết kế.** Probe 11 của L028 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L028 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Phát hiện ≥ 5/7 loại lỗi cài sẵn trong `DS2` và định lượng đúng số bản ghi của mỗi loại đã phát hiện.
+**Mệnh đề của probe 12: `novel scenario`.** Phát hiện ≥ 5/7 loại lỗi cài sẵn trong `DS2` và định lượng đúng số bản ghi của mỗi loại đã phát hiện.
 
 **Thiết kế.** Probe 12 của L028 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Phát hiện ≥ 5/7 loại lỗi cài sẵn trong `DS2` và định lượng đ
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql`
-2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e`
+1. [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql`
+2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Set operations and data quality in SQL | các mục cơ chế, case và probe | Đã phủ | ngoài objective L028 |
-| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Set operations and data quality in SQL | các mục cơ chế, case và probe | Đã phủ | ngoài objective L028 |
+| [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Set operations and data quality in SQL | các mục cơ chế, case và probe | Đã phủ | ngoài objective L028 |
+| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Set operations and data quality in SQL | các mục cơ chế, case và probe | Đã phủ | ngoài objective L028 |
 
 ## Key takeaways
 - Lập báo cáo chất lượng dữ liệu định lượng trên sáu chiều cho một bảng chưa từng thấy, và định vị đúng loại lỗi có trong dữ liệu.
@@ -226,7 +226,7 @@ Phát hiện ≥ 5/7 loại lỗi cài sẵn trong `DS2` và định lượng đ
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.set-operations-and-data-quality-in-sql`
+## Execution capsule: kiểm chứng `wiki.da.set-operations-and-data-quality-in-sql`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.set-operations-and-data-quality-in-sql`, sơ đồ, ví dụ và artifact về **Set operations and data quality in SQL** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

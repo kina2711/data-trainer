@@ -45,26 +45,26 @@ Giải thích được mọi trường trong bản khai báo mình dùng thông 
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L373 · A container is an isolated process | LT | Quan sát ba cơ chế cô lập bằng công cụ và giải thích một lần bị điều tiết bằng nhóm điều khiển. | Bốn không gian tên được chỉ ra bằng công cụ, và hiện tượng điều tiết cùng bị kết thúc vì hết bộ nhớ được tái hiện kèm số đo. | M25: M24 |
-| L374 · Images, layers, digests and the multi-stage build | TH | Dựng ảnh nhiều giai đoạn nhỏ hơn đáng kể, ghim theo mã băm, và chứng minh không bí mật nào nằm trong lớp. | Kích thước ảnh giảm có số đo, thời gian dựng lại giảm nhờ thứ tự lớp, và bí mật đã xoá vẫn tìm lại được ở bản sai rồi được loại bỏ hẳn ở bản đúng. | L373 |
-| L375 · PID 1, signals and graceful shutdown in a container | TH | Chứng minh tiến trình trong vùng chứa tắt có kiểm soát trong thời gian chờ và không mất công việc đang dở. | 100 lần dừng đều hoàn tất việc đang dở ở bản đúng, và bản chạy qua lớp vỏ được chứng minh bị cắt ngang kèm số việc mất. | L374 |
-| L376 · Container networking, volumes and the UID mismatch | TH | Truy vết đường gói tin vào ứng dụng và chẩn đoán đúng lỗi lệch định danh người dùng. | Sơ đồ đường gói khớp truy vết thật, và ba lỗi tiêm được chẩn đoán đúng nguyên nhân kèm bằng chứng. | L375 |
-| L377 · Supply chain - minimal base, pinned digest, no secret in a layer | TH | Dựng quy trình có cửa chặn lỗ hổng và bản kê thành phần, chặn được ba vi phạm tiêm. | Ba vi phạm bị chặn ở đúng bước, bản kê thành phần sinh được, số lỗ hổng giảm có số đo khi đổi ảnh nền, và mọi miễn trừ có hạn. | L376 |
-| L378 · Infrastructure as code - desired state and the dependency graph | LT | Đọc một bản kế hoạch và nhận ra mọi hành động thay thế cùng hệ quả của chúng. | Nhận đúng mọi hành động thay thế trong ba kế hoạch kèm thuộc tính gây ra, và thứ tự xoá suy đúng từ đồ thị phụ thuộc. | L377 |
-| L379 · State, locking, drift and the recovery you must not improvise | TH | Vận hành trạng thái từ xa có khoá, phát hiện và xử lý trôi cấu hình, và phục hồi sau một sự cố trạng thái. | Áp dụng song song bị khoá chặn, trôi cấu hình được phát hiện tự động, và phục hồi trạng thái không làm mất hay tạo trùng tài nguyên nào. | L378 |
-| L380 · Modules, environments and the plan review | TH | Dựng quy trình rà soát kế hoạch có kiểm chính sách và phê duyệt, chặn được ba cấu hình cấm. | Ba cấu hình cấm bị chặn bởi kiểm chính sách, và mọi lần áp dụng ở sản xuất có dấu phê duyệt cùng hiện vật lưu lại. | L379 |
-| L381 · Why orchestration, and when a simpler deployment wins | LT | So ba cách triển khai cho một dự án theo bốn tiêu chí và chọn một kèm điều kiện đảo ngược. | Ba cách có số đo ở hai tiêu chí đầu cùng ước lượng giờ công vận hành, và lựa chọn kèm hai điều kiện đảo ngược cụ thể. | L380 |
-| L382 · From object to controller - the five-step trace | TH | Truy đủ năm bước cho một lần triển khai thật và đọc được khoảng cách giữa đặc tả với trạng thái. | Năm bước có bằng chứng quan sát được kèm thời gian, và ba lần triển khai hỏng được quy đúng bước chỉ bằng sự kiện và trạng thái. | L381 |
-| L383 · Pods, probes, requests and limits | TH | Đặt bốn trường từ số đo thật và phân biệt được bị kết thúc vì hết bộ nhớ với bị điều tiết bộ xử lý. | Bốn tình huống được chẩn đoán đúng, và giá trị bốn trường dẫn được từ số đo tải thật. | L382 |
-| L384 · Service, endpoint, DNS and network policy | TH | Chẩn đoán bốn sự cố kết nối theo đúng thứ tự chuỗi và dựng chính sách mạng từ chối mặc định. | Bốn sự cố được chẩn đoán đúng theo thứ tự chuỗi, và chính sách từ chối mặc định chặn đúng mọi kết nối không được phép trong phép thử phủ định. | L383 |
-| L385 · Config, secrets, volumes and stateful workloads | TH | Gắn cấu hình và bí mật an toàn, và chỉ ra chính xác điều mà khối lượng công việc có trạng thái không tự cho. | Cấu hình cập nhật được không dựng lại đơn vị chạy, bí mật không lộ ở cả ba nơi kiểm, và giới hạn về sao chép dữ liệu được nêu đúng. | L384 |
-| L386 · Rollout, rollback, drain and the disruption budget | TH | Triển khai và quay lui không gián đoạn, và tái hiện được bế tắc do ngân sách gián đoạn quá chặt. | Tỉ lệ lỗi bằng không suốt triển khai và quay lui, không yêu cầu nào bị cắt khi rút nút, và bế tắc do ngân sách được tái hiện rồi gỡ. | L385 |
-| L387 · Diagnosing ten broken workloads | TH | Chẩn đoán mười khối lượng công việc hỏng theo đúng thứ tự và sửa bằng mã. | Chẩn đoán đúng ≥ 8/10 ca kèm bằng chứng dẫn ra, mọi bản sửa đi qua mã, và bảng năm nhóm dấu hiệu phân biệt hoàn chỉnh. | L386 |
-| L388 · Rebuild project - cluster and service from code and backup | DA | Dựng lại toàn bộ trong môi trường sạch chỉ từ mã, kho ảnh và bản sao lưu, và giải thích được mọi trường đã dùng. | Môi trường sạch dựng lại thành công không can thiệp tay, dữ liệu đối soát khớp, quay lui thử thành công dưới tải, và năm trường bất kỳ được giải thích bằng cơ chế. | L387 |
+| L373 · [[wiki.container.isolated-process|A container is an isolated process]]| LT | Quan sát ba cơ chế cô lập bằng công cụ và giải thích một lần bị điều tiết bằng nhóm điều khiển. | Bốn không gian tên được chỉ ra bằng công cụ, và hiện tượng điều tiết cùng bị kết thúc vì hết bộ nhớ được tái hiện kèm số đo. | M25: M24 |
+| L374 · [[wiki.container.images-layers-digests|Images, layers, digests and the multi-stage build]]| TH | Dựng ảnh nhiều giai đoạn nhỏ hơn đáng kể, ghim theo mã băm, và chứng minh không bí mật nào nằm trong lớp. | Kích thước ảnh giảm có số đo, thời gian dựng lại giảm nhờ thứ tự lớp, và bí mật đã xoá vẫn tìm lại được ở bản sai rồi được loại bỏ hẳn ở bản đúng. | L373 |
+| L375 · [[wiki.container.pid1-signals|PID 1, signals and graceful shutdown in a container]]| TH | Chứng minh tiến trình trong vùng chứa tắt có kiểm soát trong thời gian chờ và không mất công việc đang dở. | 100 lần dừng đều hoàn tất việc đang dở ở bản đúng, và bản chạy qua lớp vỏ được chứng minh bị cắt ngang kèm số việc mất. | L374 |
+| L376 · [[wiki.container.network-volume-uid|Container networking, volumes and the UID mismatch]]| TH | Truy vết đường gói tin vào ứng dụng và chẩn đoán đúng lỗi lệch định danh người dùng. | Sơ đồ đường gói khớp truy vết thật, và ba lỗi tiêm được chẩn đoán đúng nguyên nhân kèm bằng chứng. | L375 |
+| L377 · [[wiki.container.supply-chain|Supply chain - minimal base, pinned digest, no secret in a layer]]| TH | Dựng quy trình có cửa chặn lỗ hổng và bản kê thành phần, chặn được ba vi phạm tiêm. | Ba vi phạm bị chặn ở đúng bước, bản kê thành phần sinh được, số lỗ hổng giảm có số đo khi đổi ảnh nền, và mọi miễn trừ có hạn. | L376 |
+| L378 · [[wiki.iac.desired-state-graph|Infrastructure as code - desired state and the dependency graph]]| LT | Đọc một bản kế hoạch và nhận ra mọi hành động thay thế cùng hệ quả của chúng. | Nhận đúng mọi hành động thay thế trong ba kế hoạch kèm thuộc tính gây ra, và thứ tự xoá suy đúng từ đồ thị phụ thuộc. | L377 |
+| L379 · [[wiki.iac.state-lock-drift-recovery|State, locking, drift and the recovery you must not improvise]]| TH | Vận hành trạng thái từ xa có khoá, phát hiện và xử lý trôi cấu hình, và phục hồi sau một sự cố trạng thái. | Áp dụng song song bị khoá chặn, trôi cấu hình được phát hiện tự động, và phục hồi trạng thái không làm mất hay tạo trùng tài nguyên nào. | L378 |
+| L380 · [[wiki.iac.modules-environments-plan|Modules, environments and the plan review]]| TH | Dựng quy trình rà soát kế hoạch có kiểm chính sách và phê duyệt, chặn được ba cấu hình cấm. | Ba cấu hình cấm bị chặn bởi kiểm chính sách, và mọi lần áp dụng ở sản xuất có dấu phê duyệt cùng hiện vật lưu lại. | L379 |
+| L381 · [[wiki.kubernetes.orchestration-fit|Why orchestration, and when a simpler deployment wins]]| LT | So ba cách triển khai cho một dự án theo bốn tiêu chí và chọn một kèm điều kiện đảo ngược. | Ba cách có số đo ở hai tiêu chí đầu cùng ước lượng giờ công vận hành, và lựa chọn kèm hai điều kiện đảo ngược cụ thể. | L380 |
+| L382 · [[wiki.kubernetes.object-controller-trace|From object to controller - the five-step trace]]| TH | Truy đủ năm bước cho một lần triển khai thật và đọc được khoảng cách giữa đặc tả với trạng thái. | Năm bước có bằng chứng quan sát được kèm thời gian, và ba lần triển khai hỏng được quy đúng bước chỉ bằng sự kiện và trạng thái. | L381 |
+| L383 · [[wiki.kubernetes.pods-probes-resources|Pods, probes, requests and limits]]| TH | Đặt bốn trường từ số đo thật và phân biệt được bị kết thúc vì hết bộ nhớ với bị điều tiết bộ xử lý. | Bốn tình huống được chẩn đoán đúng, và giá trị bốn trường dẫn được từ số đo tải thật. | L382 |
+| L384 · [[wiki.kubernetes.service-endpoint-policy|Service, endpoint, DNS and network policy]]| TH | Chẩn đoán bốn sự cố kết nối theo đúng thứ tự chuỗi và dựng chính sách mạng từ chối mặc định. | Bốn sự cố được chẩn đoán đúng theo thứ tự chuỗi, và chính sách từ chối mặc định chặn đúng mọi kết nối không được phép trong phép thử phủ định. | L383 |
+| L385 · [[wiki.kubernetes.config-stateful|Config, secrets, volumes and stateful workloads]]| TH | Gắn cấu hình và bí mật an toàn, và chỉ ra chính xác điều mà khối lượng công việc có trạng thái không tự cho. | Cấu hình cập nhật được không dựng lại đơn vị chạy, bí mật không lộ ở cả ba nơi kiểm, và giới hạn về sao chép dữ liệu được nêu đúng. | L384 |
+| L386 · [[wiki.kubernetes.rollout-disruption|Rollout, rollback, drain and the disruption budget]]| TH | Triển khai và quay lui không gián đoạn, và tái hiện được bế tắc do ngân sách gián đoạn quá chặt. | Tỉ lệ lỗi bằng không suốt triển khai và quay lui, không yêu cầu nào bị cắt khi rút nút, và bế tắc do ngân sách được tái hiện rồi gỡ. | L385 |
+| L387 · [[wiki.kubernetes.broken-workload-diagnosis|Diagnosing ten broken workloads]]| TH | Chẩn đoán mười khối lượng công việc hỏng theo đúng thứ tự và sửa bằng mã. | Chẩn đoán đúng ≥ 8/10 ca kèm bằng chứng dẫn ra, mọi bản sửa đi qua mã, và bảng năm nhóm dấu hiệu phân biệt hoàn chỉnh. | L386 |
+| L388 · [[wiki.kubernetes.rebuild-from-code-backup|Rebuild project - cluster and service from code and backup]]| DA | Dựng lại toàn bộ trong môi trường sạch chỉ từ mã, kho ảnh và bản sao lưu, và giải thích được mọi trường đã dùng. | Môi trường sạch dựng lại thành công không can thiệp tay, dữ liệu đối soát khớp, quay lui thử thành công dưới tải, và năm trường bất kỳ được giải thích bằng cơ chế. | L387 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M25 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M25 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -111,7 +111,7 @@ flowchart LR
   class A373,A374,A375,A376,A377,A378,A379,A380,A381,A382,A383,A384,A385,A386,A387,A388 atom;
 ```
 
-### Bài 373: A container is an isolated process
+### Lesson 373: A container is an isolated process
 
 Bài mở module bằng việc bác bỏ một hình dung sai phổ biến: vùng chứa không phải máy ảo nhỏ. Nó là một tiến trình thường của hệ điều hành máy chủ, chỉ khác ở chỗ nó nhìn thấy một thế giới bị giới hạn. Ba cơ chế tạo ra giới hạn đó: không gian tên làm tiến trình chỉ thấy một tập tiến trình, một cây thư mục, một giao diện mạng và một tập người dùng riêng; nhóm điều khiển giới hạn lượng bộ xử lý và bộ nhớ nó dùng được; khả năng cùng bộ lọc lời gọi hệ thống giới hạn nó làm được gì với nhân. Vì dùng chung nhân với máy chủ, mức cô lập yếu hơn máy ảo, và đó là lý do khối lượng công việc không tin cậy cần thêm lớp cách ly. Hệ quả thực hành quan trọng: tiến trình trong vùng chứa vẫn chịu lịch biểu của nhân máy chủ, nên bị điều tiết vì vượt hạn mức bộ xử lý trông giống như chậm không rõ nguyên nhân.
 
@@ -119,7 +119,7 @@ Người học phải quan sát ba cơ chế cô lập bằng công cụ và gi�
 
 Cách đánh giá: Tầng *hiểu*. Bài mở module, kiểm bằng quan sát hệ thật chứ bằng lập luận. Kiểm bằng bài quan sát cộng thí nghiệm hạn mức; đạt khi ba không gian tên được chỉ ra bằng công cụ và hiện tượng điều tiết được tái hiện kèm số đo.
 
-### Bài 374: Images, layers, digests and the multi-stage build
+### Lesson 374: Images, layers, digests and the multi-stage build
 
 Ảnh là một chồng lớp chỉ đọc cộng siêu dữ liệu, và hiểu cấu trúc đó giải thích cả tốc độ dựng lẫn kích thước. Mỗi chỉ thị dựng tạo một lớp; lớp được chia sẻ giữa các ảnh nhờ nội dung giống nhau, nên thứ tự chỉ thị quyết định bộ đệm dựng có dùng lại được không: đặt bước cài phụ thuộc trước bước sao chép mã nguồn là mẹo quan trọng nhất, vì mã đổi thường xuyên còn phụ thuộc thì không. Thẻ có thể bị đẩy lại trỏ sang ảnh khác, còn mã băm nội dung thì không; nên ghim theo mã băm là điều kiện để triển khai tái tạo được. Dựng nhiều giai đoạn tách môi trường biên dịch khỏi ảnh chạy, giảm kích thước và giảm bề mặt tấn công. Một điểm bắt buộc: bí mật đưa vào trong một lớp thì vẫn nằm đó dù lớp sau có xoá, vì lớp trước vẫn tồn tại trong ảnh.
 
@@ -127,7 +127,7 @@ Người học phải dựng ảnh nhiều giai đoạn nhỏ hơn đáng kể, 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có ba tiêu chí nghiệm thu đo được. Kiểm bằng cặp số đo cộng bộ quét; đạt khi kích thước giảm có số đo, thời gian dựng lại giảm nhờ bộ đệm, và bộ quét lớp không tìm thấy bí mật.
 
-### Bài 375: PID 1, signals and graceful shutdown in a container
+### Lesson 375: PID 1, signals and graceful shutdown in a container
 
 Tiến trình đầu tiên trong vùng chứa mang số một, và nó có hành vi đặc biệt của nhân: nó không nhận tín hiệu mặc định như tiến trình thường. Hệ quả cụ thể và phải tái hiện: nếu tiến trình chính không xử lý tín hiệu kết thúc thì nó bị buộc dừng sau thời gian chờ, nên công việc đang dở bị cắt ngang; với một tiến trình ghi dữ liệu thì đó là mất dữ liệu hoặc ghi dở. Chạy tiến trình qua một lớp vỏ làm tín hiệu không tới được tiến trình thật, là lỗi hay gặp nhất. Tiến trình con mồ côi tích tụ khi tiến trình số một không thu hồi chúng. Tắt có kiểm soát trong vùng chứa gồm ba bước theo Bài 67: nhận tín hiệu, ngừng nhận việc mới, hoàn tất việc đang dở rồi thoát, tất cả trong khoảng thời gian chờ đã cấu hình. Chạy bằng người dùng không đặc quyền và hệ tệp chỉ đọc là hai biện pháp giảm rủi ro.
 
@@ -135,7 +135,7 @@ Người học phải chứng minh tiến trình trong vùng chứa tắt có ki
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là không mất việc khi dừng. Kiểm bằng phép thử dừng; đạt khi 100 lần dừng đều hoàn tất việc đang dở, và bản chạy qua lớp vỏ được chứng minh là bị cắt ngang.
 
-### Bài 376: Container networking, volumes and the UID mismatch
+### Lesson 376: Container networking, volumes and the UID mismatch
 
 Hai phần hạ tầng của vùng chứa và ba lỗi đặc trưng của chúng. Mạng: vùng chứa có không gian tên mạng riêng, nối với máy chủ qua một cặp giao diện ảo và một cầu nối; ánh xạ cổng dịch địa chỉ từ máy chủ vào; phân giải tên giữa các vùng chứa dùng một máy chủ tên nội bộ. Truy vết đường đi của một gói từ ngoài vào ứng dụng là bài tập bắt buộc. Ổ đĩa: dữ liệu trong lớp ghi của vùng chứa biến mất khi vùng chứa bị xoá, nên mọi dữ liệu cần giữ phải nằm trên ổ đĩa gắn ngoài. Lỗi đặc trưng thứ ba và tốn thời gian nhất: định danh người dùng bên trong vùng chứa khác định danh sở hữu tệp trên máy chủ, nên tiến trình không ghi được vào thư mục gắn vào dù quyền trông có vẻ đúng; cách chẩn đoán là so định danh số chứ so tên người dùng.
 
@@ -143,7 +143,7 @@ Người học phải truy vết đường gói tin vào ứng dụng và chẩn
 
 Cách đánh giá: Tầng *áp dụng*. Objective gồm một lỗi có triệu chứng gây hiểu nhầm. Kiểm bằng bài truy vết cộng ba lỗi tiêm; đạt khi sơ đồ đường gói khớp truy vết thật và ba lỗi được chẩn đoán đúng nguyên nhân.
 
-### Bài 377: Supply chain - minimal base, pinned digest, no secret in a layer
+### Lesson 377: Supply chain - minimal base, pinned digest, no secret in a layer
 
 Ảnh là một hiện vật được phân phối, nên nó có chuỗi cung ứng và chuỗi đó là một bề mặt tấn công. Năm biện pháp theo thứ tự hiệu quả: chọn ảnh nền tối thiểu để giảm số gói và giảm số lỗ hổng phải theo; ghim theo mã băm để bản dựng tái tạo được; quét lỗ hổng trong tích hợp liên tục có cửa chặn; sinh bản kê thành phần để biết mình đang chạy những gì; và ký cùng kiểm nguồn gốc ở mức nhận biết. Quét mà không chặn thì chỉ là một báo cáo không ai đọc, nên ngưỡng chặn phải đặt tường minh kèm quy trình miễn trừ có hạn, theo đúng kỷ luật ở Bài 276. Bí mật trong tích hợp liên tục phải lấy từ kho bí mật và không bao giờ ghi ra nhật ký. Ba rủi ro riêng của chuỗi cung ứng ảnh: ảnh nền bị đẩy lại dưới cùng một thẻ, phụ thuộc bắc cầu không ai kiểm, và kho ảnh nội bộ không có kiểm soát truy cập.
 
@@ -151,7 +151,7 @@ Người học phải dựng quy trình có cửa chặn lỗ hổng và bản k
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cửa chặn tự động có phép thử tiêm. Kiểm bằng ba vi phạm; đạt khi cả ba bị chặn ở đúng bước, bản kê thành phần sinh được, và mọi miễn trừ có hạn.
 
-### Bài 378: Infrastructure as code - desired state and the dependency graph
+### Lesson 378: Infrastructure as code - desired state and the dependency graph
 
 Bài mở phần hạ tầng khai báo bằng mô hình tư duy của nó. Ta mô tả trạng thái mong muốn; công cụ so trạng thái mong muốn với trạng thái đã ghi và với thực tế, rồi tính ra tập thay đổi tối thiểu. Đồ thị phụ thuộc giữa các tài nguyên được suy ra từ tham chiếu, nên nó quyết định thứ tự tạo và thứ tự xoá; phụ thuộc ngầm không khai báo được là nguồn của lỗi thứ tự khó tái hiện. Bốn loại hành động trong một bản kế hoạch và ý nghĩa rủi ro rất khác nhau: tạo, cập nhật tại chỗ, thay thế tức xoá rồi tạo lại, và xoá; loại thứ ba là loại nguy hiểm nhất vì một thay đổi trông nhỏ có thể kéo theo thay thế một cơ sở dữ liệu sản xuất. Từ đó suy ra quy tắc bắt buộc: đọc kế hoạch trước khi áp dụng, và mọi hành động thay thế hoặc xoá ở môi trường sản xuất phải được người thứ hai duyệt.
 
@@ -159,7 +159,7 @@ Người học phải đọc một bản kế hoạch và nhận ra mọi hành 
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết đặt khung cho hai bài thực hành. Kiểm bằng bài đọc kế hoạch; đạt khi nhận đúng mọi hành động thay thế trong ba kế hoạch và giải thích được nguyên nhân gây thay thế.
 
-### Bài 379: State, locking, drift and the recovery you must not improvise
+### Lesson 379: State, locking, drift and the recovery you must not improvise
 
 Tệp trạng thái là bản ghi công cụ tin về thế giới, và nó là thành phần quan trọng nhất cần bảo vệ. Ba yêu cầu bắt buộc: lưu từ xa và mã hoá vì nó chứa thông tin nhạy cảm; khoá khi đang áp dụng để hai người không cùng sửa; và có phiên bản để quay lại được. Trôi cấu hình xảy ra khi ai đó sửa tay trên đám mây: thực tế khác trạng thái ghi, và lần áp dụng tiếp theo sẽ hoàn tác thay đổi tay đó mà không báo trước; phát hiện trôi định kỳ là biện pháp phòng ngừa chứ một việc làm khi có sự cố. Nhập tài nguyên có sẵn và di chuyển tài nguyên trong mã là hai thao tác hay cần. Quy tắc nghiêm nhất của bài: không sửa tay tệp trạng thái khi chưa có bản sao lưu, vì một thao tác sai làm công cụ quên mất tài nguyên đang chạy và lần áp dụng sau sẽ tạo trùng hoặc xoá nhầm.
 
@@ -167,7 +167,7 @@ Người học phải vận hành trạng thái từ xa có khoá, phát hiện 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là phục hồi được mà không mất tài nguyên. Kiểm bằng ba tình huống; đạt khi trôi được phát hiện tự động, khoá chặn được áp dụng song song, và phục hồi trạng thái không làm mất hay tạo trùng tài nguyên nào.
 
-### Bài 380: Modules, environments and the plan review
+### Lesson 380: Modules, environments and the plan review
 
 Tổ chức mã hạ tầng để nhiều môi trường dùng chung mà không sao chép. Hợp đồng của một mô đun gồm đầu vào có kiểm tra giá trị, đầu ra, phiên bản nhà cung cấp và cách nâng cấp; nó chịu cùng kỷ luật hợp đồng như một thư viện phần mềm ở M7. Chiến lược môi trường: tách tài khoản hoặc dự án theo môi trường là ranh giới mạnh nhất, tách bằng không gian tên trong cùng tài khoản là ranh giới yếu và dễ nhầm. Danh tính cho quy trình tự động phải riêng và có quyền tối thiểu, không dùng lại thông tin xác thực của người. Rà soát kế hoạch trong tích hợp liên tục: hiển thị kế hoạch trong yêu cầu hợp nhất, chạy kiểm chính sách để chặn cấu hình cấm, và ước tính chi phí của thay đổi. Áp dụng ở môi trường sản xuất phải có phê duyệt của người thứ hai, và hiện vật của lần áp dụng được giữ lại để truy vết.
 
@@ -175,7 +175,7 @@ Người học phải dựng quy trình rà soát kế hoạch có kiểm chính
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cửa chặn tự động cộng một cửa chặn người. Kiểm bằng ba vi phạm tiêm; đạt khi cả ba bị kiểm chính sách chặn và mọi lần áp dụng ở môi trường sản xuất đều có dấu phê duyệt cùng hiện vật lưu lại.
 
-### Bài 381: Why orchestration, and when a simpler deployment wins
+### Lesson 381: Why orchestration, and when a simpler deployment wins
 
 Bài đặt câu hỏi lọc trước khi học công cụ điều phối, vì đây là chỗ nhiều đội trả thuế vận hành mà không cần. Bốn thứ điều phối cho: hoà giải về trạng thái mong muốn, lập lịch lên các nút, khám phá dịch vụ, và triển khai dần cùng tự khởi động lại. Khoản thuế phải trả: một mặt phẳng điều khiển phải vận hành và nâng cấp, một mô hình mạng và bảo mật mới phải học, và một lớp chẩn đoán mới nằm giữa mã và máy. Ba tình huống mà cách đơn giản hơn thắng: ít dịch vụ và tải ổn định thì máy ảo cùng trình quản lý dịch vụ ở Bài 69 là đủ; công việc theo lô chạy định kỳ thì một dịch vụ chạy vùng chứa được quản lý đủ và rẻ hơn; và đội chưa có năng lực vận hành nền tảng thì khoản thuế vận hành lớn hơn lợi ích và rủi ro cao hơn. Ba dấu hiệu một đội đang dùng điều phối vì nó phổ biến chứ vì ràng buộc thật.
 
@@ -183,7 +183,7 @@ Người học phải so ba cách triển khai cho một dự án theo bốn ti�
 
 Cách đánh giá: Tầng *đánh giá*. Objective chống lại việc mặc định chọn phương án phức tạp nhất. Kiểm bằng bảng ba cách nhân bốn tiêu chí; đạt khi hai tiêu chí đầu có số đo và lựa chọn kèm hai điều kiện đảo ngược cụ thể.
 
-### Bài 382: From object to controller - the five-step trace
+### Lesson 382: From object to controller - the five-step trace
 
 Bài dạy cơ chế trung tâm của điều phối: vòng lặp hoà giải. Năm bước khi ta gửi một đối tượng: máy chủ giao diện xác thực, phân quyền, chạy các bộ kiểm nạp rồi lưu vào kho khoá giá trị; bộ điều khiển thấy đối tượng mới và tạo các đối tượng phụ thuộc; bộ lập lịch gán một đơn vị chạy vào một nút; tiến trình trên nút tạo môi trường chạy, gắn ổ đĩa, nối mạng rồi chạy vùng chứa, và các phép thăm dò cập nhật trạng thái sẵn sàng; bộ điều khiển quan sát trạng thái và tiếp tục hoà giải cho tới khi khớp trạng thái mong muốn. Hai ý phải rút ra: đặc tả là mong muốn còn trạng thái là thực tế, và khoảng cách giữa chúng là nơi mọi sự cố nằm; và hệ khởi động lại hoặc lập lịch lại chứ không tự khôi phục trạng thái ứng dụng. Sự kiện của đối tượng là nguồn chẩn đoán đầu tiên, trước nhật ký.
 
@@ -191,7 +191,7 @@ Người học phải truy đủ năm bước cho một lần triển khai thậ
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi quan sát cơ chế thật thay vì mô tả nó. Kiểm bằng bài truy vết; đạt khi năm bước có bằng chứng quan sát được và ba lần triển khai hỏng được quy đúng bước.
 
-### Bài 383: Pods, probes, requests and limits
+### Lesson 383: Pods, probes, requests and limits
 
 Bốn trường có ảnh hưởng lớn nhất tới hành vi thật, nên chúng có một bài riêng. Yêu cầu tài nguyên là thứ bộ lập lịch dùng để chọn nút; giới hạn tài nguyên là trần mà môi trường chạy cưỡng chế. Đặt yêu cầu quá cao lãng phí năng lực, đặt quá thấp làm nút quá tải; đặt giới hạn bộ nhớ quá thấp làm tiến trình bị kết thúc vì hết bộ nhớ, còn giới hạn bộ xử lý gây điều tiết chứ kết thúc, và phân biệt hai hiện tượng này là kỹ năng chẩn đoán chính. Ba loại thăm dò cho ba mục đích: thăm dò khởi động cho ứng dụng khởi động chậm, thăm dò sẵn sàng quyết định có nhận lưu lượng không, thăm dò sống quyết định có khởi động lại không. Chế độ hỏng đặc trưng: thăm dò nông chỉ kiểm tiến trình còn sống làm một dịch vụ hỏng vẫn được đánh dấu sẵn sàng và vẫn nhận lưu lượng; thăm dò sống quá nhạy gây vòng lặp khởi động lại dưới tải.
 
@@ -199,7 +199,7 @@ Người học phải đặt bốn trường từ số đo thật và phân bi�
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi rút tham số từ đo lường và phân biệt hai triệu chứng gần giống. Kiểm bằng bốn tình huống tiêm; đạt khi bốn tình huống được chẩn đoán đúng và giá trị cuối dẫn được từ số đo chứ từ phỏng đoán.
 
-### Bài 384: Service, endpoint, DNS and network policy
+### Lesson 384: Service, endpoint, DNS and network policy
 
 Cách lưu lượng tìm tới một đơn vị chạy, và bốn lỗi đặc trưng. Dịch vụ chọn các đơn vị chạy theo nhãn; danh sách điểm cuối được cập nhật khi trạng thái sẵn sàng đổi; tên dịch vụ phân giải qua máy chủ tên trong cụm. Từ đó suy ra chuỗi chẩn đoán có thứ tự: kiểm nhãn có khớp bộ chọn không, kiểm danh sách điểm cuối có rỗng không, kiểm phân giải tên, rồi mới kiểm ứng dụng. Danh sách điểm cuối rỗng gần như luôn có nghĩa là nhãn sai hoặc không đơn vị nào sẵn sàng, và đó là hai nguyên nhân chiếm phần lớn sự cố loại này. Cổng của dịch vụ khác cổng của vùng chứa và nhầm hai cái là lỗi phổ biến. Chính sách mạng mặc định cho phép mọi thứ nói chuyện với nhau; đặt chính sách từ chối mặc định rồi mở theo nhu cầu là thực hành đúng, theo nguyên tắc ở Bài 73.
 
@@ -207,7 +207,7 @@ Người học phải chẩn đoán bốn sự cố kết nối theo đúng th�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có một chuỗi chẩn đoán có thứ tự và một cấu hình bảo mật kiểm được. Kiểm bằng bốn sự cố tiêm cộng phép thử phủ định; đạt khi cả bốn được chẩn đoán đúng nguyên nhân và chính sách từ chối mặc định chặn đúng mọi kết nối không được phép.
 
-### Bài 385: Config, secrets, volumes and stateful workloads
+### Lesson 385: Config, secrets, volumes and stateful workloads
 
 Tách cấu hình khỏi ảnh và xử lý trạng thái. Cấu hình và bí mật được gắn vào dưới dạng biến môi trường hoặc tệp; gắn dưới dạng tệp có lợi hơn vì cập nhật được mà không dựng lại đơn vị chạy và không lộ trong danh sách tiến trình. Bí mật ở dạng mặc định chỉ được mã hoá cơ bản chứ mã hoá thật, nên nó cần lớp bảo vệ bổ sung, chẳng hạn mã hoá khi lưu ở kho khoá giá trị hoặc lấy từ kho bí mật bên ngoài theo Bài 369. Ổ đĩa bền vững gắn vào đơn vị chạy và tồn tại độc lập với nó. Khối lượng công việc có trạng thái cần danh tính ổn định và ổ đĩa riêng cho từng bản sao; nhưng phải nói rõ giới hạn: hệ điều phối cấp danh tính và ổ đĩa, còn việc sao chép dữ liệu giữa các bản sao vẫn là việc của ứng dụng, nên chạy một cơ sở dữ liệu ở đây không tự có tính sẵn sàng cao.
 
@@ -215,7 +215,7 @@ Người học phải gắn cấu hình và bí mật an toàn, và chỉ ra ch�
 
 Cách đánh giá: Tầng *áp dụng*. Objective gồm một giới hạn phải phát biểu đúng. Kiểm bằng phép thử cập nhật cộng bài lập luận; đạt khi cấu hình cập nhật được không dựng lại đơn vị chạy, bí mật không lộ trong nhật ký hay danh sách tiến trình, và giới hạn về sao chép dữ liệu được nêu đúng.
 
-### Bài 386: Rollout, rollback, drain and the disruption budget
+### Lesson 386: Rollout, rollback, drain and the disruption budget
 
 Triển khai phiên bản mới mà không gián đoạn, và bốn cơ chế kiểm soát. Triển khai dần thay thế từng phần với hai tham số là số đơn vị thừa được tạo thêm và số đơn vị được phép không sẵn sàng; hai con số này quyết định tốc độ và mức rủi ro. Quay lui là thao tác phải thử trước khi cần, theo Bài 97. Rút nút ra khỏi phục vụ khi bảo trì phải phối hợp với tắt có kiểm soát ở Bài 375, nếu không thì yêu cầu đang xử lý bị cắt. Ngân sách gián đoạn giới hạn số đơn vị được phép mất cùng lúc do thao tác chủ động; đặt ngân sách quá chặt làm việc rút nút bị kẹt vô hạn, một bế tắc hay gặp khi cụm không còn đủ năng lực để tạo đơn vị thay thế. Triển khai song song hai phiên bản và triển khai thử với một phần lưu lượng là hai chiến lược an toàn hơn, đổi lại tốn năng lực gấp đôi hoặc cần định tuyến theo tỉ lệ.
 
@@ -223,7 +223,7 @@ Người học phải triển khai và quay lui không gián đoạn, và tái h
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là không yêu cầu nào lỗi trong suốt quá trình. Kiểm bằng phép thử tải liên tục; đạt khi tỉ lệ lỗi bằng không suốt triển khai và quay lui, và bế tắc do ngân sách được tái hiện rồi gỡ.
 
-### Bài 387: Diagnosing ten broken workloads
+### Lesson 387: Diagnosing ten broken workloads
 
 Bài rèn chẩn đoán, dùng lại quy trình ở Bài 75 nhưng cho môi trường điều phối. Thứ tự cố định: đọc trạng thái của đối tượng, đọc sự kiện, đọc đặc tả, rồi mới đọc nhật ký ứng dụng và số đo của nút. Mười lỗi thuộc năm nhóm và mỗi nhóm có một dấu hiệu phân biệt: không kéo được ảnh do tên, thẻ hoặc quyền kho ảnh; vòng lặp khởi động lại do lỗi khi khởi động hoặc do thăm dò sống; trạng thái chờ do không đủ tài nguyên, do quy tắc chặn nút, hoặc do ổ đĩa chưa sẵn sàng; bị kết thúc vì hết bộ nhớ do giới hạn thấp hơn nhu cầu thật; và sẵn sàng nhưng hỏng do thăm dò nông. Mỗi chẩn đoán phải dẫn ra bằng chứng cụ thể đã đọc ở bước nào, và sửa bằng mã chứ bằng thao tác tay trên cụm. Ba lỗi trông giống nhau nhưng khác nguyên nhân được đặt cạnh nhau để rèn phân biệt.
 
@@ -231,7 +231,7 @@ Người học phải chẩn đoán mười khối lượng công việc hỏng 
 
 Cách đánh giá: Tầng *phân tích*. Objective đo năng lực chẩn đoán có phương pháp. Kiểm bằng mười ca; đạt khi chẩn đoán đúng ít nhất tám kèm bằng chứng dẫn ra, và mọi bản sửa đi qua mã chứ thao tác tay.
 
-### Bài 388: Rebuild project - cluster and service from code and backup
+### Lesson 388: Rebuild project - cluster and service from code and backup
 
 Bài dự án khép module, và tiêu chí nghiệm thu của nó là một phép thử duy nhất: dựng lại được từ con số không. Trong một môi trường sạch, dựng lại toàn bộ chỉ từ ba thứ: mã hạ tầng, kho ảnh, và bản sao lưu dữ liệu. Không được dùng bất kỳ thao tác tay nào và không được chép cấu hình từ môi trường cũ. Nộp gồm: mã hạ tầng có mô đun, trạng thái từ xa và kiểm chính sách; ảnh nhiều giai đoạn ghim theo mã băm, chạy bằng người dùng không đặc quyền; bản khai báo đầy đủ có thăm dò, yêu cầu và giới hạn tài nguyên, phân quyền theo vai và chính sách mạng từ chối mặc định; quy trình triển khai có quay lui đã thử; và sổ tay chẩn đoán năm nhóm ở Bài 387. Mọi trường trong bản khai báo phải giải thích được bằng hành vi của bộ điều khiển hoặc của môi trường chạy; trường nào không giải thích được thì gỡ bỏ.
 

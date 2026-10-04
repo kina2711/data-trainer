@@ -1,6 +1,6 @@
 # Giai đoạn 1: Nền tảng và vai trò Data Analyst
 
-Giai đoạn này kết hợp M01–M02. Người học chuyển từ `Không yêu cầu bằng chứng kỹ thuật trước chương trình` sang khả năng tạo và bảo vệ bằng chứng tích hợp ở L016.
+Giai đoạn này kết hợp M01-M02. Người học chuyển từ `Không yêu cầu bằng chứng kỹ thuật trước chương trình` sang khả năng tạo và bảo vệ bằng chứng tích hợp ở L016.
 
 ## Điều kiện đầu vào
 

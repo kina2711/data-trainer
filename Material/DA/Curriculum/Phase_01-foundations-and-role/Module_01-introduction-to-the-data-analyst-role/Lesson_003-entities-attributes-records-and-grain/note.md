@@ -12,21 +12,21 @@
 
 **Tóm tắt bản chất:** Grain là lời cam kết mỗi dòng đại diện cho điều gì; entity cho biết đối tượng, attribute mô tả đối tượng, còn record là lần biểu diễn cụ thể ở grain đã chọn. Giá trị của mô hình này nằm ở chỗ nó làm lộ nơi một kết luận có thể sai trước khi kết luận đi vào quyết định.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
-Một yêu cầu phân tích thường đến dưới dạng câu ngắn và một bảng đã có sẵn. Với **Entities, attributes, records and grain**, cám dỗ lớn nhất là mở công cụ rồi thao tác ngay. Cách đó tạo output nhanh nhưng để lại câu hỏi khó hơn: con số đang đại diện cho population nào, ở grain nào, qua những biến đổi nào và có đủ bằng chứng để người khác tái hiện hay không?
+Một yêu cầu phân tích thường đến dưới dạng câu ngắn và một bảng đã có sẵn. Với **Entities, attributes, records and grain**, rủi ro trực tiếp là mở công cụ rồi thao tác ngay. Cách đó tạo output nhanh nhưng để lại câu hỏi khó hơn: con số đang đại diện cho population nào, ở grain nào, qua những biến đổi nào và có đủ bằng chứng để người khác tái hiện hay không?
 
 Chi phí của việc bỏ qua `entity, attribute, record và grain của một tập dữ liệu` không nằm ở một câu lệnh lỗi. Kết quả vẫn có thể chạy, biểu đồ vẫn đẹp và người nhận vẫn ra quyết định. Lỗi chỉ lộ khi một báo cáo thứ hai cho số khác, khi dữ liệu tháng mới xuất hiện, hoặc khi reviewer hỏi một trường hợp biên mà logic hiện tại không giải thích được. Khi ấy, phần tốn kém nhất là truy lại assumption đã không được ghi.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Grain là lời cam kết mỗi dòng đại diện cho điều gì; entity cho biết đối tượng, attribute mô tả đối tượng, còn record là lần biểu diễn cụ thể ở grain đã chọn.
 
 Với `entity, attribute, record và grain của một tập dữ liệu`, cơ chế được bóc thành năm lớp. Lớp thứ nhất khóa **đối tượng và population**: ai hoặc sự kiện nào được tính, ai bị loại. Lớp thứ hai khóa **identity và grain**: một dòng hay một quan sát đại diện cho điều gì. Lớp thứ ba khóa **thời gian**: event time, processing time, timezone và cutoff. Lớp thứ tư khóa **phép biến đổi**: lọc, join, aggregate, ánh xạ và xử lý thiếu. Lớp cuối cùng khóa **quyết định**: người nhận sẽ làm gì nếu kết quả cao, thấp hoặc chưa đủ chắc chắn.
 
-Một bảng chỉ an toàn để đếm hoặc join khi grain được phát biểu bằng câu đầy đủ và khóa ứng viên thực sự duy nhất ở grain đó. Vì vậy, trước mỗi phép tính cần viết một câu ngắn có thể bị bác bỏ. Ví dụ: “mỗi dòng đại diện cho một đơn đã thanh toán theo giờ Việt Nam, tính tại thời điểm chốt 07:00”. Câu này hữu ích hơn tên bảng vì nó cho reviewer biết phải kiểm uniqueness, status và cutoff ở đâu.
+Một bảng chỉ an toàn để đếm hoặc join khi grain được phát biểu bằng câu đầy đủ và khóa ứng viên thực sự duy nhất ở grain đó. Vì vậy, trước mỗi phép tính cần viết một câu ngắn có thể bị bác bỏ. Ví dụ: mỗi dòng đại diện cho một đơn đã thanh toán theo giờ Việt Nam, tính tại thời điểm chốt 07:00. Câu này hữu ích hơn tên bảng vì nó cho reviewer biết phải kiểm uniqueness, status và cutoff ở đâu.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Tình trạng bằng chứng | Hành động | Vì sao |
 |---|---|---|
@@ -34,19 +34,19 @@ Một bảng chỉ an toàn để đếm hoặc join khi grain được phát bi
 | Một assumption ảnh hưởng semantics chưa rõ | Dừng và hỏi owner | Tự chọn mặc định sẽ đổi nghĩa kết quả |
 | Dữ liệu thiếu nhưng ảnh hưởng định lượng được | Phân tích có điều kiện, công bố coverage | Người nhận biết giới hạn của kết luận |
 | Hai nguồn cho số khác nhau | Truy ngược boundary gần nguồn | Sửa công thức cuối chỉ che lỗi upstream |
-| Deadline ngắn hơn thời gian kiểm chứng | Co phạm vi hoặc trả lời “chưa đủ bằng chứng” | Tốc độ không thay thế correctness |
+| Deadline ngắn hơn thời gian kiểm chứng | Co phạm vi hoặc trả lời chưa đủ bằng chứng | Tốc độ không thay thế correctness |
 
 Quy tắc ưu tiên là: Phát biểu grain trước, kiểm uniqueness và fan-out sau join, rồi mới chọn aggregate; nếu cần hai grain thì tách hai bảng hoặc aggregate về cùng grain trước khi ghép. Chọn sai nhánh làm analytical debt tăng rất nhanh, vì bảng hoặc dashboard mới thường tái sử dụng assumption cũ mà không biết đó chỉ là giả định.
 
-## Case Study Thực Chiến: một chỉ số bán hàng đổi nghĩa giữa đường
+## Worked Case: một chỉ số bán hàng đổi nghĩa giữa đường
 
-Trong case của L003, một cửa hàng nhận yêu cầu giải thích vì sao “khách hàng hoạt động” giảm từ 12.400 xuống 10.900. Bảng dashboard tính khách có ít nhất một đơn tạo trong tháng. Hệ thống vận hành lại dùng khách có ít nhất một đơn **đã thanh toán**, còn CRM tính người có phiên truy cập trong 30 ngày. Ba con số đều chạy đúng theo code của mình nhưng không cùng khái niệm; `entity, attribute, record và grain của một tập dữ liệu` là lăng kính dùng để gỡ nút thắt.
+Trong case của L003, một cửa hàng nhận yêu cầu giải thích vì sao khách hàng hoạt động giảm từ 12.400 xuống 10.900. Bảng dashboard tính khách có ít nhất một đơn tạo trong tháng. Hệ thống vận hành lại dùng khách có ít nhất một đơn **đã thanh toán**, còn CRM tính người có phiên truy cập trong 30 ngày. Ba con số đều chạy đúng theo code của mình nhưng không cùng khái niệm; `entity, attribute, record và grain của một tập dữ liệu` là khung phân tích dùng để xác định sai lệch.
 
-Nhóm phân tích bắt đầu bằng `entity, attribute, record và grain của một tập dữ liệu`. Họ ghi population, grain, status, timezone và cửa sổ đo; sau đó lập ba phép đếm song song trên cùng snapshot. Kết quả cho thấy số đơn tạo giảm 12%, số đơn thanh toán chỉ giảm 3%, còn lượt truy cập tăng 8%. Vấn đề không còn là “khách hoạt động giảm” mà là tỷ lệ chuyển từ tạo đơn sang thanh toán giảm ở một nhóm thiết bị.
+Nhóm phân tích bắt đầu bằng `entity, attribute, record và grain của một tập dữ liệu`. Họ ghi population, grain, status, timezone và cửa sổ đo; sau đó lập ba phép đếm song song trên cùng snapshot. Kết quả cho thấy số đơn tạo giảm 12%, số đơn thanh toán chỉ giảm 3%, còn lượt truy cập tăng 8%. Vấn đề không còn là khách hoạt động giảm mà là tỷ lệ chuyển từ tạo đơn sang thanh toán giảm ở một nhóm thiết bị.
 
 Biến thể khó hơn của `Entities, attributes, records and grain` xuất hiện khi một đơn có thể thanh toán lại sau thất bại và bảng payment giữ nhiều attempt. Nếu join trực tiếp orders với payments rồi đếm khách, fan-out làm số khách tăng giả. Nhóm phải chọn attempt hợp lệ theo identity, aggregate payment về grain đơn hàng, rồi mới quay lại grain khách hàng. Case này cho thấy một metric không thể được cứu chỉ bằng tên rõ; cơ chế dữ liệu phía dưới phải khớp định nghĩa.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Có dữ liệu trong database nghĩa là sự kiện ngoài đời đã được ghi chính xác. **Thực tế:** Trộn grain đơn hàng với grain dòng hàng làm doanh thu hoặc số khách bị nhân lên; khóa nhìn có vẻ duy nhất trên mẫu nhỏ có thể vỡ khi dữ liệu đủ dài. **Vì sao nghe hợp lý:** database tạo cảm giác chắc chắn vì kiểu dữ liệu và truy vấn đều hợp lệ, trong khi lỗi thu thập hoặc định nghĩa không tạo syntax error.
 
@@ -58,7 +58,7 @@ Trong `Entities, attributes, records and grain`, một trường hợp dễ bỏ
 
 ## Nếu Bạn Dạy Lại Điều Này...
 
-Khi dạy `entity, attribute, record và grain của một tập dữ liệu`, mở đầu bằng hai bảng cho cùng một doanh thu nhưng lệch 7%, không giải thích nguồn. Yêu cầu người học viết ba giả thuyết trước khi xem SQL. Bài tập seed là đổi đúng một constraint—cutoff, population hoặc grain—rồi buộc họ dự đoán con số nào đổi và phép kiểm nào bắt được thay đổi ấy.
+Khi dạy `entity, attribute, record và grain của một tập dữ liệu`, mở đầu bằng hai bảng cho cùng một doanh thu nhưng lệch 7%, không giải thích nguồn. Yêu cầu người học viết ba giả thuyết trước khi xem SQL. Bài tập seed là đổi đúng một constraint:cutoff, population hoặc grain:rồi buộc họ dự đoán con số nào đổi và phép kiểm nào bắt được thay đổi ấy.
 
 ## Ma trận kiểm chứng từng mệnh đề
 
@@ -98,7 +98,7 @@ Mỗi probe dưới đây là một phép thử có khả năng bác bỏ kết 
 
 ### Probe 5: Đối soát độc lập
 
-**Mệnh đề cần kiểm.** Câu grain, khóa ứng viên, phép kiểm uniqueness, số dòng trước–sau join và reconciliation tổng tiền theo oracle độc lập.
+**Mệnh đề cần kiểm.** Câu grain, khóa ứng viên, phép kiểm uniqueness, số dòng trước-sau join và reconciliation tổng tiền theo oracle độc lập.
 
 **Thiết kế phép thử.** Probe 5 tạo fixture tối thiểu cho L003 ở trục `Đối soát độc lập`, gồm một happy path và một bản ghi chỉ khác tại boundary đang xét. Khóa snapshot, timezone, identity và công thức trước execution; sau đó ghi số dòng, số identity duy nhất và tổng kiểm soát ở cả đầu vào lẫn đầu ra.
 
@@ -146,7 +146,7 @@ Mỗi probe dưới đây là một phép thử có khả năng bác bỏ kết 
 
 ### Probe 11: Reviewer tái hiện
 
-**Mệnh đề cần kiểm.** Câu grain, khóa ứng viên, phép kiểm uniqueness, số dòng trước–sau join và reconciliation tổng tiền theo oracle độc lập.
+**Mệnh đề cần kiểm.** Câu grain, khóa ứng viên, phép kiểm uniqueness, số dòng trước-sau join và reconciliation tổng tiền theo oracle độc lập.
 
 **Thiết kế phép thử.** Probe 11 tạo fixture tối thiểu cho L003 ở trục `Reviewer tái hiện`, gồm một happy path và một bản ghi chỉ khác tại boundary đang xét. Khóa snapshot, timezone, identity và công thức trước execution; sau đó ghi số dòng, số identity duy nhất và tổng kiểm soát ở cả đầu vào lẫn đầu ra.
 
@@ -170,7 +170,7 @@ Một bảng chỉ an toàn để đếm hoặc join khi grain được phát bi
 
 </details>
 
-2. Failure nào dễ tạo kết quả “xanh giả” nhất?
+2. Failure nào dễ tạo kết quả xanh giả nhất?
 
 <details><summary>Đáp án</summary>
 
@@ -182,7 +182,7 @@ Trộn grain đơn hàng với grain dòng hàng làm doanh thu hoặc số khá
 
 <details><summary>Đáp án</summary>
 
-Câu grain, khóa ứng viên, phép kiểm uniqueness, số dòng trước–sau join và reconciliation tổng tiền theo oracle độc lập.
+Câu grain, khóa ứng viên, phép kiểm uniqueness, số dòng trước-sau join và reconciliation tổng tiền theo oracle độc lập.
 
 </details>
 
@@ -194,18 +194,22 @@ Câu grain, khóa ứng viên, phép kiểm uniqueness, số dòng trước–sa
 - Note ở trạng thái `review`; việc note tồn tại không chứng minh learner đã thành thạo.
 
 ## Reference
-1. [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]] — `src.book.kimball-ross-data-warehouse-toolkit.3e`
+1. [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]]: `src.book.kimball-ross-data-warehouse-toolkit.3e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức giữ lại | Trạng thái |
 |---|---|---|---|
-| [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]] | Chapters 1–3: business process, grain, dimensions và facts | Cơ chế, boundary và decision rule cho `entity, attribute, record và grain của một tập dữ liệu` | Đã phủ |
+| [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]] | Chapters 1-3: business process, grain, dimensions và facts | Cơ chế, boundary và decision rule cho `entity, attribute, record và grain của một tập dữ liệu` | Đã phủ |
 
 ## Key takeaways
 - Phát biểu grain trước, kiểm uniqueness và fan-out sau join, rồi mới chọn aggregate; nếu cần hai grain thì tách hai bảng hoặc aggregate về cùng grain trước khi ghép.
-- Câu grain, khóa ứng viên, phép kiểm uniqueness, số dòng trước–sau join và reconciliation tổng tiền theo oracle độc lập.
+- Câu grain, khóa ứng viên, phép kiểm uniqueness, số dòng trước-sau join và reconciliation tổng tiền theo oracle độc lập.
 - Kết luận chỉ có nghĩa trong population, grain, thời gian và version đã ghi.
 - Khi constraint đổi, phải chạy lại probe liên quan thay vì tái sử dụng kết luận cũ.
 
 Note tiếp theo mở rộng chuỗi bằng quan hệ `prerequisite_of` đã khai báo trong front matter.
+
+## References
+
+- [[wiki.da-foundation.entity-attribute-record-and-grain|Entities, attributes, records and grain]]

@@ -1,340 +1,328 @@
----
-chuong_trinh: Data Analyst
-module: 1 — Introduction to the Data Analyst Role
-lesson: 1
-tieu_de: "What a Data Analyst actually does all day"
-dang_bai: LT
-thoi_luong_phut: 120
-trang_thai: xong
----
+# Phase 1: Nền tảng và vai trò Data Analyst
+# Module 1: Nhập môn vai trò Data Analyst
+# Lesson 1: What a Data Analyst actually does all day
 
-# Lesson 1 — What a Data Analyst actually does all day
+## Kết quả cần đạt
 
-## Đặc tả từ roadmap
+Sau bài này, người học có thể:
 
-- **Chương trình:** Data Analyst
-- **Module 1:** Introduction to the Data Analyst Role
-- **Dạng bài:** `LT` Lý thuyết
+1. Biến một yêu cầu mơ hồ thành chuỗi **consumer → decision → question → evidence → action**.
+2. Mô tả sáu pha Ask, Prepare, Process, Analyze, Share, Act như một vòng kiểm soát có phản hồi.
+3. Phân biệt DA, DE, AE, BI, BA và DS bằng trách nhiệm cùng artifact bàn giao, không bằng tên công cụ.
+4. Kiểm tra một kết luận phân tích theo chuỗi claim, evidence, uncertainty và consequence.
+5. Viết decision memo ngắn có owner, ngưỡng hành động và điều kiện đảo quyết định.
 
-**Prerequisites.** Module 1: Không
+Ngưỡng đạt tối thiểu: phân loại đúng ít nhất 6/8 nhiệm vụ, giải thích bằng outcome hoặc artifact, và không đề xuất hành động từ một con số chưa được kiểm tra population, grain, thời gian và độ phủ dữ liệu.
 
-**In-class (120 phút).** 25 phút dẫn nhập từ một tình huống hỏng · 55 phút xây khái niệm và cơ chế · 25 phút phản ví dụ và ranh giới · 15 phút tổng kết
+Một Data Analyst không được trả lương để làm dashboard. Dashboard, SQL hay spreadsheet chỉ là phương tiện. Giá trị xuất hiện khi một người ra quyết định hiểu điều gì đã xảy ra, bằng chứng nào đáng tin, còn điều gì chưa biết và nên làm gì tiếp theo.
 
-**Learn.** Năm nhóm công việc của một Data Analyst và tỉ lệ thời gian ước lượng cho từng nhóm theo mục 3.1: làm sạch và kiểm chứng 40%, lấy dữ liệu 20%, phân tích 20%, trình bày 15%, làm rõ yêu cầu 5%. Ranh giới trách nhiệm giữa Data Analyst và năm vai trò liền kề: Business Analyst, BI Analyst, Data Scientist, Analytics Engineer, Data Engineer, gồm cả vùng chồng lấn thường gây tranh chấp phạm vi. Ba loại tổ chức tuyển Data Analyst và khác biệt về nội dung công việc: công ty sản phẩm, công ty dịch vụ, doanh nghiệp truyền thống.
+Ta sẽ theo một case mô phỏng xuyên bài: trưởng bộ phận bán lẻ nhận dashboard báo doanh thu tháng 10 giảm 12% so với tháng 9. Người này cần quyết định có cắt ngân sách marketing hay không. Con số 12% có vẻ rõ ràng, nhưng chưa đủ để hành động.
 
-**Outcome.** Phân định trách nhiệm của sáu vai trò trong đội dữ liệu cho một danh sách nhiệm vụ cho trước, và định vị khoảng cách giữa năng lực hiện có của bản thân và ma trận ở mục 4.
+> **Case mô phỏng:** mọi tên, số liệu và bảng trong bài là dữ liệu giảng dạy tổng hợp. Chúng minh họa phương pháp, không phải bằng chứng về một doanh nghiệp thật.
 
-**Đánh giá.** Tầng *hiểu*. Bài mở đầu chương trình, người học chưa có dữ liệu để thao tác, nên objective dừng ở mức phân định và giải thích. Kiểm bằng bài tập gán 15 nhiệm vụ cho sáu vai trò kèm một câu lý do mỗi nhiệm vụ; chấm theo đáp án cố định, đạt khi đúng ≥ 12/15 và lý do không mâu thuẫn với bảng ranh giới ở phụ lục H.
+## Giá trị bắt đầu từ quyết định, không bắt đầu từ dashboard
 
-**Lab.** Đọc 10 tin tuyển dụng Data Analyst đang mở tại Việt Nam trên ITViec hoặc TopDev. Lập bảng tần suất: mỗi kỹ năng xuất hiện trong bao nhiêu tin. Đối chiếu bảng tần suất với bản đồ module ở mục 9 và chỉ ra kỹ năng nào chương trình không phủ.
+Một yêu cầu thường đến dưới dạng output: làm dashboard, kéo số, xem vì sao giảm. DA phải tìm decision ẩn phía sau output đó.
 
-**Pitfalls.** Quy vai trò Data Analyst về việc lập báo cáo · giả định thành thạo công cụ là điều kiện đủ · bỏ qua phần nghiệp vụ vì không đo được trực tiếp.
-
-**Self-study (2 giờ).** 20 phút viết ghi chú chín phần · 40 phút đọc nguồn tham chiếu và tự giải thích lại · 25 phút trả lời bốn câu kiểm tra · 15 phút nhật ký lỗi
-
-**Done when.** Nộp bảng tần suất kỹ năng từ 10 tin tuyển dụng có ghi nguồn và ngày truy cập, và bài gán nhiệm vụ đạt ≥ 12/15.
-
----
-
-## I. Mục tiêu và chuẩn đầu ra
-
-Hết buổi này, bạn phải **làm được** những việc sau. Mỗi việc có cách đo — nếu không đo được thì không tính là đạt.
-
-| # | Làm được gì | Đo bằng cách nào | Mức |
-|---|---|---|---|
-| 1 | Kể tên sáu vai trò trong một nhóm dữ liệu và trách nhiệm chính của từng vai | Viết ra giấy trong 5 phút, không nhìn tài liệu, đúng cả sáu | Bắt buộc |
-| 2 | Nhìn một yêu cầu công việc bất kỳ và nói nó thuộc về vai nào | Cho 8 yêu cầu, phân đúng ≥ 6 | Bắt buộc |
-| 3 | Ước lượng một ngày làm việc của DA phân bổ vào năm nhóm việc nào | Vẽ lại được biểu đồ 20/40/20/15/5 và giải thích vì sao làm sạch chiếm nhiều nhất | Bắt buộc |
-| 4 | Đọc một tin tuyển dụng và tách được: yêu cầu công cụ, yêu cầu nghiệp vụ, yêu cầu giao tiếp | Làm trên 10 tin ở phần Lab | Bắt buộc |
-| 5 | Chỉ ra mình đang thiếu kỹ năng nào so với thị trường | Nộp bảng tự đánh giá thang 1–5 cho 11 module | Bắt buộc |
-| 6 | Giải thích vì sao hai vai khác nhau lại hay tranh nhau cùng một việc | Nêu được ít nhất hai vùng chồng lấn có thật | Nên có |
-
-**Câu phải trả lời được mà không nhìn tài liệu khi kết thúc buổi:** *Data Analyst khác Data Engineer ở chỗ nào, và vì sao ranh giới đó hay bị tranh chấp?*
-
----
-
-## II. Bối cảnh và vấn đề đặt ra
-
-### Một tình huống hỏng có thật về mặt cấu trúc
-
-Sáng thứ Hai, giám đốc kinh doanh nhắn: *"Doanh thu tháng 10 giảm 12%, tìm hiểu giúp anh vì sao."*
-
-Một người mới vào nghề sẽ mở ngay công cụ, viết truy vấn, vẽ biểu đồ, và đến chiều gửi lại một bản báo cáo đẹp: doanh thu theo ngày, theo vùng, theo sản phẩm. Giám đốc nhìn xong hỏi lại: *"Rồi sao?"*
-
-Bản báo cáo đó **không sai một con số nào**, và vẫn vô dụng. Lý do:
-
-1. **Chưa hỏi 12% so với cái gì.** So với tháng 9? So với tháng 10 năm ngoái? So với kế hoạch? Ba mốc cho ba câu chuyện khác nhau, thậm chí trái ngược.
-2. **Chưa kiểm tra con số 12% có thật không.** Tháng 10 có 31 ngày, tháng 9 có 30. Nếu hệ thống đếm theo tổng tháng mà không chuẩn hoá theo số ngày, một phần "giảm" là ảo. Ngược lại, nếu một chi nhánh mới ngừng đẩy dữ liệu từ ngày 20 thì con số giảm là **lỗi dữ liệu**, không phải lỗi kinh doanh.
-3. **Chưa xác định ai sẽ làm gì với câu trả lời.** Nếu câu trả lời là "giảm do nhóm khách hàng cũ bỏ đi", người nhận sẽ gọi cho ai vào sáng mai? Nếu không trả lời được câu này, phân tích không dẫn tới hành động nào.
-
-Khoảng cách giữa "chạy được truy vấn" và "trả lời được câu hỏi" chính là nội dung của cả chương trình 85 bài này. Buổi 1 không dạy bạn công cụ nào. Nó dạy bạn **biết mình đang làm nghề gì**, vì phần lớn người bỏ cuộc giữa chừng là do hiểu sai nghề ngay từ đầu.
-
-### Vì sao buổi này quan trọng hơn vẻ ngoài của nó
-
-Người mới thường muốn bỏ qua buổi lý thuyết để "vào học SQL luôn". Hậu quả thấy được sau vài tháng:
-
-- Học rất nhiều công cụ nhưng khi phỏng vấn không trả lời được *"em đã giải quyết bài toán kinh doanh nào?"*
-- Nhận việc rồi mới biết mình thích làm hệ thống chứ không thích làm phân tích, mất một năm đi sai hướng.
-- Tranh việc với đồng nghiệp vì không ai biết ranh giới trách nhiệm nằm ở đâu.
-
----
-
-## III. Cơ sở lý thuyết và cơ chế vận hành
-
-### 3.1. Một ngày của Data Analyst phân bổ vào đâu
-
-Năm nhóm công việc, kèm tỉ lệ thời gian điển hình:
-
-| Nhóm việc | Tỉ lệ | Việc cụ thể |
+| Thành phần | Câu hỏi khóa nghĩa | Trong case doanh thu |
 |---|---|---|
-| Lấy dữ liệu | 20% | Tìm bảng nào chứa cái mình cần, xin quyền truy cập, viết truy vấn, hỏi lại người nắm hệ thống |
-| **Làm sạch và kiểm chứng** | **40%** | Xử lý thiếu, trùng, sai kiểu, sai đơn vị; đối chiếu tổng với nguồn khác; tìm ra vì sao hai báo cáo lệch nhau |
-| Phân tích | 20% | Cắt lát theo chiều, so sánh, tìm quan hệ, kiểm định giả thuyết |
-| Trình bày | 15% | Chọn biểu đồ, viết diễn giải, dựng dashboard, thuyết trình |
-| Họp và trao đổi | 5% | Làm rõ yêu cầu, báo tiến độ, bảo vệ kết luận |
+| Consumer | Ai chịu hậu quả của câu trả lời? | Trưởng bộ phận bán lẻ |
+| Decision | Họ sẽ làm gì khác đi? | Giữ hay cắt ngân sách marketing |
+| Question | Bất định nào cản quyết định? | Mức giảm có thật không, do nhóm nào? |
+| Evidence | Dữ liệu nào có thể xác nhận hoặc bác bỏ? | Giao dịch, coverage theo chi nhánh, khách mới/cũ |
+| Action | Ai làm gì, khi nào? | Growth owner điều chỉnh chiến dịch; data owner sửa thiếu dữ liệu |
 
-**Con số cần nhớ: 40%.** Phần lớn thời gian của nghề này là làm sạch và kiểm chứng dữ liệu, không phải phân tích. Đây là điều gây vỡ mộng nhiều nhất và cũng là lý do chương trình dành cả Module 4 cho mô hình hoá và chuẩn bị dữ liệu.
+Nếu chưa biết decision, cùng một biểu đồ có thể dẫn tới những hành động trái ngược. Revenue giảm do mất dữ liệu cần mở incident; giảm do khách mới cần xem acquisition; giảm do khách cũ cần xem retention. Output giống nhau, cơ chế và owner khác nhau.
 
-**Vì sao làm sạch lại tốn nhiều đến thế?** Dữ liệu trong doanh nghiệp không được sinh ra để phân tích. Nó được sinh ra để **hệ thống vận hành chạy được**: ghi đơn hàng, ghi giao dịch, ghi thao tác người dùng. Một hệ thống bán hàng chỉ cần biết đơn này đã thanh toán chưa; nó không quan tâm tên tỉnh được gõ là "Hà Nội", "Ha Noi" hay "HN". Đến khi bạn muốn đếm doanh thu theo tỉnh thì ba cách gõ đó thành ba tỉnh khác nhau. Mọi công việc làm sạch đều sinh ra từ khoảng cách giữa **mục đích ghi** và **mục đích đọc**.
+Quy tắc làm việc đầu tiên:
 
-### 3.2. Sáu vai trò trong một nhóm dữ liệu
+> Trước khi viết query, hãy hoàn thành câu: Nếu kết quả là A, B hoặc chưa đủ chắc chắn, **ai** sẽ thay đổi **quyết định gì**?
 
-Cách nhớ gọn: đi theo dòng đời của dữ liệu, từ lúc sinh ra đến lúc thành quyết định.
+## Sáu pha tạo thành một vòng kiểm soát
 
-| Vai | Câu hỏi họ trả lời | Sản phẩm bàn giao | Công cụ chính |
-|---|---|---|---|
-| **Data Engineer** (DE) | Làm sao đưa dữ liệu từ nơi nó sinh ra về nơi dùng được, đúng giờ, không mất? | Đường ống dữ liệu, kho dữ liệu, hạ tầng | Python, SQL, Spark, Kafka, cloud |
-| **Analytics Engineer** (AE) | Làm sao biến dữ liệu thô thành bảng sạch, có định nghĩa thống nhất, ai dùng cũng ra cùng một số? | Lớp mô hình dữ liệu, từ điển chỉ số | SQL, dbt, mô hình hoá |
-| **Data Analyst** (DA) | Chuyện gì đã xảy ra, vì sao, và ta nên làm gì? | Phân tích, báo cáo, dashboard, khuyến nghị | SQL, Excel, BI, thống kê, Python |
-| **BI Analyst** | Các chỉ số vận hành đang ở mức nào, theo dõi thế nào? | Hệ thống dashboard định kỳ | BI, SQL |
-| **Business Analyst** (BA) | Nghiệp vụ cần gì, quy trình nên thay đổi ra sao? | Tài liệu yêu cầu, quy trình | Tài liệu, phỏng vấn, đôi khi SQL |
-| **Data Scientist** (DS) | Dự báo điều gì sắp xảy ra, tối ưu ra sao? | Mô hình dự báo, thí nghiệm | Python, thống kê, học máy |
+Chứng chỉ Data Analytics của Google trình bày sáu pha Ask, Prepare, Process, Analyze, Share và Act. Đây không phải quy trình một chiều; phát hiện ở pha sau có thể buộc quay lại pha trước. [S1A][S2]
 
-Một cách nói ngắn để nhớ:
-
-> **DE xây đường. AE lát mặt đường và cắm biển. DA lái xe đi tìm câu trả lời. DS dự đoán đường phía trước. BA quyết định ta cần đi đâu. BI Analyst gắn đồng hồ đo lên xe.**
-
-### 3.3. Ranh giới hay bị tranh chấp
-
-Ba vùng chồng lấn gây xung đột thật trong công việc:
-
-**Vùng 1 — DA và AE: "ai chịu trách nhiệm định nghĩa chỉ số?"**
-
-Doanh thu có trừ hàng trả lại không? Có gồm phí vận chuyển không? Nếu mỗi DA tự quyết trong truy vấn của mình, mười báo cáo ra mười con số. AE sinh ra để chấm dứt chuyện đó: định nghĩa một lần, ở một chỗ, ai dùng cũng ra cùng một số. Xung đột xảy ra khi DA cần gấp và tự viết định nghĩa riêng, còn AE muốn mọi thứ đi qua lớp mô hình chung. **Đây là lý do Analytics Engineer tồn tại như một nghề riêng.**
-
-**Vùng 2 — DA và DE: "ai xử lý dữ liệu bẩn?"**
-
-DE nói: tôi đưa dữ liệu về nguyên trạng như nguồn, làm sạch là việc của phân tích. DA nói: nguồn sai kiểu dữ liệu và thiếu khoá, sửa ở đường ống mới đúng chỗ. Cả hai đều có lý. Nguyên tắc thực tế: **lỗi hệ thống sinh ra thì sửa ở đường ống, lỗi thuộc về cách hiểu nghiệp vụ thì xử lý ở lớp phân tích.**
-
-**Vùng 3 — DA và BA: "ai gặp người dùng?"**
-
-Ở công ty nhỏ không có BA, DA phải tự đi làm rõ yêu cầu. Ở công ty lớn, BA đứng giữa và DA chỉ nhận yêu cầu đã viết ra. DA nào chỉ biết chờ yêu cầu viết sẵn thì trần sự nghiệp rất thấp, vì phần giá trị cao nhất của nghề nằm ở chỗ **biết hỏi lại cho đúng**.
-
-### 3.4. Ba loại công ty, ba nghề khác nhau cùng tên "Data Analyst"
-
-| | Công ty sản phẩm | Công ty dịch vụ / tư vấn | Doanh nghiệp truyền thống |
-|---|---|---|---|
-| Ví dụ | Shopee, MoMo, VNG, Grab | BCG Gamma, agency, outsourcing | Ngân hàng, bán lẻ, sản xuất |
-| Câu hỏi hay gặp | Tính năng mới có làm tăng giữ chân người dùng không? | Khách hàng này nên tối ưu khâu nào? | Chi nhánh nào đang lỗ và vì sao? |
-| Nặng về | Phân tích sản phẩm, thí nghiệm A/B | Nhiều ngành, nhịp nhanh, làm slide | SQL, báo cáo định kỳ, quy trình |
-| Dữ liệu | Rất lớn, hành vi người dùng | Mỗi dự án một nguồn khác nhau | Sạch hơn, hệ thống cũ, quy định chặt |
-| Điểm mạnh cho người học | Học được văn hoá thí nghiệm | Tiếp xúc nhiều ngành rất nhanh | Nền SQL và nghiệp vụ vững |
-| Điểm yếu | Dễ chỉ biết một sản phẩm | Ít đi sâu, áp lực thời gian | Công nghệ chậm đổi mới |
-
-**Hệ quả cho bạn:** đừng hỏi "học DA ra làm gì". Hãy hỏi *"tôi muốn làm DA ở nhóm công ty nào"*, vì câu trả lời quyết định bạn nên dồn sức vào Module nào trước. Muốn vào công ty sản phẩm thì Module 7 (phân tích sản phẩm) và Module 8 (A/B) là then chốt. Muốn vào ngân hàng thì Module 3 (SQL) và Module 6 (Power BI) quan trọng hơn.
-
-### 3.5. Thị trường Việt Nam — mốc tham khảo
-
-Phần 3 của [roadmap Data Analyst](../../../../roadmap/roadmap.md) có bảng thị trường đầy đủ. Ba điều cần biết ngay ở buổi 1:
-
-- Nhu cầu tuyển Data / AI / ML tại Việt Nam tăng mạnh theo năm; DA là **cửa vào phổ biến nhất** của ngành.
-- Python đã chuyển từ "điểm cộng" sang "yêu cầu" ở nhiều tin tuyển dụng.
-- Xu hướng phân tích tự phục vụ đẩy DA từ *người làm báo cáo* sang *người tạo điều kiện để người khác tự trả lời được*.
-
-> Số liệu thị trường trong roadmap trích từ nguồn thứ cấp và **chưa được kiểm chứng độc lập**. Dùng làm mốc định hướng, không dùng làm căn cứ đàm phán tuyệt đối. Phần Lab bên dưới buộc bạn tự kiểm chứng bằng dữ liệu bạn thu thập.
-
----
-
-## IV. Khung quyết định và tiêu chí lựa chọn
-
-### 4.1. Nhận yêu cầu bất kỳ — đây có phải việc của DA không?
-
-```
-Yêu cầu đến
-  │
-  ├─ "Dữ liệu này chưa về kho / đường ống hỏng / chậm"      → Data Engineer
-  ├─ "Hai báo cáo ra hai số khác nhau, cần thống nhất
-  │   định nghĩa cho toàn công ty"                          → Analytics Engineer
-  ├─ "Cần theo dõi chỉ số này hằng ngày, lâu dài"           → BI Analyst (DA dựng lần đầu)
-  ├─ "Dự đoán khách hàng nào sắp rời bỏ"                    → Data Scientist
-  ├─ "Quy trình duyệt đơn nên đổi thế nào"                  → Business Analyst
-  └─ "Chuyện gì đã xảy ra, vì sao, ta nên làm gì"           → Data Analyst  ← của bạn
+```mermaid
+flowchart LR
+  A[Ask<br/>Khóa quyết định] --> P[Prepare<br/>Tìm nguồn và quyền truy cập]
+  P --> R[Process<br/>Kiểm tra và chuẩn hóa]
+  R --> N[Analyze<br/>Đo và giải thích]
+  N --> S[Share<br/>Truyền đạt bằng chứng]
+  S --> C[Act<br/>Thực thi và theo dõi]
+  C --> F{Kết quả có khớp<br/>giả thuyết?}
+  F -- Không --> A
+  F -- Có --> M[Chuẩn hóa hoặc mở rộng]
 ```
 
-Ở công ty dưới 50 người, thường không có năm vai kia. DA làm hết. Điều đó không sai — nhưng phải **biết mình đang làm việc của vai nào**, để còn biết mình đang giỏi lên theo hướng nào.
-
-### 4.2. Tự chọn hướng đi
-
-| Nếu bạn... | Hướng hợp | Vì sao |
+| Pha | Artifact tối thiểu | Failure mode nếu bỏ qua |
 |---|---|---|
-| Thích trả lời câu hỏi, thích trình bày, thích tiếp xúc nghiệp vụ | **Data Analyst** | Giá trị nằm ở diễn giải và thuyết phục |
-| Thích xây thứ người khác dùng lại, ghét làm cùng một báo cáo hai lần | **Analytics Engineer** | Giá trị nằm ở tính tái sử dụng |
-| Thích hệ thống, chịu được việc bị gọi lúc 3 giờ sáng khi đường ống hỏng | **Data Engineer** | Giá trị nằm ở độ tin cậy vận hành |
-| Ngại viết code | Cân nhắc kỹ trước khi vào ngành | Cả ba hướng đều cần code; DA cần ít nhất SQL và Python cơ bản |
+| Ask | decision brief, metric, comparison | Trả lời đúng một câu hỏi không ai cần |
+| Prepare | source inventory, access, grain dự kiến | Chọn nguồn tiện nhất thay vì nguồn phù hợp |
+| Process | quality report, exclusions, lineage | Lỗi dữ liệu bị diễn giải thành hành vi |
+| Analyze | query/notebook, checks, uncertainty | Có con số nhưng không có cơ chế |
+| Share | decision memo, visual, limitations | Người nhận nhớ biểu đồ nhưng không biết hành động |
+| Act | owner, deadline, monitor, reversal trigger | Recommendation không tạo thay đổi hoặc không học được |
 
----
+Trong case, phát hiện thiếu dữ liệu Đà Nẵng ở pha Process buộc quay lại Prepare để xác minh nguồn và cutoff. Đó không phải làm lại; đó là cơ chế kiểm soát chất lượng.
 
-## V. Nghiên cứu tình huống: quay lại câu "doanh thu giảm 12%"
+## Công việc thật được nhìn qua artifact và rủi ro
 
-Cùng một yêu cầu, làm theo cách của người đã biết nghề.
+Một ngày của DA thường pha trộn nhiều loại việc:
 
-**Bước 1 — Làm rõ trước khi chạm vào dữ liệu (10 phút, hỏi 4 câu).**
+| Nhóm việc | Artifact quan sát được | Rủi ro cần kiểm soát |
+|---|---|---|
+| Làm rõ yêu cầu | analytical brief | hỏi sai population hoặc comparison |
+| Truy xuất và kiểm dữ liệu | query, profile, reconciliation | thiếu, trùng, join sai grain |
+| Phân tích | decomposition, segment table, model đơn giản | nhầm tương quan với nguyên nhân |
+| Truyền đạt | memo, chart, walkthrough | che uncertainty hoặc thiếu consequence |
+| Hỗ trợ hành động | owner, experiment, monitor | recommendation không được thực thi |
+| Duy trì tri thức | metric definition, note, lineage | cùng khái niệm bị định nghĩa nhiều lần |
 
-1. 12% là so với mốc nào? → *So với tháng 9.*
-2. Anh sẽ dùng câu trả lời để làm gì? → *Quyết định có tăng ngân sách khuyến mãi tháng 11 không.*
-3. Nếu kết luận là "do mùa vụ, không cần làm gì", anh có chấp nhận không? → *Có.*
-4. Cần trả lời trước khi nào? → *Chiều mai.*
+## Ranh giới vai trò nằm ở thứ phải chịu trách nhiệm
 
-Bốn câu này đổi hoàn toàn phạm vi công việc: không cần dashboard, chỉ cần **một kết luận có căn cứ về việc có nên chi thêm tiền hay không**.
+Tên công cụ không xác định vai trò. SQL xuất hiện trong DA, DE, AE và BI; Python xuất hiện trong DA, DE và DS. Hãy hỏi: nếu sản phẩm hỏng, vai nào phải đứng ra bảo vệ invariant nào?
 
-**Bước 2 — Kiểm chứng con số trước khi giải thích nó (30 phút).**
+| Vai trò | Trách nhiệm trung tâm | Artifact chính | Critical failure điển hình |
+|---|---|---|---|
+| Data Analyst | câu trả lời và khuyến nghị cho quyết định | analysis, decision memo | kết luận không khớp bằng chứng |
+| Data Engineer | dòng dữ liệu tin cậy và vận hành được | pipeline, data contract, runbook | mất/trùng dữ liệu, không phục hồi được |
+| Analytics Engineer | mô hình và metric dùng chung | tested model, semantic definition | grain/metric không nhất quán |
+| BI Analyst/Developer | trải nghiệm theo dõi lặp lại | dashboard, semantic report | người dùng đọc sai hoặc dữ liệu stale |
+| Business Analyst | yêu cầu, quy tắc và quy trình nghiệp vụ | process map, requirement, acceptance rule | giải pháp không giải quyết quy trình |
+| Data Scientist | ước lượng, dự báo hoặc quyết định dưới bất định | experiment/model, evaluation | leakage, calibration kém, claim vượt thiết kế |
 
-| Việc kiểm | Phát hiện |
+Ranh giới có thể chồng lấn. DA có thể phát hiện pipeline mất dữ liệu; DE sửa cơ chế ingestion; AE sửa model và test; BI cập nhật trạng thái dashboard. Một người ở startup có thể làm cả bốn, nhưng vẫn phải đổi mũ rõ ràng để biết tiêu chí hoàn thành.
+
+RACI tối thiểu cho một phân tích:
+
+- **Responsible:** người trực tiếp tạo và kiểm bằng chứng.
+- **Accountable:** owner ký quyết định hoặc chấp nhận rủi ro.
+- **Consulted:** chuyên gia nguồn, metric hoặc nghiệp vụ.
+- **Informed:** người cần biết kết quả nhưng không quyết định.
+
+## Đơn vị công việc hoàn chỉnh là một decision trace
+
+Một task không hoàn chỉnh chỉ vì file đã được gửi. Nó hoàn chỉnh khi reviewer lần được từ quyết định về nguồn dữ liệu và từ nguồn dữ liệu trở lại quyết định. Chuỗi này được gọi là decision trace.
+
+| Mắt xích | Nội dung phải khóa | Câu hỏi kiểm tra |
+|---|---|---|
+| Decision | lựa chọn, người chịu trách nhiệm, phạm vi tác động | Kết quả khác đi thì hành động nào đổi? |
+| Analytical question | population, comparison, dimension, outcome | Câu hỏi có tạo được một kết quả bác bỏ được không? |
+| Metric | tử số, mẫu số, grain, exclusions, status | Hai người có tính ra cùng một số không? |
+| Model | bảng, join path, aggregation, cutoff | Phép biến đổi có giữ đúng population không? |
+| Source | hệ thống gốc, control total, owner | Có oracle độc lập với model đang kiểm không? |
+| Action | owner, giới hạn, điều kiện dừng | Ai nhận việc và khi nào phải xem lại quyết định? |
+
+Decision trace giúp xử lý hai lỗi thường gặp. Lỗi thứ nhất là kết luận không tìm được nguồn đã tạo ra con số. Lỗi thứ hai là một bảng được duy trì nhưng không ai chỉ ra quyết định nào còn phụ thuộc vào nó. Cả hai đều là lỗi truy vết, không phải lỗi trình bày.
+
+Ví dụ trong case:
+
+```text
+DEC-REV-01
+  needs QUESTION-REV-DROP
+  answered_by METRIC-NET-REVENUE
+  computed_from MART-PAYMENTS-DAILY
+  derived_from SOURCE-SETTLEMENT
+  checked_by RECON-SETTLEMENT-01
+  results_in ACTION-GROWTH-REVIEW
+```
+
+Mỗi ID cần owner và phiên bản. Khi định nghĩa revenue đổi, impact analysis phải tìm được decision, report và consumer bị ảnh hưởng. Một đường lineage chỉ nối bảng với bảng chưa đủ để trả lời câu hỏi đó.
+
+## Bốn lớp kiểm tra trước khi tin một kết luận
+
+Kiểm tra nhiều không đồng nghĩa kiểm tra đúng. Các check phải bao phủ bốn lớp khác nhau.
+
+### Lớp 1: Measurement validity
+
+Metric có đo đúng khái niệm không? Nếu mục tiêu là doanh thu đã thu tiền, `order_created` không phải event phù hợp. Nếu refund được ghi ở kỳ sau, gross revenue và net revenue trả lời hai câu hỏi khác nhau.
+
+### Lớp 2: Data validity
+
+Record có đủ, không trùng, đúng type và đúng state không? Đây là nơi kiểm coverage, uniqueness, accepted values, referential integrity và reconciliation.
+
+### Lớp 3: Analytical validity
+
+Phép so sánh có hợp lệ không? Cần kiểm population shift, mix effect, seasonality, join fan-out, multiple testing và uncertainty. Một tổng đúng vẫn có thể che subgroup sai.
+
+### Lớp 4: Decision validity
+
+Evidence có đủ mạnh cho hành động đề xuất không? Một mô tả cho biết nơi xảy ra chênh lệch. Nó không tự chứng minh intervention nào sẽ sửa được chênh lệch. Quyết định còn phụ thuộc cost, reversibility, affected users và hậu quả nếu sai.
+
+| Dấu hiệu | Lớp có khả năng hỏng | Hành động đầu tiên |
+|---|---|---|
+| Dashboard và settlement lệch | Data validity | kiểm population, cutoff, coverage |
+| Hai team có hai revenue | Measurement validity | khóa metric contract và owner |
+| Tổng giảm nhưng nhóm lớn tăng | Analytical validity | phân rã contribution và mix |
+| Claim đúng nhưng action quá rộng | Decision validity | thu hẹp action, thêm trigger |
+
+Một check không nên vừa tạo output vừa tự làm oracle. Nếu cùng query dùng chung filter sai để tính revenue và xác nhận revenue, hai kết quả giống nhau nhưng không tạo thêm bằng chứng.
+
+## Claim ladder giới hạn độ mạnh của câu trả lời
+
+DA cần nói rõ claim đang đứng ở bậc nào.
+
+| Bậc | Câu hỏi | Bằng chứng tối thiểu | Điều chưa được phép nói |
+|---|---|---|---|
+| Descriptive | Chuyện gì đã xảy ra? | metric đã reconcile | vì sao xảy ra |
+| Diagnostic | Biến động tập trung ở đâu? | decomposition, segment, competing hypotheses | nguyên nhân đã được chứng minh |
+| Causal | Can thiệp nào tạo ra thay đổi? | experiment hoặc causal design phù hợp | hiệu ứng ngoài population đã nghiên cứu |
+| Predictive | Điều gì có khả năng xảy ra? | out-of-sample evaluation, calibration | hành động tối ưu |
+| Prescriptive | Nên chọn action nào? | value, cost, constraints, uncertainty | chắc chắn không có lựa chọn tốt hơn |
+
+Trong case, ta có descriptive claim về mức giảm 4% và diagnostic claim về khách mới. Ta chưa có causal claim về marketing. Nếu memo viết marketing làm doanh thu giảm, câu văn đã vượt quá bằng chứng.
+
+Quy tắc biên tập là dùng động từ đúng với bậc:
+
+- quan sát, ghi nhận, tập trung ở cho descriptive và diagnostic;
+- ước lượng tác động cho causal;
+- dự báo xác suất cho predictive;
+- đề xuất có điều kiện cho prescriptive.
+
+Không dùng các cụm chứng minh rằng hoặc chắc chắn do khi thiết kế bằng chứng chưa hỗ trợ chúng.
+
+## Một con số chỉ có giá trị khi giữ được chuỗi lập luận
+
+Dashboard cho biết:
+
+| Tháng | Revenue hiển thị | So với tháng trước |
+|---|---:|---:|
+| 09 | 3,00 tỷ | baseline |
+| 10 | 2,64 tỷ | -12,0% |
+
+Trước khi giải thích, DA kiểm ba lớp:
+
+1. **Nghĩa:** revenue là gross order value, paid revenue hay net sau refund?
+2. **Coverage:** tất cả chi nhánh và ngày đã có dữ liệu chưa?
+3. **Comparison:** tháng có số ngày khác nhau, seasonality hay campaign khác nhau không?
+
+Profile theo chi nhánh phát hiện Đà Nẵng chỉ có dữ liệu tới 20/10. Sau khi source owner nạp bù 0,24 tỷ và đối soát với báo cáo thanh toán, revenue tháng 10 là 2,88 tỷ. Mức giảm được xác nhận là:
+
+```text
+(2.88 - 3.00) / 3.00 = -4.0%
+```
+
+12% là **observed dashboard change**; 4% là **reconciled business change** trong fixture mô phỏng. Không được gọi 4% là sự thật tuyệt đối: nó đúng trong definition, cutoff và nguồn đối soát đã nêu.
+
+```sql
+-- Mục đích: kiểm coverage và revenue ở grain chi nhánh-ngày.
+-- Input: payments có payment_id, branch_id, paid_at, net_amount, status.
+-- Output: số ngày có dữ liệu và net revenue từng chi nhánh-tháng.
+-- Boundary: timezone Asia/Ho_Chi_Minh; chỉ status = 'settled';
+--           chưa chứng minh source ghi nhận đủ mọi thanh toán.
+SELECT
+    branch_id,
+    DATE_TRUNC('month', paid_at AT TIME ZONE 'Asia/Ho_Chi_Minh') AS month_start,
+    COUNT(DISTINCT DATE(paid_at AT TIME ZONE 'Asia/Ho_Chi_Minh')) AS covered_days,
+    COUNT(DISTINCT payment_id) AS payments,
+    SUM(net_amount) AS net_revenue
+FROM payments
+WHERE status = 'settled'
+  AND paid_at >= TIMESTAMPTZ '2026-09-01 00:00:00+07'
+  AND paid_at <  TIMESTAMPTZ '2026-11-01 00:00:00+07'
+GROUP BY 1, 2
+ORDER BY 2, 1;
+```
+
+Query này có thể phát hiện coverage bất thường; nó không tự chứng minh completeness. Cần oracle độc lập như settlement report hoặc source control total.
+
+Metric contract dùng trong case phải đủ chi tiết để query không tự quyết nghĩa:
+
+| Trường | Giá trị đã khóa |
 |---|---|
-| Số ngày trong tháng | Tháng 10 có 31 ngày, tháng 9 có 30 → tính theo doanh thu trung bình ngày, mức giảm còn khoảng 15% chứ không phải 12% |
-| Dữ liệu có đủ không | Chi nhánh Đà Nẵng ngừng đồng bộ từ 20/10 → **thiếu 11 ngày dữ liệu của một chi nhánh** |
-| Định nghĩa doanh thu | Báo cáo này trừ hàng trả lại, báo cáo kế toán thì không |
+| Metric ID | METRIC-NET-REVENUE-v1 |
+| Population | payment có status settled |
+| Grain đầu vào | một dòng trên payment_id |
+| Giá trị | settled amount trừ refund thuộc cùng policy |
+| Event time | paid_at theo Asia/Ho_Chi_Minh |
+| Exclusions | test account, voided payment |
+| Cutoff | snapshot đã công bố cho kỳ báo cáo |
+| Owner | Finance metric owner |
+| Quality gate | reconciliation với settlement trong tolerance đã duyệt |
 
-Đây là lúc 40% thời gian làm sạch phát huy tác dụng. Nếu bỏ qua bước này, mọi phân tích phía sau đều xây trên nền sai.
+Nếu refund policy hoặc cutoff thay đổi, phải tạo phiên bản mới hoặc ghi effective boundary. Sửa query mà giữ nguyên tên metric khiến báo cáo cũ và mới có cùng nhãn nhưng khác nghĩa.
 
-**Bước 3 — Tách phần ảo khỏi phần thật.**
+Sau reconciliation, DA phân rã phần giảm 120 triệu:
 
-Sau khi bù dữ liệu Đà Nẵng và chuẩn hoá theo số ngày: mức giảm thật là khoảng 4%, không phải 12%. Trong đó phần lớn rơi vào nhóm khách hàng mua lần đầu.
+| Nhóm | Tháng 09 | Tháng 10 | Chênh lệch |
+|---|---:|---:|---:|
+| Khách cũ | 2,10 tỷ | 2,12 tỷ | +20 triệu |
+| Khách mới | 0,90 tỷ | 0,76 tỷ | -140 triệu |
+| Tổng | 3,00 tỷ | 2,88 tỷ | -120 triệu |
 
-**Bước 4 — Trả lời đúng câu đã được hỏi.**
+Đây là bằng chứng mô tả rằng mức giảm tập trung ở khách mới. Nó **chưa chứng minh** marketing là nguyên nhân. Campaign mix, tracking, giá, stock và seasonality vẫn là các giả thuyết cạnh tranh.
 
-> Doanh thu tháng 10 giảm **4%** so với tháng 9 sau khi chuẩn hoá theo số ngày và bù phần dữ liệu thiếu của chi nhánh Đà Nẵng — không phải 12% như báo cáo gốc. Phần giảm tập trung ở nhóm khách mua lần đầu, trong khi nhóm khách cũ giữ nguyên. **Khuyến nghị:** nếu chi thêm ngân sách, chi vào kênh thu hút khách mới, không chi vào khuyến mãi đại trà. **Việc cần làm riêng:** chi nhánh Đà Nẵng đang mất dữ liệu 11 ngày, cần báo bộ phận hệ thống — lỗi này còn ảnh hưởng mọi báo cáo khác.
+Chuỗi lập luận hợp lệ:
 
-**Điều đáng chú ý:** giá trị lớn nhất mà người phân tích tạo ra ở đây không phải biểu đồ nào cả. Đó là việc **phát hiện con số ban đầu sai** và **tìm ra một lỗi hệ thống mà chưa ai biết**. Không có bước 2 thì công ty đã chi tiền để chữa một vấn đề không tồn tại.
+```mermaid
+flowchart TD
+  O[Observation: dashboard -12%] --> V[Validation: thiếu 11 ngày chi nhánh]
+  V --> C[Corrected claim: reconciled -4%]
+  C --> D[Decomposition: khách mới -140 triệu]
+  D --> H[Hypotheses: acquisition, tracking, stock, price]
+  H --> E[Evidence plan và owner]
+  E --> A[Action có giới hạn]
+```
 
----
+## Từ phân tích tới hành động cần decision memo
 
-## VI. Giới hạn và ngộ nhận phổ biến
+Một memo tốt ngắn nhưng không cắt mất logic:
 
-**Ngộ nhận 1 — "Data Analyst là người làm báo cáo."**
+> **Decision:** chưa cắt toàn bộ ngân sách marketing.<br>
+> **Claim:** revenue tháng 10 giảm 4% sau reconciliation, không phải 12%.<br>
+> **Evidence:** dữ liệu Đà Nẵng thiếu 11 ngày đã nạp bù và đối soát; chênh lệch tập trung ở khách mới.<br>
+> **Uncertainty:** chưa tách được tác động campaign, stock và tracking.<br>
+> **Action:** Growth owner kiểm tra funnel theo campaign; Data owner thêm coverage alert theo chi nhánh-ngày.<br>
+> **Review point:** đánh giá lại khi có breakdown theo campaign và coverage check đạt ngưỡng.<br>
+> **Reversal trigger:** nếu settlement reconciliation lệch quá 0,5% hoặc tracking coverage dưới 98%, dừng quyết định ngân sách.
 
-- *Thực tế:* làm báo cáo chỉ là một phần của 15% thời gian trình bày. Phần lớn giá trị nằm ở chỗ chọn đúng câu hỏi và kiểm chứng số liệu.
-- *Vì sao nghe hợp lý:* vì đó là phần duy nhất người ngoài nhìn thấy. Toàn bộ 40% làm sạch diễn ra âm thầm.
-- *Hậu quả nếu tin theo:* bạn sẽ học công cụ vẽ biểu đồ và bỏ qua SQL, thống kê, nghiệp vụ — rồi dừng ở mức làm theo yêu cầu suốt sự nghiệp.
+Điểm quan trọng là tách hai luồng: xử lý incident dữ liệu và xử lý vấn đề kinh doanh. Trộn chúng tạo ra một recommendation vừa không sửa hệ thống vừa không giải quyết hành vi.
 
-**Ngộ nhận 2 — "Học xong công cụ là làm được việc."**
+## Quyền truy cập và đạo đức là một phần của phân tích
 
-- *Thực tế:* công cụ là điều kiện cần. Cùng một truy vấn SQL, người hiểu nghiệp vụ viết ra kết quả dùng được, người không hiểu viết ra con số vô nghĩa.
-- *Vì sao nghe hợp lý:* vì công cụ đo được và có chứng chỉ, còn nghiệp vụ thì mơ hồ, khó đo.
-- *Cách chương trình xử lý:* mỗi bài thực hành đều gắn với một câu hỏi kinh doanh cụ thể, không có bài nào chỉ luyện cú pháp.
+Có thể query không đồng nghĩa được phép sử dụng cho mọi mục đích. Pha Prepare phải xác nhận quyền truy cập, mục đích sử dụng, mức tổng hợp cần thiết và dữ liệu nhạy cảm. Source note của khóa học nhấn mạnh responsible handling và việc công bố giới hạn. [S1A]
 
-**Ngộ nhận 3 — "Phần nghiệp vụ để sau cũng được."**
+Trong case, phân tích khách mới không cần xuất email hay số điện thoại vào notebook. Dùng customer surrogate key và aggregate theo cohort giảm rủi ro mà vẫn trả lời được câu hỏi. Nếu cần mở rộng mục đích sử dụng, phải có owner phê duyệt thay vì coi đó là chi tiết kỹ thuật.
 
-- *Thực tế:* nghiệp vụ là thứ lâu ngấm nhất, cần tích luỹ từ đầu. Công cụ mới học hai tuần là dùng được.
-- *Vì sao nghe hợp lý:* vì tiến bộ về công cụ thấy ngay, còn tiến bộ về nghiệp vụ không có gì để khoe.
+## Bối cảnh tổ chức làm thay đổi phạm vi, không đổi tiêu chuẩn
 
-**Ngộ nhận 4 — "Số liệu tự nói lên sự thật."**
+- Ở đội nhỏ, một DA có thể tự ingest file, viết model và dựng dashboard. Tiêu chuẩn completeness, grain và handoff vẫn tồn tại.
+- Ở tổ chức có platform, DA nhận curated data nhưng vẫn phải kiểm definition, cutoff và fitness-for-use.
+- Trong consulting, artifact bàn giao cần tái lập được vì người phân tích có thể rời dự án.
+- Trong product team, vòng phản hồi ngắn hơn, nhưng claim nhân quả vẫn cần thiết kế bằng chứng phù hợp.
 
-- *Thực tế:* số liệu luôn đi kèm cách đo và định nghĩa. Đổi định nghĩa "doanh thu" là đổi kết luận.
-- *Vì sao nghe hợp lý:* vì con số trông khách quan.
-- *Liên hệ:* toàn bộ Module 5 (thống kê) tồn tại để bạn biết khi nào một khác biệt là thật và khi nào chỉ là nhiễu.
+Phạm vi công việc rộng hay hẹp không cho phép bỏ qua câu hỏi: Bằng chứng nào đủ để người khác kiểm tra lại kết luận này?
 
-### Giới hạn của chính buổi học này
+## Những ngộ nhận làm analyst tạo output nhưng không tạo giá trị
 
-Tỉ lệ 20/40/20/15/5 là **con số điển hình để định hướng**, không phải chuẩn đo. Thực tế dao động mạnh: tuần chạy báo cáo cuối tháng có thể 80% là trình bày; tuần tiếp nhận nguồn dữ liệu mới có thể 90% là làm sạch. Đừng dùng con số này để đánh giá ai.
-
----
-
-## VII. Ghi chú phương pháp giảng dạy
-
-**Phân bổ 120 phút**
-
-| Thời gian | Nội dung | Cách làm |
+| Ngộ nhận | Vì sao sai | Hành vi thay thế |
 |---|---|---|
-| 0–25 | Tình huống "doanh thu giảm 12%" | Đưa nguyên yêu cầu, cho học viên tự nói sẽ làm gì. **Chưa** chữa. Ghi lại câu trả lời lên bảng để cuối buổi đối chiếu |
-| 25–80 | Năm nhóm việc, sáu vai trò, ba vùng chồng lấn | Vẽ dòng đời dữ liệu lên bảng, thêm dần từng vai vào |
-| 80–105 | Phản ví dụ và ranh giới | Đọc to 8 yêu cầu, học viên giơ tay phân vai. Chốt bằng cây quyết định ở mục 4.1 |
-| 105–120 | Tổng kết | Quay lại bảng ghi lúc đầu buổi, cùng chỉ ra chỗ nào thiếu bước làm rõ và bước kiểm chứng |
+| DA là người làm dashboard | Đồng nhất vai trò với một output | Bắt đầu từ decision và consumer |
+| Query chạy là số đúng | Syntax không kiểm grain, meaning, coverage | Profile và reconcile với oracle độc lập |
+| Segment giảm mạnh là nguyên nhân | Decomposition không tự tạo causal evidence | Nêu giả thuyết cạnh tranh và evidence plan |
+| Công ty nhỏ không cần phân vai | Một người vẫn có nhiều invariant khác nhau | Gọi đúng mũ và tiêu chí bàn giao |
+| Phải có câu trả lời chắc chắn | Ép chắc chắn che uncertainty | Nêu confidence, giới hạn, reversal trigger |
+| Presentation là bước cuối | Hành động tạo dữ liệu phản hồi mới | Theo dõi hậu quả và quay lại Ask |
 
-**Lỗi học viên hay mắc ở buổi này**
+## Key takeaways
 
-- Nhầm Analytics Engineer với Data Engineer. Chốt bằng một câu: *AE viết SQL, DE viết hệ thống chạy SQL đó.*
-- Cho rằng phải học hết cả ba hướng. Nói rõ: ba chương trình trong dự án này **độc lập**, chọn một và đi hết.
-- Hỏi "lương bao nhiêu" ngay đầu buổi. Trả lời bằng mốc trong roadmap kèm nguyên văn cảnh báo về nguồn chưa kiểm chứng — đừng hứa con số.
+1. DA tạo giá trị bằng cách giảm bất định cho một quyết định, không bằng số lượng dashboard.
+2. Ask, Prepare, Process, Analyze, Share và Act là vòng phản hồi, không phải checklist một chiều.
+3. Phân vai bằng trách nhiệm, artifact và critical failure; không phân vai bằng công cụ.
+4. Một con số cần definition, grain, time boundary, coverage và reconciliation trước khi giải thích.
+5. Decomposition chỉ mô tả nơi biến động tập trung; causal claim cần bằng chứng mạnh hơn.
+6. Recommendation phải có owner, deadline, uncertainty và reversal trigger.
+7. Quyền truy cập, mục đích sử dụng và mức tổng hợp là một phần của chất lượng phân tích.
+8. Bối cảnh thay đổi phạm vi công việc nhưng không xóa tiêu chuẩn kiểm chứng.
 
-**Nếu lớp đã có người đi làm:** đổi tình huống mở đầu thành một yêu cầu thật họ từng nhận, và cho họ kể lại kết cục. Hiệu quả hơn ví dụ dựng sẵn nhiều.
+## Reference
 
----
-
-## VIII. Câu hỏi tự kiểm tra
-
-**Câu 1.** Trong năm nhóm công việc, nhóm nào chiếm nhiều thời gian nhất, và vì sao?
-
-<details><summary>Đáp án</summary>
-
-Làm sạch và kiểm chứng, khoảng 40%. Nguyên nhân gốc: dữ liệu doanh nghiệp được sinh ra để **hệ thống vận hành chạy được**, không phải để phân tích. Hệ thống bán hàng không quan tâm tên tỉnh gõ là "Hà Nội" hay "HN", nhưng người đếm doanh thu theo tỉnh thì có. Mọi việc làm sạch đều sinh ra từ khoảng cách giữa mục đích ghi và mục đích đọc.
-</details>
-
-**Câu 2.** Một bạn nói: *"Công ty mình có DE rồi nên DA không cần làm sạch dữ liệu nữa."* Bạn phản biện thế nào?
-
-<details><summary>Đáp án</summary>
-
-Sai ở chỗ gộp hai loại lỗi làm một. Lỗi do hệ thống sinh ra — sai kiểu dữ liệu, thiếu khoá, đường ống mất dữ liệu — thì sửa ở đường ống, đúng là việc của DE. Nhưng lỗi thuộc về **cách hiểu nghiệp vụ** thì DE không sửa được: doanh thu có trừ hàng trả lại không, khách hàng "hoạt động" nghĩa là gì, đơn bị huỷ có tính không. Những thứ này phụ thuộc câu hỏi đang trả lời, nên phải xử lý ở lớp phân tích — hoặc chuẩn hoá một lần ở lớp AE nếu công ty có vai đó.
-</details>
-
-**Câu 3.** Phân vai cho bốn yêu cầu sau: (a) "Dashboard doanh thu load chậm 5 phút"; (b) "Hai phòng ban báo hai con số khách hàng khác nhau"; (c) "Vì sao tỉ lệ huỷ đơn tháng này tăng"; (d) "Dự đoán khách nào sắp ngừng dùng dịch vụ".
-
-<details><summary>Đáp án</summary>
-
-(a) **DE** — vấn đề hiệu năng hạ tầng và đường ống. (b) **AE** — hai định nghĩa chỉ số khác nhau, cần thống nhất một nguồn sự thật. (c) **DA** — giải thích chuyện đã xảy ra và vì sao. (d) **DS** — dự báo tương lai.
-
-Lưu ý: ở công ty nhỏ có thể một người làm cả bốn. Câu hỏi kiểm tra bạn có phân biệt được **loại việc**, không phải phân biệt chức danh trên hợp đồng.
-</details>
-
-**Câu 4.** Giám đốc hỏi *"doanh thu giảm 12%, vì sao?"*. Kể ba việc bạn làm **trước khi** viết dòng truy vấn đầu tiên.
-
-<details><summary>Đáp án</summary>
-
-1. Hỏi 12% là so với mốc nào — tháng trước, cùng kỳ năm ngoái, hay kế hoạch. Ba mốc cho ba câu chuyện khác nhau.
-2. Hỏi câu trả lời sẽ được dùng để quyết định việc gì, và hạn khi nào. Điều này quyết định phạm vi: một kết luận hay cả một dashboard.
-3. Kiểm chứng bản thân con số 12%: số ngày trong tháng có bằng nhau không, dữ liệu có thiếu nguồn nào không, định nghĩa doanh thu ở hai kỳ có giống nhau không.
-
-Bỏ qua bước 3 là lỗi tốn kém nhất: công ty có thể chi tiền để chữa một vấn đề không tồn tại.
-</details>
-
----
-
-## IX. Bài tập về nhà
-
-Nội dung đầy đủ nằm trong `homework.md`. Tóm tắt:
-
-**Phần A — Thu thập (60 phút).** Tìm **10 tin tuyển dụng Data Analyst thật tại Việt Nam** trên ITViec, TopDev, LinkedIn hoặc VietnamWorks. Ưu tiên tin đăng trong 3 tháng gần nhất. Lưu lại liên kết và ngày đăng của từng tin.
-
-**Phần B — Lập bảng đếm.** Với mỗi tin, đánh dấu những kỹ năng được nêu, rồi cộng lại:
-
-| Kỹ năng | Module phủ | Số tin / 10 |
-|---|---|---|
-| Excel nâng cao | M2 | |
-| SQL | M3 | |
-| Mô hình hoá và chuẩn bị dữ liệu | M4 | |
-| Thống kê | M5 | |
-| Power BI hoặc công cụ BI khác | M6 | |
-| Hiểu nghiệp vụ và chỉ số sản phẩm | M7 | |
-| A/B testing | M8 | |
-| Python | M9 | |
-| Trình bày, giao tiếp, tiếng Anh | M10 | |
-
-**Phần C — Đối chiếu và kết luận (viết 200–300 từ).**
-
-1. Kỹ năng nào xuất hiện nhiều nhất? Có khớp với thứ tự các module trong chương trình không?
-2. Có kỹ năng nào thị trường đòi mà 11 module **không** phủ? Ghi ra.
-3. Có module nào chương trình dạy mà **không** tin nào nhắc tới? Theo bạn vì sao chương trình vẫn giữ nó?
-
-**Phần D — Tự đánh giá.** Chấm bản thân thang 1–5 cho từng module trong bảng trên. Lưu file này lại — cuối chương trình sẽ chấm lại để so.
-
-**Đạt khi:** đủ 10 tin có liên kết thật, bảng đếm điền đủ, và phần C trả lời được cả ba câu — đặc biệt là câu 2 và 3, vì đó mới là phần cần suy nghĩ.
+| ID | Nguồn | Phần được dùng | Giới hạn sử dụng |
+|---|---|---|---|
+| S1 | [[wiki.da.operating-as-a-data-analyst|Second Brain: Operating as a Data Analyst]] | vai trò, quản lý yêu cầu, ranh giới và đạo đức dữ liệu | note tổng hợp; mở nguồn sách trong Library để kiểm provenance |
+| S2B | [[wiki.data-product.decision-first-discovery|Second Brain: Decision-First Discovery]] | decision, consumer, action branch và traceability | note tổng hợp; không thay owner xác nhận semantics |
+| S3B | [[wiki.da.revenue-and-commerce-analytics|Second Brain: Revenue and commerce analytics]] | metric revenue và phân rã commerce | note tổng hợp; không phải dữ liệu của case mô phỏng |
+| S1A | `Material/DA/Reference/Library/Source-Notes/COURSE-C-DA-INTRO.md` | sáu pha, tính lặp, stakeholder action, responsible handling | note nội bộ đã deep-read; không dùng để suy ra tỷ lệ thời gian phổ quát |
+| S2 | Google Career Certificate, Data Analytics | quy trình Ask, Prepare, Process, Analyze, Share, Act | nguồn giới thiệu chương trình, không phải time-and-motion study |
+| S3 | Microsoft, PL-300 study guide | nhóm năng lực prepare, model, visualize/analyze, manage/secure | khung chứng chỉ Power BI; không đại diện toàn bộ nghề DA |
+| S4 | `Material/DA/Roadmap/DA_Curriculum_Roadmap.md` | mục tiêu năng lực và ranh giới bài học | nguồn định hướng nội bộ, không phải bằng chứng thị trường |

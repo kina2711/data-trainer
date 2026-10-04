@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Đo capacity của service thế nào để kết luận dựa trên workload, SLO và saturation thay vì một con số requests per second rời ngữ cảnh?
 source_ids:
   - src.web.google-sre-capacity-load-testing
@@ -33,7 +33,7 @@ relationships:
 
 ## 1. Capacity không phải một con số cố định
 
-“Service đạt 5.000 RPS” thiếu method mix, payload, concurrency, dataset, cache state, dependency latency, hardware, version và SLO. Capacity chỉ có nghĩa trong một test envelope. Hai workload cùng RPS nhưng một workload chủ yếu cache hit, workload kia ghi transaction lớn sẽ tạo kết quả khác.
+Service đạt 5.000 RPS thiếu method mix, payload, concurrency, dataset, cache state, dependency latency, hardware, version và SLO. Capacity chỉ có nghĩa trong một test envelope. Hai workload cùng RPS nhưng một workload chủ yếu cache hit, workload kia ghi transaction lớn sẽ tạo kết quả khác.
 
 Định nghĩa hữu ích: capacity là mức offered load cao nhất mà service còn giữ toàn bộ acceptance criteria trong một cửa sổ đủ dài. Criteria thường gồm p95/p99, error ratio, queue delay và saturation boundary. Điểm gãy (*knee*) là vùng throughput tăng ít nhưng latency/queue/error tăng mạnh; đó là bằng chứng, không phải công thức duy nhất.
 
@@ -82,11 +82,11 @@ Thay đổi một biến để xác nhận. Tăng DB pool mà throughput không 
 
 Tách validation/client error, server failure, timeout, cancellation, rejected overload và dependency failure. Retry attempt không được đếm như independent user success. Một logical request thành công sau ba attempt tiêu thụ capacity ba lần; cần cả attempt rate và logical goodput.
 
-Thiết lập threshold tự động nhưng vẫn lưu raw artifact. Test fail nếu vượt SLO hoặc generator mất iteration. “Không crash” không phải pass nếu p99 vượt budget hoặc error bị client library nuốt.
+Thiết lập threshold tự động nhưng vẫn lưu raw artifact. Test fail nếu vượt SLO hoặc generator mất iteration. Không crash không phải pass nếu p99 vượt budget hoặc error bị client library nuốt.
 
 ## 9. Stress, spike và soak trả lời câu khác nhau
 
-Stress tìm giới hạn và failure mode khi vượt capacity. Spike kiểm burst absorption và recovery. Soak giữ tải dài để tìm leak, fragmentation, connection leak, compaction hoặc backlog tích luỹ. Ba mươi phút chỉ cho phép nói “không quan sát tăng đơn điệu trong cửa sổ 30 phút”; không chứng minh không có leak dài hạn.
+Stress tìm giới hạn và failure mode khi vượt capacity. Spike kiểm burst absorption và recovery. Soak giữ tải dài để tìm leak, fragmentation, connection leak, compaction hoặc backlog tích luỹ. Ba mươi phút chỉ cho phép nói không quan sát tăng đơn điệu trong cửa sổ 30 phút; không chứng minh không có leak dài hạn.
 
 Sau overload phải đo recovery: queue có rút không, error có về nền không, autoscaler có oscillate không, circuit có đóng đúng không. Hệ thống chỉ sống sót nhưng không phục hồi vẫn chưa đạt.
 
@@ -103,7 +103,7 @@ Sau overload phải đo recovery: queue có rút không, error có về nền kh
 9. Reproduction commands, raw results và dashboard links.
 10. Action: scale, optimize, shed load hoặc test thêm.
 
-Không ghi “production capacity” nếu test environment không tương đương. Ghi “measured capacity under envelope E”.
+Không ghi production capacity nếu test environment không tương đương. Ghi measured capacity under envelope E.
 
 ## 11. Phép thử tái hiện
 
@@ -117,7 +117,7 @@ Autoscaling làm test khó diễn giải vì capacity thay đổi trong run. Có
 
 ## 13. Từ số đo tới quyết định mở rộng
 
-Safe capacity thấp hơn breaking point vì cần headroom cho burst, failover, deployment và forecast error. Ghi công thức headroom và assumptions. Nếu một vùng mất một phần replica, remaining capacity phải giữ SLO hoặc load shedding phải có policy. “CPU còn 30%” không phải headroom khi DB connection đã bão hoà.
+Safe capacity thấp hơn breaking point vì cần headroom cho burst, failover, deployment và forecast error. Ghi công thức headroom và assumptions. Nếu một vùng mất một phần replica, remaining capacity phải giữ SLO hoặc load shedding phải có policy. CPU còn 30% không phải headroom khi DB connection đã bão hoà.
 
 Optimization chỉ hợp lệ khi A/B giữ cùng workload envelope. Thay dataset, cache hit hoặc error policy giữa hai run làm mất comparability. Lưu config và raw result bằng artifact ID. Capacity note hết hạn khi build, instance type, schema/index, dependency hoặc workload mix thay đổi đáng kể.
 
@@ -145,10 +145,10 @@ Một review tốt còn kiểm units, time window và aggregation. Millisecond/s
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
 | [[SRC-GOOGLE-SRE-CAPACITY-LOAD-TESTING]] | capacity planning, overload và load test | §§1, 7, 13 | Đã giữ capacity gắn service/SLO |
-| [[SRC-GRAFANA-K6-PERFORMANCE-TESTING]] | taxonomy, realistic workload, repeatability | §§3–5, 9, 11 | Đã trình bày và giữ giới hạn authorization |
+| [[SRC-GRAFANA-K6-PERFORMANCE-TESTING]] | taxonomy, realistic workload, repeatability | §§3-5, 9, 11 | Đã trình bày và giữ giới hạn authorization |
 | [[SRC-PROMETHEUS-HISTOGRAMS]] | histogram, percentile và aggregation | §6 | Đã giữ cảnh báo không trung bình percentile |
-| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]] | observability/resilience context | §§6–8 | Đã dùng làm nền, không gán benchmark cho sách |
-| Tổng hợp DE-L110 | sáu step, capacity-note schema | §§5, 10–13 | Đã ghi thành quy trình kiểm được |
+| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]] | observability/resilience context | §§6-8 | Đã dùng làm nền, không gán benchmark cho sách |
+| Tổng hợp DE-L110 | sáu step, capacity-note schema | §§5, 10-13 | Đã ghi thành quy trình kiểm được |
 
 ## Key takeaways
 - Capacity luôn gắn với workload, environment và SLO.
@@ -158,14 +158,14 @@ Một review tốt còn kiểm units, time window và aggregation. Millisecond/s
 - Soak 30 phút chỉ giới hạn kết luận trong 30 phút.
 
 ## Reference
-1. [[SRC-GOOGLE-SRE-CAPACITY-LOAD-TESTING]] — capacity và overload.
-2. [[SRC-GRAFANA-K6-PERFORMANCE-TESTING]] — performance-test taxonomy.
-3. [[SRC-PROMETHEUS-HISTOGRAMS]] — histogram và quantile.
-4. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]] — observability context.
+1. [[SRC-GOOGLE-SRE-CAPACITY-LOAD-TESTING]]: capacity và overload.
+2. [[SRC-GRAFANA-K6-PERFORMANCE-TESTING]]: performance-test taxonomy.
+3. [[SRC-PROMETHEUS-HISTOGRAMS]]: histogram và quantile.
+4. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]]: observability context.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.backend.load-testing-capacity`
+## Execution capsule: kiểm chứng `wiki.backend.load-testing-capacity`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.backend.load-testing-capacity`, sơ đồ, ví dụ và artifact về **Load testing và capacity note** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

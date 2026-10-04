@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao cưỡng chế metric-, row- và column-level access trên mọi serve path, đồng thời kiểm rò rỉ trực tiếp, cache và suy luận aggregate?
 source_ids:
   - src.web.owasp-authorization-cheat-sheet
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Threat model và trust boundaries
 
-Authentication xác minh identity; authorization quyết định principal được làm gì trên resource/context nào. Liệt kê human/service principals, BI/SQL/API paths, semantic service, cache, warehouse credentials và direct-access bypass. Least privilege và deny by default áp ở từng boundary. “Một chỗ cưỡng chế” chỉ đúng nếu mọi đường buộc đi qua chỗ đó; tài khoản warehouse trực tiếp, export/cache table hoặc admin credential có thể tạo đường vòng.
+Authentication xác minh identity; authorization quyết định principal được làm gì trên resource/context nào. Liệt kê human/service principals, BI/SQL/API paths, semantic service, cache, warehouse credentials và direct-access bypass. Least privilege và deny by default áp ở từng boundary. Một chỗ cưỡng chế chỉ đúng nếu mọi đường buộc đi qua chỗ đó; tài khoản warehouse trực tiếp, export/cache table hoặc admin credential có thể tạo đường vòng.
 
 ## 2. Ba mức kiểm soát
 
@@ -47,7 +47,7 @@ Permissive policies có thể OR, restrictive policies AND; owner/superuser/BYPA
 
 ## 5. Suy luận qua aggregate
 
-Ẩn detail rows nhưng trả group count/sum có thể tiết lộ singleton hoặc difference giữa hai queries. Minimum group size chặn trực tiếp singleton nhưng không đủ trước differencing, overlapping groups, repeated queries và auxiliary knowledge. Cần complementary suppression/generalization, query-set/rate controls, audit và đôi khi differential privacy cho threat model mạnh. Ngưỡng nhóm là một control có assumptions, không phải chứng minh “không rò rỉ”.
+Ẩn detail rows nhưng trả group count/sum có thể tiết lộ singleton hoặc difference giữa hai queries. Minimum group size chặn trực tiếp singleton nhưng không đủ trước differencing, overlapping groups, repeated queries và auxiliary knowledge. Cần complementary suppression/generalization, query-set/rate controls, audit và đôi khi differential privacy cho threat model mạnh. Ngưỡng nhóm là một control có assumptions, không phải chứng minh không rò rỉ.
 
 ## 6. Cache và policy version
 
@@ -205,7 +205,7 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 - Chưa chạy MetricFlow, warehouse queries, execution plans hoặc labs; note mô tả protocol và expected evidence.
 - dbt/MetricFlow docs được kiểm ngày 2026-10-01; commands và YAML phụ thuộc engine/version/environment.
 - Thuật ngữ fan/chasm có thể khác giữa sản phẩm; invariant của bài là grain, multiplicity, population và semantic path.
-- Kimball–Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
+- Kimball-Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
 - Owner chưa phê duyệt semantic meaning nên note giữ trạng thái `review`.
 
 ## Reference
@@ -223,14 +223,14 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 
 ## Key takeaways
 - Join correctness phải được chứng minh bằng grain, multiplicity, unmatched ledger và independent oracle.
-- Metric–dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
+- Metric-dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
 - Parse/validate/compile không thay reconciliation với business contract.
 - Generated SQL phải được đọc theo population, path, aggregation và time/filter semantics.
 - Chưa chạy protocol thì note là tài liệu học thuật có truy nguồn, không phải chứng nhận production.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.access-control`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.access-control`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.access-control`, sơ đồ, ví dụ và artifact về **Access Control at the Semantic Layer** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -252,7 +252,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Làm sao cưỡng chế metric-, row- và column-level access trên mọi serve path, đồng thời kiểm rò rỉ trực tiếp, cache và suy luận aggregate?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Làm sao cưỡng chế metric-, row- và column-level access trên mọi serve path, đồng thời kiểm rò rỉ trực tiếp, cache và suy luận aggregate? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Access Control at the Semantic Layer** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao giữ predicate dùng được access path, parameterize an toàn và quản trị generic/custom plan trên dữ liệu lệch?
 source_ids:
   - src.manual.postgresql-17.10
@@ -65,7 +65,7 @@ Schema types phải khớp domain giữa join keys. Cast trong join trên cả b
 
 `LIKE 'prefix%'` có thể dùng B-tree với collation/opclass phù hợp; `LIKE '%term'` không có fixed leading prefix nên plain B-tree thường không giới hạn scan. Trigram/GIN, full-text hoặc reverse-expression index tùy requirement.
 
-Case-insensitive search có `lower` expression/trigram/citext trade-offs. Leading wildcard không “sửa” bằng bỏ wildcard nếu semantics cần substring.
+Case-insensitive search có `lower` expression/trigram/citext trade-offs. Leading wildcard không sửa bằng bỏ wildcard nếu semantics cần substring.
 
 Test selectivity, locale/collation và pattern classes. Một index tốt prefix không tốt contains.
 
@@ -81,7 +81,7 @@ Không đánh đổi correctness để có Index Cond.
 
 Parameters tách values khỏi SQL structure, tránh parser coi input là code và hỗ trợ plan reuse. Đây là kiểm soát bảo mật bắt buộc cho values. Identifier/order direction không parameterize như values; dùng allowlist/composition API.
 
-Không ghép chuỗi literal để “có plan tốt hơn”. Nếu specialization cần, dùng supported plan controls/query variants với allowlist và tests, vẫn bind values.
+Không ghép chuỗi literal để có plan tốt hơn. Nếu specialization cần, dùng supported plan controls/query variants với allowlist và tests, vẫn bind values.
 
 Parameterization còn chuẩn hóa query logs/fingerprints, nhưng phải giữ parameter classes cho performance diagnosis.
 
@@ -89,7 +89,7 @@ Parameterization còn chuẩn hóa query logs/fingerprints, nhưng phải giữ 
 
 Prepared statement có thể dùng custom plan cho execution cụ thể hoặc generic plan dùng chung. Ở `plan_cache_mode=auto`, PostgreSQL 17 thực hiện năm executions đầu bằng custom plans, tính average estimated cost, rồi so generic estimated cost; subsequent có thể dùng generic nếu không cao đáng kể.
 
-Đây không phải cơ chế “plan đóng băng theo giá trị đầu tiên” như cách mô tả parameter sniffing ở một số DBMS. Giá trị đầu ảnh hưởng custom execution đó; heuristic xem năm executions, không cache nguyên plan đầu tiên làm default.
+Đây không phải cơ chế plan đóng băng theo giá trị đầu tiên như cách mô tả parameter sniffing ở một số DBMS. Giá trị đầu ảnh hưởng custom execution đó; heuristic xem năm executions, không cache nguyên plan đầu tiên làm default.
 
 Generic plan hiển thị `$n`; custom plan substitues values trong EXPLAIN EXECUTE. Session scope/driver behavior/pool preparation phải ghi.
 
@@ -129,7 +129,7 @@ Rollback gồm revert stats target/index/query/config; có plan for reanalyze/re
 
 Phủ function on column; timestamp date cast; implicit/cross type cast; leading wildcard; arithmetic transform; optional-filter pattern như `col = COALESCE($1,col)` hoặc OR parameter làm generic estimate khó. Mỗi fixture có old/new semantics tests, plan và buffers.
 
-Một số fix dùng expression/partial/trigram index thay rewrite. Rubric yêu cầu giải thích access path, không chỉ “Index Scan xuất hiện”.
+Một số fix dùng expression/partial/trigram index thay rewrite. Rubric yêu cầu giải thích access path, không chỉ Index Scan xuất hiện.
 
 Test NULL, timezone boundary, collation và invalid inputs.
 
@@ -143,7 +143,7 @@ Lặp với driver/app mode nếu mục tiêu production, vì SQL PREPARE experi
 
 ## 15. Sửa một biến
 
-Baseline query/index/stats. Viết hypothesis: “function prevents index condition”; predicted observation: rewrite/expression index chuyển filter thành Index Cond và giảm buffers. Thay một thứ, rerun parity/plan/work/latency.
+Baseline query/index/stats. Viết hypothesis: function prevents index condition; predicted observation: rewrite/expression index chuyển filter thành Index Cond và giảm buffers. Thay một thứ, rerun parity/plan/work/latency.
 
 Với generic mismatch, không đồng thời tăng stats, thêm index và force custom. Nếu sửa nhiều, không biết causal.
 
@@ -162,7 +162,7 @@ Một bộ kiểm thử tối thiểu phải có bốn lớp bằng chứng: tru
 1. Index Cond khác Filter thế nào?
 2. Vì sao date(timestamp)=date rewrite cần timezone/half-open range?
 3. PostgreSQL auto generic/custom heuristic dùng năm executions ra sao?
-4. Vì sao gọi “plan theo giá trị đầu tiên” là sai mô hình PostgreSQL 17?
+4. Vì sao gọi plan theo giá trị đầu tiên là sai mô hình PostgreSQL 17?
 5. Parameterization và plan specialization có thể cùng tồn tại thế nào?
 6. Plan stability nên đo SLO hay node names?
 
@@ -175,16 +175,16 @@ Một bộ kiểm thử tối thiểu phải có bốn lớp bằng chứng: tru
 - Sáu query và skew experiment chưa chạy; evidence thuộc `after-note.md`.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-10-MANUAL]] — PREPARE, generic/custom plans, EXPLAIN và indexes.
-2. [[SRC-MASTERING-POSTGRESQL-17-6E]] — functional indexes, cost và plan behavior.
+1. [[SRC-POSTGRESQL-17-10-MANUAL]]: PREPARE, generic/custom plans, EXPLAIN và indexes.
+2. [[SRC-MASTERING-POSTGRESQL-17-6E]]: functional indexes, cost và plan behavior.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 488–498, 559–580, 2018–2030 | expression indexes, plans, PREPARE heuristic | §§1–14 | Đã sửa first-value misconception |
-| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 87–112, 223–270 | functions/indexes/cost/plans | §§2–15 | Đã gắn workload evidence |
-| Tổng hợp DE-L131 | six fixtures và hot/cold experiment | §§13–15 | Đã thành protocol tái hiện |
+| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 488-498, 559-580, 2018-2030 | expression indexes, plans, PREPARE heuristic | §§1-14 | Đã sửa first-value misconception |
+| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 87-112, 223-270 | functions/indexes/cost/plans | §§2-15 | Đã gắn workload evidence |
+| Tổng hợp DE-L131 | six fixtures và hot/cold experiment | §§13-15 | Đã thành protocol tái hiện |
 
 ## Key takeaways
 - Sargability được xác nhận qua access condition và reduced work, không chỉ node name.
@@ -195,7 +195,7 @@ Một bộ kiểm thử tối thiểu phải có bốn lớp bằng chứng: tru
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.sargability-parameters-plan-stability`
+## Execution capsule: kiểm chứng `wiki.database.sargability-parameters-plan-stability`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.sargability-parameters-plan-stability`, sơ đồ, ví dụ và artifact về **Sargability, tham số và ổn định kế hoạch** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

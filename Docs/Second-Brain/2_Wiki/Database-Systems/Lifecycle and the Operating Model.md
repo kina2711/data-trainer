@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Sáu trạng thái data-product lifecycle được điều khiển bằng evidence gates, operating ownership, deprecation safeguards và support feedback như thế nào?
 source_ids:
   - src.web.backstage-software-catalog
@@ -67,7 +67,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.2. catalog label không tự tạo certification
 
@@ -75,7 +75,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.3. certification gắn product version and scope
 
@@ -83,7 +83,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.4. evidence expiry kích recertification
 
@@ -91,7 +91,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.5. response target khác resolution target
 
@@ -99,7 +99,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.6. on-call requirement theo product criticality
 
@@ -107,7 +107,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.7. support event cần task version and category
 
@@ -115,7 +115,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.8. repeated question là investigation signal không mặc nhiên design defect
 
@@ -123,7 +123,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.9. training vẫn đúng khi root cause là skill or role change
 
@@ -131,7 +131,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.10. zero recent queries không chứng minh zero consumer
 
@@ -139,7 +139,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.11. deprecation record có replacement telemetry and exceptions
 
@@ -147,7 +147,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.12. removal bị chặn bởi retention or hidden consumer
 
@@ -155,7 +155,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.13. composite score không che automatic fail gate
 
@@ -163,7 +163,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.14. high adoption làm tăng change rigor
 
@@ -171,7 +171,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.15. feedback action cần retest evidence
 
@@ -179,7 +179,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Đưa ba products qua transition table; inject missing usability evidence, owner departure, hidden long-cadence consumer, retention hold và repeated support questions. Mỗi state/gate/finding cần exact artifact, owner, decision và retest plan. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.lifecycle-operating-model`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ## 9. Quy trình phản biện
 
@@ -196,7 +196,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 1. Invariant hoặc decision nào đang được bảo vệ?
 2. Chủ thể, resource, event hay cost unit được định danh bằng gì?
 3. Denominator, time window và unknown/unallocated set là gì?
-4. Failure nào vẫn cho tín hiệu xanh hoặc “completed”?
+4. Failure nào vẫn cho tín hiệu xanh hoặc completed?
 5. Thay đổi nào làm policy, metric, allocation hoặc state transition phải xem lại?
 6. Ai có quyền duyệt, ai vận hành và bằng chứng nào còn chưa chạy?
 
@@ -230,7 +230,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.lifecycle-operating-model`
+## Execution capsule: kiểm chứng `wiki.data-product.lifecycle-operating-model`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.lifecycle-operating-model`, sơ đồ, ví dụ và artifact về **Lifecycle and the Operating Model** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

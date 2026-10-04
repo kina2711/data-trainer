@@ -14,6 +14,8 @@ const state = {
   roadmapsById: new Map(),
   roadmapsByPath: new Map(),
   notesById: new Map(),
+  booksById: new Map(),
+  sourcesById: new Map(),
   lessonsById: new Map(),
   favorites: new Set(JSON.parse(localStorage.getItem("rabbit-data:favorites") || "[]")),
   recent: JSON.parse(localStorage.getItem("rabbit-data:recent") || "[]"),
@@ -31,6 +33,8 @@ const elements = {
   body: $("#content-body"), favorite: $("#favorite-button"), assetTabs: $("#asset-tabs"),
   context: $("#context-panel"), outline: $("#outline"), connections: $("#connections"),
   connectionsTitle: $("#connections-title"), sources: $("#sources"), release: $("#release-label"),
+  inlineConnections: $("#inline-connections"), inlineConnectionsTitle: $("#inline-connections-title"),
+  inlineSources: $("#inline-sources"),
   toast: $("#toast"),
 };
 
@@ -41,7 +45,7 @@ const pills = (values) => values.filter(Boolean).map((value) => `<span class="pi
 async function loadData() {
   if (window.secondBrainAPI?.loadIndex) return window.secondBrainAPI.loadIndex();
   const response = await fetch("./data/brain-index.json", { cache: "no-store" });
-  if (!response.ok) throw new Error(`Không thể nạp chỉ mục (${response.status})`);
+  if (!response.ok) throw new Error(`Index loading failed (${response.status})`);
   return response.json();
 }
 
@@ -60,7 +64,8 @@ function configureMarkdown() {
 function preprocessWiki(markdown) {
   return markdown.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, target, label) => {
     const text = label || target;
-    return `<a href="#" class="wikilink" data-wiki="${escapeHtml(target.trim())}">${escapeHtml(text.trim())}</a>`;
+    const noteId = target.trim();
+    return `<a href="#note=${encodeURIComponent(noteId)}" class="wikilink" data-wiki="${escapeHtml(noteId)}">${escapeHtml(text.trim())}</a>`;
   });
 }
 
@@ -72,6 +77,11 @@ function prepareData() {
   for (const note of state.data.notes) {
     note._search = searchable([note.title, note.question, note.domain, note.tags.join(" "), note.aliases.join(" "), note.body]);
     state.notesById.set(note.id, note);
+  }
+  for (const source of state.data.sources) state.sourcesById.set(source.id, source);
+  for (const book of state.data.books) {
+    book._search = searchable([book.id, book.title, book.authors.join(" "), book.edition, book.tags.join(" "), book.body]);
+    state.booksById.set(book.id, book);
   }
   for (const roadmap of state.data.roadmaps) {
     roadmap._search = searchable([roadmap.title, roadmap.programName, roadmap.level, roadmap.body]);
@@ -85,42 +95,49 @@ function prepareData() {
 }
 
 function statCards(items) {
-  elements.stats.innerHTML = items.map(([value, label]) => `<div class="stat"><strong>${Number(value).toLocaleString("vi-VN")}</strong><span>${escapeHtml(label)}</span></div>`).join("");
+  elements.stats.innerHTML = items.map(([value, label]) => `<div class="stat"><strong>${Number(value).toLocaleString("en-US")}</strong><span>${escapeHtml(label)}</span></div>`).join("");
 }
 
 function renderHome() {
   elements.reader.hidden = true;
   elements.context.hidden = false;
   elements.empty.hidden = false;
+  elements.homeKicker.hidden = state.space === "lessons";
   if (state.space === "roadmap") {
     elements.homeKicker.textContent = "RABBIT DATA LEARNING OS";
-    elements.homeTitle.textContent = "Bắt đầu từ lộ trình";
-    elements.homeDescription.textContent = "Đi từ đầu ra chương trình tới từng giai đoạn và mô-đun, rồi mở bài giảng đã đủ điều kiện xuất bản.";
-    statCards([[state.data.stats.programs, "chương trình"], [state.data.stats.roadmaps, "roadmap"], [state.data.roadmaps.filter((item) => item.level === "module").length, "mô-đun"]]);
+    elements.homeTitle.textContent = "Roadmap";
+    elements.homeDescription.textContent = "Move from program outcomes to phases and modules, then open the published lessons.";
+    statCards([[state.data.stats.programs, "programs"], [state.data.stats.roadmaps, "roadmaps"], [state.data.roadmaps.filter((item) => item.level === "module").length, "modules"]]);
   } else if (state.space === "brain") {
     elements.homeKicker.textContent = "CANONICAL KNOWLEDGE";
-    elements.homeTitle.textContent = "Second Brain đã kiểm duyệt";
-    elements.homeDescription.textContent = "Tìm concept, câu hỏi và mối quan hệ trong lớp Wiki canonical; nguồn thô và dữ liệu cá nhân không được xuất bản.";
-    statCards([[state.data.stats.notes, "note canonical"], [state.data.stats.domains, "domain"], [state.data.stats.sources, "nguồn"]]);
+    elements.homeTitle.textContent = "Second Brain";
+    elements.homeDescription.textContent = "Search canonical concepts, questions and relationships. Raw sources and personal data are excluded.";
+    statCards([[state.data.stats.notes, "canonical notes"], [state.data.stats.domains, "domains"], [state.data.stats.sources, "sources"]]);
+  } else if (state.space === "library") {
+    elements.homeKicker.textContent = "GOVERNED SOURCE LIBRARY";
+    elements.homeTitle.textContent = "Library";
+    elements.homeDescription.textContent = "Each book includes governed source metadata, usage rights, derived notes and a local-open control in the desktop application.";
+    statCards([[state.data.stats.books, "books"], [state.data.books.filter((item) => item.localCopyAvailable).length, "local copies"], [new Set(state.data.books.flatMap((item) => item.noteIds)).size, "derived notes"]]);
   } else {
-    elements.homeKicker.textContent = "READY-FOR-OWNER-REVIEW";
-    elements.homeTitle.textContent = "Bài giảng đã xây xong";
-    elements.homeDescription.textContent = "Mỗi bài có giáo trình, slide, quiz, bài tập và hướng dẫn sau buổi học. Bài nháp không xuất hiện ở đây.";
-    statCards([[state.data.stats.lessons, "bài giảng"], [state.data.lessons.reduce((sum, item) => sum + item.sceneCount, 0), "learning scene"], [state.data.lessons.reduce((sum, item) => sum + item.durationMinutes, 0), "phút dự kiến"]]);
+    elements.homeKicker.textContent = "";
+    elements.homeTitle.textContent = "Lessons";
+    elements.homeDescription.textContent = "Each published lesson contains a curriculum, teaching guide, slides, quiz, assignment and post-lesson material.";
+    statCards([[state.data.stats.lessons, "lessons"], [state.data.lessons.reduce((sum, item) => sum + item.sceneCount, 0), "learning scenes"], [state.data.lessons.reduce((sum, item) => sum + item.assets.length, 0), "assets"]]);
   }
-  elements.outline.innerHTML = `<p class="source-id">Chọn một mục trong sidebar để mở nội dung đầy đủ và mục lục theo ngữ cảnh.</p>`;
-  elements.connectionsTitle.textContent = "Phạm vi xuất bản";
+  elements.outline.innerHTML = `<p class="source-id">Select an item in the sidebar to open its complete content and contextual outline.</p>`;
+  elements.connectionsTitle.textContent = "Published Scope";
   elements.connections.innerHTML = [
     [state.data.stats.roadmaps, "roadmap"],
     [state.data.stats.notes, "note canonical"],
-    [state.data.stats.lessons, "bài giảng hoàn thiện"],
-  ].map(([value, label]) => `<p class="source-id"><strong>${Number(value).toLocaleString("vi-VN")}</strong> ${label}</p>`).join("");
-  elements.sources.innerHTML = `<p class="source-id">Schema v${state.data.schemaVersion}</p><p class="source-id">Brain v${escapeHtml(state.data.brainVersion)}</p><p class="source-id">Draft, raw source và 3_Toi bị loại khỏi index.</p>`;
+    [state.data.stats.books, "books"],
+    [state.data.stats.lessons, "published lessons"],
+  ].map(([value, label]) => `<p class="source-id"><strong>${Number(value).toLocaleString("en-US")}</strong> ${label}</p>`).join("");
+  elements.sources.innerHTML = `<p class="source-id">Schema v${state.data.schemaVersion}</p><p class="source-id">Brain v${escapeHtml(state.data.brainVersion)}</p><p class="source-id">Drafts, raw sources and 3_Toi are excluded from the index.</p>`;
   document.title = `${spaceLabel()} · Rabbit Data`;
 }
 
 function spaceLabel() {
-  return ({ roadmap: "Roadmap", brain: "Second Brain", lessons: "Bài giảng" })[state.space];
+  return ({ roadmap: "Roadmap", brain: "Second Brain", library: "Library", lessons: "Lessons" })[state.space];
 }
 
 function setOptions(options) {
@@ -129,26 +146,32 @@ function setOptions(options) {
 }
 
 function configureSidebar() {
-  elements.programSwitch.hidden = state.space === "brain";
+  elements.programSwitch.hidden = state.space === "brain" || state.space === "library";
   elements.brainModes.hidden = state.space !== "brain";
   if (state.space === "roadmap") {
-    elements.sidebarKicker.textContent = "LỘ TRÌNH";
-    elements.sidebarTitle.textContent = "Roadmap chương trình";
-    elements.filterLabel.textContent = "Cấp roadmap";
-    setOptions([["", "Tất cả cấp"], ["program", "Chương trình"], ["phase", "Giai đoạn"], ["module", "Mô-đun"]]);
-    elements.search.placeholder = "Tìm trong Roadmap…";
+    elements.sidebarKicker.textContent = "ROADMAP";
+    elements.sidebarTitle.textContent = "Program Roadmap";
+    elements.filterLabel.textContent = "Roadmap Level";
+    setOptions([["", "All levels"], ["program", "Program"], ["phase", "Phase"], ["module", "Module"]]);
+    elements.search.placeholder = "Search Roadmap";
   } else if (state.space === "brain") {
-    elements.sidebarKicker.textContent = "TRI THỨC";
+    elements.sidebarKicker.textContent = "KNOWLEDGE";
     elements.sidebarTitle.textContent = "Second Brain";
     elements.filterLabel.textContent = "Domain";
-    setOptions([["", "Tất cả domain"], ...state.data.domains.map((item) => [item.name, `${item.name} · ${item.count}`])]);
-    elements.search.placeholder = "Tìm concept, câu hỏi, tag…";
+    setOptions([["", "All domains"], ...state.data.domains.map((item) => [item.name, `${item.name} · ${item.count}`])]);
+    elements.search.placeholder = "Search concepts, questions and tags";
+  } else if (state.space === "library") {
+    elements.sidebarKicker.textContent = "BOOK SOURCES";
+    elements.sidebarTitle.textContent = "Library";
+    elements.filterLabel.textContent = "Usage Rights";
+    setOptions([["", "All books"], ["copyrighted-private-owner-provided", "Private books"], ["public", "Public sources"]]);
+    elements.search.placeholder = "Search books, authors and topics";
   } else {
-    elements.sidebarKicker.textContent = "LỚP HỌC";
-    elements.sidebarTitle.textContent = "Bài giảng hoàn thiện";
-    elements.filterLabel.textContent = "Trạng thái";
-    setOptions([["", "Sẵn sàng owner review"]]);
-    elements.search.placeholder = "Tìm bài giảng…";
+    elements.sidebarKicker.textContent = "LEARNING";
+    elements.sidebarTitle.textContent = "Lessons";
+    elements.filterLabel.textContent = "Status";
+    setOptions([["", "Published"]]);
+    elements.search.placeholder = "Search lessons";
   }
 }
 
@@ -168,6 +191,8 @@ function filteredItems() {
       const order = new Map(state.recent.map((id, index) => [id, index]));
       items = items.filter((item) => order.has(item.id)).sort((a, b) => order.get(a.id) - order.get(b.id));
     }
+  } else if (state.space === "library") {
+    items = state.data.books.filter((item) => !state.filter || (state.filter === "public" ? item.rights !== "copyrighted-private-owner-provided" : item.rights === state.filter));
   } else {
     items = state.data.lessons.filter((item) => !state.program || item.program === state.program);
   }
@@ -176,18 +201,19 @@ function filteredItems() {
 
 function cardMeta(item) {
   if (state.space === "roadmap") {
-    const level = ({ program: "Chương trình", phase: `Giai đoạn ${item.phaseNumber}`, module: `Mô-đun ${item.moduleNumber}` })[item.level];
+    const level = ({ program: "Program", phase: `Phase ${item.phaseNumber}`, module: `Module ${item.moduleNumber}` })[item.level];
     return `<span class="domain">${item.program}</span><span>${level}</span>`;
   }
-  if (state.space === "brain") return `<span class="domain">${escapeHtml(item.domain)}</span><span>${item.wordCount.toLocaleString("vi-VN")} từ</span>`;
-  return `<span class="domain">${item.program}</span><span>Bài ${String(item.lessonNumber).padStart(3, "0")}</span><span>${item.durationMinutes}′</span>`;
+  if (state.space === "brain") return `<span class="domain">${escapeHtml(item.domain)}</span><span>${item.wordCount.toLocaleString("en-US")} words</span>`;
+  if (state.space === "library") return `<span class="domain">BOOK</span><span>${escapeHtml(item.authors.join(", ") || "Unknown author")}</span>`;
+  return `<span class="domain">${item.program}</span><span>Lesson ${String(item.lessonNumber).padStart(3, "0")}</span>`;
 }
 
 function renderList() {
   const items = filteredItems();
-  elements.count.textContent = `${items.length.toLocaleString("vi-VN")} mục`;
+  elements.count.textContent = `${items.length.toLocaleString("en-US")} items`;
   if (!items.length) {
-    elements.list.innerHTML = `<div class="list-empty">Không tìm thấy nội dung phù hợp.<br>Thử bỏ bớt từ khóa hoặc bộ lọc.</div>`;
+    elements.list.innerHTML = `<div class="list-empty">No matching content.<br>Remove a keyword or filter and try again.</div>`;
     return;
   }
   elements.list.innerHTML = items.slice(0, 300).map((item) => `<button class="content-card ${item.id === state.activeId ? "active" : ""}" data-item-id="${escapeHtml(item.id)}" type="button" role="option" aria-selected="${item.id === state.activeId}"><strong>${escapeHtml(item.title)}</strong><span>${cardMeta(item)}</span></button>`).join("");
@@ -198,7 +224,7 @@ function renderMarkdown(markdown, preprocess = false) {
   const html = DOMPurify.sanitize(marked.parse(source), { ADD_ATTR: ["data-wiki", "class"], ADD_TAGS: ["details", "summary"] });
   elements.body.innerHTML = html;
   return mermaid.run({ nodes: elements.body.querySelectorAll(".mermaid") }).catch((error) => {
-    showToast("Một sơ đồ không render được; nội dung gốc vẫn được giữ.");
+    showToast("A diagram could not be rendered. The source content remains available.");
     console.error(error);
   });
 }
@@ -208,7 +234,7 @@ function renderOutline() {
   elements.outline.innerHTML = headings.slice(0, 36).map((heading, index) => {
     heading.id = `section-${index}`;
     return `<a href="#section-${index}" class="outline-${heading.tagName.toLowerCase()}">${escapeHtml(heading.textContent)}</a>`;
-  }).join("") || `<p class="source-id">Không có mục con</p>`;
+  }).join("") || `<p class="source-id">No child sections</p>`;
 }
 
 function showReader() {
@@ -219,9 +245,26 @@ function showReader() {
   window.scrollTo({ top: 0, behavior: "instant" });
 }
 
+function syncInlineContext() {
+  elements.inlineConnectionsTitle.textContent = elements.connectionsTitle.textContent;
+  elements.inlineConnections.innerHTML = elements.connections.innerHTML;
+  elements.inlineSources.innerHTML = elements.sources.innerHTML;
+}
+
 function relationButton(id, kind, label) {
   const item = kind === "roadmap" ? state.roadmapsById.get(id) : state.notesById.get(id);
   return item ? `<button class="relation-button" data-open-kind="${kind}" data-open-id="${escapeHtml(id)}" type="button">${escapeHtml(label || item.title)}</button>` : "";
+}
+
+function sourceLink(sourceId) {
+  const source = state.sourcesById.get(sourceId);
+  if (source?.bookId && state.booksById.has(source.bookId)) {
+    return `<button class="relation-button source-link" data-open-book="${escapeHtml(source.bookId)}" type="button">${escapeHtml(source.title)}</button>`;
+  }
+  if (source?.canonicalUrl) {
+    return `<a class="relation-button source-link" href="${escapeHtml(source.canonicalUrl)}" target="_blank" rel="noreferrer">${escapeHtml(source.title)}</a>`;
+  }
+  return `<p class="source-id">${escapeHtml(sourceId)}</p>`;
 }
 
 async function openRoadmap(id, updateHash = true) {
@@ -232,19 +275,20 @@ async function openRoadmap(id, updateHash = true) {
   syncSpaceControls();
   showReader();
   elements.domain.textContent = item.programName;
-  elements.status.textContent = ({ program: "Chương trình", phase: "Giai đoạn", module: "Mô-đun" })[item.level];
+  elements.status.textContent = ({ program: "Program", phase: "Phase", module: "Module" })[item.level];
   elements.title.textContent = item.title;
   elements.question.textContent = item.excerpt;
-  elements.meta.innerHTML = pills([item.program, item.level, `${item.wordCount.toLocaleString("vi-VN")} từ`]);
+  elements.meta.innerHTML = pills([item.program, item.level, `${item.wordCount.toLocaleString("en-US")} words`]);
   elements.favorite.hidden = true;
   elements.assetTabs.hidden = true;
   await renderMarkdown(item.body);
   renderOutline();
   const parent = item.parentId ? relationButton(item.parentId, "roadmap", "↑ " + state.roadmapsById.get(item.parentId)?.title) : "";
   const children = item.childIds.map((childId) => relationButton(childId, "roadmap")).join("");
-  elements.connectionsTitle.textContent = "Cấu trúc lộ trình";
-  elements.connections.innerHTML = parent + children || `<p class="source-id">Không có cấp liền kề</p>`;
+  elements.connectionsTitle.textContent = "Roadmap Structure";
+  elements.connections.innerHTML = parent + children || `<p class="source-id">No adjacent level</p>`;
   elements.sources.innerHTML = `<p class="source-id">${escapeHtml(item.path)}</p>`;
+  syncInlineContext();
   renderList();
   if (updateHash) history.replaceState(null, "", `#roadmap=${encodeURIComponent(id)}`);
   document.title = `${item.title} · Rabbit Data`;
@@ -267,20 +311,50 @@ async function openNote(id, updateHash = true) {
   elements.status.textContent = "Canonical";
   elements.title.textContent = note.title;
   elements.question.textContent = note.question;
-  elements.meta.innerHTML = pills([note.noteType, `${note.wordCount.toLocaleString("vi-VN")} từ`, `Duyệt ${note.approvedAt}`, ...note.tags.slice(0, 6)]);
+  elements.meta.innerHTML = pills([note.noteType, `${note.wordCount.toLocaleString("en-US")} words`, `Approved ${note.approvedAt}`, ...note.tags.slice(0, 6)]);
   elements.favorite.hidden = false;
   elements.favorite.textContent = state.favorites.has(id) ? "★" : "☆";
-  elements.favorite.setAttribute("aria-label", state.favorites.has(id) ? "Bỏ lưu note" : "Lưu note");
+  elements.favorite.setAttribute("aria-label", state.favorites.has(id) ? "Remove saved note" : "Save note");
   elements.assetTabs.hidden = true;
   await renderMarkdown(note.body, true);
   renderOutline();
-  const groups = [["Xây trên", note.relationships.buildsOn], ["Mở đường cho", note.relationships.prerequisiteOf], ["Liên quan", note.relationships.relatedTo]];
-  elements.connectionsTitle.textContent = "Quan hệ tri thức";
-  elements.connections.innerHTML = groups.filter(([, ids]) => ids.length).map(([label, ids]) => `<div class="relation-group"><strong>${label}</strong>${ids.map((relation) => relationButton(relation, "brain")).join("")}</div>`).join("") || `<p class="source-id">Không có liên kết trực tiếp</p>`;
-  elements.sources.innerHTML = note.sourceIds.map((sourceId) => `<p class="source-id">${escapeHtml(sourceId)}</p>`).join("") || `<p class="source-id">Không có source ID</p>`;
+  const groups = [["Builds On", note.relationships.buildsOn], ["Prerequisite For", note.relationships.prerequisiteOf], ["Related", note.relationships.relatedTo]];
+  elements.connectionsTitle.textContent = "Knowledge Relationships";
+  elements.connections.innerHTML = groups.filter(([, ids]) => ids.length).map(([label, ids]) => `<div class="relation-group"><strong>${label}</strong>${ids.map((relation) => relationButton(relation, "brain")).join("")}</div>`).join("") || `<p class="source-id">No direct relationships</p>`;
+  elements.sources.innerHTML = note.sourceIds.map(sourceLink).join("") || `<p class="source-id">No source ID</p>`;
+  syncInlineContext();
   renderList();
   if (updateHash) history.replaceState(null, "", `#note=${encodeURIComponent(id)}`);
   document.title = `${note.title} · Rabbit Data`;
+}
+
+async function openBook(id, updateHash = true) {
+  const book = state.booksById.get(id);
+  if (!book) return;
+  state.space = "library";
+  state.activeId = id;
+  syncSpaceControls();
+  showReader();
+  elements.domain.textContent = "Library";
+  elements.status.textContent = book.sensitivity === "private" ? "Private Source" : "Public Source";
+  elements.title.textContent = book.title;
+  elements.question.textContent = book.authors.join(", ");
+  elements.meta.innerHTML = pills([book.edition, book.published, book.authority, book.rights]);
+  elements.favorite.hidden = true;
+  elements.assetTabs.hidden = true;
+  await renderMarkdown(book.body, true);
+  renderOutline();
+  elements.connectionsTitle.textContent = "Derived Notes";
+  const derived = book.noteIds.map((noteId) => relationButton(noteId, "brain")).join("");
+  elements.connections.innerHTML = derived || `<p class="source-id">No derived canonical notes</p>`;
+  const openControl = book.localCopyAvailable
+    ? `<button class="relation-button" data-open-local-book="${escapeHtml(book.id)}" type="button">Open Local Book</button>`
+    : "";
+  elements.sources.innerHTML = `<p class="source-id">${escapeHtml(book.id)}</p><p class="source-id">${escapeHtml(book.rights)}</p>${openControl}<p class="source-id">Private book files are not embedded on the web. Local file controls are available in the desktop application.</p>`;
+  syncInlineContext();
+  renderList();
+  if (updateHash) history.replaceState(null, "", `#book=${encodeURIComponent(id)}`);
+  document.title = `${book.title} · Library · Rabbit Data`;
 }
 
 async function openLesson(id, assetKey = state.activeAsset, updateHash = true) {
@@ -292,20 +366,21 @@ async function openLesson(id, assetKey = state.activeAsset, updateHash = true) {
   state.activeAsset = asset.key;
   syncSpaceControls();
   showReader();
-  elements.domain.textContent = `${lesson.programName} · Bài ${String(lesson.lessonNumber).padStart(3, "0")}`;
-  elements.status.textContent = "Owner review";
+  elements.domain.textContent = `${lesson.programName} · Lesson ${String(lesson.lessonNumber).padStart(3, "0")}`;
+  elements.status.textContent = "Published";
   elements.title.textContent = lesson.title;
   elements.question.textContent = lesson.centralQuestion || lesson.objective;
-  elements.meta.innerHTML = pills([lesson.targetLevel, `${lesson.durationMinutes} phút`, `${lesson.sceneCount} scene`, `P${String(lesson.phaseNumber).padStart(2, "0")}`, `M${String(lesson.moduleNumber).padStart(2, "0")}`]);
+  elements.meta.innerHTML = pills([lesson.targetLevel, `${lesson.sceneCount} scene`, `P${String(lesson.phaseNumber).padStart(2, "0")}`, `M${String(lesson.moduleNumber).padStart(2, "0")}`]);
   elements.favorite.hidden = true;
   elements.assetTabs.hidden = false;
   elements.assetTabs.innerHTML = lesson.assets.map((item) => `<button class="asset-button ${item.key === asset.key ? "active" : ""}" data-asset-key="${item.key}" type="button">${escapeHtml(item.label)}</button>`).join("");
-  await renderMarkdown(asset.body);
+  await renderMarkdown(asset.body, true);
   renderOutline();
   const roadmapId = `roadmap.${lesson.program}.P${String(lesson.phaseNumber).padStart(2, "0")}.M${String(lesson.moduleNumber).padStart(2, "0")}`;
-  elements.connectionsTitle.textContent = "Điểm nối";
-  elements.connections.innerHTML = relationButton(roadmapId, "roadmap", "Mở roadmap mô-đun");
-  elements.sources.innerHTML = `<p class="source-id">${escapeHtml(lesson.path)}/${escapeHtml(asset.filename)}</p><p class="source-id">Chỉ xuất bản lesson có status ready-for-owner-review.</p>`;
+  elements.connectionsTitle.textContent = "Connections";
+  elements.connections.innerHTML = relationButton(roadmapId, "roadmap", "Open Module Roadmap");
+  elements.sources.innerHTML = `<p class="source-id">${escapeHtml(lesson.path)}/${escapeHtml(asset.filename)}</p><p class="source-id">Only governed lesson packages are published.</p>`;
+  syncInlineContext();
   renderList();
   if (updateHash) history.replaceState(null, "", `#lesson=${encodeURIComponent(id)}&asset=${encodeURIComponent(asset.key)}`);
   document.title = `${lesson.id} · ${lesson.title} · Rabbit Data`;
@@ -319,7 +394,7 @@ function syncSpaceControls() {
 }
 
 function switchSpace(space) {
-  if (!['roadmap', 'brain', 'lessons'].includes(space)) return;
+  if (!['roadmap', 'brain', 'library', 'lessons'].includes(space)) return;
   state.space = space;
   state.activeId = null;
   state.query = "";
@@ -331,17 +406,12 @@ function switchSpace(space) {
   history.replaceState(null, "", `#space=${space}`);
 }
 
-function findWikiTarget(label) {
-  const needle = normalize(label);
-  return state.data.notes.find((note) => note.id === label || normalize(note.title) === needle || note.aliases.some((alias) => normalize(alias) === needle));
-}
-
 function toggleFavorite() {
   if (state.space !== "brain" || !state.activeId) return;
   if (state.favorites.has(state.activeId)) state.favorites.delete(state.activeId); else state.favorites.add(state.activeId);
   localStorage.setItem("rabbit-data:favorites", JSON.stringify([...state.favorites]));
   elements.favorite.textContent = state.favorites.has(state.activeId) ? "★" : "☆";
-  showToast(state.favorites.has(state.activeId) ? "Đã lưu note" : "Đã bỏ lưu");
+  showToast(state.favorites.has(state.activeId) ? "Note saved" : "Note removed");
   renderList();
 }
 
@@ -361,6 +431,30 @@ function resolveRoadmapLink(href) {
   return state.roadmapsByPath.get(path) || null;
 }
 
+function handleConnectionClick(event) {
+  const button = event.target.closest("[data-open-kind]");
+  if (!button) return;
+  if (button.dataset.openKind === "roadmap") openRoadmap(button.dataset.openId);
+  else openNote(button.dataset.openId);
+}
+
+function handleSourceClick(event) {
+  const bookLink = event.target.closest("[data-open-book]");
+  if (bookLink) {
+    openBook(bookLink.dataset.openBook);
+    return;
+  }
+  const localBook = event.target.closest("[data-open-local-book]");
+  if (!localBook) return;
+  if (!window.secondBrainAPI?.openBook) {
+    showToast("Private PDF files can only be opened in the desktop application.");
+    return;
+  }
+  window.secondBrainAPI.openBook(localBook.dataset.openLocalBook).then((result) => {
+    showToast(result?.ok ? "Book opened in the default application." : result?.error || "The book could not be opened.");
+  });
+}
+
 function bindEvents() {
   let timer;
   elements.search.addEventListener("input", () => {
@@ -373,6 +467,7 @@ function bindEvents() {
     if (!button) return;
     if (state.space === "roadmap") openRoadmap(button.dataset.itemId);
     else if (state.space === "brain") openNote(button.dataset.itemId);
+    else if (state.space === "library") openBook(button.dataset.itemId);
     else openLesson(button.dataset.itemId, "note");
   });
   document.querySelectorAll(".space-button").forEach((button) => button.addEventListener("click", () => switchSpace(button.dataset.space)));
@@ -392,22 +487,19 @@ function bindEvents() {
     document.querySelectorAll("[data-list-mode]").forEach((item) => item.classList.toggle("active", item.dataset.listMode === "all"));
     syncSpaceControls();
   });
-  elements.connections.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-open-kind]");
-    if (!button) return;
-    if (button.dataset.openKind === "roadmap") openRoadmap(button.dataset.openId);
-    else openNote(button.dataset.openId);
-  });
+  elements.connections.addEventListener("click", handleConnectionClick);
+  elements.inlineConnections.addEventListener("click", handleConnectionClick);
   elements.assetTabs.addEventListener("click", (event) => {
     const button = event.target.closest("[data-asset-key]");
     if (button) openLesson(state.activeId, button.dataset.assetKey);
   });
+  elements.sources.addEventListener("click", handleSourceClick);
+  elements.inlineSources.addEventListener("click", handleSourceClick);
   elements.body.addEventListener("click", (event) => {
     const wiki = event.target.closest("[data-wiki]");
     if (wiki) {
       event.preventDefault();
-      const note = findWikiTarget(wiki.dataset.wiki);
-      if (note) openNote(note.id); else showToast("Không tìm thấy note đích.");
+      location.hash = `note=${encodeURIComponent(wiki.dataset.wiki)}`;
       return;
     }
     const link = event.target.closest("a[href]");
@@ -428,12 +520,14 @@ function bindEvents() {
     }
     if (event.key === "Escape") { elements.search.blur(); elements.sidebar.classList.remove("open"); }
   });
+  window.addEventListener("hashchange", () => restoreRoute());
 }
 
 async function restoreRoute() {
   const params = new URLSearchParams(location.hash.slice(1));
   if (params.get("roadmap")) return openRoadmap(params.get("roadmap"), false);
   if (params.get("note")) return openNote(params.get("note"), false);
+  if (params.get("book")) return openBook(params.get("book"), false);
   if (params.get("lesson")) return openLesson(params.get("lesson"), params.get("asset") || "note", false);
   switchSpace(params.get("space") || "roadmap");
 }
@@ -443,7 +537,7 @@ async function initialize() {
   document.documentElement.dataset.theme = localStorage.getItem("rabbit-data:theme") || "dark";
   state.data = await loadData();
   prepareData();
-  elements.release.textContent = `Portal v${state.data.portalVersion} · ${state.data.stats.lessons} bài sẵn sàng`;
+  elements.release.textContent = `Portal v${state.data.portalVersion} · ${state.data.stats.lessons} published lessons`;
   bindEvents();
   await restoreRoute();
   elements.app.setAttribute("aria-busy", "false");
@@ -451,6 +545,6 @@ async function initialize() {
 
 initialize().catch((error) => {
   console.error(error);
-  elements.empty.innerHTML = `<h1>Không thể mở Rabbit Data</h1><p>${escapeHtml(error.message)}</p><p>Hãy chạy lại <code>npm run brain:index</code>.</p>`;
+  elements.empty.innerHTML = `<h1>Rabbit Data could not be opened</h1><p>${escapeHtml(error.message)}</p><p>Run <code>npm run brain:index</code> again.</p>`;
   elements.app.setAttribute("aria-busy", "false");
 });

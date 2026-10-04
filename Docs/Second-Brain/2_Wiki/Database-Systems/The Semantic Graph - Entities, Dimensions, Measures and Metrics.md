@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Đồ thị ngữ nghĩa biểu diễn entity, dimension, measure, metric và đường join như thế nào để máy xác định được một câu hỏi có hợp lệ hay mơ hồ?
 source_ids:
   - src.web.dbt-semantic-models
@@ -51,7 +51,7 @@ Mỗi relationship phải nêu join keys, one-to-one/one-to-many/many-to-one/man
 
 ## 6. Nhiều đường và path semantics
 
-Customer có thể nối shipment trực tiếp qua recipient hoặc gián tiếp qua order purchaser. Hai paths cùng tới customer nhưng trả lời “người nhận” và “người mua”, không thể để planner chọn ngẫu nhiên. Graph phải dùng role names, path constraints hoặc metric-specific relationship. Cycle không tự là lỗi; ambiguity xuất hiện khi hai paths cùng syntactically valid nhưng khác business meaning/grain. Mỗi cặp multi-path cần câu hỏi và expected path làm test.
+Customer có thể nối shipment trực tiếp qua recipient hoặc gián tiếp qua order purchaser. Hai paths cùng tới customer nhưng trả lời người nhận và người mua, không thể để planner chọn ngẫu nhiên. Graph phải dùng role names, path constraints hoặc metric-specific relationship. Cycle không tự là lỗi; ambiguity xuất hiện khi hai paths cùng syntactically valid nhưng khác business meaning/grain. Mỗi cặp multi-path cần câu hỏi và expected path làm test.
 
 ## 7. Ba câu hỏi máy phải trả lời
 
@@ -205,7 +205,7 @@ Các mệnh đề dưới đây phải được kiểm bằng fixture, invariant
 - Chưa chạy lab hai người, semantic graph planner, ratio rollup, aggregation rejection hoặc calendar fixture; note mô tả protocol cần thực thi.
 - dbt/MetricFlow là ví dụ sản phẩm được kiểm ngày 2026-10-01; syntax và availability có thể đổi theo version/tier.
 - PostgreSQL documentation mô tả SQL mechanics, không tự cung cấp business semantics hay metric governance.
-- Kimball–Ross hỗ trợ grain, additivity và calendar modeling; semantic-layer enforcement là phần tổng hợp có đối chiếu tài liệu hiện hành.
+- Kimball-Ross hỗ trợ grain, additivity và calendar modeling; semantic-layer enforcement là phần tổng hợp có đối chiếu tài liệu hiện hành.
 - Owner chưa phê duyệt meaning nên note giữ trạng thái `review`.
 
 ## Reference
@@ -230,7 +230,7 @@ Các mệnh đề dưới đây phải được kiểm bằng fixture, invariant
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.semantic-graph`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.semantic-graph`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.semantic-graph`, sơ đồ, ví dụ và artifact về **The Semantic Graph - Entities, Dimensions, Measures and Metrics** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao dùng window function để giữ row identity, chọn partition/order/frame đúng và xử lý tie một cách kiểm chứng được?
 source_ids:
   - src.web.postgresql-17-window-functions
@@ -27,7 +27,7 @@ relationships:
 # Window functions: partition, order và frame
 
 > [!abstract] Câu hỏi trung tâm
-> Tập row nào tạo một cửa sổ, thứ tự nào xác định quan hệ trước–sau, frame nào đi vào phép tính, và tie được giữ hay cắt theo quy tắc nào?
+> Tập row nào tạo một cửa sổ, thứ tự nào xác định quan hệ trước-sau, frame nào đi vào phép tính, và tie được giữ hay cắt theo quy tắc nào?
 
 ## 1. Window function giữ row identity
 
@@ -63,7 +63,7 @@ Collation, NULLS FIRST/LAST và timezone ảnh hưởng order. Ghi chúng nếu 
 
 ## 5. Peer rows và tie
 
-Rows không phân biệt theo các cột trong window `ORDER BY` là peers. Ranking functions xử lý peers khác nhau. Nếu thêm unique ID vào ORDER BY, các rows không còn peer; điều này có thể phá yêu cầu “đồng hạng theo score”.
+Rows không phân biệt theo các cột trong window `ORDER BY` là peers. Ranking functions xử lý peers khác nhau. Nếu thêm unique ID vào ORDER BY, các rows không còn peer; điều này có thể phá yêu cầu đồng hạng theo score.
 
 Tách business order khỏi deterministic display. Có thể rank chỉ theo score để giữ ties, rồi outer order thêm ID. Nếu cần chọn đúng N rows thay vì N rank groups, phải nói rõ tie policy: cắt tie, include all ties, hay tie-break bằng secondary business dimension.
 
@@ -81,7 +81,7 @@ Dedup bằng `row_number() = 1` cần policy winner rõ, không chỉ timestamp 
 
 `rank()` cho peers cùng rank rồi để khoảng trống: scores 100, 90, 90, 80 nhận 1, 2, 2, 4. `dense_rank()` không để gap: 1, 2, 2, 3. Cả hai giữ peer groups nhưng câu hỏi khác nhau.
 
-Top 3 ranks bằng `rank <= 3` có thể không chứa rank 3 nếu tie ở rank 2 làm rank tiếp là 4. `dense_rank <= 3` lấy ba mức giá trị khác nhau. Số rows có thể vượt ba ở cả hai. Requirement phải nói “ba rows”, “ba thứ hạng competition” hay “ba mức score”.
+Top 3 ranks bằng `rank <= 3` có thể không chứa rank 3 nếu tie ở rank 2 làm rank tiếp là 4. `dense_rank <= 3` lấy ba mức giá trị khác nhau. Số rows có thể vượt ba ở cả hai. Requirement phải nói ba rows, ba thứ hạng competition hay ba mức score.
 
 Không chọn dense_rank chỉ vì số trông liền. Rank semantics phải gắn với nghiệp vụ.
 
@@ -95,7 +95,7 @@ Chia năm nhóm chi tiêu bằng ntile là segmentation theo row counts, không 
 
 ## 9. LAG và LEAD
 
-`lag(value, offset, default)` lấy value của row trước theo ordered partition; `lead` lấy row sau. “Trước” là row trước trong input window, không mặc định là ngày/tháng trước trên lịch. Nếu tháng 2 thiếu, lag của tháng 3 có thể là tháng 1.
+`lag(value, offset, default)` lấy value của row trước theo ordered partition; `lead` lấy row sau. Trước là row trước trong input window, không mặc định là ngày/tháng trước trên lịch. Nếu tháng 2 thiếu, lag của tháng 3 có thể là tháng 1.
 
 Muốn so kỳ lịch liên tiếp, dựng calendar scaffold rồi left join facts trước lag, hoặc self-join theo date arithmetic. Default argument chỉ dùng khi không có row ở offset, không thay NULL value của row tồn tại.
 
@@ -147,7 +147,7 @@ Nếu revenue tie và yêu cầu cùng hạng, dùng rank/dense_rank theo địn
 
 Không dùng `max(time)` rồi chọn cột khác không gắn row. Window giữ toàn row winner. Kiểm duplicate timestamp, late event, NULL time và tenant partition.
 
-Nếu cần “latest as of cutoff”, filter event time trước window; filter sau có thể chọn latest toàn lịch sử rồi loại nó, bỏ mất previous valid row.
+Nếu cần latest as of cutoff, filter event time trước window; filter sau có thể chọn latest toàn lịch sử rồi loại nó, bỏ mất previous valid row.
 
 ## 16. Lab ba bài toán
 
@@ -175,27 +175,27 @@ Artifact gồm SQL, seed data, expected table viết trước khi chạy, output
 - Lab chưa chạy trong note; output và evidence thuộc `after-note.md`.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-WINDOW-FUNCTIONS]] — tutorial, functions và frame semantics.
-2. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] — vị trí window trong logical pipeline.
+1. [[SRC-POSTGRESQL-17-WINDOW-FUNCTIONS]]: tutorial, functions và frame semantics.
+2. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]]: vị trí window trong logical pipeline.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-WINDOW-FUNCTIONS]] | partition, peers, ranking, lag/lead, default frame | §§1–11 | Đã giữ semantics PostgreSQL 17 |
+| [[SRC-POSTGRESQL-17-WINDOW-FUNCTIONS]] | partition, peers, ranking, lag/lead, default frame | §§1-11 | Đã giữ semantics PostgreSQL 17 |
 | [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | window sau WHERE/GROUP/HAVING; query level | §12 | Đã gắn với filter pattern |
-| Tổng hợp DE-L123 | top N, latest row, ntile, tie fixture | §§14–16 | Đã thành lab kiểm được |
+| Tổng hợp DE-L123 | top N, latest row, ntile, tie fixture | §§14-16 | Đã thành lab kiểm được |
 
 ## Key takeaways
 - Window giữ row identity nhưng chạy trên grain đã được tạo trước nó.
-- Partition chọn nhóm, order định nghĩa trước–sau và peers, frame chọn subset tính toán.
+- Partition chọn nhóm, order định nghĩa trước-sau và peers, frame chọn subset tính toán.
 - Ranking functions không tương đương khi có tie; fixture phải đặt tie tại boundary.
 - Window ORDER BY không thay final ORDER BY.
 - `lag` đọc row trước, không tự điền kỳ lịch bị thiếu.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.window-partition-order-frame`
+## Execution capsule: kiểm chứng `wiki.database.window-partition-order-frame`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.window-partition-order-frame`, sơ đồ, ví dụ và artifact về **Window functions: partition, order và frame** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -217,7 +217,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Làm sao dùng window function để giữ row identity, chọn partition/order/frame đúng và xử lý tie một cách kiểm chứng được?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Làm sao dùng window function để giữ row identity, chọn partition/order/frame đúng và xử lý tie một cách kiểm chứng được? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Window functions: partition, order và frame** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

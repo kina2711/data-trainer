@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao tách một pipeline nạp dữ liệu thành core, application, port và adapter để đổi CSV sang PostgreSQL mà không sửa phép kiểm lõi?
 source_ids:
   - src.book.richardson-microservices-patterns.1e
@@ -41,7 +41,7 @@ relationships:
 
 ## 1. Ca thay đổi dùng để kiểm kiến trúc
 
-Ta dùng một phép thử cụ thể thay cho nhận xét “kiến trúc sạch”:
+Ta dùng một phép thử cụ thể thay cho nhận xét kiến trúc sạch:
 
 1. bản đầu đọc order từ CSV và ghi kết quả ra tệp;
 2. giữ nguyên quy tắc chuẩn hóa, loại trùng và tính tổng;
@@ -63,7 +63,7 @@ Nếu phép thay này buộc sửa domain object, use case hoặc core test, chi
 Composition root đứng ngoài bốn phần trên. Nó tạo object cụ thể và nối dependency khi khởi động.
 
 > [!source-fact]
-> Richardson mô tả hexagonal architecture với business logic ở giữa, inbound adapter gọi inbound port, outbound adapter cài outbound port, và business logic không phụ thuộc adapter. *Microservices Patterns*, Chapter 2, PDF 68–70.
+> Richardson mô tả hexagonal architecture với business logic ở giữa, inbound adapter gọi inbound port, outbound adapter cài outbound port, và business logic không phụ thuộc adapter. *Microservices Patterns*, Chapter 2, PDF 68-70.
 
 ### Port là contract do phía dùng sở hữu
 
@@ -77,7 +77,7 @@ Outbound port được đặt gần application/core vì nó phát biểu đúng
 - adapter dịch lỗi thư viện sang error vocabulary của application.
 
 > [!source-fact]
-> Sommerville yêu cầu interface nêu signature và semantics nhưng không lộ representation. Khi biểu diễn dữ liệu được giấu, implementation có thể đổi mà client không bị ảnh hưởng. *Software Engineering*, Chapter 7, PDF 208–209.
+> Sommerville yêu cầu interface nêu signature và semantics nhưng không lộ representation. Khi biểu diễn dữ liệu được giấu, implementation có thể đổi mà client không bị ảnh hưởng. *Software Engineering*, Chapter 7, PDF 208-209.
 
 ## 3. Dependency graph đúng chiều
 
@@ -306,7 +306,7 @@ Tín hiệu nên đầu tư:
 - nhiều đội phát triển hai phía boundary.
 
 > [!source-fact]
-> Newman lưu ý không có cách tổ chức code tốt tuyệt đối; cohesion và coupling là ngôn ngữ để nói rõ trade-off quanh boundary. *Building Microservices*, Chapter 2, PDF 57–61.
+> Newman lưu ý không có cách tổ chức code tốt tuyệt đối; cohesion và coupling là ngôn ngữ để nói rõ trade-off quanh boundary. *Building Microservices*, Chapter 2, PDF 57-61.
 
 ## 16. Bằng chứng cho DE-L091
 
@@ -329,7 +329,7 @@ git diff --name-only BEFORE_ADAPTER_REPLACEMENT..AFTER_ADAPTER_REPLACEMENT
 pytest tests/core tests/adapters
 ```
 
-Không dùng chỉ một ảnh chụp “tests passed”; cần command, exit status và commit hoặc tree hash.
+Không dùng chỉ một ảnh chụp tests passed; cần command, exit status và commit hoặc tree hash.
 
 ## 17. Ma trận chấm
 
@@ -344,12 +344,12 @@ Không dùng chỉ một ảnh chụp “tests passed”; cần command, exit st
 
 ## 18. Ngộ nhận thường gặp
 
-- “Có interface là đã đảo dependency”: sai nếu interface chứa type của framework.
-- “Repository phải có CRUD”: sai; port diễn đạt nhu cầu use case, không nhân API database.
-- “Mọi adapter phải thay nóng”: không cần nếu contract không yêu cầu runtime plugin.
-- “Core test xanh chứng minh adapter đúng”: core test không kiểm SQL, transaction hay constraint.
-- “Composition root là service locator toàn cục”: composition diễn ra lúc khởi động; core không tự kéo dependency từ registry.
-- “Ba tầng đồng nghĩa ba deployment”: đây là source boundary; vẫn có thể là một executable.
+- Có interface là đã đảo dependency: sai nếu interface chứa type của framework.
+- Repository phải có CRUD: sai; port diễn đạt nhu cầu use case, không nhân API database.
+- Mọi adapter phải thay nóng: không cần nếu contract không yêu cầu runtime plugin.
+- Core test xanh chứng minh adapter đúng: core test không kiểm SQL, transaction hay constraint.
+- Composition root là service locator toàn cục: composition diễn ra lúc khởi động; core không tự kéo dependency từ registry.
+- Ba tầng đồng nghĩa ba deployment: đây là source boundary; vẫn có thể là một executable.
 
 ## 19. Câu hỏi tự kiểm tra
 
@@ -368,10 +368,10 @@ Không dùng chỉ một ảnh chụp “tests passed”; cần command, exit st
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], Ch. 2 pp. 68–73 | hexagonal architecture, inbound/outbound port và adapter | §§2–4, 6–8 | Đã trình bày bằng dependency graph và cấu trúc code |
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], Ch. 2 pp. 56–61 | information hiding, coupling và boundary trade-off | §§1–3, 13–15 | Đã trình bày qua replacement experiment và điều kiện không nên tách |
-| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], Ch. 7 pp. 208–212 | component/interface decomposition | §§5–12 | Đã trình bày domain type, port contract, mapping và adapter test |
-| Tổng hợp bài DE-L091 | pipeline CSV/PostgreSQL, import policy, evidence pack và rubric | §§4–17 | Đã gắn `synthesis`; code là teaching specification, chưa phải output lab đã chạy |
+| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], Ch. 2 pp. 68-73 | hexagonal architecture, inbound/outbound port và adapter | §§2-4, 6-8 | Đã trình bày bằng dependency graph và cấu trúc code |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], Ch. 2 pp. 56-61 | information hiding, coupling và boundary trade-off | §§1-3, 13-15 | Đã trình bày qua replacement experiment và điều kiện không nên tách |
+| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], Ch. 7 pp. 208-212 | component/interface decomposition | §§5-12 | Đã trình bày domain type, port contract, mapping và adapter test |
+| Tổng hợp bài DE-L091 | pipeline CSV/PostgreSQL, import policy, evidence pack và rubric | §§4-17 | Đã gắn `synthesis`; code là teaching specification, chưa phải output lab đã chạy |
 
 Framework-specific DI container, ORM và database behavior không thuộc lát nguồn. Note đặt chúng sau port boundary và yêu cầu integration evidence riêng.
 
@@ -398,9 +398,9 @@ Framework-specific DI container, ORM và database behavior không thuộc lát n
 - Bài kế tiếp dùng error boundary: [[Error Design for Data Pipelines|Thiết kế lỗi cho pipeline dữ liệu]].
 
 ## Reference
-1. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]] — Chris Richardson, *Microservices Patterns*, Chapter 2, PDF 68–73.
-2. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — Sam Newman, *Building Microservices*, Second Edition, Chapter 2, PDF 56–61.
-3. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]] — Ian Sommerville, *Software Engineering*, Chapter 7, PDF 208–212.
+1. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]]: Chris Richardson, *Microservices Patterns*, Chapter 2, PDF 68-73.
+2. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: Sam Newman, *Building Microservices*, Second Edition, Chapter 2, PDF 56-61.
+3. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]]: Ian Sommerville, *Software Engineering*, Chapter 7, PDF 208-212.
 
 ## Lịch sử biên tập
 
@@ -410,7 +410,7 @@ Framework-specific DI container, ORM và database behavior không thuộc lát n
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.software-engineering.ports-adapters-data-pipeline`
+## Execution capsule: kiểm chứng `wiki.software-engineering.ports-adapters-data-pipeline`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.software-engineering.ports-adapters-data-pipeline`, sơ đồ, ví dụ và artifact về **Ports và adapters trong một pipeline dữ liệu** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

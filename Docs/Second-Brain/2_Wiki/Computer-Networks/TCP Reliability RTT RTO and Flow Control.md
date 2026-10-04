@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-27
 last_verified: 2026-09-27
 review_after: 2027-03-27
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: TCP biến dịch vụ IP best-effort thành byte stream tin cậy bằng trạng thái, sequence number, ACK, timer và cửa sổ nhận như thế nào?
 source_ids:
   - src.book.kurose-ross-networking.8e
@@ -55,7 +55,7 @@ flowchart LR
 Connection TCP là trạng thái logic tại hai endpoint. Router trung gian chuyển IP datagram và không giữ trạng thái connection TCP theo mô hình cơ bản của sách. Vì vậy, một connection đã `ESTABLISHED` ở client vẫn có thể gặp middlebox, route hoặc peer failure mà trạng thái cục bộ chưa phản ánh ngay.
 
 > [!source-fact]
-> Connection TCP, socket endpoint, send/receive buffer, full-duplex và point-to-point được trình bày tại §3.5–§3.5.1, trang in 257–260.
+> Connection TCP, socket endpoint, send/receive buffer, full-duplex và point-to-point được trình bày tại §3.5-§3.5.1, trang in 257-260.
 
 ## 1. Hợp đồng TCP nhìn từ ứng dụng
 
@@ -74,7 +74,7 @@ Mỗi phía có thể gửi và nhận đồng thời trên cùng connection. Se
 Trong điều kiện connection tiếp tục hoạt động, TCP hướng tới việc đưa ra cho ứng dụng byte stream không hỏng, không hở, không lặp và đúng thứ tự. Lời bảo đảm này không cho biết application đã commit transaction hay chưa, không biến một operation thành idempotent, và không bảo đảm connection sẽ sống mãi.
 
 > [!synthesis]
-> “TCP đã ACK” là bằng chứng receiver TCP đã nhận byte tương ứng, chưa phải bằng chứng tiến trình ứng dụng đã đọc, parse hoặc commit chúng. Đây là ranh giới quan trọng khi điều tra request timeout.
+> TCP đã ACK là bằng chứng receiver TCP đã nhận byte tương ứng, chưa phải bằng chứng tiến trình ứng dụng đã đọc, parse hoặc commit chúng. Đây là ranh giới quan trọng khi điều tra request timeout.
 
 ## 2. Segment TCP mang những trạng thái nào
 
@@ -99,13 +99,13 @@ Một TCP segment gồm header và dữ liệu ứng dụng. Các trường cầ
 MSS là lượng dữ liệu ứng dụng tối đa đặt trong một segment theo cách sách giới thiệu; nó không phải kích thước toàn bộ segment. TCP header và IP header còn chiếm chỗ trong MTU. Đồng nhất MSS với MTU dẫn tới tính sai payload và có thể che mất vấn đề fragmentation hay path MTU.
 
 > [!source-fact]
-> Cấu trúc segment, MSS/MTU, các flag và receive-window field nằm tại §3.5.1–§3.5.2, trang in 258–265.
+> Cấu trúc segment, MSS/MTU, các flag và receive-window field nằm tại §3.5.1-§3.5.2, trang in 258-265.
 
 ## 3. Sequence number và cumulative ACK
 
 ### Sequence number đếm byte
 
-Giả sử một segment có `Seq=92` và chở 8 byte. Các byte thuộc khoảng 92–99. Nếu receiver đã nhận đủ liên tục tới byte 99, nó gửi `ACK=100`: byte kế tiếp đang chờ là 100.
+Giả sử một segment có `Seq=92` và chở 8 byte. Các byte thuộc khoảng 92-99. Nếu receiver đã nhận đủ liên tục tới byte 99, nó gửi `ACK=100`: byte kế tiếp đang chờ là 100.
 
 ```text
 Sender                                           Receiver
@@ -113,7 +113,7 @@ Seq=92, Len=8  ------------------------------->  nhận byte 92..99
                  <------------------------------ ACK=100
 ```
 
-ACK không mang nghĩa “tôi đã nhận riêng segment số 100”. Nó xác nhận tích lũy toàn bộ byte liên tục trước số 100. Nếu ACK cho segment đầu bị mất nhưng `ACK=120` tới sau, sender biết receiver đã nhận liên tục tới byte 119 và không cần retransmit phần đã được bao phủ.
+ACK không mang nghĩa tôi đã nhận riêng segment số 100. Nó xác nhận tích lũy toàn bộ byte liên tục trước số 100. Nếu ACK cho segment đầu bị mất nhưng `ACK=120` tới sau, sender biết receiver đã nhận liên tục tới byte 119 và không cần retransmit phần đã được bao phủ.
 
 ### Một khoảng trống giữ ACK đứng yên
 
@@ -122,7 +122,7 @@ Giả sử các segment bắt đầu ở 92, 100, 120; segment `Seq=100` mất n
 Out-of-order arrival cũng có thể tạo duplicate ACK. Bởi vậy một duplicate ACK đơn lẻ chưa đủ để kết luận mất gói. Cơ chế fast retransmit trong mô hình sách chờ ba duplicate ACK cho cùng dữ liệu rồi mới truyền lại segment bắt đầu tại số ACK ấy.
 
 > [!source-fact]
-> Cách đánh số byte, ý nghĩa “next expected byte”, cumulative ACK và ví dụ Telnet nằm tại §3.5.2, trang in 263–265; các tình huống ACK mất nằm tại §3.5.4, trang in 270–273.
+> Cách đánh số byte, ý nghĩa next expected byte, cumulative ACK và ví dụ Telnet nằm tại §3.5.2, trang in 263-265; các tình huống ACK mất nằm tại §3.5.4, trang in 270-273.
 
 ## 4. Ước lượng RTT: làm mượt cả mức và độ dao động
 
@@ -155,7 +155,7 @@ $$
 Sample gần đây có trọng số lớn hơn sample cũ. `EstimatedRTT` tránh phản ứng quá mạnh với một lần đo bất thường; `DevRTT` giữ thông tin về độ nhiễu mà trung bình đơn thuần sẽ làm mất.
 
 > [!source-fact]
-> Định nghĩa `SampleRTT`, quy tắc bỏ sample của retransmission, EWMA và các hệ số nằm tại §3.5.3, trang in 265–267.
+> Định nghĩa `SampleRTT`, quy tắc bỏ sample của retransmission, EWMA và các hệ số nằm tại §3.5.3, trang in 265-267.
 
 ## 5. RTO phải vừa tránh báo mất giả, vừa phát hiện mất đủ sớm
 
@@ -215,7 +215,7 @@ nhận ACK=y và y > SendBase
 `SendBase` là số thứ tự byte cũ nhất chưa được ACK. `NextSeqNum` là byte kế tiếp có thể đánh số cho dữ liệu mới. Dù có nhiều segment đang chờ ACK, thủ tục trong sách dùng một retransmission timer, có thể hình dung gắn với segment chưa ACK cũ nhất.
 
 > [!source-fact]
-> Mục tiêu byte stream không hỏng/không hở/không lặp/đúng thứ tự và sender một timer được trình bày tại §3.5.4, trang in 268–270.
+> Mục tiêu byte stream không hỏng/không hở/không lặp/đúng thứ tự và sender một timer được trình bày tại §3.5.4, trang in 268-270.
 
 ## 7. Timeout retransmit và fast retransmit giải quyết hai tín hiệu khác nhau
 
@@ -238,10 +238,10 @@ Seq=141  ───────────────> vẫn có gap        <�
                          ba duplicate ACK ⇒ retransmit Seq=100
 ```
 
-Đếm packet “TCP Retransmission” trong công cụ phân tích chưa đủ để kết luận nguyên nhân. Cần kiểm ACK hai chiều, timing, out-of-order, capture point và khả năng packet capture tự mất gói.
+Đếm packet TCP Retransmission trong công cụ phân tích chưa đủ để kết luận nguyên nhân. Cần kiểm ACK hai chiều, timing, out-of-order, capture point và khả năng packet capture tự mất gói.
 
 > [!source-fact]
-> Delayed ACK, duplicate ACK, ba duplicate ACK và fast retransmit nằm tại §3.5.4, trang in 273–275.
+> Delayed ACK, duplicate ACK, ba duplicate ACK và fast retransmit nằm tại §3.5.4, trang in 273-275.
 
 ## 8. TCP gần GBN hay Selective Repeat?
 
@@ -289,7 +289,7 @@ Khi receiver quảng bá `rwnd=0`, sender dừng dữ liệu thường. Nếu �
 Một zero-window episode gợi ý receiver/application không tiêu thụ kịp; nó không tự chứng minh network congestion.
 
 > [!source-fact]
-> Receive buffer, công thức `rwnd`, giới hạn dữ liệu chưa ACK và tình huống zero window nằm tại §3.5.5, trang in 276–278.
+> Receive buffer, công thức `rwnd`, giới hạn dữ liệu chưa ACK và tình huống zero window nằm tại §3.5.5, trang in 276-278.
 
 ## 10. Flow control và congestion control phải tách nhau
 
@@ -301,19 +301,19 @@ Một zero-window episode gợi ý receiver/application không tiêu thụ kịp
 Cả hai có thể làm sender chậm lại nên bề ngoài dễ lẫn. Nếu `rwnd` co về 0, ưu tiên kiểm receiver buffer, tốc độ application đọc và scheduler phía nhận. Nếu retransmission, RTT và queue/drop cùng tăng dưới tải, cần điều tra congestion. Trong thực tế, lượng dữ liệu được phép bay còn chịu cả hai giới hạn cùng các ràng buộc implementation.
 
 > [!source-fact]
-> Sách nhấn mạnh flow control và congestion control có hành động giống nhau nhưng nguyên nhân khác nhau tại §3.5.5, trang in 276–277. Congestion control được dành cho §§3.6–3.7.
+> Sách nhấn mạnh flow control và congestion control có hành động giống nhau nhưng nguyên nhân khác nhau tại §3.5.5, trang in 276-277. Congestion control được dành cho §§3.6-3.7.
 
 ## 11. Three-way handshake thiết lập trạng thái hai phía
 
-### Bước 1 — SYN
+### Bước 1: SYN
 
 Client chọn initial sequence number `client_isn`, gửi segment có `SYN=1`, không cần mang application data trong mô tả cơ bản, rồi đi vào `SYN_SENT`.
 
-### Bước 2 — SYNACK
+### Bước 2: SYNACK
 
 Server nhận SYN, chọn `server_isn`, gửi `SYN=1`, `Seq=server_isn`, `ACK=client_isn+1`. Server ở `SYN_RCVD` trong tiến trình thông thường.
 
-### Bước 3 — ACK
+### Bước 3: ACK
 
 Client gửi `ACK=server_isn+1`, `SYN=0`; segment thứ ba có thể mang client data. Sau khi handshake hoàn tất, hai phía có đủ sequence state để trao đổi dữ liệu.
 
@@ -330,7 +330,7 @@ sequenceDiagram
 Thấy SYN rời client chưa chứng minh connection được thiết lập. Thấy SYNACK ở server-side capture chưa chứng minh nó tới client. Bản bắt gói cần vị trí quan sát, hai chiều và timestamp.
 
 > [!source-fact]
-> Ba bước, initial sequence number và khả năng segment thứ ba mang dữ liệu nằm tại §3.5.6, trang in 279–280.
+> Ba bước, initial sequence number và khả năng segment thứ ba mang dữ liệu nằm tại §3.5.6, trang in 279-280.
 
 ## 12. FIN, TIME_WAIT và RST biểu thị các tình huống khác nhau
 
@@ -359,7 +359,7 @@ ESTABLISHED → CLOSE_WAIT → LAST_ACK → CLOSED
 Nếu host nhận segment không khớp socket đang tồn tại, ví dụ SYN tới port TCP không được listen, nó có thể trả RST. RST là bằng chứng reset/refusal ở tầng TCP, khác với HTTP error response và khác với timeout không có phản hồi.
 
 > [!source-fact]
-> FIN exchange, state transitions, mục đích TIME_WAIT và RST cho port không mở nằm tại §3.5.6, trang in 281–283.
+> FIN exchange, state transitions, mục đích TIME_WAIT và RST cho port không mở nằm tại §3.5.6, trang in 281-283.
 
 ## 13. SYN flood và giới hạn của mô tả phòng vệ
 
@@ -376,11 +376,11 @@ Handshake truyền thống có thể buộc server giữ trạng thái half-open
 
 | Thời điểm | Hướng | Flags | Seq | Len | Ack | Window | Diễn giải có bằng chứng |
 |---|---|---:|---:|---:|---:|---:|---|
-| t0 | C→S | SYN | x | 0 | — | w1 | Client đề nghị mở connection |
+| t0 | C→S | SYN | x | 0 |: | w1 | Client đề nghị mở connection |
 | t1 | S→C | SYN,ACK | y | 0 | x+1 | w2 | Server trả lời và công bố ISN |
 | t2 | C→S | ACK | x+1 | 0 | y+1 | w1 | Handshake hoàn tất tại điểm capture |
 
-Sau handshake, cập nhật theo byte range chứ không theo “packet số mấy”. Với mỗi data segment, tính `next_seq = seq + payload_length`; nhớ rằng SYN và FIN chiếm một vị trí trong sequence space ở cách phân tích thông thường.
+Sau handshake, cập nhật theo byte range chứ không theo packet số mấy. Với mỗi data segment, tính `next_seq = seq + payload_length`; nhớ rằng SYN và FIN chiếm một vị trí trong sequence space ở cách phân tích thông thường.
 
 ### Trình tự điều tra
 
@@ -460,16 +460,16 @@ Chỉ dựa vào §3.5 chưa thể:
 - Bài liên quan trực tiếp: `DE-L079`.
 - Bài dùng làm nền: `DE-L085`, `DE-L086`, `DE-L088`.
 - Liên quan: [[HTTP Requests Connection State and Caching|HTTP request connection state và cache]], [[Packet-Switched Network Delay Loss and Throughput|Độ trễ mất gói và thông lượng trong mạng chuyển mạch gói]].
-- Chủ đề kế tiếp cần đọc: TCP congestion control tại §§3.6–3.7 và thực hành Wireshark/tcpdump bằng packet trace thật.
+- Chủ đề kế tiếp cần đọc: TCP congestion control tại §§3.6-3.7 và thực hành Wireshark/tcpdump bằng packet trace thật.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§3.5.1–3.5.2 | TCP connection, segment, sequence number và cumulative ACK | §§1–3 | Đã trình bày theo byte stream và packet trace |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §3.5.3 | RTT estimation, variation và RTO | §§4–5 | Đã trình bày công thức, biến và ambiguity khi retransmit |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §3.5.4 | reliable transfer, timeout, duplicate ACK và fast retransmit | §§6–8 | Đã trình bày quan hệ giữa checksum, ACK, timer và retransmission |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§3.5.5–3.5.6 | flow control, handshake và connection teardown | §§9–13 | Đã tách receive window khỏi congestion và giải thích FIN/RST/TIME_WAIT |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§3.5.1-3.5.2 | TCP connection, segment, sequence number và cumulative ACK | §§1-3 | Đã trình bày theo byte stream và packet trace |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §3.5.3 | RTT estimation, variation và RTO | §§4-5 | Đã trình bày công thức, biến và ambiguity khi retransmit |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §3.5.4 | reliable transfer, timeout, duplicate ACK và fast retransmit | §§6-8 | Đã trình bày quan hệ giữa checksum, ACK, timer và retransmission |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§3.5.5-3.5.6 | flow control, handshake và connection teardown | §§9-13 | Đã tách receive window khỏi congestion và giải thích FIN/RST/TIME_WAIT |
 
 Implementation detail của kernel và congestion-control algorithm nằm ngoài §3.5; note không dùng chúng để giải thích thay cho reliability hoặc flow control.
 
@@ -481,7 +481,7 @@ Implementation detail của kernel và congestion-control algorithm nằm ngoài
 - Hoàn tất TCP delivery không chứng minh application đã parse, persist hay commit. Packet capture cũng chỉ phản ánh điểm quan sát và phải được ghép với log hai đầu.
 
 ## Reference
-1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §3.5, printed pp. 257–284, PDF pp. 259–286.
+1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §3.5, printed pp. 257-284, PDF pp. 259-286.
 2. Hồ sơ nguồn: [[SRC-KUROSE-ROSS-NETWORKING-8E]].
 3. Source note: `Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-03.md`.
 
@@ -493,7 +493,7 @@ Implementation detail của kernel và congestion-control algorithm nằm ngoài
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.network.tcp-reliability-rtt-flow-control`
+## Execution capsule: kiểm chứng `wiki.network.tcp-reliability-rtt-flow-control`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.network.tcp-reliability-rtt-flow-control`, sơ đồ, ví dụ và artifact về **TCP reliability, RTT/RTO và flow control** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

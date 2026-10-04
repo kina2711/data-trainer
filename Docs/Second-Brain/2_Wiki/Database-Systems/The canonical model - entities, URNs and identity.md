@@ -37,7 +37,7 @@ Identity dùng platform/instance/environment/native key ổn định; display na
 
 ## 3. URN construction
 
-URN cần canonical encoding, namespace rules, case policy và validation để connectors không tạo twins. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `The canonical model - entities, URNs and identity`, câu hỏi thực dụng là: Canonical metadata model giữ identity ổn định xuyên connectors, environments và rename bằng cách nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+URN cần canonical encoding, namespace rules, case policy và validation để connectors không tạo twins. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `The canonical model - entities, URNs and identity`, câu hỏi thực dụng là: Canonical metadata model giữ identity ổn định xuyên connectors, environments và rename bằng cách nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Aspect separation
 
@@ -218,7 +218,7 @@ Với `wiki.metadata.canonical-entities-urns`, command thành công không tự 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.metadata.canonical-entities-urns`
+## Execution capsule: kiểm chứng `wiki.metadata.canonical-entities-urns`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.metadata.canonical-entities-urns`, sơ đồ, ví dụ và artifact về **The canonical model - entities, URNs and identity** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

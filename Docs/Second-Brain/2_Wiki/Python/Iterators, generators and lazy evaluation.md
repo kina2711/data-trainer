@@ -33,31 +33,31 @@ reference_path: Material/DE/Reference/Library/Knowledge-Notes/PACK-ENGINEERING-F
 > [!abstract] Câu hỏi trung tâm
 > Làm thế nào mô hình, kiểm chứng và áp dụng iterator protocol, generator suspension và lazy evaluation?
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 iterable tạo iterator; next tiến state tới value hoặc StopIteration; generator giữ frame và resume tại yield Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, điểm phải khóa là state transition và invariant; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
 Không có mô hình này, lỗi thường lộ ở consumer sau cùng: output sai, latency vọt, resource không được giải phóng hoặc lịch sử không còn tái hiện được. Chi phí thật của `Iterators, generators and lazy evaluation` vì thế nằm ở thời gian chẩn đoán và phạm vi phục hồi, không nằm ở số dòng syntax.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 lazy đổi thời điểm lỗi, resource lifetime và side effect; iterator thường one-shot chứ không phải collection tái dùng Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, điểm phải khóa là identity, ownership và boundary; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
 Hãy tách declared state, executed state và published state của `iterator protocol, generator suspension và lazy evaluation`. Một command thành công chỉ là executed signal; muốn kết luận cần đối soát consumer-visible invariant và trạng thái còn lại sau restart hoặc replay.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 iterate lần hai được zero rows; giữ file mở quá lâu; exception xuất hiện xa call site Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, điểm phải khóa là failure path và recovery; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
 Quy tắc mặc định cho `Iterators, generators and lazy evaluation` là chọn phương án đơn giản nhất qua được hard constraints, rồi ghi rõ điều kiện đảo. Bảng quyết định tối thiểu gồm workload, identity, state owner, time/memory budget, failure domain và khả năng rollback.
 
-## Case Study Thực Chiến: Iterators, generators and lazy evaluation
+## Worked Case: Iterators, generators and lazy evaluation
 
 dùng lazy khi bounded memory/streaming có lợi và ownership/lifetime rõ; materialize khi cần replay hoặc snapshot Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, điểm phải khóa là decision trade-off và reversal trigger; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
 Case dùng fixture nhỏ nhưng phải giữ cơ chế chi phối. Trước khi chạy, learner viết expected transition; sau khi chạy, họ đối chiếu raw artifact với oracle và giải thích mọi khác biệt thay vì sửa expected cho khớp output.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 đếm pulls, peak memory, close/finalization và output order trên fixture Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, điểm phải khóa là evidence package và oracle; nếu trường nào chưa biết thì ghi unknown và nêu impact-if-wrong thay vì tự điền mặc định.
 
@@ -81,7 +81,7 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 **Thiết kế phép thử cho `wiki.de-foundation.iterators-generators-lazy-evaluation`.** Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, tạo positive và negative control chỉ khác một điều kiện; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 2: identity, ownership và boundary
 
@@ -89,7 +89,7 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 **Thiết kế phép thử cho `wiki.de-foundation.iterators-generators-lazy-evaluation`.** Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, tạo boundary case ngay trước và sau ngưỡng; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 3: failure path và recovery
 
@@ -97,7 +97,7 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 **Thiết kế phép thử cho `wiki.de-foundation.iterators-generators-lazy-evaluation`.** Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, tạo replay cùng identity với state khác; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 4: decision trade-off và reversal trigger
 
@@ -105,7 +105,7 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 **Thiết kế phép thử cho `wiki.de-foundation.iterators-generators-lazy-evaluation`.** Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, tạo failure inject trước và sau durable transition; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 5: evidence package và oracle
 
@@ -113,7 +113,7 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 **Thiết kế phép thử cho `wiki.de-foundation.iterators-generators-lazy-evaluation`.** Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, tạo changed scale làm cost model đổi; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 6: changed-constraint transfer
 
@@ -121,7 +121,7 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 **Thiết kế phép thử cho `wiki.de-foundation.iterators-generators-lazy-evaluation`.** Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, tạo adversarial order hoặc skew; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 7: state transition và invariant
 
@@ -129,7 +129,7 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 **Thiết kế phép thử cho `wiki.de-foundation.iterators-generators-lazy-evaluation`.** Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, tạo fresh environment không cache; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 8: identity, ownership và boundary
 
@@ -137,7 +137,7 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 **Thiết kế phép thử cho `wiki.de-foundation.iterators-generators-lazy-evaluation`.** Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, tạo independent oracle không dùng chung implementation; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 9: failure path và recovery
 
@@ -145,7 +145,7 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 **Thiết kế phép thử cho `wiki.de-foundation.iterators-generators-lazy-evaluation`.** Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, tạo partial progress rồi restart; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 10: decision trade-off và reversal trigger
 
@@ -153,7 +153,7 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 **Thiết kế phép thử cho `wiki.de-foundation.iterators-generators-lazy-evaluation`.** Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, tạo missing evidence phải abstain; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 11: evidence package và oracle
 
@@ -161,7 +161,7 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 **Thiết kế phép thử cho `wiki.de-foundation.iterators-generators-lazy-evaluation`.** Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, tạo reviewer tái hiện từ package; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ### Probe 12: changed-constraint transfer
 
@@ -169,7 +169,7 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 **Thiết kế phép thử cho `wiki.de-foundation.iterators-generators-lazy-evaluation`.** Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, tạo constraint đổi đủ để quyết định đảo; khóa input snapshot, phiên bản, seed, identity và state ban đầu. Viết expected result trước execution để tránh đổi tiêu chí sau khi nhìn output.
 
-**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
+**Bằng chứng cần giữ.** Lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp ở đúng grain; nếu chưa chạy, phần này vẫn là protocol chứ không phải observation.
 
 ## Tự Kiểm Tra Nhanh
 
@@ -200,8 +200,8 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-PYTHON-314-LANGUAGE-REFERENCE]] — `src.docs.python-3.14-language-reference` | Python 3.14.8 Language Reference; accessed 2026-10-02 | cơ chế và boundary liên quan trực tiếp tới `iterator protocol, generator suspension và lazy evaluation` | các mục cơ chế, quyết định và probe | Đã phủ | phần ngoài objective DE-L014 |
-| [[SRC-PYTHON-314-STDLIB-RUNTIME]] — `src.docs.python-3.14-stdlib-runtime` | Python 3.14.8 Library Reference; accessed 2026-10-02 | cơ chế và boundary liên quan trực tiếp tới `iterator protocol, generator suspension và lazy evaluation` | các mục cơ chế, quyết định và probe | Đã phủ | phần ngoài objective DE-L014 |
+| [[SRC-PYTHON-314-LANGUAGE-REFERENCE]]: `src.docs.python-3.14-language-reference` | Python 3.14.8 Language Reference; accessed 2026-10-02 | cơ chế và boundary liên quan trực tiếp tới `iterator protocol, generator suspension và lazy evaluation` | các mục cơ chế, quyết định và probe | Đã phủ | phần ngoài objective DE-L014 |
+| [[SRC-PYTHON-314-STDLIB-RUNTIME]]: `src.docs.python-3.14-stdlib-runtime` | Python 3.14.8 Library Reference; accessed 2026-10-02 | cơ chế và boundary liên quan trực tiếp tới `iterator protocol, generator suspension và lazy evaluation` | các mục cơ chế, quyết định và probe | Đã phủ | phần ngoài objective DE-L014 |
 
 ## Key takeaways
 - dùng lazy khi bounded memory/streaming có lợi và ownership/lifetime rõ; materialize khi cần replay hoặc snapshot
@@ -211,7 +211,7 @@ Protocol riêng của `Iterators, generators and lazy evaluation` là: đếm pu
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.de-foundation.iterators-generators-lazy-evaluation`
+## Execution capsule: kiểm chứng `wiki.de-foundation.iterators-generators-lazy-evaluation`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.de-foundation.iterators-generators-lazy-evaluation`, sơ đồ, ví dụ và artifact về **Iterators, generators and lazy evaluation** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

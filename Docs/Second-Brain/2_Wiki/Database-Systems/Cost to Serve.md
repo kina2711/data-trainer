@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao dựng cost-to-serve có boundary, allocation policy, unit denominator và uncertainty đủ để so sánh hoặc đề xuất retirement mà không cắt nhầm giá trị?
 source_ids:
   - src.web.finops-allocation
@@ -51,7 +51,7 @@ FinOps Unit Economics phân resource-efficiency unit và business unit. Product 
 
 ## 6. Retirement là decision nhiều chiều
 
-Candidate signals gồm không trace tới active decision, no confirmed consumer qua đủ cadence, duplicate contract, cost/risk cao so với replacement hoặc owner withdrawn. High cost–low use chưa đủ nếu product phục vụ rare regulatory/high-stakes event. Lập consumer inventory gồm offline exports, scheduled accounts và dormant cycles; so keep, optimize, merge, archive và retire. Phương án thay thế có compatibility/migration, retention/audit, notice, parallel window, removal proof và restore boundary. Stakeholder approval không sửa cost data sai.
+Candidate signals gồm không trace tới active decision, no confirmed consumer qua đủ cadence, duplicate contract, cost/risk cao so với replacement hoặc owner withdrawn. High cost-low use chưa đủ nếu product phục vụ rare regulatory/high-stakes event. Lập consumer inventory gồm offline exports, scheduled accounts và dormant cycles; so keep, optimize, merge, archive và retire. Phương án thay thế có compatibility/migration, retention/audit, notice, parallel window, removal proof và restore boundary. Stakeholder approval không sửa cost data sai.
 
 ## 7. Tối ưu có guardrails và test thay đổi
 
@@ -67,7 +67,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.2. actual allocated estimate opportunity cost tách nhau
 
@@ -75,7 +75,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.3. direct shared và unallocated phải reconcile
 
@@ -83,7 +83,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.4. build compute gồm retry và backfill
 
@@ -91,7 +91,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.5. storage gồm backup snapshot và retention
 
@@ -99,7 +99,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.6. serving cost gồm BI SQL API cache và egress
 
@@ -107,7 +107,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.7. labor largest là hypothesis không phải fact
 
@@ -115,7 +115,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.8. time evidence cần taxonomy và tránh double count
 
@@ -123,7 +123,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.9. shared allocation method tạo bias
 
@@ -131,7 +131,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.10. sensitivity test hai allocation policies
 
@@ -139,7 +139,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.11. unit denominator là value-bearing event
 
@@ -147,7 +147,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.12. trend within scope an toàn hơn cross-product ranking
 
@@ -155,7 +155,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.13. rare high-stakes product không bị xóa chỉ vì low use
 
@@ -163,7 +163,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.14. retirement inventory gồm offline and dormant consumers
 
@@ -171,7 +171,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ### 8.15. cost optimization cần freshness quality security guardrails
 
@@ -179,7 +179,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 **Cách kiểm.** Reconcile direct, shared và unallocated amounts với billing/usage/support artifacts. Chạy ít nhất hai allocation policies, hai unit denominators và one changed freshness constraint; lưu sensitivity, uncertainty và consumer migration analysis. Với mệnh đề này, ghi environment/product/policy version, input shape, expected observation, failure signal và boundary làm kết luận không còn đúng.
 
-**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator–denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
+**Bằng chứng đạt cho `wiki.data-product.cost-to-serve`.** Lưu contract/policy, fixture hoặc event extract, command/query, raw output, numerator-denominator hoặc cost reconciliation, reviewer và artifact hash. Nếu chưa chạy lab trên hệ được phép, chỉ ghi protocol; không biến expected result thành evidence.
 
 ## 9. Quy trình phản biện
 
@@ -196,7 +196,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 1. Invariant hoặc decision nào đang được bảo vệ?
 2. Chủ thể, resource, event hay cost unit được định danh bằng gì?
 3. Denominator, time window và unknown/unallocated set là gì?
-4. Failure nào vẫn cho tín hiệu xanh hoặc “completed”?
+4. Failure nào vẫn cho tín hiệu xanh hoặc completed?
 5. Thay đổi nào làm policy, metric, allocation hoặc state transition phải xem lại?
 6. Ai có quyền duyệt, ai vận hành và bằng chứng nào còn chưa chạy?
 
@@ -230,7 +230,7 @@ Mọi kết luận cần raw artifact, version và failure signal. Một dashboa
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.cost-to-serve`
+## Execution capsule: kiểm chứng `wiki.data-product.cost-to-serve`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.cost-to-serve`, sơ đồ, ví dụ và artifact về **Cost to Serve** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -252,7 +252,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Làm sao dựng cost-to-serve có boundary, allocation policy, unit denominator và uncertainty đủ để so sánh hoặc đề xuất retirement mà không cắt nhầm giá trị?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Làm sao dựng cost-to-serve có boundary, allocation policy, unit denominator và uncertainty đủ để so sánh hoặc đề xuất retirement mà không cắt nhầm giá trị? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Cost to Serve** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

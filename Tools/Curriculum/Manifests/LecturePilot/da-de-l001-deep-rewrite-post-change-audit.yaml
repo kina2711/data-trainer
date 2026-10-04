@@ -1,0 +1,38 @@
+task_id: core-post-change-audit
+instance_id: da-de-l001-deep-rewrite-pilot
+status: pass-awaiting-owner-approval
+completed_at: 2026-10-03
+scope:
+  requested_packages: [DA-L001, DE-L001]
+  changed_packages: [DA-L001, DE-L001]
+  remaining_pilot_lessons_changed: false
+deliverables:
+  DA-L001:
+    assets: [lesson.yaml, note.md, slides.md, quiz.md, homework.md, after-note.md]
+    source_records: 4
+    scenes: 9
+    duration_minutes: 120
+  DE-L001:
+    assets: [lesson.yaml, note.md, slides.md, quiz.md, homework.md, after-note.md]
+    source_records: 7
+    scenes: 9
+    duration_minutes: 120
+verification:
+  curriculum_validator: pass
+  builder_determinism_check: pass
+  portal_index_build: pass
+  web_unit_test: pass
+  javascript_syntax: pass
+  desktop_render_1280: pass
+  mobile_render_390x844: pass
+  horizontal_overflow: false
+  browser_console_errors: 0
+approval:
+  owner: kina2711
+  required_before_next_lessons: true
+  current_state: awaiting-owner-approval
+limitations:
+  - Learner memory locator was not resolved; no prior mastery is claimed.
+  - Timing and difficulty have not yet been calibrated on a live cohort.
+  - Synthetic cases demonstrate method and do not claim production validation.
+next_task: Owner reviews both pilot packages and either approves them or returns concrete revision notes.

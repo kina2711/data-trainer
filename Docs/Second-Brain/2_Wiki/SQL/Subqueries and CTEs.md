@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Ba vị trí đặt truy vấn con: trong `SELECT`, trong `FROM`, trong `WHERE`. Truy vấn con tương quan và chi phí thực thi của nó. Khác biệt ngữ nghĩa giữa `EXISTS`, `IN` và `JOIN` khi tập con chứa `NULL`. CTE với `WITH`: cú pháp, chuỗi nhiều CTE. Quy ước đặt tên CTE theo hạt của kết quả thay vì theo thao tác. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L025 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Subqueries and CTEs**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Tái cấu trúc một truy vấn lồng nhiều tầng thành chuỗi CTE đặt tên theo hạt, giữ nguyên kết quả và đạt rà soát chéo về độ đọc được. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Ba vị trí đặt truy vấn con: trong `SELECT`, trong `FROM`, trong `WHERE`. Truy vấn con tương quan và chi phí thực thi của nó. Khác biệt ngữ nghĩa giữa `EXISTS`, `IN` và `JOIN` khi tập con chứa `NULL`. CTE với `WITH`: cú pháp, chuỗi nhiều CTE. Quy ước đặt tên CTE theo hạt của kết quả thay vì theo thao tác.
 
@@ -44,7 +44,7 @@ Cơ chế của `subqueries-and-ctes` được kiểm qua năm lớp: input và 
 
 Lỗi cần loại trừ trong bài này là: Đặt tên CTE theo thao tác nên tên không mang thông tin về hạt · dùng truy vấn con tương quan ở nơi `JOIN` làm được · thay `NOT EXISTS` bằng `NOT IN` trên tập có `NULL`. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Đặt tên CTE theo thao tác nê
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L025: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Kết quả sau tái cấu trúc khớp từng dòng với kết quả gốc, và một học viên khác giải thích được luồng dữ liệu chỉ từ tên CTE.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L025: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Kết quả sau tái cấu trúc khớp từng dòng với kết quả gốc, và một học viên khác giải thích được luồng dữ liệu chỉ từ tên CTE.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Subqueries and CTEs
+## Worked Case: Subqueries and CTEs
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Nhận một truy vấn 80 dòng lồng bốn tầng, tái cấu trúc thành 5 CTE. Sau đó làm chiều ngược lại: từ một bài toán mới, viết thẳng bằng CTE.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Subqueries and CTEs`, learner ghi expected result, g
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L025 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Subqueries and CTEs` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L025 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Ba vị trí đặt truy vấn con: trong `SELECT`, trong `FROM`, trong `WHERE`. Truy vấn con tương quan và chi phí thực thi của nó. Khác biệt ngữ nghĩa giữa `EXISTS`, `IN` và `JOIN` khi tập con chứa `NULL`. CTE với `WITH`: cú pháp, chuỗi nhiều CTE. Quy ước đặt tên CTE theo hạt của kết quả thay vì theo thao tác.
+**Mệnh đề của probe 1: `population`.** Ba vị trí đặt truy vấn con: trong `SELECT`, trong `FROM`, trong `WHERE`. Truy vấn con tương quan và chi phí thực thi của nó. Khác biệt ngữ nghĩa giữa `EXISTS`, `IN` và `JOIN` khi tập con chứa `NULL`. CTE với `WITH`: cú pháp, chuỗi nhiều CTE. Quy ước đặt tên CTE theo hạt của kết quả thay vì theo thao tác.
 
 **Thiết kế.** Probe 1 của L025 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L025 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Tái cấu trúc một truy vấn lồng nhiều tầng thành chuỗi CTE đặt tên theo hạt, giữ nguyên kết quả và đạt rà soát chéo về độ đọc được.
+**Mệnh đề của probe 2: `grain`.** Tái cấu trúc một truy vấn lồng nhiều tầng thành chuỗi CTE đặt tên theo hạt, giữ nguyên kết quả và đạt rà soát chéo về độ đọc được.
 
 **Thiết kế.** Probe 2 của L025 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L025 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Đặt tên CTE theo thao tác nên tên không mang thông tin về hạt · dùng truy vấn con tương quan ở nơi `JOIN` làm được · thay `NOT EXISTS` bằng `NOT IN` trên tập có `NULL`.
+**Mệnh đề của probe 3: `identity`.** Đặt tên CTE theo thao tác nên tên không mang thông tin về hạt · dùng truy vấn con tương quan ở nơi `JOIN` làm được · thay `NOT EXISTS` bằng `NOT IN` trên tập có `NULL`.
 
 **Thiết kế.** Probe 3 của L025 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L025 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Kết quả sau tái cấu trúc khớp từng dòng với kết quả gốc, và một học viên khác giải thích được luồng dữ liệu chỉ từ tên CTE.
+**Mệnh đề của probe 4: `time cutoff`.** Kết quả sau tái cấu trúc khớp từng dòng với kết quả gốc, và một học viên khác giải thích được luồng dữ liệu chỉ từ tên CTE.
 
 **Thiết kế.** Probe 4 của L025 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L025 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Ba vị trí đặt truy vấn con: trong `SELECT`, trong `FROM`, trong `WHERE`. Truy vấn con tương quan và chi phí thực thi của nó. Khác biệt ngữ nghĩa giữa `EXISTS`, `IN` và `JOIN` khi tập con chứa `NULL`. CTE với `WITH`: cú pháp, chuỗi nhiều CTE. Quy ước đặt tên CTE theo hạt của kết quả thay vì theo thao tác.
+**Mệnh đề của probe 5: `missing versus zero`.** Ba vị trí đặt truy vấn con: trong `SELECT`, trong `FROM`, trong `WHERE`. Truy vấn con tương quan và chi phí thực thi của nó. Khác biệt ngữ nghĩa giữa `EXISTS`, `IN` và `JOIN` khi tập con chứa `NULL`. CTE với `WITH`: cú pháp, chuỗi nhiều CTE. Quy ước đặt tên CTE theo hạt của kết quả thay vì theo thao tác.
 
 **Thiết kế.** Probe 5 của L025 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L025 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Tái cấu trúc một truy vấn lồng nhiều tầng thành chuỗi CTE đặt tên theo hạt, giữ nguyên kết quả và đạt rà soát chéo về độ đọc được.
+**Mệnh đề của probe 6: `duplicate`.** Tái cấu trúc một truy vấn lồng nhiều tầng thành chuỗi CTE đặt tên theo hạt, giữ nguyên kết quả và đạt rà soát chéo về độ đọc được.
 
 **Thiết kế.** Probe 6 của L025 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L025 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Đặt tên CTE theo thao tác nên tên không mang thông tin về hạt · dùng truy vấn con tương quan ở nơi `JOIN` làm được · thay `NOT EXISTS` bằng `NOT IN` trên tập có `NULL`.
+**Mệnh đề của probe 7: `join fan-out`.** Đặt tên CTE theo thao tác nên tên không mang thông tin về hạt · dùng truy vấn con tương quan ở nơi `JOIN` làm được · thay `NOT EXISTS` bằng `NOT IN` trên tập có `NULL`.
 
 **Thiết kế.** Probe 7 của L025 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L025 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Kết quả sau tái cấu trúc khớp từng dòng với kết quả gốc, và một học viên khác giải thích được luồng dữ liệu chỉ từ tên CTE.
+**Mệnh đề của probe 8: `changed definition`.** Kết quả sau tái cấu trúc khớp từng dòng với kết quả gốc, và một học viên khác giải thích được luồng dữ liệu chỉ từ tên CTE.
 
 **Thiết kế.** Probe 8 của L025 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L025 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Ba vị trí đặt truy vấn con: trong `SELECT`, trong `FROM`, trong `WHERE`. Truy vấn con tương quan và chi phí thực thi của nó. Khác biệt ngữ nghĩa giữa `EXISTS`, `IN` và `JOIN` khi tập con chứa `NULL`. CTE với `WITH`: cú pháp, chuỗi nhiều CTE. Quy ước đặt tên CTE theo hạt của kết quả thay vì theo thao tác.
+**Mệnh đề của probe 9: `independent oracle`.** Ba vị trí đặt truy vấn con: trong `SELECT`, trong `FROM`, trong `WHERE`. Truy vấn con tương quan và chi phí thực thi của nó. Khác biệt ngữ nghĩa giữa `EXISTS`, `IN` và `JOIN` khi tập con chứa `NULL`. CTE với `WITH`: cú pháp, chuỗi nhiều CTE. Quy ước đặt tên CTE theo hạt của kết quả thay vì theo thao tác.
 
 **Thiết kế.** Probe 9 của L025 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L025 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Tái cấu trúc một truy vấn lồng nhiều tầng thành chuỗi CTE đặt tên theo hạt, giữ nguyên kết quả và đạt rà soát chéo về độ đọc được.
+**Mệnh đề của probe 10: `replay`.** Tái cấu trúc một truy vấn lồng nhiều tầng thành chuỗi CTE đặt tên theo hạt, giữ nguyên kết quả và đạt rà soát chéo về độ đọc được.
 
 **Thiết kế.** Probe 10 của L025 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L025 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Đặt tên CTE theo thao tác nên tên không mang thông tin về hạt · dùng truy vấn con tương quan ở nơi `JOIN` làm được · thay `NOT EXISTS` bằng `NOT IN` trên tập có `NULL`.
+**Mệnh đề của probe 11: `fresh snapshot`.** Đặt tên CTE theo thao tác nên tên không mang thông tin về hạt · dùng truy vấn con tương quan ở nơi `JOIN` làm được · thay `NOT EXISTS` bằng `NOT IN` trên tập có `NULL`.
 
 **Thiết kế.** Probe 11 của L025 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L025 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Kết quả sau tái cấu trúc khớp từng dòng với kết quả gốc, và một học viên khác giải thích được luồng dữ liệu chỉ từ tên CTE.
+**Mệnh đề của probe 12: `novel scenario`.** Kết quả sau tái cấu trúc khớp từng dòng với kết quả gốc, và một học viên khác giải thích được luồng dữ liệu chỉ từ tên CTE.
 
 **Thiết kế.** Probe 12 của L025 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Kết quả sau tái cấu trúc khớp từng dòng với kết quả gốc, v�
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql`
-2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e`
+1. [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql`
+2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Subqueries and CTEs | các mục cơ chế, case và probe | Đã phủ | ngoài objective L025 |
-| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Subqueries and CTEs | các mục cơ chế, case và probe | Đã phủ | ngoài objective L025 |
+| [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Subqueries and CTEs | các mục cơ chế, case và probe | Đã phủ | ngoài objective L025 |
+| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Subqueries and CTEs | các mục cơ chế, case và probe | Đã phủ | ngoài objective L025 |
 
 ## Key takeaways
 - Tái cấu trúc một truy vấn lồng nhiều tầng thành chuỗi CTE đặt tên theo hạt, giữ nguyên kết quả và đạt rà soát chéo về độ đọc được.
@@ -226,7 +226,7 @@ Kết quả sau tái cấu trúc khớp từng dòng với kết quả gốc, v�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.subqueries-and-ctes`
+## Execution capsule: kiểm chứng `wiki.da.subqueries-and-ctes`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.subqueries-and-ctes`, sơ đồ, ví dụ và artifact về **Subqueries and CTEs** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

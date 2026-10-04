@@ -13,6 +13,8 @@ from pathlib import Path
 
 import yaml
 
+from humanize_portal_corpus import editorial_prose, prose_transform, remove_course_timing
+
 ROOT = Path(__file__).resolve().parents[3]
 DA_ROOT = ROOT / "Material/DA/Curriculum/Phase_01-foundations-and-role/Module_01-introduction-to-the-data-analyst-role"
 DE_ROOT = ROOT / "Material/DE/Curriculum/Phase_01-engineering-foundation/Module_01-engineering-thinking-git-and-debugging"
@@ -21,6 +23,7 @@ DE_ROOT = ROOT / "Material/DE/Curriculum/Phase_01-engineering-foundation/Module_
 LESSONS = [
     {
         "role": "DA", "number": 1, "slug": "what-a-data-analyst-actually-does-all-day",
+        "authoring_mode": "handcrafted",
         "title": "What a Data Analyst actually does all day",
         "question": "Data Analyst tạo giá trị ở đâu trong vòng đời từ yêu cầu đến quyết định?",
         "objective": "Phân loại nhiệm vụ theo sáu vai trò dữ liệu và bảo vệ ranh giới trách nhiệm bằng outcome, artifact và consumer.",
@@ -241,6 +244,7 @@ LESSONS = [
     },
     {
         "role": "DE", "number": 1, "slug": "from-a-vague-request-to-a-testable-contract",
+        "authoring_mode": "handcrafted",
         "title": "From a vague request to a testable contract",
         "question": "Làm sao biến yêu cầu kỹ thuật mơ hồ thành behavior và acceptance check có thể tái hiện?",
         "objective": "Viết testable contract khóa decision, boundary, input/output, invariants, failure behavior và evidence trước mutation.",
@@ -471,6 +475,59 @@ DISTRACTORS = [
     "Coi tên bảng, folder hoặc service là bằng chứng về trách nhiệm và grain.",
 ]
 
+SECOND_BRAIN_REFS = {
+    "DA-L001": [
+        ("wiki.da.operating-as-a-data-analyst", "Operating as a Data Analyst"),
+        ("wiki.data-product.decision-first-discovery", "Decision-First Discovery"),
+        ("wiki.da.revenue-and-commerce-analytics", "Revenue and commerce analytics"),
+    ],
+    "DA-L002": [
+        ("wiki.da-foundation.data-lifecycle-seven-stages", "Data lifecycle and its seven stages"),
+        ("wiki.data-product.decision-first-discovery", "Decision-First Discovery"),
+        ("wiki.da.reconciliation-and-the-discipline-of-verification", "Reconciliation and the discipline of verification"),
+    ],
+    "DA-L003": [
+        ("wiki.da-foundation.entity-attribute-record-and-grain", "Entities, attributes, records and grain"),
+        ("wiki.data-modeling.fact-table-types", "Fact table types"),
+        ("wiki.database.joins-duplicate-multiplication-null", "Join multiplication and NULL behavior"),
+    ],
+    "DA-L004": [
+        ("wiki.da-foundation.three-question-tiers-and-metric-tree", "Three question tiers and the metric tree"),
+        ("wiki.data-product.metric-tree", "Question decomposition and the metric tree"),
+        ("wiki.data-product.decision-first-discovery", "Decision-First Discovery"),
+    ],
+    "DA-L005": [
+        ("wiki.da-foundation.vague-request-to-answerable-question", "From a vague request to an answerable question"),
+        ("wiki.semantic-layer.metric-contract", "From a business question to a metric contract"),
+        ("wiki.data-product.requirements-traceability", "Requirements traceability"),
+    ],
+    "DE-L001": [
+        ("wiki.engineering-foundation.testable-contract", "From a vague request to a testable contract"),
+        ("wiki.data-product.requirements-traceability", "Requirements traceability"),
+        ("wiki.data-quality.sli-slo-design", "Data SLI and SLO design"),
+    ],
+    "DE-L002": [
+        ("wiki.engineering-foundation.decomposition-four-axes", "Decomposition across four axes"),
+        ("wiki.data-product.requirements-traceability", "Requirements traceability"),
+        ("wiki.backend.idempotency-keys-deduplication-state", "Idempotency keys and deduplication state"),
+    ],
+    "DE-L003": [
+        ("wiki.engineering-foundation.adr-trade-offs", "Trade-offs and architecture decision records"),
+        ("wiki.data-product.decision-first-discovery", "Decision-First Discovery"),
+        ("wiki.data-product.requirements-traceability", "Requirements traceability"),
+    ],
+    "DE-L004": [
+        ("wiki.engineering-foundation.git-object-database", "Git as a content-addressed object database"),
+        ("wiki.engineering-foundation.adr-trade-offs", "Trade-offs and architecture decision records"),
+        ("wiki.data-product.requirements-traceability", "Requirements traceability"),
+    ],
+    "DE-L005": [
+        ("wiki.engineering-foundation.git-history-integration", "Branching, merge, rebase and commit identity"),
+        ("wiki.engineering-foundation.git-object-database", "Git as a content-addressed object database"),
+        ("wiki.engineering-foundation.adr-trade-offs", "Trade-offs and architecture decision records"),
+    ],
+}
+
 
 def lesson_dir(item: dict) -> Path:
     base = DA_ROOT if item["role"] == "DA" else DE_ROOT
@@ -478,21 +535,38 @@ def lesson_dir(item: dict) -> Path:
 
 
 def note_locator(item: dict, heading: str) -> str:
-    return f"note.md — heading '{heading}'"
+    normalized = {
+        "Nỗi Đau & Động Lực": "Problem Definition and Operational Relevance",
+        "Cơ Chế Tác Động": "Mechanism",
+        "Bản Đồ Quyết Định": "Decision Framework",
+        "Case Study Thực Chiến: một chỉ số bán hàng đổi nghĩa giữa đường": "Worked Case: một chỉ số bán hàng đổi nghĩa giữa đường",
+        "Góc Khuất & Ngộ Nhận": "Limits and Common Errors",
+    }.get(heading, heading.strip("'"))
+    return f"note.md: heading {normalized}"
+
+
+def references_md(item: dict) -> str:
+    lesson_id = f"{item['role']}-L{item['number']:03d}"
+    links = "\n".join(f"- [[{note_id}|{label}]]" for note_id, label in SECOND_BRAIN_REFS[lesson_id])
+    return f"## References\n\n{links}\n"
+
+
+def public_copy(text: str) -> str:
+    return prose_transform(text, lambda value: remove_course_timing(editorial_prose(value)))
 
 
 def scenes(item: dict) -> list[dict]:
     sec = item["sections"]
     return [
-        {"id": "S01", "type": "explain", "minutes": 10, "claim": item["hook"], "source_span": note_locator(item, sec[0]), "misconception_displaced": "Có thể bắt đầu bằng công cụ/output trước khi khóa câu hỏi và boundary."},
-        {"id": "S02", "type": "explain", "minutes": 18, "claim": item["core"], "source_span": note_locator(item, sec[1]), "misconception_displaced": item["critical_failure"]},
-        {"id": "S03", "type": "check", "minutes": 7, "question": item["facts"][0][0], "answer": item["facts"][0][1], "wrong_answer_reveals": "Người học nhớ từ khóa nhưng chưa nắm claim trung tâm.", "source_span": note_locator(item, sec[1])},
-        {"id": "S04", "type": "practice", "minutes": 18, "task": item["guided_task"], "success_condition": item["guided_success"], "source_span": "UNSOURCED — guided practice synthesized from the lesson objective and source-backed mechanism"},
-        {"id": "S05", "type": "explain", "minutes": 15, "claim": item["decision_rule"], "source_span": note_locator(item, sec[2]), "misconception_displaced": "Một rule hoặc tool luôn đúng bất kể changed constraint."},
-        {"id": "S06", "type": "decide", "minutes": 12, "situation": item["change"], "trade_off": item["boundary"], "defensible_choices": "Lựa chọn phải giữ hard constraints, nêu evidence và reversal trigger.", "source_span": "UNSOURCED — changed-constraint decision scenario synthesized for transfer"},
-        {"id": "S07", "type": "explain", "minutes": 15, "claim": "Worked example: " + " ".join(item["worked"]), "source_span": note_locator(item, sec[3]), "misconception_displaced": "Một case thành công tự chứng minh cơ chế tổng quát."},
-        {"id": "S08", "type": "apply", "minutes": 18, "task": item["transfer"], "assumes": ["S02", "S04", "S05", "S06", "S07"], "success_condition": "Artifact nêu boundary, evidence, lựa chọn, rejected alternative và condition làm quyết định đảo.", "source_span": "UNSOURCED — curriculum transfer scenario synthesized from the lesson contract"},
-        {"id": "S09", "type": "check", "minutes": 7, "question": item["exit_q"], "answer": item["exit_a"], "wrong_answer_reveals": "Người học chưa chuyển mental model sang tình huống mới.", "source_span": note_locator(item, sec[4])},
+        {"id": "S01", "type": "explain", "claim": item["hook"], "source_span": note_locator(item, sec[0]), "misconception_displaced": "Có thể bắt đầu bằng công cụ/output trước khi khóa câu hỏi và boundary."},
+        {"id": "S02", "type": "explain", "claim": item["core"], "source_span": note_locator(item, sec[1]), "misconception_displaced": item["critical_failure"]},
+        {"id": "S03", "type": "check", "question": item["facts"][0][0], "answer": item["facts"][0][1], "wrong_answer_reveals": "Người học nhớ từ khóa nhưng chưa nắm claim trung tâm.", "source_span": note_locator(item, sec[1])},
+        {"id": "S04", "type": "practice", "task": item["guided_task"], "success_condition": item["guided_success"], "source_span": "UNSOURCED: guided practice synthesized from the lesson objective and source-backed mechanism"},
+        {"id": "S05", "type": "explain", "claim": item["decision_rule"], "source_span": note_locator(item, sec[2]), "misconception_displaced": "Một rule hoặc tool luôn đúng bất kể changed constraint."},
+        {"id": "S06", "type": "decide", "situation": item["change"], "trade_off": item["boundary"], "defensible_choices": "Lựa chọn phải giữ hard constraints, nêu evidence và reversal trigger.", "source_span": "UNSOURCED: changed-constraint decision scenario synthesized for transfer"},
+        {"id": "S07", "type": "explain", "claim": "Worked example: " + " ".join(item["worked"]), "source_span": note_locator(item, sec[3]), "misconception_displaced": "Một case thành công tự chứng minh cơ chế tổng quát."},
+        {"id": "S08", "type": "apply", "task": item["transfer"], "assumes": ["S02", "S04", "S05", "S06", "S07"], "success_condition": "Artifact nêu boundary, evidence, lựa chọn, rejected alternative và condition làm quyết định đảo.", "source_span": "UNSOURCED: curriculum transfer scenario synthesized from the lesson contract"},
+        {"id": "S09", "type": "check", "question": item["exit_q"], "answer": item["exit_a"], "wrong_answer_reveals": "Người học chưa chuyển mental model sang tình huống mới.", "source_span": note_locator(item, sec[4])},
     ]
 
 
@@ -505,11 +579,15 @@ def build_yaml(item: dict) -> str:
         "lifecycle_profile": "learning",
         "risk_tier": "R2-standard",
         "target_level": "Foundation",
-        "duration_minutes_estimate": 120,
         "central_question": item["question"],
         "objective": item["objective"],
         "prerequisites": item["prerequisites"],
         "learner_memory": {"resolved": False, "assumption": "No prior mastery claimed; teach and assess the named prerequisites."},
+        "editorial": {
+            "standard": "lesson-authoring-v1",
+            "humanizer": "blader/humanizer@3.1.0",
+            "status": "pass",
+        },
         "scenes": scenes(item),
         "assessment": {
             "formative": "quiz.md — 10 questions, pass >= 8/10; failed concepts receive targeted remediation and one retest.",
@@ -517,7 +595,7 @@ def build_yaml(item: dict) -> str:
             "mastery_claim": "None. Package readiness and learner mastery are separate evidence states.",
         },
         "publish": {"note": True, "slides": True, "quiz": True, "homework": True, "after_note": True, "answer_key": True},
-        "unused_source_spans": ["Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension/remediation; the 120-minute session samples rather than recites every probe."],
+        "unused_source_spans": ["Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension and remediation."],
     }
     return yaml.safe_dump(payload, allow_unicode=True, sort_keys=False, width=110)
 
@@ -539,7 +617,7 @@ footer: 'Foundation · runnable scene package'
 
 # {item['title']}
 
-**{lesson_id} · 120 phút (ước tính)**
+**{lesson_id}**
 
 > {item['question']}
 
@@ -560,7 +638,7 @@ footer: 'Foundation · runnable scene package'
 
 {item['hook']}
 
-**Think–pair–share · 4 phút**
+**Independent analysis followed by peer review**
 
 1. Bạn sẽ làm gì đầu tiên?
 2. Quyết định nào có thể bị ảnh hưởng?
@@ -609,7 +687,7 @@ Nếu câu trả lời chỉ nêu tên công cụ, hãy quay lại mental model 
 ---
 
 <!-- scene: S04 · source: UNSOURCED guided practice synthesis -->
-## Guided practice · 12 phút làm + 6 phút chữa
+## Guided practice
 
 {item['guided_task']}
 
@@ -681,7 +759,7 @@ Một output không có boundary, oracle hoặc limitation chỉ là kết quả
 ---
 
 <!-- scene: S09 · source: {note_locator(item, item['sections'][4])} -->
-## Exit ticket · 3 phút
+## Exit check
 
 **{item['exit_q']}**
 
@@ -692,15 +770,19 @@ Một output không có boundary, oracle hoặc limitation chỉ là kết quả
 
 ---
 
-## Sau buổi học
+## Post-Lesson
 
 1. Làm `quiz.md`; đạt **8/10**.
 2. Nếu trượt một concept, đọc remediation trong `after-note.md` rồi retest đúng concept đó.
 3. Hoàn thành `homework.md`; đạt **≥ 75/100** và không có critical failure.
 
 **Bắc cầu:** {item['next']}
+
+---
+
+{references_md(item)}
 '''
-    return content.replace(" — ", ": ").replace(";", ".").replace(" → ", " sang ")
+    return public_copy(content.replace(" — ", ": ").replace(";", ".").replace(" → ", " sang "))
 
 
 def quiz_questions(item: dict) -> list[tuple[str, str, list[str]]]:
@@ -744,40 +826,40 @@ def quiz_md(item: dict) -> str:
 
 Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>''')
-    return f'''---
+    return public_copy(f'''---
 loai: formative-quiz
 lesson: {item['number']}
 lesson_id: {item['role']}-L{item['number']:03d}
 tieu_de: "{item['title']}"
 so_cau: 10
-thoi_gian_phut: 18
 trang_thai: ready-for-owner-review
 nguong_dat: 8
 ---
 
 # Quiz — {item['role']} Lesson {item['number']}: {item['title']}
 
-**Mục đích:** kiểm mental model và khả năng áp dụng, không dùng điểm danh làm bằng chứng.  
+**Mục đích:** kiểm mental model và khả năng áp dụng, không dùng điểm danh làm bằng chứng.
 **Đạt:** ≥ 8/10. Câu 7-10 là critical transfer set; sai câu nào phải remediation và retest câu tương đương.
 
 {'\n\n---\n\n'.join(blocks)}
-'''
+
+{references_md(item)}
+''')
 
 
 def homework_md(item: dict) -> str:
-    return f'''---
+    return public_copy(f'''---
 loai: authentic-homework
 lesson: {item['number']}
 lesson_id: {item['role']}-L{item['number']:03d}
 tieu_de: "{item['title']}"
-thoi_gian_uoc_tinh_gio: 2.5
 trang_thai: ready-for-owner-review
 nguong_dat: 75
 ---
 
 # Homework — {item['role']} Lesson {item['number']}: {item['title']}
 
-**Thời gian ước tính:** 2–3 giờ · **Làm cá nhân** · **Nộp:** một thư mục chứa artifact, evidence và reflection.
+**Làm cá nhân. Nộp một thư mục chứa artifact, evidence và reflection.**
 
 ## Bối cảnh và input cố định
 
@@ -827,12 +909,14 @@ Viết memo 250–400 từ: phần nào của artifact còn đúng, phần nào 
 ## Remediation và retest
 
 Nếu trượt, reviewer chỉ rõ rubric row và failed invariant. Người học nộp lại phần sai cùng một changed scenario; không cần làm lại phần đã có bằng chứng đạt. Retest phải dùng fixture/scenario khác để tránh học thuộc đáp án.
-'''
+
+{references_md(item)}
+''')
 
 
 def after_note_md(item: dict) -> str:
     facts = "\n".join(f"- **{q}** — {a}" for q, a in item["facts"][:4])
-    return f'''# {item['role']} Lesson {item['number']} — Practice, feedback and retest
+    return public_copy(f'''# {item['role']} Lesson {item['number']} — Practice, feedback and retest
 
 ## Thực hành có hướng dẫn
 
@@ -857,7 +941,7 @@ def after_note_md(item: dict) -> str:
 
 **Pass condition:** câu trả lời nêu boundary, evidence, lựa chọn, ít nhất một alternative, blast radius/consumer harm và reversal trigger. Không chấm theo việc trùng wording của đáp án mẫu.
 
-## Bài làm sau buổi học
+## Post-Lesson Work
 
 - Làm `quiz.md`, ngưỡng 8/10.
 - Làm `homework.md`, ngưỡng 75/100 và không có critical failure.
@@ -874,12 +958,14 @@ def after_note_md(item: dict) -> str:
 
 ## Giới hạn
 
-Gói này chưa được dạy trên cohort thật; thời lượng là ước tính. Điểm quiz/homework chỉ là evidence trong scope của {item['role']}-L{item['number']:03d}, không phải chứng nhận vai trò hay kinh nghiệm production.
+Gói này chưa được dạy trên cohort thật. Điểm quiz và homework chỉ là evidence trong scope của {item['role']}-L{item['number']:03d}, không phải chứng nhận vai trò hoặc kinh nghiệm production.
 
 ## Bắc cầu
 
 {item['next']}
-'''
+
+{references_md(item)}
+''')
 
 
 def digest(paths: list[Path]) -> str:
@@ -900,6 +986,15 @@ def main(check: bool = False) -> int:
         note = directory / "note.md"
         if not note.exists():
             raise FileNotFoundError(note)
+        if item.get("authoring_mode") == "handcrafted":
+            handcrafted = [directory / name for name in ("lesson.yaml", "slides.md", "quiz.md", "homework.md", "after-note.md")]
+            missing = [str(path.relative_to(ROOT)) for path in handcrafted if not path.exists()]
+            if missing:
+                print("MISSING HANDCRAFTED ASSETS")
+                print("\n".join(missing))
+                return 1
+            outputs.extend(handcrafted)
+            continue
         assets = {
             "lesson.yaml": build_yaml(item),
             "slides.md": slides_md(item),

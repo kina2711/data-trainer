@@ -1,0 +1,22 @@
+{
+  "task_id": "academy-audit-curriculum-quality",
+  "instance_id": "lesson-authoring-standard-v1",
+  "audited_at": "2026-10-04",
+  "result": "pass",
+  "approved_baseline": ["DA-L001", "DE-L001"],
+  "changed_assets": [
+    "Tools/Curriculum/Policies/lesson-authoring-standard-v1.md",
+    "Tools/Curriculum/Build/validate_lesson_authoring_standard.py",
+    "package.json",
+    "DA-L001 lesson.yaml editorial evidence",
+    "DE-L001 lesson.yaml editorial evidence",
+    "two Second Brain source chains",
+    "LecturePilot approval manifests"
+  ],
+  "scope_controls": {
+    "later_lesson_content_authored": false,
+    "approved_l001_prose_changed": false,
+    "code_or_link_targets_changed_by_humanizer": false,
+    "learner_mastery_claimed": false
+  }
+}

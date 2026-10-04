@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Bảng vật lý, mart, semantic model, metric contract và công cụ tiêu thụ khác nhau ở artifact, trách nhiệm và failure mode nào?
 source_ids:
   - src.book.reis-housley-fundamentals-data-engineering
@@ -43,7 +43,7 @@ Mart tổ chức physical artifacts cho một domain/use case: facts, dimensions
 
 ## 4. Tầng ba và bốn: semantic model, metric contract
 
-Semantic model khai báo entities, dimensions, measures, relationships, time dimensions và join behavior trên marts. Metric contract đặt tên cho phép tính: expression, source measure, entity/grain, filters, time window, aggregation, unit, null/late-data policy, owner và version. Tùy sản phẩm, metric có thể nằm trong cùng YAML/repository với semantic model, nhưng hai trách nhiệm vẫn phân biệt được. “Một nơi” nghĩa một governed source of truth có version và API/build path, không phải một file bất biến.
+Semantic model khai báo entities, dimensions, measures, relationships, time dimensions và join behavior trên marts. Metric contract đặt tên cho phép tính: expression, source measure, entity/grain, filters, time window, aggregation, unit, null/late-data policy, owner và version. Tùy sản phẩm, metric có thể nằm trong cùng YAML/repository với semantic model, nhưng hai trách nhiệm vẫn phân biệt được. Một nơi nghĩa một governed source of truth có version và API/build path, không phải một file bất biến.
 
 ## 5. Tầng năm: công cụ tiêu thụ
 
@@ -179,7 +179,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 2. Gắn từng định nghĩa với context, owner, version và canonical artifact; không dùng tên cột thay nghĩa.
 3. Tách nội dung lấy trực tiếp từ nguồn, quyết định thiết kế và phần tổng hợp của giáo trình.
 4. Dựng normal case cùng các ca biên có thể tạo kết quả hợp lệ cú pháp nhưng sai nghĩa.
-5. Đo row count, distinct keys, unmatched/disposition counts, control totals và semantic diff trước–sau transform.
+5. Đo row count, distinct keys, unmatched/disposition counts, control totals và semantic diff trước-sau transform.
 6. Thử replay, late correction hoặc schema/contract change phù hợp với bài; ghi change blast radius.
 7. Giữ failed run, assumptions và limitation trong hồ sơ. Chúng cho người khác khả năng bác bỏ kết luận.
 
@@ -222,7 +222,7 @@ Mỗi mệnh đề dưới đây cần một dữ liệu phản ví dụ, một 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.five-layer-boundary`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.five-layer-boundary`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.five-layer-boundary`, sơ đồ, ví dụ và artifact về **The Layers That Must Be Distinguished** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

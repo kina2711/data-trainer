@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Xử lý giá trị thiếu: `isna`, `fillna`, `dropna`, và câu hỏi ngữ nghĩa quyết định chọn cách nào, nối tiếp ba nghĩa của `NULL` ở lesson 19. Xử lý trùng lặp: `duplicated`, `drop_duplicates` với tham số `keep`. Chuẩn hoá chuỗi qua bộ truy cập `.str`. Xử lý ngày bằng `to_datetime` với tham số `format` và `errors`. Ép kiểu có kiểm soát. Phát hiện giá trị ngoại lai. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L072 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Data cleaning with pandas**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Viết một quy trình làm sạch cho ra kết quả giống hệt ở mỗi lần chạy, và khớp từng dòng với kết quả làm bằng SQL. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Xử lý giá trị thiếu: `isna`, `fillna`, `dropna`, và câu hỏi ngữ nghĩa quyết định chọn cách nào, nối tiếp ba nghĩa của `NULL` ở lesson 19. Xử lý trùng lặp: `duplicated`, `drop_duplicates` với tham số `keep`. Chuẩn hoá chuỗi qua bộ truy cập `.str`. Xử lý ngày bằng `to_datetime` với tham số `format` và `errors`. Ép kiểu có kiểm soát. Phát hiện giá trị ngoại lai.
 
@@ -44,7 +44,7 @@ Cơ chế của `data-cleaning-with-pandas` được kiểm qua năm lớp: inpu
 
 Lỗi cần loại trừ trong bài này là: `drop_duplicates` trên dữ liệu chưa sắp xếp nên giữ bản ghi khác nhau giữa các lần chạy · `to_datetime` không chỉ định `format` nên pandas tự suy đoán · `fillna(0)` cho cột mà giá trị thiếu nghĩa là chưa nhập. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: `drop_duplicates` trên dữ liệ
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L072: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Hai lần chạy cho kết quả giống hệt, và kết quả khớp từng dòng với bản làm bằng SQL ở lesson 36.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L072: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Hai lần chạy cho kết quả giống hệt, và kết quả khớp từng dòng với bản làm bằng SQL ở lesson 36.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Data cleaning with pandas
+## Worked Case: Data cleaning with pandas
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Làm sạch `orders_dirty.csv` bằng pandas. Kết quả phải khớp từng dòng với bản làm bằng SQL ở lesson 36, và hai lần chạy phải cho kết quả giống hệt.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Data cleaning with pandas`, learner ghi expected res
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L072 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Data cleaning with pandas` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L072 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Xử lý giá trị thiếu: `isna`, `fillna`, `dropna`, và câu hỏi ngữ nghĩa quyết định chọn cách nào, nối tiếp ba nghĩa của `NULL` ở lesson 19. Xử lý trùng lặp: `duplicated`, `drop_duplicates` với tham số `keep`. Chuẩn hoá chuỗi qua bộ truy cập `.str`. Xử lý ngày bằng `to_datetime` với tham số `format` và `errors`. Ép kiểu có kiểm soát. Phát hiện giá trị ngoại lai.
+**Mệnh đề của probe 1: `population`.** Xử lý giá trị thiếu: `isna`, `fillna`, `dropna`, và câu hỏi ngữ nghĩa quyết định chọn cách nào, nối tiếp ba nghĩa của `NULL` ở lesson 19. Xử lý trùng lặp: `duplicated`, `drop_duplicates` với tham số `keep`. Chuẩn hoá chuỗi qua bộ truy cập `.str`. Xử lý ngày bằng `to_datetime` với tham số `format` và `errors`. Ép kiểu có kiểm soát. Phát hiện giá trị ngoại lai.
 
 **Thiết kế.** Probe 1 của L072 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L072 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Viết một quy trình làm sạch cho ra kết quả giống hệt ở mỗi lần chạy, và khớp từng dòng với kết quả làm bằng SQL.
+**Mệnh đề của probe 2: `grain`.** Viết một quy trình làm sạch cho ra kết quả giống hệt ở mỗi lần chạy, và khớp từng dòng với kết quả làm bằng SQL.
 
 **Thiết kế.** Probe 2 của L072 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L072 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** `drop_duplicates` trên dữ liệu chưa sắp xếp nên giữ bản ghi khác nhau giữa các lần chạy · `to_datetime` không chỉ định `format` nên pandas tự suy đoán · `fillna(0)` cho cột mà giá trị thiếu nghĩa là chưa nhập.
+**Mệnh đề của probe 3: `identity`.** `drop_duplicates` trên dữ liệu chưa sắp xếp nên giữ bản ghi khác nhau giữa các lần chạy · `to_datetime` không chỉ định `format` nên pandas tự suy đoán · `fillna(0)` cho cột mà giá trị thiếu nghĩa là chưa nhập.
 
 **Thiết kế.** Probe 3 của L072 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L072 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Hai lần chạy cho kết quả giống hệt, và kết quả khớp từng dòng với bản làm bằng SQL ở lesson 36.
+**Mệnh đề của probe 4: `time cutoff`.** Hai lần chạy cho kết quả giống hệt, và kết quả khớp từng dòng với bản làm bằng SQL ở lesson 36.
 
 **Thiết kế.** Probe 4 của L072 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L072 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Xử lý giá trị thiếu: `isna`, `fillna`, `dropna`, và câu hỏi ngữ nghĩa quyết định chọn cách nào, nối tiếp ba nghĩa của `NULL` ở lesson 19. Xử lý trùng lặp: `duplicated`, `drop_duplicates` với tham số `keep`. Chuẩn hoá chuỗi qua bộ truy cập `.str`. Xử lý ngày bằng `to_datetime` với tham số `format` và `errors`. Ép kiểu có kiểm soát. Phát hiện giá trị ngoại lai.
+**Mệnh đề của probe 5: `missing versus zero`.** Xử lý giá trị thiếu: `isna`, `fillna`, `dropna`, và câu hỏi ngữ nghĩa quyết định chọn cách nào, nối tiếp ba nghĩa của `NULL` ở lesson 19. Xử lý trùng lặp: `duplicated`, `drop_duplicates` với tham số `keep`. Chuẩn hoá chuỗi qua bộ truy cập `.str`. Xử lý ngày bằng `to_datetime` với tham số `format` và `errors`. Ép kiểu có kiểm soát. Phát hiện giá trị ngoại lai.
 
 **Thiết kế.** Probe 5 của L072 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L072 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Viết một quy trình làm sạch cho ra kết quả giống hệt ở mỗi lần chạy, và khớp từng dòng với kết quả làm bằng SQL.
+**Mệnh đề của probe 6: `duplicate`.** Viết một quy trình làm sạch cho ra kết quả giống hệt ở mỗi lần chạy, và khớp từng dòng với kết quả làm bằng SQL.
 
 **Thiết kế.** Probe 6 của L072 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L072 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** `drop_duplicates` trên dữ liệu chưa sắp xếp nên giữ bản ghi khác nhau giữa các lần chạy · `to_datetime` không chỉ định `format` nên pandas tự suy đoán · `fillna(0)` cho cột mà giá trị thiếu nghĩa là chưa nhập.
+**Mệnh đề của probe 7: `join fan-out`.** `drop_duplicates` trên dữ liệu chưa sắp xếp nên giữ bản ghi khác nhau giữa các lần chạy · `to_datetime` không chỉ định `format` nên pandas tự suy đoán · `fillna(0)` cho cột mà giá trị thiếu nghĩa là chưa nhập.
 
 **Thiết kế.** Probe 7 của L072 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L072 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Hai lần chạy cho kết quả giống hệt, và kết quả khớp từng dòng với bản làm bằng SQL ở lesson 36.
+**Mệnh đề của probe 8: `changed definition`.** Hai lần chạy cho kết quả giống hệt, và kết quả khớp từng dòng với bản làm bằng SQL ở lesson 36.
 
 **Thiết kế.** Probe 8 của L072 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L072 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Xử lý giá trị thiếu: `isna`, `fillna`, `dropna`, và câu hỏi ngữ nghĩa quyết định chọn cách nào, nối tiếp ba nghĩa của `NULL` ở lesson 19. Xử lý trùng lặp: `duplicated`, `drop_duplicates` với tham số `keep`. Chuẩn hoá chuỗi qua bộ truy cập `.str`. Xử lý ngày bằng `to_datetime` với tham số `format` và `errors`. Ép kiểu có kiểm soát. Phát hiện giá trị ngoại lai.
+**Mệnh đề của probe 9: `independent oracle`.** Xử lý giá trị thiếu: `isna`, `fillna`, `dropna`, và câu hỏi ngữ nghĩa quyết định chọn cách nào, nối tiếp ba nghĩa của `NULL` ở lesson 19. Xử lý trùng lặp: `duplicated`, `drop_duplicates` với tham số `keep`. Chuẩn hoá chuỗi qua bộ truy cập `.str`. Xử lý ngày bằng `to_datetime` với tham số `format` và `errors`. Ép kiểu có kiểm soát. Phát hiện giá trị ngoại lai.
 
 **Thiết kế.** Probe 9 của L072 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L072 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Viết một quy trình làm sạch cho ra kết quả giống hệt ở mỗi lần chạy, và khớp từng dòng với kết quả làm bằng SQL.
+**Mệnh đề của probe 10: `replay`.** Viết một quy trình làm sạch cho ra kết quả giống hệt ở mỗi lần chạy, và khớp từng dòng với kết quả làm bằng SQL.
 
 **Thiết kế.** Probe 10 của L072 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L072 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** `drop_duplicates` trên dữ liệu chưa sắp xếp nên giữ bản ghi khác nhau giữa các lần chạy · `to_datetime` không chỉ định `format` nên pandas tự suy đoán · `fillna(0)` cho cột mà giá trị thiếu nghĩa là chưa nhập.
+**Mệnh đề của probe 11: `fresh snapshot`.** `drop_duplicates` trên dữ liệu chưa sắp xếp nên giữ bản ghi khác nhau giữa các lần chạy · `to_datetime` không chỉ định `format` nên pandas tự suy đoán · `fillna(0)` cho cột mà giá trị thiếu nghĩa là chưa nhập.
 
 **Thiết kế.** Probe 11 của L072 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L072 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Hai lần chạy cho kết quả giống hệt, và kết quả khớp từng dòng với bản làm bằng SQL ở lesson 36.
+**Mệnh đề của probe 12: `novel scenario`.** Hai lần chạy cho kết quả giống hệt, và kết quả khớp từng dòng với bản làm bằng SQL ở lesson 36.
 
 **Thiết kế.** Probe 12 của L072 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Hai lần chạy cho kết quả giống hệt, và kết quả khớp từng d�
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-PYTHON-314-LANGUAGE-REFERENCE]] — `src.docs.python-3.14-language-reference`
-2. [[SRC-PYTHON-314-STDLIB-RUNTIME]] — `src.docs.python-3.14-stdlib-runtime`
+1. [[SRC-PYTHON-314-LANGUAGE-REFERENCE]]: `src.docs.python-3.14-language-reference`
+2. [[SRC-PYTHON-314-STDLIB-RUNTIME]]: `src.docs.python-3.14-stdlib-runtime`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-PYTHON-314-LANGUAGE-REFERENCE]] — `src.docs.python-3.14-language-reference` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Data cleaning with pandas | các mục cơ chế, case và probe | Đã phủ | ngoài objective L072 |
-| [[SRC-PYTHON-314-STDLIB-RUNTIME]] — `src.docs.python-3.14-stdlib-runtime` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Data cleaning with pandas | các mục cơ chế, case và probe | Đã phủ | ngoài objective L072 |
+| [[SRC-PYTHON-314-LANGUAGE-REFERENCE]]: `src.docs.python-3.14-language-reference` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Data cleaning with pandas | các mục cơ chế, case và probe | Đã phủ | ngoài objective L072 |
+| [[SRC-PYTHON-314-STDLIB-RUNTIME]]: `src.docs.python-3.14-stdlib-runtime` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Data cleaning with pandas | các mục cơ chế, case và probe | Đã phủ | ngoài objective L072 |
 
 ## Key takeaways
 - Viết một quy trình làm sạch cho ra kết quả giống hệt ở mỗi lần chạy, và khớp từng dòng với kết quả làm bằng SQL.
@@ -226,7 +226,7 @@ Hai lần chạy cho kết quả giống hệt, và kết quả khớp từng d�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.data-cleaning-with-pandas`
+## Execution capsule: kiểm chứng `wiki.da.data-cleaning-with-pandas`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.data-cleaning-with-pandas`, sơ đồ, ví dụ và artifact về **Data cleaning with pandas** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

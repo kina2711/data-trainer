@@ -55,7 +55,7 @@ Score workload bằng reuse fanout, query frequency/latency, build volume/change
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
-Trong `Materializations Four Choices One ADR`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước–sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dựng fixture và project tối thiểu có exact graph/input boundary; chạy command hoặc protocol theo thứ tự, rồi đối soát relation, key set, typed hash và business invariant với full/reference computation.
+Trong `Materializations Four Choices One ADR`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước-sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dựng fixture và project tối thiểu có exact graph/input boundary; chạy command hoặc protocol theo thứ tự, rồi đối soát relation, key set, typed hash và business invariant với full/reference computation.
 
 ### 7.1. Materialization probe 1: workload, persistence, failure window, measured cost và reversal trigger phải rõ
 
@@ -71,7 +71,7 @@ Trong `Materializations Four Choices One ADR`, mỗi claim phải nối được
 
 **Thiết kế phép thử cho `wiki.transformation.dbt-materializations-adr`.** Với `Materialization probe 2: workload, persistence, failure window, measured cost và reversal trigger phải rõ`, Giữ nguyên input rồi đổi đúng một tham số cấu hình liên quan. Nếu output đổi theo nhiều hướng cùng lúc, phép thử chưa cô lập được nguyên nhân và phải thu hẹp lại. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Materialization probe 2: workload, persistence, failure window, measured cost và reversal trigger phải rõ` phải cho thấy: Báo cả giá trị trước–sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Materialization probe 2: workload, persistence, failure window, measured cost và reversal trigger phải rõ` phải cho thấy: Báo cả giá trị trước-sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.3. Materialization probe 3: workload, persistence, failure window, measured cost và reversal trigger phải rõ
 
@@ -119,7 +119,7 @@ Trong `Materializations Four Choices One ADR`, mỗi claim phải nối được
 
 **Thiết kế phép thử cho `wiki.transformation.dbt-materializations-adr`.** Với `Materialization probe 8: workload, persistence, failure window, measured cost và reversal trigger phải rõ`, Dùng một schema change tương thích và một thay đổi phá vỡ key, type hoặc meaning. Kết quả phải chỉ ra khác biệt giữa parse được, chạy được và vẫn giữ đúng semantics. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Materialization probe 8: workload, persistence, failure window, measured cost và reversal trigger phải rõ` phải cho thấy: Lưu schema trước–sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Materialization probe 8: workload, persistence, failure window, measured cost và reversal trigger phải rõ` phải cho thấy: Lưu schema trước-sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.9. Materialization probe 9: workload, persistence, failure window, measured cost và reversal trigger phải rõ
 
@@ -226,7 +226,7 @@ Trong `Materializations Four Choices One ADR`, mỗi claim phải nối được
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.transformation.dbt-materializations-adr`
+## Execution capsule: kiểm chứng `wiki.transformation.dbt-materializations-adr`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.transformation.dbt-materializations-adr`, sơ đồ, ví dụ và artifact về **Materializations Four Choices One ADR** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

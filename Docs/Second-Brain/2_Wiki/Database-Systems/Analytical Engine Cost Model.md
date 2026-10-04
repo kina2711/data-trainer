@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Xây cost model workload-weighted cho hai pricing models như thế nào để tìm reversal point, allocation boundary và đòn bẩy giảm chi phí thật?
 source_ids:
   - src.web.finops-data-cloud-platforms
@@ -235,7 +235,7 @@ Mỗi mệnh đề về latency, scaling, cache, concurrency hoặc cost cần c
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.olap.analytical-engine-cost-model`
+## Execution capsule: kiểm chứng `wiki.olap.analytical-engine-cost-model`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.olap.analytical-engine-cost-model`, sơ đồ, ví dụ và artifact về **Analytical Engine Cost Model** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

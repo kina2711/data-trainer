@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao chuyển lời nhắn mơ hồ thành decision contract gồm người quyết định, nhịp quyết định và action branches, đồng thời từ chối đúng yêu cầu không cần phân tích?
 source_ids:
   - src.web.govuk-understand-user-needs
@@ -32,7 +32,7 @@ relationships:
 
 ## 1. Bắt đầu từ decision event
 
-Discovery xác định một thời điểm người hoặc hệ thống phải chọn hành động dưới uncertainty. Ghi decision statement theo động từ: allocate, approve, investigate, contact, pause, forecast. “Xem dashboard doanh thu” là solution/request, chưa phải decision. GOV.UK nhấn mạnh hiểu full context và problem thay vì solution; giáo trình mở rộng thành decision contract để dữ liệu phục vụ một hành vi quan sát được.
+Discovery xác định một thời điểm người hoặc hệ thống phải chọn hành động dưới uncertainty. Ghi decision statement theo động từ: allocate, approve, investigate, contact, pause, forecast. Xem dashboard doanh thu là solution/request, chưa phải decision. GOV.UK nhấn mạnh hiểu full context và problem thay vì solution; giáo trình mở rộng thành decision contract để dữ liệu phục vụ một hành vi quan sát được.
 
 ## 2. Bốn phần tối thiểu
 
@@ -40,11 +40,11 @@ Decision: lựa chọn cụ thể và alternatives. Decider: accountable role/pe
 
 ## 3. Ba loại request
 
-Decision-backed analytics có action và cần evidence. Curiosity/exploration tìm hiểu để hình thành hypothesis; không giả là decision product, timebox và có learning question. Operational request muốn trigger transaction/workflow/alert, cần service/process design, SLA và control hơn dashboard. Cùng câu “cho tôi danh sách khách hàng rủi ro” có thể là analysis để phân bổ call, exploration để hiểu churn hoặc operation để tự động chặn account; xử lý khác nhau.
+Decision-backed analytics có action và cần evidence. Curiosity/exploration tìm hiểu để hình thành hypothesis; không giả là decision product, timebox và có learning question. Operational request muốn trigger transaction/workflow/alert, cần service/process design, SLA và control hơn dashboard. Cùng câu cho tôi danh sách khách hàng rủi ro có thể là analysis để phân bổ call, exploration để hiểu churn hoặc operation để tự động chặn account; xử lý khác nhau.
 
 ## 4. Phỏng vấn bằng evidence và phản ví dụ
 
-Hỏi người dùng mô tả lần gần nhất quyết định được đưa: ai, thông tin gì, deadline, hậu quả và workaround. Dùng open questions trước, rồi hypothetical branches để test. Không hỏi “có muốn dashboard không”. Tách stated preference khỏi observed workflow; ghi assumptions cần xác minh. Include affected non-users và upstream operators, không chỉ executive requester.
+Hỏi người dùng mô tả lần gần nhất quyết định được đưa: ai, thông tin gì, deadline, hậu quả và workaround. Dùng open questions trước, rồi hypothetical branches để test. Không hỏi có muốn dashboard không. Tách stated preference khỏi observed workflow; ghi assumptions cần xác minh. Include affected non-users và upstream operators, không chỉ executive requester.
 
 ## 5. Từ decision sang data contract
 
@@ -52,7 +52,7 @@ Map action branches tới concepts/metrics/dimensions, acceptable latency/freshn
 
 ## 6. Từ chối hoặc chuyển hướng có trách nhiệm
 
-Request không có changing action: hỏi mục đích learning/compliance; timebox exploration hoặc từ chối product build. Operational request: chuyển sang owner process/service với analytics hỗ trợ, không biến workflow thành dashboard. Data không đủ/maturity thấp: đề xuất evidence collection hoặc simpler descriptive tool. Từ chối nêu lý do, cost/opportunity và next evidence; không chỉ nói “không có giá trị”.
+Request không có changing action: hỏi mục đích learning/compliance; timebox exploration hoặc từ chối product build. Operational request: chuyển sang owner process/service với analytics hỗ trợ, không biến workflow thành dashboard. Data không đủ/maturity thấp: đề xuất evidence collection hoặc simpler descriptive tool. Từ chối nêu lý do, cost/opportunity và next evidence; không chỉ nói không có giá trị.
 
 ## 7. Lab năm yêu cầu
 
@@ -233,7 +233,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.decision-first-discovery`
+## Execution capsule: kiểm chứng `wiki.data-product.decision-first-discovery`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.decision-first-discovery`, sơ đồ, ví dụ và artifact về **Decision-First Discovery** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

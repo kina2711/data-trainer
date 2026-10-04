@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Kết nối cơ sở dữ liệu từ Python: chuỗi kết nối, con trỏ, đóng tài nguyên đúng cách. Truy vấn tham số hoá và cơ chế tấn công chèn SQL khi ghép chuỗi. Quản lý bí mật: biến môi trường, tệp `.env`, và nguyên tắc không ghi thông tin xác thực trong mã nguồn. Quy tắc phân công tính toán: đẩy phép lọc và phép gộp xuống cơ sở dữ liệu, kéo về lượng dữ liệu nhỏ nhất đủ dùng. Xuất kết quả ra tệp Excel nhiều sheet. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L074 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Database connections and automation**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Viết script kéo dữ liệu, biến đổi và xuất báo cáo, chạy được bằng một lệnh trên máy chưa cấu hình sẵn. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Kết nối cơ sở dữ liệu từ Python: chuỗi kết nối, con trỏ, đóng tài nguyên đúng cách. Truy vấn tham số hoá và cơ chế tấn công chèn SQL khi ghép chuỗi. Quản lý bí mật: biến môi trường, tệp `.env`, và nguyên tắc không ghi thông tin xác thực trong mã nguồn. Quy tắc phân công tính toán: đẩy phép lọc và phép gộp xuống cơ sở dữ liệu, kéo về lượng dữ liệu nhỏ nhất đủ dùng. Xuất kết quả ra tệp Excel nhiều sheet.
 
@@ -44,7 +44,7 @@ Cơ chế của `database-connections-and-automation` được kiểm qua năm l
 
 Lỗi cần loại trừ trong bài này là: Ghép tham số vào chuỗi truy vấn · để chuỗi kết nối trong mã rồi đưa lên kho mã · kéo toàn bộ bảng về rồi lọc trong Python. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Ghép tham số vào chuỗi truy 
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L074: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Script chạy bằng một lệnh và xuất đúng tệp Excel 4 sheet, và quét mã không tìm thấy thông tin xác thực nào.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L074: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Script chạy bằng một lệnh và xuất đúng tệp Excel 4 sheet, và quét mã không tìm thấy thông tin xác thực nào.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Database connections and automation
+## Worked Case: Database connections and automation
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Viết script tự động: kết nối `DS2`, tính bộ chỉ số tháng, xuất tệp Excel có 4 sheet kèm biểu đồ. Chạy bằng một lệnh.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Database connections and automation`, learner ghi ex
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L074 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Database connections and automation` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L074 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Kết nối cơ sở dữ liệu từ Python: chuỗi kết nối, con trỏ, đóng tài nguyên đúng cách. Truy vấn tham số hoá và cơ chế tấn công chèn SQL khi ghép chuỗi. Quản lý bí mật: biến môi trường, tệp `.env`, và nguyên tắc không ghi thông tin xác thực trong mã nguồn. Quy tắc phân công tính toán: đẩy phép lọc và phép gộp xuống cơ sở dữ liệu, kéo về lượng dữ liệu nhỏ nhất đủ dùng. Xuất kết quả ra tệp Excel nhiều sheet.
+**Mệnh đề của probe 1: `population`.** Kết nối cơ sở dữ liệu từ Python: chuỗi kết nối, con trỏ, đóng tài nguyên đúng cách. Truy vấn tham số hoá và cơ chế tấn công chèn SQL khi ghép chuỗi. Quản lý bí mật: biến môi trường, tệp `.env`, và nguyên tắc không ghi thông tin xác thực trong mã nguồn. Quy tắc phân công tính toán: đẩy phép lọc và phép gộp xuống cơ sở dữ liệu, kéo về lượng dữ liệu nhỏ nhất đủ dùng. Xuất kết quả ra tệp Excel nhiều sheet.
 
 **Thiết kế.** Probe 1 của L074 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L074 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Viết script kéo dữ liệu, biến đổi và xuất báo cáo, chạy được bằng một lệnh trên máy chưa cấu hình sẵn.
+**Mệnh đề của probe 2: `grain`.** Viết script kéo dữ liệu, biến đổi và xuất báo cáo, chạy được bằng một lệnh trên máy chưa cấu hình sẵn.
 
 **Thiết kế.** Probe 2 của L074 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L074 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Ghép tham số vào chuỗi truy vấn · để chuỗi kết nối trong mã rồi đưa lên kho mã · kéo toàn bộ bảng về rồi lọc trong Python.
+**Mệnh đề của probe 3: `identity`.** Ghép tham số vào chuỗi truy vấn · để chuỗi kết nối trong mã rồi đưa lên kho mã · kéo toàn bộ bảng về rồi lọc trong Python.
 
 **Thiết kế.** Probe 3 của L074 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L074 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Script chạy bằng một lệnh và xuất đúng tệp Excel 4 sheet, và quét mã không tìm thấy thông tin xác thực nào.
+**Mệnh đề của probe 4: `time cutoff`.** Script chạy bằng một lệnh và xuất đúng tệp Excel 4 sheet, và quét mã không tìm thấy thông tin xác thực nào.
 
 **Thiết kế.** Probe 4 của L074 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L074 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Kết nối cơ sở dữ liệu từ Python: chuỗi kết nối, con trỏ, đóng tài nguyên đúng cách. Truy vấn tham số hoá và cơ chế tấn công chèn SQL khi ghép chuỗi. Quản lý bí mật: biến môi trường, tệp `.env`, và nguyên tắc không ghi thông tin xác thực trong mã nguồn. Quy tắc phân công tính toán: đẩy phép lọc và phép gộp xuống cơ sở dữ liệu, kéo về lượng dữ liệu nhỏ nhất đủ dùng. Xuất kết quả ra tệp Excel nhiều sheet.
+**Mệnh đề của probe 5: `missing versus zero`.** Kết nối cơ sở dữ liệu từ Python: chuỗi kết nối, con trỏ, đóng tài nguyên đúng cách. Truy vấn tham số hoá và cơ chế tấn công chèn SQL khi ghép chuỗi. Quản lý bí mật: biến môi trường, tệp `.env`, và nguyên tắc không ghi thông tin xác thực trong mã nguồn. Quy tắc phân công tính toán: đẩy phép lọc và phép gộp xuống cơ sở dữ liệu, kéo về lượng dữ liệu nhỏ nhất đủ dùng. Xuất kết quả ra tệp Excel nhiều sheet.
 
 **Thiết kế.** Probe 5 của L074 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L074 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Viết script kéo dữ liệu, biến đổi và xuất báo cáo, chạy được bằng một lệnh trên máy chưa cấu hình sẵn.
+**Mệnh đề của probe 6: `duplicate`.** Viết script kéo dữ liệu, biến đổi và xuất báo cáo, chạy được bằng một lệnh trên máy chưa cấu hình sẵn.
 
 **Thiết kế.** Probe 6 của L074 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L074 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Ghép tham số vào chuỗi truy vấn · để chuỗi kết nối trong mã rồi đưa lên kho mã · kéo toàn bộ bảng về rồi lọc trong Python.
+**Mệnh đề của probe 7: `join fan-out`.** Ghép tham số vào chuỗi truy vấn · để chuỗi kết nối trong mã rồi đưa lên kho mã · kéo toàn bộ bảng về rồi lọc trong Python.
 
 **Thiết kế.** Probe 7 của L074 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L074 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Script chạy bằng một lệnh và xuất đúng tệp Excel 4 sheet, và quét mã không tìm thấy thông tin xác thực nào.
+**Mệnh đề của probe 8: `changed definition`.** Script chạy bằng một lệnh và xuất đúng tệp Excel 4 sheet, và quét mã không tìm thấy thông tin xác thực nào.
 
 **Thiết kế.** Probe 8 của L074 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L074 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Kết nối cơ sở dữ liệu từ Python: chuỗi kết nối, con trỏ, đóng tài nguyên đúng cách. Truy vấn tham số hoá và cơ chế tấn công chèn SQL khi ghép chuỗi. Quản lý bí mật: biến môi trường, tệp `.env`, và nguyên tắc không ghi thông tin xác thực trong mã nguồn. Quy tắc phân công tính toán: đẩy phép lọc và phép gộp xuống cơ sở dữ liệu, kéo về lượng dữ liệu nhỏ nhất đủ dùng. Xuất kết quả ra tệp Excel nhiều sheet.
+**Mệnh đề của probe 9: `independent oracle`.** Kết nối cơ sở dữ liệu từ Python: chuỗi kết nối, con trỏ, đóng tài nguyên đúng cách. Truy vấn tham số hoá và cơ chế tấn công chèn SQL khi ghép chuỗi. Quản lý bí mật: biến môi trường, tệp `.env`, và nguyên tắc không ghi thông tin xác thực trong mã nguồn. Quy tắc phân công tính toán: đẩy phép lọc và phép gộp xuống cơ sở dữ liệu, kéo về lượng dữ liệu nhỏ nhất đủ dùng. Xuất kết quả ra tệp Excel nhiều sheet.
 
 **Thiết kế.** Probe 9 của L074 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L074 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Viết script kéo dữ liệu, biến đổi và xuất báo cáo, chạy được bằng một lệnh trên máy chưa cấu hình sẵn.
+**Mệnh đề của probe 10: `replay`.** Viết script kéo dữ liệu, biến đổi và xuất báo cáo, chạy được bằng một lệnh trên máy chưa cấu hình sẵn.
 
 **Thiết kế.** Probe 10 của L074 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L074 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Ghép tham số vào chuỗi truy vấn · để chuỗi kết nối trong mã rồi đưa lên kho mã · kéo toàn bộ bảng về rồi lọc trong Python.
+**Mệnh đề của probe 11: `fresh snapshot`.** Ghép tham số vào chuỗi truy vấn · để chuỗi kết nối trong mã rồi đưa lên kho mã · kéo toàn bộ bảng về rồi lọc trong Python.
 
 **Thiết kế.** Probe 11 của L074 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L074 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Script chạy bằng một lệnh và xuất đúng tệp Excel 4 sheet, và quét mã không tìm thấy thông tin xác thực nào.
+**Mệnh đề của probe 12: `novel scenario`.** Script chạy bằng một lệnh và xuất đúng tệp Excel 4 sheet, và quét mã không tìm thấy thông tin xác thực nào.
 
 **Thiết kế.** Probe 12 của L074 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Script chạy bằng một lệnh và xuất đúng tệp Excel 4 sheet, và qu�
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-PYTHON-314-LANGUAGE-REFERENCE]] — `src.docs.python-3.14-language-reference`
-2. [[SRC-PYTHON-314-STDLIB-RUNTIME]] — `src.docs.python-3.14-stdlib-runtime`
+1. [[SRC-PYTHON-314-LANGUAGE-REFERENCE]]: `src.docs.python-3.14-language-reference`
+2. [[SRC-PYTHON-314-STDLIB-RUNTIME]]: `src.docs.python-3.14-stdlib-runtime`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-PYTHON-314-LANGUAGE-REFERENCE]] — `src.docs.python-3.14-language-reference` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Database connections and automation | các mục cơ chế, case và probe | Đã phủ | ngoài objective L074 |
-| [[SRC-PYTHON-314-STDLIB-RUNTIME]] — `src.docs.python-3.14-stdlib-runtime` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Database connections and automation | các mục cơ chế, case và probe | Đã phủ | ngoài objective L074 |
+| [[SRC-PYTHON-314-LANGUAGE-REFERENCE]]: `src.docs.python-3.14-language-reference` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Database connections and automation | các mục cơ chế, case và probe | Đã phủ | ngoài objective L074 |
+| [[SRC-PYTHON-314-STDLIB-RUNTIME]]: `src.docs.python-3.14-stdlib-runtime` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Database connections and automation | các mục cơ chế, case và probe | Đã phủ | ngoài objective L074 |
 
 ## Key takeaways
 - Viết script kéo dữ liệu, biến đổi và xuất báo cáo, chạy được bằng một lệnh trên máy chưa cấu hình sẵn.
@@ -226,7 +226,7 @@ Script chạy bằng một lệnh và xuất đúng tệp Excel 4 sheet, và qu�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.database-connections-and-automation`
+## Execution capsule: kiểm chứng `wiki.da.database-connections-and-automation`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.database-connections-and-automation`, sơ đồ, ví dụ và artifact về **Database connections and automation** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một cửa CI tĩnh cần kiểm những invariant nào để chặn semantic definition sai mà không chặn nhầm declaration hợp lệ?
 source_ids:
   - src.web.dbt-semantic-models
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Vai trò của tầng kiểm thử rẻ nhất
 
-Definition/static tests chạy từ source files và compiled metadata, không cần quét fact data. Chúng phát hiện lỗi cấu trúc trước khi query correctness tests tốn warehouse compute. Gate này không chứng minh metric đúng về business; nó chỉ chứng minh declaration đầy đủ, graph có thể lập kế hoạch và governance metadata đáp ứng policy. Tên check, invariant, failure code và remediation phải ổn định để CI failure có thể xử lý thay vì chỉ báo “invalid configuration”.
+Definition/static tests chạy từ source files và compiled metadata, không cần quét fact data. Chúng phát hiện lỗi cấu trúc trước khi query correctness tests tốn warehouse compute. Gate này không chứng minh metric đúng về business; nó chỉ chứng minh declaration đầy đủ, graph có thể lập kế hoạch và governance metadata đáp ứng policy. Tên check, invariant, failure code và remediation phải ổn định để CI failure có thể xử lý thay vì chỉ báo invalid configuration.
 
 ## 2. Sáu phần hợp đồng và tính đầy đủ
 
@@ -39,11 +39,11 @@ Mỗi metric version cần identity, population, grain/entity, time policy, aggr
 
 ## 3. Dependency graph và entity graph
 
-Metric dependency graph của derived/ratio/cumulative definitions phải acyclic, dependencies tồn tại và types/grains tương thích. Entity graph có thể có cycle vì nhiều business relationships hợp lệ. Static gate không nên cấm mọi cycle; nó phải phát hiện isolated nodes, missing join keys, contradictory cardinalities và nhiều eligible paths cho cùng metric–dimension request khi không có role/path constraint. Đây là khác biệt giữa cycle làm evaluation bất khả thi và cycle tạo ambiguity cần qualification.
+Metric dependency graph của derived/ratio/cumulative definitions phải acyclic, dependencies tồn tại và types/grains tương thích. Entity graph có thể có cycle vì nhiều business relationships hợp lệ. Static gate không nên cấm mọi cycle; nó phải phát hiện isolated nodes, missing join keys, contradictory cardinalities và nhiều eligible paths cho cùng metric-dimension request khi không có role/path constraint. Đây là khác biệt giữa cycle làm evaluation bất khả thi và cycle tạo ambiguity cần qualification.
 
-## 4. “Metric mồ côi” cần định nghĩa vận hành
+## 4. Metric mồ côi cần định nghĩa vận hành
 
-Metric mới chưa có query history không nên bị chặn chỉ vì chưa ai dùng. Static gate có thể yêu cầu declared consumer/use case, certification candidate, owner và deprecation policy. Usage-based orphan detection là audit theo cửa sổ thời gian sau phát hành, không phải pure compile-time validity. Nếu roadmap nói “không ai dùng”, implementation phải ghi rõ đang kiểm missing declared consumer hay zero observed usage; trộn hai nghĩa tạo false positive.
+Metric mới chưa có query history không nên bị chặn chỉ vì chưa ai dùng. Static gate có thể yêu cầu declared consumer/use case, certification candidate, owner và deprecation policy. Usage-based orphan detection là audit theo cửa sổ thời gian sau phát hành, không phải pure compile-time validity. Nếu roadmap nói không ai dùng, implementation phải ghi rõ đang kiểm missing declared consumer hay zero observed usage; trộn hai nghĩa tạo false positive.
 
 ## 5. Thiết kế mutation test
 
@@ -55,7 +55,7 @@ Pipeline tối thiểu gồm parse/schema, custom contract rules, graph analysis
 
 ## 7. Nghiệm thu năm vi phạm
 
-Năm pull requests vi phạm phải được tạo từ fixture/repository nhỏ có phiên bản, không sửa production project. Báo cáo ghi mutation, expected rule, actual rule, exit code và elapsed time. Một valid corpus gồm direct metric, derived metric, role-playing entity graph hợp lệ và intentional entity cycle có qualified paths. Done when là năm mutation bị đúng rule chặn và toàn bộ valid corpus pass; “pipeline đỏ” một cách chung chung không đủ.
+Năm pull requests vi phạm phải được tạo từ fixture/repository nhỏ có phiên bản, không sửa production project. Báo cáo ghi mutation, expected rule, actual rule, exit code và elapsed time. Một valid corpus gồm direct metric, derived metric, role-playing entity graph hợp lệ và intentional entity cycle có qualified paths. Done when là năm mutation bị đúng rule chặn và toàn bộ valid corpus pass; pipeline đỏ một cách chung chung không đủ.
 
 ## 8. Ma trận kiểm chứng từng mệnh đề
 
@@ -205,7 +205,7 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 - Chưa chạy MetricFlow, warehouse queries, execution plans hoặc labs; note mô tả protocol và expected evidence.
 - dbt/MetricFlow docs được kiểm ngày 2026-10-01; commands và YAML phụ thuộc engine/version/environment.
 - Thuật ngữ fan/chasm có thể khác giữa sản phẩm; invariant của bài là grain, multiplicity, population và semantic path.
-- Kimball–Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
+- Kimball-Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
 - Owner chưa phê duyệt semantic meaning nên note giữ trạng thái `review`.
 
 ## Reference
@@ -223,14 +223,14 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 
 ## Key takeaways
 - Join correctness phải được chứng minh bằng grain, multiplicity, unmatched ledger và independent oracle.
-- Metric–dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
+- Metric-dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
 - Parse/validate/compile không thay reconciliation với business contract.
 - Generated SQL phải được đọc theo population, path, aggregation và time/filter semantics.
 - Chưa chạy protocol thì note là tài liệu học thuật có truy nguồn, không phải chứng nhận production.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.definition-static-tests`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.definition-static-tests`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.definition-static-tests`, sơ đồ, ví dụ và artifact về **Testing a Semantic Layer - Definition and Static Tests** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -252,7 +252,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Một cửa CI tĩnh cần kiểm những invariant nào để chặn semantic definition sai mà không chặn nhầm declaration hợp lệ?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Một cửa CI tĩnh cần kiểm những invariant nào để chặn semantic definition sai mà không chặn nhầm declaration hợp lệ? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Testing a Semantic Layer - Definition and Static Tests** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

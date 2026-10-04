@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm thế nào tách conceptual, logical và physical model để mỗi artifact trả lời đúng câu hỏi và thay engine không làm nhiễm business semantics?
 source_ids:
   - src.course.hcmut-system-modeling.2019
@@ -119,7 +119,7 @@ Mỗi mệnh đề phải được chuyển thành invariant, fixture và phép 
 2. Chỉ ra owner của định nghĩa và artifact nào là canonical.
 3. Tách source fact, quyết định thiết kế và curriculum synthesis; không gán suy luận cho sách.
 4. Dựng ca biên tối thiểu: duplicate, null, late correction, code reuse, many-to-many hoặc missing period tuỳ bài.
-5. Đo row count, distinct business key, unmatched rate và control totals trước–sau mỗi phép biến đổi.
+5. Đo row count, distinct business key, unmatched rate và control totals trước-sau mỗi phép biến đổi.
 6. Thử replay/backfill và đổi cutoff; thiết kế không tái chạy được chưa đủ bằng chứng để vận hành.
 7. Lưu quyết định, phản ví dụ và giới hạn; không xoá failed run vì nó là bằng chứng của failure boundary.
 
@@ -136,8 +136,8 @@ Mỗi mệnh đề phải được chuyển thành invariant, fixture và phép 
 
 - Chưa chạy profiling, merge/backfill hay reconciliation lab; các phép kiểm trong note là giao thức cần thực thi, không phải kết quả đã đo.
 - Sample không có duplicate không chứng minh business uniqueness; schema hợp lệ không chứng minh đúng grain.
-- HCMUT System Modeling cung cấp khung abstraction/perspective; phép ánh xạ conceptual–logical–physical trong bài là synthesis có ghi nhãn.
-- DDIA và Silberschatz cung cấp ranh giới data model/database design; taxonomy dimensional chi tiết lấy Kimball–Ross làm nguồn chính.
+- HCMUT System Modeling cung cấp khung abstraction/perspective; phép ánh xạ conceptual-logical-physical trong bài là synthesis có ghi nhãn.
+- DDIA và Silberschatz cung cấp ranh giới data model/database design; taxonomy dimensional chi tiết lấy Kimball-Ross làm nguồn chính.
 - Không suy performance, dung lượng, threshold hoặc production readiness nếu chưa đo trên workload và engine mục tiêu.
 
 ## Reference
@@ -162,7 +162,7 @@ Mỗi mệnh đề phải được chuyển thành invariant, fixture và phép 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-modeling.model-levels`
+## Execution capsule: kiểm chứng `wiki.data-modeling.model-levels`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-modeling.model-levels`, sơ đồ, ví dụ và artifact về **Conceptual, logical and physical models** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một hợp đồng trích xuất cần trả lời gì trước khi chọn connector hoặc viết pipeline?
 source_ids:
   - src.book.reis-housley-fundamentals-data-engineering
@@ -34,7 +34,7 @@ Hợp đồng gồm: owner/access; entities/grain/keys; schema/types/nullable se
 
 ## 2. Owner và access boundary
 
-Ghi system owner, business owner, read account, scopes, environments, network path, credential rotation và support/escalation. “Có quyền đọc” không chứng minh được consistent snapshot, log retention hoặc API historical access. Least privilege và production load budget là constraints. Secret value không nằm trong note; chỉ lưu secret reference và rotation procedure.
+Ghi system owner, business owner, read account, scopes, environments, network path, credential rotation và support/escalation. Có quyền đọc không chứng minh được consistent snapshot, log retention hoặc API historical access. Least privilege và production load budget là constraints. Secret value không nằm trong note; chỉ lưu secret reference và rotation procedure.
 
 ## 3. Entity grain và identity
 
@@ -220,7 +220,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ingestion.source-discovery-extraction-contract`
+## Execution capsule: kiểm chứng `wiki.ingestion.source-discovery-extraction-contract`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ingestion.source-discovery-extraction-contract`, sơ đồ, ví dụ và artifact về **Source Discovery and the Extraction Contract** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -242,7 +242,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Một hợp đồng trích xuất cần trả lời gì trước khi chọn connector hoặc viết pipeline?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Một hợp đồng trích xuất cần trả lời gì trước khi chọn connector hoặc viết pipeline? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Source Discovery and the Extraction Contract** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

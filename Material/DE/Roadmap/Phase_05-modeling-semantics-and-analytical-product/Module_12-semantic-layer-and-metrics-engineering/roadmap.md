@@ -49,30 +49,30 @@ Thiết kế hợp đồng chỉ số không mơ hồ, dựng đồ thị ngữ 
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L165 · The layers that must be distinguished | LT | Phân loại năm tầng cho một kiến trúc cho trước và chỉ ra định nghĩa chỉ số đang nằm ở đâu. | Phân đúng năm tầng ở ≥ 2/3 kiến trúc, và đếm được số chỗ trùng định nghĩa ở kiến trúc có vấn đề. | M12: M11 |
-| L166 · From a business question to a metric contract | TH | Viết hợp đồng sáu phần cho một chỉ số và chứng minh hai người đọc độc lập cho ra cùng một con số. | Ba cặp con số từ hai người cài độc lập đều khớp tuyệt đối, và tám cách hiểu của câu đầu được liệt kê đủ. | L165 |
+| L165 · [[wiki.semantic-layer.five-layer-boundary|The layers that must be distinguished]]| LT | Phân loại năm tầng cho một kiến trúc cho trước và chỉ ra định nghĩa chỉ số đang nằm ở đâu. | Phân đúng năm tầng ở ≥ 2/3 kiến trúc, và đếm được số chỗ trùng định nghĩa ở kiến trúc có vấn đề. | M12: M11 |
+| L166 · [[wiki.semantic-layer.metric-contract|From a business question to a metric contract]]| TH | Viết hợp đồng sáu phần cho một chỉ số và chứng minh hai người đọc độc lập cho ra cùng một con số. | Ba cặp con số từ hai người cài độc lập đều khớp tuyệt đối, và tám cách hiểu của câu đầu được liệt kê đủ. | L165 |
 | L167 · The semantic graph - entities, dimensions, measures, metrics | LT | Vẽ đồ thị ngữ nghĩa cho một miền và chỉ ra chỗ có nhiều hơn một đường kết giữa hai thực thể. | Đồ thị đủ bốn loại nút và cạnh có bản số, và chỉ ra được ít nhất một cặp có nhiều đường kèm hai câu hỏi cho hai kết quả. | L166 |
-| L168 · Metric types - simple, ratio, derived and cumulative | TH | Phân loại chỉ số vào bốn nhóm và chứng minh bằng số rằng cài tỉ lệ sai cho kết quả sai ở mức gộp cao hơn. | Phân đúng ≥ 8/10 chỉ số, và sai lệch của cách lưu sẵn tỉ lệ được định lượng ở cả ba mức gộp. | L167 |
-| L169 · Additivity and aggregation in the semantic layer | TH | Khai báo phép gộp cho mười độ đo sao cho tầng ngữ nghĩa từ chối được các truy vấn cộng sai. | Năm truy vấn cộng sai đều bị chặn hoặc xử lý đúng, năm truy vấn hợp lệ đều chạy, và có số đo chi phí của chỉ số đếm phân biệt. | L168 |
-| L170 · Time semantics - grain, offsets and period comparison | TH | Chốt bốn quyết định thời gian cho một bộ chỉ số và chứng minh phép so kỳ đúng ở tháng thiếu dữ liệu và ở năm nhuận. | Kết quả khớp bản tính tay ở cả tháng thiếu dữ liệu lẫn năm nhuận, và bốn quyết định thời gian có trong hợp đồng. | L169 |
-| L171 · Ambiguous joins and the chasm trap | TH | Tái hiện bẫy vực bằng số và chặn nó bằng một trong ba cách, chứng minh tổng trở lại đúng. | Mức thổi phồng được định lượng, cả ba cách sửa đều cho tổng khớp tổng thật, và hai đường kết cho hai con số khác nhau được chỉ ra. | L170 |
-| L172 · Fanout - proving a metric is not double counted | TH | Chạy đủ bốn bước chứng minh cho ba chỉ số và phát hiện được chỉ số nào đang đếm trùng. | Phát hiện đúng chỉ số đếm trùng và định lượng mức thổi phồng, và hai chỉ số còn lại khớp truy vấn viết tay ở cả ba mức gộp. | L171 |
-| L173 · The compatibility matrix - which dimension goes with which metric | TH | Dựng ma trận tương thích cho bộ chỉ số và cưỡng chế được nó bằng máy với thông báo giải thích. | Năm truy vấn không hợp lệ bị chặn kèm giải thích, năm truy vấn hợp lệ chạy được, và ma trận xuất ra dạng tài liệu đọc được. | L172 |
-| L174 · Semantic models in MetricFlow | TH | Khai báo mô hình ngữ nghĩa cho ba bảng mart sao cho mọi khai báo truy được về hợp đồng. | Ba mô hình biên dịch sạch, và mọi độ đo cùng chiều dẫn được về một dòng cụ thể trong hợp đồng. | L173 |
-| L175 · Defining metrics and reading the generated SQL | TH | Khai báo bốn loại chỉ số và chứng minh bằng SQL sinh ra rằng mỗi cái khớp hợp đồng ở cả bốn điểm soi. | Bốn chỉ số qua đủ bốn điểm soi, và khai báo sai cài sẵn được tìm ra chỉ bằng đọc SQL. | L174 |
-| L176 · Query compilation internals | TH | Giải thích một kết quả lạ bằng cách truy các bước biên dịch, và can thiệp được vào một truy vấn sinh ra kém hiệu quả. | Truy đúng bước gây ra ở ≥ 2/3 tình huống, và truy vấn chậm cải thiện có số đo mà kết quả không đổi. | L175 |
-| L177 · Testing a semantic layer - definition and static tests | TH | Dựng bộ kiểm tra định nghĩa và cấu trúc chạy trong tích hợp liên tục, chặn được năm loại vi phạm. | Năm vi phạm đều bị chặn ở đúng quy tắc, và không khai báo hợp lệ nào bị chặn nhầm. | L176 |
-| L178 · Correctness tests and reconciliation against hand-written SQL | TH | Dựng bộ đối soát độc lập cho năm chỉ số và chứng minh khớp ở ba mức gộp cùng đủ sáu ca đối chứng bắt buộc. | Năm chỉ số khớp ở cả 18 ô ba mức nhân sáu ca đối chứng, và kiểm hồi quy liệt kê đúng phần thay đổi khi đổi định nghĩa. | L177 |
-| L179 · Serving, caching and performance | TH | Phục vụ hai loại bên tiêu thụ đạt ngưỡng thời gian phản hồi, với khoá đệm mang ngữ cảnh bảo mật và phiên bản ngữ nghĩa. | Thời gian phân vị 95 dưới ngưỡng, độ tươi trong cam kết, hai bên tiêu thụ cho cùng con số, và phép thử cách ly đệm không có lần nào hai người khác quyền dùng chung một mục. | L178 |
-| L180 · Access control at the semantic layer | TH | Cài ba mức kiểm soát và chứng minh bằng phép thử phủ định rằng không rò rỉ, kể cả qua phép gộp. | Sáu phép thử phủ định đều bị chặn đúng, đường rò qua nhóm một phần tử bị chặn, và chính sách có hiệu lực ở cả ba đường phục vụ. | L179 |
-| L181 · Architecture alternatives - headless, BI-native or curated marts | LT | Chọn kiến trúc cho ba bối cảnh tổ chức và nêu điều kiện làm lựa chọn đó sai. | Chọn đúng cả ba bối cảnh, mỗi ô trong bảng chấm dẫn một quan sát từ lab, và mỗi lựa chọn có hai điều kiện đảo ngược. | L180 |
-| L182 · Metric lifecycle - propose, certify, version, deprecate | TH | Vận hành vòng đời năm trạng thái, và thực hiện một lần đổi công thức phá vỡ theo quy trình chạy song song cộng đối soát cộng bản ghi khai tử. | Chỉ số thiếu điều kiện bị chặn chứng nhận, đổi công thức mức ba có chạy song song kèm số chênh lệch và chấp thuận của bên tiêu thụ, bản ghi khai tử đầy đủ, và chỉ số khai tử không còn người dùng khi gỡ. | L181 |
-| L183 · Ownership, change classification and the failure matrix | TH | Lập ma trận chế độ hỏng có phép kiểm tự động cho từng dòng, và gán được ba vai sở hữu cho bộ chỉ số. | ≥ 6/7 lỗi tiêm bị phép kiểm tự động phát hiện, ba vai được gán rõ, và phân tích sau sự cố không đổ lỗi cá nhân. | L182 |
-| L184 · Capstone - a governed revenue semantic product | DA | Nộp sản phẩm ngữ nghĩa đủ chín hạng mục với 15 chỉ số thuộc năm loại, không vi phạm sáu điều kiện tự động không đạt. | Chín hạng mục đầy đủ với ≥ 15 chỉ số thuộc ≥ 5 loại và ≥ 3 mô hình ngữ nghĩa, mọi chỉ số khớp đối soát độc lập ở ba mức gộp nhân sáu ca đối chứng, di trú phá vỡ hoàn tất có bản ghi khai tử, và không vi phạm sáu điều kiện tự động không đạt. | L183 |
+| L168 · [[wiki.semantic-layer.metric-types|Metric types - simple, ratio, derived and cumulative]]| TH | Phân loại chỉ số vào bốn nhóm và chứng minh bằng số rằng cài tỉ lệ sai cho kết quả sai ở mức gộp cao hơn. | Phân đúng ≥ 8/10 chỉ số, và sai lệch của cách lưu sẵn tỉ lệ được định lượng ở cả ba mức gộp. | L167 |
+| L169 · [[wiki.semantic-layer.additivity-enforcement|Additivity and aggregation in the semantic layer]]| TH | Khai báo phép gộp cho mười độ đo sao cho tầng ngữ nghĩa từ chối được các truy vấn cộng sai. | Năm truy vấn cộng sai đều bị chặn hoặc xử lý đúng, năm truy vấn hợp lệ đều chạy, và có số đo chi phí của chỉ số đếm phân biệt. | L168 |
+| L170 · [[wiki.semantic-layer.time-semantics|Time semantics - grain, offsets and period comparison]]| TH | Chốt bốn quyết định thời gian cho một bộ chỉ số và chứng minh phép so kỳ đúng ở tháng thiếu dữ liệu và ở năm nhuận. | Kết quả khớp bản tính tay ở cả tháng thiếu dữ liệu lẫn năm nhuận, và bốn quyết định thời gian có trong hợp đồng. | L169 |
+| L171 · [[wiki.semantic-layer.ambiguous-joins-chasm-trap|Ambiguous joins and the chasm trap]]| TH | Tái hiện bẫy vực bằng số và chặn nó bằng một trong ba cách, chứng minh tổng trở lại đúng. | Mức thổi phồng được định lượng, cả ba cách sửa đều cho tổng khớp tổng thật, và hai đường kết cho hai con số khác nhau được chỉ ra. | L170 |
+| L172 · [[wiki.semantic-layer.fanout-proof|Fanout - proving a metric is not double counted]]| TH | Chạy đủ bốn bước chứng minh cho ba chỉ số và phát hiện được chỉ số nào đang đếm trùng. | Phát hiện đúng chỉ số đếm trùng và định lượng mức thổi phồng, và hai chỉ số còn lại khớp truy vấn viết tay ở cả ba mức gộp. | L171 |
+| L173 · [[wiki.semantic-layer.metric-dimension-compatibility|The compatibility matrix - which dimension goes with which metric]]| TH | Dựng ma trận tương thích cho bộ chỉ số và cưỡng chế được nó bằng máy với thông báo giải thích. | Năm truy vấn không hợp lệ bị chặn kèm giải thích, năm truy vấn hợp lệ chạy được, và ma trận xuất ra dạng tài liệu đọc được. | L172 |
+| L174 · [[wiki.semantic-layer.metricflow-semantic-models|Semantic models in MetricFlow]]| TH | Khai báo mô hình ngữ nghĩa cho ba bảng mart sao cho mọi khai báo truy được về hợp đồng. | Ba mô hình biên dịch sạch, và mọi độ đo cùng chiều dẫn được về một dòng cụ thể trong hợp đồng. | L173 |
+| L175 · [[wiki.semantic-layer.read-generated-sql|Defining metrics and reading the generated SQL]]| TH | Khai báo bốn loại chỉ số và chứng minh bằng SQL sinh ra rằng mỗi cái khớp hợp đồng ở cả bốn điểm soi. | Bốn chỉ số qua đủ bốn điểm soi, và khai báo sai cài sẵn được tìm ra chỉ bằng đọc SQL. | L174 |
+| L176 · [[wiki.semantic-layer.query-compilation-internals|Query compilation internals]]| TH | Giải thích một kết quả lạ bằng cách truy các bước biên dịch, và can thiệp được vào một truy vấn sinh ra kém hiệu quả. | Truy đúng bước gây ra ở ≥ 2/3 tình huống, và truy vấn chậm cải thiện có số đo mà kết quả không đổi. | L175 |
+| L177 · [[wiki.semantic-layer.definition-static-tests|Testing a semantic layer - definition and static tests]]| TH | Dựng bộ kiểm tra định nghĩa và cấu trúc chạy trong tích hợp liên tục, chặn được năm loại vi phạm. | Năm vi phạm đều bị chặn ở đúng quy tắc, và không khai báo hợp lệ nào bị chặn nhầm. | L176 |
+| L178 · [[wiki.semantic-layer.correctness-reconciliation|Correctness tests and reconciliation against hand-written SQL]]| TH | Dựng bộ đối soát độc lập cho năm chỉ số và chứng minh khớp ở ba mức gộp cùng đủ sáu ca đối chứng bắt buộc. | Năm chỉ số khớp ở cả 18 ô ba mức nhân sáu ca đối chứng, và kiểm hồi quy liệt kê đúng phần thay đổi khi đổi định nghĩa. | L177 |
+| L179 · [[wiki.semantic-layer.serving-caching-performance|Serving, caching and performance]]| TH | Phục vụ hai loại bên tiêu thụ đạt ngưỡng thời gian phản hồi, với khoá đệm mang ngữ cảnh bảo mật và phiên bản ngữ nghĩa. | Thời gian phân vị 95 dưới ngưỡng, độ tươi trong cam kết, hai bên tiêu thụ cho cùng con số, và phép thử cách ly đệm không có lần nào hai người khác quyền dùng chung một mục. | L178 |
+| L180 · [[wiki.semantic-layer.access-control|Access control at the semantic layer]]| TH | Cài ba mức kiểm soát và chứng minh bằng phép thử phủ định rằng không rò rỉ, kể cả qua phép gộp. | Sáu phép thử phủ định đều bị chặn đúng, đường rò qua nhóm một phần tử bị chặn, và chính sách có hiệu lực ở cả ba đường phục vụ. | L179 |
+| L181 · [[wiki.semantic-layer.architecture-alternatives|Architecture alternatives - headless, BI-native or curated marts]]| LT | Chọn kiến trúc cho ba bối cảnh tổ chức và nêu điều kiện làm lựa chọn đó sai. | Chọn đúng cả ba bối cảnh, mỗi ô trong bảng chấm dẫn một quan sát từ lab, và mỗi lựa chọn có hai điều kiện đảo ngược. | L180 |
+| L182 · [[wiki.semantic-layer.metric-lifecycle|Metric lifecycle - propose, certify, version, deprecate]]| TH | Vận hành vòng đời năm trạng thái, và thực hiện một lần đổi công thức phá vỡ theo quy trình chạy song song cộng đối soát cộng bản ghi khai tử. | Chỉ số thiếu điều kiện bị chặn chứng nhận, đổi công thức mức ba có chạy song song kèm số chênh lệch và chấp thuận của bên tiêu thụ, bản ghi khai tử đầy đủ, và chỉ số khai tử không còn người dùng khi gỡ. | L181 |
+| L183 · [[wiki.semantic-layer.ownership-failure-matrix|Ownership, change classification and the failure matrix]]| TH | Lập ma trận chế độ hỏng có phép kiểm tự động cho từng dòng, và gán được ba vai sở hữu cho bộ chỉ số. | ≥ 6/7 lỗi tiêm bị phép kiểm tự động phát hiện, ba vai được gán rõ, và phân tích sau sự cố không đổ lỗi cá nhân. | L182 |
+| L184 · [[wiki.semantic-layer.governed-revenue-capstone|Capstone - a governed revenue semantic product]]| DA | Nộp sản phẩm ngữ nghĩa đủ chín hạng mục với 15 chỉ số thuộc năm loại, không vi phạm sáu điều kiện tự động không đạt. | Chín hạng mục đầy đủ với ≥ 15 chỉ số thuộc ≥ 5 loại và ≥ 3 mô hình ngữ nghĩa, mọi chỉ số khớp đối soát độc lập ở ba mức gộp nhân sáu ca đối chứng, di trú phá vỡ hoàn tất có bản ghi khai tử, và không vi phạm sáu điều kiện tự động không đạt. | L183 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M12 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M12 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -127,7 +127,7 @@ flowchart LR
   class A165,A166,A167,A168,A169,A170,A171,A172,A173,A174,A175,A176,A177,A178,A179,A180,A181,A182,A183,A184 atom;
 ```
 
-### Bài 165: The layers that must be distinguished
+### Lesson 165: The layers that must be distinguished
 
 Bài mở module bằng việc tách năm thứ hay bị gọi lẫn, vì gọi lẫn thì không bàn được thiết kế. Bảng vật lý là nơi dữ liệu nằm. Mô hình mart là cách bảng được tổ chức cho một miền, nội dung của M11. Mô hình ngữ nghĩa là khai báo thực thể, chiều và độ đo cùng cách chúng nối nhau, không chứa dữ liệu. Chỉ số là một phép tính có tên, có hợp đồng, dựng trên mô hình ngữ nghĩa. Công cụ tiêu thụ là nơi người dùng đặt câu hỏi. Điểm quan trọng nhất và là lý do tầng ngữ nghĩa tồn tại: định nghĩa chỉ số phải nằm ở một chỗ duy nhất, không nằm rải trong công cụ BI và trong từng truy vấn; nằm rải thì mỗi chỗ một số. Ba triệu chứng của việc định nghĩa nằm rải, đã gặp dưới dạng khác trong tình huống bốn báo cáo bốn con số. Ranh giới với M13: module này lo định nghĩa đúng, module sau lo người dùng dùng được.
 
@@ -135,7 +135,7 @@ Người học phải phân loại năm tầng cho một kiến trúc cho trư�
 
 Cách đánh giá: Tầng *hiểu*. Bài mở module, đặt từ vựng; chưa mở công cụ. Kiểm bằng bài phân tích ba kiến trúc; đạt khi phân đúng năm tầng ở ít nhất hai và chỉ ra đúng chỗ định nghĩa đang nằm rải.
 
-### Bài 166: From a business question to a metric contract
+### Lesson 166: From a business question to a metric contract
 
 Bài trung tâm của module. Hợp đồng chỉ số gồm sáu phần bắt buộc, và thiếu bất kỳ phần nào là chỉ số còn mơ hồ: tập hợp tức tính trên những bản ghi nào và loại trừ những gì; hạt theo Bài 120; thời gian tức dùng mốc thời gian nào và thuộc kỳ nào; bộ lọc tức điều kiện nằm trong định nghĩa chứ do người dùng chọn; phép gộp tức cộng, đếm, trung bình hay tỉ lệ; và chủ sở hữu tức ai quyết khi cần đổi. Ví dụ đối chiếu: câu hỏi doanh thu tháng trước là bao nhiêu có thể cho tám con số đều hợp lệ tuỳ sáu phần trên được chốt thế nào, và liệt kê đủ tám là bài tập của lab. Cách phỏng vấn người nghiệp vụ để chốt sáu phần, theo tinh thần bốn câu hỏi làm rõ ở Bài 1. Phép thử của một hợp đồng tốt: hai người đọc cùng viết ra cùng một truy vấn.
 
@@ -143,7 +143,7 @@ Người học phải viết hợp đồng sáu phần cho một chỉ số và 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có phép kiểm chứng khách quan bằng hai bản cài độc lập. Kiểm bằng phép thử hai người; đạt khi ba chỉ số đều cho hai con số khớp tuyệt đối giữa hai người cài độc lập.
 
-### Bài 167: The semantic graph - entities, dimensions, measures, metrics
+### Lesson 167: The semantic graph - entities, dimensions, measures, metrics
 
 Mô hình ngữ nghĩa là một đồ thị chứ một danh sách khai báo, và nhìn nó như đồ thị giải thích mọi ràng buộc về sau. Bốn loại nút: thực thể là thứ có danh tính và là điểm nối, chiều là thuộc tính để cắt lát, độ đo là cột số có thể gộp, chỉ số là phép tính có hợp đồng dựng trên độ đo. Cạnh là quan hệ kết giữa các thực thể kèm bản số. Từ đồ thị suy ra ba câu hỏi mà tầng ngữ nghĩa phải trả lời được bằng máy: chỉ số này cắt được theo chiều nào, hai chỉ số này đặt cạnh nhau được không, và đường kết nào được dùng khi có nhiều đường. Câu cuối là nguồn của mọi phép kết mơ hồ ở Bài 171. Khác biệt với lược đồ vật lý: một thực thể ngữ nghĩa có thể ánh xạ tới nhiều bảng, và một bảng có thể chứa nhiều thực thể; nên đồ thị ngữ nghĩa không phải bản sao của sơ đồ bảng.
 
@@ -151,7 +151,7 @@ Người học phải vẽ đồ thị ngữ nghĩa cho một miền và chỉ r
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết chuẩn bị cho ba bài về tính đúng của phép kết. Kiểm bằng bài vẽ cộng nhận dạng; đạt khi đồ thị đủ bốn loại nút và chỉ ra đúng ít nhất một cặp thực thể có nhiều đường kết.
 
-### Bài 168: Metric types - simple, ratio, derived and cumulative
+### Lesson 168: Metric types - simple, ratio, derived and cumulative
 
 Bốn loại chỉ số, mỗi loại có ràng buộc gộp riêng, và xử lý sai loại là nguồn số sai phổ biến nhất ở tầng này. Chỉ số đơn giản là một phép gộp trên một độ đo. Chỉ số tỉ lệ có tử và mẫu, và ràng buộc bắt buộc theo Bài 155: lưu tử và mẫu riêng, chia ở bước cuối, vì gộp các tỉ lệ đã tính sẵn cho kết quả sai ở mọi mức trừ mức đã tính. Chỉ số phái sinh dựng từ chỉ số khác bằng phép toán, và phải kế thừa ràng buộc gộp của thành phần. Chỉ số tích luỹ cộng dồn theo một cửa sổ thời gian, nên phụ thuộc vào ngữ nghĩa thời gian ở Bài 170 và vào bảng lịch đầy đủ theo Bài 124. Với mỗi loại, một phép kiểm đặc trưng để phát hiện cài sai. Bảng phân loại mười chỉ số thật của một doanh nghiệp là bài tập nhận dạng.
 
@@ -159,7 +159,7 @@ Người học phải phân loại chỉ số vào bốn nhóm và chứng minh 
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi nhận ra lỗi không báo lỗi, nên bắt buộc chứng minh bằng đối chứng. Kiểm bằng bài phân loại cộng đối chứng số; đạt khi phân đúng ít nhất tám trong mười và định lượng được sai lệch của cách cài sai.
 
-### Bài 169: Additivity and aggregation in the semantic layer
+### Lesson 169: Additivity and aggregation in the semantic layer
 
 Bài áp phân loại cộng được ở Bài 155 vào tầng ngữ nghĩa, nơi nó trở thành một khai báo mà máy cưỡng chế được. Mỗi độ đo khai báo phép gộp mặc định và những chiều nó cộng được; tầng ngữ nghĩa dựa vào đó để từ chối một truy vấn cộng sai thay vì im lặng trả về số sai, và đây là giá trị lớn nhất của việc có tầng này. Ba nhóm theo Bài 155 nay thành ba kiểu khai báo. Độ đo bán cộng: khai báo phép gộp khác nhau theo chiều, ví dụ cộng theo sản phẩm nhưng lấy giá trị cuối kỳ theo thời gian. Đếm giá trị phân biệt: không cộng được và cũng không cộng dồn được, nên tầng ngữ nghĩa phải tính lại ở mọi mức thay vì gộp từ mức thấp; đây là lý do chỉ số loại này tốn hơn nhiều. Bảng tổng hợp tính sẵn và điều kiện dùng được: chỉ dùng cho độ đo cộng được hoàn toàn.
 
@@ -167,7 +167,7 @@ Người học phải khai báo phép gộp cho mười độ đo sao cho tầng
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu bằng phép thử phủ định. Kiểm bằng năm truy vấn cộng sai; đạt khi cả năm bị từ chối hoặc trả về đúng, và không truy vấn hợp lệ nào bị chặn nhầm.
 
-### Bài 170: Time semantics - grain, offsets and period comparison
+### Lesson 170: Time semantics - grain, offsets and period comparison
 
 Thời gian là chiều phức tạp nhất và là nguồn tranh cãi nhiều nhất giữa các phòng ban. Bốn quyết định phải chốt trong hợp đồng: dùng mốc thời gian nào khi một bản ghi có nhiều mốc như ngày đặt, ngày giao, ngày ghi nhận doanh thu; hạt thời gian mặc định; múi giờ quy chiếu, vì một giao dịch lúc nửa đêm thuộc ngày nào phụ thuộc múi giờ; và định nghĩa kỳ tài chính nếu khác kỳ dương lịch. So kỳ trước và cùng kỳ năm trước: ba cách dịch chuyển kỳ và chúng cho kết quả khác nhau ở tháng có số ngày khác nhau và ở năm nhuận. Vấn đề kỳ thiếu theo Bài 124 nay là ràng buộc bắt buộc của tầng ngữ nghĩa: mọi chỉ số theo thời gian phải dựng trên bảng lịch đầy đủ, nếu không thì kỳ không có dữ liệu biến mất và phép so kỳ lấy nhầm kỳ. Cửa sổ trượt và kỳ tới hiện tại.
 
@@ -175,7 +175,7 @@ Người học phải chốt bốn quyết định thời gian cho một bộ ch
 
 Cách đánh giá: Tầng *áp dụng*. Objective có hai ca biên cụ thể mà bản làm ẩu luôn sai. Kiểm bằng đối soát ở ca biên; đạt khi kết quả khớp bản tính tay ở cả tháng thiếu dữ liệu lẫn ngày 29 tháng 2.
 
-### Bài 171: Ambiguous joins and the chasm trap
+### Lesson 171: Ambiguous joins and the chasm trap
 
 Hai chế độ hỏng đặc trưng của tầng ngữ nghĩa, và cả hai đều cho số sai mà không báo lỗi. Phép kết mơ hồ: khi có nhiều hơn một đường nối hai thực thể theo Bài 167, công cụ phải chọn một đường và chọn khác nhau thì số khác nhau; cách chặn là khai báo tường minh đường kết hợp lệ chứ để công cụ đoán. Bẫy vực: hai bảng sự kiện cùng nối vào một chiều chung nhưng không nối trực tiếp với nhau; kết cả ba trong một truy vấn làm hai bảng sự kiện nhân dòng lẫn nhau qua chiều chung, và tổng của cả hai đều bị thổi phồng. Ví dụ kinh điển: đơn hàng và phiếu hỗ trợ cùng nối vào khách hàng. Ba cách giải: gộp riêng từng bảng rồi mới nối kết quả, dùng truy vấn con tương quan, hoặc tách thành hai truy vấn. Bẫy hố: quan hệ một nhiều theo chiều ngược làm mất dòng thay vì nhân dòng.
 
@@ -183,7 +183,7 @@ Người học phải tái hiện bẫy vực bằng số và chặn nó bằng 
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi nhận ra một lỗi im lặng rồi sửa bằng cơ chế đúng. Kiểm bằng đối chứng với tổng thật; đạt khi định lượng được mức thổi phồng và bản sửa khớp tổng thật.
 
-### Bài 172: Fanout - proving a metric is not double counted
+### Lesson 172: Fanout - proving a metric is not double counted
 
 Bài đặt ra một nghĩa vụ chứng minh chứ chỉ một lời khuyên cẩn thận. Nhân dòng xảy ra bất cứ khi nào phép kết đổi hạt theo Bài 150, và hậu quả là mọi phép cộng sau đó bị thổi phồng. Ba nguồn nhân dòng ở tầng ngữ nghĩa: kết với bảng có bản số nhiều, kết qua bảng cầu theo Bài 156, và bẫy vực ở Bài 171. Quy trình chứng minh không đếm trùng gồm bốn bước và đây là quy trình bắt buộc cho mọi chỉ số trước khi được chứng nhận: phát biểu hạt của mỗi bảng tham gia; đếm dòng trước và sau mỗi phép kết; đối soát tổng với một truy vấn viết tay trên bảng gốc; và kiểm ở ít nhất ba mức gộp khác nhau chứ chỉ mức chi tiết nhất. Một chỉ số chưa qua bốn bước này thì chưa được đưa vào danh mục, và quy tắc đó được cưỡng chế ở Bài 182.
 
@@ -191,7 +191,7 @@ Người học phải chạy đủ bốn bước chứng minh cho ba chỉ số 
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một quy trình kiểm chứng bắt buộc có kết quả nhị phân. Kiểm bằng ba chỉ số trong đó ít nhất một đang đếm trùng; đạt khi phát hiện đúng và hai chỉ số còn lại được chứng minh sạch ở cả ba mức gộp.
 
-### Bài 173: The compatibility matrix - which dimension goes with which metric
+### Lesson 173: The compatibility matrix - which dimension goes with which metric
 
 Không phải chỉ số nào cũng cắt được theo chiều nào, và để người dùng tự phát hiện điều đó bằng cách nhận số vô nghĩa là thiết kế tồi. Ma trận tương thích liệt kê chỉ số theo hàng và chiều theo cột, mỗi ô ghi hợp lệ, không hợp lệ, hoặc hợp lệ có điều kiện. Ba nguồn không tương thích: chiều không nối được tới bảng sự kiện của chỉ số; chiều nối được nhưng ở hạt thô hơn nên cắt lát làm mất nghĩa; và độ đo không cộng được theo chiều đó theo Bài 169. Ví dụ cụ thể: cắt số dư cuối kỳ theo chiều sản phẩm có nghĩa, cắt theo thời gian rồi cộng thì không. Tầng ngữ nghĩa nên cưỡng chế ma trận bằng máy: truy vấn ở ô không hợp lệ bị từ chối kèm thông báo giải thích, thay vì trả về số. Ma trận cũng là tài liệu cho người dùng, và nó là đầu vào của phần khả năng tìm thấy ở M13.
 
@@ -199,7 +199,7 @@ Người học phải dựng ma trận tương thích cho bộ chỉ số và c�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu hai chiều: chặn đúng cái sai và không chặn nhầm cái đúng. Kiểm bằng mười truy vấn; đạt khi mọi ô không hợp lệ bị chặn có giải thích và không ô hợp lệ nào bị chặn nhầm.
 
-### Bài 174: Semantic models in MetricFlow
+### Lesson 174: Semantic models in MetricFlow
 
 Bài đầu tiên mở công cụ, sau khi chín bài trước đã dựng nền. Mô hình ngữ nghĩa khai báo ba phần: thực thể với loại khoá chính hoặc khoá ngoại, chiều với loại phân loại hoặc thời gian, và độ đo với phép gộp. Chiều thời gian chính là khai báo quyết định hạt thời gian mặc định theo Bài 170. Ánh xạ từ mô hình ngữ nghĩa xuống bảng vật lý, và vì sao một mô hình ngữ nghĩa có thể trỏ tới một bảng hoặc một truy vấn. Quan hệ với tầng biến đổi ở M17: mô hình ngữ nghĩa đặt trên mart chứ trên bảng thô, nên chất lượng mart quyết định chất lượng tầng ngữ nghĩa. Ba lỗi khai báo hay gặp và thông báo lỗi tương ứng. Nguyên tắc giữ trong suốt module: mọi khai báo phải truy được về một dòng trong hợp đồng chỉ số ở Bài 166, chứ suy ra từ cột có sẵn trong bảng.
 
@@ -207,7 +207,7 @@ Người học phải khai báo mô hình ngữ nghĩa cho ba bảng mart sao ch
 
 Cách đánh giá: Tầng *áp dụng*. Objective là chuyển một thiết kế đã có sang khai báo công cụ, có tiêu chí truy ngược. Kiểm bằng rà soát truy ngược; đạt khi mọi độ đo và chiều dẫn được về một dòng trong hợp đồng và ba mô hình biên dịch sạch.
 
-### Bài 175: Defining metrics and reading the generated SQL
+### Lesson 175: Defining metrics and reading the generated SQL
 
 Khai báo bốn loại chỉ số ở Bài 168 bằng công cụ, và bước quan trọng hơn là đọc câu lệnh SQL mà nó sinh ra. Lý do đọc: công cụ sinh SQL không phải hộp đen được phép tin, và cách duy nhất biết định nghĩa có đúng là đọc câu lệnh rồi đối chiếu với hợp đồng. Bốn thứ cần soi trong SQL sinh ra: phạm vi tập hợp có khớp phần tập hợp của hợp đồng không, bộ lọc trong định nghĩa có được áp không, đường kết nào được chọn theo Bài 171, và phép gộp có đúng loại theo Bài 169. Chỉ số tỉ lệ sinh ra SQL đặc trưng với tử và mẫu tính riêng rồi chia, và thấy đúng dạng đó là bằng chứng công cụ đang làm đúng. Chỉ số tích luỹ sinh ra phép kết với bảng lịch. Cách đọc kế hoạch thực thi của SQL sinh ra, dùng kỹ năng ở Bài 130.
 
@@ -215,7 +215,7 @@ Người học phải khai báo bốn loại chỉ số và chứng minh bằng 
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi kiểm chứng đầu ra của công cụ thay vì tin nó. Kiểm bằng bài đọc SQL có danh mục bốn điểm; đạt khi cả bốn chỉ số qua đủ bốn điểm soi và phát hiện được một khai báo sai cài sẵn.
 
-### Bài 176: Query compilation internals
+### Lesson 176: Query compilation internals
 
 Hiểu công cụ biên dịch một câu hỏi thành SQL ra sao là điều kiện để chẩn đoán khi nó cho số lạ hoặc chạy chậm. Các bước: phân giải chỉ số và chiều được yêu cầu, xác định tập mô hình ngữ nghĩa cần tới, tìm đường kết giữa chúng, dựng truy vấn theo từng nguồn rồi nối, và áp phép gộp cuối. Bước tìm đường kết là bước quyết định và là nơi phát sinh phép kết mơ hồ ở Bài 171. Cơ chế tránh nhân dòng của công cụ: gộp riêng từng nguồn về hạt chung trước khi nối, và đây chính là cách giải thứ nhất ở Bài 171 được tự động hoá. Giới hạn phải biết: công cụ chỉ đúng khi khai báo đúng, nên nó không cứu được một mô hình ngữ nghĩa sai. Ba trường hợp công cụ sinh SQL kém hiệu quả và cách can thiệp, gồm cả việc dựng bảng tổng hợp tính sẵn.
 
@@ -223,7 +223,7 @@ Người học phải giải thích một kết quả lạ bằng cách truy cá
 
 Cách đánh giá: Tầng *phân tích*. Objective là chẩn đoán xuyên tầng từ câu hỏi tới SQL. Kiểm bằng ba tình huống; đạt khi truy đúng bước gây ra ở ít nhất hai và cải thiện được truy vấn chậm có số đo.
 
-### Bài 177: Testing a semantic layer - definition and static tests
+### Lesson 177: Testing a semantic layer - definition and static tests
 
 Tháp kiểm thử cho tầng ngữ nghĩa có ba tầng, bài này lo tầng thứ nhất. Kiểm tra định nghĩa chạy nhanh và không cần dữ liệu: mọi chỉ số có đủ sáu phần hợp đồng, mọi độ đo khai báo phép gộp, mọi chiều thuộc ít nhất một thực thể, không có chỉ số mồ côi không ai dùng, và mọi khai báo có chủ sở hữu. Kiểm tra tĩnh về cấu trúc đồ thị: không có chu trình, không có thực thể cô lập, và mọi cặp thực thể dùng chung trong một chỉ số có đúng một đường kết được khai báo. Những kiểm tra này chạy trong tích hợp liên tục theo Bài 96 và chặn hợp nhất, nên một chỉ số thiếu hợp đồng không vào được nhánh chính. Giá trị thật của tầng kiểm tra này là nó rẻ và chạy ở mọi lần nộp mã, nên bắt lỗi trước khi ai đó nhìn thấy số sai.
 
@@ -231,7 +231,7 @@ Người học phải dựng bộ kiểm tra định nghĩa và cấu trúc ch�
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cửa chặn tự động có tiêu chí nghiệm thu bằng phép thử tiêm. Kiểm bằng năm vi phạm tiêm; đạt khi cả năm bị chặn và không khai báo hợp lệ nào bị chặn nhầm.
 
-### Bài 178: Correctness tests and reconciliation against hand-written SQL
+### Lesson 178: Correctness tests and reconciliation against hand-written SQL
 
 Tầng thứ hai của tháp kiểm thử, và là tầng quyết định tầng ngữ nghĩa có đáng tin không. Bốn loại kiểm tra tính đúng. Đối soát với SQL viết tay: với mỗi chỉ số được chứng nhận, có một truy vấn viết tay độc lập trên bảng gốc và hai kết quả phải khớp ở ít nhất ba mức gộp, theo Bài 172; truy vấn đối soát phải do người khác viết từ hợp đồng chứ chép từ SQL sinh ra, nếu không thì nó chỉ lặp lại cùng một sai lầm. Kiểm bất biến: tổng con bằng tổng cha, tỉ lệ nằm trong khoảng hợp lệ, và chỉ số không âm khi không được phép âm. Kiểm ca biên: hợp đồng nguồn đòi bộ đối chứng phủ sáu ca bắt buộc chứ ba, vì mỗi ca làm sai một chỉ số theo một cách khác nhau: giá trị rỗng, bản ghi trùng, giao dịch hoàn tiền tức giá trị âm, dữ liệu tới muộn, thay đổi ở chiều biến đổi chậm, và ranh giới kỳ tài chính. Bộ đối chứng là tài sản cố định của module: nó không đổi giữa các lần chạy, nên mọi hồi quy đều quy được về thay đổi của mã chứ của dữ liệu. Kiểm hồi quy: khi định nghĩa đổi, so kết quả trước và sau trên cùng dữ liệu để biết chính xác cái gì đổi.
 
@@ -239,7 +239,7 @@ Người học phải dựng bộ đối soát độc lập cho năm chỉ số 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu khắt khe là khớp tuyệt đối với nguồn độc lập. Kiểm bằng đối soát ba mức nhân sáu ca đối chứng; đạt khi năm chỉ số khớp ở mọi ô trong 18 ô và bộ kiểm chạy tự động.
 
-### Bài 179: Serving, caching and performance
+### Lesson 179: Serving, caching and performance
 
 Tầng ngữ nghĩa đứng trên đường truy vấn nên nó là một thành phần có hiệu năng, chứ chỉ một tệp khai báo. Ba đường phục vụ: truy vấn từ công cụ BI, từ SQL, và từ mã qua giao diện lập trình. Bảng tổng hợp tính sẵn là kỹ thuật tăng tốc chính: tính trước ở một hạt thô hơn rồi dùng lại; điều kiện dùng được là độ đo cộng được hoàn toàn theo Bài 169, và chọn hạt tính sẵn là đánh đổi giữa tốc độ với dung lượng cùng độ tươi. Bộ đệm kết quả và ba chiến lược làm mới, cùng vấn đề dữ liệu cũ. Khoá đệm phải mang ngữ cảnh bảo mật và phiên bản ngữ nghĩa: thiếu phần đầu thì một người thấy kết quả dựng từ dữ liệu ngoài quyền của họ, thiếu phần sau thì một định nghĩa đã đổi vẫn trả kết quả cũ; cả hai là điều kiện tự động không đạt của module. Phục vụ cho hai loại bên tiêu thụ cùng lúc là yêu cầu bắt buộc chứ tuỳ chọn, vì chỉ khi có hai bên mới lộ ra chỗ định nghĩa bị diễn giải khác nhau. Đồng thời và giới hạn: nhiều người cùng chạy truy vấn nặng làm kho quá tải, nên cần giới hạn tốc độ và hàng đợi theo Bài 87. Bốn chỉ số phải theo dõi: thời gian phản hồi phân vị 95, tỉ lệ trúng đệm, số truy vấn đồng thời, và chi phí trên mỗi truy vấn.
 
@@ -247,7 +247,7 @@ Người học phải phục vụ hai loại bên tiêu thụ đạt ngưỡng t
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi tối ưu dưới hai ràng buộc đối nghịch là tốc độ và độ tươi. Kiểm bằng cặp số đo cộng phép thử cách ly đệm; đạt khi thời gian phân vị 95 dưới ngưỡng, độ tươi trong cam kết, và hai người dùng khác quyền không bao giờ nhận cùng một mục đệm.
 
-### Bài 180: Access control at the semantic layer
+### Lesson 180: Access control at the semantic layer
 
 Đặt kiểm soát truy cập ở tầng ngữ nghĩa có lợi thế lớn: một chỗ cưỡng chế cho mọi công cụ tiêu thụ, thay vì cấu hình lại ở từng công cụ BI. Ba mức kiểm soát: theo chỉ số tức ai được xem chỉ số nào, theo dòng tức mỗi người chỉ thấy dữ liệu thuộc phạm vi của mình, và theo cột tức che các trường nhạy cảm. Bảo mật mức dòng cài bằng cách gắn thuộc tính người dùng vào điều kiện lọc được áp tự động; ba cách lấy thuộc tính người dùng và đánh đổi. Cạm bẫy rò rỉ qua phép gộp: người không được xem dòng chi tiết nhưng được xem tổng có thể suy ra dòng chi tiết khi nhóm chỉ có một phần tử; cách chặn là đặt ngưỡng số phần tử tối thiểu cho mỗi nhóm. Phép thử phủ định bắt buộc: với mỗi chính sách, một phép kiểm chứng minh người không có quyền nhận được từ chối chứ nhận số đã lọc âm thầm.
 
@@ -255,7 +255,7 @@ Người học phải cài ba mức kiểm soát và chứng minh bằng phép t
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cơ chế bảo mật kiểm được bằng phép thử phủ định gồm cả đường rò gián tiếp. Kiểm bằng sáu phép thử; đạt khi cả sáu bị chặn đúng và đường rò qua phép gộp được chặn bằng ngưỡng nhóm.
 
-### Bài 181: Architecture alternatives - headless, BI-native or curated marts
+### Lesson 181: Architecture alternatives - headless, BI-native or curated marts
 
 Ba kiến trúc cho cùng một mục tiêu, và chọn theo ràng buộc tổ chức chứ theo công nghệ. Tầng ngữ nghĩa độc lập: định nghĩa nằm ngoài mọi công cụ tiêu thụ, nên nhiều công cụ dùng chung một định nghĩa; đổi lại thêm một thành phần phải vận hành và không phải công cụ BI nào cũng tích hợp tốt. Tầng ngữ nghĩa trong công cụ BI: tiện, không thêm thành phần, nhưng định nghĩa bị khoá trong một công cụ nên đổi công cụ là làm lại từ đầu, và người dùng SQL không hưởng được. Mart đã chuẩn bị sẵn: không có tầng ngữ nghĩa, thay vào đó là bảng rộng theo Bài 159 với định nghĩa đã tính sẵn; đơn giản nhất và đủ cho nhiều đội, đổi lại thiếu linh hoạt và số tổ hợp bảng phình theo nhu cầu. Sáu chiều để chọn và ba tình huống mà mart chuẩn bị sẵn là lựa chọn đúng dù nghe kém hiện đại.
 
@@ -263,7 +263,7 @@ Người học phải chọn kiến trúc cho ba bối cảnh tổ chức và n�
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi chọn theo ràng buộc tổ chức, và chống việc mặc định chọn phương án phức tạp nhất. Kiểm bằng ba bối cảnh trong đó ít nhất một nên chọn mart chuẩn bị sẵn; đạt khi chọn đúng cả ba kèm điều kiện đảo ngược.
 
-### Bài 182: Metric lifecycle - propose, certify, version, deprecate
+### Lesson 182: Metric lifecycle - propose, certify, version, deprecate
 
 Chỉ số có vòng đời, và không quản vòng đời thì danh mục phình tới mức không ai tin được cái nào. Năm trạng thái và điều kiện chuyển: đề xuất, đang rà soát, đã chứng nhận, đã khai tử, và đã gỡ. Điều kiện để được chứng nhận là danh mục kiểm lấy từ các bài trước: hợp đồng sáu phần đủ, qua bốn bước chứng minh không đếm trùng ở Bài 172, có bộ đối soát độc lập ở Bài 178, có ma trận tương thích ở Bài 173, và có chủ sở hữu. Phân loại thay đổi thành ba mức và quy trình tương ứng: thay đổi không ảnh hưởng số, thay đổi làm số đổi, và thay đổi phá vỡ tương thích; mức hai là mức nguy hiểm nhất vì nó im lặng, nên bắt buộc phải thông báo và phải chạy kiểm hồi quy. Với mức ba, thông báo là chưa đủ: hợp đồng nguồn đòi chạy song song hai phiên bản, đối soát chênh lệch giữa chúng, lấy chấp thuận của bên tiêu thụ, rồi mới gỡ bản cũ, và toàn bộ được ghi thành một bản ghi khai tử. Lý do chạy song song: chênh lệch giữa hai phiên bản là con số duy nhất cho bên tiêu thụ biết báo cáo của họ sẽ đổi bao nhiêu; không có nó thì họ chỉ nhận được một lời hứa. Sửa đè công thức tại chỗ mà không có phiên bản mới là điều kiện tự động không đạt, vì nó làm mọi số lịch sử đổi nghĩa mà không ai truy được. Khai tử có cửa sổ chuyển tiếp và cảnh báo cho người đang dùng. Quy trình khai tử là quy trình hay bị bỏ quên nhất và là lý do danh mục phình mãi.
 
@@ -271,7 +271,7 @@ Người học phải vận hành vòng đời năm trạng thái, và thực hi
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một quy trình quản trị có tiêu chí nghiệm thu bằng việc chặn đúng và khai tử sạch. Kiểm bằng ba chỉ số đi qua vòng đời cộng một lần di trú phá vỡ; đạt khi chỉ số thiếu điều kiện bị chặn chứng nhận, lần di trú có số chênh lệch đo được giữa hai phiên bản, và chỉ số khai tử không còn người dùng khi gỡ.
 
-### Bài 183: Ownership, change classification and the failure matrix
+### Lesson 183: Ownership, change classification and the failure matrix
 
 Bài chốt phần quản trị. Mô hình sở hữu ba vai và ranh giới: chủ sở hữu nghiệp vụ quyết định nghĩa, chủ sở hữu kỹ thuật chịu trách nhiệm cài đặt và vận hành, người quản trị danh mục giữ quy trình. Thiếu vai thứ nhất là nguyên nhân phổ biến nhất khiến định nghĩa không ai dám chốt. Ma trận chế độ hỏng của tầng ngữ nghĩa, mỗi dòng gồm hiện tượng, nguyên nhân gốc, cách phát hiện, và cách chặn; sáu chế độ hỏng chính đã gặp rải rác nay gom thành một bảng dùng được khi trực: đếm trùng, phép kết mơ hồ, gộp sai loại độ đo, ngữ nghĩa thời gian lệch, rò rỉ qua phép gộp, đệm bỏ ngữ cảnh bảo mật hoặc bỏ phiên bản ngữ nghĩa theo Bài 179, và công thức bị sửa đè tại chỗ nên số lịch sử đổi nghĩa theo Bài 182. Hai chế độ hỏng cuối nguy hiểm hơn phần còn lại vì chúng không sinh ra con số lạ: kết quả vẫn nằm trong khoảng hợp lý, chỉ là thuộc về người khác hoặc thuộc về một định nghĩa khác. Với mỗi chế độ hỏng phải có một phép kiểm tự động phát hiện được, nếu không thì nó sẽ tái diễn. Phân tích sau sự cố cho một lần số sai đã công bố ra ngoài.
 
@@ -279,7 +279,7 @@ Người học phải lập ma trận chế độ hỏng có phép kiểm tự �
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi tổng hợp các lỗi đã gặp thành một hệ phòng vệ. Kiểm bằng phép thử tiêm bảy lỗi; đạt khi ít nhất sáu bị phép kiểm tự động phát hiện và ba vai được gán rõ.
 
-### Bài 184: Capstone - a governed revenue semantic product
+### Lesson 184: Capstone - a governed revenue semantic product
 
 Bài dự án khép module, lấy đúng yêu cầu capstone của hợp đồng nguồn. Dựng một sản phẩm ngữ nghĩa cho miền doanh thu. Sản phẩm nộp gồm chín hạng mục, lấy đúng ngưỡng của hợp đồng nguồn: hợp đồng sáu phần cho ít nhất 15 chỉ số thuộc ít nhất năm loại, mỗi chỉ số có chủ sở hữu và có phép kiểm; ít nhất ba mô hình ngữ nghĩa, và một truy vấn đi qua nhiều bước kết kèm chứng minh bản số cùng chứng minh không nhân dòng; ma trận tương thích chỉ số nhân chiều; bộ kiểm ba tầng gồm định nghĩa, tính đúng và tích hợp; bộ đối chứng cố định phủ đủ sáu ca ở Bài 178; SQL sinh ra cùng kế hoạch thực thi được soi cho một ma trận truy vấn đại diện; phục vụ hai loại bên tiêu thụ có bảo mật theo dòng cùng theo khách hàng và có phép thử cách ly đệm theo Bài 179; một lần di trú phá vỡ hoàn chỉnh gồm chạy song song, đối soát, chấp thuận của bên tiêu thụ và bản ghi khai tử theo Bài 182; và tài liệu vòng đời gồm trạng thái từng chỉ số cùng ba vai sở hữu. Sáu điều kiện tự động không đạt, lấy đủ từ phần *Critical failures* của nguồn: chỉ số thiếu tập hợp, thời gian, hạt hoặc chủ sở hữu; đồ thị kết cho phép đếm trùng im lặng; lấy sự đồng thuận trên bảng điều khiển làm bằng chứng đúng duy nhất; sửa đè công thức tại chỗ khi thay đổi phá vỡ, không có di trú; đệm bỏ ngữ cảnh bảo mật hoặc bỏ phiên bản ngữ nghĩa; và công cụ biên dịch xanh nhưng không có đối soát độc lập.
 

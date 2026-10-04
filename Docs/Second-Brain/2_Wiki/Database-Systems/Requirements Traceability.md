@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao duy trì chuỗi hai chiều decision → question → metric → model → source để impact analysis và deletion decisions có bằng chứng?
 source_ids:
   - src.web.openlineage-overview
@@ -230,7 +230,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.requirements-traceability`
+## Execution capsule: kiểm chứng `wiki.data-product.requirements-traceability`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.requirements-traceability`, sơ đồ, ví dụ và artifact về **Requirements Traceability** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

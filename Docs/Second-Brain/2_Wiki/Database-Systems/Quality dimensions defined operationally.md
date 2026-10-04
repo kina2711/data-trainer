@@ -37,7 +37,7 @@ Hợp lệ kiểm type, format, domain và range đã công bố nhưng một gi
 
 ## 3. Uniqueness
 
-Duy nhất phụ thuộc entity/event identity và scope thời gian; DISTINCT trên một cột không thay business key. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Quality dimensions defined operationally`, câu hỏi thực dụng là: Bảy chiều chất lượng được biến thành phép quan sát có grain, population và nguồn thẩm quyền như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Duy nhất phụ thuộc entity/event identity và scope thời gian; DISTINCT trên một cột không thay business key. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Quality dimensions defined operationally`, câu hỏi thực dụng là: Bảy chiều chất lượng được biến thành phép quan sát có grain, population và nguồn thẩm quyền như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Consistency and integrity
 
@@ -218,7 +218,7 @@ Với `wiki.data-quality.dimensions-operational`, command thành công không t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-quality.dimensions-operational`
+## Execution capsule: kiểm chứng `wiki.data-quality.dimensions-operational`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-quality.dimensions-operational`, sơ đồ, ví dụ và artifact về **Quality dimensions defined operationally** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -38,7 +38,7 @@ Kết luận về design review qua scope, correctness và operability passes ch
 
 ## 3. Failure mode
 
-Phân tích design review qua scope, correctness và operability passes cần tìm earliest failure, propagation path, blast radius và state hoặc claim còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Design review simulation - three passes`, câu hỏi thực dụng là: Làm thế nào thiết kế, kiểm chứng và bảo vệ design review qua scope, correctness và operability passes mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân tích design review qua scope, correctness và operability passes cần tìm earliest failure, propagation path, blast radius và state hoặc claim còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Design review simulation - three passes`, câu hỏi thực dụng là: Làm thế nào thiết kế, kiểm chứng và bảo vệ design review qua scope, correctness và operability passes mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision rule
 
@@ -221,7 +221,7 @@ Với `wiki.system-design.review-three-pass`, command thành công không tự c
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.system-design.review-three-pass`
+## Execution capsule: kiểm chứng `wiki.system-design.review-three-pass`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.system-design.review-three-pass`, sơ đồ, ví dụ và artifact về **Design review simulation - three passes** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

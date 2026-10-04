@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-27
 last_verified: 2026-09-27
 review_after: 2027-03-27
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Độ trễ, mất gói và thông lượng hình thành ở đâu, và đo chúng thế nào mà không suy diễn quá mức?
 source_ids:
   - src.book.kurose-ross-networking.8e
@@ -33,7 +33,7 @@ relationships:
 # Độ trễ, mất gói và thông lượng trong mạng chuyển mạch gói
 
 > [!abstract] Câu hỏi trung tâm
-> Một request chậm không tự động có nghĩa “mạng chậm”. Cần biết thời gian đã tiêu ở khâu xử lý, chờ hàng đợi, đưa bit lên đường truyền hay lan truyền trên môi trường vật lý; đồng thời phải tách độ trễ khỏi mất gói và giới hạn thông lượng.
+> Một request chậm không tự động có nghĩa mạng chậm. Cần biết thời gian đã tiêu ở khâu xử lý, chờ hàng đợi, đưa bit lên đường truyền hay lan truyền trên môi trường vật lý; đồng thời phải tách độ trễ khỏi mất gói và giới hạn thông lượng.
 
 ## Mô hình tổng quát
 
@@ -59,7 +59,7 @@ d_{trans}=\frac{L}{R}, \qquad d_{prop}=\frac{d}{s}
 $$
 
 > [!source-fact]
-> Bốn thành phần và công thức tổng được trình bày tại §1.4.1, trang in 65–69. Sách nhấn mạnh rằng tỷ trọng từng thành phần thay đổi theo loại mạng và đường đi.
+> Bốn thành phần và công thức tổng được trình bày tại §1.4.1, trang in 65-69. Sách nhấn mạnh rằng tỷ trọng từng thành phần thay đổi theo loại mạng và đường đi.
 
 ## 1. Xử lý tại nút: `d_proc`
 
@@ -83,7 +83,7 @@ Sách dùng ba biến để xây trực giác:
 Tỷ số `La/R` được gọi là *traffic intensity*. Nếu `La/R > 1`, tốc độ bit đến trung bình cao hơn khả năng phục vụ; với hàng đợi giả định vô hạn, backlog tăng không giới hạn. Khi tỷ số tiến gần 1, độ trễ hàng đợi trung bình có thể tăng rất nhanh.
 
 > [!source-fact]
-> Mô hình traffic intensity, ảnh hưởng của burst và đường cong tăng nhanh khi `La/R` tiến gần 1 nằm tại §1.4.2, trang in 69–70.
+> Mô hình traffic intensity, ảnh hưởng của burst và đường cong tăng nhanh khi `La/R` tiến gần 1 nằm tại §1.4.2, trang in 69-70.
 
 ### Điều `La/R` không nói được
 
@@ -94,7 +94,7 @@ Hai traffic pattern có cùng giá trị trung bình vẫn tạo độ trễ kh�
 
 ## 3. Transmission delay và propagation delay
 
-Hai loại trễ này thường bị gọi chung là “thời gian truyền”, nhưng chúng phụ thuộc các biến khác nhau.
+Hai loại trễ này thường bị gọi chung là thời gian truyền, nhưng chúng phụ thuộc các biến khác nhau.
 
 **Transmission delay** là thời gian cần để đưa toàn bộ `L` bit của gói vào link. Tăng tốc độ link `R` làm thời gian này giảm. Khoảng cách không có mặt trong `L/R`.
 
@@ -117,7 +117,7 @@ $$
 Trong ví dụ này propagation lớn hơn transmission hơn 40 lần. Đổi link lên 1 Gbit/s chỉ giảm `d_trans` xuống 0,012 ms; `d_prop` vẫn xấp xỉ 5 ms vì khoảng cách không đổi.
 
 > [!source-fact]
-> Định nghĩa, công thức và phép so sánh hai loại trễ nằm tại §1.4.1, trang in 67–69. Các con số trong ví dụ trên do người biên soạn tính lại từ công thức, không chép ví dụ đoàn xe trong sách.
+> Định nghĩa, công thức và phép so sánh hai loại trễ nằm tại §1.4.1, trang in 67-69. Các con số trong ví dụ trên do người biên soạn tính lại từ công thức, không chép ví dụ đoàn xe trong sách.
 
 ## 4. Mất gói là hậu quả của hàng đợi hữu hạn
 
@@ -136,7 +136,7 @@ $$
 d_{end-to-end}=N(d_{proc}+d_{trans}+d_{prop})
 $$
 
-Trong hệ thống thật, các link và nút không đồng nhất. Cách viết phù hợp hơn là cộng từng thành phần theo chặng, cộng thêm queue tại từng nút và delay ở endpoint. DNS, TCP/TLS handshake, scheduler, packetization, proxy và thời gian xử lý ứng dụng không tự biến mất chỉ vì đang đo “network time”.
+Trong hệ thống thật, các link và nút không đồng nhất. Cách viết phù hợp hơn là cộng từng thành phần theo chặng, cộng thêm queue tại từng nút và delay ở endpoint. DNS, TCP/TLS handshake, scheduler, packetization, proxy và thời gian xử lý ứng dụng không tự biến mất chỉ vì đang đo network time.
 
 > [!synthesis]
 > Một waterfall request nên được đọc như tổng nhiều pha có ranh giới đo riêng. §1.4.3 nêu end-to-end delay cùng delay ở end system; việc đưa DNS, handshake và ứng dụng vào sơ đồ chẩn đoán là tổng hợp với các chương giao thức khác, không phải công thức nguyên văn của §1.4.
@@ -154,7 +154,7 @@ Ba giới hạn cần nhớ:
 Ngoài ra, cân bằng tải và tuyến bất đối xứng có thể khiến nhiều probe không đi hoặc về cùng một đường. Do đó, Traceroute là bằng chứng quan sát tuyến và RTT probe, không phải bản đồ vật lý tuyệt đối.
 
 > [!source-fact]
-> Cơ chế và ví dụ Traceroute nằm tại §1.4.3, trang in 71–73. Nhận xét về queue khiến RTT hop sau có thể nhỏ hơn hop trước được sách nêu trực tiếp. Cân bằng tải và tuyến bất đối xứng là giới hạn vận hành cần kiểm bằng nguồn công cụ hiện hành trước khi dùng trong bài giảng chuyên sâu.
+> Cơ chế và ví dụ Traceroute nằm tại §1.4.3, trang in 71-73. Nhận xét về queue khiến RTT hop sau có thể nhỏ hơn hop trước được sách nêu trực tiếp. Cân bằng tải và tuyến bất đối xứng là giới hạn vận hành cần kiểm bằng nguồn công cụ hiện hành trước khi dùng trong bài giảng chuyên sâu.
 
 ## 7. Thông lượng end-to-end
 
@@ -173,7 +173,7 @@ Link đạt giá trị nhỏ nhất là bottleneck. Tuy nhiên, capacity của l
 Mười luồng cùng chia đều một link 5 Mbit/s chỉ nhận khoảng 0,5 Mbit/s mỗi luồng, kể cả khi phía server có access link 2 Mbit/s và phía client có 1 Mbit/s. Bottleneck hiệu dụng của mỗi luồng khi đó là phần capacity được chia trên link chung.
 
 > [!source-fact]
-> Định nghĩa thông lượng tức thời, thông lượng trung bình, bottleneck path và ví dụ mười download nằm tại §1.4.4, trang in 73–76.
+> Định nghĩa thông lượng tức thời, thông lượng trung bình, bottleneck path và ví dụ mười download nằm tại §1.4.4, trang in 73-76.
 
 ## 8. Quy trình chẩn đoán một request chậm
 
@@ -239,9 +239,9 @@ Chỉ dựa vào §1.4 chưa thể:
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §1.4.1 | processing delay, queueing delay và traffic intensity | §§1–2 | Đã trình bày cùng điều kiện của mô hình `La/R` |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §1.4.2 | transmission, propagation, nodal delay và packet loss | §§3–5 | Đã trình bày với biến, đơn vị và ví dụ số |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §1.4.3 | end-to-end delay và Traceroute | §§5–6 | Đã trình bày; dấu sao được giới hạn đúng mức bằng chứng |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §1.4.1 | processing delay, queueing delay và traffic intensity | §§1-2 | Đã trình bày cùng điều kiện của mô hình `La/R` |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §1.4.2 | transmission, propagation, nodal delay và packet loss | §§3-5 | Đã trình bày với biến, đơn vị và ví dụ số |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §1.4.3 | end-to-end delay và Traceroute | §§5-6 | Đã trình bày; dấu sao được giới hạn đúng mức bằng chứng |
 | [[SRC-KUROSE-ROSS-NETWORKING-8E]], §1.4.4 | throughput, bottleneck và chia sẻ link | §7 | Đã trình bày cùng giả định và giới hạn của công thức `min(R_i)` |
 
 Phạm vi nguồn kết thúc trước congestion control và application timeout. Các chủ đề đó chỉ được nối sang note khác, không được gán ngược cho §1.4.
@@ -254,7 +254,7 @@ Phạm vi nguồn kết thúc trước congestion control và application timeou
 - Throughput end-to-end bị giới hạn bởi bottleneck đang được chia sẻ; giá trị trung bình cần được đọc cùng phân phối theo thời gian, loss, RTT và số flow cạnh tranh.
 
 ## Reference
-1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §1.4, printed pp. 65–76, PDF pp. 67–78.
+1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §1.4, printed pp. 65-76, PDF pp. 67-78.
 2. Hồ sơ nguồn: [[SRC-KUROSE-ROSS-NETWORKING-8E]].
 3. Source note: `Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-03.md`.
 
@@ -266,7 +266,7 @@ Phạm vi nguồn kết thúc trước congestion control và application timeou
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.network.delay-loss-throughput`
+## Execution capsule: kiểm chứng `wiki.network.delay-loss-throughput`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.network.delay-loss-throughput`, sơ đồ, ví dụ và artifact về **Độ trễ, mất gói và thông lượng trong mạng chuyển mạch gói** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

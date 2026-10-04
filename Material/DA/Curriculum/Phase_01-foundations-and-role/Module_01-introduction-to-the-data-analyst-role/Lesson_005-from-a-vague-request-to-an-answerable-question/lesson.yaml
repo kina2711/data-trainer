@@ -5,7 +5,6 @@ status: ready-for-owner-review
 lifecycle_profile: learning
 risk_tier: R2-standard
 target_level: Foundation
-duration_minutes_estimate: 120
 central_question: Làm sao chuyển yêu cầu mơ hồ thành analytical contract có thể bác bỏ?
 objective: Viết contract khóa decision, population, metric, comparison, time, slices, constraints và acceptance
   trước khi phân tích.
@@ -16,64 +15,60 @@ prerequisites:
 learner_memory:
   resolved: false
   assumption: No prior mastery claimed; teach and assess the named prerequisites.
+editorial:
+  standard: lesson-authoring-v1
+  humanizer: blader/humanizer@3.1.0
+  status: pass
 scenes:
 - id: S01
   type: explain
-  minutes: 10
   claim: Câu 'phân tích giúp vì sao khách giảm' có ít nhất năm nghĩa của khách, ba cửa sổ thời gian và nhiều quyết
     định khác nhau.
-  source_span: note.md — heading 'Nỗi Đau & Động Lực'
+  source_span: 'note.md: heading Problem Definition and Operational Relevance'
   misconception_displaced: Có thể bắt đầu bằng công cụ/output trước khi khóa câu hỏi và boundary.
 - id: S02
   type: explain
-  minutes: 18
   claim: Một câu hỏi trả lời được phải nêu ai sẽ quyết định gì, trên population nào, bằng metric/comparison nào,
     trong time boundary nào và bằng chứng nào đủ để dừng.
-  source_span: note.md — heading 'Cơ Chế Tác Động'
+  source_span: 'note.md: heading Mechanism'
   misconception_displaced: Tự điền định nghĩa để kịp deadline, hoặc nhận deliverable 'dashboard' trước khi biết
     decision.
 - id: S03
   type: check
-  minutes: 7
   question: Trường đầu tiên của analytical contract là gì?
   answer: Decision và hành động mà kết quả sẽ hỗ trợ.
   wrong_answer_reveals: Người học nhớ từ khóa nhưng chưa nắm claim trung tâm.
-  source_span: note.md — heading 'Cơ Chế Tác Động'
+  source_span: 'note.md: heading Mechanism'
 - id: S04
   type: practice
-  minutes: 18
   task: 'Phỏng vấn role-play: stakeholder chỉ nói ''campaign vừa rồi có hiệu quả không?''; nhóm có 12 phút để tạo
     contract và read-back.'
   success_condition: Contract đủ tám trường semantic, có non-goal, acceptance và ít nhất một unknown với owner.
-  source_span: UNSOURCED — guided practice synthesized from the lesson objective and source-backed mechanism
+  source_span: 'UNSOURCED: guided practice synthesized from the lesson objective and source-backed mechanism'
 - id: S05
   type: explain
-  minutes: 15
   claim: Unknown làm đổi semantics, blast radius hoặc acceptance phải chặn execution; unknown định lượng được có
     thể đi tiếp với coverage và limitation công khai.
-  source_span: note.md — heading 'Bản Đồ Quyết Định'
+  source_span: 'note.md: heading Decision Framework'
   misconception_displaced: Một rule hoặc tool luôn đúng bất kể changed constraint.
 - id: S06
   type: decide
-  minutes: 12
   situation: Nếu deadline từ ba ngày xuống hai giờ, co scope và strength of claim; không âm thầm hạ correctness
     gate.
   trade_off: Contract khóa nghĩa và tiêu chí; nó không bảo đảm source có đủ dữ liệu hay kết luận sẽ có causal strength
     mong muốn.
   defensible_choices: Lựa chọn phải giữ hard constraints, nêu evidence và reversal trigger.
-  source_span: UNSOURCED — changed-constraint decision scenario synthesized for transfer
+  source_span: 'UNSOURCED: changed-constraint decision scenario synthesized for transfer'
 - id: S07
   type: explain
-  minutes: 15
   claim: 'Worked example: Đổi ''khách giảm'' thành paid customers tháng 9 so tháng 8 theo event time ICT, chốt D+3.
     Định nghĩa paid customer là distinct customer_id có payment_success, loại test/refund toàn phần. Slice theo
     acquisition channel và device vì owner có lever tương ứng. Acceptance: reconcile với finance ±0,5%; nếu coverage
     <98% thì trả lời có điều kiện.'
-  source_span: 'note.md — heading ''Case Study Thực Chiến: một chỉ số bán hàng đổi nghĩa giữa đường'''
+  source_span: 'note.md: heading Worked Case: một chỉ số bán hàng đổi nghĩa giữa đường'
   misconception_displaced: Một case thành công tự chứng minh cơ chế tổng quát.
 - id: S08
   type: apply
-  minutes: 18
   task: CEO muốn câu trả lời trong hai giờ nhưng identity khách đa thiết bị chưa được giải quyết. Chọn dừng, co
     claim hay dùng proxy và nêu điều kiện.
   assumes:
@@ -84,15 +79,14 @@ scenes:
   - S07
   success_condition: Artifact nêu boundary, evidence, lựa chọn, rejected alternative và condition làm quyết định
     đảo.
-  source_span: UNSOURCED — curriculum transfer scenario synthesized from the lesson contract
+  source_span: 'UNSOURCED: curriculum transfer scenario synthesized from the lesson contract'
 - id: S09
   type: check
-  minutes: 7
   question: Unknown nào bắt buộc phải chặn phân tích?
   answer: Unknown có thể đổi nghĩa population/metric, blast radius hoặc tiêu chí đạt; identity chưa rõ là ví dụ
     điển hình.
   wrong_answer_reveals: Người học chưa chuyển mental model sang tình huống mới.
-  source_span: note.md — heading 'Góc Khuất & Ngộ Nhận'
+  source_span: 'note.md: heading Limits and Common Errors'
 assessment:
   formative: quiz.md — 10 questions, pass >= 8/10; failed concepts receive targeted remediation and one retest.
   authentic: homework.md — artifact scored on a 100-point analytic rubric; pass >= 75 and no critical failure.
@@ -105,5 +99,4 @@ publish:
   after_note: true
   answer_key: true
 unused_source_spans:
-- Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension/remediation; the 120-minute session
-  samples rather than recites every probe.
+- Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension and remediation.

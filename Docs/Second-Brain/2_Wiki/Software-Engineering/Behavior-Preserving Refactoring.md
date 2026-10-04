@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao thay đổi cấu trúc mã theo từng bước nhỏ mà chứng minh được hành vi quan sát từ bên ngoài không đổi?
 source_ids:
   - src.book.hunt-thomas-pragmatic-programmer.20ae
@@ -29,7 +29,7 @@ relationships:
 # Tái cấu trúc theo bước nhỏ và giữ nguyên hành vi
 
 > [!abstract] Câu hỏi trung tâm
-> Một thay đổi chỉ được gọi là refactor khi cấu trúc bên trong đổi nhưng hành vi quan sát được vẫn giữ nguyên. Ý định tốt không đủ: cần một oracle hành vi, chuỗi bước luôn chạy được và bằng chứng so sánh trước–sau.
+> Một thay đổi chỉ được gọi là refactor khi cấu trúc bên trong đổi nhưng hành vi quan sát được vẫn giữ nguyên. Ý định tốt không đủ: cần một oracle hành vi, chuỗi bước luôn chạy được và bằng chứng so sánh trước-sau.
 
 ## 1. Bốn loại thay đổi phải tách nhau
 
@@ -40,12 +40,12 @@ relationships:
 | Thêm tính năng | có thể đổi | mở rộng | acceptance criteria mới |
 | Rewrite | thay phần lớn | có thể đổi ngoài dự kiến | migration và parity plan riêng |
 
-Một commit vừa di chuyển code, vừa đổi rule tính tiền, vừa “tiện tay” sửa dữ liệu rỗng không còn là bằng chứng refactor. Khi test hỏng, không xác định được nguyên nhân thuộc cấu trúc hay nghiệp vụ.
+Một commit vừa di chuyển code, vừa đổi rule tính tiền, vừa tiện tay sửa dữ liệu rỗng không còn là bằng chứng refactor. Khi test hỏng, không xác định được nguyên nhân thuộc cấu trúc hay nghiệp vụ.
 
 > [!source-fact]
-> Hunt và Thomas định nghĩa refactoring là kỹ thuật có kỷ luật để thay đổi cấu trúc bên trong mà không đổi hành vi ngoài; họ yêu cầu không trộn thêm chức năng, có test tốt và tiến bằng bước ngắn. *The Pragmatic Programmer*, Topic 40, PDF 276–280.
+> Hunt và Thomas định nghĩa refactoring là kỹ thuật có kỷ luật để thay đổi cấu trúc bên trong mà không đổi hành vi ngoài; họ yêu cầu không trộn thêm chức năng, có test tốt và tiến bằng bước ngắn. *The Pragmatic Programmer*, Topic 40, PDF 276-280.
 
-## 2. “Giữ nguyên hành vi” nghĩa là giữ cái gì?
+## 2. Giữ nguyên hành vi nghĩa là giữ cái gì?
 
 Hành vi không chỉ là giá trị trả về. Với pipeline dữ liệu, contract quan sát được có thể gồm:
 
@@ -57,7 +57,7 @@ Hành vi không chỉ là giá trị trả về. Với pipeline dữ liệu, con
 - log hoặc metric chỉ khi downstream phụ thuộc chúng như interface vận hành;
 - giới hạn tài nguyên nếu đó là SLO bắt buộc.
 
-Trước khi sửa, viết một **behavior inventory**. Mỗi mục phải có cách quan sát. “Code chạy đúng” không phải một oracle; `sha256` của output chuẩn, tập assertion schema và danh sách side effect mới là oracle.
+Trước khi sửa, viết một **behavior inventory**. Mỗi mục phải có cách quan sát. Code chạy đúng không phải một oracle; `sha256` của output chuẩn, tập assertion schema và danh sách side effect mới là oracle.
 
 ## 3. Safety net cho mã cũ
 
@@ -69,7 +69,7 @@ Mã chưa có test không buộc phải hiểu hết rồi mới bắt đầu. D
 4. Đánh dấu hành vi đáng ngờ nhưng chưa sửa trong commit refactor.
 5. Chạy lại suite nhiều lần để phát hiện nondeterminism.
 
-Characterization test nói “hệ đang làm gì”, chưa nói “nghiệp vụ muốn gì”. Nếu phát hiện hành vi sai, mở một thay đổi sửa lỗi riêng, có test thể hiện contract mong muốn.
+Characterization test nói hệ đang làm gì, chưa nói nghiệp vụ muốn gì. Nếu phát hiện hành vi sai, mở một thay đổi sửa lỗi riêng, có test thể hiện contract mong muốn.
 
 ## 4. Vòng lặp một bước
 
@@ -86,7 +86,7 @@ flowchart LR
   G -->|rồi| H[So output và side effect với baseline]
 ```
 
-Một bước nhỏ phải có trạng thái hợp lệ ở cuối bước. “Tách ba lớp trong ba ngày rồi mới chạy test” là một batch rewrite. Ví dụ chuỗi tách pipeline 300 dòng:
+Một bước nhỏ phải có trạng thái hợp lệ ở cuối bước. Tách ba lớp trong ba ngày rồi mới chạy test là một batch rewrite. Ví dụ chuỗi tách pipeline 300 dòng:
 
 1. đổi tên biến theo từ vựng miền;
 2. extract function đọc input;
@@ -124,7 +124,7 @@ Commit nên mô tả phép biến đổi: `extract parser boundary`, `move valid
 
 Rà soát theo chuỗi commit giúp reviewer kiểm tra invariant ở từng bước, thay vì suy đoán từ một diff lớn. Squash chỉ thực hiện sau khi đã dùng lịch sử chi tiết để review, nếu policy dự án yêu cầu.
 
-## 7. Chứng minh trước–sau cho pipeline
+## 7. Chứng minh trước-sau cho pipeline
 
 Với cùng fixture và cùng dependency version, thu hai bộ bằng chứng:
 
@@ -141,14 +141,14 @@ candidate/
 So sánh theo contract. Byte-equality chỉ phù hợp khi serialization deterministic; nếu timestamp kỹ thuật được phép đổi, normalize trường đó và ghi rõ. Không được xóa assertion chỉ để suite xanh.
 
 > [!synthesis]
-> Quy trình “characterize → transform nhỏ → test → commit → parity check” là tổng hợp phục vụ DE-L095 từ kỷ luật refactoring của Hunt/Thomas, regression testing của Sommerville và yêu cầu test boundary trong Newman. Không nguồn nào đặt đúng tên toàn bộ quy trình này.
+> Quy trình characterize → transform nhỏ → test → commit → parity check là tổng hợp phục vụ DE-L095 từ kỷ luật refactoring của Hunt/Thomas, regression testing của Sommerville và yêu cầu test boundary trong Newman. Không nguồn nào đặt đúng tên toàn bộ quy trình này.
 
 ## 8. Failure modes
 
 - **Rewrite trá hình:** branch sống lâu, không có trạng thái deployable trung gian.
 - **Test bám implementation:** đổi tên method là test hỏng dù contract ngoài không đổi.
 - **Golden master mù:** snapshot quá lớn được cập nhật hàng loạt mà không review semantic diff.
-- **Sửa bug lẫn refactor:** output khác nhưng commit message vẫn nói “không đổi hành vi”.
+- **Sửa bug lẫn refactor:** output khác nhưng commit message vẫn nói không đổi hành vi.
 - **Nondeterminism:** thời gian, random seed hoặc thứ tự map làm parity check nhiễu.
 
 ## 9. Các phép biến đổi cơ bản và invariant của chúng
@@ -222,7 +222,7 @@ Chọn phép đo theo cơ chế:
 - throughput và p95/p99 cho hot path;
 - kích thước artifact hoặc startup time nếu deployment phụ thuộc.
 
-Ghi môi trường, warm-up, input và variance. Kết luận “không chậm hơn” chỉ hợp lệ trong phạm vi phép đo đã công bố.
+Ghi môi trường, warm-up, input và variance. Kết luận không chậm hơn chỉ hợp lệ trong phạm vi phép đo đã công bố.
 
 ## 14. Protocol review theo commit
 
@@ -277,7 +277,7 @@ Nếu commit 5 làm error class đổi từ `ImportFailed` sang driver exception
 - [ ] Behavior inventory gồm output, schema, lỗi và side effect.
 - [ ] Ít nhất sáu commit; mỗi commit compile và test xanh.
 - [ ] Không commit nào trộn sửa lỗi hoặc feature.
-- [ ] Output chuẩn trước–sau khớp theo rule đã công bố.
+- [ ] Output chuẩn trước-sau khớp theo rule đã công bố.
 - [ ] Có danh sách hành vi đáng ngờ được hoãn sang change riêng.
 
 ## 19. Liên kết chương trình
@@ -287,18 +287,18 @@ Nếu commit 5 làm error class đổi từ `ImportFailed` sang driver exception
 - Bài kế tiếp tự động hóa thêm các gate: [[Automated Code and Supply Chain Checks|Kiểm tự động cho mã và chuỗi cung ứng phần mềm]].
 
 ## Reference
-1. [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]] — Topic 40, PDF 276–280.
-2. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]] — refactoring, regression testing và software evolution, PDF 82–88 và 255–270.
-3. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — test scope và refactoring support, PDF 353–372.
+1. [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]]: Topic 40, PDF 276-280.
+2. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]]: refactoring, regression testing và software evolution, PDF 82-88 và 255-270.
+3. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: test scope và refactoring support, PDF 353-372.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]], Topic 40 pp. 276–280 | refactor có kiểm soát, test trước và bước nhỏ | §§1–5, 9–10 | Đã trình bày loop và invariant của transformation |
-| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], pp. 82–88, 255–270 | software evolution, regression testing và refactoring | §§2–4, 6–8, 16–18 | Đã trình bày baseline, regression safety net và evidence |
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], Ch. 9 pp. 353–372 | test scope và support cho thay đổi cấu trúc | §§3, 10–14 | Đã trình bày seam, characterization, side effect và performance contract |
-| Tổng hợp bài DE-L095 | quy trình commit, case module 300 dòng và checklist nghiệm thu | §§14–18 | Đã gắn `synthesis`; lịch sử commit mẫu chưa phải lab đã chạy |
+| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]], Topic 40 pp. 276-280 | refactor có kiểm soát, test trước và bước nhỏ | §§1-5, 9-10 | Đã trình bày loop và invariant của transformation |
+| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], pp. 82-88, 255-270 | software evolution, regression testing và refactoring | §§2-4, 6-8, 16-18 | Đã trình bày baseline, regression safety net và evidence |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], Ch. 9 pp. 353-372 | test scope và support cho thay đổi cấu trúc | §§3, 10-14 | Đã trình bày seam, characterization, side effect và performance contract |
+| Tổng hợp bài DE-L095 | quy trình commit, case module 300 dòng và checklist nghiệm thu | §§14-18 | Đã gắn `synthesis`; lịch sử commit mẫu chưa phải lab đã chạy |
 
 Parity trên fixture không chứng minh equivalence cho mọi input. Note giữ giới hạn này và yêu cầu review behavior inventory trước khi gọi thay đổi là refactor.
 
@@ -310,7 +310,7 @@ Parity trên fixture không chứng minh equivalence cho mọi input. Note giữ
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.software-engineering.behavior-preserving-refactoring`
+## Execution capsule: kiểm chứng `wiki.software-engineering.behavior-preserving-refactoring`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.software-engineering.behavior-preserving-refactoring`, sơ đồ, ví dụ và artifact về **Tái cấu trúc theo bước nhỏ và giữ nguyên hành vi** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

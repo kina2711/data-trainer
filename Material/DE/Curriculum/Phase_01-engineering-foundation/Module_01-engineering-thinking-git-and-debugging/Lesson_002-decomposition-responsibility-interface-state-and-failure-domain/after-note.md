@@ -1,4 +1,4 @@
-# DE Lesson 2 — Practice, feedback and retest
+# DE Lesson 2: Practice, feedback and retest
 
 ## Thực hành có hướng dẫn
 
@@ -15,10 +15,10 @@ Phân rã order-payment-fulfillment trên bốn trục; inject timeout payment v
 
 ## Retrieval checks và đáp án tối thiểu
 
-- **Responsibility nên được tìm bằng gì?** — Invariant và lý do thay đổi nghiệp vụ/vận hành, không chỉ technical layer.
-- **Interface tối thiểu phải nêu gì?** — Operation, input/output semantics, error contract và invariant caller được dựa vào.
-- **Authoritative writer có tác dụng gì?** — Ngăn nhiều component cập nhật cùng state machine mà không có protocol.
-- **Failure domain được xác định thế nào?** — Trace fault qua dependency/state tới consumer harm và recovery.
+- **Responsibility nên được tìm bằng gì?**: Invariant và lý do thay đổi nghiệp vụ/vận hành, không chỉ technical layer.
+- **Interface tối thiểu phải nêu gì?**: Operation, input/output semantics, error contract và invariant caller được dựa vào.
+- **Authoritative writer có tác dụng gì?**: Ngăn nhiều component cập nhật cùng state machine mà không có protocol.
+- **Failure domain được xác định thế nào?**: Trace fault qua dependency/state tới consumer harm và recovery.
 
 ## Novel-scenario retest
 
@@ -26,7 +26,7 @@ Hai team cần đổi schema với cadence khác nhưng dùng chung dedup ledger
 
 **Pass condition:** câu trả lời nêu boundary, evidence, lựa chọn, ít nhất một alternative, blast radius/consumer harm và reversal trigger. Không chấm theo việc trùng wording của đáp án mẫu.
 
-## Bài làm sau buổi học
+## Post-Lesson Work
 
 - Làm `quiz.md`, ngưỡng 8/10.
 - Làm `homework.md`, ngưỡng 75/100 và không có critical failure.
@@ -43,8 +43,14 @@ Hai team cần đổi schema với cadence khác nhưng dùng chung dedup ledger
 
 ## Giới hạn
 
-Gói này chưa được dạy trên cohort thật; thời lượng là ước tính. Điểm quiz/homework chỉ là evidence trong scope của DE-L002, không phải chứng nhận vai trò hay kinh nghiệm production.
+Gói này chưa được dạy trên cohort thật. Điểm quiz và homework chỉ là evidence trong scope của DE-L002, không phải chứng nhận vai trò hoặc kinh nghiệm production.
 
 ## Bắc cầu
 
-DE-L003 — ghi trade-off và reversal trigger bằng ADR.
+DE-L003: ghi trade-off và reversal trigger bằng ADR.
+
+## References
+
+- [[wiki.engineering-foundation.decomposition-four-axes|Decomposition across four axes]]
+- [[wiki.data-product.requirements-traceability|Requirements traceability]]
+- [[wiki.backend.idempotency-keys-deduplication-state|Idempotency keys and deduplication state]]

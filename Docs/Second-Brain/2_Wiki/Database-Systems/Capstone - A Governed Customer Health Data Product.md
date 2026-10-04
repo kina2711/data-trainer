@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một customer-health data product cần những artifact, phép thử và failure gates nào để chứng minh decision traceability, semantic correctness, self-service, access control và lifecycle readiness?
 source_ids:
   - src.book.reis-housley-fundamentals-data-engineering
@@ -236,7 +236,7 @@ Mỗi kết luận cần input, observation và failure signal có thể lưu. T
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.customer-health-capstone`
+## Execution capsule: kiểm chứng `wiki.data-product.customer-health-capstone`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.customer-health-capstone`, sơ đồ, ví dụ và artifact về **Capstone - A Governed Customer Health Data Product** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -258,7 +258,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Một customer-health data product cần những artifact, phép thử và failure gates nào để chứng minh decision traceability, semantic correctness, self-service, access control và lifecycle readiness?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Một customer-health data product cần những artifact, phép thử và failure gates nào để chứng minh decision traceability, semantic correctness, self-service, access control và lifecycle readiness? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Capstone - A Governed Customer Health Data Product** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

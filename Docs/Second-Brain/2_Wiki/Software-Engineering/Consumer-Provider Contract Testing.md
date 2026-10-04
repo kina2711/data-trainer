@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao chứng minh producer và consumer hiểu cùng một contract, chặn breaking change trước deploy và di trú contract theo hai giai đoạn?
 source_ids:
   - src.book.richardson-microservices-patterns.1e
@@ -39,7 +39,7 @@ relationships:
 > [!abstract] Câu hỏi trung tâm
 > Producer test xanh và consumer test xanh riêng rẽ vẫn có thể không nói chuyện được với nhau. Contract test phải ghi đúng kỳ vọng mà consumer thật sự dùng, chạy được ở cả hai phía và chặn thay đổi phá vỡ trước khi phiên bản mới đi vào môi trường dùng chung.
 
-## 1. Bài toán hai phía cùng “đúng”
+## 1. Bài toán hai phía cùng đúng
 
 Producer trả:
 
@@ -78,7 +78,7 @@ Với message/event:
 - tombstone/null semantics nếu có.
 
 > [!source-fact]
-> Richardson định nghĩa consumer contract test là integration test của provider để xác minh API khớp kỳ vọng consumer; với REST, nó kiểm method, path, headers, request và response shape. *Microservices Patterns*, Chapter 9, PDF 331–332.
+> Richardson định nghĩa consumer contract test là integration test của provider để xác minh API khớp kỳ vọng consumer; với REST, nó kiểm method, path, headers, request và response shape. *Microservices Patterns*, Chapter 9, PDF 331-332.
 
 ## 3. Consumer sở hữu kỳ vọng, producer sở hữu implementation
 
@@ -93,7 +93,7 @@ flowchart LR
   G -->|no| X[block + identify consumer]
 ```
 
-Producer tự viết “contract” từ response hiện tại chỉ tạo mirror test: nó chứng minh code giống chính nó, không chứng minh consumer dùng được.
+Producer tự viết contract từ response hiện tại chỉ tạo mirror test: nó chứng minh code giống chính nó, không chứng minh consumer dùng được.
 
 ## 4. Hai phía đều phải được kiểm
 
@@ -106,7 +106,7 @@ Contract cấu hình stub/mock server. Consumer client gửi request thật qua 
 Contract tạo request với provider endpoint thật ở component scope. Response được match theo rule của contract.
 
 > [!source-fact]
-> Richardson mô tả contract vừa cấu hình HTTP stub cho consumer, vừa sinh provider-side test; kiểm cả hai phía xác nhận chúng đồng ý về API. *Microservices Patterns*, Chapters 9–10, PDF 333–335 và 353–360.
+> Richardson mô tả contract vừa cấu hình HTTP stub cho consumer, vừa sinh provider-side test; kiểm cả hai phía xác nhận chúng đồng ý về API. *Microservices Patterns*, Chapters 9-10, PDF 333-335 và 353-360.
 
 ## 5. Contract test không làm gì
 
@@ -133,9 +133,9 @@ Ví dụ field `total` giữ type number nhưng đổi từ gross sang net. Sche
 Hai phiên bản provider tương thích khi client hiện có tiếp tục hoạt động theo contract đã công bố.
 
 > [!source-fact]
-> Geewax định nghĩa compatibility theo việc có thể thay server version mà client hiện hữu không ngừng hoạt động, đồng thời nhấn mạnh policy phụ thuộc kỳ vọng user. *API Design Patterns*, Chapter 24, PDF 643–648.
+> Geewax định nghĩa compatibility theo việc có thể thay server version mà client hiện hữu không ngừng hoạt động, đồng thời nhấn mạnh policy phụ thuộc kỳ vọng user. *API Design Patterns*, Chapter 24, PDF 643-648.
 
-Điều này loại bỏ các luật tuyệt đối kiểu “thêm luôn an toàn, xóa luôn nguy hiểm”. Policy vẫn cần test trên consumer thực tế.
+Điều này loại bỏ các luật tuyệt đối kiểu thêm luôn an toàn, xóa luôn nguy hiểm. Policy vẫn cần test trên consumer thực tế.
 
 ## 8. Ba thay đổi bắt buộc của DE-L094
 
@@ -147,10 +147,10 @@ Kỳ vọng thường gặp: tương thích nếu consumer bỏ qua field lạ. 
 - snapshot equality đòi object đúng từng field;
 - payload tăng vượt giới hạn memory/bandwidth;
 - field mới thay đổi resource lifecycle;
-- field “optional” nhưng semantics khiến consumer phải xử lý.
+- field optional nhưng semantics khiến consumer phải xử lý.
 
 > [!source-fact]
-> Geewax nêu thêm field có thể làm client giới hạn bộ nhớ hỏng và nhấn mạnh compatibility policy phải dựa vào user profile. *API Design Patterns*, Chapter 24, PDF 648–651.
+> Geewax nêu thêm field có thể làm client giới hạn bộ nhớ hỏng và nhấn mạnh compatibility policy phải dựa vào user profile. *API Design Patterns*, Chapter 24, PDF 648-651.
 
 ### B. Xóa field bắt buộc
 
@@ -173,7 +173,7 @@ Producer review contract để tránh:
 Contract là điểm bắt đầu conversation, không phải cách consumer chiếm quyền thiết kế API.
 
 > [!source-fact]
-> Newman xem consumer-driven contracts vừa là kiểm thử vừa là cách làm explicit cuộc trao đổi giữa các team; producer và consumer nên cộng tác khi tạo expectation. *Building Microservices*, Chapter 9, PDF 369–372.
+> Newman xem consumer-driven contracts vừa là kiểm thử vừa là cách làm explicit cuộc trao đổi giữa các team; producer và consumer nên cộng tác khi tạo expectation. *Building Microservices*, Chapter 9, PDF 369-372.
 
 ## 10. Matching rule đủ chặt nhưng không brittle
 
@@ -348,12 +348,12 @@ Policy mẫu phải được thay nếu consumer thực dùng strict decoder ho�
 
 ## 21. Ngộ nhận thường gặp
 
-- “OpenAPI chính là contract test”: spec là input; test phải chạy behavior hai phía.
-- “Thêm field luôn tương thích”: strict decoder, memory và semantics có thể phá vỡ.
-- “CDC thay E2E”: CDC giảm một nhóm E2E nhưng không kiểm deploy/config toàn tuyến.
-- “Producer quyết định contract”: producer quyết định API, nhưng consumer phải khai báo phần nó dựa vào.
-- “Contract càng match nhiều càng an toàn”: over-specification đóng băng accidental detail.
-- “Version mới giải quyết breaking change”: consumer vẫn cần migration và deprecation window.
+- OpenAPI chính là contract test: spec là input; test phải chạy behavior hai phía.
+- Thêm field luôn tương thích: strict decoder, memory và semantics có thể phá vỡ.
+- CDC thay E2E: CDC giảm một nhóm E2E nhưng không kiểm deploy/config toàn tuyến.
+- Producer quyết định contract: producer quyết định API, nhưng consumer phải khai báo phần nó dựa vào.
+- Contract càng match nhiều càng an toàn: over-specification đóng băng accidental detail.
+- Version mới giải quyết breaking change: consumer vẫn cần migration và deprecation window.
 
 ## 22. Câu hỏi tự kiểm tra
 
@@ -375,10 +375,10 @@ Policy mẫu phải được thay nếu consumer thực dùng strict decoder ho�
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], pp. 331–335, 353–360 | consumer-driven contract và pipeline hai phía | §§1–5, 11–13 | Đã trình bày consumer/provider ownership và verification |
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], Ch. 9 pp. 369–372 | contract test so với E2E và breaking-change detection | §§5, 12, 17 | Đã trình bày phạm vi chứng minh và false confidence |
-| [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]], Ch. 24 pp. 642–680 | compatibility, versioning và evolution | §§6–10, 13–16 | Đã trình bày schema/semantic compatibility và two-stage change |
-| Tổng hợp bài DE-L094 | ba thay đổi, negative contract, evidence pack và scoring matrix | §§8, 16, 18–20 | Đã trình bày như synthesis; không tuyên bố contract pass chứng minh business correctness |
+| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], pp. 331-335, 353-360 | consumer-driven contract và pipeline hai phía | §§1-5, 11-13 | Đã trình bày consumer/provider ownership và verification |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], Ch. 9 pp. 369-372 | contract test so với E2E và breaking-change detection | §§5, 12, 17 | Đã trình bày phạm vi chứng minh và false confidence |
+| [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]], Ch. 24 pp. 642-680 | compatibility, versioning và evolution | §§6-10, 13-16 | Đã trình bày schema/semantic compatibility và two-stage change |
+| Tổng hợp bài DE-L094 | ba thay đổi, negative contract, evidence pack và scoring matrix | §§8, 16, 18-20 | Đã trình bày như synthesis; không tuyên bố contract pass chứng minh business correctness |
 
 Registry/broker behavior và matching DSL phụ thuộc tool. Note giữ identity, matching semantics và pipeline gate ở mức chuyển giao được.
 
@@ -387,7 +387,7 @@ Registry/broker behavior và matching DSL phụ thuộc tool. Note giữ identit
 - Cả consumer serializer và provider endpoint phải chạy từ cùng contract artifact.
 - Contract test tập trung vào interaction boundary, không thay business test hay E2E smoke.
 - Compatibility là promise cho consumer cụ thể; thêm field cũng cần policy và test.
-- Breaking change được di trú bằng expand–migrate–observe–contract, không đổi một bước.
+- Breaking change được di trú bằng expand-migrate-observe-contract, không đổi một bước.
 - Release evidence cần version và checksum của contract, consumer, provider và verification result.
 
 ## 24. Giới hạn
@@ -405,9 +405,9 @@ Registry/broker behavior và matching DSL phụ thuộc tool. Note giữ identit
 - Bài sau dùng contract suite làm safety net khi refactor: `DE-L095`.
 
 ## Reference
-1. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]] — Chris Richardson, *Microservices Patterns*, Chapters 9–10, PDF 331–335 và 353–360.
-2. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — Sam Newman, *Building Microservices*, Second Edition, Chapter 9, PDF 369–372.
-3. [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]] — JJ Geewax, *API Design Patterns*, Chapter 24, PDF 642–680.
+1. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]]: Chris Richardson, *Microservices Patterns*, Chapters 9-10, PDF 331-335 và 353-360.
+2. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: Sam Newman, *Building Microservices*, Second Edition, Chapter 9, PDF 369-372.
+3. [[SRC-GEEWAX-API-DESIGN-PATTERNS-1E]]: JJ Geewax, *API Design Patterns*, Chapter 24, PDF 642-680.
 
 ## Lịch sử biên tập
 
@@ -417,7 +417,7 @@ Registry/broker behavior và matching DSL phụ thuộc tool. Note giữ identit
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.software-engineering.consumer-provider-contract-testing`
+## Execution capsule: kiểm chứng `wiki.software-engineering.consumer-provider-contract-testing`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.software-engineering.consumer-provider-contract-testing`, sơ đồ, ví dụ và artifact về **Kiểm thử hợp đồng giữa producer và consumer** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

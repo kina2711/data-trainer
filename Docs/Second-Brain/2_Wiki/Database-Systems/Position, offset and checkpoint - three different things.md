@@ -39,7 +39,7 @@ Connector persists source coordinates plus snapshot state so it can resume extra
 
 ## 3. Transport offset
 
-Kafka partition offset names record position in one topic partition, unrelated numerically to source position. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Position, offset and checkpoint - three different things`, câu hỏi thực dụng là: Source log position, transport offset và application checkpoint khác nhau thế nào và phải commit theo thứ tự nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Kafka partition offset names record position in one topic partition, unrelated numerically to source position. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Position, offset and checkpoint - three different things`, câu hỏi thực dụng là: Source log position, transport offset và application checkpoint khác nhau thế nào và phải commit theo thứ tự nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Application checkpoint
 
@@ -224,7 +224,7 @@ Với `wiki.cdc.position-offset-checkpoint`, command thành công không tự ch
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.cdc.position-offset-checkpoint`
+## Execution capsule: kiểm chứng `wiki.cdc.position-offset-checkpoint`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.cdc.position-offset-checkpoint`, sơ đồ, ví dụ và artifact về **Position, offset and checkpoint - three different things** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

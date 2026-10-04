@@ -37,7 +37,7 @@ Background cleaner xử lý eligible segments; duplicate historical values tồn
 
 ## 3. Tombstone
 
-Null value với key biểu diễn delete marker; marker cần tồn tại đủ lâu cho consumers quan sát trước khi được eligible remove. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Log compaction and the tombstone lifecycle`, câu hỏi thực dụng là: Log compaction và tombstone giữ latest keyed state nhưng tạo những cửa sổ lịch sử/deletion nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Null value với key biểu diễn delete marker; marker cần tồn tại đủ lâu cho consumers quan sát trước khi được eligible remove. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Log compaction and the tombstone lifecycle`, câu hỏi thực dụng là: Log compaction và tombstone giữ latest keyed state nhưng tạo những cửa sổ lịch sử/deletion nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Consumer reconstruction
 
@@ -218,7 +218,7 @@ Với `wiki.streaming.kafka-compaction-tombstone`, command thành công không t
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.streaming.kafka-compaction-tombstone`
+## Execution capsule: kiểm chứng `wiki.streaming.kafka-compaction-tombstone`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.streaming.kafka-compaction-tombstone`, sơ đồ, ví dụ và artifact về **Log compaction and the tombstone lifecycle** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

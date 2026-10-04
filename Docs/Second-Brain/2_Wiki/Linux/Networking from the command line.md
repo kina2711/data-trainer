@@ -33,19 +33,19 @@ reference_path: Material/DE/Reference/Library/Knowledge-Notes/PACK-ENGINEERING-F
 > [!abstract] Câu hỏi trung tâm
 > Làm thế nào mô hình, đo và ra quyết định đúng về Networking from the command line?
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 Bắt gói ngay từ đầu thay vì kiểm phân giải tên trước · nhầm bị từ chối với hết giờ · bỏ qua bước kiểm ai đang nghe cổng · không biết trạng thái socket nghĩa là gì. Đây không phải danh sách lỗi cú pháp. Mỗi lỗi làm người vận hành chọn nhầm owner hoặc chữa symptom ở layer sau, khiến thời gian phục hồi tăng dù command vừa chạy trả về thành công.
 
 Năng lực cần giữ sau bài là: Chẩn đoán một lỗi kết nối về đúng một trong ba loại thất bại, theo đúng thứ tự năm bước. Nếu learner chỉ nhắc lại định nghĩa nhưng không phân biệt được hai state gần nhau trên số đo, bài chưa đạt.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Bộ công cụ tối thiểu để trả lời câu hỏi vì sao không kết nối được, và bài này chuẩn bị trực tiếp cho M6. Năm câu hỏi theo thứ tự chẩn đoán và công cụ tương ứng cho từng câu: tên miền phân giải ra địa chỉ nào, máy có đường đi tới địa chỉ đó không, cổng có mở và có ai đang nghe không, bắt tay có thành công không, và ứng dụng trả lời gì. Đi theo thứ tự này tránh được việc đoán lung tung. Phân biệt ba loại thất bại có triệu chứng giống nhau nhưng nguyên nhân khác hẳn: không phân giải được tên, kết nối bị từ chối, và kết nối hết giờ; loại thứ ba thường là tường lửa chặn im lặng. Xem socket đang mở và trạng thái của chúng, đặc biệt trạng thái chờ đóng tích tụ nhiều là dấu hiệu cạn cổng tạm. Bắt gói ở mức đủ để xác nhận gói có đi ra không, chưa cần phân tích sâu vì phần đó ở M6.
 
 Tách ba lớp khi đọc cơ chế `wiki.de-foundation.networking-from-the-command-line`: declared state là điều cấu hình hoặc API yêu cầu; executed state là việc runtime thực sự làm; consumer-visible state là điều client hay operator quan sát. Ba lớp có thể lệch nhau vì cache, buffering, retry, scheduling, queue hoặc failure giữa hai transition. Evidence phải chỉ ra lớp nào đang được đo.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Bước | Câu hỏi phải khóa | Điều kiện đạt |
 |---|---|---|
@@ -56,15 +56,15 @@ Tách ba lớp khi đọc cơ chế `wiki.de-foundation.networking-from-the-comm
 
 Quy tắc mặc định là chọn phép giải thích đơn giản nhất qua được hard constraints, rồi viết trước reversal trigger. Với `Networking from the command line`, absence of error không phải pass; pass cần observation đúng grain, một oracle độc lập và changed-constraint case đủ làm model có cơ hội thất bại.
 
-## Case Study Thực Chiến: Networking from the command line
+## Worked Case: Networking from the command line
 
 Giảng viên tạo ba lỗi kết nối: tên miền trỏ sai, dịch vụ không nghe cổng, và tường lửa chặn im lặng. Với mỗi lỗi, chạy đủ năm bước theo thứ tự và ghi bước nào phát hiện ra. Liệt kê socket đang mở và chỉ ra trạng thái chờ đóng nếu có.
 
-Trong case `wiki.de-foundation.networking-from-the-command-line`, learner ghi expected transition, input snapshot, version và giới hạn an toàn trước khi chạy. Sau execution, họ giữ raw counter, timestamp, exit status, state trước–sau và giải thích delta bằng mechanism ở trên. Đánh giá không cho phép sửa expected result sau khi nhìn output mà không ghi change record.
+Trong case `wiki.de-foundation.networking-from-the-command-line`, learner ghi expected transition, input snapshot, version và giới hạn an toàn trước khi chạy. Sau execution, họ giữ raw counter, timestamp, exit status, state trước-sau và giải thích delta bằng mechanism ở trên. Đánh giá không cho phép sửa expected result sau khi nhìn output mà không ghi change record.
 
 Biến thể khó hơn đổi một constraint có khả năng đảo kết luận: workload shape, memory pressure, connection reuse, retry budget, permission hoặc dependency direction. Tầng *phân tích*. Objective là một quy trình chẩn đoán có thứ tự, chuẩn bị cho M6. Kiểm bằng ba lỗi kết nối tiêm sẵn; đạt khi phân loại đúng ít nhất hai và chỉ ra bước nào trong năm bước phát hiện ra.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Bắt gói ngay từ đầu thay vì kiểm phân giải tên trước. **Thực tế:** tín hiệu chỉ chứng minh điều nó đo trong đúng scope; state ở layer khác vẫn có thể trái ngược. **Vì sao nghe hợp lý:** happy path nhỏ thường không chạm queue, cache, partial progress hoặc restart.
 
@@ -88,7 +88,7 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 **Thiết kế phép thử cho `wiki.de-foundation.networking-from-the-command-line`.** Với `wiki.de-foundation.networking-from-the-command-line`, tạo positive và negative control chỉ khác một điều kiện; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P1 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P1 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 2: identity, ownership và boundary
 
@@ -96,7 +96,7 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 **Thiết kế phép thử cho `wiki.de-foundation.networking-from-the-command-line`.** Với `wiki.de-foundation.networking-from-the-command-line`, tạo boundary case ngay trước và sau ngưỡng; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P2 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P2 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 3: failure path và recovery
 
@@ -104,7 +104,7 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 **Thiết kế phép thử cho `wiki.de-foundation.networking-from-the-command-line`.** Với `wiki.de-foundation.networking-from-the-command-line`, tạo replay cùng identity nhưng đổi state; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P3 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P3 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 4: decision trade-off và reversal trigger
 
@@ -112,7 +112,7 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 **Thiết kế phép thử cho `wiki.de-foundation.networking-from-the-command-line`.** Với `wiki.de-foundation.networking-from-the-command-line`, tạo failure inject trước và sau transition bền vững; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P4 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P4 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 5: evidence package và oracle
 
@@ -120,7 +120,7 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 **Thiết kế phép thử cho `wiki.de-foundation.networking-from-the-command-line`.** Với `wiki.de-foundation.networking-from-the-command-line`, tạo changed scale làm cost model đổi; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P5 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P5 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 6: changed-constraint transfer
 
@@ -128,7 +128,7 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 **Thiết kế phép thử cho `wiki.de-foundation.networking-from-the-command-line`.** Với `wiki.de-foundation.networking-from-the-command-line`, tạo adversarial order, skew hoặc packet timing; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P6 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P6 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 7: state transition và invariant
 
@@ -136,7 +136,7 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 **Thiết kế phép thử cho `wiki.de-foundation.networking-from-the-command-line`.** Với `wiki.de-foundation.networking-from-the-command-line`, tạo fresh environment không cache; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P7 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P7 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 8: identity, ownership và boundary
 
@@ -144,7 +144,7 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 **Thiết kế phép thử cho `wiki.de-foundation.networking-from-the-command-line`.** Với `wiki.de-foundation.networking-from-the-command-line`, tạo independent oracle không dùng chung implementation; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P8 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P8 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 9: failure path và recovery
 
@@ -152,7 +152,7 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 **Thiết kế phép thử cho `wiki.de-foundation.networking-from-the-command-line`.** Với `wiki.de-foundation.networking-from-the-command-line`, tạo partial progress rồi restart; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P9 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P9 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 10: decision trade-off và reversal trigger
 
@@ -160,7 +160,7 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 **Thiết kế phép thử cho `wiki.de-foundation.networking-from-the-command-line`.** Với `wiki.de-foundation.networking-from-the-command-line`, tạo missing evidence phải abstain; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P10 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P10 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 11: evidence package và oracle
 
@@ -168,7 +168,7 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 **Thiết kế phép thử cho `wiki.de-foundation.networking-from-the-command-line`.** Với `wiki.de-foundation.networking-from-the-command-line`, tạo reviewer tái hiện từ evidence package; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P11 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P11 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 12: changed-constraint transfer
 
@@ -176,7 +176,7 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 **Thiết kế phép thử cho `wiki.de-foundation.networking-from-the-command-line`.** Với `wiki.de-foundation.networking-from-the-command-line`, tạo constraint đổi đủ để quyết định đảo; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P12 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P12 cần giữ.** Với `wiki.de-foundation.networking-from-the-command-line`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ## Tự Kiểm Tra Nhanh
 
@@ -208,8 +208,8 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-TLPI-2010]] — `src.book.tlpi.2010` | Chapters 4–39, 49–50, 61 và 63 theo scope record; PDF 113–1418 | mechanism và boundary liên quan trực tiếp tới `Networking from the command line` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L074 |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]] — `src.book.kurose-ross-networking.8e` | §§1.4, 2.2, 2.4, 2.7, 3.5–3.7, 4.5, 6.6.1 và Chapter 8; PDF 67–682 | mechanism và boundary liên quan trực tiếp tới `Networking from the command line` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L074 |
+| [[SRC-TLPI-2010]]: `src.book.tlpi.2010` | Chapters 4-39, 49-50, 61 và 63 theo scope record; PDF 113-1418 | mechanism và boundary liên quan trực tiếp tới `Networking from the command line` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L074 |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]]: `src.book.kurose-ross-networking.8e` | §§1.4, 2.2, 2.4, 2.7, 3.5-3.7, 4.5, 6.6.1 và Chapter 8; PDF 67-682 | mechanism và boundary liên quan trực tiếp tới `Networking from the command line` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L074 |
 
 ## Key takeaways
 - Chẩn đoán một lỗi kết nối về đúng một trong ba loại thất bại, theo đúng thứ tự năm bước.
@@ -219,7 +219,7 @@ Protocol riêng của `Networking from the command line` dùng điều kiện ho
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.de-foundation.networking-from-the-command-line`
+## Execution capsule: kiểm chứng `wiki.de-foundation.networking-from-the-command-line`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.de-foundation.networking-from-the-command-line`, sơ đồ, ví dụ và artifact về **Networking from the command line** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

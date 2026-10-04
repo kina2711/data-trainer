@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Chọn full snapshot, watermark, CDC, pagination hay file delivery dựa trên semantics và constraints nào?
 source_ids:
   - src.book.reis-housley-fundamentals-data-engineering
@@ -226,7 +226,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ingestion.extraction-pattern-decision-framework`
+## Execution capsule: kiểm chứng `wiki.ingestion.extraction-pattern-decision-framework`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ingestion.extraction-pattern-decision-framework`, sơ đồ, ví dụ và artifact về **Extraction Pattern Decision Framework** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -248,7 +248,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Chọn full snapshot, watermark, CDC, pagination hay file delivery dựa trên semantics và constraints nào?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Chọn full snapshot, watermark, CDC, pagination hay file delivery dựa trên semantics và constraints nào? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Extraction Pattern Decision Framework** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

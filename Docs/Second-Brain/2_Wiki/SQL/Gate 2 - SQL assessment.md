@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Không có nội dung mới. Bài kiểm tra độc lập trên một cơ sở dữ liệu chưa từng thấy và không có tài liệu. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L030 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Gate 2 - SQL assessment**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Khảo sát một cơ sở dữ liệu lạ, viết truy vấn trả lời câu hỏi nghiệp vụ trên đó, và nộp kèm bằng chứng kiểm chứng kết quả, trong giới hạn thời gian. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Không có nội dung mới. Bài kiểm tra độc lập trên một cơ sở dữ liệu chưa từng thấy và không có tài liệu.
 
@@ -44,7 +44,7 @@ Cơ chế của `gate-2-sql-assessment` được kiểm qua năm lớp: input v�
 
 Lỗi cần loại trừ trong bài này là: Viết truy vấn trước khi khảo sát lược đồ · nộp kết quả không kèm phép kiểm chứng · dùng hết thời gian cho phần C và bỏ phần D. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Viết truy vấn trước khi kh�
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L030: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “≥ 70/100 và không phần nào dưới 50%. Không đạt thì áp dụng quy trình khắc phục ở phụ lục J, thi lại một lần. Đạt ≥ 70/100 và không phần nào dưới 50%. Đây là exit criterion của Module 3.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L030: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành ≥ 70/100 và không phần nào dưới 50%. Không đạt thì áp dụng quy trình khắc phục ở phụ lục J, thi lại một lần. Đạt ≥ 70/100 và không phần nào dưới 50%. Đây là exit criterion của Module 3.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Gate 2 - SQL assessment
+## Worked Case: Gate 2 - SQL assessment
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Phần A (20đ) khảo sát lược đồ và phát biểu hạt · Phần B (25đ) truy vấn gộp nhóm và ghép bảng có kiểm chứng số dòng · Phần C (25đ) hàm cửa sổ: top-N theo nhóm, luỹ kế, so kỳ · Phần D (20đ) báo cáo chất lượng dữ liệu định lượng · Phần E (10đ) truy nguyên một truy vấn cho kết quả sai.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Gate 2 - SQL assessment`, learner ghi expected resul
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L030 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Gate 2 - SQL assessment` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L030 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Không có nội dung mới. Bài kiểm tra độc lập trên một cơ sở dữ liệu chưa từng thấy và không có tài liệu.
+**Mệnh đề của probe 1: `population`.** Không có nội dung mới. Bài kiểm tra độc lập trên một cơ sở dữ liệu chưa từng thấy và không có tài liệu.
 
 **Thiết kế.** Probe 1 của L030 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L030 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Khảo sát một cơ sở dữ liệu lạ, viết truy vấn trả lời câu hỏi nghiệp vụ trên đó, và nộp kèm bằng chứng kiểm chứng kết quả, trong giới hạn thời gian.
+**Mệnh đề của probe 2: `grain`.** Khảo sát một cơ sở dữ liệu lạ, viết truy vấn trả lời câu hỏi nghiệp vụ trên đó, và nộp kèm bằng chứng kiểm chứng kết quả, trong giới hạn thời gian.
 
 **Thiết kế.** Probe 2 của L030 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L030 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Viết truy vấn trước khi khảo sát lược đồ · nộp kết quả không kèm phép kiểm chứng · dùng hết thời gian cho phần C và bỏ phần D.
+**Mệnh đề của probe 3: `identity`.** Viết truy vấn trước khi khảo sát lược đồ · nộp kết quả không kèm phép kiểm chứng · dùng hết thời gian cho phần C và bỏ phần D.
 
 **Thiết kế.** Probe 3 của L030 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L030 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** ≥ 70/100 và không phần nào dưới 50%. Không đạt thì áp dụng quy trình khắc phục ở phụ lục J, thi lại một lần. Đạt ≥ 70/100 và không phần nào dưới 50%. Đây là exit criterion của Module 3.
+**Mệnh đề của probe 4: `time cutoff`.** ≥ 70/100 và không phần nào dưới 50%. Không đạt thì áp dụng quy trình khắc phục ở phụ lục J, thi lại một lần. Đạt ≥ 70/100 và không phần nào dưới 50%. Đây là exit criterion của Module 3.
 
 **Thiết kế.** Probe 4 của L030 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L030 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Không có nội dung mới. Bài kiểm tra độc lập trên một cơ sở dữ liệu chưa từng thấy và không có tài liệu.
+**Mệnh đề của probe 5: `missing versus zero`.** Không có nội dung mới. Bài kiểm tra độc lập trên một cơ sở dữ liệu chưa từng thấy và không có tài liệu.
 
 **Thiết kế.** Probe 5 của L030 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L030 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Khảo sát một cơ sở dữ liệu lạ, viết truy vấn trả lời câu hỏi nghiệp vụ trên đó, và nộp kèm bằng chứng kiểm chứng kết quả, trong giới hạn thời gian.
+**Mệnh đề của probe 6: `duplicate`.** Khảo sát một cơ sở dữ liệu lạ, viết truy vấn trả lời câu hỏi nghiệp vụ trên đó, và nộp kèm bằng chứng kiểm chứng kết quả, trong giới hạn thời gian.
 
 **Thiết kế.** Probe 6 của L030 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L030 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Viết truy vấn trước khi khảo sát lược đồ · nộp kết quả không kèm phép kiểm chứng · dùng hết thời gian cho phần C và bỏ phần D.
+**Mệnh đề của probe 7: `join fan-out`.** Viết truy vấn trước khi khảo sát lược đồ · nộp kết quả không kèm phép kiểm chứng · dùng hết thời gian cho phần C và bỏ phần D.
 
 **Thiết kế.** Probe 7 của L030 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L030 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** ≥ 70/100 và không phần nào dưới 50%. Không đạt thì áp dụng quy trình khắc phục ở phụ lục J, thi lại một lần. Đạt ≥ 70/100 và không phần nào dưới 50%. Đây là exit criterion của Module 3.
+**Mệnh đề của probe 8: `changed definition`.** ≥ 70/100 và không phần nào dưới 50%. Không đạt thì áp dụng quy trình khắc phục ở phụ lục J, thi lại một lần. Đạt ≥ 70/100 và không phần nào dưới 50%. Đây là exit criterion của Module 3.
 
 **Thiết kế.** Probe 8 của L030 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L030 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Không có nội dung mới. Bài kiểm tra độc lập trên một cơ sở dữ liệu chưa từng thấy và không có tài liệu.
+**Mệnh đề của probe 9: `independent oracle`.** Không có nội dung mới. Bài kiểm tra độc lập trên một cơ sở dữ liệu chưa từng thấy và không có tài liệu.
 
 **Thiết kế.** Probe 9 của L030 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L030 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Khảo sát một cơ sở dữ liệu lạ, viết truy vấn trả lời câu hỏi nghiệp vụ trên đó, và nộp kèm bằng chứng kiểm chứng kết quả, trong giới hạn thời gian.
+**Mệnh đề của probe 10: `replay`.** Khảo sát một cơ sở dữ liệu lạ, viết truy vấn trả lời câu hỏi nghiệp vụ trên đó, và nộp kèm bằng chứng kiểm chứng kết quả, trong giới hạn thời gian.
 
 **Thiết kế.** Probe 10 của L030 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L030 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Viết truy vấn trước khi khảo sát lược đồ · nộp kết quả không kèm phép kiểm chứng · dùng hết thời gian cho phần C và bỏ phần D.
+**Mệnh đề của probe 11: `fresh snapshot`.** Viết truy vấn trước khi khảo sát lược đồ · nộp kết quả không kèm phép kiểm chứng · dùng hết thời gian cho phần C và bỏ phần D.
 
 **Thiết kế.** Probe 11 của L030 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L030 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** ≥ 70/100 và không phần nào dưới 50%. Không đạt thì áp dụng quy trình khắc phục ở phụ lục J, thi lại một lần. Đạt ≥ 70/100 và không phần nào dưới 50%. Đây là exit criterion của Module 3.
+**Mệnh đề của probe 12: `novel scenario`.** ≥ 70/100 và không phần nào dưới 50%. Không đạt thì áp dụng quy trình khắc phục ở phụ lục J, thi lại một lần. Đạt ≥ 70/100 và không phần nào dưới 50%. Đây là exit criterion của Module 3.
 
 **Thiết kế.** Probe 12 của L030 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Viết truy vấn trước khi khảo sát lược đồ · nộp kết quả kh
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql`
-2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e`
+1. [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql`
+2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Gate 2 - SQL assessment | các mục cơ chế, case và probe | Đã phủ | ngoài objective L030 |
-| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Gate 2 - SQL assessment | các mục cơ chế, case và probe | Đã phủ | ngoài objective L030 |
+| [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Gate 2 - SQL assessment | các mục cơ chế, case và probe | Đã phủ | ngoài objective L030 |
+| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Gate 2 - SQL assessment | các mục cơ chế, case và probe | Đã phủ | ngoài objective L030 |
 
 ## Key takeaways
 - Khảo sát một cơ sở dữ liệu lạ, viết truy vấn trả lời câu hỏi nghiệp vụ trên đó, và nộp kèm bằng chứng kiểm chứng kết quả, trong giới hạn thời gian.
@@ -226,7 +226,7 @@ Viết truy vấn trước khi khảo sát lược đồ · nộp kết quả kh
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.gate-2-sql-assessment`
+## Execution capsule: kiểm chứng `wiki.da.gate-2-sql-assessment`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.gate-2-sql-assessment`, sơ đồ, ví dụ và artifact về **Gate 2 - SQL assessment** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

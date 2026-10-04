@@ -39,7 +39,7 @@ Mỗi source có expected/seen/emitted/rejected/deleted counts, checkpoint và p
 
 ## 3. Discovery experience
 
-Representative queries phải tìm đúng certified/current asset và giải thích owner, quality, lineage, lifecycle. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Metadata control-plane capstone`, câu hỏi thực dụng là: Metadata control plane capstone phải chứng minh ingestion, identity, search, lineage và governance cùng vận hành ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Representative queries phải tìm đúng certified/current asset và giải thích owner, quality, lineage, lifecycle. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Metadata control-plane capstone`, câu hỏi thực dụng là: Metadata control plane capstone phải chứng minh ingestion, identity, search, lineage và governance cùng vận hành ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Impact workflow
 
@@ -224,7 +224,7 @@ Với `wiki.metadata.control-plane-capstone`, command thành công không tự c
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.metadata.control-plane-capstone`
+## Execution capsule: kiểm chứng `wiki.metadata.control-plane-capstone`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.metadata.control-plane-capstone`, sơ đồ, ví dụ và artifact về **Metadata control-plane capstone** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

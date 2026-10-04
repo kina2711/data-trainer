@@ -38,7 +38,7 @@ Java objects, headers, pointers và boxed values có thể lớn hơn encoded da
 
 ## 3. Cache lifecycle
 
-Persist level, materializing action, reuse count, eviction và unpersist quyết định cache có lợi hay chỉ chiếm memory. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Memory, caching and garbage collection`, câu hỏi thực dụng là: Execution memory, storage cache, object overhead, serialization và GC tương tác thế nào để gây spill hoặc OOM? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Persist level, materializing action, reuse count, eviction và unpersist quyết định cache có lợi hay chỉ chiếm memory. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Memory, caching and garbage collection`, câu hỏi thực dụng là: Execution memory, storage cache, object overhead, serialization và GC tương tác thế nào để gây spill hoặc OOM? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Garbage collection
 
@@ -221,7 +221,7 @@ Với `wiki.spark.memory-cache-gc`, command thành công không tự chứng min
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.spark.memory-cache-gc`
+## Execution capsule: kiểm chứng `wiki.spark.memory-cache-gc`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.spark.memory-cache-gc`, sơ đồ, ví dụ và artifact về **Memory, caching and garbage collection** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -41,22 +41,22 @@ Với mỗi bảo đảm được tuyên bố, nêu được giả định hệ 
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L309 · The formal model - safety, liveness and what the network may do | LT | Phát biểu một bảo đảm theo thứ khách hàng quan sát được và phân loại năm mệnh đề vào an toàn hay sống động. | Phân đúng ≥ 4/5 mệnh đề kèm giả định, và ba tuyên bố được phát biểu lại theo quan sát của khách hàng. | M20: M17 |
-| L310 · Failure modes and why a timeout is not a failure | TH | Tái hiện năm chế độ hỏng trên một dịch vụ nhỏ và chứng minh hành vi đúng ở cả ba khả năng sau khi hết giờ. | Trạng thái cuối đúng ở cả ba kết cục sau hết giờ, và không tác dụng phụ nào xảy ra hai lần qua 1.000 lượt tiêm. | L309 |
-| L311 · Time and order - wall clock, monotonic clock and logical clocks | TH | Chứng minh bằng thực nghiệm rằng chiến lược theo dấu thời gian làm mất cập nhật, và thay bằng đồng hồ logic. | Số cập nhật bị mất được định lượng, đồng hồ véctơ phát hiện đúng mọi cặp đồng thời, và chính sách xung đột nêu rõ thông tin bị mất. | L310 |
-| L312 · Replication - single leader, multi leader, leaderless | LT | Chọn kiểu sao chép cho ba bối cảnh và định lượng lượng dữ liệu có thể mất khi chuyển đổi dự phòng. | Ba bối cảnh có lựa chọn kèm lượng mất tối đa tính từ độ trễ đo được, và số phép ghi mất khi giết người dẫn được đếm thật. | L311 |
-| L313 · Partitioning, consistent hashing and rebalancing | TH | Đo phân bố tải qua ba cách chia và xử lý được một phân vùng nóng có bằng chứng. | Ba cách chia có số đo độ lệch và lượng dữ liệu di chuyển, và phân vùng nóng giảm độ lệch sau khi xử lý. | L312 |
-| L314 · Consistency models named by what the client observes | LT | Xếp năm mô hình theo độ mạnh và chỉ ra bảo đảm nào một hệ cho trước thật sự cung cấp. | Xác định đúng mô hình bị vi phạm ở ≥ 3/4 lịch sử, và hai hệ thật được phát biểu lại bảo đảm theo năm mô hình. | L313 |
-| L315 · Quorum reasoning, and why a quorum is not linearizability | TH | Tái hiện ca số đông giao nhau mà phép đọc vẫn trả giá trị cũ, và giải thích cần thêm gì. | Ba ca được tái hiện bằng dữ liệu, mỗi ca nêu đúng cơ chế còn thiếu, và hiệu lực của sửa khi đọc được đo theo từng ca. | L314 |
-| L316 · Consensus - the replicated log, term, election and commit | TH | Cài phần bầu chọn và sao chép nhật ký, rồi giữ được ba tính chất an toàn qua các lần giết nút. | Ba tính chất an toàn không bị vi phạm qua 200 chu kỳ, và ca người dẫn cũ quay lại bị từ chối bằng nhiệm kỳ. | L315 |
-| L317 · Leases, fencing tokens and the returning old leader | TH | Tái hiện ca hai tiến trình cùng tưởng mình giữ khoá và chặn nó bằng thẻ chặn cưỡng chế ở đích. | Ca hai tiến trình cùng ghi được tái hiện kèm bằng chứng dữ liệu sai, và bản có thẻ chặn từ chối đúng 100% yêu cầu mang số cũ. | L316 |
-| L318 · Distributed transactions - two-phase commit against saga and outbox | TH | So ba cách trên cùng bài toán và lập ma trận hỏng tại mọi ranh giới cho từng cách. | Ma trận hỏng đầy đủ cho cả ba cách tại mọi ranh giới, ca điều phối viên chết được tái hiện kèm thời gian khoá đo được. | L317 |
-| L319 · Overload, backpressure and cascading failure | TH | Tái hiện một lần sập dây chuyền và chặn nó bằng bốn cơ chế, có số đo trước sau. | Bản chưa phòng thủ sập hoàn toàn còn bản có phòng thủ giữ tỉ lệ phục vụ trên ngưỡng, và đóng góp của từng cơ chế có số đo. | L318 |
-| L320 · History analysis project - judge a guarantee from evidence | DA | Xác định đúng mô hình bị vi phạm trên bốn lịch sử và nêu giới hạn của bộ kiểm mình viết. | Xác định đúng ≥ 3/4 lịch sử kèm chuỗi thao tác chứng minh, lịch sử hợp lệ không bị báo nhầm, và giới hạn bộ kiểm được nêu rõ. | L319 |
+| L309 · [[wiki.distributed.formal-model-safety-liveness|The formal model - safety, liveness and what the network may do]]| LT | Phát biểu một bảo đảm theo thứ khách hàng quan sát được và phân loại năm mệnh đề vào an toàn hay sống động. | Phân đúng ≥ 4/5 mệnh đề kèm giả định, và ba tuyên bố được phát biểu lại theo quan sát của khách hàng. | M20: M17 |
+| L310 · [[wiki.distributed.timeout-ambiguity-failure-modes|Failure modes and why a timeout is not a failure]]| TH | Tái hiện năm chế độ hỏng trên một dịch vụ nhỏ và chứng minh hành vi đúng ở cả ba khả năng sau khi hết giờ. | Trạng thái cuối đúng ở cả ba kết cục sau hết giờ, và không tác dụng phụ nào xảy ra hai lần qua 1.000 lượt tiêm. | L309 |
+| L311 · [[wiki.distributed.time-order-clocks|Time and order - wall clock, monotonic clock and logical clocks]]| TH | Chứng minh bằng thực nghiệm rằng chiến lược theo dấu thời gian làm mất cập nhật, và thay bằng đồng hồ logic. | Số cập nhật bị mất được định lượng, đồng hồ véctơ phát hiện đúng mọi cặp đồng thời, và chính sách xung đột nêu rõ thông tin bị mất. | L310 |
+| L312 · [[wiki.distributed.replication-topologies|Replication - single leader, multi leader, leaderless]]| LT | Chọn kiểu sao chép cho ba bối cảnh và định lượng lượng dữ liệu có thể mất khi chuyển đổi dự phòng. | Ba bối cảnh có lựa chọn kèm lượng mất tối đa tính từ độ trễ đo được, và số phép ghi mất khi giết người dẫn được đếm thật. | L311 |
+| L313 · [[wiki.distributed.partitioning-rebalancing|Partitioning, consistent hashing and rebalancing]]| TH | Đo phân bố tải qua ba cách chia và xử lý được một phân vùng nóng có bằng chứng. | Ba cách chia có số đo độ lệch và lượng dữ liệu di chuyển, và phân vùng nóng giảm độ lệch sau khi xử lý. | L312 |
+| L314 · [[wiki.distributed.consistency-client-observations|Consistency models named by what the client observes]]| LT | Xếp năm mô hình theo độ mạnh và chỉ ra bảo đảm nào một hệ cho trước thật sự cung cấp. | Xác định đúng mô hình bị vi phạm ở ≥ 3/4 lịch sử, và hai hệ thật được phát biểu lại bảo đảm theo năm mô hình. | L313 |
+| L315 · [[wiki.distributed.quorum-not-linearizability|Quorum reasoning, and why a quorum is not linearizability]]| TH | Tái hiện ca số đông giao nhau mà phép đọc vẫn trả giá trị cũ, và giải thích cần thêm gì. | Ba ca được tái hiện bằng dữ liệu, mỗi ca nêu đúng cơ chế còn thiếu, và hiệu lực của sửa khi đọc được đo theo từng ca. | L314 |
+| L316 · [[wiki.distributed.raft-log-term-election-commit|Consensus - the replicated log, term, election and commit]]| TH | Cài phần bầu chọn và sao chép nhật ký, rồi giữ được ba tính chất an toàn qua các lần giết nút. | Ba tính chất an toàn không bị vi phạm qua 200 chu kỳ, và ca người dẫn cũ quay lại bị từ chối bằng nhiệm kỳ. | L315 |
+| L317 · [[wiki.distributed.leases-fencing-old-leader|Leases, fencing tokens and the returning old leader]]| TH | Tái hiện ca hai tiến trình cùng tưởng mình giữ khoá và chặn nó bằng thẻ chặn cưỡng chế ở đích. | Ca hai tiến trình cùng ghi được tái hiện kèm bằng chứng dữ liệu sai, và bản có thẻ chặn từ chối đúng 100% yêu cầu mang số cũ. | L316 |
+| L318 · [[wiki.distributed.2pc-saga-outbox|Distributed transactions - two-phase commit against saga and outbox]]| TH | So ba cách trên cùng bài toán và lập ma trận hỏng tại mọi ranh giới cho từng cách. | Ma trận hỏng đầy đủ cho cả ba cách tại mọi ranh giới, ca điều phối viên chết được tái hiện kèm thời gian khoá đo được. | L317 |
+| L319 · [[wiki.distributed.overload-backpressure-cascade|Overload, backpressure and cascading failure]]| TH | Tái hiện một lần sập dây chuyền và chặn nó bằng bốn cơ chế, có số đo trước sau. | Bản chưa phòng thủ sập hoàn toàn còn bản có phòng thủ giữ tỉ lệ phục vụ trên ngưỡng, và đóng góp của từng cơ chế có số đo. | L318 |
+| L320 · [[wiki.distributed.history-analysis-evidence|History analysis project - judge a guarantee from evidence]]| DA | Xác định đúng mô hình bị vi phạm trên bốn lịch sử và nêu giới hạn của bộ kiểm mình viết. | Xác định đúng ≥ 3/4 lịch sử kèm chuỗi thao tác chứng minh, lịch sử hợp lệ không bị báo nhầm, và giới hạn bộ kiểm được nêu rõ. | L319 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M20 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M20 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -95,7 +95,7 @@ flowchart LR
   class A309,A310,A311,A312,A313,A314,A315,A316,A317,A318,A319,A320 atom;
 ```
 
-### Bài 309: The formal model - safety, liveness and what the network may do
+### Lesson 309: The formal model - safety, liveness and what the network may do
 
 Bài mở module bằng một mô hình đủ chặt để lập luận, vì bàn về hệ phân tán bằng trực giác dẫn tới kết luận sai. Mô hình gồm nút, tiến trình, thông điệp và trạng thái; lịch sử thao tác gồm lời gọi và phản hồi, và khoảng giữa hai mốc đó là chỗ mọi sự không chắc chắn nằm. Hai loại tính chất phải tách: an toàn nghĩa là việc xấu không bao giờ xảy ra, sống động nghĩa là việc tốt cuối cùng sẽ xảy ra; hy sinh an toàn để đổi lấy sống động là một quyết định, không phải một tối ưu hoá, và nó phải được nói ra. Giả định về mạng và tiến trình: đồng bộ, bán đồng bộ, hay bất đồng bộ hoàn toàn; trong mô hình bất đồng bộ hoàn toàn có những việc không làm được, và trực giác về giới hạn đó giải thích vì sao mọi hệ thật đều thêm giả định về thời gian. Bảo đảm phải phát biểu theo thứ khách hàng quan sát được. Tách nhất quán của hệ sao chép khỏi mức cô lập của giao dịch ở Bài 142.
 
@@ -103,7 +103,7 @@ Người học phải phát biểu một bảo đảm theo thứ khách hàng qu
 
 Cách đánh giá: Tầng *hiểu*. Bài mở module, đặt từ vựng cho toàn phase. Kiểm bằng bài phân loại cộng bài phát biểu lại; đạt khi phân đúng ít nhất bốn trong năm và bảo đảm được phát biểu bằng quan sát của khách hàng chứ bằng cơ chế nội bộ.
 
-### Bài 310: Failure modes and why a timeout is not a failure
+### Lesson 310: Failure modes and why a timeout is not a failure
 
 Bài chốt câu bản lề của module bằng thực nghiệm. Các chế độ hỏng phải phân biệt: dừng hẳn, dừng rồi khởi động lại, bỏ sót thông điệp, phân vùng mạng, và trì hoãn cùng nhân bản cùng đảo thứ tự; hành vi tuỳ tiện chỉ cần biết là có. Từ đó suy ra điều quan trọng nhất: khi một lời gọi hết giờ, ta không biết bên kia đã thực hiện hay chưa, nên mọi thao tác có thể bị gọi lại phải luỹ đẳng theo Bài 105. Phản hồi chậm tới sau khi đã hết giờ là ca cụ thể: bên gọi đã coi như thất bại và đã thử lại, nên tác dụng phụ xảy ra hai lần. Phân vùng mạng khác nút chết ở một điểm quyết định: nút bên kia vẫn sống và vẫn đang phục vụ, nên có hai bên cùng tin mình đúng. Bộ phát hiện hỏng chỉ đoán, và mọi bộ phát hiện đều có thể đoán sai theo cả hai chiều.
 
@@ -111,7 +111,7 @@ Người học phải tái hiện năm chế độ hỏng trên một dịch v�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là trạng thái đúng bất kể kết cục thật của lời gọi. Kiểm bằng phép thử tiêm; đạt khi trạng thái cuối đúng ở cả ba khả năng và không tác dụng phụ nào xảy ra hai lần.
 
-### Bài 311: Time and order - wall clock, monotonic clock and logical clocks
+### Lesson 311: Time and order - wall clock, monotonic clock and logical clocks
 
 Đồng hồ là công cụ đo thời gian, không phải công cụ xác lập thứ tự, và nhầm hai việc này gây mất dữ liệu im lặng. Đồng hồ treo tường có thể nhảy lùi khi đồng bộ, nên hai sự kiện có dấu thời gian nhỏ hơn chưa chắc xảy ra trước. Đồng hồ đơn điệu chỉ đo khoảng, dùng được cho hết giờ nhưng không so được giữa hai máy. Đồng hồ logic gán số đếm tăng theo quan hệ xảy ra trước; đồng hồ véctơ giữ một số đếm cho mỗi nút nên phân biệt được hai sự kiện đồng thời với hai sự kiện có quan hệ nhân quả, điều đồng hồ logic đơn không làm được. Chiến lược bản ghi có dấu thời gian lớn nhất thắng làm mất cập nhật khi đồng hồ lệch, và đây là ca phải tái hiện bằng số. Chính sách giải quyết xung đột phải chọn tường minh chứ để mặc định, và mọi chính sách đều mất thông tin theo một cách nào đó.
 
@@ -119,7 +119,7 @@ Người học phải chứng minh bằng thực nghiệm rằng chiến lược
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi nhận ra một lỗi không báo lỗi và sửa bằng cơ chế đúng. Kiểm bằng thí nghiệm lệch đồng hồ; đạt khi số cập nhật bị mất được định lượng và bản dùng đồng hồ véctơ phát hiện đúng mọi cặp sự kiện đồng thời.
 
-### Bài 312: Replication - single leader, multi leader, leaderless
+### Lesson 312: Replication - single leader, multi leader, leaderless
 
 Ba kiểu sao chép cho ba mô hình xung đột khác nhau, và chọn kiểu là chọn loại vấn đề mình sẵn sàng xử lý. Một người dẫn: mọi phép ghi qua một nút nên không có xung đột ghi, đổi lại người dẫn là điểm nghẽn và là điểm hỏng; sao chép đồng bộ không mất dữ liệu khi chuyển đổi dự phòng nhưng chậm, sao chép bất đồng bộ nhanh nhưng mất phần nhật ký chưa kịp truyền khi người dẫn chết, và lượng mất đó bằng đúng độ trễ sao chép ở Bài 143. Nhiều người dẫn: ghi được ở nhiều nơi nên chịu được phân vùng tốt hơn, đổi lại phải giải quyết xung đột và phải chọn cách hội tụ. Không người dẫn: ghi vào nhiều bản sao và đọc từ nhiều bản sao, dùng số đông để bù; sửa khi đọc và chống lệch nền chỉ cần biết là có. Vị trí nhật ký, độ trễ và hành vi khi chuyển đổi dự phòng phải trả lời được cho cả ba kiểu.
 
@@ -127,7 +127,7 @@ Người học phải chọn kiểu sao chép cho ba bối cảnh và định l�
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi nối lựa chọn với một con số về rủi ro mất dữ liệu. Kiểm bằng ba bối cảnh cộng phép đo; đạt khi mỗi lựa chọn kèm lượng mất tối đa tính được từ độ trễ đo được.
 
-### Bài 313: Partitioning, consistent hashing and rebalancing
+### Lesson 313: Partitioning, consistent hashing and rebalancing
 
 Chia dữ liệu ra nhiều nút để vượt giới hạn một máy, và ba quyết định đi kèm. Chia theo khoảng giá trị cho phép quét theo khoảng hiệu quả nhưng dễ tạo phân vùng nóng khi khoá phân bố lệch. Chia theo băm rải đều hơn nhưng mất khả năng quét theo khoảng. Băm nhất quán giảm lượng dữ liệu phải di chuyển khi thêm hoặc bớt nút, và nút ảo làm phân bố đều hơn. Phân vùng nóng là chế độ hỏng chính: một khoá chiếm phần lớn lưu lượng thì thêm nút không giúp gì, vì mọi yêu cầu của khoá đó vẫn về một nơi; ba cách xử lý và đánh đổi từng cách. Tái cân bằng là thao tác nặng và phải có giới hạn tốc độ, nếu không nó làm sập hệ đang phục vụ. Nối với phân vùng trong một cơ sở dữ liệu ở Bài 144: ở đây phân vùng nằm giữa các máy nên thêm chi phí mạng và chi phí di chuyển.
 
@@ -135,7 +135,7 @@ Người học phải đo phân bố tải qua ba cách chia và xử lý đư�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là độ lệch tải giảm có số đo. Kiểm bằng phép đo phân bố; đạt khi ba cách chia có số đo độ lệch, lượng dữ liệu di chuyển khi thêm nút được đo, và phân vùng nóng giảm lệch sau khi xử lý.
 
-### Bài 314: Consistency models named by what the client observes
+### Lesson 314: Consistency models named by what the client observes
 
 Năm mô hình nhất quán, đặt tên theo thứ khách hàng quan sát được chứ theo cơ chế bên trong. Tuần tự hoá được: mọi thao tác trông như xảy ra tức thời tại một thời điểm giữa lời gọi và phản hồi, đây là mô hình mạnh nhất và đắt nhất. Tuần tự: mọi nút thấy cùng một thứ tự nhưng thứ tự đó không nhất thiết khớp thời gian thật. Nhân quả: các thao tác có quan hệ nhân quả được thấy đúng thứ tự, thao tác đồng thời thì không ràng buộc. Đọc thấy phép ghi của chính mình: bảo đảm yếu nhưng là thứ người dùng thật hay kỳ vọng nhất. Cuối cùng nhất quán: chỉ hứa hội tụ khi ngừng ghi, nên nó phải đi kèm một hợp đồng về mức cũ tối đa, nếu không nó là một lời hứa rỗng. Định lý đánh đổi chỉ áp dụng khi có phân vùng; khi không có phân vùng thì đánh đổi thật là giữa độ trễ với nhất quán, và đó mới là trường hợp thường gặp hằng ngày.
 
@@ -143,7 +143,7 @@ Người học phải xếp năm mô hình theo độ mạnh và chỉ ra bảo 
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết chuẩn bị cho hai bài về số đông và đồng thuận. Kiểm bằng bài phân tích bốn lịch sử thao tác; đạt khi xác định đúng mô hình bị vi phạm ở ít nhất ba và nêu được đánh đổi khi không có phân vùng.
 
-### Bài 315: Quorum reasoning, and why a quorum is not linearizability
+### Lesson 315: Quorum reasoning, and why a quorum is not linearizability
 
 Số đông là một kỹ thuật giao nhau giữa tập ghi và tập đọc, và hiểu đúng giới hạn của nó là mục tiêu chính của bài. Với tổng số bản sao, số bản sao phải ghi, và số bản sao phải đọc, điều kiện giao nhau bảo đảm phép đọc chạm ít nhất một bản sao có phiên bản mới nhất. Nhưng chạm được không bằng nhận ra: phép đọc chỉ trả đúng nếu có cách so phiên bản và có cơ chế sửa, nên số đông không tự suy ra tuần tự hoá được. Ba ca phá vỡ trực giác về số đông: phép ghi hỏng giữa chừng nên một số bản sao có giá trị mới còn số khác thì không, mà không có ai quay lui; số đông lỏng cùng trao tay gợi ý làm tập giao nhau không còn bảo đảm; và hai phép đọc liên tiếp có thể thấy giá trị mới rồi lại thấy giá trị cũ. Sửa khi đọc và chống lệch nền ở mức khái niệm.
 
@@ -151,7 +151,7 @@ Người học phải tái hiện ca số đông giao nhau mà phép đọc vẫ
 
 Cách đánh giá: Tầng *phân tích*. Objective nhắm vào một kết luận sai rất phổ biến. Kiểm bằng ba ca tái hiện; đạt khi cả ba được tái hiện bằng dữ liệu và nêu đúng cơ chế còn thiếu cho từng ca.
 
-### Bài 316: Consensus - the replicated log, term, election and commit
+### Lesson 316: Consensus - the replicated log, term, election and commit
 
 Đồng thuận giải bài toán mà số đông không giải được: làm cho nhiều nút đồng ý về một chuỗi thao tác theo đúng một thứ tự. Học sâu một thuật toán, thuật toán còn lại chỉ tới mức khái niệm. Cấu trúc: một nhật ký được sao chép, mỗi mục có chỉ số và nhiệm kỳ; một người dẫn được bầu cho mỗi nhiệm kỳ; mục được chốt khi đã sao chép tới số đông; nút theo sau áp dụng theo đúng thứ tự đã chốt. Ba tính chất an toàn phải phát biểu được và phải kiểm được bằng thí nghiệm. Nhiệm kỳ là cơ chế chặn chia rẽ: một người dẫn cũ quay lại với nhiệm kỳ nhỏ hơn sẽ bị từ chối, nên chia rẽ được chặn bằng nhiệm kỳ chứ bằng việc phát hiện nhanh. Thay đổi thành viên cụm và vì sao nó khó. Khác biệt với chốt hai pha ở Bài 318: đồng thuận không chặn khi một nút chết vì số đông vẫn tiến được.
 
@@ -159,7 +159,7 @@ Người học phải cài phần bầu chọn và sao chép nhật ký, rồi g
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là bất biến an toàn giữ được dưới lỗi ngẫu nhiên. Kiểm bằng phép thử hỗn loạn; đạt khi ba tính chất an toàn không bị vi phạm lần nào qua 200 chu kỳ giết và khôi phục nút.
 
-### Bài 317: Leases, fencing tokens and the returning old leader
+### Lesson 317: Leases, fencing tokens and the returning old leader
 
 Khoá phân tán là chỗ trực giác sai nhiều nhất, nên bài này tái hiện ca hỏng kinh điển. Hợp đồng thuê là một khoá có hạn, và nó dựa vào đồng hồ; nhưng tiến trình giữ hợp đồng thuê có thể bị tạm dừng lâu hơn hạn, chẳng hạn vì bộ dọn rác hoặc vì máy bị treo, nên nó tỉnh dậy và vẫn tưởng mình đang giữ khoá trong khi khoá đã cấp cho người khác. Hậu quả: hai tiến trình cùng ghi và dữ liệu hỏng. Hợp đồng thuê một mình không đủ, phải có thẻ chặn: mỗi lần cấp khoá kèm một số tăng dần, và tài nguyên ở đích từ chối mọi yêu cầu mang số nhỏ hơn số lớn nhất đã thấy. Điểm quan trọng là thẻ chặn phải được cưỡng chế ở phía tài nguyên chứ ở phía khách, vì khách đang là bên nhầm lẫn. Khoá chống trùng cùng bộ nhớ kết quả có thời hạn giữ. Thử lại khi không biết kết cục theo Bài 310.
 
@@ -167,7 +167,7 @@ Người học phải tái hiện ca hai tiến trình cùng tưởng mình gi�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có một ca hỏng cụ thể phải tái hiện được trước khi sửa. Kiểm bằng phép thử tạm dừng tiến trình; đạt khi ca hỏng được tái hiện kèm bằng chứng dữ liệu sai, và bản có thẻ chặn từ chối đúng mọi yêu cầu cũ.
 
-### Bài 318: Distributed transactions - two-phase commit against saga and outbox
+### Lesson 318: Distributed transactions - two-phase commit against saga and outbox
 
 Ba cách giữ tính nhất quán qua nhiều hệ, với ba mô hình hỏng khác nhau. Chốt hai pha: điều phối viên hỏi mọi bên sẵn sàng chưa rồi mới ra lệnh chốt; đúng về mặt nguyên tử nhưng chặn khi điều phối viên chết sau pha chuẩn bị, vì các bên đã khoá tài nguyên và không ai dám tự quyết. Chuỗi bù trừ: chia thành nhiều bước nhỏ, mỗi bước có một thao tác bù nghĩa; nó không nguyên tử nên có trạng thái trung gian nhìn thấy được, và phải chấp nhận điều đó tường minh. Hộp thư đi theo Bài 109: ghi dữ liệu và ghi ý định gửi trong cùng một giao dịch cục bộ, rồi một tiến trình riêng đọc hộp thư và gửi đi; nó biến bài toán hai hệ thành bài toán một giao dịch cộng một lần gửi có thể lặp. Kết luận thực dụng dùng lại ở M21 và M22: giao nhận ít nhất một lần cộng tác dụng phụ luỹ đẳng thực tế hơn theo đuổi nguyên tử xuyên hệ.
 
@@ -175,7 +175,7 @@ Người học phải so ba cách trên cùng bài toán và lập ma trận h�
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi so ba mô hình hỏng chứ ba cách cài đặt. Kiểm bằng ma trận hỏng; đạt khi mỗi cách có hành vi ghi rõ tại mọi ranh giới hỏng và ca điều phối viên chết được tái hiện thật.
 
-### Bài 319: Overload, backpressure and cascading failure
+### Lesson 319: Overload, backpressure and cascading failure
 
 Hệ phân tán hỏng theo dây chuyền, và cơ chế lan truyền phải hiểu để chặn. Chuỗi điển hình: một phụ thuộc chậm lại, bên gọi giữ kết nối lâu hơn, bể kết nối cạn, hàng đợi dài ra, hết giờ kích hoạt, thử lại làm tải tăng thêm, rồi phụ thuộc sập hẳn; thử lại là chất xúc tác của sập dây chuyền chứ một biện pháp phòng thủ, nên nó cần ngân sách. Bốn cơ chế chặn: áp lực ngược theo Bài 27, ngắt mạch, vách ngăn để một phụ thuộc hỏng không ăn hết tài nguyên, và suy giảm có kiểm soát. Loại bỏ tải có chủ ý tốt hơn sập toàn bộ: từ chối sớm một phần yêu cầu giữ cho phần còn lại vẫn chạy. Cơn bão thử lại đồng bộ do nhiều khách cùng lùi theo cùng công thức, chặn bằng nhiễu ngẫu nhiên. Sấm sét khi cùng lúc hàng loạt yêu cầu tới một tài nguyên vừa hết đệm.
 
@@ -183,7 +183,7 @@ Người học phải tái hiện một lần sập dây chuyền và chặn nó
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là hệ giữ được một phần năng lực thay vì sập toàn bộ. Kiểm bằng phép thử tải có phụ thuộc chậm; đạt khi bản chưa phòng thủ sập hoàn toàn và bản có phòng thủ giữ được tỉ lệ phục vụ trên ngưỡng.
 
-### Bài 320: History analysis project - judge a guarantee from evidence
+### Lesson 320: History analysis project - judge a guarantee from evidence
 
 Bài dự án khép module. Cho một tập lịch sử thao tác thu được từ nhiều khách hàng chạy song song trên một kho dữ liệu, mỗi bản ghi có lời gọi, phản hồi và dấu thời gian cục bộ. Nhiệm vụ: xác định lịch sử đó vi phạm mô hình nhất quán nào và chứng minh bằng một chuỗi thao tác cụ thể, chứ nói cảm nhận. Viết một bộ kiểm lịch sử cho một thanh ghi đơn giản và nêu rõ giới hạn của chính bộ kiểm đó: nó kiểm được gì, không kiểm được gì, và vì sao không được coi kết quả của nó là một chứng minh đầy đủ về hệ. Phần hai: chạy thử nghiệm của chính mình trên kho khoá giá trị đã dựng ở các bài trước, tiêm phân vùng và lệch đồng hồ, thu lịch sử rồi phân tích. Nộp kèm một bảng ghi với mỗi bảo đảm được tuyên bố thì giả định nào phải đúng và chế độ hỏng nào phá vỡ nó.
 

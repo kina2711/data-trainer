@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Chọn và cài SCD response theo câu hỏi lịch sử như thế nào, đặc biệt khi late-arriving change, correction và hai cách nhìn cùng tồn tại?
 source_ids:
   - src.book.kimball-ross-data-warehouse-toolkit.3e
@@ -41,7 +41,7 @@ Type 2 thêm version row với surrogate key mới; fact mới trỏ version có
 
 Type 3 thêm cột prior/alternate value trên cùng row, cho phép xem facts theo cả cấu trúc cũ và mới trong một số change hữu hạn. Nó không lưu chuỗi vô hạn và phải đặt tên cột rõ current/prior/as-was/as-is. Dùng cho reorganization cần hai cách roll-up, không phải thay Type 2 cho mọi change.
 
-## 4. Type 4–6 và cảnh báo taxonomy
+## 4. Type 4-6 và cảnh báo taxonomy
 
 Sau ba type cơ bản, cách đánh số không hoàn toàn thống nhất giữa tài liệu. Trong hệ Kimball hiện đại, Type 4 thường là mini-dimension cho rapidly changing attributes; Type 5 ghép mini-dimension với current profile; Type 6 ghép Type 1+2+3 để hỗ trợ as-was và as-is. Thiết kế phải mô tả behavior thay vì chỉ ghi con số type.
 
@@ -77,9 +77,9 @@ Mỗi mệnh đề phải chuyển thành fixture, invariant và phép đối ch
 
 **Mệnh đề cần kiểm.** Type 3 chỉ giữ số alternate values hữu hạn. **Thiết kế phép kiểm.** Tạo timeline gồm normal change, correction, late-arriving change và rerun. Kiểm no-overlap, exactly-one-current, stable business key, surrogate lookup theo effective time và report as-was/as-is. Chạy lại cùng batch để bắt version trùng. **Bằng chứng đạt cho `wiki.data-modeling.scd-types`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
-### 6.7. Type 4–6 phải mô tả behavior vì taxonomy có thể khác
+### 6.7. Type 4-6 phải mô tả behavior vì taxonomy có thể khác
 
-**Mệnh đề cần kiểm.** Type 4–6 phải mô tả behavior vì taxonomy có thể khác. **Thiết kế phép kiểm.** Tạo timeline gồm normal change, correction, late-arriving change và rerun. Kiểm no-overlap, exactly-one-current, stable business key, surrogate lookup theo effective time và report as-was/as-is. Chạy lại cùng batch để bắt version trùng. **Bằng chứng đạt cho `wiki.data-modeling.scd-types`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** Type 4-6 phải mô tả behavior vì taxonomy có thể khác. **Thiết kế phép kiểm.** Tạo timeline gồm normal change, correction, late-arriving change và rerun. Kiểm no-overlap, exactly-one-current, stable business key, surrogate lookup theo effective time và report as-was/as-is. Chạy lại cùng batch để bắt version trùng. **Bằng chứng đạt cho `wiki.data-modeling.scd-types`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.8. mini-dimension tách rapidly changing profile
 
@@ -118,7 +118,7 @@ Mỗi mệnh đề phải chuyển thành fixture, invariant và phép đối ch
 1. Viết business question, grain, identity, time semantics và aggregation contract.
 2. Tách source fact, quyết định thiết kế và synthesis của giáo trình.
 3. Dựng ca biên nhỏ nhất có thể làm query đúng cú pháp nhưng sai số.
-4. Kiểm key, interval, cardinality và control total trước–sau transform/join.
+4. Kiểm key, interval, cardinality và control total trước-sau transform/join.
 5. Chạy replay, late data hoặc schema change phù hợp với bài; lưu failed run.
 6. Phân biệt correctness, usability, performance và governance; một trục đạt không che lấp trục khác.
 7. Ghi owner, version, policy và điều kiện làm lựa chọn hiện tại không còn đúng.
@@ -162,7 +162,7 @@ Mỗi mệnh đề phải chuyển thành fixture, invariant và phép đối ch
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-modeling.scd-types`
+## Execution capsule: kiểm chứng `wiki.data-modeling.scd-types`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-modeling.scd-types`, sơ đồ, ví dụ và artifact về **Slowly changing dimensions, type 0 to type 6** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

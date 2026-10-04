@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-27
 last_verified: 2026-09-27
 review_after: 2027-03-27
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: File descriptor biểu diễn điều gì và phải suy luận thế nào khi chẩn đoán I/O trên Linux?
 source_ids:
   - src.book.tlpi.2010
@@ -37,7 +37,7 @@ relationships:
 # File descriptor và mô hình I/O phổ quát trong Linux
 
 > [!abstract] Câu hỏi trung tâm
-> Câu “tiến trình đang đọc một tệp” đã lược bỏ gần hết những gì diễn ra trong kernel. Tiến trình đang giữ descriptor nào? Descriptor ấy trỏ tới trạng thái mở nào? Trạng thái đó gắn với inode, pipe, socket hay thiết bị? Trả lời đúng ba câu hỏi này mới có thể khoanh vùng lỗi I/O.
+> Câu tiến trình đang đọc một tệp đã lược bỏ gần hết những gì diễn ra trong kernel. Tiến trình đang giữ descriptor nào? Descriptor ấy trỏ tới trạng thái mở nào? Trạng thái đó gắn với inode, pipe, socket hay thiết bị? Trả lời đúng ba câu hỏi này mới có thể khoanh vùng lỗi I/O.
 
 ## Mô hình cần ghi nhớ
 
@@ -55,12 +55,12 @@ Nếu bỏ qua các tầng trung gian, việc điều tra thường đi sai hư�
 
 ### Quy ước thuật ngữ
 
-Chương này giữ nguyên các tên API và thuật ngữ thường dùng trong tài liệu Linux. *File descriptor* được viết tắt là **fd** khi ngữ cảnh đã rõ. *Open file description* được giữ bằng tiếng Anh vì đây là thực thể kernel cụ thể, khác với cách nói thông thường “tệp đang mở”. *Offset* là vị trí đọc/ghi hiện tại; *durability* là mức bảo đảm dữ liệu còn tồn tại sau lỗi hoặc mất nguồn.
+Chương này giữ nguyên các tên API và thuật ngữ thường dùng trong tài liệu Linux. *File descriptor* được viết tắt là **fd** khi ngữ cảnh đã rõ. *Open file description* được giữ bằng tiếng Anh vì đây là thực thể kernel cụ thể, khác với cách nói thông thường tệp đang mở. *Offset* là vị trí đọc/ghi hiện tại; *durability* là mức bảo đảm dữ liệu còn tồn tại sau lỗi hoặc mất nguồn.
 
 ## 1. Từ số fd đến đối tượng I/O trong kernel
 
 > [!source-fact]
-> TLPI mô tả mỗi tiến trình có tập file descriptor riêng. Các lời gọi hệ thống `open`, `read`, `write` và `close` cung cấp một giao diện chung cho nhiều loại đối tượng I/O. Locator: [[SRC-TLPI-2010]], Chapter 4 §4.1, printed pp. 69–71; PDF pp. 113–115.
+> TLPI mô tả mỗi tiến trình có tập file descriptor riêng. Các lời gọi hệ thống `open`, `read`, `write` và `close` cung cấp một giao diện chung cho nhiều loại đối tượng I/O. Locator: [[SRC-TLPI-2010]], Chapter 4 §4.1, printed pp. 69-71; PDF pp. 113-115.
 
 ### 1.1 Bảng descriptor của tiến trình
 
@@ -86,7 +86,7 @@ Khi mở một đối tượng, kernel tạo trạng thái dùng chung cho lần
 - số tham chiếu khi nhiều descriptor hoặc tiến trình cùng giữ.
 
 > [!synthesis]
-> Cụm “một tệp đang mở” quá mơ hồ để dùng trong chẩn đoán. Thông tin hữu ích phải chỉ ra fd, PID, open file description, offset và cờ trạng thái; pathname chỉ là một phần của bức tranh.
+> Cụm một tệp đang mở quá mơ hồ để dùng trong chẩn đoán. Thông tin hữu ích phải chỉ ra fd, PID, open file description, offset và cờ trạng thái; pathname chỉ là một phần của bức tranh.
 
 ### 1.3 Đối tượng bên dưới
 
@@ -130,7 +130,7 @@ Các nhóm flag cần tách:
 | Cờ trạng thái | `O_APPEND`, `O_NONBLOCK`, `O_SYNC` | Chi phối các thao tác I/O về sau |
 
 > [!source-fact]
-> TLPI phân biệt creation flags với open file status flags; status flags có thể được đọc hoặc đổi qua `fcntl` trong những giới hạn của API. Locator: Chapter 4 §§4.2–4.3, printed pp. 71–79.
+> TLPI phân biệt creation flags với open file status flags; status flags có thể được đọc hoặc đổi qua `fcntl` trong những giới hạn của API. Locator: Chapter 4 §§4.2-4.3, printed pp. 71-79.
 
 ### 2.2 `read`: luôn đọc giá trị trả về
 
@@ -204,7 +204,7 @@ Hai lần `open` độc lập thường tạo hai open file description, mỗi c
 Kernel cập nhật offset sau mỗi lần `read` hoặc `write`. `lseek` chỉ thay đổi vị trí đó, không tự đọc hay ghi. Nếu seek qua cuối tệp rồi mới ghi, tệp có thể xuất hiện một *hole*. Khi đọc, vùng này cho ra byte zero dù filesystem không nhất thiết đã cấp block vật lý cho toàn bộ khoảng trống.
 
 > [!source-fact]
-> TLPI mô tả file offset, `lseek` và file hole trong Chapter 4 §§4.7–4.8, printed pp. 82–87.
+> TLPI mô tả file offset, `lseek` và file hole trong Chapter 4 §§4.7-4.8, printed pp. 82-87.
 
 ### Race điển hình
 
@@ -245,7 +245,7 @@ Các vị trí hữu ích:
 | `/proc/<pid>/status` | Trạng thái, số thread, RSS và bộ đếm context switch ra sao? |
 
 > [!source-fact]
-> TLPI ghi nhận `fdinfo` có `pos` và `flags`, và nhấn mạnh schema `/proc` thay đổi theo kernel. Locator: Chapter 4 §4.3, printed p. 75; Chapter 12 §12.1, pp. 223–228.
+> TLPI ghi nhận `fdinfo` có `pos` và `flags`, và nhấn mạnh schema `/proc` thay đổi theo kernel. Locator: Chapter 4 §4.3, printed p. 75; Chapter 12 §12.1, pp. 223-228.
 
 ### Nguyên tắc parser
 
@@ -303,10 +303,10 @@ flowchart LR
 `fflush` đẩy dữ liệu khỏi buffer của thư viện stdio sang kernel. `fdatasync` yêu cầu đồng bộ dữ liệu và phần metadata cần để đọc lại dữ liệu đó. `fsync` có phạm vi rộng hơn, bao gồm dữ liệu cùng metadata của tệp theo hợp đồng của hệ điều hành và filesystem. Khi tạo hoặc đổi tên tệp, muốn directory entry bền vững có thể còn phải đồng bộ chính thư mục chứa nó.
 
 > [!source-fact]
-> Phân biệt synchronized data integrity completion và file integrity completion được trình bày tại Chapter 13 §13.3, printed pp. 239–243.
+> Phân biệt synchronized data integrity completion và file integrity completion được trình bày tại Chapter 13 §13.3, printed pp. 239-243.
 
 > [!uncertainty]
-> Câu “đã xuống đĩa” chỉ có nghĩa khi biết filesystem, tùy chọn mount, cache của thiết bị, controller và cam kết khi mất nguồn. Kiến thức trong chương này chưa đủ để chứng nhận độ bền của một hệ thống lưu trữ cụ thể.
+> Câu đã xuống đĩa chỉ có nghĩa khi biết filesystem, tùy chọn mount, cache của thiết bị, controller và cam kết khi mất nguồn. Kiến thức trong chương này chưa đủ để chứng nhận độ bền của một hệ thống lưu trữ cụ thể.
 
 ## 9. Blocking, nonblocking và readiness
 
@@ -404,23 +404,23 @@ Mô hình descriptor giải thích được nhiều lỗi I/O, nhưng không tha
 - Nguồn: [[SRC-TLPI-2010]]
 - Kiến thức nên có trước: tiến trình, lời gọi hệ thống, pathname, inode và virtual filesystem.
 - Mở rộng cần viết:
-  - *Buffering, page cache và durability*;
-  - *Readiness và completion trong I/O bất đồng bộ*;
-  - *Vòng đời tiến trình, signal và graceful shutdown*;
-  - *Quan sát tiến trình bằng procfs*.
+ - *Buffering, page cache và durability*;
+ - *Readiness và completion trong I/O bất đồng bộ*;
+ - *Vòng đời tiến trình, signal và graceful shutdown*;
+ - *Quan sát tiến trình bằng procfs*.
 - Bài học có thể sử dụng ghi chú này: `DE-L064`, `DE-L065`, `DE-L066` và một phần `DE-L071`.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-TLPI-2010]], Ch. 4 §§4.1–4.10 | universal I/O, `open/read/write/close`, offset, `lseek`, atomicity và descriptor flags | §§1–5, 9–10 | Đã trình bày; syscall details ngoài nhóm này không được suy rộng |
-| [[SRC-TLPI-2010]], Ch. 5 §§5.1–5.7 | open file description, sharing, `dup`, `fork`, file status flags và descriptor flags | §§4–8 | Đã trình bày cùng sơ đồ ba tầng tham chiếu |
-| [[SRC-TLPI-2010]], Ch. 12 §12.1; Ch. 14 | `/proc`, pathname, inode, filesystem và trường hợp tệp đã unlink nhưng còn mở | §§6–8, 13–14 | Đã trình bày ở mức cần để chẩn đoán descriptor; không thay một chương filesystem riêng |
-| [[SRC-TLPI-2010]], Ch. 13 §§13.2–13.3 | stdio/kernel buffering, `fflush`, `fsync`, `fdatasync` và giới hạn kết luận về durability | §§9–11 | Đã trình bày; behavior của filesystem/hardware cụ thể được giữ là điều kiện ngoài phạm vi |
-| [[SRC-TLPI-2010]], Ch. 36 §36.3; Ch. 61 §61.1; Ch. 63 | resource limit, partial I/O, blocking, readiness và completion | §§10, 12–14 | Đã trình bày khái niệm và failure modes; API async cụ thể cần note riêng |
+| [[SRC-TLPI-2010]], Ch. 4 §§4.1-4.10 | universal I/O, `open/read/write/close`, offset, `lseek`, atomicity và descriptor flags | §§1-5, 9-10 | Đã trình bày; syscall details ngoài nhóm này không được suy rộng |
+| [[SRC-TLPI-2010]], Ch. 5 §§5.1-5.7 | open file description, sharing, `dup`, `fork`, file status flags và descriptor flags | §§4-8 | Đã trình bày cùng sơ đồ ba tầng tham chiếu |
+| [[SRC-TLPI-2010]], Ch. 12 §12.1; Ch. 14 | `/proc`, pathname, inode, filesystem và trường hợp tệp đã unlink nhưng còn mở | §§6-8, 13-14 | Đã trình bày ở mức cần để chẩn đoán descriptor; không thay một chương filesystem riêng |
+| [[SRC-TLPI-2010]], Ch. 13 §§13.2-13.3 | stdio/kernel buffering, `fflush`, `fsync`, `fdatasync` và giới hạn kết luận về durability | §§9-11 | Đã trình bày; behavior của filesystem/hardware cụ thể được giữ là điều kiện ngoài phạm vi |
+| [[SRC-TLPI-2010]], Ch. 36 §36.3; Ch. 61 §61.1; Ch. 63 | resource limit, partial I/O, blocking, readiness và completion | §§10, 12-14 | Đã trình bày khái niệm và failure modes; API async cụ thể cần note riêng |
 
-Không có phần nào trong các lát nguồn trên bị loại chỉ vì “quá chi tiết”. Nội dung về filesystem internals, async API và durability hardware chỉ dừng ở ranh giới mà nguồn cho phép kết luận, thay vì suy đoán thêm.
+Không có phần nào trong các lát nguồn trên bị loại chỉ vì quá chi tiết. Nội dung về filesystem internals, async API và durability hardware chỉ dừng ở ranh giới mà nguồn cho phép kết luận, thay vì suy đoán thêm.
 
 ## Key takeaways
 - File descriptor là chỉ số trong bảng descriptor của một tiến trình; entry dẫn tới open file description do kernel giữ, rồi mới tới inode, pipe, socket, terminal hoặc device cụ thể.
@@ -431,14 +431,14 @@ Không có phần nào trong các lát nguồn trên bị loại chỉ vì “qu
 
 ## Reference
 1. Michael Kerrisk, *The Linux Programming Interface*, No Starch Press, 2010:
-   - Chapter 4, §§4.1–4.10, printed pp. 69–87;
-   - Chapter 5, §§5.1–5.7, pp. 89–110;
-   - Chapter 12, §12.1, pp. 223–228;
-   - Chapter 13, §§13.2–13.3, pp. 237–245;
-   - Chapter 14, các phần inode, mount và filesystem structure, pp. 251–278;
-   - Chapter 36, §36.3, resource limits;
-   - Chapter 61, §61.1, partial reads/writes;
-   - Chapter 63, alternative I/O models.
+ - Chapter 4, §§4.1-4.10, printed pp. 69-87;
+ - Chapter 5, §§5.1-5.7, pp. 89-110;
+ - Chapter 12, §12.1, pp. 223-228;
+ - Chapter 13, §§13.2-13.3, pp. 237-245;
+ - Chapter 14, các phần inode, mount và filesystem structure, pp. 251-278;
+ - Chapter 36, §36.3, resource limits;
+ - Chapter 61, §61.1, partial reads/writes;
+ - Chapter 63, alternative I/O models.
 2. Hồ sơ nguồn trong vault: [[SRC-TLPI-2010]].
 3. Ghi chú nguồn của dự án: `Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-02.md`.
 
@@ -451,7 +451,7 @@ Không có phần nào trong các lát nguồn trên bị loại chỉ vì “qu
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.linux.file-descriptor-universal-io`
+## Execution capsule: kiểm chứng `wiki.linux.file-descriptor-universal-io`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.linux.file-descriptor-universal-io`, sơ đồ, ví dụ và artifact về **File descriptor và mô hình I/O phổ quát trong Linux** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

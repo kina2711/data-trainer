@@ -54,7 +54,7 @@ Tạo fixture với null, duplicate, orphan, unexpected enum, empty table, late 
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
-Trong `Generic Tests and Their Limits`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước–sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dùng project tối thiểu và fixture có mutations đã biết; compile exact node/branch, execute trong sandbox nếu có, lưu artifacts rồi so key set, typed hashes và business invariants với full/reference computation.
+Trong `Generic Tests and Their Limits`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước-sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dùng project tối thiểu và fixture có mutations đã biết; compile exact node/branch, execute trong sandbox nếu có, lưu artifacts rồi so key set, typed hashes và business invariants với full/reference computation.
 
 ### 7.1. Generic-test probe 1: assertion SQL, population, failure row, severity và uncovered guarantee phải rõ
 
@@ -70,7 +70,7 @@ Trong `Generic Tests and Their Limits`, mỗi claim phải nối được tới 
 
 **Thiết kế phép thử cho `wiki.transformation.dbt-generic-tests-limits`.** Với `Generic-test probe 2: assertion SQL, population, failure row, severity và uncovered guarantee phải rõ`, Giữ nguyên input rồi đổi đúng một tham số cấu hình liên quan. Nếu output đổi theo nhiều hướng cùng lúc, phép thử chưa cô lập được nguyên nhân và phải thu hẹp lại. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Generic-test probe 2: assertion SQL, population, failure row, severity và uncovered guarantee phải rõ` phải cho thấy: Báo cả giá trị trước–sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Generic-test probe 2: assertion SQL, population, failure row, severity và uncovered guarantee phải rõ` phải cho thấy: Báo cả giá trị trước-sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.3. Generic-test probe 3: assertion SQL, population, failure row, severity và uncovered guarantee phải rõ
 
@@ -118,7 +118,7 @@ Trong `Generic Tests and Their Limits`, mỗi claim phải nối được tới 
 
 **Thiết kế phép thử cho `wiki.transformation.dbt-generic-tests-limits`.** Với `Generic-test probe 8: assertion SQL, population, failure row, severity và uncovered guarantee phải rõ`, Dùng một schema change tương thích và một thay đổi phá vỡ key, type hoặc meaning. Kết quả phải chỉ ra khác biệt giữa parse được, chạy được và vẫn giữ đúng semantics. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Generic-test probe 8: assertion SQL, population, failure row, severity và uncovered guarantee phải rõ` phải cho thấy: Lưu schema trước–sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Generic-test probe 8: assertion SQL, population, failure row, severity và uncovered guarantee phải rõ` phải cho thấy: Lưu schema trước-sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.9. Generic-test probe 9: assertion SQL, population, failure row, severity và uncovered guarantee phải rõ
 
@@ -223,7 +223,7 @@ Trong `Generic Tests and Their Limits`, mỗi claim phải nối được tới 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.transformation.dbt-generic-tests-limits`
+## Execution capsule: kiểm chứng `wiki.transformation.dbt-generic-tests-limits`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.transformation.dbt-generic-tests-limits`, sơ đồ, ví dụ và artifact về **Generic Tests and Their Limits** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

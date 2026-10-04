@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Tại sao thứ tự land–validate–publish–checkpoint quyết định replay thay vì silent loss?
 source_ids:
   - src.book.kleppmann-ddia.1e
@@ -28,7 +28,7 @@ relationships:
 # Atomic Landing and Checkpoint Ordering
 
 > [!abstract] Câu hỏi trung tâm
-> Tại sao thứ tự land–validate–publish–checkpoint quyết định replay thay vì silent loss?
+> Tại sao thứ tự land-validate-publish-checkpoint quyết định replay thay vì silent loss?
 
 ## 1. Four-step invariant
 
@@ -226,7 +226,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ingestion.atomic-landing-checkpoint-ordering`
+## Execution capsule: kiểm chứng `wiki.ingestion.atomic-landing-checkpoint-ordering`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ingestion.atomic-landing-checkpoint-ordering`, sơ đồ, ví dụ và artifact về **Atomic Landing and Checkpoint Ordering** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -248,7 +248,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Tại sao thứ tự land–validate–publish–checkpoint quyết định replay thay vì silent loss?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Tại sao thứ tự land-validate-publish-checkpoint quyết định replay thay vì silent loss? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Atomic Landing and Checkpoint Ordering** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 
@@ -278,7 +278,7 @@ Artifact của `wiki.ingestion.atomic-landing-checkpoint-ordering` buộc ngư�
 
 ### Tự kiểm tra trước khi tái sử dụng
 
-1. Bạn có thể trả lời `Tại sao thứ tự land–validate–publish–checkpoint quyết định replay thay vì silent loss?` bằng một câu mà không kéo thêm concept thứ hai không?
+1. Bạn có thể trả lời `Tại sao thứ tự land-validate-publish-checkpoint quyết định replay thay vì silent loss?` bằng một câu mà không kéo thêm concept thứ hai không?
 2. Source locator nào đỡ cho claim, và phần nào chỉ là synthesis trong note?
 3. Observation nào khiến bạn dừng, thu hẹp hoặc đảo quyết định?
 4. Artifact nào cho phép một reviewer độc lập tái hiện kết quả?

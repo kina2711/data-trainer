@@ -39,7 +39,7 @@ Kill partition leader dưới controlled ISR, observe election, producer errors/
 
 ## 3. Controller loss
 
-Mất active/minority controller kiểm metadata quorum leadership; không reformat hay tạo cluster identity mới để chữa nhanh. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Game day - kill the leader, the controller and the consumer`, câu hỏi thực dụng là: Game day giết partition leader, controller và consumer chứng minh recovery boundaries nào mà không biến chaos thành phá hoại? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Mất active/minority controller kiểm metadata quorum leadership; không reformat hay tạo cluster identity mới để chữa nhanh. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Game day - kill the leader, the controller and the consumer`, câu hỏi thực dụng là: Game day giết partition leader, controller và consumer chứng minh recovery boundaries nào mà không biến chaos thành phá hoại? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Consumer loss
 
@@ -224,7 +224,7 @@ Với `wiki.streaming.kafka-game-day`, command thành công không tự chứng 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.streaming.kafka-game-day`
+## Execution capsule: kiểm chứng `wiki.streaming.kafka-game-day`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.streaming.kafka-game-day`, sơ đồ, ví dụ và artifact về **Game day - kill the leader, the controller and the consumer** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Đặt ranh giới giao dịch và Unit of Work ở đâu để một use case giữ được invariant mà không giữ connection, lock hoặc side effect bên ngoài lâu hơn cần thiết?
 source_ids:
   - src.book.boyle-ddd-golang.1e
@@ -57,7 +57,7 @@ Một boundary tốt có bốn đặc điểm:
 | Unit of Work | pattern theo dõi và điều phối persistence change | flush, commit, rollback và concurrency bookkeeping |
 | Session/connection | resource kỹ thuật | giữ state giao tiếp với database và thực thi statement |
 
-Business transaction không mặc nhiên là database transaction. Quy trình “đăng ký tài khoản rồi xác minh email” có thể kéo dài nhiều phút; không được giữ database transaction mở qua lúc chờ người dùng. Ngược lại, một use case ngắn có thể cần một database transaction bao trọn nhiều repository call.
+Business transaction không mặc nhiên là database transaction. Quy trình đăng ký tài khoản rồi xác minh email có thể kéo dài nhiều phút; không được giữ database transaction mở qua lúc chờ người dùng. Ngược lại, một use case ngắn có thể cần một database transaction bao trọn nhiều repository call.
 
 > [!source-fact]
 > Fowler định nghĩa Unit of Work là pattern theo dõi object bị tác động trong một business transaction, rồi điều phối việc ghi thay đổi và xử lý concurrency. Định nghĩa này nói về trách nhiệm của pattern, không yêu cầu một class hay framework cụ thể. *Unit of Work*, martinfowler.com, truy cập 2026-09-28.
@@ -66,10 +66,10 @@ Business transaction không mặc nhiên là database transaction. Quy trình �
 
 Aggregate gom các domain object phải giữ invariant nhất quán tức thời. Aggregate root là cổng thay đổi. Quy tắc hữu dụng là một transaction nên sửa càng ít aggregate càng tốt; nếu một use case thường xuyên phải khóa và sửa nhiều aggregate, cần kiểm lại model, invariant và ownership.
 
-Quy tắc này không có nghĩa “một aggregate bằng một bảng”. Một aggregate có thể ánh xạ vào nhiều bảng. Repository nên phục vụ aggregate hoặc use case ổn định, không máy móc tạo một repository cho mỗi table.
+Quy tắc này không có nghĩa một aggregate bằng một bảng. Một aggregate có thể ánh xạ vào nhiều bảng. Repository nên phục vụ aggregate hoặc use case ổn định, không máy móc tạo một repository cho mỗi table.
 
 > [!source-fact]
-> Boyle trình bày aggregate như transaction boundary của các domain object bên trong, repository theo aggregate thay vì theo table, và application service như nơi phối hợp repository cùng transactional guarantee. *Domain-Driven Design with Golang*, Chapter 3–4, PDF 66–88.
+> Boyle trình bày aggregate như transaction boundary của các domain object bên trong, repository theo aggregate thay vì theo table, và application service như nơi phối hợp repository cùng transactional guarantee. *Domain-Driven Design with Golang*, Chapter 3-4, PDF 66-88.
 
 ## 4. Boundary mặc định nằm ở application service
 
@@ -91,7 +91,7 @@ inbound adapter
 Repository có thể dùng connection hoặc session do Unit of Work cung cấp. Nó không tự commit khi caller còn cần phối hợp thao tác khác. Domain layer không biết transaction API, ORM session hoặc connection pool.
 
 > [!synthesis]
-> “Một use case — một transaction” là default thiết kế của khóa học cho use case ngắn trên một database, tổng hợp từ vai trò application service của Boyle, Unit of Work của Fowler và transaction block của PostgreSQL. Đây không phải luật tuyệt đối: read-only stream dài, chunked batch, workflow nhiều request và thao tác qua nhiều service cần boundary khác.
+> Một use case: một transaction là default thiết kế của khóa học cho use case ngắn trên một database, tổng hợp từ vai trò application service của Boyle, Unit of Work của Fowler và transaction block của PostgreSQL. Đây không phải luật tuyệt đối: read-only stream dài, chunked batch, workflow nhiều request và thao tác qua nhiều service cần boundary khác.
 
 ## 5. State machine của Unit of Work
 
@@ -136,7 +136,7 @@ Trong PostgreSQL, các statement giữa `BEGIN` và `COMMIT` tạo một transac
 Savepoint cho phép quay lại một điểm bên trong transaction nhưng không sống sau khi transaction kết thúc. Nó không phải cơ chế undo cho email đã gửi, request đã gọi sang payment gateway hay event đã publish ngoài database.
 
 > [!source-fact]
-> PostgreSQL chỉ commit transaction không lỗi; sau một statement error, transaction vào trạng thái aborted cho tới khi rollback toàn bộ hoặc rollback về savepoint phù hợp. *Mastering PostgreSQL 17*, Chapter 2, PDF 49–55; PostgreSQL Documentation, “Transactions”, truy cập 2026-09-28.
+> PostgreSQL chỉ commit transaction không lỗi; sau một statement error, transaction vào trạng thái aborted cho tới khi rollback toàn bộ hoặc rollback về savepoint phù hợp. *Mastering PostgreSQL 17*, Chapter 2, PDF 49-55; PostgreSQL Documentation, Transactions, truy cập 2026-09-28.
 
 Atomicity cũng không tự chọn isolation level đúng. Transaction vẫn có thể gặp lost update, write skew hoặc serialization failure tùy isolation và access pattern. L103 tập trung vào boundary; concurrency control được xử lý ở L104.
 
@@ -149,7 +149,7 @@ Trong SQLAlchemy, Session giữ identity map, theo dõi object thay đổi, flus
 > [!source-fact]
 > SQLAlchemy mô tả Session như implementation của Unit of Work: thay đổi được ghi nhận, flush trước query hoặc commit, transaction giữ connection và connection trở lại pool khi transaction kết thúc. *SQLAlchemy 2.0 Session Basics*, truy cập 2026-09-28.
 
-Do đó log “flush succeeded” hoặc số row affected chưa phải bằng chứng use case đã commit. Evidence phải lấy ở ranh giới commit hoặc bằng đọc lại từ transaction độc lập.
+Do đó log flush succeeded hoặc số row affected chưa phải bằng chứng use case đã commit. Evidence phải lấy ở ranh giới commit hoặc bằng đọc lại từ transaction độc lập.
 
 ## 8. External call không rollback cùng database
 
@@ -171,7 +171,7 @@ Không có cách sắp xếp đơn giản nào biến hai resource độc lập 
 - dùng distributed transaction chỉ khi toàn bộ stack và yêu cầu vận hành thật sự hỗ trợ.
 
 > [!source-fact]
-> Richardson phân biệt local ACID transaction trong một service với operation trải nhiều service; saga là chuỗi local transaction và việc “lùi” cần compensating transaction vì mỗi bước đã commit riêng. *Microservices Patterns*, Chapter 4, PDF 140–149.
+> Richardson phân biệt local ACID transaction trong một service với operation trải nhiều service; saga là chuỗi local transaction và việc lùi cần compensating transaction vì mỗi bước đã commit riêng. *Microservices Patterns*, Chapter 4, PDF 140-149.
 
 L103 chỉ thiết lập ranh giới vấn đề. Transactional outbox được triển khai ở L109; không dùng tên pattern để che lỗ hổng chưa cài.
 
@@ -180,7 +180,7 @@ L103 chỉ thiết lập ranh giới vấn đề. Transactional outbox được 
 Khi transaction bắt đầu làm việc với database, nó thường checkout một connection. Connection đó không phục vụ request khác cho tới khi transaction kết thúc và resource được trả về pool. Vì vậy transaction duration trực tiếp ảnh hưởng khả năng phục vụ đồng thời.
 
 > [!inference]
-> Với pool có `P` connection và thời gian giữ connection trung bình `T`, trần throughput gần đúng do pool áp đặt là `P/T` transaction mỗi đơn vị thời gian trước khi xét database capacity. Đây là ứng dụng Little’s Law cho capacity reasoning, không phải cam kết hiệu năng của PostgreSQL hay SQLAlchemy.
+> Với pool có `P` connection và thời gian giữ connection trung bình `T`, trần throughput gần đúng do pool áp đặt là `P/T` transaction mỗi đơn vị thời gian trước khi xét database capacity. Đây là ứng dụng Littles Law cho capacity reasoning, không phải cam kết hiệu năng của PostgreSQL hay SQLAlchemy.
 
 Ví dụ pool 20 connection, mỗi transaction giữ 50 ms có trần lý tưởng khoảng 400 transaction/giây. Nếu chèn external call 2 giây vào boundary, cùng pool chỉ còn khoảng 10 transaction/giây; request mới xếp hàng ở pool dù database chưa dùng hết CPU.
 
@@ -193,16 +193,16 @@ Metric cần tách:
 - số transaction `idle in transaction`;
 - timeout hoặc pool exhaustion count.
 
-Không gom mọi thứ thành “database latency”. Query 5 ms có thể nằm trong request 2 giây nếu connection bị giữ khi gọi hệ ngoài.
+Không gom mọi thứ thành database latency. Query 5 ms có thể nằm trong request 2 giây nếu connection bị giữ khi gọi hệ ngoài.
 
 ## 10. Transaction dài gây hại ngoài việc giữ pool
 
-Transaction dài có thể giữ lock, kéo dài visibility horizon, làm vacuum/reclamation khó tiến, tăng xác suất conflict và khiến rollback tốn hơn. Một transaction “không chạy query” nhưng đang `idle in transaction` vẫn là transaction chưa kết thúc.
+Transaction dài có thể giữ lock, kéo dài visibility horizon, làm vacuum/reclamation khó tiến, tăng xác suất conflict và khiến rollback tốn hơn. Một transaction không chạy query nhưng đang `idle in transaction` vẫn là transaction chưa kết thúc.
 
 PostgreSQL 17 có `transaction_timeout` để chặn transaction vượt thời lượng cấu hình, nhưng timeout chỉ là guardrail. Nó không thay việc sửa ownership và rút external wait khỏi boundary.
 
 > [!source-fact]
-> Schönig mô tả `transaction_timeout` như cơ chế kết thúc transaction quá dài và đóng connection; Chapter 2 đồng thời cho thấy lock khiến session khác phải chờ. *Mastering PostgreSQL 17*, PDF 30–34 và 49–62.
+> Schönig mô tả `transaction_timeout` như cơ chế kết thúc transaction quá dài và đóng connection; Chapter 2 đồng thời cho thấy lock khiến session khác phải chờ. *Mastering PostgreSQL 17*, PDF 30-34 và 49-62.
 
 ## 11. N+1 query là lỗi boundary quan sát được
 
@@ -226,7 +226,7 @@ Order, line item và audit record cùng thuộc postcondition atomic. Tiêm lỗ
 
 ### B. Chuyển reservation giữa hai owner
 
-Hai update phải cùng commit để tổng quantity không đổi. Tiêm lỗi giữa debit và credit. Ngoài kiểm “không dở dang”, cần chạy cạnh tranh ở L104 vì boundary đúng chưa đủ ngăn anomaly dưới isolation không phù hợp.
+Hai update phải cùng commit để tổng quantity không đổi. Tiêm lỗi giữa debit và credit. Ngoài kiểm không dở dang, cần chạy cạnh tranh ở L104 vì boundary đúng chưa đủ ngăn anomaly dưới isolation không phù hợp.
 
 ### C. Xác nhận order và gửi thông báo
 
@@ -260,7 +260,7 @@ Các thuộc tính hữu ích:
 - rows affected ở mức aggregate;
 - external-call duration được chứng minh nằm ngoài transaction.
 
-Log “request failed” không đủ phân biệt lỗi trước commit, lỗi commit hay response bị đứt sau commit.
+Log request failed không đủ phân biệt lỗi trước commit, lỗi commit hay response bị đứt sau commit.
 
 ## 15. Anti-pattern và cách nhận diện
 
@@ -308,7 +308,7 @@ Evidence pack cho ba use case gồm:
 6. Aggregate và table khác nhau thế nào khi chọn repository?
 7. Metric nào phân biệt chờ pool với query chậm?
 8. Vì sao assert mock `rollback()` chưa chứng minh atomicity?
-9. Khi nào “một use case — một transaction” không phù hợp?
+9. Khi nào một use case: một transaction không phù hợp?
 10. Cách chứng minh N+1 bằng thực nghiệm thay vì đọc code là gì?
 
 ## 19. Giới hạn
@@ -320,24 +320,24 @@ Evidence pack cho ba use case gồm:
 - L103 không triển khai outbox, saga hay distributed transaction; chúng chỉ xuất hiện để đánh dấu ranh giới của local Unit of Work.
 
 ## Reference
-1. [[SRC-BOYLE-DDD-GOLANG-1E]] — aggregate, repository và application service, PDF 66–88.
-2. [[SRC-MASTERING-POSTGRESQL-17-6E]] — transaction state, savepoint, timeout và locking, PDF 30–34, 49–62.
-3. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]] — local ACID transaction, saga và compensation, PDF 140–149.
-4. [[SRC-POSTGRESQL-TRANSACTIONS]] — transaction block và savepoint; truy cập 2026-09-28.
-5. [[SRC-SQLALCHEMY-SESSION-BASICS]] — Session, Unit of Work, flush và pool lifecycle; truy cập 2026-09-28.
-6. [[SRC-FOWLER-UNIT-OF-WORK]] — định nghĩa Unit of Work; truy cập 2026-09-28.
+1. [[SRC-BOYLE-DDD-GOLANG-1E]]: aggregate, repository và application service, PDF 66-88.
+2. [[SRC-MASTERING-POSTGRESQL-17-6E]]: transaction state, savepoint, timeout và locking, PDF 30-34, 49-62.
+3. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]]: local ACID transaction, saga và compensation, PDF 140-149.
+4. [[SRC-POSTGRESQL-TRANSACTIONS]]: transaction block và savepoint; truy cập 2026-09-28.
+5. [[SRC-SQLALCHEMY-SESSION-BASICS]]: Session, Unit of Work, flush và pool lifecycle; truy cập 2026-09-28.
+6. [[SRC-FOWLER-UNIT-OF-WORK]]: định nghĩa Unit of Work; truy cập 2026-09-28.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-BOYLE-DDD-GOLANG-1E]], PDF 66–88 | aggregate transaction boundary, repository theo aggregate, application service | §§3–4 | Đã trình bày cùng giới hạn mô hình |
-| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 30–34, 49–62 | transaction state, rollback, savepoint, long transaction và locking | §§6, 9–10 | Đã trình bày cơ chế và tác động vận hành |
-| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], PDF 140–149 | local ACID boundary, saga và compensation | §8 | Đã dùng để chặn suy luận atomicity xuyên service |
+| [[SRC-BOYLE-DDD-GOLANG-1E]], PDF 66-88 | aggregate transaction boundary, repository theo aggregate, application service | §§3-4 | Đã trình bày cùng giới hạn mô hình |
+| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 30-34, 49-62 | transaction state, rollback, savepoint, long transaction và locking | §§6, 9-10 | Đã trình bày cơ chế và tác động vận hành |
+| [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]], PDF 140-149 | local ACID boundary, saga và compensation | §8 | Đã dùng để chặn suy luận atomicity xuyên service |
 | [[SRC-POSTGRESQL-TRANSACTIONS]], truy cập 2026-09-28 | semantics hiện hành của transaction block | §6 | Đã đối chiếu tài liệu chính thức |
 | [[SRC-SQLALCHEMY-SESSION-BASICS]], truy cập 2026-09-28 | implementation Unit of Work, flush, transaction và pool | §§5, 7, 9 | Đã tách implementation khỏi pattern |
 | [[SRC-FOWLER-UNIT-OF-WORK]], truy cập 2026-09-28 | định nghĩa pattern | §2 | Đã dùng đúng phạm vi định nghĩa |
-| Tổng hợp DE-L103 | default boundary, fault matrix, pool capacity reasoning và evidence pack | §§4, 9, 12–17 | Đã gắn `synthesis` hoặc `inference`; threshold để lab đo |
+| Tổng hợp DE-L103 | default boundary, fault matrix, pool capacity reasoning và evidence pack | §§4, 9, 12-17 | Đã gắn `synthesis` hoặc `inference`; threshold để lab đo |
 
 Phạm vi đọc bao phủ toàn bộ objective L103: boundary ownership, rollback khi lỗi giữa chừng, external side effect, pool exhaustion và N+1 detection. Isolation algorithm, outbox implementation và distributed transaction được loại trừ có chủ đích vì thuộc bài sau.
 
@@ -351,7 +351,7 @@ Phạm vi đọc bao phủ toàn bộ objective L103: boundary ownership, rollba
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.backend.transaction-boundaries-unit-of-work`
+## Execution capsule: kiểm chứng `wiki.backend.transaction-boundaries-unit-of-work`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.backend.transaction-boundaries-unit-of-work`, sơ đồ, ví dụ và artifact về **Ranh giới giao dịch và Unit of Work** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

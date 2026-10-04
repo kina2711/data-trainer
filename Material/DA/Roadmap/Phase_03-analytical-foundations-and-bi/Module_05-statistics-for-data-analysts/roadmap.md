@@ -1,6 +1,6 @@
 # Mô-đun 5: Thống kê cho Data Analyst
 
-Trình tự đi từ mô tả (38–39) sang suy diễn (40–42) rồi sang nhận diện ngụy biện (43) và tổng hợp (44–45). Bài 41 dạy trị số p ở tầng hiểu thay vì áp dụng, vì sai lầm phổ biến ở bài này là diễn giải sai chứ không phải tính sai; phần tính toán nằm ở Bài 42.
+Trình tự đi từ mô tả (38-39) sang suy diễn (40-42) rồi sang nhận diện ngụy biện (43) và tổng hợp (44-45). Bài 41 dạy trị số p ở tầng hiểu thay vì áp dụng, vì sai lầm phổ biến ở bài này là diễn giải sai chứ không phải tính sai; phần tính toán nằm ở Bài 42.
 
 ## Điều kiện đầu vào
 
@@ -37,18 +37,18 @@ Kết luận một khác biệt quan sát được là hiệu ứng thật hay d
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L038 · Distributions and why the mean often lies | LT | Mô tả một phân bố trên cả bốn chiều và chọn đại lượng trung tâm phù hợp với hình dạng của nó, nêu lý do. | Mô tả đúng khác biệt của cả bốn tập dữ liệu bằng đại lượng thống kê trước khi vẽ, và chọn đúng đại lượng trung tâm cho từng tập kèm lý do. | M05: M04 |
-| L039 · Variation - real difference or just noise | TH | Phân loại một thay đổi quan sát được là nguyên nhân chung hay nguyên nhân đặc biệt, kèm bằng chứng từ biểu đồ kiểm soát. | Phân loại đúng ≥ 8/10 thay đổi, và mỗi phân loại dẫn được tiêu chí cụ thể từ biểu đồ kiểm soát. | L038 |
-| L040 · Sampling and confidence intervals | LT | Báo cáo một ước lượng kèm khoảng tin cậy và phát biểu đúng ý nghĩa của khoảng đó. | Viết lại đúng ≥ 8/10 phát biểu sai, và mô phỏng chạy được cho ra phân phối mẫu tiệm cận chuẩn. | L039 |
-| L041 · Hypothesis testing and the p-value | LT | Phát biểu ý nghĩa của một trị số p cho người nhận không có nền thống kê, không chứa phát biểu sai. | Chỉ đúng chỗ sai của ≥ 7/8 phát biểu, và phần trình bày cho người nghe không chuyên không chứa phát biểu sai nào. | L040 |
-| L042 · Choosing a test and checking its assumptions | TH | Chọn kiểm định phù hợp cho một tình huống, kiểm tra từng giả định trước khi chạy, và đổi phương pháp khi giả định không thoả. | Chọn đúng kiểm định cho ≥ 5/6 tình huống, phát hiện được tình huống vi phạm giả định, và đổi sang phương pháp phù hợp. | L041 |
-| L043 · Correlation, causation and six ways to be fooled | TH | Nhận diện cơ chế thiên lệch cụ thể trong một kết luận cho trước và viết lại kết luận đó ở mức độ chắc chắn mà dữ liệu cho phép. | Gọi đúng tên cơ chế của ≥ 5/6 kết luận sai, và tái hiện được nghịch lý Simpson trên `DS3` bằng số liệu cụ thể. | L042 |
-| L044 · Systematic exploratory data analysis | TH | Thực hiện một khảo sát đầy đủ bảy bước trên bộ dữ liệu 2 triệu event chưa từng xem, và định vị một bất thường chỉ phát hiện được khi cắt theo hai chiều đồng thời. | Định vị đúng bất thường ở giao hai chiều, và nộp nhật ký giả thuyết có ghi ít nhất ba giả thuyết bị bác bỏ. | L043 |
-| L045 · Statistics project | DA | Chuyển một câu hỏi nghiệp vụ mơ hồ thành một phân tích hoàn chỉnh có kết luận định lượng, khoảng không chắc chắn, và phần giả định giới hạn, trên dữ liệu chưa từng xem. | Nộp đủ năm đầu ra, đạt ≥ 70/100 theo rubric, kết luận được chứng minh bằng hai đường độc lập, và một học viên khác chạy lại được theo tài liệu mà không đặt câu hỏi. Đây là exit criterion của Mô-đun 5. | L044 · M04 |
+| L038 · [[wiki.da.distributions-and-why-the-mean-often-lies|Distributions and why the mean often lies]]| LT | Mô tả một phân bố trên cả bốn chiều và chọn đại lượng trung tâm phù hợp với hình dạng của nó, nêu lý do. | Mô tả đúng khác biệt của cả bốn tập dữ liệu bằng đại lượng thống kê trước khi vẽ, và chọn đúng đại lượng trung tâm cho từng tập kèm lý do. | M05: M04 |
+| L039 · [[wiki.da.variation-real-difference-or-just-noise|Variation - real difference or just noise]]| TH | Phân loại một thay đổi quan sát được là nguyên nhân chung hay nguyên nhân đặc biệt, kèm bằng chứng từ biểu đồ kiểm soát. | Phân loại đúng ≥ 8/10 thay đổi, và mỗi phân loại dẫn được tiêu chí cụ thể từ biểu đồ kiểm soát. | L038 |
+| L040 · [[wiki.da.sampling-and-confidence-intervals|Sampling and confidence intervals]]| LT | Báo cáo một ước lượng kèm khoảng tin cậy và phát biểu đúng ý nghĩa của khoảng đó. | Viết lại đúng ≥ 8/10 phát biểu sai, và mô phỏng chạy được cho ra phân phối mẫu tiệm cận chuẩn. | L039 |
+| L041 · [[wiki.da.hypothesis-testing-and-the-p-value|Hypothesis testing and the p-value]]| LT | Phát biểu ý nghĩa của một trị số p cho người nhận không có nền thống kê, không chứa phát biểu sai. | Chỉ đúng chỗ sai của ≥ 7/8 phát biểu, và phần trình bày cho người nghe không chuyên không chứa phát biểu sai nào. | L040 |
+| L042 · [[wiki.da.choosing-a-test-and-checking-its-assumptions|Choosing a test and checking its assumptions]]| TH | Chọn kiểm định phù hợp cho một tình huống, kiểm tra từng giả định trước khi chạy, và đổi phương pháp khi giả định không thoả. | Chọn đúng kiểm định cho ≥ 5/6 tình huống, phát hiện được tình huống vi phạm giả định, và đổi sang phương pháp phù hợp. | L041 |
+| L043 · [[wiki.da.correlation-causation-and-six-ways-to-be-fooled|Correlation, causation and six ways to be fooled]]| TH | Nhận diện cơ chế thiên lệch cụ thể trong một kết luận cho trước và viết lại kết luận đó ở mức độ chắc chắn mà dữ liệu cho phép. | Gọi đúng tên cơ chế của ≥ 5/6 kết luận sai, và tái hiện được nghịch lý Simpson trên `DS3` bằng số liệu cụ thể. | L042 |
+| L044 · [[wiki.da.systematic-exploratory-data-analysis|Systematic exploratory data analysis]]| TH | Thực hiện một khảo sát đầy đủ bảy bước trên bộ dữ liệu 2 triệu event chưa từng xem, và định vị một bất thường chỉ phát hiện được khi cắt theo hai chiều đồng thời. | Định vị đúng bất thường ở giao hai chiều, và nộp nhật ký giả thuyết có ghi ít nhất ba giả thuyết bị bác bỏ. | L043 |
+| L045 · [[wiki.da.statistics-project|Statistics project]]| DA | Chuyển một câu hỏi nghiệp vụ mơ hồ thành một phân tích hoàn chỉnh có kết luận định lượng, khoảng không chắc chắn, và phần giả định giới hạn, trên dữ liệu chưa từng xem. | Nộp đủ năm đầu ra, đạt ≥ 70/100 theo rubric, kết luận được chứng minh bằng hai đường độc lập, và một học viên khác chạy lại được theo tài liệu mà không đặt câu hỏi. Đây là exit criterion của Mô-đun 5. | L044 · M04 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DA-M05 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DA-M05 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -79,7 +79,7 @@ flowchart LR
   class A038,A039,A040,A041,A042,A043,A044,A045 atom;
 ```
 
-### Bài 38: Distributions and why the mean often lies
+### Lesson 38: Distributions and why the mean often lies
 
 Bốn chiều mô tả một phân bố: trung tâm, độ trải, hình dạng, giá trị ngoại lai. Trung bình, trung vị và yếu vị, cùng điều kiện chọn giữa ba đại lượng. Phân vị và tứ phân vị; lý do P50, P90 và P99 mang nhiều thông tin hơn trung bình đối với dữ liệu vận hành. Phân bố lệch phải trong dữ liệu doanh thu và thời gian phản hồi. Phân bố đa đỉnh như dấu hiệu hai tổng thể bị trộn.
 
@@ -87,7 +87,7 @@ Người học phải mô tả một phân bố trên cả bốn chiều và ch�
 
 Cách đánh giá: Tầng *hiểu*. Kiểm bằng bài có ràng buộc đặc thù: bốn tập dữ liệu có cùng trung bình nhưng hình dạng khác nhau, và người học phải mô tả khác biệt trước khi được phép vẽ đồ thị. Ràng buộc này buộc mô tả bằng đại lượng thống kê thay vì bằng quan sát thị giác.
 
-### Bài 39: Variation - real difference or just noise
+### Lesson 39: Variation - real difference or just noise
 
 Cơ chế dao động của một chỉ số khi quy trình sinh ra nó không thay đổi. Phương sai, độ lệch chuẩn, hệ số biến thiên. Phân biệt nguyên nhân chung và nguyên nhân đặc biệt. Biểu đồ kiểm soát: đường trung tâm, giới hạn trên và dưới. Đặt ngưỡng cảnh báo như một đánh đổi định lượng giữa tỉ lệ báo động giả và tỉ lệ bỏ sót. Quy tắc chuỗi.
 
@@ -95,7 +95,7 @@ Người học phải phân loại một thay đổi quan sát được là nguy
 
 Cách đánh giá: Tầng *phân tích*. Objective là phân loại có bằng chứng trên dữ liệu chưa gán nhãn, không phải áp dụng một công thức. Kiểm bằng bài phân loại 10 thay đổi với đáp án giữ kín; đạt khi đúng ≥ 8/10 và mỗi phân loại dẫn được tiêu chí đã dùng.
 
-### Bài 40: Sampling and confidence intervals
+### Lesson 40: Sampling and confidence intervals
 
 Tổng thể và mẫu. Phân phối mẫu, trình bày bằng mô phỏng trước và công thức sau. Định lý giới hạn trung tâm: phát biểu chính xác và các phát biểu bị gán nhầm cho nó. Phân biệt sai số chuẩn và độ lệch chuẩn. Xây dựng khoảng tin cậy và bốn cách diễn giải sai phổ biến. Trình bày khoảng cho người nhận không có nền thống kê.
 
@@ -103,7 +103,7 @@ Người học phải báo cáo một ước lượng kèm khoảng tin cậy v�
 
 Cách đánh giá: Tầng *hiểu*. Sai lầm chủ đạo ở bài này là diễn giải, không phải tính toán, nên hình thức kiểm nhắm vào diễn giải: viết lại 10 phát biểu kết quả sai thành phát biểu đúng. Chấm theo tính đúng của phát biểu, không theo con số.
 
-### Bài 41: Hypothesis testing and the p-value
+### Lesson 41: Hypothesis testing and the p-value
 
 Giả thuyết không và giả thuyết đối. Định nghĩa chính xác của trị số p và bốn phát biểu bị gán nhầm cho nó. Sai lầm loại I và loại II diễn đạt bằng hậu quả nghiệp vụ. Mức ý nghĩa và lực kiểm định. Phân biệt ý nghĩa thống kê và ý nghĩa thực tiễn. Kích thước hiệu ứng. Cơ chế khiến cỡ mẫu rất lớn làm mọi khác biệt đạt ngưỡng ý nghĩa thống kê.
 
@@ -111,7 +111,7 @@ Người học phải phát biểu ý nghĩa của một trị số p cho ngư�
 
 Cách đánh giá: Tầng *hiểu*. Kiểm bằng bài phân tích 8 phát biểu kết quả và chỉ ra chỗ sai của từng phát biểu, cộng phần trình bày miệng cho một bạn học đóng vai người nghe không chuyên. Không kiểm bằng bài tính trị số p; phần tính nằm ở Bài 42.
 
-### Bài 42: Choosing a test and checking its assumptions
+### Lesson 42: Choosing a test and checking its assumptions
 
 Cây quyết định chọn kiểm định theo loại dữ liệu và thiết kế nghiên cứu. Kiểm định t hai mẫu, kiểm định chi bình phương, kiểm định tỉ lệ. Kiểm định phi tham số khi giả định phân bố không thoả. Mỗi kiểm định kèm tập giả định, cách kiểm tra từng giả định, và hậu quả cụ thể khi vi phạm. Vấn đề so sánh bội và các phương pháp hiệu chỉnh.
 
@@ -119,7 +119,7 @@ Người học phải chọn kiểm định phù hợp cho một tình huống, 
 
 Cách đánh giá: Tầng *áp dụng*. Kiểm bằng sáu tình huống trong đó ít nhất một tình huống có giả định bị vi phạm. Người học phải phát hiện vi phạm và đổi sang kiểm định phi tham số. Chấm ba phần riêng: chọn kiểm định, kiểm tra giả định, diễn giải kết quả.
 
-### Bài 43: Correlation, causation and six ways to be fooled
+### Lesson 43: Correlation, causation and six ways to be fooled
 
 Hệ số tương quan Pearson và Spearman; trường hợp hệ số bằng 0 trên hai biến phụ thuộc nhau. Ba điều kiện cần cho một phát biểu nhân quả. Sáu cơ chế dẫn tới kết luận sai: nghịch lý Simpson, biến gây nhiễu, thiên lệch sống sót, hồi quy về trung bình, thiên lệch chọn mẫu, thiên lệch xác nhận. Quy ước diễn đạt phân biệt liên hệ thống kê với quan hệ nhân quả.
 
@@ -127,7 +127,7 @@ Người học phải nhận diện cơ chế thiên lệch cụ thể trong m�
 
 Cách đánh giá: Tầng *phân tích*. Kiểm bằng sáu kết luận đều sai theo sáu cơ chế khác nhau; người học phải gọi tên đúng cơ chế, không chỉ nói kết luận sai. Cộng phần tái hiện nghịch lý Simpson trên dữ liệu thật để chứng minh cơ chế được hiểu chứ không chỉ được nhớ tên.
 
-### Bài 44: Systematic exploratory data analysis
+### Lesson 44: Systematic exploratory data analysis
 
 Quy trình bảy bước: nắm bối cảnh, khảo sát cấu trúc, kiểm tra chất lượng, phân tích đơn biến, phân tích hai biến, cắt lát nhiều chiều, tổng hợp. Cơ chế khiến bất thường thường chỉ lộ ra ở giao của hai chiều. Vòng lặp giả thuyết: phát biểu, dự đoán, kiểm chứng, giữ hoặc bác bỏ. Nhật ký giả thuyết ghi cả giả thuyết bị bác bỏ. Tiêu chí dừng khảo sát.
 
@@ -135,7 +135,7 @@ Người học phải thực hiện một khảo sát đầy đủ bảy bước
 
 Cách đánh giá: Tầng *phân tích*. Bộ dữ liệu chứa một bất thường cài sẵn ở giao nền tảng × phiên bản ứng dụng; số tổng không biểu hiện gì. Kiểm bằng kết quả tìm được hay không, cộng nhật ký giả thuyết chứng minh quá trình có hệ thống chứ không phải ngẫu nhiên.
 
-### Bài 45: Statistics project
+### Lesson 45: Statistics project
 
 Không có nội dung mới. Dự án gộp toàn bộ M4 và M5 vào một sản phẩm duy nhất.
 

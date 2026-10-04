@@ -1,0 +1,29 @@
+{
+  "task_id": "core-pre-change-scope",
+  "instance_id": "da-de-l001-deep-rewrite-pilot",
+  "status": "pass",
+  "baseline": {
+    "packages": 2,
+    "source_manifests_empty": 2,
+    "learner_memory_resolved": false,
+    "owner_review_state": "ready-for-owner-review"
+  },
+  "allowed_paths": [
+    "Material/DA/Curriculum/**/Lesson_001-what-a-data-analyst-actually-does-all-day/**",
+    "Material/DE/Curriculum/**/Lesson_001-from-a-vague-request-to-a-testable-contract/**",
+    "Material/DA/Reference/**/Lesson_001-what-a-data-analyst-actually-does-all-day/sources.yaml",
+    "Material/DE/Reference/**/Lesson_001-from-a-vague-request-to-a-testable-contract/sources.yaml",
+    "Tools/Curriculum/Build/build_da_de_first_5_lessons.py",
+    "Tools/Curriculum/Manifests/LecturePilot/da-de-l001-deep-rewrite-*",
+    "Apps/SecondBrain/web/data/brain-index.json"
+  ],
+  "forbidden_mutations": [
+    "DA-L002 through DA-L005",
+    "DE-L002 through DE-L005",
+    "roadmap source content",
+    "canonical Second Brain notes",
+    "web application code and design",
+    "Git history or remotes"
+  ],
+  "rollback": "Restore the twelve baseline package files and two empty source manifests, remove handcrafted flags from the build registry, then regenerate the portal index."
+}

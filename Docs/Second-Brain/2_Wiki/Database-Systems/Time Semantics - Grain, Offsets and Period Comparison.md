@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Metric time contract phải chốt timestamp role, grain, timezone và calendar như thế nào để period comparison đúng khi thiếu kỳ, khác độ dài tháng và qua năm nhuận?
 source_ids:
   - src.book.kimball-ross-data-warehouse-toolkit.3e
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Bốn quyết định thời gian
 
-Mỗi metric phải chốt event timestamp role, default time grain, reference timezone và calendar/fiscal definition. Order date đo demand; ship date đo fulfillment; payment date đo cash; recognized date đo accounting revenue. Một record có nhiều clocks nên “theo tháng” chưa đủ. Default grain không cấm drill khác nhưng xác định display/aggregation behavior. Fiscal calendar có thể 4-4-5, week-based hoặc organization-specific và không suy từ Gregorian month.
+Mỗi metric phải chốt event timestamp role, default time grain, reference timezone và calendar/fiscal definition. Order date đo demand; ship date đo fulfillment; payment date đo cash; recognized date đo accounting revenue. Một record có nhiều clocks nên theo tháng chưa đủ. Default grain không cấm drill khác nhưng xác định display/aggregation behavior. Fiscal calendar có thể 4-4-5, week-based hoặc organization-specific và không suy từ Gregorian month.
 
 ## 2. Timezone và ranh giới ngày
 
@@ -205,7 +205,7 @@ Các mệnh đề dưới đây phải được kiểm bằng fixture, invariant
 - Chưa chạy lab hai người, semantic graph planner, ratio rollup, aggregation rejection hoặc calendar fixture; note mô tả protocol cần thực thi.
 - dbt/MetricFlow là ví dụ sản phẩm được kiểm ngày 2026-10-01; syntax và availability có thể đổi theo version/tier.
 - PostgreSQL documentation mô tả SQL mechanics, không tự cung cấp business semantics hay metric governance.
-- Kimball–Ross hỗ trợ grain, additivity và calendar modeling; semantic-layer enforcement là phần tổng hợp có đối chiếu tài liệu hiện hành.
+- Kimball-Ross hỗ trợ grain, additivity và calendar modeling; semantic-layer enforcement là phần tổng hợp có đối chiếu tài liệu hiện hành.
 - Owner chưa phê duyệt meaning nên note giữ trạng thái `review`.
 
 ## Reference
@@ -230,7 +230,7 @@ Các mệnh đề dưới đây phải được kiểm bằng fixture, invariant
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.time-semantics`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.time-semantics`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.time-semantics`, sơ đồ, ví dụ và artifact về **Time Semantics - Grain, Offsets and Period Comparison** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

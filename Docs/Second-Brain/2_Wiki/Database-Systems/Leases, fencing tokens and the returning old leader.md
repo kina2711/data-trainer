@@ -38,7 +38,7 @@ Process bị stop-the-world rồi quay lại có thể gửi write sau khi quy�
 
 ## 3. Fencing token
 
-Mỗi grant có token đơn điệu; resource nhận side effect phải reject token nhỏ hơn highest seen. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Leases, fencing tokens and the returning old leader`, câu hỏi thực dụng là: Lease và fencing token ngăn old leader quay lại ghi side effect như thế nào, và phụ thuộc nào vẫn còn? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Mỗi grant có token đơn điệu; resource nhận side effect phải reject token nhỏ hơn highest seen. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Leases, fencing tokens and the returning old leader`, câu hỏi thực dụng là: Lease và fencing token ngăn old leader quay lại ghi side effect như thế nào, và phụ thuộc nào vẫn còn? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Resource enforcement
 
@@ -221,7 +221,7 @@ Với `wiki.distributed.leases-fencing-old-leader`, command thành công không 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.distributed.leases-fencing-old-leader`
+## Execution capsule: kiểm chứng `wiki.distributed.leases-fencing-old-leader`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.distributed.leases-fencing-old-leader`, sơ đồ, ví dụ và artifact về **Leases, fencing tokens and the returning old leader** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

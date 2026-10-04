@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-27
 last_verified: 2026-09-27
 review_after: 2027-03-27
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: TCP nhận biết giới hạn của đường mạng và điều chỉnh lượng dữ liệu đang bay như thế nào để tránh congestion collapse nhưng vẫn khai thác được băng thông?
 source_ids:
   - src.book.kurose-ross-networking.8e
@@ -55,7 +55,7 @@ LastByteSent - LastByteAcked \le \min(cwnd, rwnd)
 $$
 
 > [!source-fact]
-> Quan hệ giữa `cwnd`, `rwnd`, lượng dữ liệu chưa ACK và tốc độ xấp xỉ `cwnd/RTT` nằm tại §3.7.1, trang in 293–295.
+> Quan hệ giữa `cwnd`, `rwnd`, lượng dữ liệu chưa ACK và tốc độ xấp xỉ `cwnd/RTT` nằm tại §3.7.1, trang in 293-295.
 
 ## 1. Congestion khác loss recovery ở mục tiêu
 
@@ -70,9 +70,9 @@ Cần tách ba đại lượng:
 Khi không có retransmission, `λ_in = λ'_in`. Dưới loss hoặc timeout giả, `λ'_in` có thể lớn hơn nhiều `λ_in` trong khi `λ_out` không tăng tương ứng.
 
 > [!source-fact]
-> Phân biệt dữ liệu gốc, offered load và throughput nhận được được xây dựng trong ba scenario tại §3.6.1, trang in 285–292.
+> Phân biệt dữ liệu gốc, offered load và throughput nhận được được xây dựng trong ba scenario tại §3.6.1, trang in 285-292.
 
-## 2. Scenario 1 — buffer vô hạn vẫn không cứu được latency
+## 2. Scenario 1: buffer vô hạn vẫn không cứu được latency
 
 Hai connection chia sẻ một outgoing link dung lượng `R`; mỗi connection đưa traffic với tốc độ `λ_in`. Router được giả định có buffer vô hạn, không có loss recovery, flow control hay congestion control.
 
@@ -81,9 +81,9 @@ Khi mỗi sender gửi dưới `R/2`, throughput mỗi connection gần bằng t
 Kết luận đầu tiên: đạt utilization cao chưa đủ để gọi hệ thống khỏe. Throughput có thể chạm trần trong khi latency tăng tới mức không chấp nhận được.
 
 > [!source-fact]
-> Scenario hai sender, một router có infinite buffer, trần `R/2` và chi phí queueing delay nằm tại §3.6.1, trang in 286–287.
+> Scenario hai sender, một router có infinite buffer, trần `R/2` và chi phí queueing delay nằm tại §3.6.1, trang in 286-287.
 
-## 3. Scenario 2 — buffer hữu hạn biến queue thành loss và retransmission
+## 3. Scenario 2: buffer hữu hạn biến queue thành loss và retransmission
 
 Thay buffer vô hạn bằng buffer hữu hạn, packet tới khi queue đầy sẽ bị drop. Transport đáng tin cậy gửi lại packet nghi mất, nên link bắt đầu chở cả dữ liệu gốc lẫn bản sao.
 
@@ -96,16 +96,16 @@ Ba mức giả định cho thấy ba loại chi phí:
 Trong ví dụ của sách, khi offered load mỗi connection bằng `R/2`, trường hợp retransmit đúng loss cho throughput dữ liệu gốc khoảng `R/3`; phần còn lại là retransmission. Nếu mỗi packet trung bình bị forward hai lần, throughput tiến về `R/4` khi offered load tiến về `R/2`. Đây là kết quả của mô hình minh họa, không phải hằng số cho mọi mạng.
 
 > [!source-fact]
-> Finite-buffer loss, offered load và ba đường throughput của scenario 2 nằm tại §3.6.1, trang in 287–289.
+> Finite-buffer loss, offered load và ba đường throughput của scenario 2 nằm tại §3.6.1, trang in 287-289.
 
-## 4. Scenario 3 — drop ở cuối path làm lãng phí mọi hop trước đó
+## 4. Scenario 3: drop ở cuối path làm lãng phí mọi hop trước đó
 
 Trong mạng multihop, một packet có thể đã tiêu tốn capacity ở nhiều upstream link rồi mới bị drop tại router sau. Khi tải cạnh tranh tăng rất cao, traffic của một connection có thể gần như không vượt qua bottleneck dù các router trước vẫn bận forward packet của nó. Throughput hữu ích khi ấy có thể giảm về gần zero trong mô hình, dù offered load tiếp tục tăng.
 
 Đây là cơ chế congestion collapse trong ví dụ: thêm traffic không chỉ thất bại trong việc tăng goodput, nó còn làm goodput giảm vì queue, drop và retransmission chiếm tài nguyên. Chi phí của một packet bị drop ở hop sau bao gồm cả transmission capacity đã dùng ở mọi hop trước.
 
 > [!source-fact]
-> Scenario bốn sender, finite buffer, overlapping multihop path và wasted upstream work nằm tại §3.6.1, trang in 289–292.
+> Scenario bốn sender, finite buffer, overlapping multihop path và wasted upstream work nằm tại §3.6.1, trang in 289-292.
 
 ## 5. Hai họ cơ chế phản hồi congestion
 
@@ -120,7 +120,7 @@ Network layer không gửi tín hiệu congestion bắt buộc cho transport. En
 Router chủ động cung cấp thông tin. Tín hiệu có thể đi thẳng về sender, hoặc router đánh dấu packet đi tới receiver rồi receiver chuyển thông tin về sender. Đường đánh dấu qua receiver cần một vòng đi về để phản hồi tới nguồn.
 
 > [!source-fact]
-> Phân loại end-to-end/network-assisted và hai đường đưa feedback về sender nằm tại §3.6.2, trang in 292–293.
+> Phân loại end-to-end/network-assisted và hai đường đưa feedback về sender nằm tại §3.6.2, trang in 292-293.
 
 ## 6. `cwnd` điều khiển flight size và send rate
 
@@ -135,7 +135,7 @@ $$
 ACK của dữ liệu mới vừa giải phóng flight size, vừa cho sender bằng chứng rằng đường đi còn chuyển được traffic. Window tăng theo ACK nên TCP thường được gọi là self-clocking. ACK về chậm thì nhịp tăng cũng chậm.
 
 > [!source-fact]
-> `cwnd`, rate xấp xỉ, loss event và ACK clocking được trình bày tại §3.7.1, trang in 293–295.
+> `cwnd`, rate xấp xỉ, loss event và ACK clocking được trình bày tại §3.7.1, trang in 293-295.
 
 ## 7. Ba nguyên tắc của classic TCP
 
@@ -146,13 +146,13 @@ ACK của dữ liệu mới vừa giải phóng flight size, vừa cho sender b�
 Mỗi sender quyết định từ state và feedback cục bộ, không cần điều phối trực tiếp với mọi flow khác. Kết quả tập thể phụ thuộc thuật toán tăng/giảm và điều kiện chia sẻ bottleneck.
 
 > [!source-fact]
-> Ba nguyên tắc loss, ACK và bandwidth probing được nêu tại §3.7.1, trang in 295–296.
+> Ba nguyên tắc loss, ACK và bandwidth probing được nêu tại §3.7.1, trang in 295-296.
 
 ## 8. Slow start tăng theo cấp số nhân
 
 Theo classic TCP được sách mô tả, `cwnd` khởi đầu ở một giá trị nhỏ; ví dụ lịch sử dùng `1 MSS`. Mỗi ACK mới làm `cwnd` tăng thêm `1 MSS`. Một window gửi một segment tạo một ACK, rồi window thành hai; hai segment tạo hai ACK, window thành bốn. Nếu không có giới hạn khác, `cwnd` xấp xỉ nhân đôi mỗi RTT.
 
-Tên “slow start” nói về việc bắt đầu thận trọng so với gửi ngay một window lớn, chứ không mô tả tốc độ tăng. Tăng theo cấp số nhân là pha nhanh nhất trong ba pha classic.
+Tên slow start nói về việc bắt đầu thận trọng so với gửi ngay một window lớn, chứ không mô tả tốc độ tăng. Tăng theo cấp số nhân là pha nhanh nhất trong ba pha classic.
 
 Slow start kết thúc theo ba đường chính:
 
@@ -161,7 +161,7 @@ Slow start kết thúc theo ba đường chính:
 - ba duplicate ACK: fast retransmit và đi vào fast recovery nếu implementation dùng cơ chế này.
 
 > [!source-fact]
-> Cách tăng slow start, ba điều kiện rời pha và `ssthresh` nằm tại §3.7.1, trang in 296–298.
+> Cách tăng slow start, ba điều kiện rời pha và `ssthresh` nằm tại §3.7.1, trang in 296-298.
 
 > [!uncertainty]
 > `cwnd=1 MSS` là mô hình/khuyến nghị lịch sử mà sách dùng để dạy thuật toán. Initial window của stack hiện hành có thể khác; phải kiểm RFC và implementation đúng phiên bản trước khi dùng làm baseline.
@@ -179,7 +179,7 @@ Nếu window đang chứa mười MSS và mỗi segment tạo một ACK, mỗi A
 Khi timeout, phản ứng mạnh: `ssthresh` lấy một nửa window tại loss, `cwnd` quay về mức khởi đầu và sender vào slow start. Khi ba duplicate ACK xuất hiện, đường Reno giảm ít cực đoan hơn và chuyển fast recovery.
 
 > [!source-fact]
-> Congestion-avoidance increment, timeout response và triple-duplicate-ACK response nằm tại §3.7.1, trang in 297–299.
+> Congestion-avoidance increment, timeout response và triple-duplicate-ACK response nằm tại §3.7.1, trang in 297-299.
 
 ## 10. Fast recovery giữ lại bằng chứng rằng path vẫn tiến triển
 
@@ -188,7 +188,7 @@ Ba duplicate ACK cho thấy một khoảng trống, đồng thời cho thấy m�
 Nếu timeout xảy ra trong fast recovery, sender quay lại slow start với phản ứng mạnh. TCP Tahoe cũ đưa `cwnd` về `1 MSS` sau cả timeout lẫn triple duplicate ACK; TCP Reno thêm fast recovery để tránh reset mạnh như vậy khi ACK vẫn chứng tỏ đường đi đang chuyển dữ liệu.
 
 > [!source-fact]
-> FSM, fast recovery và so sánh Tahoe/Reno nằm tại §3.7.1, trang in 298–301.
+> FSM, fast recovery và so sánh Tahoe/Reno nằm tại §3.7.1, trang in 298-301.
 
 ## 11. AIMD tạo đường răng cưa
 
@@ -214,7 +214,7 @@ flowchart TD
 ```
 
 > [!source-fact]
-> AIMD và saw-tooth behavior được tổng kết tại §3.7.1, trang in 300–301.
+> AIMD và saw-tooth behavior được tổng kết tại §3.7.1, trang in 300-301.
 
 ## 12. CUBIC thay cách probe trong congestion avoidance
 
@@ -227,7 +227,7 @@ Reno cắt window rồi tăng tuyến tính, có thể quay lại vùng trước
 Trong phạm vi sách, slow start và fast recovery vẫn giữ; khác biệt tập trung ở congestion avoidance. Nguồn mô tả trực giác và tham số, không cung cấp đủ cơ sở để tự cấu hình CUBIC production.
 
 > [!source-fact]
-> `Wmax`, `K` và cách CUBIC thay congestion avoidance được mô tả tại §3.7.1, trang in 301–303.
+> `Wmax`, `K` và cách CUBIC thay congestion avoidance được mô tả tại §3.7.1, trang in 301-303.
 
 > [!uncertainty]
 > Các câu về tỷ lệ web server dùng CUBIC dựa trên đo lường năm 2014, còn mô tả BBR dẫn triển khai năm 2016. Đây là lịch sử trong nguồn 2022; note không dùng chúng để khẳng định thị phần hay mặc định hệ điều hành năm 2026.
@@ -269,7 +269,7 @@ Explicit Congestion Notification phối hợp IP và TCP:
 Trong mô tả của sách, sender giảm window như phản ứng với loss được xử lý bằng fast retransmit. RFC 3168 không ấn định một ngưỡng phổ quát để router gọi là congested; vendor và network operator quyết định policy đánh dấu. Vì thế thấy ECN mark chỉ có ý nghĩa khi biết cấu hình queue/AQM tại hop.
 
 > [!source-fact]
-> ECN bits, đường `router → receiver → ECE → sender → CWR` và phạm vi quyết định của operator nằm tại §3.7.2, trang in 304–305.
+> ECN bits, đường `router → receiver → ECE → sender → CWR` và phạm vi quyết định của operator nằm tại §3.7.2, trang in 304-305.
 
 ## 15. Delay-based control tìm congestion trước loss
 
@@ -284,7 +284,7 @@ Nếu throughput đo được gần mức này, sender có thể tăng. Nếu th
 Mental model là giữ bottleneck bận nhưng không đổ thêm dữ liệu chỉ để xây queue. Tuy vậy, `RTTmin` không phải hằng số vĩnh viễn: route, access network, radio scheduling và clock/capture effects có thể thay đổi baseline. Cạnh tranh giữa delay-based và loss-based flow cũng cần thuật toán cụ thể giải quyết; sách nhắc BBR, TIMELY, Compound TCP và FAST nhưng không cung cấp triển khai đầy đủ.
 
 > [!source-fact]
-> Vegas, `RTTmin`, expected throughput và trực giác tránh queue trước loss nằm tại §3.7.2, trang in 305–306.
+> Vegas, `RTTmin`, expected throughput và trực giác tránh queue trước loss nằm tại §3.7.2, trang in 305-306.
 
 ## 16. Fairness chỉ đúng dưới một tập giả định
 
@@ -299,7 +299,7 @@ Lập luận AIMD cho hai flow giả định cùng MSS, cùng RTT, luôn có dat
 Đây là fairness theo connection, chưa phải fairness theo user, process, tenant hay business priority. Khi RTT khác nhau, flow có RTT nhỏ nhận ACK nhanh hơn và mở window nhanh hơn; sách nêu nó có thể lấy phần bandwidth lớn hơn.
 
 > [!source-fact]
-> Định nghĩa `R/K`, đồ thị hội tụ AIMD và RTT unfairness nằm tại §3.7.3, trang in 306–308.
+> Định nghĩa `R/K`, đồ thị hội tụ AIMD và RTT unfairness nằm tại §3.7.3, trang in 306-308.
 
 ## 17. UDP và parallel connections làm vỡ equal-share story
 
@@ -308,7 +308,7 @@ UDP không có congestion control tích hợp như TCP. Một application dùng 
 TCP application cũng có thể mở nhiều connection song song. Nếu bottleneck chia gần công bằng theo connection, application có nhiều connection nhận tổng phần lớn hơn. Ví dụ sách cho chín application mỗi bên một connection; application thứ mười nếu mở mười một connection có thể nhận hơn nửa link. Con số thuộc scenario minh họa với giả định equal connection share.
 
 > [!source-fact]
-> UDP crowd-out và parallel TCP connection làm lệch fairness theo application nằm tại cuối §3.7.3, trang in 308–309.
+> UDP crowd-out và parallel TCP connection làm lệch fairness theo application nằm tại cuối §3.7.3, trang in 308-309.
 
 ## 18. Đọc packet trace và metric congestion control
 
@@ -336,7 +336,7 @@ Một trace hữu ích cần ghép packet với socket/kernel metrics. Chỉ nh�
 | ECN có hoạt động? | ECN negotiation, CE/ECE/CWR | ECN counters/state | AQM marking policy/counter |
 
 > [!inference]
-> Quy trình trên là tổng hợp chẩn đoán từ cơ chế trong §§3.6–3.7. Sách giải thích nguyên lý nhưng không đưa một runbook production hoàn chỉnh.
+> Quy trình trên là tổng hợp chẩn đoán từ cơ chế trong §§3.6-3.7. Sách giải thích nguyên lý nhưng không đưa một runbook production hoàn chỉnh.
 
 ## 19. Những failure pattern dễ chẩn đoán nhầm
 
@@ -370,7 +370,7 @@ Nếu application không đưa đủ byte, bytes in flight thấp hơn `cwnd` kh
 
 ### Qua proxy hoặc TCP splitting
 
-Proxy chấm dứt connection tạo hai TCP connection độc lập, mỗi leg có RTT, loss và congestion state riêng. Tối ưu leg client–proxy không tự chứng minh leg proxy–origin khỏe.
+Proxy chấm dứt connection tạo hai TCP connection độc lập, mỗi leg có RTT, loss và congestion state riêng. Tối ưu leg client-proxy không tự chứng minh leg proxy-origin khỏe.
 
 ## 21. Những cách hiểu sai thường gặp
 
@@ -390,7 +390,7 @@ Proxy chấm dứt connection tạo hai TCP connection độc lập, mỗi leg c
 
 ## 22. Giới hạn của nguồn và của chương
 
-Chỉ dựa vào §§3.6–3.7 chưa thể:
+Chỉ dựa vào §§3.6-3.7 chưa thể:
 
 - xác định congestion-control algorithm mặc định của một kernel năm 2026;
 - chọn CUBIC, BBR, DCTCP hoặc thuật toán khác cho production workload;
@@ -399,7 +399,7 @@ Chỉ dựa vào §§3.6–3.7 chưa thể:
 - phân biệt network loss, wireless corruption và capture loss khi thiếu telemetry đa điểm;
 - suy ra fairness giữa tenant/application từ fairness theo TCP connection;
 - áp dụng công thức Reno lý tưởng cho short flow hoặc RTT/W biến thiên mạnh;
-- xác nhận market share/triển khai hiện hành từ số liệu 2014–2016 được sách dẫn;
+- xác nhận market share/triển khai hiện hành từ số liệu 2014-2016 được sách dẫn;
 - thay packet lab thật bằng sơ đồ hoặc công thức.
 
 ## 23. Câu hỏi ôn tập
@@ -429,10 +429,10 @@ Chỉ dựa vào §§3.6–3.7 chưa thể:
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§3.6.1–3.6.2 | nguyên nhân, chi phí congestion và hai họ control | §§1–5 | Đã trình bày ba scenario và tín hiệu phản hồi |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§3.7.1–3.7.2 | classic TCP, `cwnd`, slow start, congestion avoidance và fast recovery | §§6–12 | Đã trình bày theo vòng điều khiển và AIMD |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §3.7.3 | throughput và fairness | §§13, 16–17 | Đã trình bày cùng giả định làm equal-share story bị phá vỡ |
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§3.7.4–3.7.5 | ECN và delay-based control | §§14–15 | Đã trình bày tín hiệu, phản ứng và giới hạn baseline RTT |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§3.6.1-3.6.2 | nguyên nhân, chi phí congestion và hai họ control | §§1-5 | Đã trình bày ba scenario và tín hiệu phản hồi |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§3.7.1-3.7.2 | classic TCP, `cwnd`, slow start, congestion avoidance và fast recovery | §§6-12 | Đã trình bày theo vòng điều khiển và AIMD |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §3.7.3 | throughput và fairness | §§13, 16-17 | Đã trình bày cùng giả định làm equal-share story bị phá vỡ |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §§3.7.4-3.7.5 | ECN và delay-based control | §§14-15 | Đã trình bày tín hiệu, phản ứng và giới hạn baseline RTT |
 
 BBR, pacing và Linux implementation hiện hành không thuộc lát nguồn; note ghi rõ cần nguồn bổ sung trước khi chuyển thành hướng dẫn cấu hình production.
 
@@ -444,7 +444,7 @@ BBR, pacing và Linux implementation hiện hành không thuộc lát nguồn; n
 - Packet trace cần được ghép với `cwnd`, retransmission, RTT, queue và application latency; một đồ thị throughput riêng lẻ không xác định được nguyên nhân.
 
 ## Reference
-1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §§3.6–3.7, printed pp. 285–309 up to the §3.8 heading, PDF pp. 287–311.
+1. James F. Kurose, Keith W. Ross, *Computer Networking: A Top-Down Approach*, Eighth Global Edition, Pearson, 2022, §§3.6-3.7, printed pp. 285-309 up to the §3.8 heading, PDF pp. 287-311.
 2. Hồ sơ nguồn: [[SRC-KUROSE-ROSS-NETWORKING-8E]].
 3. Source note: `Material/DE/Reference/Library/Source-Notes/PACK-OS_NETWORK-BOOK-03.md`.
 
@@ -452,11 +452,11 @@ BBR, pacing và Linux implementation hiện hành không thuộc lát nguồn; n
 
 | Ngày | Trạng thái | Nội dung |
 |---|---|---|
-| 2026-09-27 | `review` | Đọc trực tiếp §§3.6–3.7; giữ giả định và công thức; tách dữ kiện lịch sử; bổ sung runbook đọc trace; biên tập Humanizer tiếng Việt |
+| 2026-09-27 | `review` | Đọc trực tiếp §§3.6-3.7; giữ giả định và công thức; tách dữ kiện lịch sử; bổ sung runbook đọc trace; biên tập Humanizer tiếng Việt |
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.network.tcp-congestion-control-aimd-ecn-fairness`
+## Execution capsule: kiểm chứng `wiki.network.tcp-congestion-control-aimd-ecn-fairness`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.network.tcp-congestion-control-aimd-ecn-fairness`, sơ đồ, ví dụ và artifact về **TCP congestion control: AIMD, ECN và fairness** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

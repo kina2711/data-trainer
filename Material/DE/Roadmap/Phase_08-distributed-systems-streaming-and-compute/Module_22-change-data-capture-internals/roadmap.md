@@ -39,20 +39,20 @@ Vẽ được đường từ vị trí nhật ký nguồn tới vị trí trình
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L335 · Three ways to capture change and their cost | LT | So ba cách theo ba tiêu chí và chứng minh cách hỏi theo dấu thời gian bỏ sót thay đổi. | Số thay đổi bỏ sót và số bản xoá không thấy được đo thật, và bảng ba cách có số đo ở tiêu chí tải nguồn. | M22: M21 |
-| L336 · Inside the transaction log - WAL, logical decoding and the replication slot | TH | Đọc được vị trí và trạng thái khe trên nguồn thật, và định lượng tốc độ tích luỹ nhật ký khi bên đọc dừng. | Tốc độ tích luỹ được đo theo dung lượng trên giờ, thời gian tới khi đầy đĩa tính được, và nhật ký được giải phóng sau khi bên đọc chạy lại. | L335 |
-| L337 · The consistent bootstrap - snapshot interleaved with the live log | TH | Chạy bản chụp ban đầu trong khi nguồn đang ghi và chứng minh không có khoảng trống cũng không có ghi đè ngược. | Đích khớp nguồn tuyệt đối tại ranh giới bất biến, và bản bỏ bước đan xen được chứng minh tạo ghi đè ngược kèm số bản ghi sai. | L336 |
-| L338 · The event envelope - before, after, op and source metadata | TH | Cài đích áp dụng sự kiện đúng cho cả bốn mã thao tác, dùng vị trí nhật ký để chọn bản thắng. | Đích khớp nguồn tuyệt đối sau 10.000 thao tác, và sự kiện bị đảo thứ tự không làm sai trạng thái nhờ so phiên bản. | L337 |
-| L339 · Ordering scope and the multi-table transaction limit | TH | Tái hiện ca đích thấy nửa giao dịch và chọn một cách xử lý kèm điều kiện áp dụng. | Ca nửa giao dịch được quan sát kèm độ dài khoảng thời gian, và cách xử lý chọn kèm hai điều kiện áp dụng. | L338 |
-| L340 · Position, offset and checkpoint - three different things | TH | Đo riêng ba loại độ trễ và tái hiện ca phát lại sau khi chết, chứng minh đích luỹ đẳng xử lý đúng. | Ba loại độ trễ được đo riêng, và đích khớp nguồn sau 50 lần giết nhờ luỹ đẳng. | L339 |
-| L341 · Deletes, truncates, primary key updates and tombstones | TH | Xử lý đúng cả bốn thao tác và chứng minh đích không còn bản mồ côi cũng không đếm đôi. | Đích khớp nguồn về tập khoá và số lượng sau cả bốn thao tác, không còn hàng mồ côi, và ca cắt bảng có xử lý tường minh. | L340 |
-| L342 · Schema change, schema history and quarantine | TH | Xử lý ba loại thay đổi lược đồ trong lúc dòng đang chạy và đọc lại được dữ liệu cũ sau đó. | Dữ liệu trước thay đổi giải mã đúng khi đọc lại, không sự kiện nào bị bỏ im lặng, và sự kiện cách ly được phát lại thành công. | L341 |
-| L343 · Slot retention, lag and the source disk risk | TH | Dựng cảnh báo theo thời gian còn lại và chạy đúng quy trình xử lý khi khe phình, không dùng thao tác phá huỷ. | Cảnh báo nổ trước ngưỡng thời gian thoả thuận, phục hồi hoàn tất không cần bỏ khe, và lần chụp lại ở môi trường cách ly có đối soát trước khi hoán đổi. | L342 |
-| L344 · CDC project - reconcile after repeated crashes | DA | Nộp đường bắt thay đổi hoàn chỉnh, đối soát khớp nguồn sau ít nhất 30 lần giết ngẫu nhiên. | Đích khớp nguồn tuyệt đối về tập khoá và giá trị sau ≥ 30 lần giết, bốn vị trí tiến độ có số đo độ trễ, và lần chụp lại có đối soát trước khi hoán đổi. | L343 |
+| L335 · [[wiki.cdc.capture-methods-cost|Three ways to capture change and their cost]]| LT | So ba cách theo ba tiêu chí và chứng minh cách hỏi theo dấu thời gian bỏ sót thay đổi. | Số thay đổi bỏ sót và số bản xoá không thấy được đo thật, và bảng ba cách có số đo ở tiêu chí tải nguồn. | M22: M21 |
+| L336 · [[wiki.cdc.wal-logical-decoding-slot|Inside the transaction log - WAL, logical decoding and the replication slot]]| TH | Đọc được vị trí và trạng thái khe trên nguồn thật, và định lượng tốc độ tích luỹ nhật ký khi bên đọc dừng. | Tốc độ tích luỹ được đo theo dung lượng trên giờ, thời gian tới khi đầy đĩa tính được, và nhật ký được giải phóng sau khi bên đọc chạy lại. | L335 |
+| L337 · [[wiki.cdc.consistent-bootstrap-snapshot-log|The consistent bootstrap - snapshot interleaved with the live log]]| TH | Chạy bản chụp ban đầu trong khi nguồn đang ghi và chứng minh không có khoảng trống cũng không có ghi đè ngược. | Đích khớp nguồn tuyệt đối tại ranh giới bất biến, và bản bỏ bước đan xen được chứng minh tạo ghi đè ngược kèm số bản ghi sai. | L336 |
+| L338 · [[wiki.cdc.event-envelope|The event envelope - before, after, op and source metadata]]| TH | Cài đích áp dụng sự kiện đúng cho cả bốn mã thao tác, dùng vị trí nhật ký để chọn bản thắng. | Đích khớp nguồn tuyệt đối sau 10.000 thao tác, và sự kiện bị đảo thứ tự không làm sai trạng thái nhờ so phiên bản. | L337 |
+| L339 · [[wiki.cdc.ordering-transaction-scope|Ordering scope and the multi-table transaction limit]]| TH | Tái hiện ca đích thấy nửa giao dịch và chọn một cách xử lý kèm điều kiện áp dụng. | Ca nửa giao dịch được quan sát kèm độ dài khoảng thời gian, và cách xử lý chọn kèm hai điều kiện áp dụng. | L338 |
+| L340 · [[wiki.cdc.position-offset-checkpoint|Position, offset and checkpoint - three different things]]| TH | Đo riêng ba loại độ trễ và tái hiện ca phát lại sau khi chết, chứng minh đích luỹ đẳng xử lý đúng. | Ba loại độ trễ được đo riêng, và đích khớp nguồn sau 50 lần giết nhờ luỹ đẳng. | L339 |
+| L341 · [[wiki.cdc.deletes-truncates-pk-tombstones|Deletes, truncates, primary key updates and tombstones]]| TH | Xử lý đúng cả bốn thao tác và chứng minh đích không còn bản mồ côi cũng không đếm đôi. | Đích khớp nguồn về tập khoá và số lượng sau cả bốn thao tác, không còn hàng mồ côi, và ca cắt bảng có xử lý tường minh. | L340 |
+| L342 · [[wiki.cdc.schema-history-quarantine|Schema change, schema history and quarantine]]| TH | Xử lý ba loại thay đổi lược đồ trong lúc dòng đang chạy và đọc lại được dữ liệu cũ sau đó. | Dữ liệu trước thay đổi giải mã đúng khi đọc lại, không sự kiện nào bị bỏ im lặng, và sự kiện cách ly được phát lại thành công. | L341 |
+| L343 · [[wiki.cdc.slot-retention-source-disk-risk|Slot retention, lag and the source disk risk]]| TH | Dựng cảnh báo theo thời gian còn lại và chạy đúng quy trình xử lý khi khe phình, không dùng thao tác phá huỷ. | Cảnh báo nổ trước ngưỡng thời gian thoả thuận, phục hồi hoàn tất không cần bỏ khe, và lần chụp lại ở môi trường cách ly có đối soát trước khi hoán đổi. | L342 |
+| L344 · [[wiki.cdc.repeated-crash-reconciliation|CDC project - reconcile after repeated crashes]]| DA | Nộp đường bắt thay đổi hoàn chỉnh, đối soát khớp nguồn sau ít nhất 30 lần giết ngẫu nhiên. | Đích khớp nguồn tuyệt đối về tập khoá và giá trị sau ≥ 30 lần giết, bốn vị trí tiến độ có số đo độ trễ, và lần chụp lại có đối soát trước khi hoán đổi. | L343 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M22 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M22 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -87,7 +87,7 @@ flowchart LR
   class A335,A336,A337,A338,A339,A340,A341,A342,A343,A344 atom;
 ```
 
-### Bài 335: Three ways to capture change and their cost
+### Lesson 335: Three ways to capture change and their cost
 
 Bài mở module bằng việc so ba cách lấy thay đổi, để thấy vì sao cách thứ ba đáng học sâu. Hỏi theo dấu thời gian hoặc theo khoá: đơn giản, chạy được ở mọi nguồn, nhưng bỏ sót thay đổi xảy ra giữa hai lần hỏi và không thấy bản ghi bị xoá, đúng năm giả định ở Bài 234. Bẫy cơ sở dữ liệu ghi thay đổi vào một bảng phụ: bắt được đủ thao tác gồm cả xoá, nhưng thêm chi phí ghi lên mọi giao dịch của nguồn và phải bảo trì bẫy. Đọc nhật ký giao dịch: bắt đủ mọi thay đổi theo đúng thứ tự, độ trễ thấp, và gần như không thêm tải ghi cho nguồn; đổi lại phức tạp về vận hành và tạo một phụ thuộc mới lên thời hạn giữ nhật ký của nguồn. Ba tiêu chí so: tải đặt lên nguồn, độ trễ, và tính đầy đủ. Phân biệt với nguồn sự kiện: ở đó ứng dụng chủ động phát ý định nghiệp vụ, còn ở đây ta suy ra thay đổi từ trạng thái vật lý.
 
@@ -95,7 +95,7 @@ Người học phải so ba cách theo ba tiêu chí và chứng minh cách hỏ
 
 Cách đánh giá: Tầng *hiểu*. Bài mở module, kiểm bằng một thí nghiệm nhỏ chứ chỉ lập luận. Kiểm bằng phép đếm bỏ sót; đạt khi số thay đổi bị bỏ sót được đo thật và bảng ba cách nhân ba tiêu chí có số ở tiêu chí tải nguồn.
 
-### Bài 336: Inside the transaction log - WAL, logical decoding and the replication slot
+### Lesson 336: Inside the transaction log - WAL, logical decoding and the replication slot
 
 Bài đi vào cơ chế của nguồn, dùng lại nhật ký ghi trước ở Bài 137 nhưng ở vai người đọc. Với hệ quan hệ phổ biến: nhật ký ghi trước ghi mọi thay đổi vật lý; bộ giải mã logic dịch chúng thành thay đổi mức hàng có nghĩa; khe sao chép giữ vị trí mà bên đọc đã xác nhận, và nguồn không được xoá phần nhật ký chưa được khe nào xác nhận. Từ đó suy ra rủi ro trung tâm của module: bên đọc dừng thì nhật ký tích luỹ và đĩa nguồn đầy dần, nên một trình kết nối chết có thể làm sập cơ sở dữ liệu sản xuất. Vị trí khởi động lại và vị trí đã xác nhận là hai con số khác nhau. Với hệ khác thì có nhật ký nhị phân cùng định dạng và vị trí hoặc định danh giao dịch toàn cục. Ranh giới giao dịch có trong nhật ký, và đây là thứ cách hỏi theo dấu thời gian không bao giờ có.
 
@@ -103,7 +103,7 @@ Người học phải đọc được vị trí và trạng thái khe trên ngu�
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi quan sát trạng thái thật của nguồn. Kiểm bằng thí nghiệm dừng bên đọc; đạt khi tốc độ tích luỹ được đo theo đơn vị dung lượng trên giờ và thời gian tới khi đầy đĩa tính được.
 
-### Bài 337: The consistent bootstrap - snapshot interleaved with the live log
+### Lesson 337: The consistent bootstrap - snapshot interleaved with the live log
 
 Bài khó nhất của module và là đóng góp chính của nó. Bài toán: phải chụp toàn bộ dữ liệu hiện có, nhưng nguồn vẫn đang ghi trong lúc chụp, nên một bản ghi có thể được chụp ở trạng thái cũ rồi ngay sau đó một sự kiện thay đổi cũ hơn tới đích và ghi đè lên, tạo ra dữ liệu lùi về quá khứ. Thuật toán năm bước: xác lập vị trí nhật ký và ranh giới nhất quán trước khi chụp; đọc bảng theo từng khối trong khi vẫn thu sự kiện thay đổi; đan xen sao cho một dòng của bản chụp không bao giờ ghi đè một sự kiện mới hơn, dùng cơ chế mốc nước hoặc so phiên bản theo khoá; hoàn tất bản chụp rồi tiếp tục phát dòng từ đúng vị trí đã xác lập; và chỉ lưu vị trí của trình kết nối theo đúng giao thức giao nhận. Chia khối theo khoá có chỉ mục và ảnh hưởng lên nguồn theo Bài 238. Hai chế độ hỏng: khoảng trống, và ghi đè ngược.
 
@@ -111,7 +111,7 @@ Người học phải chạy bản chụp ban đầu trong khi nguồn đang ghi
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là đối soát khớp tuyệt đối dưới ghi đồng thời. Kiểm bằng đối soát tập khoá và giá trị; đạt khi đích khớp nguồn tại một ranh giới bất biến, và bản cài sai được chứng minh tạo ghi đè ngược.
 
-### Bài 338: The event envelope - before, after, op and source metadata
+### Lesson 338: The event envelope - before, after, op and source metadata
 
 Cấu trúc một sự kiện thay đổi, và mỗi trường tồn tại để trả lời một câu hỏi vận hành. Trạng thái trước và trạng thái sau cho phép bên tiêu thụ biết cái gì đã đổi chứ chỉ biết giá trị mới. Mã thao tác phân biệt thêm, sửa, xoá và đọc từ bản chụp; phân biệt cái cuối là quan trọng vì sự kiện từ bản chụp không có trạng thái trước. Siêu dữ liệu nguồn gồm tên bảng, vị trí trong nhật ký, định danh giao dịch và dấu thời gian ở nguồn; vị trí trong nhật ký là thứ tạo nên thứ tự xác định cho mỗi khoá, và nó là cơ sở để đích khử trùng và chọn bản thắng. Khoá của sự kiện lấy từ khoá chính, và nó quyết định phân vùng theo Bài 322 nên mọi thay đổi của một hàng đi cùng phân vùng và giữ đúng thứ tự. Sự kiện bia mộ cho thao tác xoá theo Bài 324. Đích áp dụng bằng ghi đè theo khoá cộng so phiên bản.
 
@@ -119,7 +119,7 @@ Người học phải cài đích áp dụng sự kiện đúng cho cả bốn m
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là trạng thái đích khớp nguồn sau một chuỗi thao tác hỗn hợp. Kiểm bằng đối soát sau 10.000 thao tác; đạt khi đích khớp nguồn tuyệt đối và sự kiện tới sai thứ tự không làm sai trạng thái.
 
-### Bài 339: Ordering scope and the multi-table transaction limit
+### Lesson 339: Ordering scope and the multi-table transaction limit
 
 Bài phát biểu chính xác bảo đảm về thứ tự, vì đây là chỗ kỳ vọng thường vượt thực tế. Thứ tự được giữ cho mỗi khoá, vì mọi thay đổi của một hàng vào cùng phân vùng. Thứ tự giữa hai bảng khác nhau thì không, vì chúng thường ở hai chủ đề hoặc hai phân vùng khác nhau. Hệ quả: một giao dịch nguồn chạm hai bảng sẽ tới đích thành hai sự kiện độc lập, và đích có thể thấy nửa giao dịch trong một khoảng thời gian; nếu hạ nguồn có ràng buộc tham chiếu giữa hai bảng thì nó sẽ thấy trạng thái không nhất quán tạm thời. Ba cách xử lý và đánh đổi: chấp nhận trạng thái trung gian và nói rõ với bên tiêu thụ; gom theo định danh giao dịch rồi áp dụng cả cụm; hoặc đưa hai bảng về một chủ đề với khoá chung. Định danh giao dịch có trong phong bì nên gom được, nhưng ranh giới kết thúc giao dịch cần một tín hiệu riêng.
 
@@ -127,7 +127,7 @@ Người học phải tái hiện ca đích thấy nửa giao dịch và chọn 
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi nhận ra một giới hạn thường bị bỏ qua khi thiết kế. Kiểm bằng ca tái hiện cộng bài chọn; đạt khi ca nửa giao dịch được quan sát và định lượng khoảng thời gian, và cách xử lý chọn kèm hai điều kiện.
 
-### Bài 340: Position, offset and checkpoint - three different things
+### Lesson 340: Position, offset and checkpoint - three different things
 
 Ba con số hay bị gọi chung là tiến độ, và trộn chúng làm không chẩn đoán được. Vị trí trong nhật ký nguồn là tiến độ của trình kết nối trên nguồn, và nó điều khiển việc nguồn giải phóng nhật ký theo Bài 336. Vị trí trên nhật ký phân tán là tiến độ của bản ghi đã được ghi sang đường truyền. Điểm kiểm tra ở đích là tiến độ của việc áp dụng vào kho cuối. Ba con số tiến theo ba nhịp và khoảng cách giữa chúng là ba loại độ trễ khác nhau, mỗi loại có nguyên nhân riêng và cách xử lý riêng. Thứ tự lưu trạng thái phải theo đúng quy tắc ở Bài 240: chỉ tiến một con số sau khi dữ liệu tương ứng đã bền vững ở bước sau. Ca hỏng bắt buộc tái hiện: trình kết nối chết sau khi đã phát sự kiện nhưng trước khi lưu vị trí, dẫn tới phát lại và trùng lặp ở đích; lời giải là đích luỹ đẳng chứ cố tránh phát lại.
 
@@ -135,7 +135,7 @@ Người học phải đo riêng ba loại độ trễ và tái hiện ca phát 
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi tách ba tiến độ thường bị gộp. Kiểm bằng ba số đo cộng thí nghiệm giết; đạt khi ba loại độ trễ được đo riêng và đích vẫn khớp nguồn sau 50 lần giết ngẫu nhiên.
 
-### Bài 341: Deletes, truncates, primary key updates and tombstones
+### Lesson 341: Deletes, truncates, primary key updates and tombstones
 
 Bốn thao tác phá vỡ giả định thông thường của bên tiêu thụ, và cả bốn phải xử lý tường minh. Xoá tạo sự kiện có trạng thái trước và không có trạng thái sau, kèm bia mộ để chủ đề nén dọn được; đích phải xoá thật hoặc đánh dấu tuỳ hợp đồng, và bỏ qua xoá làm đích phình dần và mọi phép đếm sai. Cắt bảng ở nhiều hệ không sinh sự kiện mức hàng, nên đích không biết bảng đã rỗng; cần xử lý riêng hoặc cấm thao tác này ở nguồn. Cập nhật khoá chính là ca khó nhất: nguồn coi là một lần sửa, nhưng ở đích khoá cũ và khoá mới là hai hàng, nên nếu không xử lý thì hàng cũ ở lại thành bản mồ côi và số lượng bị đếm đôi; lời giải là phát cả sự kiện xoá khoá cũ lẫn sự kiện thêm khoá mới. Xoá theo tầng ở nguồn sinh hàng loạt sự kiện và có thể gây dồn ứ.
 
@@ -143,7 +143,7 @@ Người học phải xử lý đúng cả bốn thao tác và chứng minh đí
 
 Cách đánh giá: Tầng *áp dụng*. Objective có bốn ca biên với tiêu chí nghiệm thu bằng đối soát. Kiểm bằng bốn thao tác tiêm; đạt khi đích khớp nguồn về tập khoá và số lượng sau cả bốn, và ca cắt bảng được xử lý tường minh.
 
-### Bài 342: Schema change, schema history and quarantine
+### Lesson 342: Schema change, schema history and quarantine
 
 Lược đồ nguồn đổi trong lúc dòng đang chạy, và trình kết nối phải xử lý được vì nó không kiểm soát nguồn. Lịch sử lược đồ được lưu riêng để giải mã đúng sự kiện cũ: một sự kiện phát ra ba tháng trước phải được diễn giải bằng lược đồ của thời điểm đó chứ lược đồ hiện tại, nên đọc lại dữ liệu cũ cần lịch sử lược đồ còn nguyên; mất lịch sử lược đồ là mất khả năng đọc lại. Ba loại thay đổi và phản ứng, theo phân loại ở Bài 241: thêm cột thì bên tiêu thụ cũ vẫn chạy; đổi kiểu thu hẹp là phá vỡ; đổi tên là phá vỡ với bên đọc theo tên. Thứ tự triển khai giữa bên sản xuất và bên tiêu thụ lấy từ mức tương thích ở Bài 331. Sự kiện không giải mã được đi vào vùng cách ly kèm nguyên nhân và vị trí, để phát lại sau khi sửa chứ bỏ.
 
@@ -151,7 +151,7 @@ Người học phải xử lý ba loại thay đổi lược đồ trong lúc d�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là đọc lại dữ liệu cũ vẫn đúng sau khi lược đồ đã đổi. Kiểm bằng phép đọc lại; đạt khi dữ liệu trước thay đổi được giải mã đúng, không sự kiện nào bị bỏ im lặng, và sự kiện cách ly phát lại được.
 
-### Bài 343: Slot retention, lag and the source disk risk
+### Lesson 343: Slot retention, lag and the source disk risk
 
 Bài vận hành quan trọng nhất của module, vì đây là chỗ một lỗi ở hệ phụ làm sập hệ chính. Chuỗi nhân quả: bên tiêu thụ dừng hoặc chậm, trình kết nối không tiến vị trí đã xác nhận, nguồn không giải phóng nhật ký, đĩa nguồn đầy dần, rồi cơ sở dữ liệu sản xuất ngừng nhận ghi. Ba chỉ số phải theo dõi và đặt ngưỡng: độ trễ của khe tính bằng dung lượng, tốc độ tăng, và dung lượng đĩa còn lại quy ra thời gian. Cảnh báo phải đặt theo thời gian còn lại chứ theo phần trăm đĩa, vì phần trăm không nói được còn bao lâu để xử lý. Quy trình khi cảnh báo nổ, theo thứ tự: tìm nguyên nhân bên tiêu thụ dừng, khôi phục nó, chỉ khi hết cách mới cân nhắc bỏ khe. Bỏ khe là thao tác phá huỷ: nó giải phóng đĩa ngay nhưng mất toàn bộ thay đổi chưa đọc, nên bắt buộc phải chụp lại, và chụp lại phải vào không gian cách ly chứ đè lên trạng thái đang phục vụ.
 
@@ -159,7 +159,7 @@ Người học phải dựng cảnh báo theo thời gian còn lại và chạy 
 
 Cách đánh giá: Tầng *đánh giá*. Objective đo năng lực vận hành dưới một rủi ro có thể làm sập hệ chính. Kiểm bằng tình huống tái hiện; đạt khi cảnh báo nổ trước ngưỡng thời gian thoả thuận và quy trình phục hồi không cần bỏ khe.
 
-### Bài 344: CDC project - reconcile after repeated crashes
+### Lesson 344: CDC project - reconcile after repeated crashes
 
 Bài dự án khép module. Dựng đường đầy đủ từ một cơ sở dữ liệu quan hệ qua nhật ký phân tán tới một đích phân tích, chạy được cả khởi tạo, dòng liên tục, và chụp lại. Nộp gồm: sơ đồ bốn vị trí tiến độ theo Bài 340 với số đo độ trễ thật cho từng chặng; bằng chứng bản chụp ban đầu nhất quán theo Bài 337; xử lý đủ bốn thao tác ở Bài 341; lịch sử lược đồ cùng vùng cách ly; ba chỉ số cùng cảnh báo theo Bài 343; và sổ tay vận hành. Nghiệm thu bằng đối soát sau khi giết lặp lại: chạy tải ghi liên tục trên nguồn, giết trình kết nối, máy chủ nhật ký và tiến trình ghi đích ở các thời điểm ngẫu nhiên ít nhất 30 lần, rồi đối soát tập khoá và giá trị giữa nguồn và đích tại một ranh giới bất biến. Mọi việc chạy xong không phải bằng chứng; đối soát mới là.
 

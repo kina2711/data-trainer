@@ -1,193 +1,180 @@
 ---
-loai: formative-quiz
-lesson: 1
+loai: diagnostic-quiz
 lesson_id: DE-L001
-tieu_de: "From a vague request to a testable contract"
 so_cau: 10
-thoi_gian_phut: 18
-trang_thai: ready-for-owner-review
 nguong_dat: 8
+trang_thai: ready-for-owner-review
 ---
 
-# Quiz — DE Lesson 1: From a vague request to a testable contract
+# Quiz: DE-L001
 
-**Mục đích:** kiểm mental model và khả năng áp dụng, không dùng điểm danh làm bằng chứng.  
-**Đạt:** ≥ 8/10. Câu 7-10 là critical transfer set; sai câu nào phải remediation và retest câu tương đương.
+Chọn đáp án tốt nhất và đọc phần chẩn đoán. Mục tiêu là phát hiện mental model sai trước khi viết code.
 
 ### Câu 1
 
-Một expected output tốt phải có tính chất gì?
+Vì sao pipeline không được trùng order chưa test được?
 
-- [ ] A. Dedup và replay có thể xanh giả vì không biết hai record có cùng thực thể hay không.
-- [ ] B. Boundary và change control khỏi mở rộng scope âm thầm.
-- [ ] C. Khi input bắt buộc làm đổi semantics, risk hoặc acceptance chưa được giải quyết.
-- [ ] D. Hai reviewer độc lập suy ra cùng kết quả từ cùng fixture.
+A. Chưa chọn ngôn ngữ lập trình<br>
+B. Chưa khóa identity, state, boundary, time và phép đếm<br>
+C. Chưa có dashboard<br>
+D. Duplicate luôn được định nghĩa giống nhau
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**D. Hai reviewer độc lập suy ra cùng kết quả từ cùng fixture.**
+**Đáp án: B.** Không có semantics thì nhiều expected output đều có thể hợp lý.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 2
 
-Identity thiếu gây rủi ro gì?
+Hai source cùng có order_id O-42. Identity hợp lý nhất theo contract bài học là:
 
-- [ ] A. Dùng idempotency/reconciliation để xác định trạng thái trước retry mù.
-- [ ] B. Hỏi consumer cần behavior nào và failure nào không được phép xảy ra.
-- [ ] C. Dedup và replay có thể xanh giả vì không biết hai record có cùng thực thể hay không.
-- [ ] D. Requirement tới test/artifact và failed evidence quay về đúng requirement/owner.
+A. order_id<br>
+B. hash toàn payload<br>
+C. source_system cộng order_id<br>
+D. ingested_at
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**C. Dedup và replay có thể xanh giả vì không biết hai record có cùng thực thể hay không.**
+**Đáp án: C.** A collision giữa nguồn; B đổi khi payload cập nhật; D là thời gian xử lý.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 3
 
-Traceability hai chiều là gì?
+Client timeout sau khi gửi request. Kết luận an toàn nhất là:
 
-- [ ] A. Hai reviewer độc lập tạo cùng expected output từ fixture và trace mỗi failed check về requirement/owner.
-- [ ] B. Requirement tới test/artifact và failed evidence quay về đúng requirement/owner.
-- [ ] C. Boundary và change control khỏi mở rộng scope âm thầm.
-- [ ] D. Khi input bắt buộc làm đổi semantics, risk hoặc acceptance chưa được giải quyết.
+A. Server chắc chắn chưa nhận<br>
+B. Server chắc chắn đã fail<br>
+C. Outcome chưa biết, cần status lookup hoặc retry có idempotency semantics<br>
+D. Gửi request mới với key mới
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**B. Requirement tới test/artifact và failed evidence quay về đúng requirement/owner.**
+**Đáp án: C.** Timeout là trạng thái quan sát của client, không phải bằng chứng commit state.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 4
 
-Non-goal bảo vệ điều gì?
+Cùng idempotency key nhưng payload khác nên xử lý thế nào?
 
-- [ ] A. Boundary và change control khỏi mở rộng scope âm thầm.
-- [ ] B. Dùng idempotency/reconciliation để xác định trạng thái trước retry mù.
-- [ ] C. Hỏi consumer cần behavior nào và failure nào không được phép xảy ra.
-- [ ] D. Khi SLO từ 10 phút xuống 30 giây, contract buộc lộ thay đổi kiến trúc thay vì coi đây là tuning nhỏ.
+A. Chấp nhận payload mới<br>
+B. Im lặng bỏ qua<br>
+C. Reject conflict và giữ trace<br>
+D. Tạo hai operation
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**A. Boundary và change control khỏi mở rộng scope âm thầm.**
+**Đáp án: C.** Cùng key phải đại diện cùng ý định logic; payload khác là vi phạm contract.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 5
 
-Outcome unknown cần xử lý thế nào?
+Given/When/Then nào tốt nhất?
 
-- [ ] A. Khi input bắt buộc làm đổi semantics, risk hoặc acceptance chưa được giải quyết.
-- [ ] B. Hai reviewer độc lập tạo cùng expected output từ fixture và trace mỗi failed check về requirement/owner.
-- [ ] C. Viết acceptance bằng từ mơ hồ như nhanh/ổn định, hoặc để implementation tự quyết semantics.
-- [ ] D. Dùng idempotency/reconciliation để xác định trạng thái trước retry mù.
+A. Given Kafka, When MERGE, Then success<br>
+B. Given order fixture và current state, When request cụ thể, Then outcome quan sát được<br>
+C. Given nhanh, When ổn định, Then không lỗi<br>
+D. Given code chạy, When test chạy, Then pass
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**D. Dùng idempotency/reconciliation để xác định trạng thái trước retry mù.**
+**Đáp án: B.** Scenario mô tả behavior; A khóa implementation mà chưa nêu outcome.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 6
 
-Definition of Ready chặn khi nào?
+Job chạy xanh nhưng 3% order hợp lệ chưa vào curated sau 10 phút. Nhận định nào đúng?
 
-- [ ] A. Khi SLO từ 10 phút xuống 30 giây, contract buộc lộ thay đổi kiến trúc thay vì coi đây là tuning nhỏ.
-- [ ] B. Hai reviewer độc lập suy ra cùng kết quả từ cùng fixture.
-- [ ] C. Khi input bắt buộc làm đổi semantics, risk hoặc acceptance chưa được giải quyết.
-- [ ] D. Hỏi consumer cần behavior nào và failure nào không được phép xảy ra.
+A. Availability signal có thể xanh nhưng freshness SLO trượt<br>
+B. Job xanh chứng minh mọi SLO đạt<br>
+C. Đây chỉ là lỗi dashboard<br>
+D. Correctness và freshness luôn giống nhau
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**C. Khi input bắt buộc làm đổi semantics, risk hoặc acceptance chưa được giải quyết.**
+**Đáp án: A.** Tín hiệu tiến trình, correctness và freshness là các trục khác nhau.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 7
 
-Trong tình huống mở bài, hành động đầu tiên tốt nhất là gì?
+Version paid lúc 11:55 đến trước version accepted lúc 11:50. Current state nên là gì theo contract?
 
-- [ ] A. Dedup và replay có thể xanh giả vì không biết hai record có cùng thực thể hay không.
-- [ ] B. Hỏi consumer cần behavior nào và failure nào không được phép xảy ra.
-- [ ] C. Hai reviewer độc lập tạo cùng expected output từ fixture và trace mỗi failed check về requirement/owner.
-- [ ] D. Viết acceptance bằng từ mơ hồ như nhanh/ổn định, hoặc để implementation tự quyết semantics.
+A. Accepted vì đến sau<br>
+B. Paid vì source_updated_at mới hơn<br>
+C. Hai current rows<br>
+D. Xóa cả hai
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**B. Hỏi consumer cần behavior nào và failure nào không được phép xảy ra.**
+**Đáp án: B.** Ingestion order không được thay thế source ordering nếu contract dùng source_updated_at.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 8
 
-Bằng chứng nào trực tiếp nhất để xác nhận năng lực của bài này?
+Uniqueness query trả zero rows. Điều gì vẫn chưa được chứng minh?
 
-- [ ] A. Hai reviewer độc lập tạo cùng expected output từ fixture và trace mỗi failed check về requirement/owner.
-- [ ] B. Khi SLO từ 10 phút xuống 30 giây, contract buộc lộ thay đổi kiến trúc thay vì coi đây là tuning nhỏ.
-- [ ] C. Hai reviewer độc lập suy ra cùng kết quả từ cùng fixture.
-- [ ] D. Requirement tới test/artifact và failed evidence quay về đúng requirement/owner.
+A. Query chạy được<br>
+B. Không có duplicate trong row đã quan sát<br>
+C. End-to-end completeness so với population nguồn<br>
+D. Schema có cột identity
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**A. Hai reviewer độc lập tạo cùng expected output từ fixture và trace mỗi failed check về requirement/owner.**
+**Đáp án: C.** Nếu record bị mất trước curated, uniqueness vẫn có thể hoàn hảo.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 9
 
-Khi constraint thay đổi, nguyên tắc xử lý đúng là gì?
+Source chỉ cho poll mỗi 2 phút nhưng SLO đổi xuống 30 giây. Phản ứng tốt nhất là:
 
-- [ ] A. Viết acceptance bằng từ mơ hồ như nhanh/ổn định, hoặc để implementation tự quyết semantics.
-- [ ] B. Dedup và replay có thể xanh giả vì không biết hai record có cùng thực thể hay không.
-- [ ] C. Boundary và change control khỏi mở rộng scope âm thầm.
-- [ ] D. Khi SLO từ 10 phút xuống 30 giây, contract buộc lộ thay đổi kiến trúc thay vì coi đây là tuning nhỏ.
+A. Hứa rồi tối ưu code<br>
+B. Bỏ source constraint khỏi contract<br>
+C. Nêu hard constraint và chọn renegotiate SLO, đổi integration hoặc architecture<br>
+D. Đổi dashboard sang màu đỏ
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**D. Khi SLO từ 10 phút xuống 30 giây, contract buộc lộ thay đổi kiến trúc thay vì coi đây là tuning nhỏ.**
+**Đáp án: C.** Đây là change control, không phải tuning thông thường.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 10
 
-Phát biểu nào mô tả critical failure của bài?
+Contract khác implementation plan ở đâu?
 
-- [ ] A. Requirement tới test/artifact và failed evidence quay về đúng requirement/owner.
-- [ ] B. Dùng idempotency/reconciliation để xác định trạng thái trước retry mù.
-- [ ] C. Viết acceptance bằng từ mơ hồ như nhanh/ổn định, hoặc để implementation tự quyết semantics.
-- [ ] D. Hai reviewer độc lập suy ra cùng kết quả từ cùng fixture.
+A. Contract chọn framework; plan chọn requirement<br>
+B. Contract khóa behavior và evidence; plan chọn cơ chế thực hiện<br>
+C. Hai thứ giống nhau<br>
+D. Contract thay thế test và runbook
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**C. Viết acceptance bằng từ mơ hồ như nhanh/ổn định, hoặc để implementation tự quyết semantics.**
+**Đáp án: B.** Contract không thay thiết kế, test, telemetry hay vận hành.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
+
+## Chẩn đoán và remediation
+
+| Câu sai | Lỗ hổng | Quay lại |
+|---|---|---|
+| 1, 2, 7 | identity, time, state | S02, S03 |
+| 3, 4 | timeout và idempotency | S05 |
+| 5 | behavioral specification | S04 |
+| 6, 9 | SLO và change control | S06 |
+| 8 | oracle và completeness | S07 |
+| 10 | contract boundary | S08, S09 |
+
+Retest phải dùng fixture mới và expected result được ghi trước khi chạy.
+
+## References
+
+- [[wiki.engineering-foundation.testable-contract|From a vague request to a testable contract]]
+- [[wiki.data-product.requirements-traceability|Requirements traceability]]
+- [[wiki.data-quality.sli-slo-design|Data SLI and SLO design]]

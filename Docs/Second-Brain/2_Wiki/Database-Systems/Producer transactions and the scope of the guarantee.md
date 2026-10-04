@@ -38,7 +38,7 @@ Một transaction có thể group records across Kafka partitions/topics under b
 
 ## 3. Read isolation
 
-Consumers cần read_committed để hide aborted/uncommitted records; read_uncommitted quan sát khác. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Producer transactions and the scope of the guarantee`, câu hỏi thực dụng là: Kafka producer transaction atomically covers records và offsets trong scope nào, và không cover external database ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Consumers cần read_committed để hide aborted/uncommitted records; read_uncommitted quan sát khác. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Producer transactions and the scope of the guarantee`, câu hỏi thực dụng là: Kafka producer transaction atomically covers records và offsets trong scope nào, và không cover external database ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Offsets in transaction
 
@@ -221,7 +221,7 @@ Với `wiki.streaming.kafka-producer-transactions`, command thành công không 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.streaming.kafka-producer-transactions`
+## Execution capsule: kiểm chứng `wiki.streaming.kafka-producer-transactions`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.streaming.kafka-producer-transactions`, sơ đồ, ví dụ và artifact về **Producer transactions and the scope of the guarantee** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

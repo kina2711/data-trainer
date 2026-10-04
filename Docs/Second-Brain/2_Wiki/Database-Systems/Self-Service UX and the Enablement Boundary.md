@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một data product chỉ được gọi là self-service khi bốn điều kiện nào có bằng chứng, và ranh giới hỗ trợ được thiết kế ra sao để vừa giảm phụ thuộc vừa không đẩy rủi ro sang người dùng?
 source_ids:
   - src.web.dehghani-data-mesh-principles
@@ -55,11 +55,11 @@ Causal claim, legal/regulatory interpretation, sparse subgroup, privacy-sensitiv
 
 ## 7. Chấm mười câu hỏi và kiểm ranh giới
 
-Lấy mười câu hỏi thật đủ ba mức, ẩn đáp án mẫu khỏi người chấm, ghi reasoning, contract coverage, required evidence, risk và route. Reviewer độc lập so classification; disagreements tạo decision rule mới. Với product hiện tại, chấm bốn điều kiện bằng artifact và observed task. Boundary one-pager được thử bằng tình huống: metric không reconcile, user cần causal answer, access expired, stale data, unsupported export. Done khi cả hai phía biết next action; wording “liên hệ data team” mà không owner/SLA/context yêu cầu là chưa đủ.
+Lấy mười câu hỏi thật đủ ba mức, ẩn đáp án mẫu khỏi người chấm, ghi reasoning, contract coverage, required evidence, risk và route. Reviewer độc lập so classification; disagreements tạo decision rule mới. Với product hiện tại, chấm bốn điều kiện bằng artifact và observed task. Boundary one-pager được thử bằng tình huống: metric không reconcile, user cần causal answer, access expired, stale data, unsupported export. Done khi cả hai phía biết next action; wording liên hệ data team mà không owner/SLA/context yêu cầu là chưa đủ.
 
 ## 8. Ma trận kiểm chứng từng mệnh đề
 
-Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được. Một trang tài liệu tồn tại, catalog có search box hoặc người dùng nói ‘dễ’ không tự là bằng chứng.
+Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được. Một trang tài liệu tồn tại, catalog có search box hoặc người dùng nói dễ không tự là bằng chứng.
 
 ### 8.1. access entitlement không đồng nghĩa self-service
 
@@ -231,7 +231,7 @@ Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.self-service-enablement-boundary`
+## Execution capsule: kiểm chứng `wiki.data-product.self-service-enablement-boundary`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.self-service-enablement-boundary`, sơ đồ, ví dụ và artifact về **Self-Service UX and the Enablement Boundary** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -253,7 +253,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Một data product chỉ được gọi là self-service khi bốn điều kiện nào có bằng chứng, và ranh giới hỗ trợ được thiết kế ra sao để vừa giảm phụ thuộc vừa không đẩy rủi ro sang người dùng?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Một data product chỉ được gọi là self-service khi bốn điều kiện nào có bằng chứng, và ranh giới hỗ trợ được thiết kế ra sao để vừa giảm phụ thuộc vừa không đẩy rủi ro sang người dùng? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Self-Service UX and the Enablement Boundary** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

@@ -16,7 +16,7 @@
 
 ## 1. ADR lưu reasoning, không chỉ lưu kết luận
 
-Dòng ‘chọn Parquet’ không giải thích workload, consumers hay constraint. ADR phải giữ context tại thời điểm quyết định để người đọc phân biệt quyết định sai với constraint đã đổi. Nếu chỉ còn kết luận, đội sau thường lặp lại tranh luận cũ hoặc áp lựa chọn vào bối cảnh khác.
+Dòng chọn Parquet không giải thích workload, consumers hay constraint. ADR phải giữ context tại thời điểm quyết định để người đọc phân biệt quyết định sai với constraint đã đổi. Nếu chỉ còn kết luận, đội sau thường lặp lại tranh luận cũ hoặc áp lựa chọn vào bối cảnh khác.
 
 Một ADR ngắn vẫn cần status, context, decision drivers, options, outcome, consequences và confirmation. Độ dài dưới hai trang buộc người viết chọn evidence quyết định thay vì chép toàn bộ cuộc họp.
 
@@ -33,7 +33,7 @@ Không phải mọi tiêu chí có trọng số bằng nhau. Correctness và com
 
 Ít nhất hai phương án thực phải được mô tả trong điều kiện tốt nhất của chúng. Strawman làm ADR trông chắc chắn nhưng không giúp quyết định. Với mỗi option, ghi lợi ích, chi phí, failure mode và evidence nào có thể đảo đánh giá.
 
-Phương án ‘không làm gì’ hoặc trì hoãn cũng là option nếu nó hợp lệ. Nó làm lộ cost of change và urgency. Tuy nhiên, không dùng nó để né quyết định khi risk đang tích lũy; consequence phải ghi cả chi phí của việc chờ.
+Phương án không làm gì hoặc trì hoãn cũng là option nếu nó hợp lệ. Nó làm lộ cost of change và urgency. Tuy nhiên, không dùng nó để né quyết định khi risk đang tích lũy; consequence phải ghi cả chi phí của việc chờ.
 
 ## 4. Consequence gồm cả khoản nợ được chấp nhận
 
@@ -49,7 +49,7 @@ Một spike có giá trị khi giảm uncertainty quyết định. Nó phải n�
 
 ## 6. Revisit signal phải kiểm được
 
-‘Xem lại khi cần’ không phải signal. Signal tốt có metric hoặc sự kiện: median file vượt 1 GB, có consumer cần random row update, scan cost vượt ngưỡng hoặc library mất support. Khi signal xảy ra, ADR chuyển sang review chứ không tự động đảo quyết định.
+Xem lại khi cần không phải signal. Signal tốt có metric hoặc sự kiện: median file vượt 1 GB, có consumer cần random row update, scan cost vượt ngưỡng hoặc library mất support. Khi signal xảy ra, ADR chuyển sang review chứ không tự động đảo quyết định.
 
 ADR mới supersede ADR cũ thay vì sửa lịch sử như chưa từng có lựa chọn trước. Chuỗi quyết định giúp thấy constraint tiến hóa và tránh gán logic mới cho evidence cũ.
 
@@ -57,7 +57,7 @@ ADR mới supersede ADR cũ thay vì sửa lịch sử như chưa từng có l�
 
 Hai đội trao đổi 200 GB sự kiện mỗi ngày. Nhóm so CSV, JSON và Parquet theo schema enforcement, interoperability, scan pattern, compression và debugging. Parquet thắng cho batch analytics; CSV giữ làm export nhỏ cho đối tác. ADR ghi reader compatibility suite, ngưỡng file nhỏ cần compaction và signal xét lại nếu workload chuyển sang point update.
 
-Tình huống của `wiki.engineering-foundation.adr-trade-offs` phải được chạy trong sandbox hoặc fixture có version. Nếu chưa chạy, các kết quả mong đợi chỉ là protocol đánh giá; không được ghi thành observation. Người học giữ input, command, state trước–sau, raw output và một oracle độc lập đủ để reviewer tái hiện câu hỏi riêng của bài `Trade-offs and the architecture decision record`.
+Tình huống của `wiki.engineering-foundation.adr-trade-offs` phải được chạy trong sandbox hoặc fixture có version. Nếu chưa chạy, các kết quả mong đợi chỉ là protocol đánh giá; không được ghi thành observation. Người học giữ input, command, state trước-sau, raw output và một oracle độc lập đủ để reviewer tái hiện câu hỏi riêng của bài `Trade-offs and the architecture decision record`.
 
 ## 8. Failure modes và ngộ nhận
 
@@ -145,11 +145,15 @@ Mỗi probe dưới đây bắt đầu bằng dự đoán viết trước. Kết
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-MADR-TEMPLATES]] — `src.web.madr-templates` | ADR core và MADR additions; accessed 2026-10-01 | context, drivers, options, decision, consequences và confirmation | §§1–9 | Đã phủ | Nội dung ngoài objective DE-L003 |
-| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]] — `src.book.hunt-thomas-pragmatic-programmer.20ae` | Topic 10 PDF 76–83 | orthogonality, change isolation và decision discipline | §§1–9 | Đã phủ | Nội dung ngoài objective DE-L003 |
+| [[SRC-MADR-TEMPLATES]]: `src.web.madr-templates` | ADR core và MADR additions; accessed 2026-10-01 | context, drivers, options, decision, consequences và confirmation | §§1-9 | Đã phủ | Nội dung ngoài objective DE-L003 |
+| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]]: `src.book.hunt-thomas-pragmatic-programmer.20ae` | Topic 10 PDF 76-83 | orthogonality, change isolation và decision discipline | §§1-9 | Đã phủ | Nội dung ngoài objective DE-L003 |
 
 ## Key takeaways
 - ADR tốt làm reasoning có thể kiểm tra lại; nó không biến lựa chọn phụ thuộc bối cảnh thành chân lý lâu dài.
 - Một kết luận chỉ có giá trị trong scope, version và state đã ghi.
 - Counterexample và changed-constraint test mạnh hơn việc lặp lại định nghĩa.
 - Trước khi lab chạy, note này đã có provenance và protocol nhưng chưa phải chứng nhận production.
+
+## References
+
+- [[wiki.engineering-foundation.adr-trade-offs|Trade-offs and the architecture decision record]]

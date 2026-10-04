@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: So sánh star, snowflake và one-big-table theo workload, storage, khả năng thay đổi và mức dễ hiểu như thế nào mà không biến một engine-specific optimization thành quy tắc chung?
 source_ids:
   - src.book.kimball-ross-data-warehouse-toolkit.3e
@@ -118,7 +118,7 @@ Mỗi mệnh đề phải chuyển thành fixture, invariant và phép đối ch
 1. Viết business question, grain, identity, time semantics và aggregation contract.
 2. Tách source fact, quyết định thiết kế và synthesis của giáo trình.
 3. Dựng ca biên nhỏ nhất có thể làm query đúng cú pháp nhưng sai số.
-4. Kiểm key, interval, cardinality và control total trước–sau transform/join.
+4. Kiểm key, interval, cardinality và control total trước-sau transform/join.
 5. Chạy replay, late data hoặc schema change phù hợp với bài; lưu failed run.
 6. Phân biệt correctness, usability, performance và governance; một trục đạt không che lấp trục khác.
 7. Ghi owner, version, policy và điều kiện làm lựa chọn hiện tại không còn đúng.
@@ -162,7 +162,7 @@ Mỗi mệnh đề phải chuyển thành fixture, invariant và phép đối ch
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-modeling.star-snowflake-obt`
+## Execution capsule: kiểm chứng `wiki.data-modeling.star-snowflake-obt`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-modeling.star-snowflake-obt`, sơ đồ, ví dụ và artifact về **Star, snowflake and the one-big-table trade-off** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -11,7 +11,7 @@ footer: 'Foundation · runnable scene package'
 
 # Branching, merge, rebase and commit identity
 
-**DE-L005 · 120 phút (ước tính)**
+**DE-L005**
 
 > Chọn merge, rebase, squash, revert hay reset dựa trên graph và blast radius thế nào?
 
@@ -27,12 +27,12 @@ Dự đoán graph/identity sau integration và chọn thao tác dựa trên hist
 
 ---
 
-<!-- scene: S01 · source: note.md: heading '1. Branch là con trỏ, divergence nằm ở graph' -->
+<!-- scene: S01 · source: note.md: heading 1. Branch là con trỏ, divergence nằm ở graph -->
 ## Tình huống mở
 
 Rebase một branch đã chia sẻ làm nội dung nhìn giống nhưng commit identity đổi. clone cũ và remote giờ kể hai lịch sử khác nhau.
 
-**Think–pair–share · 4 phút**
+**Independent analysis followed by peer review**
 
 1. Bạn sẽ làm gì đầu tiên?
 2. Quyết định nào có thể bị ảnh hưởng?
@@ -40,7 +40,7 @@ Rebase một branch đã chia sẻ làm nội dung nhìn giống nhưng commit i
 
 ---
 
-<!-- scene: S02 · source: note.md: heading '2. Three-way merge và conflict' -->
+<!-- scene: S02 · source: note.md: heading 2. Three-way merge và conflict -->
 ## Mental model trung tâm
 
 > Integration là biến đổi commit graph. Merge giữ topology, rebase replay tạo identity mới, squash nén boundary. revert tiến lịch sử còn reset di chuyển ref.
@@ -67,7 +67,7 @@ Không làm bước này, output sau đó có thể đúng cú pháp nhưng sai 
 
 ---
 
-<!-- scene: S03 · source: note.md: heading '2. Three-way merge và conflict' -->
+<!-- scene: S03 · source: note.md: heading 2. Three-way merge và conflict -->
 ## Check 1 · trả lời không nhìn tài liệu
 
 **Fast-forward xảy ra khi nào?**
@@ -83,7 +83,7 @@ Nếu câu trả lời chỉ nêu tên công cụ, hãy quay lại mental model 
 ---
 
 <!-- scene: S04 · source: UNSOURCED guided practice synthesis -->
-## Guided practice · 12 phút làm + 6 phút chữa
+## Guided practice
 
 Bốn scenario card: branch riêng, shared branch, bad release, noisy fixups. Chọn operation, vẽ graph và nêu affected users.
 
@@ -93,7 +93,7 @@ Người dạy không chữa bằng đáp án ngay. yêu cầu mỗi nhóm nêu 
 
 ---
 
-<!-- scene: S05 · source: note.md: heading '3. Rebase phát lại thay đổi lên base mới' -->
+<!-- scene: S05 · source: note.md: heading 3. Rebase phát lại thay đổi lên base mới -->
 ## Quy tắc quyết định
 
 Không rewrite identity đã chia sẻ nếu chưa có coordinated migration. dùng revert cho lịch sử công khai, reset cho ref cục bộ/recovery có containment.
@@ -114,7 +114,7 @@ Nếu commit boundaries là deployment checkpoints, squash làm mất khả năn
 
 ## Worked example · đi từng bước
 
-<!-- scene: S07 · source: note.md: heading '4. Merge, squash và thông tin bị giữ hoặc mất' -->
+<!-- scene: S07 · source: note.md: heading 4. Merge, squash và thông tin bị giữ hoặc mất -->
 
 1. Nhánh riêng chưa chia sẻ: rebase lên main để cập nhật base và giữ commits logic sạch.
 2. Nhánh shared: merge để không đổi identity mà consumer đã dùng.
@@ -157,8 +157,8 @@ Pipeline pin commit SHA cũ trong khi team muốn rebase branch. Thiết kế mi
 
 ---
 
-<!-- scene: S09 · source: note.md: heading '5. Revert và reset giải hai bài toán khác' -->
-## Exit ticket · 3 phút
+<!-- scene: S09 · source: note.md: heading 5. Revert và reset giải hai bài toán khác -->
+## Exit check
 
 **Revert khác reset ở outcome lịch sử và phạm vi ảnh hưởng thế nào?**
 
@@ -169,10 +169,18 @@ Revert thêm commit đảo thay đổi và an toàn hơn cho lịch sử shared.
 
 ---
 
-## Sau buổi học
+## Post-Lesson
 
 1. Làm `quiz.md`. đạt **8/10**.
 2. Nếu trượt một concept, đọc remediation trong `after-note.md` rồi retest đúng concept đó.
 3. Hoàn thành `homework.md`. đạt **≥ 75/100** và không có critical failure.
 
 **Bắc cầu:** DE-L006: phục hồi lost work bằng reflog, detached HEAD và bisect.
+
+---
+
+## References
+
+- [[wiki.engineering-foundation.git-history-integration|Branching, merge, rebase and commit identity]]
+- [[wiki.engineering-foundation.git-object-database|Git as a content-addressed object database]]
+- [[wiki.engineering-foundation.adr-trade-offs|Trade-offs and architecture decision records]]

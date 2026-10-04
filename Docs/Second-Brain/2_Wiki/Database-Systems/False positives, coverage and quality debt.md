@@ -38,7 +38,7 @@ Precision cao không chứng minh coverage; inventory critical assets/invariants
 
 ## 3. Debt taxonomy
 
-Thiếu rule, stale threshold, unknown owner, expensive scan, untriaged failures và blind spot là loại debt khác nhau. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `False positives, coverage and quality debt`, câu hỏi thực dụng là: Đo false positives, coverage và quality debt thế nào để việc giảm noise không biến thành mất bảo vệ? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Thiếu rule, stale threshold, unknown owner, expensive scan, untriaged failures và blind spot là loại debt khác nhau. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `False positives, coverage and quality debt`, câu hỏi thực dụng là: Đo false positives, coverage và quality debt thế nào để việc giảm noise không biến thành mất bảo vệ? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Risk prioritization
 
@@ -221,7 +221,7 @@ Với `wiki.data-quality.false-positive-coverage-debt`, command thành công kh�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-quality.false-positive-coverage-debt`
+## Execution capsule: kiểm chứng `wiki.data-quality.false-positive-coverage-debt`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-quality.false-positive-coverage-debt`, sơ đồ, ví dụ và artifact về **False positives, coverage and quality debt** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

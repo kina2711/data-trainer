@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Nhận diện Hub–Link–Satellite, phân biệt Raw Vault với delivery model và đánh giá chi phí/phù hợp mà không tuyên bố năng lực triển khai Data Vault?
 source_ids:
   - src.web.data-vault-alliance-foundations
@@ -27,7 +27,7 @@ relationships:
 # Data Vault at a level sufficient to recognise it
 
 > [!abstract] Câu hỏi trung tâm
-> Nhận diện Hub–Link–Satellite, phân biệt Raw Vault với delivery model và đánh giá chi phí/phù hợp mà không tuyên bố năng lực triển khai Data Vault?
+> Nhận diện Hub-Link-Satellite, phân biệt Raw Vault với delivery model và đánh giá chi phí/phù hợp mà không tuyên bố năng lực triển khai Data Vault?
 
 ## 1. Hub
 
@@ -55,70 +55,70 @@ Mỗi mệnh đề phải chuyển thành fixture, invariant và phép đối ch
 
 ### 6.1. Hub giữ stable business keys không giữ descriptors
 
-**Mệnh đề cần kiểm.** Hub giữ stable business keys không giữ descriptors. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** Hub giữ stable business keys không giữ descriptors. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.2. Link giữ relationship grain
 
-**Mệnh đề cần kiểm.** Link giữ relationship grain. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** Link giữ relationship grain. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.3. Satellite giữ context/history và source metadata
 
-**Mệnh đề cần kiểm.** Satellite giữ context/history và source metadata. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** Satellite giữ context/history và source metadata. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.4. tên prefix không chứng minh object đúng pattern
 
-**Mệnh đề cần kiểm.** tên prefix không chứng minh object đúng pattern. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** tên prefix không chứng minh object đúng pattern. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.5. Raw Vault không phải BI presentation layer
 
-**Mệnh đề cần kiểm.** Raw Vault không phải BI presentation layer. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** Raw Vault không phải BI presentation layer. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.6. Business Vault phải giữ lineage của derived rules
 
-**Mệnh đề cần kiểm.** Business Vault phải giữ lineage của derived rules. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** Business Vault phải giữ lineage của derived rules. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.7. Information Mart phục vụ consumption
 
-**Mệnh đề cần kiểm.** Information Mart phục vụ consumption. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** Information Mart phục vụ consumption. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.8. insert-only không tự bảo đảm data quality
 
-**Mệnh đề cần kiểm.** insert-only không tự bảo đảm data quality. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** insert-only không tự bảo đảm data quality. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.9. hash key không sửa sai business identity
 
-**Mệnh đề cần kiểm.** hash key không sửa sai business identity. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** hash key không sửa sai business identity. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.10. current-state query có latest-row logic
 
-**Mệnh đề cần kiểm.** current-state query có latest-row logic. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** current-state query có latest-row logic. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.11. PIT/bridge là access structures không đổi Raw Vault meaning
 
-**Mệnh đề cần kiểm.** PIT/bridge là access structures không đổi Raw Vault meaning. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** PIT/bridge là access structures không đổi Raw Vault meaning. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.12. nhiều source thay đổi tăng giá trị auditability
 
-**Mệnh đề cần kiểm.** nhiều source thay đổi tăng giá trị auditability. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** nhiều source thay đổi tăng giá trị auditability. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.13. team nhỏ có thể không gánh được hai delivery layers
 
-**Mệnh đề cần kiểm.** team nhỏ có thể không gánh được hai delivery layers. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** team nhỏ có thể không gánh được hai delivery layers. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.14. Data Vault không thay dimensional model cho BI
 
-**Mệnh đề cần kiểm.** Data Vault không thay dimensional model cho BI. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** Data Vault không thay dimensional model cho BI. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ### 6.15. bài này chỉ chứng minh recognition không implementation competence
 
-**Mệnh đề cần kiểm.** bài này chỉ chứng minh recognition không implementation competence. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub–Link–Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
+**Mệnh đề cần kiểm.** bài này chỉ chứng minh recognition không implementation competence. **Thiết kế phép kiểm.** Cho một lược đồ không dán nhãn, xác định business keys, relationship grain, descriptive history và source metadata để nhận Hub-Link-Satellite. Viết current-state query, đếm joins và so ba bối cảnh theo audit/change/team/automation/delivery cost. **Bằng chứng đạt cho `wiki.data-modeling.data-vault-recognition`.** Lưu model/metric contract, seed data, SQL/notebook, raw output, row counts, distinct keys, unmatched rate và control totals. Nếu kết quả phụ thuộc engine, cutoff hoặc business policy, phải ghi điều kiện đó cùng phản ví dụ.
 
 ## 7. Quy trình phản biện
 
 1. Viết business question, grain, identity, time semantics và aggregation contract.
 2. Tách source fact, quyết định thiết kế và synthesis của giáo trình.
 3. Dựng ca biên nhỏ nhất có thể làm query đúng cú pháp nhưng sai số.
-4. Kiểm key, interval, cardinality và control total trước–sau transform/join.
+4. Kiểm key, interval, cardinality và control total trước-sau transform/join.
 5. Chạy replay, late data hoặc schema change phù hợp với bài; lưu failed run.
 6. Phân biệt correctness, usability, performance và governance; một trục đạt không che lấp trục khác.
 7. Ghi owner, version, policy và điều kiện làm lựa chọn hiện tại không còn đúng.
@@ -162,7 +162,7 @@ Mỗi mệnh đề phải chuyển thành fixture, invariant và phép đối ch
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-modeling.data-vault-recognition`
+## Execution capsule: kiểm chứng `wiki.data-modeling.data-vault-recognition`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-modeling.data-vault-recognition`, sơ đồ, ví dụ và artifact về **Data Vault at a level sufficient to recognise it** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -206,7 +206,7 @@ Artifact của `wiki.data-modeling.data-vault-recognition` buộc người dùng
 
 ### Tự kiểm tra trước khi tái sử dụng
 
-1. Bạn có thể trả lời `Nhận diện Hub–Link–Satellite, phân biệt Raw Vault với delivery model và đánh giá chi phí/phù hợp mà không tuyên bố năng lực triển khai Data Vault?` bằng một câu mà không kéo thêm concept thứ hai không?
+1. Bạn có thể trả lời `Nhận diện Hub-Link-Satellite, phân biệt Raw Vault với delivery model và đánh giá chi phí/phù hợp mà không tuyên bố năng lực triển khai Data Vault?` bằng một câu mà không kéo thêm concept thứ hai không?
 2. Source locator nào đỡ cho claim, và phần nào chỉ là synthesis trong note?
 3. Observation nào khiến bạn dừng, thu hẹp hoặc đảo quyết định?
 4. Artifact nào cho phép một reviewer độc lập tái hiện kết quả?

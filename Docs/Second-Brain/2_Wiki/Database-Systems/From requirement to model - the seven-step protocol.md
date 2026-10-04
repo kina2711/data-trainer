@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm thế nào biến yêu cầu nghiệp vụ thành model bằng bảy bước mà không chọn schema pattern trước khi chốt process, grain, identity, time và workload?
 source_ids:
   - src.book.kimball-ross-data-warehouse-toolkit.3e
@@ -31,27 +31,27 @@ relationships:
 
 ## 1. Nguồn gốc và phần mở rộng
 
-Kimball–Ross đưa ra bốn bước theo thứ tự: chọn business process, khai báo grain, chọn dimensions và xác định facts. Giáo trình mở rộng thành bảy bước để dùng chung cho operational, analytical và domain models: process/event; grain; identity; measures/time; corrections/late/delete; workload/volume; rồi mới chọn modeling method. Bảy bước là synthesis của chương trình, không phải trích nguyên một framework có tên từ sách.
+Kimball-Ross đưa ra bốn bước theo thứ tự: chọn business process, khai báo grain, chọn dimensions và xác định facts. Giáo trình mở rộng thành bảy bước để dùng chung cho operational, analytical và domain models: process/event; grain; identity; measures/time; corrections/late/delete; workload/volume; rồi mới chọn modeling method. Bảy bước là synthesis của chương trình, không phải trích nguyên một framework có tên từ sách.
 
-## 2. Bước 1 — process và event
+## 2. Bước 1: process và event
 
-Gọi tên hoạt động tạo dữ liệu bằng động từ–đối tượng: nhận order, giao line item, ghi nhận payment, snapshot inventory. Không dùng tên phòng ban vì sales/marketing có thể dùng cùng orders process. Liệt kê event trigger, actor, source, business vocabulary và decision cần hỗ trợ. Chưa nói table/cột ở bước này.
+Gọi tên hoạt động tạo dữ liệu bằng động từ-đối tượng: nhận order, giao line item, ghi nhận payment, snapshot inventory. Không dùng tên phòng ban vì sales/marketing có thể dùng cùng orders process. Liệt kê event trigger, actor, source, business vocabulary và decision cần hỗ trợ. Chưa nói table/cột ở bước này.
 
-## 3. Bước 2 — grain
+## 3. Bước 2: grain
 
 Viết một câu: mỗi row/record biểu diễn đúng một cái gì, tại thời điểm hoặc khoảng nào. Kiểm ba câu hỏi: một business event tạo bao nhiêu rows; hai rows phân biệt bằng gì; khi correction xảy ra row cũ bị thay, version hay có adjustment event. Grain là contract cho dimensions/facts; facts khác grain phải tách model.
 
-## 4. Bước 3–4 — identity, measures và time
+## 4. Bước 3-4: identity, measures và time
 
 Phân biệt natural/business identity với surrogate technical key, stability, reuse và cross-source matching. Với measure, ghi unit, aggregation/additivity, null/zero, currency và derivation. Time gồm event, effective, processing/ingestion và system/recorded time; không gọi chung một timestamp. Dimension/attribute phải có đúng một value tại grain hoặc dùng bridge/child design.
 
-## 5. Bước 5–6 — change và workload
+## 5. Bước 5-6: change và workload
 
 Mô tả correction, cancellation, late-arriving fact/dimension, delete/retention và audit. Chọn overwrite, version, append adjustment hoặc bitemporal theo question cần trả lời. Sau đó ghi read/write shapes, joins, filters, freshness, volumes, growth, concurrency và retention. Model logic đúng nhưng không phục vụ access pattern vẫn chưa đủ.
 
-## 6. Bước 7 — chọn phương pháp
+## 6. Bước 7: chọn phương pháp
 
-Chỉ sau sáu bước mới chọn normalized OLTP, dimensional star, Data Vault, document/event hoặc hybrid. Method là consequence của invariants, history và workload, không phải sở thích. Kimball process–grain–dimensions–facts là lựa chọn mạnh cho analytical presentation; operational domain cần transaction/invariant design khác. Quyết định ghi trade-off và rejected alternatives.
+Chỉ sau sáu bước mới chọn normalized OLTP, dimensional star, Data Vault, document/event hoặc hybrid. Method là consequence của invariants, history và workload, không phải sở thích. Kimball process-grain-dimensions-facts là lựa chọn mạnh cho analytical presentation; operational domain cần transaction/invariant design khác. Quyết định ghi trade-off và rejected alternatives.
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
@@ -59,63 +59,63 @@ Mỗi mệnh đề dưới đây phải được kiểm bằng một schedule ho
 
 ### 7.1. business process không đồng nhất organizational department
 
-**Giả thuyết.** business process không đồng nhất organizational department. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** business process không đồng nhất organizational department. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.2. grain phải là câu mô tả một row chứ không phải cụm danh từ
 
-**Giả thuyết.** grain phải là câu mô tả một row chứ không phải cụm danh từ. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** grain phải là câu mô tả một row chứ không phải cụm danh từ. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.3. facts phải đúng grain và khác grain cần table khác
 
-**Giả thuyết.** facts phải đúng grain và khác grain cần table khác. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** facts phải đúng grain và khác grain cần table khác. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.4. dimension value phải đơn trị tại grain hoặc cần bridge
 
-**Giả thuyết.** dimension value phải đơn trị tại grain hoặc cần bridge. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** dimension value phải đơn trị tại grain hoặc cần bridge. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.5. natural key có thể đổi/reuse và cần stability analysis
 
-**Giả thuyết.** natural key có thể đổi/reuse và cần stability analysis. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** natural key có thể đổi/reuse và cần stability analysis. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.6. surrogate key không tự giải entity resolution
 
-**Giả thuyết.** surrogate key không tự giải entity resolution. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** surrogate key không tự giải entity resolution. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.7. event time khác processing/effective/system time
 
-**Giả thuyết.** event time khác processing/effective/system time. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** event time khác processing/effective/system time. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.8. late fact khác late dimension về lookup và correction
 
-**Giả thuyết.** late fact khác late dimension về lookup và correction. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** late fact khác late dimension về lookup và correction. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.9. delete cần semantics nghiệp vụ, retention và audit
 
-**Giả thuyết.** delete cần semantics nghiệp vụ, retention và audit. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** delete cần semantics nghiệp vụ, retention và audit. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.10. access patterns đến trước physical method selection
 
-**Giả thuyết.** access patterns đến trước physical method selection. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** access patterns đến trước physical method selection. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.11. source schema không thay business interview
 
-**Giả thuyết.** source schema không thay business interview. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** source schema không thay business interview. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.12. star schema không phải đáp án mặc định cho operational workload
 
-**Giả thuyết.** star schema không phải đáp án mặc định cho operational workload. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** star schema không phải đáp án mặc định cho operational workload. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.13. lowest useful grain giữ drill-down nhưng tăng volume
 
-**Giả thuyết.** lowest useful grain giữ drill-down nhưng tăng volume. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** lowest useful grain giữ drill-down nhưng tăng volume. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.14. reader paraphrase test phát hiện grain mơ hồ
 
-**Giả thuyết.** reader paraphrase test phát hiện grain mơ hồ. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** reader paraphrase test phát hiện grain mơ hồ. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ### 7.15. mọi bước cần artifact và trace về requirement
 
-**Giả thuyết.** mọi bước cần artifact và trace về requirement. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu–kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước–sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
+**Giả thuyết.** mọi bước cần artifact và trace về requirement. **Cách kiểm.** Cố định phiên bản database, cấu hình, dữ liệu seed và thứ tự thao tác; ghi operation ID, transaction/session ID, thời điểm bắt đầu-kết thúc và trạng thái commit/abort. **Đối chứng.** Chạy một biến thể bỏ đúng yếu tố đang xét, không đổi đồng thời nhiều tham số. **Bằng chứng đạt cho `wiki.data-modeling.seven-step-protocol`.** Lưu command/script, raw result và counter trước-sau; giải thích cơ chế tạo ra quan sát. Một lần không tái hiện không đủ bác bỏ hiện tượng concurrency; cần barrier xác định và lặp có giới hạn.
 
 ## 8. Khung chẩn đoán
 
@@ -165,7 +165,7 @@ Mỗi mệnh đề dưới đây phải được kiểm bằng một schedule ho
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-modeling.seven-step-protocol`
+## Execution capsule: kiểm chứng `wiki.data-modeling.seven-step-protocol`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-modeling.seven-step-protocol`, sơ đồ, ví dụ và artifact về **From requirement to model - the seven-step protocol** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

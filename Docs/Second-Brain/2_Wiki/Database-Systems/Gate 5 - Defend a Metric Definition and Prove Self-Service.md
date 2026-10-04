@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Cổng Phase 5 phải tổ chức đề, oracle, đối soát, chấm điểm và automatic-fail như thế nào để đo năng lực bảo vệ metric thay vì khả năng trình diễn?
 source_ids:
   - src.book.kimball-ross-data-warehouse-toolkit.3e
@@ -230,7 +230,7 @@ Mỗi kết luận cần input, observation và failure signal có thể lưu. T
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.gate-5-metric-self-service`
+## Execution capsule: kiểm chứng `wiki.data-product.gate-5-metric-self-service`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.gate-5-metric-self-service`, sơ đồ, ví dụ và artifact về **Gate 5 - Defend a Metric Definition and Prove Self-Service** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -252,7 +252,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Cổng Phase 5 phải tổ chức đề, oracle, đối soát, chấm điểm và automatic-fail như thế nào để đo năng lực bảo vệ metric thay vì khả năng trình diễn?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Cổng Phase 5 phải tổ chức đề, oracle, đối soát, chấm điểm và automatic-fail như thế nào để đo năng lực bảo vệ metric thay vì khả năng trình diễn? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Gate 5 - Defend a Metric Definition and Prove Self-Service** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

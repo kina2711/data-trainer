@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Đánh giá một service đúng dưới concurrency và failure bằng bằng chứng nào, thay vì chấm theo demo happy path hoặc hình thức mã nguồn?
 source_ids:
   - src.book.newman-building-microservices.2e
@@ -28,7 +28,7 @@ relationships:
 
 ---
 
-# Gate 3 — đánh giá service đúng dưới concurrency và failure
+# Gate 3: đánh giá service đúng dưới concurrency và failure
 
 > [!abstract] Phạm vi
 > Đây là bản thiết kế đánh giá, không dạy thêm khái niệm. Bài thi yêu cầu học viên chứng minh các năng lực đã học bằng code, phép thử lặp lại được, telemetry và giải thích kỹ thuật.
@@ -58,37 +58,37 @@ Pin runtime/dependency version, seed data và config không chứa secret. Grade
 
 External service được stub có contract và injected latency/error rõ. Candidate không được gọi production hoặc site bên thứ ba. Database thật được dùng cho behavior phụ thuộc transaction/lock; in-memory fake không thay thế được.
 
-## 4. Rubric A — dependency graph và core không phụ thuộc DB (15)
+## 4. Rubric A: dependency graph và core không phụ thuộc DB (15)
 
-Điểm đầy đủ khi business policy có thể chạy bằng deterministic unit test không khởi động DB/network; ports biểu diễn dependency thực; adapter chịu trách nhiệm serialization/persistence; dependency direction kiểm được bằng import/build rule. “Có thư mục domain” nhưng entity gọi ORM/global client không đạt.
+Điểm đầy đủ khi business policy có thể chạy bằng deterministic unit test không khởi động DB/network; ports biểu diễn dependency thực; adapter chịu trách nhiệm serialization/persistence; dependency direction kiểm được bằng import/build rule. Có thư mục domain nhưng entity gọi ORM/global client không đạt.
 
 Bằng chứng: graph, một core test, một adapter integration test, và chỉ ra boundary. Trừ điểm khi abstraction chỉ bọc library mà không bảo vệ policy hoặc khi test mock toàn bộ đến mức không kiểm logic.
 
-## 5. Rubric B — idempotent retry (25)
+## 5. Rubric B: idempotent retry (25)
 
 Candidate phải định nghĩa scope/key/payload equivalence, durable record, concurrent duplicate và failure trước/sau commit. Phép thử gửi 50 request cùng key; tất cả quan sát cùng logical result; side effect chỉ một lần. Cùng key khác payload phải có deterministic conflict.
 
 Timeout response được retry bằng cùng key. Evidence gồm DB constraints/query, request/result table và side-effect counter. Check-then-act không constraint, key lưu trong memory hoặc duplicate chỉ test tuần tự không đạt điểm chính.
 
-## 6. Rubric C — concurrency với 50 threads (20)
+## 6. Rubric C: concurrency với 50 threads (20)
 
 Chọn invariant định lượng, ví dụ balance không âm, chỉ một owner hoặc version tăng không mất update. Barrier đồng bộ 50 worker tạo race window. Test chạy lặp, assert final state và số success/conflict. Giải pháp phải giải thích optimistic/pessimistic/atomic update và behavior khi contention.
 
 Nếu candidate chỉ chạy tuần tự, phần C bằng 0 dù kết quả cuối đẹp. Nếu dùng global mutex chỉ hoạt động một process nhưng claim distributed correctness, không đạt. Lock/transaction phải được đặt đúng scope và timeout/deadlock path có xử lý.
 
-## 7. Rubric D — timeout và retry limits (15)
+## 7. Rubric D: timeout và retry limits (15)
 
 Mọi network call có deadline phù hợp request budget; retry chỉ với lỗi an toàn/retryable; max attempts, backoff+jitter và total deadline hữu hạn. Fault test làm dependency chậm/lỗi và chứng minh request không treo, work không nhân vô hạn, pool không cạn. Retry nested không được làm số attempt bùng theo cấp số nhân.
 
 Bằng chứng gồm timeline, config và metric attempts. Circuit/bulkhead nếu có phải được kiểm state/isolation; chỉ thêm library không có fault test không có điểm.
 
-## 8. Rubric E — telemetry chẩn đoán (15)
+## 8. Rubric E: telemetry chẩn đoán (15)
 
 Một injected failure phải được chẩn đoán mà không đọc code: metric cho thấy rate/error/duration hoặc saturation; log có stable reason/correlation; trace chỉ ra critical path khi phù hợp. Candidate nêu query và kết luận, đồng thời chứng minh không log secret/PII.
 
 Dashboard nhiều panel nhưng không trả câu hỏi được tính thấp. Request ID không truyền qua hop hoặc high-cardinality user ID trong metric là lỗi thiết kế.
 
-## 9. Rubric F — negative authorization tests (10)
+## 9. Rubric F: negative authorization tests (10)
 
 Ít nhất ba test: unauthenticated; authenticated sai owner; role thiếu quyền. Query phải scope resource theo owner/tenant hoặc policy tương đương. Đổi object ID không được đọc/sửa tài nguyên khác. Response tránh leak không cần thiết; audit event có actor/action/outcome.
 
@@ -127,7 +127,7 @@ Style issue, naming hoặc minor documentation gap không được đánh đồn
 
 ## 13. Remediation
 
-Feedback nêu invariant nào vỡ, lệnh tái hiện, evidence và năng lực cần sửa. Candidate sửa phạm vi hẹp rồi chạy lại phần liên quan cùng regression suite. Không cho “viết lại toàn dự án” nếu lỗi chỉ ở transaction boundary; không pass chỉ vì giải thích miệng đúng khi artifact vẫn sai.
+Feedback nêu invariant nào vỡ, lệnh tái hiện, evidence và năng lực cần sửa. Candidate sửa phạm vi hẹp rồi chạy lại phần liên quan cùng regression suite. Không cho viết lại toàn dự án nếu lỗi chỉ ở transaction boundary; không pass chỉ vì giải thích miệng đúng khi artifact vẫn sai.
 
 ## 14. Evidence ledger
 
@@ -156,19 +156,19 @@ Flaky test không tự động là lỗi candidate hoặc grader. Ghi seed, sche
 - Điểm số chỉ so sánh được khi environment, rubric và accommodations nhất quán.
 - Telemetry evidence phụ thuộc instrumentation đã cài; missing signal không tự chứng minh code path không chạy.
 
-Gate cũng không đo khả năng tối ưu chi phí, thiết kế dữ liệu dài hạn hoặc vận hành nhiều vùng. Một service đạt bài vẫn có thể thiếu disaster recovery, privacy review, capacity forecast hay schema evolution strategy. Kết quả cần được ghi là “đạt các outcomes của Phase 3 trong environment kiểm tra”, không phải “production-ready” chung chung. Cách ghi phạm vi này bảo vệ tính trung thực của assessment và giúp module sau biết chính xác năng lực nào còn phải xây tiếp.
+Gate cũng không đo khả năng tối ưu chi phí, thiết kế dữ liệu dài hạn hoặc vận hành nhiều vùng. Một service đạt bài vẫn có thể thiếu disaster recovery, privacy review, capacity forecast hay schema evolution strategy. Kết quả cần được ghi là đạt các outcomes của Phase 3 trong environment kiểm tra, không phải production-ready chung chung. Cách ghi phạm vi này bảo vệ tính trung thực của assessment và giúp module sau biết chính xác năng lực nào còn phải xây tiếp.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] | boundaries, testing và operability | §§1–4 | Đã dùng làm nền assessment |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] | boundaries, testing và operability | §§1-4 | Đã dùng làm nền assessment |
 | [[SRC-POSTGRESQL-CONCURRENCY-CONTROL]] | transaction/concurrency behavior | §6 | Đã gắn với executable evidence |
 | [[SRC-RFC9110-HTTP-SEMANTICS]] | timeout và retry semantics | §§5, 7 | Đã giữ ambiguity boundary |
 | [[SRC-OWASP-BOLA-2023]] | object-level authorization | §9 | Đã chuyển thành negative tests |
-| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]] | resilience/observability | §§7–8 | Đã dùng cho fault evidence |
+| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]] | resilience/observability | §§7-8 | Đã dùng cho fault evidence |
 | [[SRC-OPENTELEMETRY-SIGNALS]] | metrics, logs, traces | §8 | Đã giới hạn theo instrumentation |
-| Tổng hợp Gate 3 | rubric, hard gate, calibration | §§10–16 | Đã ghi thành assessment protocol |
+| Tổng hợp Gate 3 | rubric, hard gate, calibration | §§10-16 | Đã ghi thành assessment protocol |
 
 ## Key takeaways
 - Gate đo evidence của correctness, không đo độ đẹp demo.
@@ -178,19 +178,19 @@ Gate cũng không đo khả năng tối ưu chi phí, thiết kế dữ liệu d
 - Rubric phải dùng descriptor tái hiện được và hiệu chỉnh grader.
 
 ## Reference
-1. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — boundaries/testing.
-2. [[SRC-POSTGRESQL-CONCURRENCY-CONTROL]] — concurrency.
-3. [[SRC-RFC9110-HTTP-SEMANTICS]] — HTTP semantics.
-4. [[SRC-OWASP-BOLA-2023]] — object authorization.
-5. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]] — resilience.
-6. [[SRC-OPENTELEMETRY-SIGNALS]] — telemetry signals.
+1. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: boundaries/testing.
+2. [[SRC-POSTGRESQL-CONCURRENCY-CONTROL]]: concurrency.
+3. [[SRC-RFC9110-HTTP-SEMANTICS]]: HTTP semantics.
+4. [[SRC-OWASP-BOLA-2023]]: object authorization.
+5. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]]: resilience.
+6. [[SRC-OPENTELEMETRY-SIGNALS]]: telemetry signals.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.software-engineering.gate-3-correct-service-assessment`
+## Execution capsule: kiểm chứng `wiki.software-engineering.gate-3-correct-service-assessment`
 
 > [!important] Phân loại mệnh đề
-> Với `wiki.software-engineering.gate-3-correct-service-assessment`, sơ đồ, ví dụ và artifact về **Gate 3 — đánh giá service đúng dưới concurrency và failure** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
+> Với `wiki.software-engineering.gate-3-correct-service-assessment`, sơ đồ, ví dụ và artifact về **Gate 3: đánh giá service đúng dưới concurrency và failure** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
 
 ### Sơ đồ cơ chế và điểm kiểm soát
 
@@ -205,7 +205,7 @@ flowchart LR
     R --> B
 ```
 
-Đọc sơ đồ `wiki.software-engineering.gate-3-correct-service-assessment` từ trái sang phải: source chỉ cung cấp claim ban đầu cho **Gate 3 — đánh giá service đúng dưới concurrency và failure**; quyết định chỉ được đi tiếp sau khi boundary, evidence và điều kiện đảo quyết định đã hiện hữu.
+Đọc sơ đồ `wiki.software-engineering.gate-3-correct-service-assessment` từ trái sang phải: source chỉ cung cấp claim ban đầu cho **Gate 3: đánh giá service đúng dưới concurrency và failure**; quyết định chỉ được đi tiếp sau khi boundary, evidence và điều kiện đảo quyết định đã hiện hữu.
 
 ### Artifact thực thi tối thiểu
 
@@ -235,7 +235,7 @@ evidence = WikiSoftwareEngineeringGate3CorrectServiceEvidence(
 assert evidence.accepted()
 ```
 
-Artifact của `wiki.software-engineering.gate-3-correct-service-assessment` buộc người dùng ghi boundary, oracle và reversal trigger cho **Gate 3 — đánh giá service đúng dưới concurrency và failure**. Các giá trị minh họa phải được thay bằng evidence thật trước khi dùng cho quyết định.
+Artifact của `wiki.software-engineering.gate-3-correct-service-assessment` buộc người dùng ghi boundary, oracle và reversal trigger cho **Gate 3: đánh giá service đúng dưới concurrency và failure**. Các giá trị minh họa phải được thay bằng evidence thật trước khi dùng cho quyết định.
 
 ### Tự kiểm tra trước khi tái sử dụng
 

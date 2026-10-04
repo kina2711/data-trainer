@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** `DataFrame` và `Series`. Đọc từ CSV, Excel và SQL. Bộ lệnh khảo sát nhanh: `head`, `info`, `describe`, `shape`, `dtypes`, `value_counts`, và ánh xạ của chúng sang bảy truy vấn khảo sát ở lesson 29. Chọn cột và dòng bằng `[]`, `.loc`, `.iloc`. Lọc theo một và nhiều điều kiện. Sắp xếp. Đổi tên cột và đổi kiểu dữ liệu. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L070 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **pandas (1) - reading, filtering, selecting**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Nạp một bộ dữ liệu chưa từng thấy và hoàn thành khảo sát cấu trúc trong 10 phút, trả lời được câu hỏi về hạt và chất lượng. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 `DataFrame` và `Series`. Đọc từ CSV, Excel và SQL. Bộ lệnh khảo sát nhanh: `head`, `info`, `describe`, `shape`, `dtypes`, `value_counts`, và ánh xạ của chúng sang bảy truy vấn khảo sát ở lesson 29. Chọn cột và dòng bằng `[]`, `.loc`, `.iloc`. Lọc theo một và nhiều điều kiện. Sắp xếp. Đổi tên cột và đổi kiểu dữ liệu.
 
@@ -44,7 +44,7 @@ Cơ chế của `pandas-1-reading-filtering-selecting` được kiểm qua năm 
 
 Lỗi cần loại trừ trong bài này là: Dùng `[]` chuỗi liên tiếp rồi gán giá trị vào bản sao thay vì bản gốc · nhầm `.loc` với `.iloc` khi chỉ mục không liên tục · nạp toàn bộ tệp lớn khi chỉ cần một phần cột. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Dùng `[]` chuỗi liên tiếp r�
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L070: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Trả lời đúng ≥ 8/10 câu hỏi khám phá trên `DS2` trong 10 phút, có tính giờ.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L070: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Trả lời đúng ≥ 8/10 câu hỏi khám phá trên `DS2` trong 10 phút, có tính giờ.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: pandas (1) - reading, filtering, selecting
+## Worked Case: pandas (1) - reading, filtering, selecting
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Nạp `DS2` gồm 2,2 triệu dòng. Khảo sát cấu trúc và trả lời 10 câu hỏi khám phá cơ bản trong giới hạn thời gian.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `pandas (1) - reading, filtering, selecting`, learner
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L070 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `pandas (1) - reading, filtering, selecting` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L070 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** `DataFrame` và `Series`. Đọc từ CSV, Excel và SQL. Bộ lệnh khảo sát nhanh: `head`, `info`, `describe`, `shape`, `dtypes`, `value_counts`, và ánh xạ của chúng sang bảy truy vấn khảo sát ở lesson 29. Chọn cột và dòng bằng `[]`, `.loc`, `.iloc`. Lọc theo một và nhiều điều kiện. Sắp xếp. Đổi tên cột và đổi kiểu dữ liệu.
+**Mệnh đề của probe 1: `population`.** `DataFrame` và `Series`. Đọc từ CSV, Excel và SQL. Bộ lệnh khảo sát nhanh: `head`, `info`, `describe`, `shape`, `dtypes`, `value_counts`, và ánh xạ của chúng sang bảy truy vấn khảo sát ở lesson 29. Chọn cột và dòng bằng `[]`, `.loc`, `.iloc`. Lọc theo một và nhiều điều kiện. Sắp xếp. Đổi tên cột và đổi kiểu dữ liệu.
 
 **Thiết kế.** Probe 1 của L070 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L070 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Nạp một bộ dữ liệu chưa từng thấy và hoàn thành khảo sát cấu trúc trong 10 phút, trả lời được câu hỏi về hạt và chất lượng.
+**Mệnh đề của probe 2: `grain`.** Nạp một bộ dữ liệu chưa từng thấy và hoàn thành khảo sát cấu trúc trong 10 phút, trả lời được câu hỏi về hạt và chất lượng.
 
 **Thiết kế.** Probe 2 của L070 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L070 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Dùng `[]` chuỗi liên tiếp rồi gán giá trị vào bản sao thay vì bản gốc · nhầm `.loc` với `.iloc` khi chỉ mục không liên tục · nạp toàn bộ tệp lớn khi chỉ cần một phần cột.
+**Mệnh đề của probe 3: `identity`.** Dùng `[]` chuỗi liên tiếp rồi gán giá trị vào bản sao thay vì bản gốc · nhầm `.loc` với `.iloc` khi chỉ mục không liên tục · nạp toàn bộ tệp lớn khi chỉ cần một phần cột.
 
 **Thiết kế.** Probe 3 của L070 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L070 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Trả lời đúng ≥ 8/10 câu hỏi khám phá trên `DS2` trong 10 phút, có tính giờ.
+**Mệnh đề của probe 4: `time cutoff`.** Trả lời đúng ≥ 8/10 câu hỏi khám phá trên `DS2` trong 10 phút, có tính giờ.
 
 **Thiết kế.** Probe 4 của L070 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L070 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** `DataFrame` và `Series`. Đọc từ CSV, Excel và SQL. Bộ lệnh khảo sát nhanh: `head`, `info`, `describe`, `shape`, `dtypes`, `value_counts`, và ánh xạ của chúng sang bảy truy vấn khảo sát ở lesson 29. Chọn cột và dòng bằng `[]`, `.loc`, `.iloc`. Lọc theo một và nhiều điều kiện. Sắp xếp. Đổi tên cột và đổi kiểu dữ liệu.
+**Mệnh đề của probe 5: `missing versus zero`.** `DataFrame` và `Series`. Đọc từ CSV, Excel và SQL. Bộ lệnh khảo sát nhanh: `head`, `info`, `describe`, `shape`, `dtypes`, `value_counts`, và ánh xạ của chúng sang bảy truy vấn khảo sát ở lesson 29. Chọn cột và dòng bằng `[]`, `.loc`, `.iloc`. Lọc theo một và nhiều điều kiện. Sắp xếp. Đổi tên cột và đổi kiểu dữ liệu.
 
 **Thiết kế.** Probe 5 của L070 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L070 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Nạp một bộ dữ liệu chưa từng thấy và hoàn thành khảo sát cấu trúc trong 10 phút, trả lời được câu hỏi về hạt và chất lượng.
+**Mệnh đề của probe 6: `duplicate`.** Nạp một bộ dữ liệu chưa từng thấy và hoàn thành khảo sát cấu trúc trong 10 phút, trả lời được câu hỏi về hạt và chất lượng.
 
 **Thiết kế.** Probe 6 của L070 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L070 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Dùng `[]` chuỗi liên tiếp rồi gán giá trị vào bản sao thay vì bản gốc · nhầm `.loc` với `.iloc` khi chỉ mục không liên tục · nạp toàn bộ tệp lớn khi chỉ cần một phần cột.
+**Mệnh đề của probe 7: `join fan-out`.** Dùng `[]` chuỗi liên tiếp rồi gán giá trị vào bản sao thay vì bản gốc · nhầm `.loc` với `.iloc` khi chỉ mục không liên tục · nạp toàn bộ tệp lớn khi chỉ cần một phần cột.
 
 **Thiết kế.** Probe 7 của L070 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L070 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Trả lời đúng ≥ 8/10 câu hỏi khám phá trên `DS2` trong 10 phút, có tính giờ.
+**Mệnh đề của probe 8: `changed definition`.** Trả lời đúng ≥ 8/10 câu hỏi khám phá trên `DS2` trong 10 phút, có tính giờ.
 
 **Thiết kế.** Probe 8 của L070 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L070 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** `DataFrame` và `Series`. Đọc từ CSV, Excel và SQL. Bộ lệnh khảo sát nhanh: `head`, `info`, `describe`, `shape`, `dtypes`, `value_counts`, và ánh xạ của chúng sang bảy truy vấn khảo sát ở lesson 29. Chọn cột và dòng bằng `[]`, `.loc`, `.iloc`. Lọc theo một và nhiều điều kiện. Sắp xếp. Đổi tên cột và đổi kiểu dữ liệu.
+**Mệnh đề của probe 9: `independent oracle`.** `DataFrame` và `Series`. Đọc từ CSV, Excel và SQL. Bộ lệnh khảo sát nhanh: `head`, `info`, `describe`, `shape`, `dtypes`, `value_counts`, và ánh xạ của chúng sang bảy truy vấn khảo sát ở lesson 29. Chọn cột và dòng bằng `[]`, `.loc`, `.iloc`. Lọc theo một và nhiều điều kiện. Sắp xếp. Đổi tên cột và đổi kiểu dữ liệu.
 
 **Thiết kế.** Probe 9 của L070 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L070 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Nạp một bộ dữ liệu chưa từng thấy và hoàn thành khảo sát cấu trúc trong 10 phút, trả lời được câu hỏi về hạt và chất lượng.
+**Mệnh đề của probe 10: `replay`.** Nạp một bộ dữ liệu chưa từng thấy và hoàn thành khảo sát cấu trúc trong 10 phút, trả lời được câu hỏi về hạt và chất lượng.
 
 **Thiết kế.** Probe 10 của L070 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L070 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Dùng `[]` chuỗi liên tiếp rồi gán giá trị vào bản sao thay vì bản gốc · nhầm `.loc` với `.iloc` khi chỉ mục không liên tục · nạp toàn bộ tệp lớn khi chỉ cần một phần cột.
+**Mệnh đề của probe 11: `fresh snapshot`.** Dùng `[]` chuỗi liên tiếp rồi gán giá trị vào bản sao thay vì bản gốc · nhầm `.loc` với `.iloc` khi chỉ mục không liên tục · nạp toàn bộ tệp lớn khi chỉ cần một phần cột.
 
 **Thiết kế.** Probe 11 của L070 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L070 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Trả lời đúng ≥ 8/10 câu hỏi khám phá trên `DS2` trong 10 phút, có tính giờ.
+**Mệnh đề của probe 12: `novel scenario`.** Trả lời đúng ≥ 8/10 câu hỏi khám phá trên `DS2` trong 10 phút, có tính giờ.
 
 **Thiết kế.** Probe 12 của L070 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Trả lời đúng ≥ 8/10 câu hỏi khám phá trên `DS2` trong 10 phút, c�
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-PYTHON-314-LANGUAGE-REFERENCE]] — `src.docs.python-3.14-language-reference`
-2. [[SRC-PYTHON-314-STDLIB-RUNTIME]] — `src.docs.python-3.14-stdlib-runtime`
+1. [[SRC-PYTHON-314-LANGUAGE-REFERENCE]]: `src.docs.python-3.14-language-reference`
+2. [[SRC-PYTHON-314-STDLIB-RUNTIME]]: `src.docs.python-3.14-stdlib-runtime`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-PYTHON-314-LANGUAGE-REFERENCE]] — `src.docs.python-3.14-language-reference` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới pandas (1) - reading, filtering, selecting | các mục cơ chế, case và probe | Đã phủ | ngoài objective L070 |
-| [[SRC-PYTHON-314-STDLIB-RUNTIME]] — `src.docs.python-3.14-stdlib-runtime` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới pandas (1) - reading, filtering, selecting | các mục cơ chế, case và probe | Đã phủ | ngoài objective L070 |
+| [[SRC-PYTHON-314-LANGUAGE-REFERENCE]]: `src.docs.python-3.14-language-reference` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới pandas (1) - reading, filtering, selecting | các mục cơ chế, case và probe | Đã phủ | ngoài objective L070 |
+| [[SRC-PYTHON-314-STDLIB-RUNTIME]]: `src.docs.python-3.14-stdlib-runtime` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới pandas (1) - reading, filtering, selecting | các mục cơ chế, case và probe | Đã phủ | ngoài objective L070 |
 
 ## Key takeaways
 - Nạp một bộ dữ liệu chưa từng thấy và hoàn thành khảo sát cấu trúc trong 10 phút, trả lời được câu hỏi về hạt và chất lượng.
@@ -226,7 +226,7 @@ Trả lời đúng ≥ 8/10 câu hỏi khám phá trên `DS2` trong 10 phút, c�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.pandas-1-reading-filtering-selecting`
+## Execution capsule: kiểm chứng `wiki.da.pandas-1-reading-filtering-selecting`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.pandas-1-reading-filtering-selecting`, sơ đồ, ví dụ và artifact về **pandas (1) - reading, filtering, selecting** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

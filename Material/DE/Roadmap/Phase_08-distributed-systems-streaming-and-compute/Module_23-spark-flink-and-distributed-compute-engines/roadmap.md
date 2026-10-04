@@ -45,26 +45,26 @@ Nếu chưa có bằng chứng đầu vào, người học phải hoàn thành l
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L345 · Cluster roles and the execution hierarchy | LT | Ánh xạ năm từ vựng thực thi vào một ứng dụng thật và đếm đúng số tác vụ của từng giai đoạn. | Đếm đúng số giai đoạn và tác vụ cho ba công việc, và giải thích được số tác vụ đến từ số phân vùng. | M23: M21 |
-| L346 · From code to logical plan to physical operators | TH | Đọc kế hoạch vật lý của ba truy vấn và dự đoán đúng số giai đoạn trước khi chạy. | Dự đoán đúng số giai đoạn ở ≥ 2/3 truy vấn, và mọi bước trao đổi dữ liệu được chỉ đúng vị trí trong kế hoạch. | L345 |
-| L347 · Narrow and wide dependencies, and why exchange creates a stage | TH | Phân loại phép biến đổi theo hai loại phụ thuộc và giảm được số bước xáo trộn của một công việc thật. | Số bước trao đổi giảm ≥ 1 với thời gian giảm có số đo, và kết quả đối soát khớp bản gốc tuyệt đối. | L346 |
-| L348 · Join strategies and the threshold that is not magic | TH | Ép cả ba chiến lược trên cùng phép kết, đo chi phí từng cái, và tái hiện ca phát tán gây tràn bộ nhớ. | Ba chiến lược có số đo thời gian và lượng xáo trộn, và ca tràn bộ nhớ do ước lượng sai được tái hiện cùng giải thích. | L347 |
-| L349 · Shuffle - read, write, sort, spill and serialization | TH | Tách bốn thành phần chi phí của một bước xáo trộn và giảm tổng thời gian có số đo mà kết quả không đổi. | Bốn thành phần chi phí đều có số đo, và thành phần lớn nhất giảm kéo tổng thời gian giảm theo với kết quả không đổi. | L348 |
-| L350 · Memory, caching and garbage collection | TH | Quyết định lưu tạm dựa trên số lần đọc lại và chứng minh bằng số đo rằng lưu tạm sai làm chậm hơn. | Quyết định lưu tạm đúng ở cả ba tình huống, và ca lưu tạm sai được định lượng mức chậm thêm. | L349 |
-| L351 · Skew, stragglers and the salt-or-broadcast decision | TH | Chẩn đoán lệch tải từ phân bố thời gian tác vụ và sửa bằng một trong ba cách, có đối soát kết quả. | Chẩn đoán đúng cả ba tình huống bằng số đo, và bản sửa lệch tải khớp kết quả gốc với thời gian giảm có số đo. | L350 |
-| L352 · Distributed MIMD and SPMD in a compute engine | LT | Truy được ba tầng song song trên một công việc thật và gán đúng mỗi mức tăng quan sát được về một tầng. | Ba tầng được chỉ ra bằng bằng chứng quan sát được, và ba mức tăng được gán đúng tầng kèm lý do. | L351 |
-| L353 · Nested parallelism and oversubscription | TH | Phát hiện cấp phát quá mức bằng số đo và chặn nó, chứng minh thông lượng tăng trở lại. | Tổng số luồng và số lõi được đo, và sau khi đặt giới hạn thì thông lượng tăng với thời gian phân vị 95 của tác vụ giảm. | L352 |
-| L354 · Strong scaling lab - where scale-out turns negative | TH | Vẽ đường hiệu suất song song tới ít nhất tám mức và quy trần về đúng một trong năm nguyên nhân. | Đường hiệu suất song song có số đo ở ≥ 4 mức, bốn thành phần thời gian tách được ở mọi mức, và trần quy về một nguyên nhân có bằng chứng. | L353 |
-| L355 · Tuning project - the decision tree on three unknown jobs | DA | Chẩn đoán ba công việc lạ theo cây quyết định và cải thiện từng cái bằng đúng một thay đổi có kiểm soát. | Chẩn đoán đúng nguyên nhân ở ≥ 2/3 công việc, mỗi cải thiện dùng đúng một thay đổi có số đo trước sau, và kết quả đối soát không đổi. | L354 |
-| L356 · Structured streaming - micro-batch, offsets, checkpoint and state | TH | Vận hành một công việc dòng có trạng thái, khôi phục từ điểm kiểm tra, và chặn được trạng thái phình vô hạn. | Khôi phục từ điểm kiểm tra không mất và không trùng ngoài giới hạn đã nêu, và kích thước trạng thái ổn định sau khi đặt hết hạn. | L355 |
-| L357 · Event time, watermark and late data | TH | Đo đánh đổi giữa độ trễ và tính đầy đủ theo ba mức mốc nước và áp chính sách rõ cho sự kiện quá muộn. | Ba mức mốc nước có cặp số độ trễ với tỉ lệ bỏ cùng kích thước trạng thái, và sự kiện quá muộn được đếm và ghi nhận. | L356 |
-| L358 · Choosing among four engine classes - distributed, embedded and in-process | TH | So bốn lớp engine theo năm tiêu chí và chọn đúng cho ba bối cảnh, phân biệt điểm kiểm tra với điểm lưu. | Bảng bốn lớp nhân năm tiêu chí có luận điểm kèm quan sát từ lab, ngưỡng chuyển sang engine phân tán có số đo từ ba kích thước dữ liệu, ba bối cảnh chọn đúng với ít nhất một chọn engine một máy, và khôi phục từ cả điểm kiểm tra lẫn điểm lưu thành công. | L357 |
-| L359 · End-to-end guarantee - source replay, state restore and sink | TH | Phát biểu bảo đảm đầu cuối cho ba cấu hình và chứng minh bằng thí nghiệm giết có đối soát. | Phát biểu khớp kết quả đo ở cả ba cấu hình sau 50 lần giết, và cấu hình đích chỉ thêm mới được nêu rõ giới hạn. | L358 |
-| L360 · Gate 8 - defend a delivery semantic and recover a stateful job | KT | Phát biểu và bảo vệ một bảo đảm giao nhận có nêu ranh giới, phục hồi một công việc có trạng thái, và giải thích song song lồng nhau bằng số đo. | Đạt ≥ 70/100, phần B và D đều ≥ 60%. Tuyên bố đúng một lần không nêu nguồn, đích và giả định lỗi thì phần B bằng không; phục hồi bằng cách đặt lại vị trí về cuối thì phần D bằng không. | L359 |
+| L345 · [[wiki.spark.cluster-roles-execution-hierarchy|Cluster roles and the execution hierarchy]]| LT | Ánh xạ năm từ vựng thực thi vào một ứng dụng thật và đếm đúng số tác vụ của từng giai đoạn. | Đếm đúng số giai đoạn và tác vụ cho ba công việc, và giải thích được số tác vụ đến từ số phân vùng. | M23: M21 |
+| L346 · [[wiki.spark.logical-physical-plan|From code to logical plan to physical operators]]| TH | Đọc kế hoạch vật lý của ba truy vấn và dự đoán đúng số giai đoạn trước khi chạy. | Dự đoán đúng số giai đoạn ở ≥ 2/3 truy vấn, và mọi bước trao đổi dữ liệu được chỉ đúng vị trí trong kế hoạch. | L345 |
+| L347 · [[wiki.spark.dependencies-exchange-stage|Narrow and wide dependencies, and why exchange creates a stage]]| TH | Phân loại phép biến đổi theo hai loại phụ thuộc và giảm được số bước xáo trộn của một công việc thật. | Số bước trao đổi giảm ≥ 1 với thời gian giảm có số đo, và kết quả đối soát khớp bản gốc tuyệt đối. | L346 |
+| L348 · [[wiki.spark.join-strategies-thresholds|Join strategies and the threshold that is not magic]]| TH | Ép cả ba chiến lược trên cùng phép kết, đo chi phí từng cái, và tái hiện ca phát tán gây tràn bộ nhớ. | Ba chiến lược có số đo thời gian và lượng xáo trộn, và ca tràn bộ nhớ do ước lượng sai được tái hiện cùng giải thích. | L347 |
+| L349 · [[wiki.spark.shuffle-read-write-spill|Shuffle - read, write, sort, spill and serialization]]| TH | Tách bốn thành phần chi phí của một bước xáo trộn và giảm tổng thời gian có số đo mà kết quả không đổi. | Bốn thành phần chi phí đều có số đo, và thành phần lớn nhất giảm kéo tổng thời gian giảm theo với kết quả không đổi. | L348 |
+| L350 · [[wiki.spark.memory-cache-gc|Memory, caching and garbage collection]]| TH | Quyết định lưu tạm dựa trên số lần đọc lại và chứng minh bằng số đo rằng lưu tạm sai làm chậm hơn. | Quyết định lưu tạm đúng ở cả ba tình huống, và ca lưu tạm sai được định lượng mức chậm thêm. | L349 |
+| L351 · [[wiki.spark.skew-straggler-decision|Skew, stragglers and the salt-or-broadcast decision]]| TH | Chẩn đoán lệch tải từ phân bố thời gian tác vụ và sửa bằng một trong ba cách, có đối soát kết quả. | Chẩn đoán đúng cả ba tình huống bằng số đo, và bản sửa lệch tải khớp kết quả gốc với thời gian giảm có số đo. | L350 |
+| L352 · [[wiki.spark.mimd-spmd|Distributed MIMD and SPMD in a compute engine]]| LT | Truy được ba tầng song song trên một công việc thật và gán đúng mỗi mức tăng quan sát được về một tầng. | Ba tầng được chỉ ra bằng bằng chứng quan sát được, và ba mức tăng được gán đúng tầng kèm lý do. | L351 |
+| L353 · [[wiki.spark.nested-parallelism|Nested parallelism and oversubscription]]| TH | Phát hiện cấp phát quá mức bằng số đo và chặn nó, chứng minh thông lượng tăng trở lại. | Tổng số luồng và số lõi được đo, và sau khi đặt giới hạn thì thông lượng tăng với thời gian phân vị 95 của tác vụ giảm. | L352 |
+| L354 · [[wiki.spark.strong-scaling|Strong scaling lab - where scale-out turns negative]]| TH | Vẽ đường hiệu suất song song tới ít nhất tám mức và quy trần về đúng một trong năm nguyên nhân. | Đường hiệu suất song song có số đo ở ≥ 4 mức, bốn thành phần thời gian tách được ở mọi mức, và trần quy về một nguyên nhân có bằng chứng. | L353 |
+| L355 · [[wiki.spark.tuning-decision-tree|Tuning project - the decision tree on three unknown jobs]]| DA | Chẩn đoán ba công việc lạ theo cây quyết định và cải thiện từng cái bằng đúng một thay đổi có kiểm soát. | Chẩn đoán đúng nguyên nhân ở ≥ 2/3 công việc, mỗi cải thiện dùng đúng một thay đổi có số đo trước sau, và kết quả đối soát không đổi. | L354 |
+| L356 · [[wiki.spark.streaming-checkpoint-state|Structured streaming - micro-batch, offsets, checkpoint and state]]| TH | Vận hành một công việc dòng có trạng thái, khôi phục từ điểm kiểm tra, và chặn được trạng thái phình vô hạn. | Khôi phục từ điểm kiểm tra không mất và không trùng ngoài giới hạn đã nêu, và kích thước trạng thái ổn định sau khi đặt hết hạn. | L355 |
+| L357 · [[wiki.spark.event-time-watermark|Event time, watermark and late data]]| TH | Đo đánh đổi giữa độ trễ và tính đầy đủ theo ba mức mốc nước và áp chính sách rõ cho sự kiện quá muộn. | Ba mức mốc nước có cặp số độ trễ với tỉ lệ bỏ cùng kích thước trạng thái, và sự kiện quá muộn được đếm và ghi nhận. | L356 |
+| L358 · [[wiki.compute.engine-class-selection|Choosing among four engine classes - distributed, embedded and in-process]]| TH | So bốn lớp engine theo năm tiêu chí và chọn đúng cho ba bối cảnh, phân biệt điểm kiểm tra với điểm lưu. | Bảng bốn lớp nhân năm tiêu chí có luận điểm kèm quan sát từ lab, ngưỡng chuyển sang engine phân tán có số đo từ ba kích thước dữ liệu, ba bối cảnh chọn đúng với ít nhất một chọn engine một máy, và khôi phục từ cả điểm kiểm tra lẫn điểm lưu thành công. | L357 |
+| L359 · [[wiki.streaming.end-to-end-guarantee|End-to-end guarantee - source replay, state restore and sink]]| TH | Phát biểu bảo đảm đầu cuối cho ba cấu hình và chứng minh bằng thí nghiệm giết có đối soát. | Phát biểu khớp kết quả đo ở cả ba cấu hình sau 50 lần giết, và cấu hình đích chỉ thêm mới được nêu rõ giới hạn. | L358 |
+| L360 · [[wiki.streaming.gate8-recovery-defense|Gate 8 - defend a delivery semantic and recover a stateful job]]| KT | Phát biểu và bảo vệ một bảo đảm giao nhận có nêu ranh giới, phục hồi một công việc có trạng thái, và giải thích song song lồng nhau bằng số đo. | Đạt ≥ 70/100, phần B và D đều ≥ 60%. Tuyên bố đúng một lần không nêu nguồn, đích và giả định lỗi thì phần B bằng không; phục hồi bằng cách đặt lại vị trí về cuối thì phần D bằng không. | L359 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M23 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M23 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -111,7 +111,7 @@ flowchart LR
   class A345,A346,A347,A348,A349,A350,A351,A352,A353,A354,A355,A356,A357,A358,A359,A360 atom;
 ```
 
-### Bài 345: Cluster roles and the execution hierarchy
+### Lesson 345: Cluster roles and the execution hierarchy
 
 Bài mở module bằng từ vựng thực thi, vì năm từ dưới đây bị dùng lẫn thường xuyên. Tiến trình điều khiển giữ kế hoạch, lập lịch và gom kết quả; tiến trình thực thi chạy tác vụ và giữ dữ liệu trong bộ nhớ; bộ quản lý cụm cấp tài nguyên. Bậc thang thực thi có bốn mức lồng nhau: một ứng dụng gồm nhiều công việc, một công việc gồm nhiều giai đoạn, một giai đoạn gồm nhiều tác vụ, và một tác vụ xử lý đúng một phân vùng. Từ đó suy ra quan hệ nền tảng: số tác vụ trong một giai đoạn bằng số phân vùng, nên số phân vùng là nút điều chỉnh mức song song chứ số lõi. Tiến trình điều khiển là điểm nghẽn tiềm tàng và là điểm hỏng: kéo dữ liệu lớn về nó làm tràn bộ nhớ, và kế hoạch quá lớn cùng quá nhiều siêu dữ liệu cũng làm nó chậm. Ánh xạ sang ba tầng song song ở Bài 48 được làm rõ ở Bài 352.
 
@@ -119,7 +119,7 @@ Người học phải ánh xạ năm từ vựng thực thi vào một ứng d�
 
 Cách đánh giá: Tầng *hiểu*. Bài mở module, đặt từ vựng. Kiểm bằng bài đọc giao diện theo dõi; đạt khi đếm đúng số giai đoạn và số tác vụ cho ba công việc và giải thích được nguồn gốc của số tác vụ.
 
-### Bài 346: From code to logical plan to physical operators
+### Lesson 346: From code to logical plan to physical operators
 
 Bài truy đường biên dịch, nối thẳng với nội dung engine truy vấn ở Bài 126 và Bài 130. Bốn bước: mã dựng kế hoạch logic chưa phân giải; bộ phân tích phân giải tên và kiểu theo danh mục; bộ tối ưu áp luật viết lại cùng thông tin chi phí; bộ lập kế hoạch chọn toán tử vật lý. Đọc kế hoạch là kỹ năng chính của module: phần quét cho biết có cắt tỉa và có đẩy điều kiện xuống không theo Bài 206 và 210; phần kết cho biết chiến lược được chọn; phần trao đổi cho biết ranh giới giai đoạn; phần gộp và sắp xếp cho biết chi phí bộ nhớ. Kế hoạch đã tối ưu khác kế hoạch vật lý, và chỉ kế hoạch vật lý mới nói được công việc sẽ chạy ra sao. Hai giới hạn của bộ tối ưu phải biết: nó dựa vào thống kê nên thống kê cũ cho kế hoạch tồi, và nó không nhìn thấy bên trong hàm do người dùng viết.
 
@@ -127,7 +127,7 @@ Người học phải đọc kế hoạch vật lý của ba truy vấn và dự
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi dự đoán từ kế hoạch rồi kiểm bằng thực tế. Kiểm bằng ba truy vấn; đạt khi dự đoán đúng số giai đoạn ở ít nhất hai và chỉ ra đúng vị trí mọi bước trao đổi dữ liệu.
 
-### Bài 347: Narrow and wide dependencies, and why exchange creates a stage
+### Lesson 347: Narrow and wide dependencies, and why exchange creates a stage
 
 Bài giải thích ranh giới giai đoạn bằng cơ chế chứ bằng quy ước. Phụ thuộc hẹp: mỗi phân vùng đầu ra chỉ cần một phân vùng đầu vào, nên phép biến đổi chạy tại chỗ và nhiều phép nối tiếp nhau gộp vào một tác vụ. Phụ thuộc rộng: một phân vùng đầu ra cần dữ liệu từ nhiều phân vùng đầu vào, nên phải xáo trộn dữ liệu qua mạng; bước trao đổi là ranh giới giai đoạn vì giai đoạn sau không bắt đầu được cho tới khi giai đoạn trước ghi xong toàn bộ dữ liệu xáo trộn, tức nó là một rào đồng bộ. Từ đó suy ra ba hệ quả thực hành: giảm số bước xáo trộn là đòn bẩy tối ưu lớn nhất; một tác vụ chậm trong giai đoạn trước giữ chân cả giai đoạn sau; và dòng dõi cho phép tính lại một phân vùng mất mà không chạy lại toàn bộ. Điểm kiểm tra khác dòng dõi: dòng dõi tính lại, điểm kiểm tra cắt chuỗi tính lại.
 
@@ -135,7 +135,7 @@ Người học phải phân loại phép biến đổi theo hai loại phụ thu
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là số bước xáo trộn giảm mà kết quả không đổi. Kiểm bằng cặp số đo; đạt khi số bước trao đổi giảm ít nhất một, thời gian giảm có số đo, và kết quả đối soát khớp bản gốc.
 
-### Bài 348: Join strategies and the threshold that is not magic
+### Lesson 348: Join strategies and the threshold that is not magic
 
 Ba chiến lược kết trong engine phân tán, tương ứng ba thuật toán ở Bài 127 nhưng thêm chiều mạng. Kết phát tán băm gửi bảng nhỏ tới mọi tiến trình thực thi rồi kết cục bộ, nên không cần xáo trộn bảng lớn; điều kiện là bảng nhỏ vừa bộ nhớ, và ngưỡng phát tán dựa trên ước lượng kích thước nên thống kê sai làm tràn bộ nhớ theo đúng ca ở Bài 212. Kết băm sau xáo trộn băm cả hai bảng theo khoá kết. Kết trộn sau sắp xếp sắp cả hai rồi trộn, ổn định với dữ liệu lớn và tốn chi phí sắp xếp. Thực thi thích ứng có thể đổi chiến lược khi thấy kích thước thật tại thời gian chạy, nhưng nó chỉ sửa được sau khi đã có thống kê thật của giai đoạn trước, nên nó không cứu được mọi trường hợp. Ép chiến lược bằng gợi ý là công cụ chẩn đoán, không phải giải pháp lâu dài.
 
@@ -143,7 +143,7 @@ Người học phải ép cả ba chiến lược trên cùng phép kết, đo c
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi nối lựa chọn chiến lược với số đo và với một ca hỏng. Kiểm bằng ba chiến lược đo song song; đạt khi ba chiến lược có số đo thời gian cùng lượng xáo trộn và ca tràn bộ nhớ do ước lượng sai được tái hiện.
 
-### Bài 349: Shuffle - read, write, sort, spill and serialization
+### Lesson 349: Shuffle - read, write, sort, spill and serialization
 
 Bước xáo trộn là thao tác đắt nhất, nên nó có một bài riêng để mổ xẻ chi phí. Bốn thành phần chi phí phải tách: ghi dữ liệu xáo trộn ra đĩa cục bộ, truyền qua mạng, đọc lại, và chi phí tuần tự hoá cùng giải tuần tự hoá. Xáo trộn đi qua ba bậc chậm nhất của thứ bậc bộ nhớ cùng lúc theo Bài 58, nên nó thường chiếm phần lớn thời gian. Tràn đĩa xảy ra khi bộ nhớ làm việc không đủ cho phép sắp xếp hoặc phép gộp; nó là cơ chế sống sót chứ lỗi, nhưng làm chậm nhiều lần và phải đọc được trong số đo. Chi phí tuần tự hoá là phần hay bị bỏ qua và thường lớn hơn phép tính, nhất là với hàm do người dùng viết bằng ngôn ngữ cần chuyển đổi dữ liệu qua ranh giới. Số phân vùng sau xáo trộn quá nhỏ gây tràn, quá lớn gây nhiều tác vụ vụn và tăng chi phí lập lịch.
 
@@ -151,7 +151,7 @@ Người học phải tách bốn thành phần chi phí của một bước xá
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi phân giải một số tổng thành bốn phần để biết sửa chỗ nào. Kiểm bằng phép đo phân tách; đạt khi bốn thành phần đều có số, và thành phần lớn nhất được giảm với tổng thời gian giảm theo.
 
-### Bài 350: Memory, caching and garbage collection
+### Lesson 350: Memory, caching and garbage collection
 
 Bộ nhớ của tiến trình thực thi chia thành phần cho thực thi và phần cho lưu trữ, và hai phần cạnh tranh nhau. Lưu tạm một tập dữ liệu chỉ có lợi khi nó được đọc lại nhiều lần; lưu tạm một tập dùng đúng một lần vừa không giúp vừa chiếm chỗ của phần thực thi, làm tăng tràn đĩa. Các mức lưu tạm khác nhau về nơi giữ và về việc có tuần tự hoá không, nên chúng đánh đổi giữa bộ nhớ và chi phí giải tuần tự hoá. Thu dọn rác trở thành vấn đề khi giữ quá nhiều đối tượng sống: bộ thu dọn chạy liên tục và ăn thời gian bộ xử lý mà không làm việc hữu ích; biểu diễn dữ liệu ngoài vùng quản lý bộ nhớ giảm áp lực này. Ba dấu hiệu phân biệt thiếu bộ nhớ thật với dùng bộ nhớ sai cách. Giải phóng bộ nhớ lưu tạm khi không cần nữa là việc phải làm tường minh.
 
@@ -159,7 +159,7 @@ Người học phải quyết định lưu tạm dựa trên số lần đọc l
 
 Cách đánh giá: Tầng *đánh giá*. Objective chống lại phản xạ lưu tạm mọi thứ. Kiểm bằng ba tình huống đo song song; đạt khi quyết định đúng ở cả ba và ca lưu tạm sai được định lượng mức chậm thêm.
 
-### Bài 351: Skew, stragglers and the salt-or-broadcast decision
+### Lesson 351: Skew, stragglers and the salt-or-broadcast decision
 
 Lệch tải là nguyên nhân số một khiến một công việc chạy lâu bất thường mà mọi cấu hình trông đều hợp lý. Triệu chứng đặc trưng: trong một giai đoạn, phần lớn tác vụ xong nhanh còn một hoặc vài tác vụ chạy lâu gấp nhiều lần; phân bố thời gian tác vụ là số đo chẩn đoán chính, và giá trị trung bình che mất hiện tượng này nên phải nhìn phân vị. Nguyên nhân: một khoá chiếm phần lớn số dòng, nên tác vụ nhận khoá đó làm nhiều việc hơn hẳn. Ba cách xử lý và điều kiện dùng: thêm phần ngẫu nhiên vào khoá rồi gộp hai bước, chuyển sang kết phát tán nếu một bên đủ nhỏ, hoặc tách riêng các khoá nóng và xử lý theo đường khác. Mọi cách xử lý lệch tải đều đổi hình dạng phép tính, nên bắt buộc đối soát kết quả. Phân biệt lệch tải với tác vụ chậm do máy yếu hoặc do thu dọn rác.
 
@@ -167,7 +167,7 @@ Người học phải chẩn đoán lệch tải từ phân bố thời gian tá
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi phân biệt lệch tải với hai nguyên nhân giống triệu chứng. Kiểm bằng ba tình huống; đạt khi chẩn đoán đúng cả ba và bản sửa lệch tải cho kết quả khớp bản gốc với thời gian giảm có số đo.
 
-### Bài 352: Distributed MIMD and SPMD in a compute engine
+### Lesson 352: Distributed MIMD and SPMD in a compute engine
 
 Bài đặt engine vào đúng khung phân loại ở Bài 48 và nối với Bài 56 cùng Bài 211. Mỗi lõi của mỗi tiến trình thực thi có dòng lệnh và trạng thái riêng, nên cụm là nhiều lệnh nhiều dữ liệu bộ nhớ phân tán. Bộ lập lịch gửi cùng một mã toán tử cho nhiều phân vùng, nên đây là khuôn mẫu một chương trình nhiều dữ liệu. Hệ quả quan trọng và hay bị hiểu sai: tác vụ song song dữ liệu không chạy đồng bộ từng bước; thời gian của chúng khác nhau do lệch tải, vị trí dữ liệu, thu dọn rác, vào ra, thử lại và phần cứng không đồng nhất, và chênh lệch đó là bình thường. Bước trao đổi dữ liệu là ranh giới truyền thông và đồng bộ; rào cùng phép gộp cuối làm lộ phần tuần tự và làm lộ tác vụ chậm. Bên trong một tác vụ, bộ giải mã tệp cột và toán tử truy vấn có thể dùng đường xử lý theo lô và làn véctơ, tức tầng thứ ba theo Bài 208.
 
@@ -175,7 +175,7 @@ Người học phải truy được ba tầng song song trên một công việc
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết nối M4 với engine thật, chuẩn bị cho hai bài đo. Kiểm bằng bài truy tầng; đạt khi ba tầng được chỉ ra bằng bằng chứng quan sát được và ba mức tăng được gán đúng tầng.
 
-### Bài 353: Nested parallelism and oversubscription
+### Lesson 353: Nested parallelism and oversubscription
 
 Bài chỉ ra một chế độ hỏng mà chỉ hiểu song song lồng nhau mới nhận ra. Bốn nguồn song song cùng tồn tại: số nút trong cụm, số lõi cấp cho mỗi tiến trình thực thi, số tác vụ chạy đồng thời trong một tiến trình, và luồng do thư viện gốc tự tạo bên trong một tác vụ, chẳng hạn thư viện đại số tuyến tính hoặc thư viện xử lý cột. Nguồn thứ tư là nguồn ẩn: nó không xuất hiện trong bất kỳ cấu hình nào của engine, nhưng nó nhân lên với ba nguồn kia. Cấp phát quá mức xảy ra khi tổng số luồng vượt số lõi thật: hậu quả là tranh chấp bộ nhớ đệm, bão hoà băng thông bộ nhớ và chuyển ngữ cảnh liên tục, nên thêm song song làm chậm hơn, đúng hiện tượng ở Bài 55. Cách phát hiện: so tổng số luồng quan sát được với số lõi, và đo băng thông bộ nhớ. Cách chặn: đặt giới hạn luồng cho thư viện gốc một cách tường minh.
 
@@ -183,7 +183,7 @@ Người học phải phát hiện cấp phát quá mức bằng số đo và ch
 
 Cách đánh giá: Tầng *phân tích*. Objective nhắm vào một nguồn song song không xuất hiện trong cấu hình engine. Kiểm bằng cặp số đo; đạt khi tổng số luồng và số lõi được đo, và sau khi đặt giới hạn thì thông lượng tăng có số đo.
 
-### Bài 354: Strong scaling lab - where scale-out turns negative
+### Lesson 354: Strong scaling lab - where scale-out turns negative
 
 Bài thí nghiệm khép phần song song: cố định khối lượng công việc và tăng tài nguyên, rồi tìm điểm mà thêm tài nguyên bắt đầu phản tác dụng. Chạy với 1, 2, 4 và nhiều hơn số lõi hoặc tiến trình thực thi; tính tăng tốc và hiệu suất song song ở từng mức theo Bài 56, và báo cáo cả hai chứ chỉ tăng tốc. Tách thời gian thành bốn phần: chờ lập lịch, tính, xáo trộn cùng truyền thông, và tuần tự hoá; bốn phần này tiến hoá khác nhau khi tăng quy mô, và phần nào tăng theo là phần chỉ ra trần. Năm nguyên nhân làm tăng quy mô phản tác dụng: phần tuần tự ở tiến trình điều khiển, chi phí xáo trộn tăng theo số phân vùng, lệch tải, cấp phát quá mức theo Bài 353, và nút cổ chai ở hệ bên ngoài như nguồn dữ liệu. Kết luận phải là một khuyến nghị về số tài nguyên kèm lý do, chứ một đồ thị.
 
@@ -191,7 +191,7 @@ Người học phải vẽ đường hiệu suất song song tới ít nhất t�
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi giải thích đường cong chứ chỉ vẽ nó. Kiểm bằng thí nghiệm tăng quy mô; đạt khi bốn thành phần thời gian được tách ở mọi mức, điểm phản tác dụng được xác định, và trần quy về một nguyên nhân có bằng chứng.
 
-### Bài 355: Tuning project - the decision tree on three unknown jobs
+### Lesson 355: Tuning project - the decision tree on three unknown jobs
 
 Bài dự án về điều chỉnh hiệu năng, chạy theo một cây quyết định có thứ tự cố định để chống việc đổi cấu hình ngẫu nhiên. Thứ tự bắt buộc: kiểm tính đúng, lược đồ và số phân vùng trước; đọc kế hoạch theo trình tự quét rồi cắt tỉa rồi chiến lược kết rồi trao đổi rồi gộp và sắp xếp rồi ghi ra; thu số đo gồm số dòng và byte vào ra, phân bố thời gian tác vụ, lượng xáo trộn, mức tràn đĩa, thời gian thu dọn rác, bộ nhớ đỉnh và thời gian chờ lập lịch; chẩn đoán phân biệt lệch tải với thiếu song song với quá nhiều tác vụ vụn; rồi sửa dữ liệu, bố cục và thuật toán trước khi chạm tới cấu hình bộ nhớ. Nhận ba công việc chưa từng thấy, mỗi cái có một nguyên nhân khác nhau. Với mỗi công việc, đề xuất đúng một thay đổi có kiểm soát, đo trước sau, và đối soát kết quả.
 
@@ -199,7 +199,7 @@ Người học phải chẩn đoán ba công việc lạ theo cây quyết đị
 
 Cách đánh giá: Tầng *sáng tạo*. Bài tổng hợp phần hiệu năng thành một quy trình chẩn đoán có kỷ luật. Kiểm bằng ba công việc; đạt khi chẩn đoán đúng nguyên nhân ở ít nhất hai, mỗi cải thiện chỉ dùng một thay đổi, và kết quả đối soát không đổi.
 
-### Bài 356: Structured streaming - micro-batch, offsets, checkpoint and state
+### Lesson 356: Structured streaming - micro-batch, offsets, checkpoint and state
 
 Bài chuyển sang xử lý dòng trên cùng engine, với mô hình xử lý theo lô nhỏ. Mỗi lần kích hoạt, engine đọc một khoảng vị trí từ nguồn, xử lý, ghi ra đích, rồi lưu tiến độ; nên nó là một chuỗi công việc theo lô liên tiếp chứ một dòng chảy từng bản ghi. Điểm kiểm tra giữ ba thứ: vị trí nguồn, trạng thái của các phép toán có trạng thái, và siêu dữ liệu của lần ghi; mất điểm kiểm tra là mất khả năng tiếp tục đúng chỗ, và nó không dựng lại được từ đích. Kho trạng thái giữ dữ liệu cho phép gộp theo cửa sổ và phép kết dòng; trạng thái phình vô hạn nếu không có cơ chế hết hạn, và đây là chế độ hỏng vận hành phổ biến nhất. Ba chế độ ghi ra và điều kiện dùng. Đổi lược đồ trạng thái giữa hai lần triển khai là thao tác không tương thích ngược ở nhiều trường hợp và phải có kế hoạch.
 
@@ -207,7 +207,7 @@ Người học phải vận hành một công việc dòng có trạng thái, kh
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là tiếp tục đúng chỗ và trạng thái có trần. Kiểm bằng phép thử giết và đo trạng thái; đạt khi khôi phục không mất và không trùng ngoài giới hạn đã nêu, và kích thước trạng thái ổn định sau khi đặt hết hạn.
 
-### Bài 357: Event time, watermark and late data
+### Lesson 357: Event time, watermark and late data
 
 Bài áp ba trục thời gian ở Bài 251 vào xử lý dòng, nơi chúng trở thành cơ chế chạy được. Thời gian sự kiện là lúc việc xảy ra; xử lý theo thời gian sự kiện cho kết quả đúng và ổn định khi chạy lại, còn xử lý theo thời gian tới thì kết quả đổi mỗi lần chạy lại. Mốc nước là ước lượng của engine về thời điểm mà mọi sự kiện trước đó coi như đã tới; nó điều khiển thời điểm đóng cửa sổ và giải phóng trạng thái. Đánh đổi trung tâm phải đo: mốc nước rộng cho kết quả đầy đủ hơn nhưng trễ hơn và giữ trạng thái lâu hơn, mốc nước hẹp cho kết quả sớm nhưng bỏ nhiều sự kiện muộn. Độ trễ cho phép quyết định cửa sổ đã đóng còn nhận cập nhật không. Sự kiện tới sau ngưỡng phải có chính sách rõ: bỏ có ghi nhận, đưa vào luồng riêng, hoặc hiệu chỉnh về sau; bỏ im lặng là chế độ hỏng.
 
@@ -215,7 +215,7 @@ Người học phải đo đánh đổi giữa độ trễ và tính đầy đ�
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi chọn tham số từ số đo chứ từ giá trị mặc định. Kiểm bằng ba mức mốc nước; đạt khi mỗi mức có cặp số độ trễ với tỉ lệ sự kiện bị bỏ, và sự kiện quá muộn không bị bỏ im lặng.
 
-### Bài 358: Choosing among four engine classes - distributed, embedded and in-process
+### Lesson 358: Choosing among four engine classes - distributed, embedded and in-process
 
 Bài mở rộng phạm vi chọn engine ra bốn lớp, vì hai engine phân tán không phải lựa chọn duy nhất và thường không phải lựa chọn đúng. Engine dòng chảy thứ hai học tới mức hiểu kiến trúc và khác biệt, đi sâu chỉ khi công việc yêu cầu. Khác biệt nền tảng: nó xử lý từng bản ghi thay vì theo lô nhỏ, nên độ trễ thấp hơn đáng kể, đổi lại mô hình vận hành phức tạp hơn. Đồ thị toán tử, khe tác vụ và mức song song; nhóm khoá quyết định trạng thái được chia thế nào và quyết định mức song song đổi được tới đâu. Trạng thái theo khoá và trạng thái theo toán tử. Điểm kiểm tra dùng rào chắn chèn vào dòng: khi rào chắn đi qua mọi toán tử thì một ảnh chụp nhất quán được tạo mà không cần dừng dòng; chế độ căn chỉnh và không căn chỉnh khác nhau ở độ trễ dưới áp lực ngược. Điểm lưu khác điểm kiểm tra ở mục đích: điểm kiểm tra do hệ tạo để phục hồi tự động, điểm lưu do người tạo để nâng cấp và di trú. Áp lực ngược lan ngược về nguồn và làm điểm kiểm tra chậm hoặc hết giờ. Lớp thứ ba và thứ tư là engine chạy trên một máy, véctơ hoá theo Bài 208: một thư viện khung dữ liệu và một engine phân tích nhúng. Với dữ liệu vừa bộ nhớ hoặc vừa đĩa của một máy, chúng thường nhanh hơn engine phân tán vì không có chi phí xáo trộn, chi phí tuần tự hoá và chi phí lập lịch; ngưỡng chuyển sang phân tán phải đo chứ đoán. Mô hình lập trình theo đồ thị tính toán có nhiều bộ chạy chỉ cần biết là có. Quy tắc chọn: engine đơn giản nhất còn đáp ứng được dữ liệu và độ trễ là engine đúng.
 
@@ -223,7 +223,7 @@ Người học phải so bốn lớp engine theo năm tiêu chí và chọn đú
 
 Cách đánh giá: Tầng *đánh giá*. Objective chống lại việc mặc định chọn engine phân tán. Kiểm bằng bảng bốn lớp nhân năm tiêu chí cộng một phép đo; đạt khi ba bối cảnh chọn đúng, ít nhất một bối cảnh chọn engine một máy, và ngưỡng chuyển sang phân tán có số đo.
 
-### Bài 359: End-to-end guarantee - source replay, state restore and sink
+### Lesson 359: End-to-end guarantee - source replay, state restore and sink
 
 Bài phát biểu chính xác bảo đảm đầu cuối của một đường dòng chảy, và nó là bài chống lại tuyên bố mơ hồ. Bảo đảm đầu cuối là tích của ba điều kiện chứ một tính năng bật được: nguồn phải phát lại được từ một vị trí; trạng thái phải khôi phục được nhất quán với vị trí đó; và đích phải luỹ đẳng hoặc có giao dịch. Thiếu một trong ba thì không có bảo đảm, dù engine có cờ nào bật đi nữa; và đích là mắt xích hay bị bỏ quên nhất. Ba loại đích và cách đạt: đích có giao dịch thì chốt cùng tiến độ; đích luỹ đẳng theo khoá thì ghi đè an toàn; đích chỉ thêm mới thì không đạt được và phải chấp nhận trùng. Ghi ra hệ ngoài như gửi thư hoặc gọi dịch vụ là tác dụng phụ không hoàn tác được, nên nó luôn là ít nhất một lần. Phát biểu bảo đảm phải nêu nguồn, đích và giả định lỗi, theo Bài 326.
 
@@ -231,11 +231,11 @@ Người học phải phát biểu bảo đảm đầu cuối cho ba cấu hình
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi phát biểu có điều kiện thay vì tuyên bố. Kiểm bằng ba cấu hình đích; đạt khi phát biểu khớp kết quả đo ở cả ba và cấu hình đích chỉ thêm mới được nêu rõ không đạt được đúng một lần.
 
-### Bài 360: Gate 8 - defend a delivery semantic and recover a stateful job
+### Lesson 360: Gate 8 - defend a delivery semantic and recover a stateful job
 
 Cổng của Phase 8. Bài kiểm bốn module: nền tảng hệ phân tán ở M20, nhật ký phân tán ở M21, bắt thay đổi ở M22, và engine tính toán ở M23. Không có nội dung mới.
 
-Người học phải phát biểu và bảo vệ một bảo đảm giao nhận có nêu ranh giới, phục hồi một công việc có trạng thái, và giải thích song song lồng nhau bằng số đo. Bằng chứng thực hành: Buổi 180 phút: 135 phút làm bài độc lập, 45 phút chữa bài. Bài chấm sáu phần: A (20đ) cho một lịch sử thao tác, xác định mô hình nhất quán bị vi phạm kèm chuỗi chứng minh · B (20đ) phát biểu bảo đảm giao nhận đầu cuối của một đường cho trước, nêu nguồn, đích và giả định lỗi, rồi tính số bản trùng và lượng mất tối đa · C (15đ) tái hiện và sửa một ca người dẫn cũ quay lại bằng thẻ chặn · D (20đ) một công việc dòng có trạng thái bị giết; khôi phục từ điểm kiểm tra và đối soát · E (15đ) truy ba tầng song song trên một công việc và quy một mức tăng về đúng tầng · F (10đ) chẩn đoán một công việc chậm và đề xuất đúng một thay đổi có kiểm soát. Bài hoàn tất khi đạt ≥ 70/100, phần B và D đều ≥ 60%. Tuyên bố đúng một lần không nêu nguồn, đích và giả định lỗi thì phần B bằng không; phục hồi bằng cách đặt lại vị trí về cuối thì phần D bằng không.
+Người học phải phát biểu và bảo vệ một bảo đảm giao nhận có nêu ranh giới, phục hồi một công việc có trạng thái, và giải thích song song lồng nhau bằng số đo. Bằng chứng thực hành: Bài chấm sáu phần: A (20đ) cho một lịch sử thao tác, xác định mô hình nhất quán bị vi phạm kèm chuỗi chứng minh · B (20đ) phát biểu bảo đảm giao nhận đầu cuối của một đường cho trước, nêu nguồn, đích và giả định lỗi, rồi tính số bản trùng và lượng mất tối đa · C (15đ) tái hiện và sửa một ca người dẫn cũ quay lại bằng thẻ chặn · D (20đ) một công việc dòng có trạng thái bị giết; khôi phục từ điểm kiểm tra và đối soát · E (15đ) truy ba tầng song song trên một công việc và quy một mức tăng về đúng tầng · F (10đ) chẩn đoán một công việc chậm và đề xuất đúng một thay đổi có kiểm soát. Bài hoàn tất khi đạt ≥ 70/100, phần B và D đều ≥ 60%. Tuyên bố đúng một lần không nêu nguồn, đích và giả định lỗi thì phần B bằng không; phục hồi bằng cách đặt lại vị trí về cuối thì phần D bằng không.
 
 Cách đánh giá: Tầng *đánh giá*. Cổng đo năng lực lập luận về bảo đảm và năng lực vận hành dưới hỏng, nên hình thức là thực hành tại chỗ cộng bảo vệ.
 
@@ -285,7 +285,7 @@ Không cộng điểm để bù cho lỗi loại trực tiếp. Người học p
 | Event time, watermark and late data | L357 | Sinh dòng sự kiện có phân bố độ trễ thực tế gồm một phần đuôi rất muộn. Chạy với ba mức mốc nước; với mỗi mức, đo độ trễ tới khi có kết quả, tỉ lệ sự kiện bị bỏ, và kích thước trạng thái. Chọn một mức và nêu lý do. Cài chính sách cho sự kiện quá muộn và chứng minh chúng được đếm và ghi nhận chứ bỏ. | Xử lý theo thời gian tới rồi chạy lại ra kết quả khác · đặt mốc nước theo giá trị mặc định · bỏ sự kiện muộn im lặng · bỏ qua ảnh hưởng của mốc nước lên kích thước trạng thái. |
 | Choosing among four engine classes - distributed, embedded and in-process | L358 | So bốn lớp engine theo độ trễ, quy mô dữ liệu, mô hình trạng thái, chi phí vận hành và hệ sinh thái. Chạy một công việc đếm theo cửa sổ trên engine dòng chảy, giết một tiến trình quản lý tác vụ và khôi phục từ điểm kiểm tra; tạo một điểm lưu, đổi mức song song rồi khôi phục từ điểm lưu. Chạy cùng một phép tổng hợp trên cả engine phân tán lẫn hai engine một máy với ba kích thước dữ liệu tăng dần; tìm kích thước mà engine phân tán bắt đầu thắng. Cho ba bối cảnh khác nhau về quy mô và độ trễ, chọn engine cho từng cái. | Chọn engine theo độ phổ biến · dùng engine phân tán cho dữ liệu vừa một máy · nhầm điểm lưu với điểm kiểm tra · học sâu cả hai engine phân tán cùng lúc · bỏ qua chi phí vận hành khi so. |
 | End-to-end guarantee - source replay, state restore and sink | L359 | Dựng cùng một đường dòng chảy với ba loại đích. Với mỗi cái, phát biểu bảo đảm đầu cuối trước khi thử. Giết tiến trình 50 lần ở các ranh giới khác nhau; đếm bản ghi mất và trùng ở đích rồi đối chiếu với phát biểu. Thêm một bước gọi dịch vụ ngoài và chỉ ra vì sao nó luôn là ít nhất một lần. | Tuyên bố đúng một lần vì engine hỗ trợ · bỏ qua đích khi phát biểu bảo đảm · dùng đích chỉ thêm mới rồi mong không trùng · không nêu giả định lỗi. |
-| Gate 8 - defend a delivery semantic and recover a stateful job | L360 | Buổi 180 phút: 135 phút làm bài độc lập, 45 phút chữa bài. Bài chấm sáu phần: A (20đ) cho một lịch sử thao tác, xác định mô hình nhất quán bị vi phạm kèm chuỗi chứng minh · B (20đ) phát biểu bảo đảm giao nhận đầu cuối của một đường cho trước, nêu nguồn, đích và giả định lỗi, rồi tính số bản trùng và lượng mất tối đa · C (15đ) tái hiện và sửa một ca người dẫn cũ quay lại bằng thẻ chặn · D (20đ) một công việc dòng có trạng thái bị giết; khôi phục từ điểm kiểm tra và đối soát · E (15đ) truy ba tầng song song trên một công việc và quy một mức tăng về đúng tầng · F (10đ) chẩn đoán một công việc chậm và đề xuất đúng một thay đổi có kiểm soát. | Coi hết giờ là bên kia đã hỏng · nói đúng một lần mà không nêu ranh giới · đặt lại vị trí tiêu thụ về cuối để phục hồi · đổi cấu hình bộ nhớ trước khi đọc kế hoạch. |
+| Gate 8 - defend a delivery semantic and recover a stateful job | L360 | Bài chấm sáu phần: A (20đ) cho một lịch sử thao tác, xác định mô hình nhất quán bị vi phạm kèm chuỗi chứng minh · B (20đ) phát biểu bảo đảm giao nhận đầu cuối của một đường cho trước, nêu nguồn, đích và giả định lỗi, rồi tính số bản trùng và lượng mất tối đa · C (15đ) tái hiện và sửa một ca người dẫn cũ quay lại bằng thẻ chặn · D (20đ) một công việc dòng có trạng thái bị giết; khôi phục từ điểm kiểm tra và đối soát · E (15đ) truy ba tầng song song trên một công việc và quy một mức tăng về đúng tầng · F (10đ) chẩn đoán một công việc chậm và đề xuất đúng một thay đổi có kiểm soát. | Coi hết giờ là bên kia đã hỏng · nói đúng một lần mà không nêu ranh giới · đặt lại vị trí tiêu thụ về cuối để phục hồi · đổi cấu hình bộ nhớ trước khi đọc kế hoạch. |
 
 ## Ngộ nhận và lỗi loại trực tiếp
 

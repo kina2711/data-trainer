@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Không có nội dung mới. Dự án gộp toàn bộ M9 vào một kho mã duy nhất. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L076 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Python project**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Đóng gói một quy trình phân tích thành kho mã mà một người chưa từng thấy nó chạy lại được bằng một lệnh và cho ra kết quả giống hệt. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Không có nội dung mới. Dự án gộp toàn bộ M9 vào một kho mã duy nhất.
 
@@ -44,7 +44,7 @@ Cơ chế của `python-project` được kiểm qua năm lớp: input và popul
 
 Lỗi cần loại trừ trong bài này là: README ghi thư viện đã dùng thay vì ghi cách chạy · phụ thuộc đường dẫn tuyệt đối trên máy người viết · không ghim phiên bản thư viện nên môi trường người khác cho kết quả khác. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: README ghi thư viện đã dùng 
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L076: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Một học viên khác chạy lại kho mã thành công bằng một lệnh, cho ra kết quả giống hệt, và không đặt câu hỏi nào. Đây là exit criterion của Module 9.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L076: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Một học viên khác chạy lại kho mã thành công bằng một lệnh, cho ra kết quả giống hệt, và không đặt câu hỏi nào. Đây là exit criterion của Module 9.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Python project
+## Worked Case: Python project
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Nhận một bài toán phân tích kèm yêu cầu tự động hoá. Nộp kho mã gồm: README đủ để người lạ chạy lại, script chạy bằng một lệnh, kiểm thử, nhật ký, và kết quả xuất ra. Hoán đổi kho mã với một học viên khác.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Python project`, learner ghi expected result, grain,
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L076 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Python project` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L076 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Không có nội dung mới. Dự án gộp toàn bộ M9 vào một kho mã duy nhất.
+**Mệnh đề của probe 1: `population`.** Không có nội dung mới. Dự án gộp toàn bộ M9 vào một kho mã duy nhất.
 
 **Thiết kế.** Probe 1 của L076 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L076 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Đóng gói một quy trình phân tích thành kho mã mà một người chưa từng thấy nó chạy lại được bằng một lệnh và cho ra kết quả giống hệt.
+**Mệnh đề của probe 2: `grain`.** Đóng gói một quy trình phân tích thành kho mã mà một người chưa từng thấy nó chạy lại được bằng một lệnh và cho ra kết quả giống hệt.
 
 **Thiết kế.** Probe 2 của L076 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L076 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** README ghi thư viện đã dùng thay vì ghi cách chạy · phụ thuộc đường dẫn tuyệt đối trên máy người viết · không ghim phiên bản thư viện nên môi trường người khác cho kết quả khác.
+**Mệnh đề của probe 3: `identity`.** README ghi thư viện đã dùng thay vì ghi cách chạy · phụ thuộc đường dẫn tuyệt đối trên máy người viết · không ghim phiên bản thư viện nên môi trường người khác cho kết quả khác.
 
 **Thiết kế.** Probe 3 của L076 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L076 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Một học viên khác chạy lại kho mã thành công bằng một lệnh, cho ra kết quả giống hệt, và không đặt câu hỏi nào. Đây là exit criterion của Module 9.
+**Mệnh đề của probe 4: `time cutoff`.** Một học viên khác chạy lại kho mã thành công bằng một lệnh, cho ra kết quả giống hệt, và không đặt câu hỏi nào. Đây là exit criterion của Module 9.
 
 **Thiết kế.** Probe 4 của L076 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L076 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Không có nội dung mới. Dự án gộp toàn bộ M9 vào một kho mã duy nhất.
+**Mệnh đề của probe 5: `missing versus zero`.** Không có nội dung mới. Dự án gộp toàn bộ M9 vào một kho mã duy nhất.
 
 **Thiết kế.** Probe 5 của L076 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L076 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Đóng gói một quy trình phân tích thành kho mã mà một người chưa từng thấy nó chạy lại được bằng một lệnh và cho ra kết quả giống hệt.
+**Mệnh đề của probe 6: `duplicate`.** Đóng gói một quy trình phân tích thành kho mã mà một người chưa từng thấy nó chạy lại được bằng một lệnh và cho ra kết quả giống hệt.
 
 **Thiết kế.** Probe 6 của L076 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L076 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** README ghi thư viện đã dùng thay vì ghi cách chạy · phụ thuộc đường dẫn tuyệt đối trên máy người viết · không ghim phiên bản thư viện nên môi trường người khác cho kết quả khác.
+**Mệnh đề của probe 7: `join fan-out`.** README ghi thư viện đã dùng thay vì ghi cách chạy · phụ thuộc đường dẫn tuyệt đối trên máy người viết · không ghim phiên bản thư viện nên môi trường người khác cho kết quả khác.
 
 **Thiết kế.** Probe 7 của L076 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L076 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Một học viên khác chạy lại kho mã thành công bằng một lệnh, cho ra kết quả giống hệt, và không đặt câu hỏi nào. Đây là exit criterion của Module 9.
+**Mệnh đề của probe 8: `changed definition`.** Một học viên khác chạy lại kho mã thành công bằng một lệnh, cho ra kết quả giống hệt, và không đặt câu hỏi nào. Đây là exit criterion của Module 9.
 
 **Thiết kế.** Probe 8 của L076 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L076 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Không có nội dung mới. Dự án gộp toàn bộ M9 vào một kho mã duy nhất.
+**Mệnh đề của probe 9: `independent oracle`.** Không có nội dung mới. Dự án gộp toàn bộ M9 vào một kho mã duy nhất.
 
 **Thiết kế.** Probe 9 của L076 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L076 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Đóng gói một quy trình phân tích thành kho mã mà một người chưa từng thấy nó chạy lại được bằng một lệnh và cho ra kết quả giống hệt.
+**Mệnh đề của probe 10: `replay`.** Đóng gói một quy trình phân tích thành kho mã mà một người chưa từng thấy nó chạy lại được bằng một lệnh và cho ra kết quả giống hệt.
 
 **Thiết kế.** Probe 10 của L076 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L076 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** README ghi thư viện đã dùng thay vì ghi cách chạy · phụ thuộc đường dẫn tuyệt đối trên máy người viết · không ghim phiên bản thư viện nên môi trường người khác cho kết quả khác.
+**Mệnh đề của probe 11: `fresh snapshot`.** README ghi thư viện đã dùng thay vì ghi cách chạy · phụ thuộc đường dẫn tuyệt đối trên máy người viết · không ghim phiên bản thư viện nên môi trường người khác cho kết quả khác.
 
 **Thiết kế.** Probe 11 của L076 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L076 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Một học viên khác chạy lại kho mã thành công bằng một lệnh, cho ra kết quả giống hệt, và không đặt câu hỏi nào. Đây là exit criterion của Module 9.
+**Mệnh đề của probe 12: `novel scenario`.** Một học viên khác chạy lại kho mã thành công bằng một lệnh, cho ra kết quả giống hệt, và không đặt câu hỏi nào. Đây là exit criterion của Module 9.
 
 **Thiết kế.** Probe 12 của L076 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Một học viên khác chạy lại kho mã thành công bằng một lệnh, c
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-PYTHON-314-LANGUAGE-REFERENCE]] — `src.docs.python-3.14-language-reference`
-2. [[SRC-PYTHON-314-STDLIB-RUNTIME]] — `src.docs.python-3.14-stdlib-runtime`
+1. [[SRC-PYTHON-314-LANGUAGE-REFERENCE]]: `src.docs.python-3.14-language-reference`
+2. [[SRC-PYTHON-314-STDLIB-RUNTIME]]: `src.docs.python-3.14-stdlib-runtime`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-PYTHON-314-LANGUAGE-REFERENCE]] — `src.docs.python-3.14-language-reference` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Python project | các mục cơ chế, case và probe | Đã phủ | ngoài objective L076 |
-| [[SRC-PYTHON-314-STDLIB-RUNTIME]] — `src.docs.python-3.14-stdlib-runtime` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Python project | các mục cơ chế, case và probe | Đã phủ | ngoài objective L076 |
+| [[SRC-PYTHON-314-LANGUAGE-REFERENCE]]: `src.docs.python-3.14-language-reference` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Python project | các mục cơ chế, case và probe | Đã phủ | ngoài objective L076 |
+| [[SRC-PYTHON-314-STDLIB-RUNTIME]]: `src.docs.python-3.14-stdlib-runtime` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Python project | các mục cơ chế, case và probe | Đã phủ | ngoài objective L076 |
 
 ## Key takeaways
 - Đóng gói một quy trình phân tích thành kho mã mà một người chưa từng thấy nó chạy lại được bằng một lệnh và cho ra kết quả giống hệt.
@@ -226,7 +226,7 @@ Một học viên khác chạy lại kho mã thành công bằng một lệnh, c
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.python-project`
+## Execution capsule: kiểm chứng `wiki.da.python-project`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.python-project`, sơ đồ, ví dụ và artifact về **Python project** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

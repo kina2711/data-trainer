@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một sản phẩm mô-đun có đường phát hành cần những artifact và phép thử nào để chứng minh kiến trúc, chất lượng và khả năng rollback?
 source_ids:
   - src.book.newman-building-microservices.2e
@@ -127,13 +127,13 @@ Build một lần, lưu digest, promote cùng artifact. Release manifest nối c
 
 ### 4.8 Di trú hai giai đoạn đã diễn tập
 
-Thay đổi schema theo expand–migrate–contract; old/new version cùng chạy trong compatibility window. Contract step chỉ thực hiện sau exit criteria.
+Thay đổi schema theo expand-migrate-contract; old/new version cùng chạy trong compatibility window. Contract step chỉ thực hiện sau exit criteria.
 
 **Bằng chứng:** migration state log, reconciliation và mixed-version test.
 
 ## 5. Evidence ledger
 
-Không ghi “đã có test” hoặc “CI pass” chung chung. Mỗi claim có locator và phương pháp tái hiện.
+Không ghi đã có test hoặc CI pass chung chung. Mỗi claim có locator và phương pháp tái hiện.
 
 | ID | Claim | Artifact | Reproduce | Expected |
 |---|---|---|---|---|
@@ -159,7 +159,7 @@ Evidence phải chứa version và timestamp. Link tới một thư mục không
 4. Chạy contract/integration tests của adapter B.
 5. Đổi binding ở composition root.
 6. Chạy core, component và parity tests.
-7. So hash core tests trước–sau.
+7. So hash core tests trước-sau.
 
 ### Fail conditions
 
@@ -291,10 +291,10 @@ Kiểm semantic correctness, boundary, failure handling, security, operability v
 - Bài tiếp theo mở module backend: [[The Request Lifecycle End to End|Vòng đời request từ đầu đến cuối]].
 
 ## Reference
-1. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — information hiding, modularity, test scope, pipeline và artifact, PDF 56–77, 257–261, 353–372.
-2. [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]] — orthogonality, testing và refactoring, PDF 76–83, 276–280.
-3. [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]] — continuous delivery capabilities và delivery-performance evidence, PDF 45–51, 74–81, 228–232.
-4. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]] — architecture, testing, configuration và quality management.
+1. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: information hiding, modularity, test scope, pipeline và artifact, PDF 56-77, 257-261, 353-372.
+2. [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]]: orthogonality, testing và refactoring, PDF 76-83, 276-280.
+3. [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]]: continuous delivery capabilities và delivery-performance evidence, PDF 45-51, 74-81, 228-232.
+4. [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]]: architecture, testing, configuration và quality management.
 
 > [!synthesis]
 > Tám điểm checklist, evidence ledger và hai acceptance experiment ghép các nguyên tắc modularity, testing, configuration và continuous delivery thành một project specification. Không tác giả nào công bố nguyên bộ tiêu chí này dưới cùng một tên.
@@ -303,14 +303,14 @@ Kiểm semantic correctness, boundary, failure handling, security, operability v
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 56–77 | information hiding và modular boundary | §§1–4, 6 | Đã chuyển thành acceptance criteria cho package và adapter |
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 257–261, 353–372 | artifact/pipeline và test scope | §§4–7, 9–12 | Đã chuyển thành evidence ledger và release-path test |
-| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]], pp. 76–83, 276–280 | orthogonality, test và refactor discipline | §§3–6, 11 | Đã chuyển thành adapter-replacement experiment và review hai lượt |
-| [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]], pp. 45–51, 74–81, 228–232 | CD capability và delivery evidence | §§4–7, 10–12 | Đã chuyển thành pipeline, rollback drill và reproducibility package |
-| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], architecture/testing/configuration/quality | architecture decision, verification và configuration management | §§4, 8–10, 12 | Đã chuyển thành ADR, traceability matrix và rubric |
-| Tổng hợp bài DE-L100 | tám điểm checklist, hai acceptance experiment và evidence package | §§4–12 | Toàn bộ note là project specification; không tuyên bố dự án đã được thực thi |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 56-77 | information hiding và modular boundary | §§1-4, 6 | Đã chuyển thành acceptance criteria cho package và adapter |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 257-261, 353-372 | artifact/pipeline và test scope | §§4-7, 9-12 | Đã chuyển thành evidence ledger và release-path test |
+| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]], pp. 76-83, 276-280 | orthogonality, test và refactor discipline | §§3-6, 11 | Đã chuyển thành adapter-replacement experiment và review hai lượt |
+| [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]], pp. 45-51, 74-81, 228-232 | CD capability và delivery evidence | §§4-7, 10-12 | Đã chuyển thành pipeline, rollback drill và reproducibility package |
+| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]], architecture/testing/configuration/quality | architecture decision, verification và configuration management | §§4, 8-10, 12 | Đã chuyển thành ADR, traceability matrix và rubric |
+| Tổng hợp bài DE-L100 | tám điểm checklist, hai acceptance experiment và evidence package | §§4-12 | Toàn bộ note là project specification; không tuyên bố dự án đã được thực thi |
 
-Note này quy định đầu ra và cách nghiệm thu, không thay note lý thuyết L089–L099. Implementation cụ thể chỉ được công nhận khi evidence ledger chứa command, commit và kết quả thật.
+Note này quy định đầu ra và cách nghiệm thu, không thay note lý thuyết L089-L099. Implementation cụ thể chỉ được công nhận khi evidence ledger chứa command, commit và kết quả thật.
 
 ## Key takeaways
 - Mỗi rubric item phải dẫn tới artifact và phép kiểm tái hiện được.
@@ -320,14 +320,14 @@ Note này quy định đầu ra và cách nghiệm thu, không thay note lý thu
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.software-engineering.delivery-project-modular-package-release-path`
+## Execution capsule: kiểm chứng `wiki.software-engineering.delivery-project-modular-package-release-path`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.software-engineering.delivery-project-modular-package-release-path`, sơ đồ, ví dụ và artifact về **Dự án delivery: modular package có đường phát hành** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Một sản phẩm mô-đun có đường phát hành cần những artifact và phép thử nào để chứng minh kiến trúc, chất lượng và khả năng rollback?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Một sản phẩm mô-đun có đường phát hành cần những artifact và phép thử nào để chứng minh kiến trúc, chất lượng và khả năng rollback? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Dự án delivery: modular package có đường phát hành** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

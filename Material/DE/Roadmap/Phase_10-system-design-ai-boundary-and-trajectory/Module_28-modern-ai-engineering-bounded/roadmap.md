@@ -39,20 +39,20 @@ Dùng mô hình ngôn ngữ như một thành phần có hợp đồng, có đá
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L421 · The boundary of this module - what it is and is not | LT | Phân định việc thuộc và không thuộc phạm vi module, và nêu ba hệ quả thiết kế của ba thuộc tính kỹ thuật. | Phân đúng ≥ 8/10 tình huống, ba hệ quả thiết kế được nêu cụ thể, và chi phí cùng độ trễ ước lượng trước khớp số đo thật trong sai số thoả thuận. | M28: M27 |
-| L422 · AI-assisted engineering with verification | TH | Dùng công cụ sinh mã cho ba nhiệm vụ với kỷ luật kiểm chứng và phát hiện được lỗi trong mã sinh ra. | Mọi đoạn mã sinh ra qua kiểm thử và rà soát bảo mật trước khi hợp nhất, và ≥ 1 lỗi trong mã sinh ra được kiểm thử phát hiện. | L421 |
-| L423 · The LLM API contract - structured output, tools, budgets | TH | Cài lớp gọi có kiểm lược đồ, ngân sách và dự phòng, chịu được ba chế độ hỏng của nhà cung cấp. | Ba chế độ hỏng được xử lý không sập, không đầu ra sai lược đồ nào lọt hạ nguồn, ngân sách không bị vượt, và dự phòng hoạt động. | L422 |
-| L424 · Retrieval - chunking, embedding, filters and rerank | TH | Dựng đường truy hồi có lọc theo quyền và đo được độ phủ ở k trước khi tới phần sinh văn bản. | Độ phủ ở k đo được cho ba cấu hình, phép thử phủ định về quyền không rò tài liệu, và ảnh hưởng của việc đổi mô hình nhúng được định lượng. | L423 |
-| L425 · Grounding, citation and abstention | TH | Cài kiểm trích dẫn bằng máy và cơ chế từ chối, chứng minh không trích dẫn bịa nào lọt. | Không trích dẫn bịa nào lọt qua phép kiểm máy, tỉ lệ từ chối đúng vượt ngưỡng trên nhóm không có đáp án, và tài liệu mâu thuẫn được trình bày kèm phiên bản. | L424 |
-| L426 · The evaluation blueprint - five layers | TH | Dựng bộ đánh giá năm tầng chạy tự động và bắt được hồi quy khi đổi một thành phần. | Ba thay đổi tiêm làm đúng tầng tương ứng xuống điểm, và bộ đánh giá chặn được bản phát hành theo ngưỡng. | L425 |
-| L427 · Baseline first - when simple search beats retrieval augmentation | TH | So đường cơ sở với phương án tăng cường truy hồi trên cùng tập đối chứng và biện minh độ phức tạp bằng số. | Ba đường cơ sở có số đo trên cùng tập đối chứng, quyết định dẫn từ cặp cải thiện với chi phí, và một loại câu hỏi mà đường cơ sở thắng được chỉ ra. | L426 |
-| L428 · Prompt injection, tool permission and tenant isolation | TH | Tái hiện ba tấn công và chặn bằng ba lớp phòng thủ ở ranh giới công cụ, không bằng câu lệnh nhắc. | Mọi kịch bản rò rỉ hoặc vượt quyền bị chặn ở ranh giới công cụ, không phòng thủ nào chỉ dựa vào câu lệnh nhắc, và vòng lặp gọi công cụ có giới hạn. | L427 |
-| L429 · Serving - latency, cost, fallback and version lineage | TH | Đạt ngưỡng độ trễ và chi phí với đệm an toàn theo quyền và truy vết nguồn gốc đủ bốn thứ. | Độ trễ phân vị 95 và chi phí trên mỗi truy vấn dưới ngưỡng, đệm không rò dữ liệu giữa người dùng, và mọi câu trả lời truy được đủ bốn thứ. | L428 |
-| L430 · Grounded assistant project with a red-team suite | DA | Nộp trợ lý đủ bảy hạng mục, vượt đường cơ sở có số đo, và không vi phạm bốn điều kiện tự động chưa đạt. | Năm tầng đều có số đo, không kịch bản đối kháng nào rò rỉ, cải thiện so với đường cơ sở đủ bù chi phí, và không vi phạm bốn điều kiện tự động chưa đạt. | L429 |
+| L421 · [[wiki.ai.boundary|The boundary of this module - what it is and is not]]| LT | Phân định việc thuộc và không thuộc phạm vi module, và nêu ba hệ quả thiết kế của ba thuộc tính kỹ thuật. | Phân đúng ≥ 8/10 tình huống, ba hệ quả thiết kế được nêu cụ thể, và chi phí cùng độ trễ ước lượng trước khớp số đo thật trong sai số thoả thuận. | M28: M27 |
+| L422 · [[wiki.ai.assisted-engineering|AI-assisted engineering with verification]]| TH | Dùng công cụ sinh mã cho ba nhiệm vụ với kỷ luật kiểm chứng và phát hiện được lỗi trong mã sinh ra. | Mọi đoạn mã sinh ra qua kiểm thử và rà soát bảo mật trước khi hợp nhất, và ≥ 1 lỗi trong mã sinh ra được kiểm thử phát hiện. | L421 |
+| L423 · [[wiki.ai.api-contract|The LLM API contract - structured output, tools, budgets]]| TH | Cài lớp gọi có kiểm lược đồ, ngân sách và dự phòng, chịu được ba chế độ hỏng của nhà cung cấp. | Ba chế độ hỏng được xử lý không sập, không đầu ra sai lược đồ nào lọt hạ nguồn, ngân sách không bị vượt, và dự phòng hoạt động. | L422 |
+| L424 · [[wiki.ai.retrieval-pipeline|Retrieval - chunking, embedding, filters and rerank]]| TH | Dựng đường truy hồi có lọc theo quyền và đo được độ phủ ở k trước khi tới phần sinh văn bản. | Độ phủ ở k đo được cho ba cấu hình, phép thử phủ định về quyền không rò tài liệu, và ảnh hưởng của việc đổi mô hình nhúng được định lượng. | L423 |
+| L425 · [[wiki.ai.grounding-citation-abstention|Grounding, citation and abstention]]| TH | Cài kiểm trích dẫn bằng máy và cơ chế từ chối, chứng minh không trích dẫn bịa nào lọt. | Không trích dẫn bịa nào lọt qua phép kiểm máy, tỉ lệ từ chối đúng vượt ngưỡng trên nhóm không có đáp án, và tài liệu mâu thuẫn được trình bày kèm phiên bản. | L424 |
+| L426 · [[wiki.ai.evaluation-five-layers|The evaluation blueprint - five layers]]| TH | Dựng bộ đánh giá năm tầng chạy tự động và bắt được hồi quy khi đổi một thành phần. | Ba thay đổi tiêm làm đúng tầng tương ứng xuống điểm, và bộ đánh giá chặn được bản phát hành theo ngưỡng. | L425 |
+| L427 · [[wiki.ai.baseline-first|Baseline first - when simple search beats retrieval augmentation]]| TH | So đường cơ sở với phương án tăng cường truy hồi trên cùng tập đối chứng và biện minh độ phức tạp bằng số. | Ba đường cơ sở có số đo trên cùng tập đối chứng, quyết định dẫn từ cặp cải thiện với chi phí, và một loại câu hỏi mà đường cơ sở thắng được chỉ ra. | L426 |
+| L428 · [[wiki.ai.prompt-injection-isolation|Prompt injection, tool permission and tenant isolation]]| TH | Tái hiện ba tấn công và chặn bằng ba lớp phòng thủ ở ranh giới công cụ, không bằng câu lệnh nhắc. | Mọi kịch bản rò rỉ hoặc vượt quyền bị chặn ở ranh giới công cụ, không phòng thủ nào chỉ dựa vào câu lệnh nhắc, và vòng lặp gọi công cụ có giới hạn. | L427 |
+| L429 · [[wiki.ai.serving-lineage|Serving - latency, cost, fallback and version lineage]]| TH | Đạt ngưỡng độ trễ và chi phí với đệm an toàn theo quyền và truy vết nguồn gốc đủ bốn thứ. | Độ trễ phân vị 95 và chi phí trên mỗi truy vấn dưới ngưỡng, đệm không rò dữ liệu giữa người dùng, và mọi câu trả lời truy được đủ bốn thứ. | L428 |
+| L430 · [[wiki.ai.grounded-assistant-red-team|Grounded assistant project with a red-team suite]]| DA | Nộp trợ lý đủ bảy hạng mục, vượt đường cơ sở có số đo, và không vi phạm bốn điều kiện tự động chưa đạt. | Năm tầng đều có số đo, không kịch bản đối kháng nào rò rỉ, cải thiện so với đường cơ sở đủ bù chi phí, và không vi phạm bốn điều kiện tự động chưa đạt. | L429 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M28 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M28 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -87,7 +87,7 @@ flowchart LR
   class A421,A422,A423,A424,A425,A426,A427,A428,A429,A430 atom;
 ```
 
-### Bài 421: The boundary of this module - what it is and is not
+### Lesson 421: The boundary of this module - what it is and is not
 
 Bài mở module bằng việc đặt ranh giới, vì đây là chỗ dễ trôi nhất. Module này học cách dùng mô hình ngôn ngữ như một thành phần trong hệ dữ liệu: nó có hợp đồng giao diện, có độ trễ, có chi phí, có tỉ lệ lỗi, và có mô hình mối đe doạ riêng. Nó không dạy huấn luyện mô hình, không dạy vận hành mô hình ở mức chuyên sâu, và không thay công việc phân tích. Mô hình khái niệm tối thiểu cần có: đơn vị mã hoá văn bản và cửa sổ ngữ cảnh, cơ chế chú ý ở mức khái niệm, và ba giai đoạn huấn luyện ở mức nhận biết. Ba thuộc tính kỹ thuật có hệ quả thiết kế: đầu ra không tất định nên phép thử phải chịu được biến thiên; chi phí và độ trễ tỉ lệ với số đơn vị mã hoá nên chúng tính trước được; và cửa sổ ngữ cảnh là ràng buộc cứng nên việc chọn đưa gì vào là một bài toán thiết kế chứ một chi tiết.
 
@@ -95,7 +95,7 @@ Người học phải phân định việc thuộc và không thuộc phạm vi 
 
 Cách đánh giá: Tầng *hiểu*. Bài mở module, đặt ranh giới. Kiểm bằng bài phân định mười tình huống; đạt khi phân đúng ít nhất tám và ba hệ quả thiết kế được nêu cụ thể.
 
-### Bài 422: AI-assisted engineering with verification
+### Lesson 422: AI-assisted engineering with verification
 
 Dùng công cụ sinh mã trong công việc thật, với kỷ luật kiểm chứng làm trung tâm. Câu lệnh nhắc và ngữ cảnh là một bản đặc tả: cung cấp giao diện, ràng buộc, kiểm thử và ví dụ thì kết quả dùng được; mô tả mơ hồ thì nhận về mã trông hợp lý mà sai. Cách dùng đúng là yêu cầu giả thuyết và kiểm thử, rồi tự chạy, chứ áp bản vá một cách mù quáng. Khi gỡ lỗi, làm sạch nhật ký trước khi đưa vào và tái hiện lỗi độc lập chứ tin lời giải thích. Rà soát mã sinh ra theo bốn trục: tính đúng, bảo mật, giấy phép, và nguồn gốc; đo hiệu năng của mã sinh ra thay vì giả định. Một điểm phải kiểm luôn: thư viện và tham số do công cụ đề xuất có thể đã lỗi thời hoặc không tồn tại, nên đối chiếu với tài liệu chính thức kèm phiên bản là bước bắt buộc.
 
@@ -103,7 +103,7 @@ Người học phải dùng công cụ sinh mã cho ba nhiệm vụ với kỷ l
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi kiểm chứng chứ tiêu thụ. Kiểm bằng ba nhiệm vụ; đạt khi mọi đoạn mã sinh ra đều qua kiểm thử cùng rà soát bảo mật trước khi hợp nhất, và ít nhất một lỗi trong mã sinh ra được phát hiện bằng kiểm thử.
 
-### Bài 423: The LLM API contract - structured output, tools, budgets
+### Lesson 423: The LLM API contract - structured output, tools, budgets
 
 Coi mô hình như một dịch vụ bên ngoài và áp đúng kỷ luật ở M8. Hợp đồng gồm: chọn mô hình theo năng lực, độ trễ, chi phí, quyền riêng tư và hỗ trợ công cụ, kèm ghim phiên bản và phương án dự phòng khi nhà cung cấp hỏng hoặc khai tử mô hình. Đầu ra có cấu trúc kèm kiểm lược đồ: đầu ra sai lược đồ là chuyện bình thường phải xử lý chứ một sự cố, nên cần thử lại có giới hạn và cần đường dự phòng. Gọi công cụ chỉ là mô hình đề nghị một lời gọi, và việc thực hiện thuộc về mã của ta; đây là chỗ đặt kiểm quyền ở Bài 428. Hết giờ, thử lại và hạn mức theo Bài 224, với lưu ý thử lại chỉ áp cho lỗi an toàn. Ngân sách số đơn vị mã hoá, ngân sách tốc độ và giới hạn đồng thời phải đặt trước. Câu lệnh nhắc và cấu hình là mã có phiên bản, gắn với bộ đánh giá của bản phát hành.
 
@@ -111,7 +111,7 @@ Người học phải cài lớp gọi có kiểm lược đồ, ngân sách và
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là hệ vẫn đúng dưới lỗi của bên ngoài. Kiểm bằng ba chế độ hỏng tiêm; đạt khi cả ba được xử lý không sập, đầu ra sai lược đồ không lọt xuống hạ nguồn, và ngân sách không bị vượt.
 
-### Bài 424: Retrieval - chunking, embedding, filters and rerank
+### Lesson 424: Retrieval - chunking, embedding, filters and rerank
 
 Tầng truy hồi quyết định chất lượng câu trả lời nhiều hơn phần sinh văn bản, nên nó được học kỹ hơn. Đường đi: lấy tài liệu, phân tích, chia đoạn, nhúng thành véctơ, đánh chỉ mục, truy hồi, lọc, sắp xếp lại, rồi mới dựng ngữ cảnh. Chia đoạn theo ranh giới ngữ nghĩa cùng phần chồng lấn và giữ siêu dữ liệu; cấu trúc cha con giữ được ngữ cảnh mục lớn. Truy hồi thưa dựa trên từ khoá và truy hồi dày dựa trên véctơ bắt được hai loại truy vấn khác nhau, nên kết hợp thường thắng. Bộ sắp xếp lại đắt nhưng cải thiện rõ ở phần đầu danh sách. Hai điểm bắt buộc: kho véctơ là một chỉ mục chứ nguồn sự thật, nên dựng lại được từ nguồn; và lọc theo quyền phải áp trước khi trả kết quả, không phải sau, nếu không thì rò rỉ dữ liệu giữa các khách hàng. Đổi phiên bản mô hình nhúng buộc dựng lại toàn bộ chỉ mục.
 
@@ -119,7 +119,7 @@ Người học phải dựng đường truy hồi có lọc theo quyền và đo
 
 Cách đánh giá: Tầng *áp dụng*. Objective đo tầng truy hồi riêng chứ đo kết quả cuối. Kiểm bằng tập đối chứng truy hồi; đạt khi độ phủ ở k đo được cho ba cấu hình, và phép thử phủ định về quyền không trả về tài liệu ngoài phạm vi.
 
-### Bài 425: Grounding, citation and abstention
+### Lesson 425: Grounding, citation and abstention
 
 Ba cơ chế biến một câu trả lời trôi chảy thành một câu trả lời dùng được. Bám nguồn nghĩa là mọi khẳng định phải dẫn được về một đoạn văn bản cụ thể trong tài liệu, kèm phiên bản tài liệu. Trích dẫn ánh xạ từng khẳng định tới đoạn nguồn chứ tới cả tài liệu, vì trích dẫn ở mức tài liệu không kiểm chứng được. Trích dẫn bịa là chế độ hỏng nguy hiểm nhất vì nó tạo vẻ đáng tin: câu trả lời trông có căn cứ trong khi nguồn không nói điều đó; cách chặn là kiểm trích dẫn bằng máy, đối chiếu đoạn được dẫn với nội dung thật. Từ chối trả lời khi bằng chứng không đủ là một tính năng chứ một thất bại, và ngưỡng từ chối là một tham số phải đo theo Bài 426. Chính sách cho tài liệu mâu thuẫn hoặc đã cũ: trình bày cả hai kèm phiên bản chứ chọn bừa một bên.
 
@@ -127,7 +127,7 @@ Người học phải cài kiểm trích dẫn bằng máy và cơ chế từ ch
 
 Cách đánh giá: Tầng *áp dụng*. Objective có một tiêu chí nghiệm thu nhị phân về tính trung thực. Kiểm bằng tập đối chứng có tài liệu mâu thuẫn và câu hỏi không có đáp án; đạt khi không trích dẫn bịa nào lọt và tỉ lệ từ chối đúng trên nhóm câu không có đáp án vượt ngưỡng.
 
-### Bài 426: The evaluation blueprint - five layers
+### Lesson 426: The evaluation blueprint - five layers
 
 Bài đặt ra chuẩn đánh giá của module, thay cho việc thử vài câu rồi kết luận. Năm tầng, mỗi tầng có số đo riêng: tầng nạp tài liệu đo độ phủ phân tích, độ tươi, quyền truy cập và trùng lặp; tầng truy hồi đo độ phủ ở k, độ chính xác và tính đúng của bộ lọc; tầng sinh văn bản đo mức bám nguồn, tính đúng của nhiệm vụ, chất lượng trích dẫn và tỉ lệ từ chối; tầng hệ thống đo độ trễ phân vị, tỉ lệ lỗi, chi phí trên mỗi đơn vị và khả dụng; tầng an toàn đo kết quả trên bộ kịch bản đối kháng. Đo tách từng tầng là điều kiện để biết sửa chỗ nào, vì một câu trả lời sai có thể do truy hồi trượt hoặc do sinh văn bản sai, và hai nguyên nhân cần hai cách sửa. Tập đối chứng phải gắn với bản phát hành và chạy lại ở mỗi lần đổi câu lệnh nhắc, đổi mô hình hoặc đổi chỉ mục. Rà soát người cho phần không đo được bằng máy.
 
@@ -135,7 +135,7 @@ Người học phải dựng bộ đánh giá năm tầng chạy tự động v�
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cửa chặn hồi quy có số đo theo tầng. Kiểm bằng ba thay đổi tiêm; đạt khi mỗi thay đổi làm đúng tầng tương ứng xuống điểm và bộ đánh giá chặn được bản phát hành.
 
-### Bài 427: Baseline first - when simple search beats retrieval augmentation
+### Lesson 427: Baseline first - when simple search beats retrieval augmentation
 
 Bài chống lại việc mặc định chọn phương án phức tạp, và nó là bài thể hiện rõ nhất mức `C` của module. Quy trình bắt buộc: dựng đường cơ sở đơn giản nhất trước, đo trên cùng tập đối chứng, rồi mới thêm độ phức tạp và chỉ giữ phần nào cải thiện đủ bù chi phí của nó. Ba đường cơ sở phải thử: tìm kiếm theo từ khoá, tra cứu có cấu trúc trên dữ liệu đã có, và một quy tắc nghiệp vụ đơn giản. Bốn tình huống mà phương án đơn giản thắng: câu hỏi có đáp án nằm trong một trường dữ liệu; tập tài liệu nhỏ và ít đổi; yêu cầu độ trễ rất thấp; và yêu cầu giải thích được đến mức không chấp nhận sinh văn bản. Chi phí của độ phức tạp phải nêu tường minh: thêm thành phần phải vận hành, thêm chi phí trên mỗi truy vấn, thêm chế độ hỏng, và thêm bề mặt bảo mật ở Bài 428.
 
@@ -143,7 +143,7 @@ Người học phải so đường cơ sở với phương án tăng cường tr
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi biện minh độ phức tạp chứ mặc định chọn nó. Kiểm bằng bài so; đạt khi ba đường cơ sở có số đo trên cùng tập đối chứng, và quyết định dùng hay không dùng phương án phức tạp dẫn được từ cặp cải thiện với chi phí.
 
-### Bài 428: Prompt injection, tool permission and tenant isolation
+### Lesson 428: Prompt injection, tool permission and tenant isolation
 
 Bài bảo mật của module, và nó dựa trên một nguyên tắc duy nhất: mọi thứ mô hình đọc được đều là dữ liệu không tin cậy, gồm cả tài liệu được truy hồi. Tiêm chỉ dẫn qua nội dung xảy ra khi một tài liệu chứa câu lệnh hướng mô hình làm việc khác; nó không chặn được bằng cách viết thêm câu lệnh nhắc, vì cả hai đều là văn bản trong cùng ngữ cảnh. Ba lớp phòng thủ thật: kiểm quyền ở ranh giới công cụ chứ ở câu lệnh nhắc, tức mã thực hiện lời gọi tự kiểm quyền của người dùng thật; danh sách cho phép cho công cụ và tham số; và phê duyệt của người cho thao tác không đảo ngược được. Rò rỉ dữ liệu ra ngoài qua một công cụ có khả năng gửi đi là ca hỏng nặng nhất. Cách ly giữa các khách hàng áp trước truy hồi theo Bài 424. Vòng lặp gọi công cụ không kiểm soát gây chi phí tăng vọt, nên cần giới hạn số bước và ngân sách.
 
@@ -151,7 +151,7 @@ Người học phải tái hiện ba tấn công và chặn bằng ba lớp phò
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi đặt chốt kiểm soát đúng chỗ. Kiểm bằng bộ 30 kịch bản đối kháng; đạt khi mọi kịch bản rò rỉ dữ liệu hoặc vượt quyền bị chặn ở ranh giới công cụ, và không phòng thủ nào chỉ dựa trên câu lệnh nhắc.
 
-### Bài 429: Serving - latency, cost, fallback and version lineage
+### Lesson 429: Serving - latency, cost, fallback and version lineage
 
 Bài vận hành của module, áp M26 vào một thành phần có đặc thù riêng. Độ trễ phân vị 95 chịu ảnh hưởng của số đơn vị mã hoá đầu ra nhiều hơn đầu vào, nên giới hạn độ dài đầu ra là đòn bẩy chính. Bộ nhớ đệm có hai mức: đệm theo câu hỏi giống hệt, và đệm theo kết quả truy hồi; đệm phải tính tới quyền của người dùng, nếu không thì một người thấy câu trả lời dựng từ tài liệu của người khác. Xử lý theo lô và hàng đợi cho khối lượng không cần tức thời. Đường dự phòng khi mô hình chính hỏng: mô hình khác, đường cơ sở đơn giản hơn ở Bài 427, hoặc trả lời rằng chưa phục vụ được. Truy vết nguồn gốc phải ghi đủ bốn thứ cho mỗi câu trả lời: phiên bản mô hình, phiên bản câu lệnh nhắc, phiên bản chỉ mục, và tập tài liệu đã dùng; thiếu bốn thứ này thì không điều tra được một câu trả lời sai.
 
@@ -159,7 +159,7 @@ Người học phải đạt ngưỡng độ trễ và chi phí với đệm an 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có ba tiêu chí nghiệm thu gồm một ca bảo mật. Kiểm bằng phép thử tải cộng phép thử đệm; đạt khi độ trễ phân vị 95 và chi phí trên mỗi truy vấn dưới ngưỡng, đệm không rò dữ liệu giữa người dùng, và mọi câu trả lời truy được bốn thứ.
 
-### Bài 430: Grounded assistant project with a red-team suite
+### Lesson 430: Grounded assistant project with a red-team suite
 
 Bài dự án khép module, lấy đúng yêu cầu dự án của hợp đồng nguồn: một trợ lý trả lời câu hỏi trên tài liệu kỹ thuật, có bám nguồn. Nộp gồm bảy hạng mục: nạp tài liệu có phiên bản và truy vết nguồn gốc từng đoạn; trả lời có cấu trúc kèm trích dẫn ở mức đoạn và có từ chối khi bằng chứng không đủ; tập đối chứng gồm câu hỏi bình thường, câu hỏi đối kháng, tài liệu đã cũ và tài liệu mâu thuẫn; số đo năm tầng theo Bài 426 gồm cả độ trễ phân vị 95 và chi phí; ba lớp phòng thủ ở Bài 428 cùng kết quả bộ 30 kịch bản đối kháng; so với đường cơ sở đơn giản theo Bài 427; và quy trình thử nghiệm dần khi đổi câu lệnh nhắc, đổi mô hình hoặc đổi chỉ mục, kèm đường quay lui. Bốn điều kiện tự động chưa đạt: lấy vài lần chạy thử làm đánh giá, phòng thủ chỉ bằng câu lệnh nhắc, rò rỉ dữ liệu nhạy cảm, và không có cơ chế từ chối cùng ngân sách cùng dự phòng.
 

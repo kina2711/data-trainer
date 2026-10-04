@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một request đi qua những chặng nào từ socket đến database rồi quay về, và timeout, failure cùng telemetry phải đặt ở đâu để chẩn đoán được?
 source_ids:
   - src.book.kurose-ross-networking.8e
@@ -29,7 +29,7 @@ relationships:
 # Vòng đời request từ đầu đến cuối
 
 > [!abstract] Câu hỏi trung tâm
-> “API chậm” không chỉ ra chặng nào giữ thời gian hoặc request đã đi tới đâu. Cần theo request qua connection, server admission, routing, middleware, handler, application service và data adapter; mỗi chặng có budget, signal và failure mode riêng.
+> API chậm không chỉ ra chặng nào giữ thời gian hoặc request đã đi tới đâu. Cần theo request qua connection, server admission, routing, middleware, handler, application service và data adapter; mỗi chặng có budget, signal và failure mode riêng.
 
 ## 1. Bảy chặng của đường đi
 
@@ -53,7 +53,7 @@ Trước khi server application thấy request, client phải resolve endpoint, 
 Client timeout không chứng minh server chưa xử lý. Request có thể đã commit side effect nhưng response bị mất. Với operation không idempotent, retry mù có thể tạo tác động kép.
 
 > [!source-fact]
-> Kurose và Ross trình bày HTTP request/response trên TCP, persistent connection và proxy/cache boundary. *Computer Networking: A Top-Down Approach*, 8e, §2.2, trang in 126–142.
+> Kurose và Ross trình bày HTTP request/response trên TCP, persistent connection và proxy/cache boundary. *Computer Networking: A Top-Down Approach*, 8e, §2.2, trang in 126-142.
 
 ## 3. Chặng 2: accept, queue và admission
 
@@ -82,7 +82,7 @@ Process isolation giảm shared-memory coupling và tận dụng nhiều CPU cor
 
 Một hoặc vài loop multiplex nhiều I/O. Hiệu quả khi task chủ yếu chờ I/O và mọi operation hợp tác không block. Một CPU-bound hoặc blocking call trên loop làm nhiều request cùng trễ.
 
-Chọn model theo workload và runtime. “Async nhanh hơn” không đúng nếu code gọi blocking driver hoặc contention nằm ở database.
+Chọn model theo workload và runtime. Async nhanh hơn không đúng nếu code gọi blocking driver hoặc contention nằm ở database.
 
 ## 5. Chặng 3: routing
 
@@ -156,7 +156,7 @@ External HTTP/queue adapter có failure khác nhưng cùng nguyên tắc: budget
 
 Handler map domain/application result thành transport response. Middleware sau handler có thể thêm header, metric, compression hoặc access log. Server encode message và ghi xuống socket; proxy/client vẫn có thể mất connection sau khi application hoàn tất.
 
-“Handler returned 200” chưa chắc client nhận đủ body. Phân biệt application outcome, server write outcome và client observation.
+Handler returned 200 chưa chắc client nhận đủ body. Phân biệt application outcome, server write outcome và client observation.
 
 ## 11. Timeout budget
 
@@ -219,7 +219,7 @@ Instance có thể phục vụ request mới theo capability bắt buộc không
 Ứng dụng đã load config, migration prerequisite, cache/model và bắt đầu nhận request chưa? Startup probe ngăn liveness giết process khởi động chậm.
 
 > [!source-fact]
-> Titmus trình bày service health endpoints, middleware/interceptor và service lifecycle trong *Cloud Native Go*, PDF 293–323. Chi tiết orchestrator cần đối chiếu platform đang dùng.
+> Titmus trình bày service health endpoints, middleware/interceptor và service lifecycle trong *Cloud Native Go*, PDF 293-323. Chi tiết orchestrator cần đối chiếu platform đang dùng.
 
 ## 15. Thí nghiệm ngắt database
 
@@ -289,9 +289,9 @@ Nếu mọi instance cùng unready, service có thể không nhận traffic đ�
 - Bài kế tiếp: [[API Contracts - Resources Errors and Versioning|Hợp đồng API: resource, lỗi và versioning]].
 
 ## Reference
-1. [[SRC-KUROSE-ROSS-NETWORKING-8E]] — HTTP request/response, persistent connection, proxy/cache và TCP foundation, §2.2, trang in 126–142.
-2. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]] — HTTP/gRPC service, middleware, health và service lifecycle, PDF 293–323.
-3. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — request interaction, resilience, observability và distributed tracing, các chương 4, 11.
+1. [[SRC-KUROSE-ROSS-NETWORKING-8E]]: HTTP request/response, persistent connection, proxy/cache và TCP foundation, §2.2, trang in 126-142.
+2. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]]: HTTP/gRPC service, middleware, health và service lifecycle, PDF 293-323.
+3. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: request interaction, resilience, observability và distributed tracing, các chương 4, 11.
 
 > [!synthesis]
 > Mô hình bảy chặng là công cụ chẩn đoán tổng hợp từ HTTP/TCP boundary, server lifecycle, middleware, resilience và observability. Nó không phải pipeline class cố định của một framework hay sơ đồ nguyên văn từ một nguồn.
@@ -300,10 +300,10 @@ Nếu mọi instance cùng unready, service có thể không nhận traffic đ�
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.2 pp. 126–142 | HTTP request/response, connection reuse và proxy/cache boundary | §§1–2, 10 | Đã trình bày phần trước và sau application server |
-| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], pp. 293–323 | service lifecycle, HTTP/gRPC server, middleware và health | §§3–10, 14–15 | Đã trình bày concurrency model, middleware chain, handler và health semantics |
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], Ch. 4 và 11 | interaction, resilience, observability và distributed tracing | §§11–15 | Đã trình bày timeout budget, cancellation, correlation và telemetry |
-| Tổng hợp bài DE-L101 | mô hình bảy chặng, failure matrix và database-outage experiment | §§1, 15–18 | Đã gắn là mô hình chẩn đoán; không khẳng định framework nào có đúng bảy class |
+| [[SRC-KUROSE-ROSS-NETWORKING-8E]], §2.2 pp. 126-142 | HTTP request/response, connection reuse và proxy/cache boundary | §§1-2, 10 | Đã trình bày phần trước và sau application server |
+| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], pp. 293-323 | service lifecycle, HTTP/gRPC server, middleware và health | §§3-10, 14-15 | Đã trình bày concurrency model, middleware chain, handler và health semantics |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], Ch. 4 và 11 | interaction, resilience, observability và distributed tracing | §§11-15 | Đã trình bày timeout budget, cancellation, correlation và telemetry |
+| Tổng hợp bài DE-L101 | mô hình bảy chặng, failure matrix và database-outage experiment | §§1, 15-18 | Đã gắn là mô hình chẩn đoán; không khẳng định framework nào có đúng bảy class |
 
 Chi tiết scheduler, router API và database driver phụ thuộc runtime/version. Note giữ chúng ngoài claim chung và yêu cầu tài liệu implementation khi dạy lab cụ thể.
 
@@ -315,7 +315,7 @@ Chi tiết scheduler, router API và database driver phụ thuộc runtime/versi
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.backend.request-lifecycle-end-to-end`
+## Execution capsule: kiểm chứng `wiki.backend.request-lifecycle-end-to-end`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.backend.request-lifecycle-end-to-end`, sơ đồ, ví dụ và artifact về **Vòng đời request từ đầu đến cuối** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

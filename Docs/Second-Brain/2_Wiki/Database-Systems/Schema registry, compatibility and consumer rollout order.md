@@ -38,7 +38,7 @@ New reader đọc old data cần defaults/optional handling phù hợp; field re
 
 ## 3. Forward compatibility
 
-Old reader đọc new data phụ thuộc unknown-field handling và evolution rules; không phải format nào cũng giống nhau. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Schema registry, compatibility and consumer rollout order`, câu hỏi thực dụng là: Schema registry compatibility mode và thứ tự rollout producer/consumer phối hợp thế nào để tránh breaking change? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Old reader đọc new data phụ thuộc unknown-field handling và evolution rules; không phải format nào cũng giống nhau. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Schema registry, compatibility and consumer rollout order`, câu hỏi thực dụng là: Schema registry compatibility mode và thứ tự rollout producer/consumer phối hợp thế nào để tránh breaking change? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Full and transitive
 
@@ -221,7 +221,7 @@ Với `wiki.streaming.schema-compatibility-rollout`, command thành công không
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.streaming.schema-compatibility-rollout`
+## Execution capsule: kiểm chứng `wiki.streaming.schema-compatibility-rollout`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.streaming.schema-compatibility-rollout`, sơ đồ, ví dụ và artifact về **Schema registry, compatibility and consumer rollout order** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

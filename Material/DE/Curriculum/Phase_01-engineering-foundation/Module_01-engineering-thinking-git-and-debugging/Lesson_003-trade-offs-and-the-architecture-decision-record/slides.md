@@ -11,7 +11,7 @@ footer: 'Foundation · runnable scene package'
 
 # Trade-offs and the architecture decision record
 
-**DE-L003 · 120 phút (ước tính)**
+**DE-L003**
 
 > Làm sao lưu reasoning để quyết định kỹ thuật có thể được tái tạo và xét lại?
 
@@ -27,12 +27,12 @@ Viết ADR ngắn nhưng đủ context, drivers, options, evidence, consequences
 
 ---
 
-<!-- scene: S01 · source: note.md: heading '1. ADR lưu reasoning, không chỉ lưu kết luận' -->
+<!-- scene: S01 · source: note.md: heading 1. ADR lưu reasoning, không chỉ lưu kết luận -->
 ## Tình huống mở
 
 ADR chỉ ghi 'chọn Parquet' khiến đội sau không biết workload nào, option nào bị loại hay constraint nào đã đổi.
 
-**Think–pair–share · 4 phút**
+**Independent analysis followed by peer review**
 
 1. Bạn sẽ làm gì đầu tiên?
 2. Quyết định nào có thể bị ảnh hưởng?
@@ -40,7 +40,7 @@ ADR chỉ ghi 'chọn Parquet' khiến đội sau không biết workload nào, o
 
 ---
 
-<!-- scene: S02 · source: note.md: heading '2. Khóa tiêu chí trước khi so phương án' -->
+<!-- scene: S02 · source: note.md: heading 2. Khóa tiêu chí trước khi so phương án -->
 ## Mental model trung tâm
 
 > ADR lưu context và reasoning tại thời điểm quyết định. chất lượng nằm ở option thật, hard constraints, evidence phân biệt và điều kiện đảo quyết định.
@@ -67,7 +67,7 @@ Không làm bước này, output sau đó có thể đúng cú pháp nhưng sai 
 
 ---
 
-<!-- scene: S03 · source: note.md: heading '2. Khóa tiêu chí trước khi so phương án' -->
+<!-- scene: S03 · source: note.md: heading 2. Khóa tiêu chí trước khi so phương án -->
 ## Check 1 · trả lời không nhìn tài liệu
 
 **ADR lưu gì quan trọng nhất?**
@@ -83,7 +83,7 @@ Nếu câu trả lời chỉ nêu tên công cụ, hãy quay lại mental model 
 ---
 
 <!-- scene: S04 · source: UNSOURCED guided practice synthesis -->
-## Guided practice · 12 phút làm + 6 phút chữa
+## Guided practice
 
 Điền ADR one-page cho format trao đổi dữ liệu từ evidence packet. mỗi nhóm đóng vai reviewer tấn công một assumption.
 
@@ -93,7 +93,7 @@ Người dạy không chữa bằng đáp án ngay. yêu cầu mỗi nhóm nêu 
 
 ---
 
-<!-- scene: S05 · source: note.md: heading '3. Phương án bị loại là tài sản' -->
+<!-- scene: S05 · source: note.md: heading 3. Phương án bị loại là tài sản -->
 ## Quy tắc quyết định
 
 Loại option vi phạm hard constraint trước. trong số option còn lại ưu tiên evidence, reversibility và total cost, không dùng weighted score để bù vi phạm cấm.
@@ -114,7 +114,7 @@ Nếu consumer chính chuyển sang spreadsheet không hỗ trợ Parquet, compa
 
 ## Worked example · đi từng bước
 
-<!-- scene: S07 · source: note.md: heading '4. Consequence gồm cả khoản nợ được chấp nhận' -->
+<!-- scene: S07 · source: note.md: heading 4. Consequence gồm cả khoản nợ được chấp nhận -->
 
 1. So CSV, JSONL và Parquet cho batch analytical exchange.
 2. Hard gate: schema/type fidelity và reader compatibility. optimize scan cost sau gate.
@@ -157,8 +157,8 @@ Option rẻ nhất vi phạm RPO nhưng có tổng điểm cao nhất. Giải th
 
 ---
 
-<!-- scene: S09 · source: note.md: heading '6. Revisit signal phải kiểm được' -->
-## Exit ticket · 3 phút
+<!-- scene: S09 · source: note.md: heading 6. Revisit signal phải kiểm được -->
+## Exit check
 
 **Tại sao phương án bị loại vẫn là tài sản?**
 
@@ -169,10 +169,18 @@ Nó lưu constraint/evidence đã xét, tránh lặp tranh luận và cho biết
 
 ---
 
-## Sau buổi học
+## Post-Lesson
 
 1. Làm `quiz.md`. đạt **8/10**.
 2. Nếu trượt một concept, đọc remediation trong `after-note.md` rồi retest đúng concept đó.
 3. Hoàn thành `homework.md`. đạt **≥ 75/100** và không có critical failure.
 
 **Bắc cầu:** DE-L004: hiểu Git object graph để reasoning về thay đổi và phục hồi.
+
+---
+
+## References
+
+- [[wiki.engineering-foundation.adr-trade-offs|Trade-offs and architecture decision records]]
+- [[wiki.data-product.decision-first-discovery|Decision-First Discovery]]
+- [[wiki.data-product.requirements-traceability|Requirements traceability]]

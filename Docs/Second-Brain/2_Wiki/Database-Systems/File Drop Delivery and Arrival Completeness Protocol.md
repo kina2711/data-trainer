@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một file drop protocol chứng minh complete batch, integrity và duplicate identity như thế nào?
 source_ids:
   - src.web.aws-s3-multipart-upload
@@ -223,7 +223,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ingestion.file-drop-delivery-arrival-completeness`
+## Execution capsule: kiểm chứng `wiki.ingestion.file-drop-delivery-arrival-completeness`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ingestion.file-drop-delivery-arrival-completeness`, sơ đồ, ví dụ và artifact về **File Drop Delivery and Arrival Completeness Protocol** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -245,7 +245,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Một file drop protocol chứng minh complete batch, integrity và duplicate identity như thế nào?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Một file drop protocol chứng minh complete batch, integrity và duplicate identity như thế nào? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **File Drop Delivery and Arrival Completeness Protocol** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

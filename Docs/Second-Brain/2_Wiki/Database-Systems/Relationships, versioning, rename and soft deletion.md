@@ -38,7 +38,7 @@ Latest state phục vụ search nhưng change log hoặc version record cần ch
 
 ## 3. Rename semantics
 
-Rename có thể là identity-preserving alias hoặc delete/create tùy source; connector không được tự chọn khi thiếu native signal. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Relationships, versioning, rename and soft deletion`, câu hỏi thực dụng là: Metadata graph xử lý relationship versioning, rename và soft deletion mà không mất lịch sử hay tạo ghost edge ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Rename có thể là identity-preserving alias hoặc delete/create tùy source; connector không được tự chọn khi thiếu native signal. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Relationships, versioning, rename and soft deletion`, câu hỏi thực dụng là: Metadata graph xử lý relationship versioning, rename và soft deletion mà không mất lịch sử hay tạo ghost edge ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Soft deletion
 
@@ -221,7 +221,7 @@ Với `wiki.metadata.relationships-versioning-lifecycle`, command thành công k
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.metadata.relationships-versioning-lifecycle`
+## Execution capsule: kiểm chứng `wiki.metadata.relationships-versioning-lifecycle`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.metadata.relationships-versioning-lifecycle`, sơ đồ, ví dụ và artifact về **Relationships, versioning, rename and soft deletion** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

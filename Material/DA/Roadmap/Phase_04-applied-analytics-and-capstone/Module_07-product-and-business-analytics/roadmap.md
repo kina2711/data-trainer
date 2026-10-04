@@ -26,7 +26,7 @@ Nếu chưa có bằng chứng đầu vào, người học phải hoàn thành l
 |---|---|---|---|
 | C07-055 | Sự kiện, thuộc tính, danh tính người dùng, phiên. | Kế hoạch theo dõi: tài liệu quy định sự kiện nào được ghi, tên gì, thuộc tính gì, và cơ chế khiến dữ liệu sự kiện mất giá trị phân tích khi thiếu tài liệu này. | L055 |
 | C07-056 | Ba tham số định nghĩa một phễu và tác động của từng tham số lên kết quả: phễu nghiêm ngặt hay lỏng về thứ tự bước, độ dài cửa sổ thời gian, đơn vị đếm theo người dùng hay theo phiên. | Phân rã tỉ lệ rơi theo chiều. | L056 |
-| C07-057 | Ba định nghĩa giữ chân — N-day, unbounded, bracket — cho ba con số khác nhau trên cùng dữ liệu. | Bảng cohort: đọc theo hàng cho biết vòng đời của một nhóm, đọc theo cột cho biết tác động của thay đổi sản phẩm. | L057 |
+| C07-057 | Ba định nghĩa giữ chân: N-day, unbounded, bracket: cho ba con số khác nhau trên cùng dữ liệu. | Bảng cohort: đọc theo hàng cho biết vòng đời của một nhóm, đọc theo cột cho biết tác động của thay đổi sản phẩm. | L057 |
 | C07-058 | Phân khúc theo hành vi so với phân khúc theo thuộc tính. | Mô hình RFM: gần đây, tần suất, giá trị tiền, cùng cách chia ngũ phân vị và gán nhãn nhóm. | L058 |
 | C07-059 | Phân rã doanh thu thành bốn thành phần nhân được: số khách × tần suất × giá trị đơn × biên lợi nhuận. | Phân tích giá và độ co giãn ở mức mô tả. | L059 |
 | C07-060 | Phễu tiếp thị và định nghĩa từng tầng. | Bốn mô hình quy kết: chạm cuối, chạm đầu, tuyến tính, suy giảm theo thời gian, và bốn kết luận khác nhau chúng cho trên cùng dữ liệu. | L060 |
@@ -38,19 +38,19 @@ Nếu chưa có bằng chứng đầu vào, người học phải hoàn thành l
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L055 · Event data and the tracking plan | LT | Viết kế hoạch theo dõi cho một luồng sản phẩm, và định lượng ba loại lỗi sự kiện trong một tập dữ liệu có sẵn. | Kế hoạch theo dõi đủ để một học viên khác cài đặt không cần hỏi, và ba loại lỗi sự kiện trong `DS3` được định lượng đúng. | M07: M03 · M05 |
-| L056 · Conversion funnel analysis | TH | Dựng một phân tích phễu có khai báo đủ ba tham số, định vị bước rơi nghiêm trọng nhất, và định lượng tác động của việc đổi một tham số lên kết quả. | Phễu khai báo đủ ba tham số, định vị đúng bước rơi nghiêm trọng nhất, và giải thích được chênh lệch 12 điểm giữa hai cửa sổ. | L055 |
-| L057 · Cohorts and retention analysis | TH | Dựng bảng cohort và rút kết luận đúng từ nó theo cả hai chiều đọc, với định nghĩa giữ chân được khai báo rõ. | Bảng cohort từ SQL và từ Power BI khớp nhau, ba định nghĩa giữ chân cho ba con số có giải thích, và hai chiều đọc cho hai kết luận đúng. | L056 |
-| L058 · Customer segmentation and RFM | TH | Xây một bộ phân khúc RFM, kiểm nó qua bốn tiêu chí, và đề xuất một can thiệp cụ thể cho từng đoạn lớn. | Mọi đoạn giữ lại đều qua cả bốn tiêu chí có số liệu kèm theo, và ba đoạn lớn nhất có can thiệp cụ thể khác nhau. | L057 |
-| L059 · Revenue and commerce analytics | TH | Phân rã doanh thu theo bốn thành phần và kết luận một chương trình khuyến mại tạo thêm doanh thu hay chỉ dịch chuyển thời điểm mua, kèm định lượng phần ăn mòn. | Bốn thành phần nhân lại bằng đúng tổng doanh thu, và kết luận về khuyến mại có kèm con số ăn mòn định lượng được. | L058 |
-| L060 · Marketing and channel analytics | TH | Đọc một báo cáo quy kết và định vị giả định nào của mô hình đang chi phối kết luận của báo cáo đó. | Bốn bảng đóng góp theo bốn mô hình được tính trên cùng dữ liệu, và giả định gây tổng vượt 100% được chỉ ra cụ thể. | L059 |
-| L061 · Investigating a metric drop | TH | Nhận một chỉ số sụt giảm và định vị nguyên nhân kèm bằng chứng cho từng bước, bắt đầu bằng phép kiểm chứng dữ liệu. | Báo cáo định vị đúng bất thường ở giao hai chiều, mỗi bước có bằng chứng, và bước 0 được thực hiện trước bước 1. Đây là exit criterion của Mô-đun 7. | L060 · L044 |
-| L062 · Descriptive time series analysis | TH | Phân rã một chuỗi thời gian thành ba thành phần và thực hiện so sánh kỳ không bị mùa vụ và ngày lễ dịch chuyển làm lệch. | Ba chỉ số được phân rã thành ba thành phần, và so sánh kỳ ở hai tháng có Tết khớp với đáp án sau khi chỉnh ngày lễ dịch chuyển. | L061 |
-| L063 · Simple forecasting and planning | TH | Đưa ra một dự báo kèm khoảng, chứng minh nó đánh bại ba chuẩn cơ sở bằng đánh giá lùi, và phát biểu giới hạn áp dụng của nó. | Dự báo kèm khoảng, đánh bại cả ba chuẩn cơ sở trên đánh giá lùi bằng cửa sổ trượt tiến, và nêu được giới hạn áp dụng. | L062 |
+| L055 · [[wiki.da.event-data-and-the-tracking-plan|Event data and the tracking plan]]| LT | Viết kế hoạch theo dõi cho một luồng sản phẩm, và định lượng ba loại lỗi sự kiện trong một tập dữ liệu có sẵn. | Kế hoạch theo dõi đủ để một học viên khác cài đặt không cần hỏi, và ba loại lỗi sự kiện trong `DS3` được định lượng đúng. | M07: M03 · M05 |
+| L056 · [[wiki.da.conversion-funnel-analysis|Conversion funnel analysis]]| TH | Dựng một phân tích phễu có khai báo đủ ba tham số, định vị bước rơi nghiêm trọng nhất, và định lượng tác động của việc đổi một tham số lên kết quả. | Phễu khai báo đủ ba tham số, định vị đúng bước rơi nghiêm trọng nhất, và giải thích được chênh lệch 12 điểm giữa hai cửa sổ. | L055 |
+| L057 · [[wiki.da.cohorts-and-retention-analysis|Cohorts and retention analysis]]| TH | Dựng bảng cohort và rút kết luận đúng từ nó theo cả hai chiều đọc, với định nghĩa giữ chân được khai báo rõ. | Bảng cohort từ SQL và từ Power BI khớp nhau, ba định nghĩa giữ chân cho ba con số có giải thích, và hai chiều đọc cho hai kết luận đúng. | L056 |
+| L058 · [[wiki.da.customer-segmentation-and-rfm|Customer segmentation and RFM]]| TH | Xây một bộ phân khúc RFM, kiểm nó qua bốn tiêu chí, và đề xuất một can thiệp cụ thể cho từng đoạn lớn. | Mọi đoạn giữ lại đều qua cả bốn tiêu chí có số liệu kèm theo, và ba đoạn lớn nhất có can thiệp cụ thể khác nhau. | L057 |
+| L059 · [[wiki.da.revenue-and-commerce-analytics|Revenue and commerce analytics]]| TH | Phân rã doanh thu theo bốn thành phần và kết luận một chương trình khuyến mại tạo thêm doanh thu hay chỉ dịch chuyển thời điểm mua, kèm định lượng phần ăn mòn. | Bốn thành phần nhân lại bằng đúng tổng doanh thu, và kết luận về khuyến mại có kèm con số ăn mòn định lượng được. | L058 |
+| L060 · [[wiki.da.marketing-and-channel-analytics|Marketing and channel analytics]]| TH | Đọc một báo cáo quy kết và định vị giả định nào của mô hình đang chi phối kết luận của báo cáo đó. | Bốn bảng đóng góp theo bốn mô hình được tính trên cùng dữ liệu, và giả định gây tổng vượt 100% được chỉ ra cụ thể. | L059 |
+| L061 · [[wiki.da.investigating-a-metric-drop|Investigating a metric drop]]| TH | Nhận một chỉ số sụt giảm và định vị nguyên nhân kèm bằng chứng cho từng bước, bắt đầu bằng phép kiểm chứng dữ liệu. | Báo cáo định vị đúng bất thường ở giao hai chiều, mỗi bước có bằng chứng, và bước 0 được thực hiện trước bước 1. Đây là exit criterion của Mô-đun 7. | L060 · L044 |
+| L062 · [[wiki.da.descriptive-time-series-analysis|Descriptive time series analysis]]| TH | Phân rã một chuỗi thời gian thành ba thành phần và thực hiện so sánh kỳ không bị mùa vụ và ngày lễ dịch chuyển làm lệch. | Ba chỉ số được phân rã thành ba thành phần, và so sánh kỳ ở hai tháng có Tết khớp với đáp án sau khi chỉnh ngày lễ dịch chuyển. | L061 |
+| L063 · [[wiki.da.simple-forecasting-and-planning|Simple forecasting and planning]]| TH | Đưa ra một dự báo kèm khoảng, chứng minh nó đánh bại ba chuẩn cơ sở bằng đánh giá lùi, và phát biểu giới hạn áp dụng của nó. | Dự báo kèm khoảng, đánh bại cả ba chuẩn cơ sở trên đánh giá lùi bằng cửa sổ trượt tiến, và nêu được giới hạn áp dụng. | L062 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DA-M07 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DA-M07 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -83,7 +83,7 @@ flowchart LR
   class A055,A056,A057,A058,A059,A060,A061,A062,A063 atom;
 ```
 
-### Bài 55: Event data and the tracking plan
+### Lesson 55: Event data and the tracking plan
 
 Sự kiện, thuộc tính, danh tính người dùng, phiên. Kế hoạch theo dõi: tài liệu quy định sự kiện nào được ghi, tên gì, thuộc tính gì, và cơ chế khiến dữ liệu sự kiện mất giá trị phân tích khi thiếu tài liệu này. Quy ước đặt tên sự kiện. Vấn đề danh tính: người dùng ẩn danh trước đăng nhập, một người nhiều thiết bị. Bốn lỗi đặc trưng của dữ liệu sự kiện: mất sự kiện, trùng sự kiện, sai thứ tự, lệch đồng hồ giữa thiết bị và máy chủ.
 
@@ -91,7 +91,7 @@ Người học phải viết kế hoạch theo dõi cho một luồng sản ph�
 
 Cách đánh giá: Tầng *áp dụng*. Kiểm hai phần: kế hoạch theo dõi đạt rà soát chéo về tính đủ để một người khác cài đặt, và phần rà soát chất lượng phải định lượng đúng ba loại lỗi có trong `DS3`.
 
-### Bài 56: Conversion funnel analysis
+### Lesson 56: Conversion funnel analysis
 
 Ba tham số định nghĩa một phễu và tác động của từng tham số lên kết quả: phễu nghiêm ngặt hay lỏng về thứ tự bước, độ dài cửa sổ thời gian, đơn vị đếm theo người dùng hay theo phiên. Phân rã tỉ lệ rơi theo chiều. Phễu ngược để tìm đường đi thực tế của người dùng. So sánh phễu giữa các phân khúc.
 
@@ -99,15 +99,15 @@ Người học phải dựng một phân tích phễu có khai báo đủ ba tha
 
 Cách đánh giá: Tầng *phân tích*. Kiểm bằng yêu cầu định lượng độ nhạy: người học phải chạy phễu ở hai giá trị cửa sổ khác nhau và giải thích chênh lệch. Yêu cầu này bắt buộc vì nó là cơ chế phân biệt người hiểu định nghĩa phễu với người chạy theo công thức mẫu.
 
-### Bài 57: Cohorts and retention analysis
+### Lesson 57: Cohorts and retention analysis
 
-Ba định nghĩa giữ chân — N-day, unbounded, bracket — cho ba con số khác nhau trên cùng dữ liệu. Bảng cohort: đọc theo hàng cho biết vòng đời của một nhóm, đọc theo cột cho biết tác động của thay đổi sản phẩm. Điểm phẳng của đường cong giữ chân và ý nghĩa của nó. So sánh cohort theo thời gian để tách tác động của thay đổi sản phẩm khỏi thay đổi thành phần người dùng.
+Ba định nghĩa giữ chân: N-day, unbounded, bracket: cho ba con số khác nhau trên cùng dữ liệu. Bảng cohort: đọc theo hàng cho biết vòng đời của một nhóm, đọc theo cột cho biết tác động của thay đổi sản phẩm. Điểm phẳng của đường cong giữ chân và ý nghĩa của nó. So sánh cohort theo thời gian để tách tác động của thay đổi sản phẩm khỏi thay đổi thành phần người dùng.
 
 Người học phải dựng bảng cohort và rút kết luận đúng từ nó theo cả hai chiều đọc, với định nghĩa giữ chân được khai báo rõ. Bằng chứng thực hành: Dựng bảng cohort 12 tháng trên `DS3` bằng cả SQL và Power BI. So ba định nghĩa giữ chân trên cùng dữ liệu và giải thích chênh lệch. Bài hoàn tất khi bảng cohort từ SQL và từ Power BI khớp nhau, ba định nghĩa giữ chân cho ba con số có giải thích, và hai chiều đọc cho hai kết luận đúng.
 
 Cách đánh giá: Tầng *phân tích*. Kiểm bằng yêu cầu so ba định nghĩa: người học tính giữ chân theo cả ba định nghĩa trên cùng dữ liệu và giải thích vì sao ba con số khác nhau. Cộng phần đọc bảng theo hàng và theo cột với hai kết luận khác nhau.
 
-### Bài 58: Customer segmentation and RFM
+### Lesson 58: Customer segmentation and RFM
 
 Phân khúc theo hành vi so với phân khúc theo thuộc tính. Mô hình RFM: gần đây, tần suất, giá trị tiền, cùng cách chia ngũ phân vị và gán nhãn nhóm. Phân khúc theo giai đoạn vòng đời. Bốn tiêu chí kiểm tra tính hữu dụng của một bộ phân khúc: các đoạn khác nhau về hành vi, đủ lớn để hành động, ổn định theo thời gian, tác động được bằng một can thiệp cụ thể.
 
@@ -115,7 +115,7 @@ Người học phải xây một bộ phân khúc RFM, kiểm nó qua bốn tiê
 
 Cách đánh giá: Tầng *sáng tạo*. Bộ phân khúc là sản phẩm thiết kế; không tồn tại phân khúc đúng duy nhất. Kiểm bằng bốn tiêu chí định lượng được cộng phần đề xuất can thiệp. Đoạn không qua được cả bốn tiêu chí phải bị loại hoặc gộp, và người học phải làm điều đó chứ không chỉ báo cáo.
 
-### Bài 59: Revenue and commerce analytics
+### Lesson 59: Revenue and commerce analytics
 
 Phân rã doanh thu thành bốn thành phần nhân được: số khách × tần suất × giá trị đơn × biên lợi nhuận. Phân tích giá và độ co giãn ở mức mô tả. Phân tích giỏ hàng và bán kèm. Phân tích khuyến mại: tách doanh thu tăng thêm khỏi doanh thu bị ăn mòn, và cơ chế khiến phần ăn mòn thường không được tính. Giá trị vòng đời khách hàng ở mức mô tả.
 
@@ -123,7 +123,7 @@ Người học phải phân rã doanh thu theo bốn thành phần và kết lu�
 
 Cách đánh giá: Tầng *đánh giá*. Objective là một phán quyết kinh doanh dựa trên bằng chứng định lượng. Kiểm bằng yêu cầu bắt buộc trừ phần ăn mòn: báo cáo chỉ tính doanh thu tăng thêm mà không trừ ăn mòn bị chấm không đạt, kể cả khi số học đúng.
 
-### Bài 60: Marketing and channel analytics
+### Lesson 60: Marketing and channel analytics
 
 Phễu tiếp thị và định nghĩa từng tầng. Bốn mô hình quy kết: chạm cuối, chạm đầu, tuyến tính, suy giảm theo thời gian, và bốn kết luận khác nhau chúng cho trên cùng dữ liệu. Giả định mà mọi mô hình quy kết đều phải đặt, và lý do chúng vẫn được dùng dù giả định không thoả. Chi phí thu hút khách và thời gian hoàn vốn. Trùng lặp kênh và cơ chế làm tổng đóng góp vượt 100%.
 
@@ -131,7 +131,7 @@ Người học phải đọc một báo cáo quy kết và định vị giả đ
 
 Cách đánh giá: Tầng *phân tích*. Kiểm bằng bài tính đóng góp kênh theo cả bốn mô hình trên cùng dữ liệu, rồi giải thích cơ chế khiến tổng vượt 100%. Người học phải chỉ ra giả định cụ thể, không dừng ở nhận xét rằng các mô hình cho kết quả khác nhau.
 
-### Bài 61: Investigating a metric drop
+### Lesson 61: Investigating a metric drop
 
 Quy trình điều tra bảy bước. Bước 0 là kiểm chứng dữ liệu đúng trước khi phân tích: sự kiện hỏng, quy trình lỗi, định nghĩa chỉ số vừa đổi. Cắt lát theo chiều: thời gian, nền tảng, phiên bản, địa lý, phân khúc, kênh. Kỹ thuật nhị phân trên chiều thời gian để định vị thời điểm bắt đầu. Phân biệt thay đổi thành phần với thay đổi hành vi, và cách kiểm tra bằng chuẩn hoá thành phần.
 
@@ -139,7 +139,7 @@ Người học phải nhận một chỉ số sụt giảm và định vị nguy
 
 Cách đánh giá: Tầng *phân tích*. Đây là một trong các đầu ra chương trình. Kiểm bằng báo cáo điều tra: định vị đúng nguyên nhân, bằng chứng đủ cho từng bước, và bước 0 phải được thực hiện trước bước 1. Báo cáo định vị đúng nguyên nhân nhưng bỏ bước 0 bị trừ, vì thứ tự là phần đang được dạy.
 
-### Bài 62: Descriptive time series analysis
+### Lesson 62: Descriptive time series analysis
 
 Phân rã chuỗi thời gian thành xu hướng, mùa vụ và phần dư. Mùa vụ theo tuần, theo tháng, theo năm và theo ngày lễ. Trung bình trượt và các phương pháp làm mượt. So sánh kỳ: cùng kỳ năm trước so với kỳ liền trước, và sai lệch do ngày lễ dịch chuyển giữa các tháng, cụ thể là Tết âm lịch. Phát hiện điểm gãy trong chuỗi.
 
@@ -147,7 +147,7 @@ Người học phải phân rã một chuỗi thời gian thành ba thành phầ
 
 Cách đánh giá: Tầng *áp dụng*. Kiểm bằng trường hợp cụ thể có đáp án: `DS2` chứa Tết âm lịch rơi vào tháng 1 ở một năm và tháng 2 ở năm khác. Bài xử lý sai sẽ cho chênh lệch so cùng kỳ rất lớn ở đúng hai tháng đó, nên lỗi định vị được chính xác.
 
-### Bài 63: Simple forecasting and planning
+### Lesson 63: Simple forecasting and planning
 
 Ba chuẩn so sánh cơ sở: ngây thơ, ngây thơ theo mùa, trung bình trượt; và nguyên tắc một mô hình phải đánh bại chúng trước khi được dùng. Làm mượt hàm mũ. Khoảng dự báo và lý do nó mang nhiều thông tin quyết định hơn điểm dự báo. Đánh giá sai số bằng MAE và MAPE, cùng điều kiện MAPE cho kết quả không dùng được khi giá trị thực gần 0. Đánh giá lùi bằng cửa sổ trượt tiến. Dự báo theo kịch bản.
 

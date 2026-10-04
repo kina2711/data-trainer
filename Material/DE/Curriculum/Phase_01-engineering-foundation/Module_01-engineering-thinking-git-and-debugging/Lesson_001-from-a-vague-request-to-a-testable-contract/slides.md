@@ -1,178 +1,228 @@
 ---
 marp: true
-theme: volt
+theme: default
 paginate: true
-size: 16:9
-header: 'DE · Lesson 1'
-footer: 'Foundation · runnable scene package'
+title: "DE-L001: From a vague request to a testable contract"
 ---
-
-<!-- _class: lead -->
 
 # From a vague request to a testable contract
 
-**DE-L001 · 120 phút (ước tính)**
+DE-L001
 
-> Làm sao biến yêu cầu kỹ thuật mơ hồ thành behavior và acceptance check có thể tái hiện?
+**Câu hỏi trung tâm:** Làm sao biết hệ thống đã làm đúng?
 
----
-
-## Chuẩn đầu ra
-
-Viết testable contract khóa decision, boundary, input/output, invariants, failure behavior và evidence trước mutation.
-
-**Evidence:** Hai reviewer độc lập tạo cùng expected output từ fixture và trace mỗi failed check về requirement/owner.
-
-**Không suy ra mastery từ việc có mặt hoặc xem hết slide.**
+<!-- scene: S01 | source: note.md heading 'Yêu cầu mơ hồ không có oracle' -->
 
 ---
 
-<!-- scene: S01 · source: note.md: heading '1. Bắt đầu từ quyết định, không bắt đầu từ giải pháp' -->
-## Tình huống mở
+## Mục tiêu kiểm chứng được
 
-Yêu cầu 'đồng bộ orders nhanh và không trùng' không nói nhanh bao nhiêu, order nào, identity nào hay retry sau timeout phải quan sát gì.
-
-**Think–pair–share · 4 phút**
-
-1. Bạn sẽ làm gì đầu tiên?
-2. Quyết định nào có thể bị ảnh hưởng?
-3. Bằng chứng nào đang thiếu?
+- tạo expected result duy nhất từ fixture
+- khóa identity, time và state
+- mô tả failure behavior
+- thiết kế retry an toàn sau timeout
+- viết SLI và SLO có threshold
 
 ---
 
-<!-- scene: S02 · source: note.md: heading '2. Sáu phần của một phát biểu kiểm thử được' -->
-## Mental model trung tâm
+## Yêu cầu nghe có vẻ đủ
 
-> Contract kiểm thử được mô tả behavior quan sát được trong boundary rõ, gồm precondition, input, transformation, expected output, failure semantics và acceptance evidence.
+> Đồng bộ orders nhanh, không trùng, có lỗi thì retry.
 
-- Bắt đầu từ quyết định và consumer harm, rồi khóa scope/non-goal.
-- Viết identity, state, time, input/output và invariant đủ để reviewer dựng expected result.
-- Gắn mỗi requirement với acceptance check và owner. unknown làm đổi semantics phải chặn mutation.
+- order nào?
+- nhanh bao nhiêu?
+- trùng theo identity nào?
+- timeout có phải failure?
+- evidence ở đâu?
+
+---
+
+## Không có oracle, không có test
+
+Hai reviewer nhận cùng input.
+
+Nếu họ tạo hai expected output khác nhau:
+
+**Requirement chưa đủ để mutation.**
+
+---
+
+## Sáu lớp của contract
+
+| Lớp | Khóa |
+|---|---|
+| Decision | ai dùng outcome |
+| Boundary | trách nhiệm từ đâu tới đâu |
+| Semantics | identity, time, state |
+| Invariants | điều luôn phải đúng |
+| Failure | behavior khi bất thường |
+| Evidence | oracle và trace |
+
+<!-- scene: S02 | source: note.md heading 'Contract kiểm thử được khóa sáu lớp nghĩa' -->
+
+---
+
+## Identity trước deduplication
+
+ order_identity = source_system + order_id
+
+partner_a O-42 khác partner_b O-42.
+
+Hash toàn payload không ổn định khi order được update hợp lệ.
+
+---
+
+## State quyết định duplicate hay history
+
+ Accepted -> Paid -> Fulfilled
+ |
+ +----> Cancelled
+
+Event cũ đến muộn không được rollback state nếu contract cấm.
+
+<!-- scene: S03 | source: note.md heading 'Identity, time và state quyết định thế nào là đúng' -->
+
+---
+
+## Given When Then
+
+**Given:** known state
+
+**When:** observable event
+
+**Then:** observable outcome
+
+Không khóa MERGE, queue hay transaction nếu đó chưa phải constraint.
+
+---
+
+## Guided practice
+
+Đổi sáu câu mơ hồ thành:
+
+1. Rule
+2. Fixture
+3. Expected result
+4. Failure path
+5. Oracle
+6. Requirement ID
+
+<!-- scene: S04 | source: UNSOURCED guided practice -->
 
 ---
 
 ## Luồng kiểm soát
 
-| 1. Câu hỏi hoặc thay đổi | 2. Boundary | 3. Evidence | 4. Decision gate | 5. Theo dõi |
-|---|---|---|---|---|
-| Nêu outcome cần quyết định | Khóa scope và semantics | Dùng phép kiểm độc lập | Áp dụng có giới hạn hoặc dừng | Quan sát reversal trigger |
+ Send -> Response?
+ | yes: known outcome
+ | timeout: unknown outcome
+ |
+ +-> query status -> safe retry
+
+Timeout không chứng minh server chưa commit.
 
 ---
 
-## Bước đầu tiên có tính quyết định
+## Idempotency key bảo vệ ý định logic
 
-**Hỏi consumer cần behavior nào và failure nào không được phép xảy ra.**
+| Cùng key | Hành vi |
+|---|---|
+| cùng payload, committed | trả outcome cũ |
+| cùng payload, running | trả pending |
+| payload khác | reject conflict |
 
-Không làm bước này, output sau đó có thể đúng cú pháp nhưng sai đối tượng, sai thời gian hoặc sai quyết định.
+Key mới sau timeout có thể tạo side effect thứ hai.
 
----
-
-<!-- scene: S03 · source: note.md: heading '2. Sáu phần của một phát biểu kiểm thử được' -->
-## Check 1 · trả lời không nhìn tài liệu
-
-**Một expected output tốt phải có tính chất gì?**
-
-<details>
-<summary>Đáp án và tín hiệu chẩn đoán</summary>
-
-Hai reviewer độc lập suy ra cùng kết quả từ cùng fixture.
-
-Nếu câu trả lời chỉ nêu tên công cụ, hãy quay lại mental model và nói rõ boundary + evidence + action.
-</details>
+<!-- scene: S05 | source: note.md heading 'Timeout tạo trạng thái unknown, retry tạo side effect' -->
 
 ---
 
-<!-- scene: S04 · source: UNSOURCED guided practice synthesis -->
-## Guided practice · 12 phút làm + 6 phút chữa
+## Correctness khác freshness
 
-Biến sáu câu requirement mơ hồ thành Given/When/Then có fixture, invariant và failure path.
+ SLI = orders hợp lệ có ở curated trong 10 phút
+ / tổng orders hợp lệ thuộc cutoff
 
-**Definition of done:** Mỗi check có input cụ thể, expected result duy nhất, oracle và requirement ID. không dùng từ định tính chưa có threshold.
+SLO: ít nhất 99,0% trong rolling 28 days.
 
-Người dạy không chữa bằng đáp án ngay. yêu cầu mỗi nhóm nêu assumption và phép kiểm trước.
-
----
-
-<!-- scene: S05 · source: note.md: heading '3. Từ requirement tới acceptance check' -->
-## Quy tắc quyết định
-
-Nếu thiếu identity, state transition hoặc failure semantics thì dừng. nếu chỉ thiếu threshold tối ưu có thể pilot trong bounded range và giữ reversal trigger.
-
-**Boundary:** Contract tốt không thay thế thiết kế hay test runtime. nó định nghĩa điều các bước đó phải chứng minh.
+Job xanh không chứng minh output đúng.
 
 ---
 
 ## Changed constraint
 
-<!-- scene: S06 · source: UNSOURCED changed-constraint synthesis -->
+SLO đổi từ 10 phút xuống 30 giây.
 
-Khi SLO từ 10 phút xuống 30 giây, contract buộc lộ thay đổi kiến trúc thay vì coi đây là tuning nhỏ.
+Source chỉ cho poll mỗi 2 phút.
 
-**Thảo luận:** lựa chọn nào còn defensible? Bằng chứng nào làm bạn đảo quyết định?
+- renegotiate SLO
+- đổi integration contract
+- đổi architecture
 
----
-
-## Worked example · đi từng bước
-
-<!-- scene: S07 · source: note.md: heading '6. Definition of Ready và điểm dừng' -->
-
-1. Định nghĩa order identity = source + order_id. event time và D+1 cutoff.
-2. Success: mỗi identity xuất hiện đúng một lần ở curated table trong 10 phút.
-3. Timeout có outcome unknown. retry phải idempotent và đối soát bằng run_id.
-4. Non-goal: không backfill trước ngày X. change request nếu stakeholder mở rộng.
+<!-- scene: S06 | source: UNSOURCED changed-constraint scenario -->
 
 ---
 
-## Evidence phải giữ lại
+## Fixture phải chứa phản ví dụ
 
-Hai reviewer độc lập tạo cùng expected output từ fixture và trace mỗi failed check về requirement/owner.
+- cùng identity và cùng version
+- version cũ đến sau
+- cùng order_id từ source khác
+- thiếu order_id
+- timeout sau commit
 
-Một output không có boundary, oracle hoặc limitation chỉ là kết quả chưa review.
-
----
-
-## Failure modes
-
-- **Critical:** Viết acceptance bằng từ mơ hồ như nhanh/ổn định, hoặc để implementation tự quyết semantics.
-- Chỉ kiểm happy path và sửa expected sau khi nhìn output.
-- Gộp author claim, curriculum synthesis và learner conclusion thành một giọng.
-- Dùng số lượng biểu đồ/test để thay thế oracle độc lập.
+Happy path đơn lẻ không kiểm contract.
 
 ---
 
-## Independent practice · không có đáp án mẫu
+## Nhiều oracle, nhiều failure được thấy
 
-Viết contract cho job ingest orders có retry, late data và delete. thêm traceability matrix hai chiều.
+- uniqueness query
+- source control total
+- run manifest
+- quarantine count
+- idempotency ledger
+- latency distribution
 
-**Nộp:** artifact + evidence + limitation + reversal trigger.
+<!-- scene: S07 | source: note.md heading 'Case xuyên chương: đồng bộ orders từ API vào warehouse' -->
 
 ---
 
-<!-- scene: S08 · source: UNSOURCED curriculum transfer scenario -->
 ## Transfer challenge
 
-API trả 202 nhưng commit outcome unknown. Định nghĩa behavior client, idempotency key và evidence phân biệt accepted với completed.
+API trả 202 rồi client timeout.
 
-Được phép có nhiều lựa chọn. Điểm nằm ở boundary, trade-off, evidence và blast radius: không nằm ở việc đoán ý người dạy.
+- status model
+- idempotency scope
+- evidence cho accepted, running, completed
+- recovery path
+- reversal trigger
 
----
-
-<!-- scene: S09 · source: note.md: heading '8. Failure modes và ngộ nhận' -->
-## Exit ticket · 3 phút
-
-**Vì sao 'pipeline không được trùng dữ liệu' chưa phải acceptance criterion?**
-
-<details><summary>Đáp án tối thiểu</summary>
-
-Chưa có identity, boundary, time, trạng thái và phép đếm/oracle nên không thể tạo expected output duy nhất.
-</details>
+<!-- scene: S08 | source: UNSOURCED curriculum transfer scenario -->
 
 ---
 
-## Sau buổi học
+## Exit check
 
-1. Làm `quiz.md`. đạt **8/10**.
-2. Nếu trượt một concept, đọc remediation trong `after-note.md` rồi retest đúng concept đó.
-3. Hoàn thành `homework.md`. đạt **≥ 75/100** và không có critical failure.
+Contract khác implementation plan ở đâu?
 
-**Bắc cầu:** DE-L002: phân rã responsibility, interface, state và failure domain.
+Contract khóa behavior và evidence.
+
+Implementation chọn cơ chế đạt behavior đó.
+
+<!-- scene: S09 -->
+
+---
+
+## Mang theo sau buổi học
+
+> Hai reviewer có tạo cùng expected result từ cùng fixture không?
+
+Nếu không, hãy tiếp tục làm rõ contract.
+
+---
+
+## References
+
+- [[wiki.engineering-foundation.testable-contract|From a vague request to a testable contract]]
+- [[wiki.data-product.requirements-traceability|Requirements traceability]]
+- [[wiki.data-quality.sli-slo-design|Data SLI and SLO design]]

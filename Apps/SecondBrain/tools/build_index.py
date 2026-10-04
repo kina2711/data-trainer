@@ -18,11 +18,12 @@ BRAIN = ROOT / "Docs/Second-Brain"
 MANIFEST = BRAIN / "second-brain-manifest.json"
 PROGRAM_NAMES = {"DA": "Data Analyst", "DE": "Data Engineer"}
 LESSON_ASSETS = {
-    "note": ("note.md", "Giáo trình"),
-    "slides": ("slides.md", "Slide"),
+    "note": ("note.md", "Curriculum"),
+    "teaching": ("teaching.md", "Teaching Guide"),
+    "slides": ("slides.md", "Slides"),
     "quiz": ("quiz.md", "Quiz"),
-    "homework": ("homework.md", "Bài tập"),
-    "afterNote": ("after-note.md", "Sau buổi học"),
+    "homework": ("homework.md", "Assignment"),
+    "afterNote": ("after-note.md", "Post-Lesson"),
 }
 
 
@@ -31,6 +32,48 @@ def frontmatter(text: str) -> tuple[dict, str]:
     if not match:
         raise ValueError("frontmatter missing")
     return yaml.safe_load(match.group(1)), text[match.end():]
+
+
+def source_frontmatter(text: str) -> tuple[dict, str]:
+    """Read legacy source records even when a colon in a scalar was not quoted."""
+    match = re.match(r"^---\n(.*?)\n---\n", text, re.S)
+    if not match:
+        raise ValueError("frontmatter missing")
+    block = match.group(1)
+    try:
+        return yaml.safe_load(block), text[match.end():]
+    except yaml.YAMLError:
+        data: dict[str, object] = {}
+        current_list: str | None = None
+        for line in block.splitlines():
+            list_item = re.match(r"^\s+-\s+(.+)$", line)
+            if list_item and current_list:
+                cast = data.setdefault(current_list, [])
+                if isinstance(cast, list):
+                    cast.append(list_item.group(1).strip().strip('"'))
+                continue
+            scalar = re.match(r"^([A-Za-z_][\w-]*):\s*(.*)$", line)
+            if not scalar:
+                continue
+            key, value = scalar.groups()
+            if value:
+                data[key] = value.strip().strip('"')
+                current_list = None
+            else:
+                data[key] = []
+                current_list = key
+        return data, text[match.end():]
+
+
+def metadata_list(value: object) -> list[str]:
+    if isinstance(value, list):
+        return [str(item).strip() for item in value if str(item).strip()]
+    if not value:
+        return []
+    text = str(value).strip()
+    if text.startswith("[") and text.endswith("]"):
+        text = text[1:-1]
+    return [part.strip().strip('"\'') for part in re.split(r"\s*[;,]\s*", text) if part.strip()]
 
 
 def strip_optional_frontmatter(text: str) -> str:
@@ -118,6 +161,59 @@ def build_brain(manifest: dict) -> tuple[list[dict], list[dict]]:
     return notes, [{"name": name, "count": count} for name, count in sorted(domains.items())]
 
 
+def build_books(manifest: dict, notes: list[dict]) -> list[dict]:
+    """Publish book metadata and source records without exposing private file paths."""
+    note_ids_by_source: dict[str, list[str]] = {}
+    for note in notes:
+        for source_id in note["sourceIds"]:
+            note_ids_by_source.setdefault(source_id, []).append(note["id"])
+
+    books: list[dict] = []
+    for entry in manifest["source_registry"]:
+        source_id = str(entry.get("source_id") or "")
+        if not source_id.startswith("src.book."):
+            continue
+        record_path = BRAIN / str(entry["record_path"])
+        fm, body = source_frontmatter(record_path.read_text())
+        body = sanitize_publish_text(body)
+        canonical_path = entry.get("canonical_path")
+        books.append({
+            "id": source_id,
+            "title": str(fm.get("title") or title_from(body, source_id)),
+            "authors": metadata_list(fm.get("authors")),
+            "edition": str(fm.get("edition") or ""),
+            "published": str(fm.get("published") or ""),
+            "rights": str(entry.get("rights") or fm.get("rights") or ""),
+            "sensitivity": str(fm.get("sensitivity") or ""),
+            "authority": str(fm.get("authority") or ""),
+            "tags": metadata_list(fm.get("tags")),
+            "recordPath": str(entry["record_path"]),
+            "canonicalUrl": str(entry.get("canonical_url") or fm.get("canonical_url") or ""),
+            "localCopyAvailable": bool(canonical_path and Path(canonical_path).is_file()),
+            "noteIds": sorted(note_ids_by_source.get(source_id, [])),
+            "excerpt": text_excerpt(body),
+            "body": body.rstrip() + "\n",
+        })
+    books.sort(key=lambda item: item["title"].lower())
+    return books
+
+
+def build_public_sources(manifest: dict) -> list[dict]:
+    sources: list[dict] = []
+    for entry in manifest["source_registry"]:
+        source_id = str(entry.get("source_id") or "")
+        record_path = BRAIN / str(entry["record_path"])
+        fm, _ = source_frontmatter(record_path.read_text())
+        sources.append({
+            "id": source_id,
+            "title": str(fm.get("title") or source_id),
+            "sourceType": str(fm.get("source_type") or ""),
+            "canonicalUrl": str(entry.get("canonical_url") or fm.get("canonical_url") or ""),
+            "bookId": source_id if source_id.startswith("src.book.") else "",
+        })
+    return sources
+
+
 def build_roadmaps() -> list[dict]:
     roadmaps: list[dict] = []
     for program in PROGRAM_NAMES:
@@ -189,6 +285,8 @@ def build_lessons() -> list[dict]:
             for key, (filename, label) in LESSON_ASSETS.items():
                 source = directory / filename
                 if not source.is_file():
+                    if key == "teaching":
+                        continue
                     raise ValueError(f"{lesson_id}: missing {filename}")
                 assets.append({
                     "key": key,
@@ -208,7 +306,6 @@ def build_lessons() -> list[dict]:
                 "title": str(data.get("title") or label_from_slug(lesson_dir)),
                 "status": str(data["status"]),
                 "targetLevel": str(data.get("target_level", "")),
-                "durationMinutes": int(data.get("duration_minutes_estimate") or 0),
                 "centralQuestion": str(data.get("central_question", "")),
                 "objective": str(data.get("objective", "")),
                 "sceneCount": len(data.get("scenes") or []),
@@ -243,16 +340,19 @@ def main() -> int:
     if manifest.get("status") != "active-canonical" or release.get("visibility") != "private-local-first":
         raise SystemExit("Refusing to index a non-canonical or non-private manifest")
     notes, domains = build_brain(manifest)
+    books = build_books(manifest, notes)
+    sources = build_public_sources(manifest)
     roadmaps = build_roadmaps()
     lessons = build_lessons()
     payload = {
-        "schemaVersion": 2,
-        "portalVersion": "1.0.0",
+        "schemaVersion": 3,
+        "portalVersion": "1.1.0",
         "brainVersion": manifest["version"],
         "release": release,
         "stats": {
             "notes": len(notes),
             "sources": len(manifest["source_registry"]),
+            "books": len(books),
             "retrievalCases": len(manifest["retrieval_test_set"]),
             "domains": len(domains),
             "roadmaps": len(roadmaps),
@@ -261,6 +361,8 @@ def main() -> int:
         },
         "programs": [{"id": key, "name": value} for key, value in PROGRAM_NAMES.items()],
         "domains": domains,
+        "sources": sources,
+        "books": books,
         "roadmaps": roadmaps,
         "lessons": lessons,
         "notes": notes,
@@ -272,7 +374,7 @@ def main() -> int:
     target.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n")
     copy_vendor()
     print(
-        f"built roadmaps={len(roadmaps)} notes={len(notes)} lessons={len(lessons)} "
+        f"built roadmaps={len(roadmaps)} notes={len(notes)} books={len(books)} lessons={len(lessons)} "
         f"bytes={target.stat().st_size} hash={payload['contentHash']}"
     )
     return 0

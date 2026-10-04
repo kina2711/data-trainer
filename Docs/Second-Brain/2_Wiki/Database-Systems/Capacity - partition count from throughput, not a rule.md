@@ -39,7 +39,7 @@ Ghi ingress/egress bytes, records, batch sizes, compression, retention, replicat
 
 ## 3. Parallelism bound
 
-Trong một group, active consumers hữu ích bị giới hạn bởi partitions; nhiều groups nhân read/network load. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Capacity - partition count from throughput, not a rule`, câu hỏi thực dụng là: Partition count được suy từ throughput, consumer parallelism, key skew và recovery constraints ra sao thay vì theo một con số truyền miệng? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Trong một group, active consumers hữu ích bị giới hạn bởi partitions; nhiều groups nhân read/network load. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Capacity - partition count from throughput, not a rule`, câu hỏi thực dụng là: Partition count được suy từ throughput, consumer parallelism, key skew và recovery constraints ra sao thay vì theo một con số truyền miệng? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Skew and keys
 
@@ -224,7 +224,7 @@ Với `wiki.streaming.kafka-partition-capacity`, command thành công không t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.streaming.kafka-partition-capacity`
+## Execution capsule: kiểm chứng `wiki.streaming.kafka-partition-capacity`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.streaming.kafka-partition-capacity`, sơ đồ, ví dụ và artifact về **Capacity - partition count from throughput, not a rule** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

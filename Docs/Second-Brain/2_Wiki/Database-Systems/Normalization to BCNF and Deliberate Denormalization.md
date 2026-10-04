@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Dùng functional dependencies để loại insert/update/delete anomalies tới BCNF thế nào, và cần bằng chứng gì trước khi phi chuẩn hóa có chủ đích?
 source_ids:
   - src.course.hcmut-functional-dependencies
@@ -42,13 +42,13 @@ Ví dụ `Enrollment(student_id,student_name,course_id,course_name,instructor)` 
 
 ## 2. Functional dependency là đầu vào
 
-FD $X\to Y$ là rule trên mọi valid state, không phải pattern của sample. Candidate key và attribute closure được xác định trước. Nếu FDs sai/thiếu, normalization “đúng thuật toán” vẫn sai domain.
+FD $X\to Y$ là rule trên mọi valid state, không phải pattern của sample. Candidate key và attribute closure được xác định trước. Nếu FDs sai/thiếu, normalization đúng thuật toán vẫn sai domain.
 
 Ghi nguồn mỗi FD: business contract, authoritative system, legal rule hay assumption. Sample chỉ tìm phản ví dụ. Time-varying dependency như postal code → province cần effective period hoặc relation lịch sử.
 
 ## 3. 1NF
 
-1NF yêu cầu attribute values atomic theo relational domain và không có repeating groups. “Atomic” phụ thuộc operations: address string có thể atomic nếu chỉ hiển thị, nhưng không nếu cần validate/search components. JSON không tự vi phạm 1NF; vấn đề là domain và constraints/query needs, không kiểu syntax.
+1NF yêu cầu attribute values atomic theo relational domain và không có repeating groups. Atomic phụ thuộc operations: address string có thể atomic nếu chỉ hiển thị, nhưng không nếu cần validate/search components. JSON không tự vi phạm 1NF; vấn đề là domain và constraints/query needs, không kiểu syntax.
 
 Tách repeating phone columns hoặc comma-separated product IDs thành relation. Tuy nhiên 1NF không loại partial/transitive dependency.
 
@@ -60,7 +60,7 @@ Nếu key chỉ một attribute, partial dependency trên key không tồn tại
 
 ## 5. 3NF
 
-3NF loại transitive dependency không phù hợp từ key qua non-key determinant. Dạng formal: với mỗi nontrivial FD $X\to A$, X là superkey hoặc A là prime attribute. Rule mnemonic “non-key phụ thuộc key, whole key, nothing but key” hữu ích nhưng không thay formal check khi nhiều candidate keys.
+3NF loại transitive dependency không phù hợp từ key qua non-key determinant. Dạng formal: với mỗi nontrivial FD $X\to A$, X là superkey hoặc A là prime attribute. Rule mnemonic non-key phụ thuộc key, whole key, nothing but key hữu ích nhưng không thay formal check khi nhiều candidate keys.
 
 Ví dụ employee_id → department_id và department_id → department_name. Department name thuộc Department relation. Nếu không, rename department tạo update anomaly.
 
@@ -68,7 +68,7 @@ Ví dụ employee_id → department_id và department_id → department_name. De
 
 BCNF yêu cầu với mọi nontrivial FD $X\to Y$, X là superkey. BCNF mạnh hơn 3NF; relation có overlapping candidate keys có thể 3NF nhưng không BCNF. Decomposition theo violating FD thành `(X∪Y)` và `(R-Y)` theo algorithm, nhưng phải kiểm lossless và dependency preservation.
 
-BCNF decomposition có thể mất khả năng enforce một FD bằng constraint trong một table. Vì vậy “BCNF luôn tốt hơn” sai nếu dependency preservation quan trọng. Quyết định ghi trade-off và enforcement plan.
+BCNF decomposition có thể mất khả năng enforce một FD bằng constraint trong một table. Vì vậy BCNF luôn tốt hơn sai nếu dependency preservation quan trọng. Quyết định ghi trade-off và enforcement plan.
 
 ## 7. Lossless join
 
@@ -90,7 +90,7 @@ DDL phải phản ánh FD: determinant là UNIQUE/key khi phù hợp; dependent 
 
 ## 10. Over-normalization là chẩn đoán workload, không phải số table
 
-Nhiều joins không tự chứng minh schema “quá chuẩn hóa”. Cần đo latency, CPU, I/O, plan, caching, write volume và correctness cost. Có thể vấn đề do thiếu index, statistics, query grain hoặc API chứ không do normalization.
+Nhiều joins không tự chứng minh schema quá chuẩn hóa. Cần đo latency, CPU, I/O, plan, caching, write volume và correctness cost. Có thể vấn đề do thiếu index, statistics, query grain hoặc API chứ không do normalization.
 
 Đừng gộp table chỉ để giảm join nếu làm lặp fact có tần suất cập nhật cao. Complexity của view/query có thể giải bằng view/materialized view mà vẫn giữ write model chuẩn hóa.
 
@@ -130,7 +130,7 @@ Nếu read nhanh 30% nhưng write chậm gấp ba và correctness risk tăng, qu
 
 ## 14. Transactional và analytical models
 
-OLTP thường ưu tiên normalized ownership và write correctness. Analytical star schema cố ý lặp dimension attributes/snapshot facts để query dễ và scan hiệu quả. Đây không phải “warehouse bỏ lý thuyết”; grain, keys, slowly changing dimensions và ETL quality thay vai trò enforcement.
+OLTP thường ưu tiên normalized ownership và write correctness. Analytical star schema cố ý lặp dimension attributes/snapshot facts để query dễ và scan hiệu quả. Đây không phải warehouse bỏ lý thuyết; grain, keys, slowly changing dimensions và ETL quality thay vai trò enforcement.
 
 Không copy OLTP schema nguyên xi vào serving analytics rồi kết luận mọi join chậm. Cũng không dùng star schema làm write model transactional nếu updates cần strong consistency.
 
@@ -171,18 +171,18 @@ Reconciliation so authoritative key/version/checksum với serving copy; không 
 - Denormalization không được biện minh chỉ bằng số join hoặc cảm giác query dài.
 
 ## Reference
-1. [[SRC-HCMUT-FUNCTIONAL-DEPENDENCIES]] — PDF 6–65.
-2. [[SRC-HCMUT-RELATIONAL-DATA-MODEL]] — keys và integrity.
-3. [[SRC-POSTGRESQL-17-CONSTRAINTS]] — enforcement primitives.
+1. [[SRC-HCMUT-FUNCTIONAL-DEPENDENCIES]]: PDF 6-65.
+2. [[SRC-HCMUT-RELATIONAL-DATA-MODEL]]: keys và integrity.
+3. [[SRC-POSTGRESQL-17-CONSTRAINTS]]: enforcement primitives.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-HCMUT-FUNCTIONAL-DEPENDENCIES]], PDF 6–65 | anomalies, 1NF–BCNF, decomposition | §§1–8 | Đã giữ formal distinctions |
+| [[SRC-HCMUT-FUNCTIONAL-DEPENDENCIES]], PDF 6-65 | anomalies, 1NF-BCNF, decomposition | §§1-8 | Đã giữ formal distinctions |
 | [[SRC-HCMUT-RELATIONAL-DATA-MODEL]] | keys và constraints | §§2, 9 | Đã nối decomposition với DDL |
 | [[SRC-POSTGRESQL-17-CONSTRAINTS]] | PK/UNIQUE/FK/CHECK | §9 | Đã giới hạn theo PostgreSQL 17 |
-| Tổng hợp DE-L117 | deliberate denormalization và measurement | §§10–15 | Đã ghi writer/failure/rollback controls |
+| Tổng hợp DE-L117 | deliberate denormalization và measurement | §§10-15 | Đã ghi writer/failure/rollback controls |
 
 ## Key takeaways
 - Chuẩn hóa chữa redundancy anomalies dựa trên FDs, không phải tách table theo cảm giác.
@@ -193,7 +193,7 @@ Reconciliation so authoritative key/version/checksum với serving copy; không 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.normalization-bcnf-denormalization`
+## Execution capsule: kiểm chứng `wiki.database.normalization-bcnf-denormalization`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.normalization-bcnf-denormalization`, sơ đồ, ví dụ và artifact về **Chuẩn hóa tới BCNF và phi chuẩn hóa có chủ đích** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

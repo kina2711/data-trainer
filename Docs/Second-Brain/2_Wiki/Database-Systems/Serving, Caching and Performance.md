@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao phục vụ cùng semantic contract qua BI, SQL và API với latency/freshness/cost có số đo mà cache không vượt ranh giới quyền?
 source_ids:
   - src.web.dbt-semantic-models
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Ba đường phục vụ, một contract
 
-BI integration, SQL/JDBC endpoint và API có transport, pagination, type conversion và retry behavior khác nhau. Parity test phải canonicalize cùng metric version, dimensions, filters, timezone, as-of và security principal rồi so schema/value/freshness. “Cùng tên metric” chưa đủ nếu một client gửi default filter hoặc timezone khác. Response nên mang request ID, semantic version, data cutoff và policy scope để consumer biết số thuộc snapshot nào.
+BI integration, SQL/JDBC endpoint và API có transport, pagination, type conversion và retry behavior khác nhau. Parity test phải canonicalize cùng metric version, dimensions, filters, timezone, as-of và security principal rồi so schema/value/freshness. Cùng tên metric chưa đủ nếu một client gửi default filter hoặc timezone khác. Response nên mang request ID, semantic version, data cutoff và policy scope để consumer biết số thuộc snapshot nào.
 
 ## 2. Baseline trước tối ưu
 
@@ -53,7 +53,7 @@ Tài liệu dbt hiện hành cảnh báo cached tables tách khỏi underlying m
 
 Rate limit, per-tenant quotas, bounded queue, timeout/cancellation và workload classes bảo vệ warehouse. Admission dựa cost estimate tốt hơn chỉ đếm requests vì một query wide-time-range khác query point lookup. Theo dõi active/queued, saturation, spill, retries và rejected requests. Degradation phải explicit: stale-within-SLO, narrowed range hoặc asynchronous job; không âm thầm trả partial/stale data như current truth.
 
-## 7. Nghiệm thu trước–sau
+## 7. Nghiệm thu trước-sau
 
 Chạy cùng 20-query suite, same warehouse size, seed, semantic version và concurrency profile. Báo cáo từng query cùng aggregate p95, hit rate, concurrency và cost/query; tách cold/warm. Hai consumer paths phải cùng values và cutoff. Definition version bump phải miss/invalidate old entry. Hai principals khác quyền không share effective result. Performance pass chỉ khi latency đạt threshold, freshness đạt SLO và semantic parity giữ nguyên.
 
@@ -205,7 +205,7 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 - Chưa chạy MetricFlow, warehouse queries, execution plans hoặc labs; note mô tả protocol và expected evidence.
 - dbt/MetricFlow docs được kiểm ngày 2026-10-01; commands và YAML phụ thuộc engine/version/environment.
 - Thuật ngữ fan/chasm có thể khác giữa sản phẩm; invariant của bài là grain, multiplicity, population và semantic path.
-- Kimball–Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
+- Kimball-Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
 - Owner chưa phê duyệt semantic meaning nên note giữ trạng thái `review`.
 
 ## Reference
@@ -223,14 +223,14 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 
 ## Key takeaways
 - Join correctness phải được chứng minh bằng grain, multiplicity, unmatched ledger và independent oracle.
-- Metric–dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
+- Metric-dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
 - Parse/validate/compile không thay reconciliation với business contract.
 - Generated SQL phải được đọc theo population, path, aggregation và time/filter semantics.
 - Chưa chạy protocol thì note là tài liệu học thuật có truy nguồn, không phải chứng nhận production.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.serving-caching-performance`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.serving-caching-performance`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.serving-caching-performance`, sơ đồ, ví dụ và artifact về **Serving, Caching and Performance** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -252,7 +252,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Làm sao phục vụ cùng semantic contract qua BI, SQL và API với latency/freshness/cost có số đo mà cache không vượt ranh giới quyền?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Làm sao phục vụ cùng semantic contract qua BI, SQL và API với latency/freshness/cost có số đo mà cache không vượt ranh giới quyền? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Serving, Caching and Performance** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

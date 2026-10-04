@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao phân biệt thất bại dự kiến với khiếm khuyết, transient với permanent, rồi chọn retry, quarantine hoặc stop cho pipeline dữ liệu?
 source_ids:
   - src.book.hunt-thomas-pragmatic-programmer.20ae
@@ -37,16 +37,16 @@ relationships:
 # Thiết kế lỗi cho pipeline dữ liệu
 
 > [!abstract] Câu hỏi trung tâm
-> Khi pipeline hỏng, quyết định “thử lại, cách ly hay dừng” không thể lấy từ tên exception. Cần biết lỗi có thuộc contract hay là khiếm khuyết, có thể biến mất khi thử lại hay không, side effect đã xảy ra tới đâu và caller còn thời gian phục hồi hay không.
+> Khi pipeline hỏng, quyết định thử lại, cách ly hay dừng không thể lấy từ tên exception. Cần biết lỗi có thuộc contract hay là khiếm khuyết, có thể biến mất khi thử lại hay không, side effect đã xảy ra tới đâu và caller còn thời gian phục hồi hay không.
 
 ## 1. Hai trục độc lập
 
-### Trục A — expected failure hay defect?
+### Trục A: expected failure hay defect?
 
 - **Expected failure**: kết quả không thành công đã được contract dự liệu; caller có đường xử lý.
 - **Defect**: vi phạm assumption, precondition, invariant hoặc bug trong code/configuration; tiếp tục có thể làm sai dữ liệu.
 
-### Trục B — transient hay permanent?
+### Trục B: transient hay permanent?
 
 - **Transient**: cùng operation có khả năng thành công sau một khoảng chờ hoặc thay đổi trạng thái ngoài.
 - **Permanent với input hiện tại**: lặp lại cùng dữ liệu và điều kiện không làm kết quả đổi.
@@ -64,21 +64,21 @@ quadrantChart
 ```
 
 > [!source-fact]
-> Bloch đề xuất dùng checked exception cho điều kiện caller có thể phục hồi và runtime exception cho lỗi lập trình, đồng thời thừa nhận ranh giới đôi khi cần phán đoán. *Effective Java*, Item 70, PDF 317–318. Note giữ decision rule, không áp cơ chế checked exception sang mọi ngôn ngữ.
+> Bloch đề xuất dùng checked exception cho điều kiện caller có thể phục hồi và runtime exception cho lỗi lập trình, đồng thời thừa nhận ranh giới đôi khi cần phán đoán. *Effective Java*, Item 70, PDF 317-318. Note giữ decision rule, không áp cơ chế checked exception sang mọi ngôn ngữ.
 
 ## 2. Contract quyết định expectedness
 
-“Dữ liệu không hợp lệ” chưa đủ để phân loại. Cùng một hiện tượng có thể khác nhau theo contract:
+Dữ liệu không hợp lệ chưa đủ để phân loại. Cùng một hiện tượng có thể khác nhau theo contract:
 
 - API import cho phép dòng bị từ chối và trả rejection report: expected failure;
 - cùng dòng lọt qua validator rồi làm domain invariant vỡ: defect ở boundary;
 - schema mới đã được contract cho phép: không phải lỗi;
 - field bắt buộc mất mà contract nói phải có: expected permanent failure của record hoặc batch.
 
-Expectedness thuộc quan hệ caller–callee, không phải thuộc riêng exception class.
+Expectedness thuộc quan hệ caller-callee, không phải thuộc riêng exception class.
 
 > [!source-fact]
-> *The Pragmatic Programmer* tách user-input validation khỏi precondition violation: vi phạm contract giữa module là bug, còn dữ liệu ngoài cần được xử lý theo policy ở boundary. Topic 23, PDF 150–155.
+> *The Pragmatic Programmer* tách user-input validation khỏi precondition violation: vi phạm contract giữa module là bug, còn dữ liệu ngoài cần được xử lý theo policy ở boundary. Topic 23, PDF 150-155.
 
 ## 3. Transience là giả thuyết phải có cơ sở
 
@@ -94,7 +94,7 @@ Retry chỉ hợp lý khi:
 Timeout không tự động là transient an toàn. Nó thường tạo **unknown outcome**: caller không biết server đã commit hay chưa.
 
 > [!source-fact]
-> Titmus mô tả Retry cho transient fault nhưng ghi rõ thành công sau khi chờ chỉ là khả năng, không phải bảo đảm; implementation cần giới hạn attempt, delay và thường có backoff. *Cloud Native Go*, Chapter 4, PDF 106–108.
+> Titmus mô tả Retry cho transient fault nhưng ghi rõ thành công sau khi chờ chỉ là khả năng, không phải bảo đảm; implementation cần giới hạn attempt, delay và thường có backoff. *Cloud Native Go*, Chapter 4, PDF 106-108.
 
 ## 4. Bảng mười lỗi của pipeline nạp dữ liệu
 
@@ -122,7 +122,7 @@ Phân loại số 4, 5, 6 và 10 phụ thuộc contract và implementation thự
 | defect | stable | dừng nhanh, giữ bằng chứng, báo owner | catch rồi chạy tiếp |
 | defect | intermittent | dừng hoặc cô lập process; điều tra race/state corruption | gọi đó là transient business failure |
 
-“Tiếp tục” chỉ hợp lệ nếu unit of isolation được định nghĩa: một record, một partition hay cả batch.
+Tiếp tục chỉ hợp lệ nếu unit of isolation được định nghĩa: một record, một partition hay cả batch.
 
 ## 6. Crash early để bảo vệ dữ liệu
 
@@ -134,7 +134,7 @@ Khi invariant nội bộ vỡ, dừng tại điểm gần nguyên nhân nhất g
 - giới hạn blast radius.
 
 > [!source-fact]
-> Hunt và Thomas khuyến nghị crash early khi hệ đi vào trạng thái không thể xảy ra; chạy tiếp có thể ghi dữ liệu hỏng. Assertions dành cho điều “không bao giờ được xảy ra”, không thay real error handling. Topics 24–25, PDF 160–166.
+> Hunt và Thomas khuyến nghị crash early khi hệ đi vào trạng thái không thể xảy ra; chạy tiếp có thể ghi dữ liệu hỏng. Assertions dành cho điều không bao giờ được xảy ra, không thay real error handling. Topics 24-25, PDF 160-166.
 
 Crash process không đồng nghĩa làm mất toàn bộ batch. Checkpoint và replay design phải cho phép khởi động lại từ boundary an toàn.
 
@@ -183,7 +183,7 @@ Cách đạt:
 - compensation có giới hạn rõ khi không thể transaction.
 
 > [!source-fact]
-> Bloch gọi property “failed invocation để object ở state trước đó” là failure atomicity, và nêu validate trước mutation cùng ordering phần có thể lỗi trước phần mutate. *Effective Java*, Item 76, PDF 328–329.
+> Bloch gọi property failed invocation để object ở state trước đó là failure atomicity, và nêu validate trước mutation cùng ordering phần có thể lỗi trước phần mutate. *Effective Java*, Item 76, PDF 328-329.
 
 ## 10. Dịch lỗi theo abstraction
 
@@ -204,7 +204,7 @@ Translation giữ hai thứ:
 - original cause và diagnostic metadata cho operator.
 
 > [!source-fact]
-> Bloch cảnh báo việc đẩy exception tầng thấp lên làm API lộ implementation detail. Exception translation kèm chaining giữ abstraction phù hợp mà vẫn bảo toàn cause. Item 73, PDF 323–324.
+> Bloch cảnh báo việc đẩy exception tầng thấp lên làm API lộ implementation detail. Exception translation kèm chaining giữ abstraction phù hợp mà vẫn bảo toàn cause. Item 73, PDF 323-324.
 
 ## 11. Error context không dựa vào message text
 
@@ -284,7 +284,7 @@ except Exception as exc:
 
 Hệ quả:
 
-- bug lập trình bị biến thành “dữ liệu xấu”;
+- bug lập trình bị biến thành dữ liệu xấu;
 - batch báo success thiếu dữ liệu;
 - stack/cause có thể mất;
 - retryable dependency failure bị bỏ qua;
@@ -303,12 +303,12 @@ Hệ quả:
 
 ## 18. Ngộ nhận thường gặp
 
-- “Exception được catch là expected”: catchability không nói gì về contract.
-- “Timeout thì retry”: timeout có thể là unknown outcome.
-- “Lỗi 5xx luôn transient”: misconfiguration hoặc deterministic bug cũng trả 5xx.
-- “Một dòng xấu thì cả pipeline phải dừng”: tùy isolation contract và completeness requirement.
-- “Quarantine nghĩa là đã xử lý”: record vẫn cần owner, remediation và replay.
-- “Crash early làm hệ kém bền”: với invariant vỡ, chạy tiếp mới là rủi ro dữ liệu.
+- Exception được catch là expected: catchability không nói gì về contract.
+- Timeout thì retry: timeout có thể là unknown outcome.
+- Lỗi 5xx luôn transient: misconfiguration hoặc deterministic bug cũng trả 5xx.
+- Một dòng xấu thì cả pipeline phải dừng: tùy isolation contract và completeness requirement.
+- Quarantine nghĩa là đã xử lý: record vẫn cần owner, remediation và replay.
+- Crash early làm hệ kém bền: với invariant vỡ, chạy tiếp mới là rủi ro dữ liệu.
 
 ## 19. Câu hỏi tự kiểm tra
 
@@ -324,16 +324,16 @@ Hệ quả:
 10. Bốn fault injection của DE-L092 phủ bốn ô nào?
 
 > [!synthesis]
-> Ma trận hai trục, workflow quarantine và bộ bốn fault injection là cấu trúc giảng dạy tổng hợp từ contract/failure guidance của Hunt–Thomas và Bloch cùng retry/resilience của Titmus. Không nguồn nào đặt tên toàn bộ mô hình này như một framework độc lập.
+> Ma trận hai trục, workflow quarantine và bộ bốn fault injection là cấu trúc giảng dạy tổng hợp từ contract/failure guidance của Hunt-Thomas và Bloch cùng retry/resilience của Titmus. Không nguồn nào đặt tên toàn bộ mô hình này như một framework độc lập.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]], Topics 23–25 pp. 148–166 | contract violation, crash early, assertions và exception handling | §§1–3, 6, 9–11, 16 | Đã trình bày ranh giới expected failure/defect và context preservation |
-| [[SRC-BLOCH-EFFECTIVE-JAVA-3E]], Items 70–76 pp. 317–329 | checked/unchecked choice, exception translation, chaining và failure atomicity | §§6, 9–11, 13 | Đã trình bày theo abstraction boundary; không biến Java taxonomy thành luật mọi ngôn ngữ |
-| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], Ch. 4 pp. 99–108 | transient fault, retry, backoff và circuit-breaker context | §§3, 5, 8, 12 | Đã trình bày retry budget và outcome uncertainty |
-| Tổng hợp bài DE-L092 | ma trận hai trục, bảng 10 lỗi, quarantine workflow và bốn fault injection | §§4–5, 7, 14–17 | Đã trình bày như synthesis phục vụ pipeline data |
+| [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]], Topics 23-25 pp. 148-166 | contract violation, crash early, assertions và exception handling | §§1-3, 6, 9-11, 16 | Đã trình bày ranh giới expected failure/defect và context preservation |
+| [[SRC-BLOCH-EFFECTIVE-JAVA-3E]], Items 70-76 pp. 317-329 | checked/unchecked choice, exception translation, chaining và failure atomicity | §§6, 9-11, 13 | Đã trình bày theo abstraction boundary; không biến Java taxonomy thành luật mọi ngôn ngữ |
+| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], Ch. 4 pp. 99-108 | transient fault, retry, backoff và circuit-breaker context | §§3, 5, 8, 12 | Đã trình bày retry budget và outcome uncertainty |
+| Tổng hợp bài DE-L092 | ma trận hai trục, bảng 10 lỗi, quarantine workflow và bốn fault injection | §§4-5, 7, 14-17 | Đã trình bày như synthesis phục vụ pipeline data |
 
 Phân loại transient là giả thuyết theo operation và context. Note không cho phép gắn nhãn cố định chỉ từ tên exception.
 
@@ -360,9 +360,9 @@ Phân loại transient là giả thuyết theo operation và context. Note khôn
 - Bài sau dùng failure path làm test cases: [[Test Strategy and Test Double Placement|Chiến lược kiểm thử và vị trí đặt test double]].
 
 ## Reference
-1. [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]] — David Thomas và Andrew Hunt, *The Pragmatic Programmer*, Topics 23–25, PDF 148–166.
-2. [[SRC-BLOCH-EFFECTIVE-JAVA-3E]] — Joshua Bloch, *Effective Java*, Third Edition, Chapter 10, Items 70–76, PDF 317–329.
-3. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]] — Matthew A. Titmus, *Cloud Native Go*, Chapter 4, Circuit Breaker và Retry, PDF 99–108.
+1. [[SRC-HUNT-THOMAS-PRAGMATIC-PROGRAMMER-20AE]]: David Thomas và Andrew Hunt, *The Pragmatic Programmer*, Topics 23-25, PDF 148-166.
+2. [[SRC-BLOCH-EFFECTIVE-JAVA-3E]]: Joshua Bloch, *Effective Java*, Third Edition, Chapter 10, Items 70-76, PDF 317-329.
+3. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]]: Matthew A. Titmus, *Cloud Native Go*, Chapter 4, Circuit Breaker và Retry, PDF 99-108.
 
 ## Lịch sử biên tập
 
@@ -372,7 +372,7 @@ Phân loại transient là giả thuyết theo operation và context. Note khôn
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.software-engineering.error-design-expected-failure-defect`
+## Execution capsule: kiểm chứng `wiki.software-engineering.error-design-expected-failure-defect`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.software-engineering.error-design-expected-failure-defect`, sơ đồ, ví dụ và artifact về **Thiết kế lỗi cho pipeline dữ liệu** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

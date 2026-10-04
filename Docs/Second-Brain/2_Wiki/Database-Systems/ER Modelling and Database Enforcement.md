@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Chuyển mô tả nghiệp vụ thành ER model và PostgreSQL constraints thế nào để mọi write path cùng bị chặn khi tạo trạng thái sai?
 source_ids:
   - src.course.hcmut-entity-relationship-model
@@ -34,7 +34,7 @@ relationships:
 
 ER model mô tả domain độc lập tương đối với DBMS. Entity là thứ có identity riêng; attribute mô tả nó; relationship liên kết các entity theo rule. Không biến mọi danh từ thành table và mọi động từ thành cột. Cần hỏi lifecycle, identity, ownership, optionality và history.
 
-Tên phải theo ubiquitous language đã xác nhận. `Order`, `OrderLine`, `Product` khác nghĩa; “customer” có thể là account, legal party hoặc contact. Nếu từ vựng mơ hồ, schema chính xác về cú pháp vẫn sai domain.
+Tên phải theo ubiquitous language đã xác nhận. `Order`, `OrderLine`, `Product` khác nghĩa; customer có thể là account, legal party hoặc contact. Nếu từ vựng mơ hồ, schema chính xác về cú pháp vẫn sai domain.
 
 ## 2. Entity và value object
 
@@ -50,7 +50,7 @@ Multi-valued attribute thường thành relation riêng. Composite attribute có
 
 ## 4. Cardinality và participation
 
-Cardinality ratio nêu maximum: 1:1, 1:N, M:N. Participation nêu minimum: bắt buộc hay tùy chọn. Hai khái niệm không thay nhau. “Một order có ít nhất một line” không được bảo đảm chỉ bằng FK từ line tới order; FK bảo đảm line có order, nhưng không bảo đảm order có line sau commit nếu workflow cho phép tạo order trước.
+Cardinality ratio nêu maximum: 1:1, 1:N, M:N. Participation nêu minimum: bắt buộc hay tùy chọn. Hai khái niệm không thay nhau. Một order có ít nhất một line không được bảo đảm chỉ bằng FK từ line tới order; FK bảo đảm line có order, nhưng không bảo đảm order có line sau commit nếu workflow cho phép tạo order trước.
 
 Ghi min..max ở cả hai phía và câu nghiệp vụ. Với temporal state, rule có thể khác theo status; draft order rỗng hợp lệ nhưng submitted order phải có line, đòi transaction/workflow constraint.
 
@@ -58,7 +58,7 @@ Ghi min..max ở cả hai phía và câu nghiệp vụ. Với temporal state, ru
 
 Đặt FK ở phía phụ thuộc/optional, thêm UNIQUE để giới hạn một row. PK-as-FK phù hợp extension table có cùng lifecycle. Nếu không UNIQUE, schema thực tế là 1:N dù diagram ghi 1:1.
 
-Hai table 1:1 có lý do khi security, optional large payload, lifecycle hoặc subtype khác. Tách chỉ vì “nhiều cột” có thể tăng join mà không có boundary thật.
+Hai table 1:1 có lý do khi security, optional large payload, lifecycle hoặc subtype khác. Tách chỉ vì nhiều cột có thể tăng join mà không có boundary thật.
 
 ## 6. Quan hệ 1:N
 
@@ -70,7 +70,7 @@ FK type/column order phải tương thích referenced key. Composite FK phải g
 
 M:N cần junction table chứa hai FK. Composite PK `(left_id,right_id)` chặn duplicate pair khi một quan hệ duy nhất. Nếu quan hệ có identity/lifecycle riêng, có thể thêm surrogate ID nhưng vẫn UNIQUE pair hoặc business key.
 
-Junction thường có attributes: quantity, role, valid_from, price-at-order. Chúng thuộc relationship, không tùy tiện đặt vào một parent. Ví dụ OrderLine nối Order–Product nhưng quantity/unit_price là trạng thái của lần mua.
+Junction thường có attributes: quantity, role, valid_from, price-at-order. Chúng thuộc relationship, không tùy tiện đặt vào một parent. Ví dụ OrderLine nối Order-Product nhưng quantity/unit_price là trạng thái của lần mua.
 
 ## 8. Weak entity và identifying relationship
 
@@ -105,9 +105,9 @@ Không có FK chỉ được chấp nhận với lý do và control thay thế, 
 
 1. cross-database/distributed ownership không thể enforce local FK;
 2. append-only analytic ingestion cần nạp out-of-order và quarantine/reconcile;
-3. polymorphic reference không biểu diễn bằng FK đơn giản—thường là dấu hiệu cần redesign.
+3. polymorphic reference không biểu diễn bằng FK đơn giản:thường là dấu hiệu cần redesign.
 
-“FK chậm” chưa phải bằng chứng. Cần benchmark, orphan SLO, reconciliation query, owner, alert và repair protocol. Warehouse có thể không enforce FK vật lý nhưng vẫn phải khai báo logical relationships và quality tests.
+FK chậm chưa phải bằng chứng. Cần benchmark, orphan SLO, reconciliation query, owner, alert và repair protocol. Warehouse có thể không enforce FK vật lý nhưng vẫn phải khai báo logical relationships và quality tests.
 
 ## 13. Constraint migration
 
@@ -125,9 +125,9 @@ Diagram phải khớp migration chạy được. Review diagram mà không inspe
 
 Một order thuộc một customer tại thời điểm đặt; order có nhiều lines; mỗi line tham chiếu product nhưng giữ unit price snapshot. Product có thể đổi tên/giá sau này mà order history không đổi. `(order_id,line_number)` là natural composite identity của line; nếu dùng `order_line_id`, vẫn UNIQUE cặp đó. Quantity CHECK > 0, currency/amount có domain rõ, customer/order/product references có delete policy khác nhau.
 
-Order–Product nhìn ngoài là M:N nhưng associative entity OrderLine có quantity, unit_price, tax class và fulfillment status. Đặt quantity ở Product sẽ sai vì thuộc lần mua. Cascade Order→OrderLine có thể hợp lệ nếu draft order thật sự được hard-delete; nhưng production order thuộc retention có thể không được delete mà chuyển trạng thái. Product delete thường restrict/retire để không mất reference lịch sử. Customer privacy request có thể anonymize personal fields trong khi giữ accounting record.
+Order-Product nhìn ngoài là M:N nhưng associative entity OrderLine có quantity, unit_price, tax class và fulfillment status. Đặt quantity ở Product sẽ sai vì thuộc lần mua. Cascade Order→OrderLine có thể hợp lệ nếu draft order thật sự được hard-delete; nhưng production order thuộc retention có thể không được delete mà chuyển trạng thái. Product delete thường restrict/retire để không mất reference lịch sử. Customer privacy request có thể anonymize personal fields trong khi giữ accounting record.
 
-Một rule “submitted order phải có ít nhất một line” không được FK bảo đảm. Service transaction có thể lock order, kiểm line count rồi transition status; deferred constraint trigger là lựa chọn khác nhưng phức tạp. Negative test phải thử bypass application bằng direct SQL. Concurrent submit/add/remove line cần transaction-isolation test, nếu không check-then-transition có race.
+Một rule submitted order phải có ít nhất một line không được FK bảo đảm. Service transaction có thể lock order, kiểm line count rồi transition status; deferred constraint trigger là lựa chọn khác nhưng phức tạp. Negative test phải thử bypass application bằng direct SQL. Concurrent submit/add/remove line cần transaction-isolation test, nếu không check-then-transition có race.
 
 ## 14.2. Traceability từ câu nghiệp vụ tới DDL
 
@@ -152,18 +152,18 @@ Schema review cũng hỏi recovery: cascade nhầm có restore path không; migr
 - Soft delete, temporal schema và multi-tenant isolation cần thiết kế riêng.
 
 ## Reference
-1. [[SRC-HCMUT-ENTITY-RELATIONSHIP-MODEL]] — PDF 27–50.
-2. [[SRC-HCMUT-RELATIONAL-DATA-MODEL]] — PDF 4–28.
-3. [[SRC-POSTGRESQL-17-CONSTRAINTS]] — constraints và FK actions.
+1. [[SRC-HCMUT-ENTITY-RELATIONSHIP-MODEL]]: PDF 27-50.
+2. [[SRC-HCMUT-RELATIONAL-DATA-MODEL]]: PDF 4-28.
+3. [[SRC-POSTGRESQL-17-CONSTRAINTS]]: constraints và FK actions.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-HCMUT-ENTITY-RELATIONSHIP-MODEL]], PDF 27–50 | entity, relationship, cardinality, participation, weak entity | §§1–8 | Đã trình bày và nối lifecycle |
-| [[SRC-HCMUT-RELATIONAL-DATA-MODEL]], PDF 4–28 | keys và integrity constraints | §§2, 9 | Đã giữ distinction conceptual/relational |
-| [[SRC-POSTGRESQL-17-CONSTRAINTS]] | PK, UNIQUE, CHECK, FK | §§9–13 | Đã ghi scope PostgreSQL 17 |
-| Tổng hợp DE-L116 | negative tests, no-FK decision, migration | §§11–14 | Đã ghi thành evidence kiểm được |
+| [[SRC-HCMUT-ENTITY-RELATIONSHIP-MODEL]], PDF 27-50 | entity, relationship, cardinality, participation, weak entity | §§1-8 | Đã trình bày và nối lifecycle |
+| [[SRC-HCMUT-RELATIONAL-DATA-MODEL]], PDF 4-28 | keys và integrity constraints | §§2, 9 | Đã giữ distinction conceptual/relational |
+| [[SRC-POSTGRESQL-17-CONSTRAINTS]] | PK, UNIQUE, CHECK, FK | §§9-13 | Đã ghi scope PostgreSQL 17 |
+| Tổng hợp DE-L116 | negative tests, no-FK decision, migration | §§11-14 | Đã ghi thành evidence kiểm được |
 
 ## Key takeaways
 - Cardinality và participation là hai trục khác nhau.
@@ -174,7 +174,7 @@ Schema review cũng hỏi recovery: cascade nhầm có restore path không; migr
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.er-modelling-database-enforcement`
+## Execution capsule: kiểm chứng `wiki.database.er-modelling-database-enforcement`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.er-modelling-database-enforcement`, sơ đồ, ví dụ và artifact về **ER modelling và ràng buộc do database thực thi** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

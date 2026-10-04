@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Một game day ingestion chứng minh khả năng phát hiện, cô lập và phục hồi ba lỗi nhà cung cấp mà không gây mất hoặc nhân dữ liệu thế nào?
 source_ids:
   - src.web.aws-timeouts-retries-backoff
@@ -226,7 +226,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ingestion.game-day-throttling-cursor-expiry-duplicates`
+## Execution capsule: kiểm chứng `wiki.ingestion.game-day-throttling-cursor-expiry-duplicates`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ingestion.game-day-throttling-cursor-expiry-duplicates`, sơ đồ, ví dụ và artifact về **Game Day Provider Throttling Cursor Expiry and Duplicate Delivery** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -248,7 +248,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Một game day ingestion chứng minh khả năng phát hiện, cô lập và phục hồi ba lỗi nhà cung cấp mà không gây mất hoặc nhân dữ liệu thế nào?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Một game day ingestion chứng minh khả năng phát hiện, cô lập và phục hồi ba lỗi nhà cung cấp mà không gây mất hoặc nhân dữ liệu thế nào? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Game Day Provider Throttling Cursor Expiry and Duplicate Delivery** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

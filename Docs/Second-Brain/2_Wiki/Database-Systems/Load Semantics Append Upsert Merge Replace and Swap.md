@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Chọn load semantics nào để giữ grain, history, delete và atomic visibility của từng dataset?
 source_ids:
   - src.web.dbt-incremental-models
@@ -223,7 +223,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.transformation.load-semantics-append-upsert-merge-replace-swap`
+## Execution capsule: kiểm chứng `wiki.transformation.load-semantics-append-upsert-merge-replace-swap`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.transformation.load-semantics-append-upsert-merge-replace-swap`, sơ đồ, ví dụ và artifact về **Load Semantics Append Upsert Merge Replace and Swap** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -245,7 +245,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Chọn load semantics nào để giữ grain, history, delete và atomic visibility của từng dataset?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Chọn load semantics nào để giữ grain, history, delete và atomic visibility của từng dataset? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Load Semantics Append Upsert Merge Replace and Swap** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

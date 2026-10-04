@@ -37,7 +37,7 @@ Database trigger ghi explicit change rows trong transaction nhưng tăng write p
 
 ## 3. Log-based CDC
 
-Đọc committed transaction log giảm table scan và thấy deletes/order metadata nhưng cần privileges, retention và decoder semantics. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Three ways to capture change and their cost`, câu hỏi thực dụng là: Polling, trigger/audit table và transaction-log CDC nhìn thấy changes khác nhau và trả chi phí ở đâu? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Đọc committed transaction log giảm table scan và thấy deletes/order metadata nhưng cần privileges, retention và decoder semantics. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Three ways to capture change and their cost`, câu hỏi thực dụng là: Polling, trigger/audit table và transaction-log CDC nhìn thấy changes khác nhau và trả chi phí ở đâu? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Coverage
 
@@ -218,7 +218,7 @@ Với `wiki.cdc.capture-methods-cost`, command thành công không tự chứng 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.cdc.capture-methods-cost`
+## Execution capsule: kiểm chứng `wiki.cdc.capture-methods-cost`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.cdc.capture-methods-cost`, sơ đồ, ví dụ và artifact về **Three ways to capture change and their cost** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

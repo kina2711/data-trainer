@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Chọn chiến lược triển khai nào cho từng ràng buộc và làm sao chứng minh rollback thực sự hoạt động?
 source_ids:
   - src.book.newman-building-microservices.2e
@@ -31,7 +31,7 @@ relationships:
 # Chiến lược triển khai và rollback
 
 > [!abstract] Câu hỏi trung tâm
-> Chiến lược deployment quyết định blast radius, thời gian phát hiện và đường lùi. Không có lựa chọn “an toàn nhất” tách khỏi observability, capacity, session state và khả năng tương thích dữ liệu.
+> Chiến lược deployment quyết định blast radius, thời gian phát hiện và đường lùi. Không có lựa chọn an toàn nhất tách khỏi observability, capacity, session state và khả năng tương thích dữ liệu.
 
 ## 1. Deployment khác release
 
@@ -50,7 +50,7 @@ Deployment đưa code vào môi trường. Release cho user hoặc workload ti�
 Blue-green lùi nhanh ở routing layer nhưng không tự đảo database write đã xảy ra. Canary giảm blast radius chỉ khi cohort đại diện và signal phát hiện được lỗi.
 
 > [!source-fact]
-> Newman trình bày feature toggle, canary, blue-green và parallel run như các kỹ thuật tách deployment khỏi release và kiểm soát blast radius. *Building Microservices*, 2e, PDF 342–347.
+> Newman trình bày feature toggle, canary, blue-green và parallel run như các kỹ thuật tách deployment khỏi release và kiểm soát blast radius. *Building Microservices*, 2e, PDF 342-347.
 
 ## 3. Recreate và rolling
 
@@ -64,7 +64,7 @@ Blue-green lùi nhanh ở routing layer nhưng không tự đảo database write
 - capacity còn lại chịu được tải trong rollout;
 - `maxUnavailable` và `maxSurge` phù hợp resource budget.
 
-Một rollout “đã hoàn tất” ở orchestrator chưa chứng minh request đúng về semantic.
+Một rollout đã hoàn tất ở orchestrator chưa chứng minh request đúng về semantic.
 
 ## 4. Blue-green
 
@@ -93,7 +93,7 @@ Canary rollout theo các nấc, ví dụ 1% → 5% → 25% → 50% → 100%. M�
 Không chọn canary khi không tách telemetry theo version. Error rate gộp có thể che lỗi 100% trong cohort 1%.
 
 > [!source-fact]
-> Lukša mô tả rolling update, blue-green, canary và rollback revision trong Kubernetes. Cơ chế vẫn hữu ích, nhưng API/câu lệnh trong ấn bản 2018 phải đối chiếu tài liệu Kubernetes hiện hành trước khi dùng. *Kubernetes in Action*, Chapter 9, PDF 282–307.
+> Lukša mô tả rolling update, blue-green, canary và rollback revision trong Kubernetes. Cơ chế vẫn hữu ích, nhưng API/câu lệnh trong ấn bản 2018 phải đối chiếu tài liệu Kubernetes hiện hành trước khi dùng. *Kubernetes in Action*, Chapter 9, PDF 282-307.
 
 ## 6. Feature flag
 
@@ -141,7 +141,7 @@ Một diễn tập tối thiểu:
 8. kiểm tra request đang bay, queue và dữ liệu viết trong khoảng lỗi;
 9. lưu bằng chứng và action item.
 
-Chỉ đo “kubectl báo rollout complete” là thiếu. Recovery hoàn tất khi user-facing signal và data invariant phục hồi.
+Chỉ đo kubectl báo rollout complete là thiếu. Recovery hoàn tất khi user-facing signal và data invariant phục hồi.
 
 ## 9. Ba tình huống lựa chọn
 
@@ -189,7 +189,7 @@ Mỗi transition cần điều kiện vào, signal quan sát, timeout và hành 
 Readiness failure rút instance khỏi routing nhưng không nhất thiết restart. Nếu dùng một endpoint cho cả ba, database outage có thể khiến toàn fleet restart đồng loạt và làm sự cố nặng hơn.
 
 > [!source-fact]
-> Tài liệu Kubernetes hiện hành xác nhận startup probe trì hoãn liveness và readiness cho tới khi startup thành công; readiness thất bại làm Pod ngừng nhận traffic qua Service, còn liveness thất bại có thể dẫn tới restart container. Cơ chế này không biến một endpoint health-check duy nhất thành lựa chọn an toàn cho cả ba mục đích. *Kubernetes Documentation*, “Liveness, Readiness, and Startup Probes”, truy cập 2026-09-28.
+> Tài liệu Kubernetes hiện hành xác nhận startup probe trì hoãn liveness và readiness cho tới khi startup thành công; readiness thất bại làm Pod ngừng nhận traffic qua Service, còn liveness thất bại có thể dẫn tới restart container. Cơ chế này không biến một endpoint health-check duy nhất thành lựa chọn an toàn cho cả ba mục đích. *Kubernetes Documentation*, Liveness, Readiness, and Startup Probes, truy cập 2026-09-28.
 
 ## 13. Traffic, session và connection dài
 
@@ -202,7 +202,7 @@ Route switch không tức thì cho mọi workload. Cần xét:
 - DNS TTL hoặc client-side load balancing;
 - connection draining và termination grace period.
 
-Blue-green “switch ngay” chỉ đúng ở control plane. Data plane có thể coexist lâu hơn. Exit criteria phải đo connection cũ còn lại và in-flight work, không chỉ nhìn desired replica count.
+Blue-green switch ngay chỉ đúng ở control plane. Data plane có thể coexist lâu hơn. Exit criteria phải đo connection cũ còn lại và in-flight work, không chỉ nhìn desired replica count.
 
 ## 14. Rolling update và capacity envelope
 
@@ -219,7 +219,7 @@ Rolling update thất bại thường do:
 Đặt progress deadline và giữ event/reason. Không tăng deadline để che startup regression mà không đo nguyên nhân.
 
 > [!source-fact]
-> Với Deployment kiểu `RollingUpdate`, Kubernetes dùng `maxUnavailable` để giới hạn số Pod có thể không sẵn sàng và `maxSurge` để giới hạn số Pod tạo thêm. Rollback tạo một revision mới từ Pod template cũ; vì vậy nó không tự đảo dữ liệu hoặc side effect ngoài Pod template. *Kubernetes Documentation*, “Deployments”, truy cập 2026-09-28.
+> Với Deployment kiểu `RollingUpdate`, Kubernetes dùng `maxUnavailable` để giới hạn số Pod có thể không sẵn sàng và `maxSurge` để giới hạn số Pod tạo thêm. Rollback tạo một revision mới từ Pod template cũ; vì vậy nó không tự đảo dữ liệu hoặc side effect ngoài Pod template. *Kubernetes Documentation*, Deployments, truy cập 2026-09-28.
 
 ## 15. Blue-green và tài nguyên dùng chung
 
@@ -249,7 +249,7 @@ So sánh canary và control theo:
 - dependency calls và retry volume;
 - cohort composition.
 
-Threshold phải xét baseline variance. Một cảnh báo “p95 tăng 10 ms” không có ý nghĩa nếu noise thường ±30 ms. Ngược lại, business error tuyệt đối bằng 1 có thể phải dừng dù tỷ lệ nhỏ.
+Threshold phải xét baseline variance. Một cảnh báo p95 tăng 10 ms không có ý nghĩa nếu noise thường ±30 ms. Ngược lại, business error tuyệt đối bằng 1 có thể phải dừng dù tỷ lệ nhỏ.
 
 ## 17. Feature flag taxonomy và debt
 
@@ -280,7 +280,7 @@ Rollback stateless binary tương đối đơn giản nếu contract tương th�
 - external side effect;
 - user action đã diễn ra.
 
-Không thể “undo” email đã gửi hoặc thanh toán đã gọi chỉ bằng deploy image cũ. Runbook phải nói rõ phần nào rollback, phần nào compensate, phần nào roll forward và cách reconcile.
+Không thể undo email đã gửi hoặc thanh toán đã gọi chỉ bằng deploy image cũ. Runbook phải nói rõ phần nào rollback, phần nào compensate, phần nào roll forward và cách reconcile.
 
 ## 19. Automatic rollback và human stop
 
@@ -348,22 +348,22 @@ Chỉ xóa stable environment, old artifact hoặc rollback flag sau khi window 
 - Bài áp dụng: `DE-L098`.
 
 ## Reference
-1. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]] — progressive delivery, feature toggle, canary và blue-green, PDF 342–347.
-2. [[SRC-LUKSA-KUBERNETES-IN-ACTION-1E]] — Deployment, rolling update, canary và rollback, PDF 282–307.
-3. [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]] — delivery performance, continuous delivery và feedback, PDF 45–51, 74–81.
-4. [[SRC-KUBERNETES-DEPLOYMENTS]] — Deployment, rolling update, rollout status, revision và rollback; truy cập 2026-09-28.
-5. [[SRC-KUBERNETES-CONTAINER-PROBES]] — startup, readiness và liveness; truy cập 2026-09-28.
+1. [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]]: progressive delivery, feature toggle, canary và blue-green, PDF 342-347.
+2. [[SRC-LUKSA-KUBERNETES-IN-ACTION-1E]]: Deployment, rolling update, canary và rollback, PDF 282-307.
+3. [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]]: delivery performance, continuous delivery và feedback, PDF 45-51, 74-81.
+4. [[SRC-KUBERNETES-DEPLOYMENTS]]: Deployment, rolling update, rollout status, revision và rollback; truy cập 2026-09-28.
+5. [[SRC-KUBERNETES-CONTAINER-PROBES]]: startup, readiness và liveness; truy cập 2026-09-28.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 342–347 | progressive delivery, canary, blue-green và feature toggle | §§1–9, 15–17 | Đã trình bày lựa chọn, traffic shift và flag lifecycle |
-| [[SRC-LUKSA-KUBERNETES-IN-ACTION-1E]], pp. 282–307 | Deployment, rolling update, readiness, canary và rollback | §§3, 11–14, 18–21 | Đã trình bày state machine, capacity và rollback mechanics |
-| [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]], pp. 45–51, 74–81 | delivery feedback và khả năng phục hồi thay đổi | §§2, 8–9, 19–21 | Đã trình bày metric gate, drill và stabilization |
-| [[SRC-KUBERNETES-DEPLOYMENTS]], truy cập 2026-09-28 | `RollingUpdate`, `maxUnavailable`, `maxSurge`, revision và giới hạn của rollback | §§11, 14, 18–21 | Đã đối chiếu tài liệu chính thức hiện hành |
-| [[SRC-KUBERNETES-CONTAINER-PROBES]], truy cập 2026-09-28 | semantics của startup, readiness và liveness | §§11–12, 19–21 | Đã đối chiếu tài liệu chính thức hiện hành |
-| Tổng hợp bài DE-L098 | strategy matrix, stateful rollback inventory, automatic decision levels và drill SLO | §§2, 9, 16, 18–21 | Đã gắn `synthesis`; threshold phải được hiệu chỉnh theo SLO/traffic |
+| [[SRC-NEWMAN-BUILDING-MICROSERVICES-2E]], pp. 342-347 | progressive delivery, canary, blue-green và feature toggle | §§1-9, 15-17 | Đã trình bày lựa chọn, traffic shift và flag lifecycle |
+| [[SRC-LUKSA-KUBERNETES-IN-ACTION-1E]], pp. 282-307 | Deployment, rolling update, readiness, canary và rollback | §§3, 11-14, 18-21 | Đã trình bày state machine, capacity và rollback mechanics |
+| [[SRC-FORSGREN-HUMBLE-KIM-ACCELERATE-1E]], pp. 45-51, 74-81 | delivery feedback và khả năng phục hồi thay đổi | §§2, 8-9, 19-21 | Đã trình bày metric gate, drill và stabilization |
+| [[SRC-KUBERNETES-DEPLOYMENTS]], truy cập 2026-09-28 | `RollingUpdate`, `maxUnavailable`, `maxSurge`, revision và giới hạn của rollback | §§11, 14, 18-21 | Đã đối chiếu tài liệu chính thức hiện hành |
+| [[SRC-KUBERNETES-CONTAINER-PROBES]], truy cập 2026-09-28 | semantics của startup, readiness và liveness | §§11-12, 19-21 | Đã đối chiếu tài liệu chính thức hiện hành |
+| Tổng hợp bài DE-L098 | strategy matrix, stateful rollback inventory, automatic decision levels và drill SLO | §§2, 9, 16, 18-21 | Đã gắn `synthesis`; threshold phải được hiệu chỉnh theo SLO/traffic |
 
 Sách Kubernetes năm 2018 được dùng cho diễn giải nền; hai hồ sơ tài liệu chính thức chốt lại semantics hiện hành tại ngày kiểm chứng. Lab vẫn phải ghim phiên bản cluster. Note không coi rollback image là đảo ngược dữ liệu hoặc external side effect.
 
@@ -375,7 +375,7 @@ Sách Kubernetes năm 2018 được dùng cho diễn giải nền; hai hồ sơ 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.software-engineering.deployment-strategies-and-rollback`
+## Execution capsule: kiểm chứng `wiki.software-engineering.deployment-strategies-and-rollback`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.software-engineering.deployment-strategies-and-rollback`, sơ đồ, ví dụ và artifact về **Chiến lược triển khai và rollback** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

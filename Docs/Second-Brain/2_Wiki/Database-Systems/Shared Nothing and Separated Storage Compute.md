@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: So sánh shared-nothing với separated storage/compute bằng failure, scaling, cache và metadata boundaries nào để tránh benchmark nóng-lạnh sai?
 source_ids:
   - src.paper.snowflake-elastic-data-warehouse
@@ -235,7 +235,7 @@ Mỗi mệnh đề về latency, scaling, cache, concurrency hoặc cost cần c
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.olap.shared-nothing-separated-storage-compute`
+## Execution capsule: kiểm chứng `wiki.olap.shared-nothing-separated-storage-compute`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.olap.shared-nothing-separated-storage-compute`, sơ đồ, ví dụ và artifact về **Shared Nothing and Separated Storage Compute** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -257,7 +257,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “So sánh shared-nothing với separated storage/compute bằng failure, scaling, cache và metadata boundaries nào để tránh benchmark nóng-lạnh sai?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: So sánh shared-nothing với separated storage/compute bằng failure, scaling, cache và metadata boundaries nào để tránh benchmark nóng-lạnh sai? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Shared Nothing and Separated Storage Compute** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

@@ -10,7 +10,7 @@ language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
 review_after: 2027-03-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Thiết kế metric, log, trace và health signal thế nào để chẩn đoán một API bằng bằng chứng mà không phải đọc mã hoặc suy đoán từ CPU trung bình?
 source_ids:
   - src.book.titmus-cloud-native-go.1e
@@ -35,10 +35,10 @@ relationships:
 
 Monitoring theo dõi câu hỏi đã biết bằng signal và threshold định trước. Observability là khả năng suy ra trạng thái bên trong từ output quan sát được, kể cả với câu hỏi chưa dự đoán chính xác. Hai khái niệm bổ sung nhau.
 
-Cài Prometheus, log collector và tracing SDK chưa tự tạo observability. Nếu route label sai, trace context đứt, log không có correlation hoặc sampling bỏ đúng failure hiếm, tool vẫn không trả lời được “vì sao”.
+Cài Prometheus, log collector và tracing SDK chưa tự tạo observability. Nếu route label sai, trace context đứt, log không có correlation hoặc sampling bỏ đúng failure hiếm, tool vẫn không trả lời được vì sao.
 
 > [!source-fact]
-> *Cloud Native Go* định nghĩa observability như system property và phân biệt nó với việc đơn thuần cài công cụ; Chapter 11, PDF 365–373.
+> *Cloud Native Go* định nghĩa observability như system property và phân biệt nó với việc đơn thuần cài công cụ; Chapter 11, PDF 365-373.
 
 ## 2. Bốn signal và vai trò
 
@@ -80,7 +80,7 @@ Cần nói rõ:
 - streaming request hoàn tất khi nào;
 - degraded response có được coi là success đầy đủ không.
 
-Nếu không, hai dashboard cùng tên “error rate” có thể cho kết luận trái nhau.
+Nếu không, hai dashboard cùng tên error rate có thể cho kết luận trái nhau.
 
 ## 5. Duration phải là distribution
 
@@ -89,7 +89,7 @@ Average che tail. Chín request 10 ms và một request 1.000 ms có trung bình
 Prometheus classic histogram đếm observation trong cumulative buckets và cho phép server-side aggregation; summary tính quantile ở client và thường không aggregate quantile giữa instance một cách hợp lệ. Native histogram có model khác và cần kiểm version/support.
 
 > [!source-fact]
-> Prometheus “Histograms and summaries” giải thích histogram bucket, summary quantile, lỗi khi lấy trung bình quantile và trade-off aggregation/accuracy; tài liệu cũng cảnh báo các ví dụ version cũ cần kiểm theo bản đang dùng.
+> Prometheus Histograms and summaries giải thích histogram bucket, summary quantile, lỗi khi lấy trung bình quantile và trade-off aggregation/accuracy; tài liệu cũng cảnh báo các ví dụ version cũ cần kiểm theo bản đang dùng.
 
 ## 6. Bucket là một quyết định SLO
 
@@ -148,7 +148,7 @@ Attribute hữu ích:
 - retry attempt và circuit-breaker outcome;
 - queue wait/pool wait nếu instrument được.
 
-Span quá nhỏ theo mỗi function tạo noise và overhead. Span quá rộng chỉ ghi “request 2 giây” nhưng không giải thích chặng nào.
+Span quá nhỏ theo mỗi function tạo noise và overhead. Span quá rộng chỉ ghi request 2 giây nhưng không giải thích chặng nào.
 
 ## 11. Context propagation qua ba chặng
 
@@ -214,7 +214,7 @@ Kiểm shared pool/worker saturation, queue age và L107 bulkhead metrics. Depen
 
 Không biến liveness thành deep dependency check; database outage có thể khiến mọi pod restart và làm sự cố nặng hơn. Readiness có thể phụ thuộc database nếu instance thật sự không phục vụ được critical API khi DB mất, nhưng cần tránh mọi replica đồng loạt rời load balancer gây blackout hoặc retry storm.
 
-Yêu cầu roadmap “readiness đổi khi mất database” phải được cài theo contract cụ thể: endpoint nào cần DB, degraded mode có tồn tại không, threshold/hysteresis ra sao, và external traffic sẽ đi đâu. Không có một health policy đúng cho mọi service.
+Yêu cầu roadmap readiness đổi khi mất database phải được cài theo contract cụ thể: endpoint nào cần DB, degraded mode có tồn tại không, threshold/hysteresis ra sao, và external traffic sẽ đi đâu. Không có một health policy đúng cho mọi service.
 
 ## 17. Readiness không thay dependency metrics
 
@@ -282,21 +282,21 @@ Evidence pack gồm:
 - Prometheus classic/native histogram và OpenTelemetry SDK thay đổi theo version; phải ghim tài liệu khi triển khai.
 - Trace sampling không tạo exhaustive audit; security audit cần pipeline và retention riêng.
 - Readiness semantics phụ thuộc service contract và platform routing.
-- “Trả lời không đọc code” áp cho câu hỏi đã instrument đủ; không hứa telemetry biết mọi internal state.
+- Trả lời không đọc code áp cho câu hỏi đã instrument đủ; không hứa telemetry biết mọi internal state.
 
 ## Reference
-1. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]] — observability, instrumentation, tracing, metrics và logging; PDF 365–373, 391–393, 409–412.
-2. [[SRC-OPENTELEMETRY-SIGNALS]] — traces, metrics, logs, baggage và khái niệm signal; truy cập 2026-09-28.
-3. [[SRC-PROMETHEUS-HISTOGRAMS]] — histogram/summary, bucket, quantile, aggregation và sai lầm lấy trung bình quantile; truy cập 2026-09-28.
+1. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]]: observability, instrumentation, tracing, metrics và logging; PDF 365-373, 391-393, 409-412.
+2. [[SRC-OPENTELEMETRY-SIGNALS]]: traces, metrics, logs, baggage và khái niệm signal; truy cập 2026-09-28.
+3. [[SRC-PROMETHEUS-HISTOGRAMS]]: histogram/summary, bucket, quantile, aggregation và sai lầm lấy trung bình quantile; truy cập 2026-09-28.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], PDF 365–373, 391–393, 409–412 | observability property, traces, metrics và logs | §§1–2, 8–12 | Đã trình bày cơ chế, không nâng tool thành guarantee |
-| [[SRC-OPENTELEMETRY-SIGNALS]] | signal taxonomy và trace context concepts | §§2, 9–13 | Đã dùng theo tài liệu dự án chính thức |
-| [[SRC-PROMETHEUS-HISTOGRAMS]] | distribution, quantile, histogram/summary trade-off | §§5–7 | Đã giữ cảnh báo aggregation và version |
-| Tổng hợp DE-L108 | RED contract, denominator, dashboard, readiness policy, test harness | §§3–4, 14–20 | Đã ghi thành synthesis và evidence có thể kiểm |
+| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]], PDF 365-373, 391-393, 409-412 | observability property, traces, metrics và logs | §§1-2, 8-12 | Đã trình bày cơ chế, không nâng tool thành guarantee |
+| [[SRC-OPENTELEMETRY-SIGNALS]] | signal taxonomy và trace context concepts | §§2, 9-13 | Đã dùng theo tài liệu dự án chính thức |
+| [[SRC-PROMETHEUS-HISTOGRAMS]] | distribution, quantile, histogram/summary trade-off | §§5-7 | Đã giữ cảnh báo aggregation và version |
+| Tổng hợp DE-L108 | RED contract, denominator, dashboard, readiness policy, test harness | §§3-4, 14-20 | Đã ghi thành synthesis và evidence có thể kiểm |
 
 Phạm vi đọc bao phủ metric/log/trace, RED, histogram, propagation, sampling, correlation, health signal và fault-based diagnosis. SLO/error-budget governance đầy đủ được dành cho module vận hành sau.
 
@@ -310,7 +310,7 @@ Phạm vi đọc bao phủ metric/log/trace, RED, histogram, propagation, sampli
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.backend.api-observability-red-metrics-tracing`
+## Execution capsule: kiểm chứng `wiki.backend.api-observability-red-metrics-tracing`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.backend.api-observability-red-metrics-tracing`, sơ đồ, ví dụ và artifact về **Quan sát API bằng RED metrics và distributed tracing** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

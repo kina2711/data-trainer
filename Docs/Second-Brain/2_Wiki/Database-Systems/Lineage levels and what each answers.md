@@ -39,7 +39,7 @@ Nối input/output datasets, trả lời upstream/downstream và blast radius s�
 
 ## 3. Job level
 
-Đặt transformation/process giữa datasets, hỗ trợ ownership và operational diagnosis. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Lineage levels and what each answers`, câu hỏi thực dụng là: Entity, dataset, job, run và field lineage trả lời những câu hỏi khác nhau nào và không được suy vượt cấp ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Đặt transformation/process giữa datasets, hỗ trợ ownership và operational diagnosis. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Lineage levels and what each answers`, câu hỏi thực dụng là: Entity, dataset, job, run và field lineage trả lời những câu hỏi khác nhau nào và không được suy vượt cấp ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Run level
 
@@ -224,7 +224,7 @@ Với `wiki.metadata.lineage-levels`, command thành công không tự chứng m
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.metadata.lineage-levels`
+## Execution capsule: kiểm chứng `wiki.metadata.lineage-levels`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.metadata.lineage-levels`, sơ đồ, ví dụ và artifact về **Lineage levels and what each answers** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

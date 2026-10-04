@@ -37,7 +37,7 @@ Images depend on operation and replica identity/source configuration; null may m
 
 ## 3. Operation code
 
-Create, update, delete, read snapshot, truncate and message events carry different state transitions. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `The event envelope - before, after, op and source metadata`, câu hỏi thực dụng là: CDC envelope fields before, after, op và source metadata phải được đọc như typed evidence thay vì JSON shape cố định ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Create, update, delete, read snapshot, truncate and message events carry different state transitions. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `The event envelope - before, after, op and source metadata`, câu hỏi thực dụng là: CDC envelope fields before, after, op và source metadata phải được đọc như typed evidence thay vì JSON shape cố định ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Source metadata
 
@@ -218,7 +218,7 @@ Với `wiki.cdc.event-envelope`, command thành công không tự chứng minh d
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.cdc.event-envelope`
+## Execution capsule: kiểm chứng `wiki.cdc.event-envelope`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.cdc.event-envelope`, sơ đồ, ví dụ và artifact về **The event envelope - before, after, op and source metadata** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

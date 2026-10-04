@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Định nghĩa và đo read, write, space amplification thế nào để so storage engines mà không nhầm throughput, cache và background work?
 source_ids:
   - src.book.petrov-database-internals.1e
@@ -34,11 +34,11 @@ relationships:
 
 Hai engine có cùng throughput nhưng tạo lượng I/O, dung lượng và background debt rất khác. Một engine có thể nhận ghi nhanh bằng cách dồn compaction về sau; benchmark kết thúc trước khi debt được xử lý sẽ báo thành tích không bền vững. Engine khác có thể dùng nhiều cache để che read work.
 
-Amplification biến câu “nhanh” thành câu hỏi về lượng công việc: một read logic chạm bao nhiêu blocks/sources; một byte dữ liệu logic làm bao nhiêu bytes được ghi; một byte live data chiếm bao nhiêu bytes physical. Ba tỷ số không thay latency/throughput mà giải thích chúng.
+Amplification biến câu nhanh thành câu hỏi về lượng công việc: một read logic chạm bao nhiêu blocks/sources; một byte dữ liệu logic làm bao nhiêu bytes được ghi; một byte live data chiếm bao nhiêu bytes physical. Ba tỷ số không thay latency/throughput mà giải thích chúng.
 
 ## 2. Phải khóa đơn vị và ranh giới
 
-Mọi tỷ số cần numerator, denominator, thời gian và layer. “Write bytes” có thể là bytes engine gửi filesystem, bytes block device ghi, NAND bytes sau FTL hoặc cả replicated bytes. “Logical bytes” có thể là request payload, encoded row, live value size hoặc database growth. Trộn layer làm số vô nghĩa.
+Mọi tỷ số cần numerator, denominator, thời gian và layer. Write bytes có thể là bytes engine gửi filesystem, bytes block device ghi, NAND bytes sau FTL hoặc cả replicated bytes. Logical bytes có thể là request payload, encoded row, live value size hoặc database growth. Trộn layer làm số vô nghĩa.
 
 Một báo cáo tối thiểu ghi: engine/version; cấu hình durability/compression; logical operation definition; physical counter source; measurement window; warm-up; cache regime; dataset; key/value distribution; concurrency; compaction state và storage stack.
 
@@ -58,7 +58,7 @@ B-tree point lookup thường đi qua số page xấp xỉ độ sâu rồi truy
 
 LSM point lookup có thể kiểm memtable, L0 và candidates ở các levels. Range metadata và Bloom filter loại nhiều tệp; block cache loại device I/O. Negative lookup nhạy với false positives. Range scan cần merge iterators và có thể đọc các phiên bản bị shadow trước khi trả ít rows.
 
-Không kết luận LSM “đọc N lần vì có N levels” nếu chưa tính non-overlap, filter và cache. Cũng không gọi B-tree “một lần đọc” nếu index/heap/visibility cần nhiều pages.
+Không kết luận LSM đọc N lần vì có N levels nếu chưa tính non-overlap, filter và cache. Cũng không gọi B-tree một lần đọc nếu index/heap/visibility cần nhiều pages.
 
 ## 5. Write amplification
 
@@ -148,7 +148,7 @@ Lựa chọn engine phải dẫn từ workload: ví dụ point-read SLO, ingest 
 
 - Throughput cao không chứng minh amplification thấp.
 - Sequential logical writes không chứng minh NAND writes thấp.
-- Compaction đang chạy không làm số “vô hiệu”; nó là state phải kiểm soát và báo.
+- Compaction đang chạy không làm số vô hiệu; nó là state phải kiểm soát và báo.
 - Cache hit cao không loại bỏ component probes/CPU.
 - Directory size ngay sau load không đại diện steady state.
 - Tỷ số thấp hơn không có nghĩa latency thấp hơn nếu queueing/CPU khác.
@@ -172,18 +172,18 @@ Lựa chọn engine phải dẫn từ workload: ví dụ point-read SLO, ingest 
 - Lab và lựa chọn engine thuộc `after-note.md`, không được suy từ ví dụ sách.
 
 ## Reference
-1. [[SRC-PETROV-DATABASE-INTERNALS-1E]] — nguồn amplification trong B-tree/LSM, compaction và log stacking.
-2. [[SRC-KLEPPMANN-DDIA-1E]] — B-tree/LSM write/read trade-off và compaction debt.
-3. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — LSM variants và write-amplification model.
+1. [[SRC-PETROV-DATABASE-INTERNALS-1E]]: nguồn amplification trong B-tree/LSM, compaction và log stacking.
+2. [[SRC-KLEPPMANN-DDIA-1E]]: B-tree/LSM write/read trade-off và compaction debt.
+3. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: LSM variants và write-amplification model.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-PETROV-DATABASE-INTERNALS-1E]], PDF 167–210 | RA/WA/SA, RUM, compaction, log stacking | §§3–7, 11–14 | Đã tách layer và debt |
-| [[SRC-KLEPPMANN-DDIA-1E]], PDF 94–106 | read/write comparison, compaction contention | §§4–5, 8–11 | Đã loại rule tuyệt đối |
-| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]], PDF 2982–3002 | write cost, LSM variants và lookup trade-off | §§4–7, 15 | Đã giữ assumptions |
-| DE-L136 contract | bảng 3×2 và lựa chọn theo hai workload | §§12–16 | Chưa chạy, chuyển after-note |
+| [[SRC-PETROV-DATABASE-INTERNALS-1E]], PDF 167-210 | RA/WA/SA, RUM, compaction, log stacking | §§3-7, 11-14 | Đã tách layer và debt |
+| [[SRC-KLEPPMANN-DDIA-1E]], PDF 94-106 | read/write comparison, compaction contention | §§4-5, 8-11 | Đã loại rule tuyệt đối |
+| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]], PDF 2982-3002 | write cost, LSM variants và lookup trade-off | §§4-7, 15 | Đã giữ assumptions |
+| DE-L136 contract | bảng 3×2 và lựa chọn theo hai workload | §§12-16 | Chưa chạy, chuyển after-note |
 
 ## Key takeaways
 - Amplification là tỷ số công việc vật lý trên công việc logic; phải ghi layer và đơn vị.
@@ -194,7 +194,7 @@ Lựa chọn engine phải dẫn từ workload: ví dụ point-read SLO, ingest 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.read-write-space-amplification`
+## Execution capsule: kiểm chứng `wiki.database.read-write-space-amplification`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.read-write-space-amplification`, sơ đồ, ví dụ và artifact về **Khuếch đại đọc, ghi và dung lượng** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

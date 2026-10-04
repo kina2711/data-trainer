@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Sáu mệnh đề và thứ tự thực thi logic `FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY`. Hệ quả trực tiếp của thứ tự này: bí danh cột dùng được trong `ORDER BY` nhưng không dùng được trong `WHERE`. Toán tử so sánh, `BETWEEN`, `IN`, `LIKE`. `ORDER BY`, `LIMIT`, `DISTINCT`. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L018 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **SELECT, WHERE and logical execution order**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Dự đoán số dòng trả về của một truy vấn lọc trước khi chạy, và giải thích sai lệch giữa dự đoán và kết quả bằng thứ tự thực thi logic. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Sáu mệnh đề và thứ tự thực thi logic `FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY`. Hệ quả trực tiếp của thứ tự này: bí danh cột dùng được trong `ORDER BY` nhưng không dùng được trong `WHERE`. Toán tử so sánh, `BETWEEN`, `IN`, `LIKE`. `ORDER BY`, `LIMIT`, `DISTINCT`.
 
@@ -44,7 +44,7 @@ Cơ chế của `select-where-and-logical-execution-order` được kiểm qua n
 
 Lỗi cần loại trừ trong bài này là: Dùng bí danh cột trong `WHERE` · dùng `DISTINCT` che nhân bản dòng thay vì truy nguyên · bỏ `LIMIT` khi khảo sát bảng lớn. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Dùng bí danh cột trong `WHERE`
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L018: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “≥ 16/20 dự đoán số dòng khớp kết quả, và mọi dự đoán sai đều có giải thích nguyên nhân.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L018: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành ≥ 16/20 dự đoán số dòng khớp kết quả, và mọi dự đoán sai đều có giải thích nguyên nhân.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: SELECT, WHERE and logical execution order
+## Worked Case: SELECT, WHERE and logical execution order
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: 20 truy vấn trên `DS1`. Với mỗi truy vấn, ghi dự đoán số dòng trả về trước rồi mới chạy. Với dự đoán sai, viết một câu giải thích nguyên nhân.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `SELECT, WHERE and logical execution order`, learner 
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L018 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `SELECT, WHERE and logical execution order` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L018 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Sáu mệnh đề và thứ tự thực thi logic `FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY`. Hệ quả trực tiếp của thứ tự này: bí danh cột dùng được trong `ORDER BY` nhưng không dùng được trong `WHERE`. Toán tử so sánh, `BETWEEN`, `IN`, `LIKE`. `ORDER BY`, `LIMIT`, `DISTINCT`.
+**Mệnh đề của probe 1: `population`.** Sáu mệnh đề và thứ tự thực thi logic `FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY`. Hệ quả trực tiếp của thứ tự này: bí danh cột dùng được trong `ORDER BY` nhưng không dùng được trong `WHERE`. Toán tử so sánh, `BETWEEN`, `IN`, `LIKE`. `ORDER BY`, `LIMIT`, `DISTINCT`.
 
 **Thiết kế.** Probe 1 của L018 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L018 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Dự đoán số dòng trả về của một truy vấn lọc trước khi chạy, và giải thích sai lệch giữa dự đoán và kết quả bằng thứ tự thực thi logic.
+**Mệnh đề của probe 2: `grain`.** Dự đoán số dòng trả về của một truy vấn lọc trước khi chạy, và giải thích sai lệch giữa dự đoán và kết quả bằng thứ tự thực thi logic.
 
 **Thiết kế.** Probe 2 của L018 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L018 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Dùng bí danh cột trong `WHERE` · dùng `DISTINCT` che nhân bản dòng thay vì truy nguyên · bỏ `LIMIT` khi khảo sát bảng lớn.
+**Mệnh đề của probe 3: `identity`.** Dùng bí danh cột trong `WHERE` · dùng `DISTINCT` che nhân bản dòng thay vì truy nguyên · bỏ `LIMIT` khi khảo sát bảng lớn.
 
 **Thiết kế.** Probe 3 của L018 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L018 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** ≥ 16/20 dự đoán số dòng khớp kết quả, và mọi dự đoán sai đều có giải thích nguyên nhân.
+**Mệnh đề của probe 4: `time cutoff`.** ≥ 16/20 dự đoán số dòng khớp kết quả, và mọi dự đoán sai đều có giải thích nguyên nhân.
 
 **Thiết kế.** Probe 4 của L018 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L018 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Sáu mệnh đề và thứ tự thực thi logic `FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY`. Hệ quả trực tiếp của thứ tự này: bí danh cột dùng được trong `ORDER BY` nhưng không dùng được trong `WHERE`. Toán tử so sánh, `BETWEEN`, `IN`, `LIKE`. `ORDER BY`, `LIMIT`, `DISTINCT`.
+**Mệnh đề của probe 5: `missing versus zero`.** Sáu mệnh đề và thứ tự thực thi logic `FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY`. Hệ quả trực tiếp của thứ tự này: bí danh cột dùng được trong `ORDER BY` nhưng không dùng được trong `WHERE`. Toán tử so sánh, `BETWEEN`, `IN`, `LIKE`. `ORDER BY`, `LIMIT`, `DISTINCT`.
 
 **Thiết kế.** Probe 5 của L018 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L018 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Dự đoán số dòng trả về của một truy vấn lọc trước khi chạy, và giải thích sai lệch giữa dự đoán và kết quả bằng thứ tự thực thi logic.
+**Mệnh đề của probe 6: `duplicate`.** Dự đoán số dòng trả về của một truy vấn lọc trước khi chạy, và giải thích sai lệch giữa dự đoán và kết quả bằng thứ tự thực thi logic.
 
 **Thiết kế.** Probe 6 của L018 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L018 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Dùng bí danh cột trong `WHERE` · dùng `DISTINCT` che nhân bản dòng thay vì truy nguyên · bỏ `LIMIT` khi khảo sát bảng lớn.
+**Mệnh đề của probe 7: `join fan-out`.** Dùng bí danh cột trong `WHERE` · dùng `DISTINCT` che nhân bản dòng thay vì truy nguyên · bỏ `LIMIT` khi khảo sát bảng lớn.
 
 **Thiết kế.** Probe 7 của L018 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L018 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** ≥ 16/20 dự đoán số dòng khớp kết quả, và mọi dự đoán sai đều có giải thích nguyên nhân.
+**Mệnh đề của probe 8: `changed definition`.** ≥ 16/20 dự đoán số dòng khớp kết quả, và mọi dự đoán sai đều có giải thích nguyên nhân.
 
 **Thiết kế.** Probe 8 của L018 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L018 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Sáu mệnh đề và thứ tự thực thi logic `FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY`. Hệ quả trực tiếp của thứ tự này: bí danh cột dùng được trong `ORDER BY` nhưng không dùng được trong `WHERE`. Toán tử so sánh, `BETWEEN`, `IN`, `LIKE`. `ORDER BY`, `LIMIT`, `DISTINCT`.
+**Mệnh đề của probe 9: `independent oracle`.** Sáu mệnh đề và thứ tự thực thi logic `FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY`. Hệ quả trực tiếp của thứ tự này: bí danh cột dùng được trong `ORDER BY` nhưng không dùng được trong `WHERE`. Toán tử so sánh, `BETWEEN`, `IN`, `LIKE`. `ORDER BY`, `LIMIT`, `DISTINCT`.
 
 **Thiết kế.** Probe 9 của L018 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L018 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Dự đoán số dòng trả về của một truy vấn lọc trước khi chạy, và giải thích sai lệch giữa dự đoán và kết quả bằng thứ tự thực thi logic.
+**Mệnh đề của probe 10: `replay`.** Dự đoán số dòng trả về của một truy vấn lọc trước khi chạy, và giải thích sai lệch giữa dự đoán và kết quả bằng thứ tự thực thi logic.
 
 **Thiết kế.** Probe 10 của L018 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L018 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Dùng bí danh cột trong `WHERE` · dùng `DISTINCT` che nhân bản dòng thay vì truy nguyên · bỏ `LIMIT` khi khảo sát bảng lớn.
+**Mệnh đề của probe 11: `fresh snapshot`.** Dùng bí danh cột trong `WHERE` · dùng `DISTINCT` che nhân bản dòng thay vì truy nguyên · bỏ `LIMIT` khi khảo sát bảng lớn.
 
 **Thiết kế.** Probe 11 của L018 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L018 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** ≥ 16/20 dự đoán số dòng khớp kết quả, và mọi dự đoán sai đều có giải thích nguyên nhân.
+**Mệnh đề của probe 12: `novel scenario`.** ≥ 16/20 dự đoán số dòng khớp kết quả, và mọi dự đoán sai đều có giải thích nguyên nhân.
 
 **Thiết kế.** Probe 12 của L018 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Dùng bí danh cột trong `WHERE` · dùng `DISTINCT` che nhân bản dòng tha
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql`
-2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e`
+1. [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql`
+2. [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-HCMUT-SQL]] — `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới SELECT, WHERE and logical execution order | các mục cơ chế, case và probe | Đã phủ | ngoài objective L018 |
-| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]] — `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới SELECT, WHERE and logical execution order | các mục cơ chế, case và probe | Đã phủ | ngoài objective L018 |
+| [[SRC-HCMUT-SQL]]: `src.course.hcmut-sql` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới SELECT, WHERE and logical execution order | các mục cơ chế, case và probe | Đã phủ | ngoài objective L018 |
+| [[SRC-SILBERSCHATZ-DATABASE-SYSTEM-CONCEPTS-7E]]: `src.book.silberschatz-database-system-concepts.7e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới SELECT, WHERE and logical execution order | các mục cơ chế, case và probe | Đã phủ | ngoài objective L018 |
 
 ## Key takeaways
 - Dự đoán số dòng trả về của một truy vấn lọc trước khi chạy, và giải thích sai lệch giữa dự đoán và kết quả bằng thứ tự thực thi logic.
@@ -226,7 +226,7 @@ Dùng bí danh cột trong `WHERE` · dùng `DISTINCT` che nhân bản dòng tha
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.select-where-and-logical-execution-order`
+## Execution capsule: kiểm chứng `wiki.da.select-where-and-logical-execution-order`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.select-where-and-logical-execution-order`, sơ đồ, ví dụ và artifact về **SELECT, WHERE and logical execution order** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

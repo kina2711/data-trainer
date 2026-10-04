@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Bốn loại metric khác nhau ở dependency, aggregation và time behavior nào, và phép kiểm nào phát hiện một implementation trông hợp lý nhưng sai khi roll up?
 source_ids:
   - src.web.dbt-semantic-models
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Simple metric
 
-Simple metric áp một aggregation lên base expression ở declared grain: sum revenue, count orders, count-distinct customers, average duration. “Simple” chỉ nói dependency trực tiếp, không nói dễ gộp. `sum` của additive amount có thể roll up; average cần count/weight; count-distinct phải recompute/merge set or sketch; percentile không roll up từ percentile con. Contract vẫn cần population, time và dimensions được phép.
+Simple metric áp một aggregation lên base expression ở declared grain: sum revenue, count orders, count-distinct customers, average duration. Simple chỉ nói dependency trực tiếp, không nói dễ gộp. `sum` của additive amount có thể roll up; average cần count/weight; count-distinct phải recompute/merge set or sketch; percentile không roll up từ percentile con. Contract vẫn cần population, time và dimensions được phép.
 
 ## 2. Ratio metric
 
@@ -205,7 +205,7 @@ Các mệnh đề dưới đây phải được kiểm bằng fixture, invariant
 - Chưa chạy lab hai người, semantic graph planner, ratio rollup, aggregation rejection hoặc calendar fixture; note mô tả protocol cần thực thi.
 - dbt/MetricFlow là ví dụ sản phẩm được kiểm ngày 2026-10-01; syntax và availability có thể đổi theo version/tier.
 - PostgreSQL documentation mô tả SQL mechanics, không tự cung cấp business semantics hay metric governance.
-- Kimball–Ross hỗ trợ grain, additivity và calendar modeling; semantic-layer enforcement là phần tổng hợp có đối chiếu tài liệu hiện hành.
+- Kimball-Ross hỗ trợ grain, additivity và calendar modeling; semantic-layer enforcement là phần tổng hợp có đối chiếu tài liệu hiện hành.
 - Owner chưa phê duyệt meaning nên note giữ trạng thái `review`.
 
 ## Reference
@@ -230,7 +230,7 @@ Các mệnh đề dưới đây phải được kiểm bằng fixture, invariant
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.metric-types`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.metric-types`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.metric-types`, sơ đồ, ví dụ và artifact về **Metric Types - Simple, Ratio, Derived and Cumulative** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

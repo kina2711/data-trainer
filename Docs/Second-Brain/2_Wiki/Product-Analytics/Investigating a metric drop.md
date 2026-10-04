@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Quy trình điều tra bảy bước. Bước 0 là kiểm chứng dữ liệu đúng trước khi phân tích: sự kiện hỏng, quy trình lỗi, định nghĩa chỉ số vừa đổi. Cắt lát theo chiều: thời gian, nền tảng, phiên bản, địa lý, phân khúc, kênh. Kỹ thuật nhị phân trên chiều thời gian để định vị thời điểm bắt đầu. Phân biệt thay đổi thành phần với thay đổi hành vi, và cách kiểm tra bằng chuẩn hoá thành phần. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L061 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Investigating a metric drop**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Nhận một chỉ số sụt giảm và định vị nguyên nhân kèm bằng chứng cho từng bước, bắt đầu bằng phép kiểm chứng dữ liệu. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Quy trình điều tra bảy bước. Bước 0 là kiểm chứng dữ liệu đúng trước khi phân tích: sự kiện hỏng, quy trình lỗi, định nghĩa chỉ số vừa đổi. Cắt lát theo chiều: thời gian, nền tảng, phiên bản, địa lý, phân khúc, kênh. Kỹ thuật nhị phân trên chiều thời gian để định vị thời điểm bắt đầu. Phân biệt thay đổi thành phần với thay đổi hành vi, và cách kiểm tra bằng chuẩn hoá thành phần.
 
@@ -44,7 +44,7 @@ Cơ chế của `investigating-a-metric-drop` được kiểm qua năm lớp: in
 
 Lỗi cần loại trừ trong bài này là: Bắt đầu phân tích trước khi xác nhận dữ liệu đúng · dừng ở chiều đầu tiên cho kết quả · kết luận thay đổi hành vi khi thực chất là thay đổi thành phần. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Bắt đầu phân tích trước 
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L061: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Báo cáo định vị đúng bất thường ở giao hai chiều, mỗi bước có bằng chứng, và bước 0 được thực hiện trước bước 1. Đây là exit criterion của Module 7.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L061: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Báo cáo định vị đúng bất thường ở giao hai chiều, mỗi bước có bằng chứng, và bước 0 được thực hiện trước bước 1. Đây là exit criterion của Module 7.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Investigating a metric drop
+## Worked Case: Investigating a metric drop
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: `DS3` chứa một bất thường chỉ lộ ra ở giao nền tảng × phiên bản ứng dụng. Nộp báo cáo điều tra có bằng chứng từng bước.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Investigating a metric drop`, learner ghi expected r
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L061 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Investigating a metric drop` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L061 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Quy trình điều tra bảy bước. Bước 0 là kiểm chứng dữ liệu đúng trước khi phân tích: sự kiện hỏng, quy trình lỗi, định nghĩa chỉ số vừa đổi. Cắt lát theo chiều: thời gian, nền tảng, phiên bản, địa lý, phân khúc, kênh. Kỹ thuật nhị phân trên chiều thời gian để định vị thời điểm bắt đầu. Phân biệt thay đổi thành phần với thay đổi hành vi, và cách kiểm tra bằng chuẩn hoá thành phần.
+**Mệnh đề của probe 1: `population`.** Quy trình điều tra bảy bước. Bước 0 là kiểm chứng dữ liệu đúng trước khi phân tích: sự kiện hỏng, quy trình lỗi, định nghĩa chỉ số vừa đổi. Cắt lát theo chiều: thời gian, nền tảng, phiên bản, địa lý, phân khúc, kênh. Kỹ thuật nhị phân trên chiều thời gian để định vị thời điểm bắt đầu. Phân biệt thay đổi thành phần với thay đổi hành vi, và cách kiểm tra bằng chuẩn hoá thành phần.
 
 **Thiết kế.** Probe 1 của L061 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L061 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Nhận một chỉ số sụt giảm và định vị nguyên nhân kèm bằng chứng cho từng bước, bắt đầu bằng phép kiểm chứng dữ liệu.
+**Mệnh đề của probe 2: `grain`.** Nhận một chỉ số sụt giảm và định vị nguyên nhân kèm bằng chứng cho từng bước, bắt đầu bằng phép kiểm chứng dữ liệu.
 
 **Thiết kế.** Probe 2 của L061 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L061 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Bắt đầu phân tích trước khi xác nhận dữ liệu đúng · dừng ở chiều đầu tiên cho kết quả · kết luận thay đổi hành vi khi thực chất là thay đổi thành phần.
+**Mệnh đề của probe 3: `identity`.** Bắt đầu phân tích trước khi xác nhận dữ liệu đúng · dừng ở chiều đầu tiên cho kết quả · kết luận thay đổi hành vi khi thực chất là thay đổi thành phần.
 
 **Thiết kế.** Probe 3 của L061 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L061 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Báo cáo định vị đúng bất thường ở giao hai chiều, mỗi bước có bằng chứng, và bước 0 được thực hiện trước bước 1. Đây là exit criterion của Module 7.
+**Mệnh đề của probe 4: `time cutoff`.** Báo cáo định vị đúng bất thường ở giao hai chiều, mỗi bước có bằng chứng, và bước 0 được thực hiện trước bước 1. Đây là exit criterion của Module 7.
 
 **Thiết kế.** Probe 4 của L061 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L061 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Quy trình điều tra bảy bước. Bước 0 là kiểm chứng dữ liệu đúng trước khi phân tích: sự kiện hỏng, quy trình lỗi, định nghĩa chỉ số vừa đổi. Cắt lát theo chiều: thời gian, nền tảng, phiên bản, địa lý, phân khúc, kênh. Kỹ thuật nhị phân trên chiều thời gian để định vị thời điểm bắt đầu. Phân biệt thay đổi thành phần với thay đổi hành vi, và cách kiểm tra bằng chuẩn hoá thành phần.
+**Mệnh đề của probe 5: `missing versus zero`.** Quy trình điều tra bảy bước. Bước 0 là kiểm chứng dữ liệu đúng trước khi phân tích: sự kiện hỏng, quy trình lỗi, định nghĩa chỉ số vừa đổi. Cắt lát theo chiều: thời gian, nền tảng, phiên bản, địa lý, phân khúc, kênh. Kỹ thuật nhị phân trên chiều thời gian để định vị thời điểm bắt đầu. Phân biệt thay đổi thành phần với thay đổi hành vi, và cách kiểm tra bằng chuẩn hoá thành phần.
 
 **Thiết kế.** Probe 5 của L061 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L061 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Nhận một chỉ số sụt giảm và định vị nguyên nhân kèm bằng chứng cho từng bước, bắt đầu bằng phép kiểm chứng dữ liệu.
+**Mệnh đề của probe 6: `duplicate`.** Nhận một chỉ số sụt giảm và định vị nguyên nhân kèm bằng chứng cho từng bước, bắt đầu bằng phép kiểm chứng dữ liệu.
 
 **Thiết kế.** Probe 6 của L061 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L061 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Bắt đầu phân tích trước khi xác nhận dữ liệu đúng · dừng ở chiều đầu tiên cho kết quả · kết luận thay đổi hành vi khi thực chất là thay đổi thành phần.
+**Mệnh đề của probe 7: `join fan-out`.** Bắt đầu phân tích trước khi xác nhận dữ liệu đúng · dừng ở chiều đầu tiên cho kết quả · kết luận thay đổi hành vi khi thực chất là thay đổi thành phần.
 
 **Thiết kế.** Probe 7 của L061 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L061 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Báo cáo định vị đúng bất thường ở giao hai chiều, mỗi bước có bằng chứng, và bước 0 được thực hiện trước bước 1. Đây là exit criterion của Module 7.
+**Mệnh đề của probe 8: `changed definition`.** Báo cáo định vị đúng bất thường ở giao hai chiều, mỗi bước có bằng chứng, và bước 0 được thực hiện trước bước 1. Đây là exit criterion của Module 7.
 
 **Thiết kế.** Probe 8 của L061 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L061 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Quy trình điều tra bảy bước. Bước 0 là kiểm chứng dữ liệu đúng trước khi phân tích: sự kiện hỏng, quy trình lỗi, định nghĩa chỉ số vừa đổi. Cắt lát theo chiều: thời gian, nền tảng, phiên bản, địa lý, phân khúc, kênh. Kỹ thuật nhị phân trên chiều thời gian để định vị thời điểm bắt đầu. Phân biệt thay đổi thành phần với thay đổi hành vi, và cách kiểm tra bằng chuẩn hoá thành phần.
+**Mệnh đề của probe 9: `independent oracle`.** Quy trình điều tra bảy bước. Bước 0 là kiểm chứng dữ liệu đúng trước khi phân tích: sự kiện hỏng, quy trình lỗi, định nghĩa chỉ số vừa đổi. Cắt lát theo chiều: thời gian, nền tảng, phiên bản, địa lý, phân khúc, kênh. Kỹ thuật nhị phân trên chiều thời gian để định vị thời điểm bắt đầu. Phân biệt thay đổi thành phần với thay đổi hành vi, và cách kiểm tra bằng chuẩn hoá thành phần.
 
 **Thiết kế.** Probe 9 của L061 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L061 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Nhận một chỉ số sụt giảm và định vị nguyên nhân kèm bằng chứng cho từng bước, bắt đầu bằng phép kiểm chứng dữ liệu.
+**Mệnh đề của probe 10: `replay`.** Nhận một chỉ số sụt giảm và định vị nguyên nhân kèm bằng chứng cho từng bước, bắt đầu bằng phép kiểm chứng dữ liệu.
 
 **Thiết kế.** Probe 10 của L061 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L061 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Bắt đầu phân tích trước khi xác nhận dữ liệu đúng · dừng ở chiều đầu tiên cho kết quả · kết luận thay đổi hành vi khi thực chất là thay đổi thành phần.
+**Mệnh đề của probe 11: `fresh snapshot`.** Bắt đầu phân tích trước khi xác nhận dữ liệu đúng · dừng ở chiều đầu tiên cho kết quả · kết luận thay đổi hành vi khi thực chất là thay đổi thành phần.
 
 **Thiết kế.** Probe 11 của L061 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L061 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Báo cáo định vị đúng bất thường ở giao hai chiều, mỗi bước có bằng chứng, và bước 0 được thực hiện trước bước 1. Đây là exit criterion của Module 7.
+**Mệnh đề của probe 12: `novel scenario`.** Báo cáo định vị đúng bất thường ở giao hai chiều, mỗi bước có bằng chứng, và bước 0 được thực hiện trước bước 1. Đây là exit criterion của Module 7.
 
 **Thiết kế.** Probe 12 của L061 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Báo cáo định vị đúng bất thường ở giao hai chiều, mỗi bướ
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-AMPLITUDE-NORTH-STAR-FRAMEWORK]] — `src.web.amplitude-north-star-framework`
-2. [[SRC-GOOGLE-HEART-UX-METRICS]] — `src.paper.google-heart-ux-metrics`
+1. [[SRC-AMPLITUDE-NORTH-STAR-FRAMEWORK]]: `src.web.amplitude-north-star-framework`
+2. [[SRC-GOOGLE-HEART-UX-METRICS]]: `src.paper.google-heart-ux-metrics`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-AMPLITUDE-NORTH-STAR-FRAMEWORK]] — `src.web.amplitude-north-star-framework` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Investigating a metric drop | các mục cơ chế, case và probe | Đã phủ | ngoài objective L061 |
-| [[SRC-GOOGLE-HEART-UX-METRICS]] — `src.paper.google-heart-ux-metrics` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Investigating a metric drop | các mục cơ chế, case và probe | Đã phủ | ngoài objective L061 |
+| [[SRC-AMPLITUDE-NORTH-STAR-FRAMEWORK]]: `src.web.amplitude-north-star-framework` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Investigating a metric drop | các mục cơ chế, case và probe | Đã phủ | ngoài objective L061 |
+| [[SRC-GOOGLE-HEART-UX-METRICS]]: `src.paper.google-heart-ux-metrics` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Investigating a metric drop | các mục cơ chế, case và probe | Đã phủ | ngoài objective L061 |
 
 ## Key takeaways
 - Nhận một chỉ số sụt giảm và định vị nguyên nhân kèm bằng chứng cho từng bước, bắt đầu bằng phép kiểm chứng dữ liệu.
@@ -226,7 +226,7 @@ Báo cáo định vị đúng bất thường ở giao hai chiều, mỗi bướ
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.investigating-a-metric-drop`
+## Execution capsule: kiểm chứng `wiki.da.investigating-a-metric-drop`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.investigating-a-metric-drop`, sơ đồ, ví dụ và artifact về **Investigating a metric drop** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

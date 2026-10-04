@@ -54,7 +54,7 @@ Tạo project nhỏ có ref lỗi, macro compile sai, model runtime error, data 
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
-Trong `dbt Mental Model Parse Compile Run Build`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước–sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dựng fixture và project tối thiểu có exact graph/input boundary; chạy command hoặc protocol theo thứ tự, rồi đối soát relation, key set, typed hash và business invariant với full/reference computation.
+Trong `dbt Mental Model Parse Compile Run Build`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước-sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dựng fixture và project tối thiểu có exact graph/input boundary; chạy command hoặc protocol theo thứ tự, rồi đối soát relation, key set, typed hash và business invariant với full/reference computation.
 
 ### 7.1. dbt-lifecycle probe 1: command, graph scope, artifact, warehouse effect và blind spot phải rõ
 
@@ -70,7 +70,7 @@ Trong `dbt Mental Model Parse Compile Run Build`, mỗi claim phải nối đư�
 
 **Thiết kế phép thử cho `wiki.transformation.dbt-parse-compile-run-build`.** Với `dbt-lifecycle probe 2: command, graph scope, artifact, warehouse effect và blind spot phải rõ`, Giữ nguyên input rồi đổi đúng một tham số cấu hình liên quan. Nếu output đổi theo nhiều hướng cùng lúc, phép thử chưa cô lập được nguyên nhân và phải thu hẹp lại. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `dbt-lifecycle probe 2: command, graph scope, artifact, warehouse effect và blind spot phải rõ` phải cho thấy: Báo cả giá trị trước–sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `dbt-lifecycle probe 2: command, graph scope, artifact, warehouse effect và blind spot phải rõ` phải cho thấy: Báo cả giá trị trước-sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.3. dbt-lifecycle probe 3: command, graph scope, artifact, warehouse effect và blind spot phải rõ
 
@@ -118,7 +118,7 @@ Trong `dbt Mental Model Parse Compile Run Build`, mỗi claim phải nối đư�
 
 **Thiết kế phép thử cho `wiki.transformation.dbt-parse-compile-run-build`.** Với `dbt-lifecycle probe 8: command, graph scope, artifact, warehouse effect và blind spot phải rõ`, Dùng một schema change tương thích và một thay đổi phá vỡ key, type hoặc meaning. Kết quả phải chỉ ra khác biệt giữa parse được, chạy được và vẫn giữ đúng semantics. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `dbt-lifecycle probe 8: command, graph scope, artifact, warehouse effect và blind spot phải rõ` phải cho thấy: Lưu schema trước–sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `dbt-lifecycle probe 8: command, graph scope, artifact, warehouse effect và blind spot phải rõ` phải cho thấy: Lưu schema trước-sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.9. dbt-lifecycle probe 9: command, graph scope, artifact, warehouse effect và blind spot phải rõ
 
@@ -223,7 +223,7 @@ Trong `dbt Mental Model Parse Compile Run Build`, mỗi claim phải nối đư�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.transformation.dbt-parse-compile-run-build`
+## Execution capsule: kiểm chứng `wiki.transformation.dbt-parse-compile-run-build`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.transformation.dbt-parse-compile-run-build`, sơ đồ, ví dụ và artifact về **dbt Mental Model Parse Compile Run Build** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

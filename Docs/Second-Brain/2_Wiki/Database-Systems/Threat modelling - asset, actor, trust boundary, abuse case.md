@@ -37,7 +37,7 @@ Guarantee của asset, actor, entry point, trust boundary, abuse case và mitiga
 
 ## 3. Failure mode
 
-Phân tích asset, actor, entry point, trust boundary, abuse case và mitigation cần tìm earliest observable failure, propagation path, blast radius và state còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Threat modelling - asset, actor, trust boundary, abuse case`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành asset, actor, entry point, trust boundary, abuse case và mitigation mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Phân tích asset, actor, entry point, trust boundary, abuse case và mitigation cần tìm earliest observable failure, propagation path, blast radius và state còn đáng tin. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Threat modelling - asset, actor, trust boundary, abuse case`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành asset, actor, entry point, trust boundary, abuse case và mitigation mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Decision rule
 
@@ -45,7 +45,7 @@ Quyết định về asset, actor, entry point, trust boundary, abuse case và m
 
 ## 5. Evidence
 
-Bằng chứng cho asset, actor, entry point, trust boundary, abuse case và mitigation gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `Threat modelling - asset, actor, trust boundary, abuse case`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành asset, actor, entry point, trust boundary, abuse case và mitigation mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Bằng chứng cho asset, actor, entry point, trust boundary, abuse case và mitigation gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `Threat modelling - asset, actor, trust boundary, abuse case`, câu hỏi thực dụng là: Làm thế nào mô hình, kiểm chứng và vận hành asset, actor, entry point, trust boundary, abuse case và mitigation mà không khẳng định vượt quá evidence? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 6. Recovery lab
 
@@ -87,9 +87,9 @@ Với `wiki.security.threat-model`, command thành công không tự chứng min
 
 **Bằng chứng cần giữ.** Đối với probe 4 của `Threat modelling - asset, actor, trust boundary, abuse case`, lưu checkpoint, external ledger và trạng thái sau restart. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
 
-### 7.5. Threat modelling - asset, actor, trust boundary, abuse case: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho asset, actor, entry point, trust boundary, abuse case và mitigation gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle
+### 7.5. Threat modelling - asset, actor, trust boundary, abuse case: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho asset, actor, entry point, trust boundary, abuse case và mitigation gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle
 
-**Mệnh đề cần kiểm.** Threat modelling - asset, actor, trust boundary, abuse case: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho asset, actor, entry point, trust boundary, abuse case và mitigation gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle.
+**Mệnh đề cần kiểm.** Threat modelling - asset, actor, trust boundary, abuse case: kiểm `Evidence` bằng case 5, cụ thể bằng chứng cho asset, actor, entry point, trust boundary, abuse case và mitigation gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle.
 
 **Thiết kế phép thử cho `wiki.security.threat-model`.** Trong ngữ cảnh `wiki.security.threat-model`, đảo thứ tự input và concurrency nhưng giữ logical population. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Threat modelling - asset, actor, trust boundary, abuse case` công bố.
 
@@ -135,9 +135,9 @@ Với `wiki.security.threat-model`, command thành công không tự chứng min
 
 **Bằng chứng cần giữ.** Đối với probe 10 của `Threat modelling - asset, actor, trust boundary, abuse case`, package phải đủ để người khác dựng lại decision và limitation. Nếu chưa chạy lab, ghi expected evidence và giữ trạng thái review; không biến protocol thành observation.
 
-### 7.11. Threat modelling - asset, actor, trust boundary, abuse case: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho asset, actor, entry point, trust boundary, abuse case và mitigation gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle
+### 7.11. Threat modelling - asset, actor, trust boundary, abuse case: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho asset, actor, entry point, trust boundary, abuse case và mitigation gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle
 
-**Mệnh đề cần kiểm.** Threat modelling - asset, actor, trust boundary, abuse case: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho asset, actor, entry point, trust boundary, abuse case và mitigation gồm stable identity, resolved configuration, telemetry thô, state trước–sau và independent oracle.
+**Mệnh đề cần kiểm.** Threat modelling - asset, actor, trust boundary, abuse case: kiểm `Evidence` bằng case 11, cụ thể bằng chứng cho asset, actor, entry point, trust boundary, abuse case và mitigation gồm stable identity, resolved configuration, telemetry thô, state trước-sau và independent oracle.
 
 **Thiết kế phép thử cho `wiki.security.threat-model`.** Trong ngữ cảnh `wiki.security.threat-model`, so với oracle độc lập không dùng chung query hoặc parser. Khóa input snapshot, phiên bản và owner của rule; chạy đúng population được bài `Threat modelling - asset, actor, trust boundary, abuse case` công bố.
 
@@ -218,7 +218,7 @@ Với `wiki.security.threat-model`, command thành công không tự chứng min
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.security.threat-model`
+## Execution capsule: kiểm chứng `wiki.security.threat-model`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.security.threat-model`, sơ đồ, ví dụ và artifact về **Threat modelling - asset, actor, trust boundary, abuse case** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

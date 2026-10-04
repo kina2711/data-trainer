@@ -41,22 +41,22 @@ Gọi tên trừu tượng cần dùng trước khi chọn dịch vụ, rồi tr
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L361 · Regions, zones, failure domains and shared responsibility | LT | Vẽ miền hỏng cho một kiến trúc và chỉ đúng đường kẻ trách nhiệm cho bốn dịch vụ. | Sơ đồ miền hỏng đúng cho kiến trúc bốn thành phần, và phần trách nhiệm khách hàng đúng ở ≥ 3/4 dịch vụ kèm ba khoảng trống tìm được. | M24: M20 |
-| L362 · Identity before services - principal, role, least privilege | TH | Cấp quyền tối thiểu cho ba khối lượng công việc bằng danh tính cho khối lượng công việc, có bằng chứng kiểm toán hai chiều. | Ba phép thử được phép thành công và ba phép thử bị từ chối đúng, mỗi quyền có lý do ghi lại, và bộ quét không tìm thấy khoá tĩnh nào. | L361 |
-| L363 · Network - CIDR, route, trust boundary, egress and DNS | TH | Dựng mạng có dải riêng không đi ra internet trực tiếp và vẽ được sơ đồ đường đi gói tin có bằng chứng. | Tài nguyên ở dải riêng bị chặn ra internet nhưng gọi được dịch vụ qua điểm cuối riêng, và sơ đồ khớp kết quả truy vết thật. | L362 |
-| L364 · Compute - state, startup, scale unit and replacement | TH | Chọn dạng tính toán cho ba khối lượng công việc theo bốn câu hỏi và chứng minh mất một đơn vị không mất dữ liệu. | Đơn vị bị giết được thay thế tự động với thời gian đo được, và không dữ liệu nào nằm lại trên đơn vị đó. | L363 |
-| L365 · Storage and managed databases chosen by the data contract | TH | Chọn lưu trữ và cơ sở dữ liệu cho ba hợp đồng dữ liệu và chứng minh khác biệt giữa độ bền với độ khả dụng. | Ba lựa chọn dẫn từ bốn thuộc tính, khôi phục được đối tượng xoá nhầm, và chuyển dự phòng có số đo thời gian gián đoạn. | L364 |
-| L366 · Messaging services mapped by delivery semantics | TH | Ánh xạ bốn ngữ nghĩa sang dịch vụ được quản lý và chứng minh bằng diễn tập trùng lặp hoặc mất. | Ngữ nghĩa quan sát được khớp tuyên bố ở cả hai dịch vụ, bốn giới hạn được ghi lại, và một yêu cầu không đáp ứng được chỉ ra. | L365 |
-| L367 · Reliability - failure domains, RPO and RTO with a tested restore | TH | Đo được cả hai con số phục hồi bằng một lần phục hồi thật vào môi trường sạch. | Hai con số phục hồi đo được từ một lần phục hồi thật vào môi trường sạch, dữ liệu đối soát khớp, và ba nguyên nhân thất bại được kiểm. | L366 |
-| L368 · Cost - unit economics, egress and the budget alarm | TH | Tính chi phí trên mỗi đơn vị cho ba khối lượng công việc và dựng cảnh báo ngân sách trước khi chạy. | Sai lệch giữa ước tính và chi phí thật dưới ngưỡng ở cả ba, chi phí trên mỗi đơn vị tính được, và cảnh báo ngân sách kích hoạt đúng. | L367 |
-| L369 · Secrets, keys and the audit trail | TH | Dựng ba cơ chế và chứng minh xoay thông tin xác thực không gián đoạn cùng nhật ký kiểm toán đầy đủ. | Xoay thông tin xác thực không gây gián đoạn, thao tác nhạy cảm truy được trong nhật ký, và ba vi phạm tiêm đều bị chặn. | L368 |
-| L370 · The primitive table - mapping one cloud to the others | LT | Lập bảng ánh xạ bảy trừu tượng và ghi được khác biệt ngữ nghĩa chứ chỉ khác biệt tên. | Mỗi hàng có ít nhất một khác biệt ngữ nghĩa cụ thể kèm nguồn và ngày tra, và bốn hàng quan trọng nhất có mô tả thay đổi khi chuyển đám mây. | L369 |
-| L371 · Landing zone project - one cloud, one data service | DA | Nộp lát cắt nền tảng dựng lại được từ mã, không có khoá tĩnh, có phục hồi đã thử và chi phí đã đo. | Môi trường dựng lại được từ mã trong môi trường sạch, phục hồi có đối soát khớp, không khoá tĩnh và không tài nguyên mở ngoài ý muốn, và bảng chi phí có ba yếu tố nhạy cảm. | L370 |
-| L372 · Failure drill - remove a zone, a service and a credential | TH | Chạy sáu tình huống với hành vi kỳ vọng viết trước và đề xuất thiết kế lại cho cú sốc chi phí. | ≥ 5/6 tình huống phục hồi trong mục tiêu thời gian, cú sốc chi phí có phương án thiết kế lại kèm số đo trên mỗi đơn vị, và sổ tay được sửa. | L371 |
+| L361 · [[wiki.cloud.failure-domains-shared-responsibility|Regions, zones, failure domains and shared responsibility]]| LT | Vẽ miền hỏng cho một kiến trúc và chỉ đúng đường kẻ trách nhiệm cho bốn dịch vụ. | Sơ đồ miền hỏng đúng cho kiến trúc bốn thành phần, và phần trách nhiệm khách hàng đúng ở ≥ 3/4 dịch vụ kèm ba khoảng trống tìm được. | M24: M20 |
+| L362 · [[wiki.cloud.identity-least-privilege|Identity before services - principal, role, least privilege]]| TH | Cấp quyền tối thiểu cho ba khối lượng công việc bằng danh tính cho khối lượng công việc, có bằng chứng kiểm toán hai chiều. | Ba phép thử được phép thành công và ba phép thử bị từ chối đúng, mỗi quyền có lý do ghi lại, và bộ quét không tìm thấy khoá tĩnh nào. | L361 |
+| L363 · [[wiki.cloud.network-boundaries|Network - CIDR, route, trust boundary, egress and DNS]]| TH | Dựng mạng có dải riêng không đi ra internet trực tiếp và vẽ được sơ đồ đường đi gói tin có bằng chứng. | Tài nguyên ở dải riêng bị chặn ra internet nhưng gọi được dịch vụ qua điểm cuối riêng, và sơ đồ khớp kết quả truy vết thật. | L362 |
+| L364 · [[wiki.cloud.compute-replacement|Compute - state, startup, scale unit and replacement]]| TH | Chọn dạng tính toán cho ba khối lượng công việc theo bốn câu hỏi và chứng minh mất một đơn vị không mất dữ liệu. | Đơn vị bị giết được thay thế tự động với thời gian đo được, và không dữ liệu nào nằm lại trên đơn vị đó. | L363 |
+| L365 · [[wiki.cloud.storage-data-contract|Storage and managed databases chosen by the data contract]]| TH | Chọn lưu trữ và cơ sở dữ liệu cho ba hợp đồng dữ liệu và chứng minh khác biệt giữa độ bền với độ khả dụng. | Ba lựa chọn dẫn từ bốn thuộc tính, khôi phục được đối tượng xoá nhầm, và chuyển dự phòng có số đo thời gian gián đoạn. | L364 |
+| L366 · [[wiki.cloud.messaging-semantics|Messaging services mapped by delivery semantics]]| TH | Ánh xạ bốn ngữ nghĩa sang dịch vụ được quản lý và chứng minh bằng diễn tập trùng lặp hoặc mất. | Ngữ nghĩa quan sát được khớp tuyên bố ở cả hai dịch vụ, bốn giới hạn được ghi lại, và một yêu cầu không đáp ứng được chỉ ra. | L365 |
+| L367 · [[wiki.cloud.rpo-rto-restore|Reliability - failure domains, RPO and RTO with a tested restore]]| TH | Đo được cả hai con số phục hồi bằng một lần phục hồi thật vào môi trường sạch. | Hai con số phục hồi đo được từ một lần phục hồi thật vào môi trường sạch, dữ liệu đối soát khớp, và ba nguyên nhân thất bại được kiểm. | L366 |
+| L368 · [[wiki.cloud.cost-unit-economics|Cost - unit economics, egress and the budget alarm]]| TH | Tính chi phí trên mỗi đơn vị cho ba khối lượng công việc và dựng cảnh báo ngân sách trước khi chạy. | Sai lệch giữa ước tính và chi phí thật dưới ngưỡng ở cả ba, chi phí trên mỗi đơn vị tính được, và cảnh báo ngân sách kích hoạt đúng. | L367 |
+| L369 · [[wiki.cloud.secrets-keys-audit|Secrets, keys and the audit trail]]| TH | Dựng ba cơ chế và chứng minh xoay thông tin xác thực không gián đoạn cùng nhật ký kiểm toán đầy đủ. | Xoay thông tin xác thực không gây gián đoạn, thao tác nhạy cảm truy được trong nhật ký, và ba vi phạm tiêm đều bị chặn. | L368 |
+| L370 · [[wiki.cloud.primitive-portability|The primitive table - mapping one cloud to the others]]| LT | Lập bảng ánh xạ bảy trừu tượng và ghi được khác biệt ngữ nghĩa chứ chỉ khác biệt tên. | Mỗi hàng có ít nhất một khác biệt ngữ nghĩa cụ thể kèm nguồn và ngày tra, và bốn hàng quan trọng nhất có mô tả thay đổi khi chuyển đám mây. | L369 |
+| L371 · [[wiki.cloud.landing-zone-project|Landing zone project - one cloud, one data service]]| DA | Nộp lát cắt nền tảng dựng lại được từ mã, không có khoá tĩnh, có phục hồi đã thử và chi phí đã đo. | Môi trường dựng lại được từ mã trong môi trường sạch, phục hồi có đối soát khớp, không khoá tĩnh và không tài nguyên mở ngoài ý muốn, và bảng chi phí có ba yếu tố nhạy cảm. | L370 |
+| L372 · [[wiki.cloud.failure-drill|Failure drill - remove a zone, a service and a credential]]| TH | Chạy sáu tình huống với hành vi kỳ vọng viết trước và đề xuất thiết kế lại cho cú sốc chi phí. | ≥ 5/6 tình huống phục hồi trong mục tiêu thời gian, cú sốc chi phí có phương án thiết kế lại kèm số đo trên mỗi đơn vị, và sổ tay được sửa. | L371 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M24 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M24 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -95,7 +95,7 @@ flowchart LR
   class A361,A362,A363,A364,A365,A366,A367,A368,A369,A370,A371,A372 atom;
 ```
 
-### Bài 361: Regions, zones, failure domains and shared responsibility
+### Lesson 361: Regions, zones, failure domains and shared responsibility
 
 Bài mở module bằng ba khái niệm quyết định mọi quyết định kiến trúc về sau. Vùng và khu khả dụng là các miền hỏng: hai tài nguyên trong cùng một khu có thể hỏng cùng lúc, hai khu khác nhau thì độc lập hơn nhưng không độc lập hoàn toàn vì chúng vẫn dùng chung mặt phẳng điều khiển của vùng. Mặt phẳng điều khiển và mặt phẳng dữ liệu hỏng độc lập: mặt phẳng điều khiển hỏng thì không tạo được tài nguyên mới và không chuyển dự phòng được, trong khi tài nguyên đang chạy vẫn phục vụ, và phân biệt hai trạng thái này khi trực là quan trọng, đúng như ở Bài 330. Trách nhiệm chia sẻ: nhà cung cấp lo phần dưới một đường kẻ, khách hàng lo phần trên, và đường kẻ đó khác nhau giữa dịch vụ tự quản với dịch vụ được quản lý; hiểu sai đường kẻ tạo ra khoảng trống không ai lo, thường là sao lưu, vá lỗi và cấu hình truy cập.
 
@@ -103,7 +103,7 @@ Người học phải vẽ miền hỏng cho một kiến trúc và chỉ đúng
 
 Cách đánh giá: Tầng *hiểu*. Bài mở module, đặt từ vựng. Kiểm bằng bài phân định; đạt khi vẽ đúng miền hỏng và chỉ đúng phần khách hàng phải lo ở ít nhất ba trong bốn dịch vụ.
 
-### Bài 362: Identity before services - principal, role, least privilege
+### Lesson 362: Identity before services - principal, role, least privilege
 
 Danh tính là trừu tượng phải chốt trước mọi thứ khác, vì mọi lỗi bảo mật lớn đều bắt đầu ở đây. Bốn câu hỏi trước khi cấp quyền: ai đóng vai gì, từ đâu, trong bao lâu, và để làm gì. Chủ thể có thể là người hoặc là khối lượng công việc; danh tính cho khối lượng công việc là cách bỏ hẳn khoá tĩnh, vì tiến trình lấy thông tin xác thực ngắn hạn từ môi trường chạy thay vì đọc từ tệp. Khoá tĩnh trong kho mã là chế độ hỏng tự động chưa đạt của module, và nó được kiểm bằng máy chứ bằng lời hứa. Chính sách gắn vào danh tính khác chính sách gắn vào tài nguyên, và hai loại giao nhau theo cách phải hiểu để gỡ lỗi từ chối. Quyền tối thiểu đạt được bằng cách bắt đầu từ không có gì rồi thêm theo lỗi từ chối thật, chứ bắt đầu từ ký tự đại diện rồi thu hẹp. Bằng chứng bắt buộc: một phép thử cho thấy bị từ chối và một phép thử cho thấy được phép, cùng bản ghi kiểm toán tương ứng.
 
@@ -111,7 +111,7 @@ Người học phải cấp quyền tối thiểu cho ba khối lượng công v
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu bằng phép thử hai chiều chứ bằng rà soát chính sách. Kiểm bằng sáu phép thử; đạt khi ba phép thử được phép thành công, ba phép thử bị từ chối đúng, và không khoá tĩnh nào tồn tại trong kho mã.
 
-### Bài 363: Network - CIDR, route, trust boundary, egress and DNS
+### Lesson 363: Network - CIDR, route, trust boundary, egress and DNS
 
 Trừu tượng thứ hai: đường đi của gói tin và ranh giới tin cậy, dựng trên nền M6. Mạng riêng chia thành các dải địa chỉ; dải công khai có đường ra thẳng, dải riêng thì không và phải đi qua một cổng dịch địa chỉ hoặc một điểm cuối riêng để tới dịch vụ của nhà cung cấp. Bảng định tuyến quyết định gói đi đâu; quy tắc tường lửa quyết định gói nào được qua. Hai lựa chọn cho lưu lượng ra và đánh đổi phải tính bằng tiền: cổng dịch địa chỉ tính phí theo lượng dữ liệu nên nó là nguồn hoá đơn bất ngờ hay gặp, còn điểm cuối riêng giữ lưu lượng trong mạng nhà cung cấp và thường rẻ hơn cùng an toàn hơn. Phân giải tên và cân bằng tải. Nhóm bảo mật mở cho toàn bộ internet là một lối tắt bị cấm, kể cả trong môi trường thử. Bằng chứng bắt buộc của bài là một sơ đồ đường đi gói tin, không phải một sơ đồ hộp.
 
@@ -119,7 +119,7 @@ Người học phải dựng mạng có dải riêng không đi ra internet tr�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là đường đi thật quan sát được. Kiểm bằng phép thử kết nối; đạt khi tài nguyên ở dải riêng không ra được internet trực tiếp, vẫn gọi được dịch vụ qua điểm cuối riêng, và sơ đồ khớp kết quả truy vết thật.
 
-### Bài 364: Compute - state, startup, scale unit and replacement
+### Lesson 364: Compute - state, startup, scale unit and replacement
 
 Trừu tượng thứ ba, và bốn câu hỏi quyết định chọn dạng tính toán nào. Trạng thái nằm ở đâu: nếu nằm trong máy thì thay máy là mất dữ liệu. Thời gian khởi động bao lâu: quyết định phản ứng được với tải đột biến hay không. Đơn vị mở rộng là gì: một máy, một vùng chứa, hay một lời gọi hàm. Thay thế ra sao khi một đơn vị chết. Ba dạng và điều kiện dùng: máy ảo cho khối lượng công việc cần kiểm soát môi trường; vùng chứa được quản lý cho dịch vụ dài hạn không muốn nuôi cụm; hàm không máy chủ cho việc ngắn theo sự kiện, với ba giới hạn phải biết là thời gian chạy tối đa, khởi động nguội, và trạng thái không giữ được giữa hai lần gọi. Ảnh máy bất biến cộng thay thế thay vì sửa tại chỗ là nguyên tắc chung, và nó là điều kiện để dựng lại được từ mã ở Bài 371.
 
@@ -127,7 +127,7 @@ Người học phải chọn dạng tính toán cho ba khối lượng công vi�
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu bằng diễn tập mất máy. Kiểm bằng phép thử giết; đạt khi dịch vụ tự thay thế đơn vị đã mất và không dữ liệu nào nằm lại trên đơn vị đó.
 
-### Bài 365: Storage and managed databases chosen by the data contract
+### Lesson 365: Storage and managed databases chosen by the data contract
 
 Trừu tượng thứ tư và thứ năm, chọn theo hợp đồng dữ liệu chứ theo tên dịch vụ. Ba dạng lưu trữ và ranh giới dùng: kho đối tượng cho dữ liệu bất biến quy mô lớn với ngữ nghĩa đã học ở Bài 224; khối cho đĩa gắn vào một máy; tệp chia sẻ cho nhiều máy cùng đọc ghi. Bốn thuộc tính phải hỏi trước: tính nhất quán, độ bền, độ khả dụng, và vòng đời cùng phiên bản cùng sao chép. Độ bền và độ khả dụng là hai con số khác nhau: dữ liệu bền tuyệt đối vẫn có thể không truy cập được trong một sự cố, nên hứa hẹn của nhà cung cấp phải đọc đúng cột. Cơ sở dữ liệu được quản lý chọn theo hợp đồng giao dịch, quy mô, cách chuyển dự phòng và đường kết nối; chuyển dự phòng nhiều khu không thay sao lưu, vì nó nhân bản cả một lệnh xoá nhầm. Đường mạng tới cơ sở dữ liệu và giới hạn số kết nối là hai chỗ hay bị bỏ qua tới khi có tải thật.
 
@@ -135,7 +135,7 @@ Người học phải chọn lưu trữ và cơ sở dữ liệu cho ba hợp đ
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi đọc đúng hợp đồng của nhà cung cấp chứ so tên dịch vụ. Kiểm bằng ba lựa chọn cộng một diễn tập; đạt khi mỗi lựa chọn dẫn từ bốn thuộc tính và diễn tập chuyển dự phòng cho số đo gián đoạn thật.
 
-### Bài 366: Messaging services mapped by delivery semantics
+### Lesson 366: Messaging services mapped by delivery semantics
 
 Trừu tượng thứ sáu, và bài này ánh xạ thẳng từ M21 sang các dịch vụ được quản lý. Bốn câu hỏi trước khi chọn: thứ tự được giữ ở phạm vi nào, ngữ nghĩa giao nhận là gì, thời hạn giữ bao lâu, và đọc lại được không. Bốn nhóm dịch vụ tương ứng bốn ngữ nghĩa: hàng đợi giao mỗi thông điệp cho một bên tiêu thụ rồi xoá; phát hành đăng ký gửi cho mọi bên đăng ký; bus sự kiện định tuyến theo quy tắc; nhật ký phân tán giữ lại và đọc lại được. Chọn nhầm nhóm thì không sửa được bằng cấu hình, vì thời hạn giữ và khả năng đọc lại là thuộc tính của nhóm chứ một tham số. Giới hạn của dịch vụ được quản lý phải đọc trước: kích thước thông điệp tối đa, số bên tiêu thụ, thời hạn giữ tối đa, và hạn mức tốc độ. Bằng chứng bắt buộc: một diễn tập tạo bản trùng hoặc mất thông điệp, giống Bài 328.
 
@@ -143,7 +143,7 @@ Người học phải ánh xạ bốn ngữ nghĩa sang dịch vụ được qu�
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi kiểm ngữ nghĩa bằng thực nghiệm chứ đọc tài liệu. Kiểm bằng diễn tập; đạt khi ngữ nghĩa quan sát được khớp ngữ nghĩa đã tuyên bố ở cả hai dịch vụ và giới hạn dịch vụ được ghi lại.
 
-### Bài 367: Reliability - failure domains, RPO and RTO with a tested restore
+### Lesson 367: Reliability - failure domains, RPO and RTO with a tested restore
 
 Độ tin cậy phát biểu bằng hai con số và chúng phải đo được chứ tuyên bố. Mục tiêu điểm phục hồi là lượng dữ liệu chấp nhận mất tính theo thời gian; mục tiêu thời gian phục hồi là thời gian chấp nhận ngừng phục vụ. Hai con số này quyết định kiến trúc chứ ngược lại. Nhiều khu khả dụng chống mất một khu; nhiều vùng chống mất một vùng và đắt hơn nhiều; sao lưu chống lỗi logic mà hai cái kia không chống được. Một bản sao lưu chưa được phục hồi thử thì không phải bản sao lưu, và ba nguyên nhân làm phục hồi thất bại dù bản sao lưu tồn tại là thiếu quyền, thiếu khoá mã hoá, và bản sao lưu nằm trong cùng tài khoản đã bị xoá. Hạn mức và phụ thuộc bên ngoài là miền hỏng thứ tư hay bị quên: hết hạn mức thì không tạo được tài nguyên thay thế giữa lúc sự cố.
 
@@ -151,7 +151,7 @@ Người học phải đo được cả hai con số phục hồi bằng một l
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là số đo từ một lần phục hồi thật, không phải một kế hoạch. Kiểm bằng diễn tập phục hồi; đạt khi hai con số đo được, dữ liệu sau phục hồi đối soát khớp, và ba nguyên nhân thất bại được kiểm tường minh.
 
-### Bài 368: Cost - unit economics, egress and the budget alarm
+### Lesson 368: Cost - unit economics, egress and the budget alarm
 
 Chi phí là một ràng buộc thiết kế và phải đo theo đơn vị công việc chứ theo tổng hoá đơn. Sáu thành phần: số yêu cầu, thời gian tính toán, dung lượng lưu trữ, thao tác vào ra, lưu lượng ra ngoài, và năng lực nhàn rỗi. Hai thành phần hay gây bất ngờ nhất là lưu lượng ra ngoài theo Bài 363 và năng lực nhàn rỗi, vì cả hai không tỉ lệ với lượng công việc hữu ích. Chi phí trên mỗi đơn vị là con số so sánh được: chi phí trên mỗi nghìn yêu cầu, trên mỗi lần làm mới bảng, trên mỗi người dùng hoạt động, nối với Bài 198. Gắn thẻ tài nguyên là điều kiện để quy chi phí về đội và về sản phẩm; không gắn thẻ thì không quy được và không ai chịu trách nhiệm. Cảnh báo ngân sách phải đặt trước khi chạy khối lượng công việc mới, không phải sau khi nhận hoá đơn. Cam kết dài hạn chỉ hợp lý sau khi đã có dữ liệu sử dụng ổn định.
 
@@ -159,7 +159,7 @@ Người học phải tính chi phí trên mỗi đơn vị cho ba khối lượ
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi nối chi phí với đơn vị công việc chứ đọc tổng hoá đơn. Kiểm bằng đối chiếu ước tính với hoá đơn thật; đạt khi sai lệch dưới ngưỡng thoả thuận ở cả ba và cảnh báo ngân sách kích hoạt đúng ngưỡng.
 
-### Bài 369: Secrets, keys and the audit trail
+### Lesson 369: Secrets, keys and the audit trail
 
 Bài chốt phần bảo mật nền tảng bằng ba cơ chế. Kho bí mật giữ thông tin xác thực ngoài mã và ngoài ảnh máy, và cho phép xoay mà không sửa mã; xoay phải thử được chứ để trong tài liệu. Dịch vụ quản lý khoá giữ khoá mã hoá và ghi lại mọi lần dùng; điểm quan trọng và hay bị bỏ qua: ai sở hữu khoá thì thực sự kiểm soát dữ liệu, nên khoá nằm ở tài khoản khác với dữ liệu là một biện pháp phòng vệ thật. Mã hoá khi truyền và khi lưu là hai lớp khác nhau và cả hai đều cần. Nhật ký kiểm toán ghi ai làm gì lúc nào; nó chỉ có giá trị nếu được giữ ở nơi mà kẻ tấn công không xoá được, nên tách tài khoản lưu nhật ký là thực hành chuẩn. Ba phép kiểm tự động phải chạy trong tích hợp liên tục: không có khoá tĩnh, không có tài nguyên mở công khai ngoài ý muốn, và không có chính sách dùng ký tự đại diện.
 
@@ -167,7 +167,7 @@ Người học phải dựng ba cơ chế và chứng minh xoay thông tin xác 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là xoay thật và truy vết thật. Kiểm bằng phép thử xoay cộng truy vết; đạt khi xoay không gây gián đoạn, mọi thao tác nhạy cảm truy được trong nhật ký, và ba phép kiểm tự động chặn đúng vi phạm tiêm.
 
-### Bài 370: The primitive table - mapping one cloud to the others
+### Lesson 370: The primitive table - mapping one cloud to the others
 
 Bài cuối phần lý thuyết, và nó chỉ được học sau khi đã triển khai trên một đám mây. Bảng trừu tượng liệt kê bảy trừu tượng ở các bài trước theo hàng và ba nhà cung cấp theo cột, mỗi ô ghi tên dịch vụ tương ứng. Nhưng giá trị của bảng nằm ở cột thứ tư: khác biệt về ngữ nghĩa, chứ khác biệt về tên. Bốn chỗ khác biệt thật và phải ghi rõ: mô hình danh tính và cách chính sách giao nhau; mô hình mạng và cách lưu lượng ra được tính tiền; sự kiện của kho đối tượng có bảo đảm gì về thứ tự và về giao nhận; và cơ sở dữ liệu được quản lý khác nhau ở cách chuyển dự phòng cùng giới hạn kết nối. Cảnh báo về trừu tượng hoá sớm: xây một lớp trừu tượng chung cho nhiều đám mây trước khi một đám mây chạy được là cách chắc chắn có một lớp sai ở cả hai phía.
 
@@ -175,7 +175,7 @@ Người học phải lập bảng ánh xạ bảy trừu tượng và ghi đư�
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết đặt sau khi đã triển khai, đúng thứ tự của hợp đồng nguồn. Kiểm bằng bảng ánh xạ; đạt khi mỗi hàng có ít nhất một khác biệt ngữ nghĩa cụ thể chứ chỉ tên dịch vụ.
 
-### Bài 371: Landing zone project - one cloud, one data service
+### Lesson 371: Landing zone project - one cloud, one data service
 
 Bài dự án khép module. Dựng một lát cắt nền tảng trên đám mây đã chọn, gồm: ranh giới tài khoản hoặc dự án theo môi trường; danh tính với quyền tối thiểu và danh tính cho khối lượng công việc; mạng có dải riêng, đường ra được kiểm soát và ít nhất một điểm cuối riêng; một dịch vụ dữ liệu gồm giao diện lập trình, cơ sở dữ liệu và một đường xử lý ghi ra kho đối tượng; bí mật và khoá theo Bài 369; nhật ký, số đo và nhật ký kiểm toán; sao lưu cùng một lần phục hồi đã thử; và gắn thẻ cùng cảnh báo ngân sách. Toàn bộ phải dựng bằng mã theo M25, để dựng lại được từ đầu. Nộp kèm sơ đồ kiến trúc có đủ năm thứ: danh tính, mạng, đường dữ liệu, miền hỏng và ranh giới chi phí; và một bảng chi phí hằng tháng kèm ba yếu tố nhạy cảm nhất.
 
@@ -183,7 +183,7 @@ Người học phải nộp lát cắt nền tảng dựng lại được từ m
 
 Cách đánh giá: Tầng *sáng tạo*. Bài tổng hợp toàn module. Kiểm bằng dựng lại từ đầu cộng rà soát bằng chứng; đạt khi môi trường dựng lại được từ mã trong môi trường sạch, phục hồi thành công với đối soát, và không có khoá tĩnh hay tài nguyên mở công khai ngoài ý muốn.
 
-### Bài 372: Failure drill - remove a zone, a service and a credential
+### Lesson 372: Failure drill - remove a zone, a service and a credential
 
 Bài diễn tập khép module, chạy trên chính lát cắt nền tảng vừa dựng, với hành vi kỳ vọng viết trước. Sáu tình huống bắt buộc: mất một khu khả dụng; một dịch vụ được quản lý bị suy giảm trong vùng; mặt phẳng điều khiển không dùng được nên không tạo được tài nguyên mới; thông tin xác thực hết hạn giữa lúc chạy; chạm hạn mức của một dịch vụ; và một cú sốc chi phí do lượng quét hoặc lưu lượng ra tăng gấp mười. Với mỗi tình huống ghi ba số: thời gian phát hiện, mức suy giảm dịch vụ, và thời gian phục hồi. Tình huống cú sốc chi phí phải trả lời bằng thiết kế lại có số đo trên mỗi đơn vị, chứ bằng việc tắt bớt tính năng. Kết quả diễn tập là đầu vào sửa sổ tay vận hành và sửa kiến trúc, theo đúng kỷ luật ở Bài 246.
 

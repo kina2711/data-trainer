@@ -1,0 +1,61 @@
+task_id: academy-build-scene-package
+instance_id: da-de-l001-deep-rewrite-v2-library
+status: awaiting-owner-approval
+requested_at: 2026-10-04
+owner: kina2711
+primary_deliverable: two deeper owner-review lesson packages with governed lesson-to-wiki-to-book navigation
+acceptance:
+  lesson_ids: [DA-L001, DE-L001]
+  deeper_reasoning: required
+  public_duration_language: forbidden
+  lesson_reference_to_second_brain: required
+  second_brain_source_to_library: required
+  library_space: required
+  private_books_publicly_embedded: forbidden
+  desktop_local_book_open: required
+  editorial_police_pass: required
+  owner_approval_before_next_lessons: required
+editorial_rules:
+  - no decorative icons or emoji
+  - no em dash or en dash in authored lesson copy
+  - no ornamental metaphors or inflated claims
+  - avoid quotation marks when typography or code formatting is clearer
+  - use direct Vietnamese and concrete verbs
+  - preserve necessary technical terminology and domain time semantics
+allowed_paths:
+  - Material/DA/Curriculum/**/Lesson_001-what-a-data-analyst-actually-does-all-day/**
+  - Material/DE/Curriculum/**/Lesson_001-from-a-vague-request-to-a-testable-contract/**
+  - Material/DA/Reference/**/Lesson_001-what-a-data-analyst-actually-does-all-day/sources.yaml
+  - Material/DE/Reference/**/Lesson_001-from-a-vague-request-to-a-testable-contract/sources.yaml
+  - Docs/Second-Brain/2_Wiki/**
+  - Apps/SecondBrain/**
+  - Tools/Curriculum/Build/build_da_de_first_5_lessons.py
+  - Tools/Curriculum/Build/validate_da_de_first_5_lessons.py
+  - Tools/Curriculum/Build/validate_l001_editorial_and_library.py
+  - Tools/Curriculum/Manifests/LecturePilot/**
+recovery:
+  - revert the two lesson packages and source manifests
+  - revert Library index, client and desktop bridge changes
+  - rebuild the prior portal index
+release_policy: Await owner review. Do not write later lessons.
+evidence:
+  lesson_word_counts:
+    DA-L001: 3344
+    DE-L001: 3353
+  wiki_links:
+    DA-L001: 3
+    DE-L001: 4
+  library_books: 47
+  automated_checks:
+    - validate_l001_editorial_and_library.py: pass
+    - npm run brain:test: pass
+    - npm run lectures:first10:test: pass
+    - git diff --check: pass
+    - electron smoke test: pass
+  browser_checks:
+    - lesson deep-link opens canonical Second Brain note
+    - Second Brain source opens Library book record
+    - mobile width 390 has no horizontal overflow and exposes inline sources
+    - desktop width 1440 exposes inspector and has no horizontal overflow
+    - web refuses to open private PDF and shows desktop-only notice
+open_gate: owner approval of DA-L001 and DE-L001 before authoring later lessons

@@ -1,6 +1,6 @@
 # Giai đoạn 10: Thiết kế hệ thống, ranh giới AI và lộ trình nghề nghiệp
 
-Giai đoạn này kết hợp M27–M29. Người học chuyển từ `Bằng chứng hoàn thành Giai đoạn 9` sang khả năng tạo và bảo vệ bằng chứng tích hợp ở L440.
+Giai đoạn này kết hợp M27-M29. Người học chuyển từ `Bằng chứng hoàn thành Giai đoạn 9` sang khả năng tạo và bảo vệ bằng chứng tích hợp ở L440.
 
 ## Điều kiện đầu vào
 
@@ -52,13 +52,13 @@ flowchart LR
 
 ### Nhiệm vụ
 
-Buổi 180 phút: 135 phút bảo vệ và chất vấn, 45 phút hội đồng nghị án và phản hồi. Hội đồng ba người. Bài chấm sáu phần: A (20đ) trình bày hồ sơ thiết kế, mọi thành phần truy được về một yêu cầu hoặc bảo đảm · B (20đ) bảo vệ bảng năng lực và bảng chế độ hỏng, chỉ ra nút thắt đầu tiên cùng hệ quả với dữ liệu · C (20đ) bốn ràng buộc đổi do hội đồng đưa ra; điều chỉnh đúng phần bị ảnh hưởng kèm chi phí · D (15đ) trình kế hoạch di trú có kiểm kê bên tiêu thụ, chạy song song và quay lui · E (15đ) cùng một sáng kiến trình bày mười phút cho ban lãnh đạo và mười phút cho người vận hành; hội đồng đối chiếu tính nhất quán · F (10đ) hồ sơ bằng chứng, phân tách ba loại và nêu giới hạn nhân quả.
+Hội đồng ba người. Bài chấm sáu phần: A (20đ) trình bày hồ sơ thiết kế, mọi thành phần truy được về một yêu cầu hoặc bảo đảm · B (20đ) bảo vệ bảng năng lực và bảng chế độ hỏng, chỉ ra nút thắt đầu tiên cùng hệ quả với dữ liệu · C (20đ) bốn ràng buộc đổi do hội đồng đưa ra; điều chỉnh đúng phần bị ảnh hưởng kèm chi phí · D (15đ) trình kế hoạch di trú có kiểm kê bên tiêu thụ, chạy song song và quay lui · E (15đ) cùng một sáng kiến trình bày mười phút cho ban lãnh đạo và mười phút cho người vận hành; hội đồng đối chiếu tính nhất quán · F (10đ) hồ sơ bằng chứng, phân tách ba loại và nêu giới hạn nhân quả.
 
 ### Cách đánh giá
 
 | Tiêu chí | Bằng chứng | Ngưỡng đạt | Lỗi loại trực tiếp |
 |---|---|---|---|
-| Bảo vệ một thiết kế đầu cuối trước ba nhóm người nghe, chịu được bốn ràng buộc đổi, và phân tách trung thực ba loại bằng chứng. | Buổi 180 phút: 135 phút bảo vệ và chất vấn, 45 phút hội đồng nghị án và phản hồi. Hội đồng ba người. Bài chấm sáu phần: A (20đ) trình bày hồ sơ thiết kế, mọi thành phần truy được về một yêu cầu hoặc bảo đảm · B (20đ) bảo vệ bảng năng lực và bảng chế độ hỏng, chỉ ra nút thắt đầu tiên cùng hệ quả với dữ liệu · C (20đ) bốn ràng buộc đổi do hội đồng đưa ra; điều chỉnh đúng phần bị ảnh hưởng kèm chi phí · D (15đ) trình kế hoạch di trú có kiểm kê bên tiêu thụ, chạy song song và quay lui · E (15đ) cùng một sáng kiến trình bày mười phút cho ban lãnh đạo và mười phút cho người vận hành; hội đồng đối chiếu tính nhất quán · F (10đ) hồ sơ bằng chứng, phân tách ba loại và nêu giới hạn nhân quả. | Đạt ≥ 70/100, phần A và C đều ≥ 60%. Hai bản trình bày ở phần E mâu thuẫn về sự thật thì phần đó bằng không; gộp bằng chứng lab vào phần tác động sản xuất thì phần F bằng không. | Bảo vệ quyết định cũ vì đã bỏ công vào nó · đổi sự thật khi đổi người nghe · tuyên bố tác động sản xuất từ bằng chứng lab · trình thiết kế có thành phần không gắn với yêu cầu nào. |
+| Bảo vệ một thiết kế đầu cuối trước ba nhóm người nghe, chịu được bốn ràng buộc đổi, và phân tách trung thực ba loại bằng chứng. | Hội đồng ba người. Bài chấm sáu phần: A (20đ) trình bày hồ sơ thiết kế, mọi thành phần truy được về một yêu cầu hoặc bảo đảm · B (20đ) bảo vệ bảng năng lực và bảng chế độ hỏng, chỉ ra nút thắt đầu tiên cùng hệ quả với dữ liệu · C (20đ) bốn ràng buộc đổi do hội đồng đưa ra; điều chỉnh đúng phần bị ảnh hưởng kèm chi phí · D (15đ) trình kế hoạch di trú có kiểm kê bên tiêu thụ, chạy song song và quay lui · E (15đ) cùng một sáng kiến trình bày mười phút cho ban lãnh đạo và mười phút cho người vận hành; hội đồng đối chiếu tính nhất quán · F (10đ) hồ sơ bằng chứng, phân tách ba loại và nêu giới hạn nhân quả. | Đạt ≥ 70/100, phần A và C đều ≥ 60%. Hai bản trình bày ở phần E mâu thuẫn về sự thật thì phần đó bằng không; gộp bằng chứng lab vào phần tác động sản xuất thì phần F bằng không. | Bảo vệ quyết định cũ vì đã bỏ công vào nó · đổi sự thật khi đổi người nghe · tuyên bố tác động sản xuất từ bằng chứng lab · trình thiết kế có thành phần không gắn với yêu cầu nào. |
 
 ## Điểm tích hợp
 

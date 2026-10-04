@@ -38,7 +38,7 @@ Output partition phụ thuộc nhiều parent partitions, thường đòi redist
 
 ## 3. Exchange
 
-Physical Exchange mô tả repartition/broadcast requirement; scheduler materializes shuffle stages quanh dependency boundary. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Narrow and wide dependencies, and why exchange creates a stage`, câu hỏi thực dụng là: Narrow/wide dependency và Exchange giải thích stage boundary, pipelining và recomputation ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Physical Exchange mô tả repartition/broadcast requirement; scheduler materializes shuffle stages quanh dependency boundary. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Narrow and wide dependencies, and why exchange creates a stage`, câu hỏi thực dụng là: Narrow/wide dependency và Exchange giải thích stage boundary, pipelining và recomputation ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Tasks and partitions
 
@@ -221,7 +221,7 @@ Với `wiki.spark.dependencies-exchange-stage`, command thành công không tự
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.spark.dependencies-exchange-stage`
+## Execution capsule: kiểm chứng `wiki.spark.dependencies-exchange-stage`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.spark.dependencies-exchange-stage`, sơ đồ, ví dụ và artifact về **Narrow and wide dependencies, and why exchange creates a stage** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

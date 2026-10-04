@@ -45,26 +45,26 @@ Chọn hạt, khoá, cách lưu lịch sử và phương pháp mô hình hoá d�
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L149 · From requirement to model - the seven-step protocol | LT | Chạy đủ bảy bước trên một mô tả nghiệp vụ và dừng lại được ở bước hai với một phát biểu hạt không mơ hồ. | Ba phát biểu hạt đều được người đọc thứ hai diễn đạt lại đúng nghĩa, và cả bảy bước có kết quả ghi ra. | M11: M10 |
-| L150 · Declaring the grain before the columns | TH | Phát biểu hạt cho năm bảng và kiểm chứng từng phát biểu bằng phép đếm trên dữ liệu thật. | Cả năm phát biểu được kiểm bằng phép đếm, và mọi phát biểu sai đều được phát hiện rồi sửa đúng. | L149 |
-| L151 · Conceptual, logical and physical models | LT | Tách một mô hình lẫn tầng thành ba tầng và chỉ ra quyết định nào thuộc tầng nào. | Phân đúng ≥ 12/15 quyết định vào tầng, và ba quyết định biên có giải thích hợp lý. | L150 |
-| L152 · Keys - natural, surrogate and identity over time | TH | Thiết kế bộ khoá cho một bảng chiều có danh tính đổi theo thời gian và xử lý được một lần gộp danh tính. | Ba ca biên được xử lý đúng, dữ liệu lịch sử vẫn truy được, và đối soát theo khoá nghiệp vụ khớp sau khi gộp. | L151 |
-| L153 · Dimensional modelling - facts, dimensions and the bus matrix | LT | Dựng ma trận xe buýt cho một miền nghiệp vụ và chỉ ra chiều nào phải dùng chung. | Ma trận phủ đủ sáu quy trình, chỉ đúng ≥ 3 chiều phải dùng chung, và mô tả được hậu quả cụ thể khi không dùng chung. | L152 |
-| L154 · Fact types - transaction, periodic and accumulating snapshot | TH | Chọn đúng loại bảng sự kiện cho bốn câu hỏi nghiệp vụ và dựng được một bảng ảnh chụp tích luỹ có chạy bù. | Chọn đúng cả bốn câu hỏi, và bảng tích luỹ chạy bù 30 ngày đối soát khớp tuyệt đối. | L153 |
-| L155 · Additivity - additive, semi-additive and non-additive measures | TH | Phân loại độ đo theo ba nhóm và chứng minh bằng số rằng cộng sai nhóm cho ra kết quả sai. | Mười độ đo phân đúng nhóm, ba phép cộng sai được định lượng mức sai, và bản lưu tử số mẫu số gộp đúng ở mọi mức. | L154 |
-| L156 · Dimension patterns - role-playing, junk, degenerate and bridge | TH | Nhận ra bốn mẫu trong một lược đồ cho trước và xử lý đúng phép gộp qua bảng cầu để không đếm trùng. | Nhận đúng ≥ 3/4 mẫu, và tổng gộp qua bảng cầu có hệ số phân bổ khớp tổng thật. | L155 |
-| L157 · Slowly changing dimensions, type 0 to type 6 | TH | Cài đặt chiều biến đổi chậm loại hai đạt hai bất biến, và định lượng sai lệch báo cáo nếu dùng loại một. | Hai bất biến giữ được qua 1000 lần cập nhật, và chênh lệch báo cáo giữa loại một và loại hai được định lượng. | L156 |
-| L158 · Valid time, system time, corrections and restatement | TH | Trả lời được cả hai loại câu hỏi thời gian trên cùng một tập dữ liệu và nêu chính sách hiệu chỉnh. | Trả lời đúng ≥ 3/4 câu hỏi hai loại, và chính sách hiệu chỉnh nêu rõ hành vi cùng người quyết. | L157 |
-| L159 · Star, snowflake and the one-big-table trade-off | TH | So ba bố trí trên cùng dữ liệu theo bốn tiêu chí và chọn một kèm điều kiện làm lựa chọn đó sai. | Bảng ba bố trí nhân bốn tiêu chí có số ở hai tiêu chí đầu, và lựa chọn kèm hai điều kiện đảo ngược cụ thể. | L158 |
-| L160 · Data Vault at a level sufficient to recognise it | LT | Nhận ra cấu trúc này trong một lược đồ và đánh giá nó có phù hợp một bối cảnh cho trước không. | Nhận đúng ba thành phần kèm số phép kết đo được, và quyết định đúng cả ba bối cảnh kèm chi phí kéo theo. | L159 |
+| L149 · [[wiki.data-modeling.seven-step-protocol|From requirement to model - the seven-step protocol]]| LT | Chạy đủ bảy bước trên một mô tả nghiệp vụ và dừng lại được ở bước hai với một phát biểu hạt không mơ hồ. | Ba phát biểu hạt đều được người đọc thứ hai diễn đạt lại đúng nghĩa, và cả bảy bước có kết quả ghi ra. | M11: M10 |
+| L150 · [[wiki.data-modeling.declaring-grain|Declaring the grain before the columns]]| TH | Phát biểu hạt cho năm bảng và kiểm chứng từng phát biểu bằng phép đếm trên dữ liệu thật. | Cả năm phát biểu được kiểm bằng phép đếm, và mọi phát biểu sai đều được phát hiện rồi sửa đúng. | L149 |
+| L151 · [[wiki.data-modeling.model-levels|Conceptual, logical and physical models]]| LT | Tách một mô hình lẫn tầng thành ba tầng và chỉ ra quyết định nào thuộc tầng nào. | Phân đúng ≥ 12/15 quyết định vào tầng, và ba quyết định biên có giải thích hợp lý. | L150 |
+| L152 · [[wiki.data-modeling.keys-identity-over-time|Keys - natural, surrogate and identity over time]]| TH | Thiết kế bộ khoá cho một bảng chiều có danh tính đổi theo thời gian và xử lý được một lần gộp danh tính. | Ba ca biên được xử lý đúng, dữ liệu lịch sử vẫn truy được, và đối soát theo khoá nghiệp vụ khớp sau khi gộp. | L151 |
+| L153 · [[wiki.data-modeling.facts-dimensions-bus-matrix|Dimensional modelling - facts, dimensions and the bus matrix]]| LT | Dựng ma trận xe buýt cho một miền nghiệp vụ và chỉ ra chiều nào phải dùng chung. | Ma trận phủ đủ sáu quy trình, chỉ đúng ≥ 3 chiều phải dùng chung, và mô tả được hậu quả cụ thể khi không dùng chung. | L152 |
+| L154 · [[wiki.data-modeling.fact-table-types|Fact types - transaction, periodic and accumulating snapshot]]| TH | Chọn đúng loại bảng sự kiện cho bốn câu hỏi nghiệp vụ và dựng được một bảng ảnh chụp tích luỹ có chạy bù. | Chọn đúng cả bốn câu hỏi, và bảng tích luỹ chạy bù 30 ngày đối soát khớp tuyệt đối. | L153 |
+| L155 · [[wiki.data-modeling.measure-additivity|Additivity - additive, semi-additive and non-additive measures]]| TH | Phân loại độ đo theo ba nhóm và chứng minh bằng số rằng cộng sai nhóm cho ra kết quả sai. | Mười độ đo phân đúng nhóm, ba phép cộng sai được định lượng mức sai, và bản lưu tử số mẫu số gộp đúng ở mọi mức. | L154 |
+| L156 · [[wiki.data-modeling.dimension-patterns|Dimension patterns - role-playing, junk, degenerate and bridge]]| TH | Nhận ra bốn mẫu trong một lược đồ cho trước và xử lý đúng phép gộp qua bảng cầu để không đếm trùng. | Nhận đúng ≥ 3/4 mẫu, và tổng gộp qua bảng cầu có hệ số phân bổ khớp tổng thật. | L155 |
+| L157 · [[wiki.data-modeling.scd-types|Slowly changing dimensions, type 0 to type 6]]| TH | Cài đặt chiều biến đổi chậm loại hai đạt hai bất biến, và định lượng sai lệch báo cáo nếu dùng loại một. | Hai bất biến giữ được qua 1000 lần cập nhật, và chênh lệch báo cáo giữa loại một và loại hai được định lượng. | L156 |
+| L158 · [[wiki.data-modeling.bitemporal-corrections|Valid time, system time, corrections and restatement]]| TH | Trả lời được cả hai loại câu hỏi thời gian trên cùng một tập dữ liệu và nêu chính sách hiệu chỉnh. | Trả lời đúng ≥ 3/4 câu hỏi hai loại, và chính sách hiệu chỉnh nêu rõ hành vi cùng người quyết. | L157 |
+| L159 · [[wiki.data-modeling.star-snowflake-obt|Star, snowflake and the one-big-table trade-off]]| TH | So ba bố trí trên cùng dữ liệu theo bốn tiêu chí và chọn một kèm điều kiện làm lựa chọn đó sai. | Bảng ba bố trí nhân bốn tiêu chí có số ở hai tiêu chí đầu, và lựa chọn kèm hai điều kiện đảo ngược cụ thể. | L158 |
+| L160 · [[wiki.data-modeling.data-vault-recognition|Data Vault at a level sufficient to recognise it]]| LT | Nhận ra cấu trúc này trong một lược đồ và đánh giá nó có phù hợp một bối cảnh cho trước không. | Nhận đúng ba thành phần kèm số phép kết đo được, và quyết định đúng cả ba bối cảnh kèm chi phí kéo theo. | L159 |
 | L161 · Domain modelling, bounded context and the canonical-model trap | LT | Nhận ra hai ngữ cảnh giới hạn xung đột nhau trong một mô tả và đề xuất cách tích hợp bằng hợp đồng. | Chỉ đúng ≥ 2 từ mang hai nghĩa, và đề xuất tích hợp bằng hợp đồng kèm định nghĩa theo từng ngữ cảnh. | L160 |
-| L162 · Late arriving data, early arriving facts and the unknown member | TH | Xử lý đúng ba ca biên và chứng minh tổng không thiếu dòng nào so với nguồn. | Đối soát tổng khớp tuyệt đối với nguồn, ba nghĩa phân biệt được bằng truy vấn, và liên kết lịch sử sau khi sửa cho báo cáo đúng. | L161 |
-| L163 · Modelling for handover - what the consumer needs | TH | Nộp bộ tài liệu sáu phần cho một mô hình và chứng minh người khác trả lời được ba câu hỏi mà không hỏi. | Người nhận trả lời đúng ≥ 2/3 câu hỏi mà không phải hỏi lại, và bộ tài liệu có đủ sáu phần gồm hạn chế diễn giải. | L162 |
-| L164 · Modelling project - four models, one decision matrix | DA | Nộp bốn mô hình có phát biểu hạt đầy đủ, một ma trận quyết định có số, và một khuyến nghị kèm điều kiện đảo ngược. | Bốn mô hình cho cùng kết quả trên truy vấn đối chứng, mọi bảng sự kiện có hạt kiểm được, và ma trận không có ô nào thiếu số. | L163 |
+| L162 · [[wiki.data-modeling.late-arriving-unknown-members|Late arriving data, early arriving facts and the unknown member]]| TH | Xử lý đúng ba ca biên và chứng minh tổng không thiếu dòng nào so với nguồn. | Đối soát tổng khớp tuyệt đối với nguồn, ba nghĩa phân biệt được bằng truy vấn, và liên kết lịch sử sau khi sửa cho báo cáo đúng. | L161 |
+| L163 · [[wiki.data-modeling.consumer-handover|Modelling for handover - what the consumer needs]]| TH | Nộp bộ tài liệu sáu phần cho một mô hình và chứng minh người khác trả lời được ba câu hỏi mà không hỏi. | Người nhận trả lời đúng ≥ 2/3 câu hỏi mà không phải hỏi lại, và bộ tài liệu có đủ sáu phần gồm hạn chế diễn giải. | L162 |
+| L164 · [[wiki.data-modeling.four-model-decision-matrix|Modelling project - four models, one decision matrix]]| DA | Nộp bốn mô hình có phát biểu hạt đầy đủ, một ma trận quyết định có số, và một khuyến nghị kèm điều kiện đảo ngược. | Bốn mô hình cho cùng kết quả trên truy vấn đối chứng, mọi bảng sự kiện có hạt kiểm được, và ma trận không có ô nào thiếu số. | L163 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M11 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M11 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -111,7 +111,7 @@ flowchart LR
   class A149,A150,A151,A152,A153,A154,A155,A156,A157,A158,A159,A160,A161,A162,A163,A164 atom;
 ```
 
-### Bài 149: From requirement to model - the seven-step protocol
+### Lesson 149: From requirement to model - the seven-step protocol
 
 Bài mở module bằng một quy trình có thứ tự cố định, vì bỏ bước hoặc đảo bước là nguồn của phần lớn mô hình sai. Bảy bước: gọi tên quy trình nghiệp vụ và sự kiện, phát biểu hạt trước khi nghĩ tới cột, xác định danh tính tự nhiên và nhu cầu khoá thay thế, định nghĩa độ đo cùng chiều và ngữ nghĩa thời gian, mô hình hoá hiệu chỉnh cùng dữ liệu tới muộn cùng xoá, ánh xạ mẫu truy cập và khối lượng ghi đọc, rồi mới chọn phương pháp. Bước cuối nằm cuối là chủ ý: chọn phương pháp trước rồi ép bài toán vào nó là cách làm ra lược đồ sao cho một bài toán không phải phân tích. Ba câu hỏi phải trả lời được trước khi rời bước hai, vì hạt sai thì sáu bước sau đều sai theo. Nối với Bài 89: từ vựng miền là đầu vào của bước một.
 
@@ -119,7 +119,7 @@ Người học phải chạy đủ bảy bước trên một mô tả nghiệp v
 
 Cách đánh giá: Tầng *áp dụng*. Bài mở module, áp một quy trình có sẵn vào tình huống mới. Kiểm bằng rà soát chéo phát biểu hạt; đạt khi hai người đọc cùng một phát biểu hiểu giống nhau ở cả ba mô tả nghiệp vụ.
 
-### Bài 150: Declaring the grain before the columns
+### Lesson 150: Declaring the grain before the columns
 
 Bài dành riêng cho bước hai vì nó là bước quyết định. Hạt là câu trả lời cho một dòng trong bảng này đại diện cho cái gì, và câu đó phải chặt tới mức không hai người hiểu khác nhau. Ba mức chặt và khác biệt hậu quả: một dòng là một đơn hàng, một dòng là một dòng hàng trong đơn, một dòng là một lần thay đổi trạng thái của dòng hàng; ba mức cho ba bảng khác nhau và trộn chúng là gốc của mọi lỗi nhân dòng. Kiểm chứng hạt bằng thực nghiệm chứ bằng niềm tin: đếm dòng theo tập khoá được tuyên bố là duy nhất, và nếu có nhóm nào nhiều hơn một dòng thì hạt đã phát biểu sai. Hạt và khoá liên quan nhưng khác nhau: khoá là cách nhận dạng một dòng, hạt là ý nghĩa của một dòng. Phép kết đổi hạt là hiện tượng đã gặp ở Bài 119, nay có tên gọi và có cách chặn.
 
@@ -127,7 +127,7 @@ Người học phải phát biểu hạt cho năm bảng và kiểm chứng từ
 
 Cách đánh giá: Tầng *áp dụng*. Objective có phép kiểm chứng khách quan bằng truy vấn, chứ dựa vào cảm nhận. Kiểm bằng phép đếm trùng; đạt khi cả năm phát biểu được dữ liệu xác nhận hoặc bị bác bỏ và sửa lại đúng.
 
-### Bài 151: Conceptual, logical and physical models
+### Lesson 151: Conceptual, logical and physical models
 
 Ba tầng mô hình phục vụ ba người đọc khác nhau, và trộn chúng làm cả ba không dùng được. Mô hình khái niệm nói về khái niệm nghiệp vụ và quan hệ giữa chúng, không có kiểu dữ liệu, dùng để thống nhất với người nghiệp vụ. Mô hình logic có thuộc tính, khoá và ràng buộc, chưa gắn với hệ cụ thể. Mô hình vật lý có kiểu dữ liệu, chỉ mục, phân vùng và quyết định lưu trữ, gắn chặt với engine. Từ đó suy ra một quy tắc thực dụng: đổi engine chỉ nên ảnh hưởng tầng vật lý; nếu phải sửa cả tầng logic thì mô hình đã lẫn tầng. Chuẩn hoá theo Bài 117 là quyết định ở tầng logic, còn phi chuẩn hoá thường là quyết định ở tầng vật lý cho một đường đọc cụ thể. Ba sai lầm khi vẽ sơ đồ quan hệ cho người nghiệp vụ xem.
 
@@ -135,7 +135,7 @@ Người học phải tách một mô hình lẫn tầng thành ba tầng và ch
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết đặt khung cho phần còn lại của module. Kiểm bằng bài phân tầng 15 quyết định; đạt khi phân đúng ít nhất 12 và giải thích được ba quyết định biên.
 
-### Bài 152: Keys - natural, surrogate and identity over time
+### Lesson 152: Keys - natural, surrogate and identity over time
 
 Khoá tự nhiên đến từ nghiệp vụ, khoá thay thế do hệ sinh ra, và chọn sai gây hậu quả kéo dài. Ba lý do kho phân tích cần khoá thay thế: khoá tự nhiên có thể đổi, có thể trùng giữa các nguồn, và có thể rất dài nên tốn khi kết. Nhưng khoá thay thế không thay thế khoá tự nhiên mà đi kèm: khoá nghiệp vụ vẫn phải lưu và vẫn phải có ràng buộc duy nhất, vì đối soát với nguồn dựa trên nó chứ trên số do ta tự sinh. Phạm vi duy nhất theo thời gian là chỗ tinh vi: một mã khách duy nhất tại một thời điểm nhưng có thể được cấp lại sau khi khách cũ đóng tài khoản, nên duy nhất theo thời gian khác duy nhất tuyệt đối. Khoá băm và đánh đổi: tiện vì tính được ở nhiều nơi, rủi ro khi thành phần băm có giá trị thiếu vì kết quả không xác định. Danh tính tách và gộp: khi hai bản ghi hoá ra là một người, hoặc một bản ghi hoá ra là hai.
 
@@ -143,7 +143,7 @@ Người học phải thiết kế bộ khoá cho một bảng chiều có danh 
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một thiết kế có ca biên cụ thể kiểm được. Kiểm bằng ba ca biên; đạt khi cả ba được xử lý đúng và đối soát theo khoá nghiệp vụ vẫn khớp sau khi gộp.
 
-### Bài 153: Dimensional modelling - facts, dimensions and the bus matrix
+### Lesson 153: Dimensional modelling - facts, dimensions and the bus matrix
 
 Mô hình chiều tối ưu cho việc đọc và cho việc người không chuyên hiểu được, nên nó là dạng chính của tầng phục vụ. Bảng sự kiện chứa khoá ngoại và độ đo, không chứa thuộc tính mô tả; bảng chiều rộng, phi chuẩn hoá, giàu thuộc tính, và cố ý lặp dữ liệu vì lặp ở chiều rẻ hơn nhiều so với phải kết thêm bảng. Đây là chỗ mâu thuẫn có chủ đích với chuẩn hoá ở Bài 117, và lý do là hai hệ tối ưu cho hai việc khác nhau. Ma trận xe buýt: bảng liệt kê quy trình nghiệp vụ theo hàng và chiều theo cột, đánh dấu chiều nào dùng ở quy trình nào; nó là công cụ lập kế hoạch cho cả kho chứ chỉ cho một mart. Chiều dùng chung là khái niệm quan trọng nhất của ma trận: cùng một bảng chiều dùng ở nhiều bảng sự kiện thì hai mart so sánh được với nhau; thiếu nó thì mỗi phòng một con số.
 
@@ -151,7 +151,7 @@ Người học phải dựng ma trận xe buýt cho một miền nghiệp vụ v
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết đặt khung cho bốn bài thực hành sau. Kiểm bằng ma trận cộng bài lập luận; đạt khi ma trận phủ đủ quy trình và chỉ đúng ít nhất ba chiều phải dùng chung kèm hậu quả nếu không.
 
-### Bài 154: Fact types - transaction, periodic and accumulating snapshot
+### Lesson 154: Fact types - transaction, periodic and accumulating snapshot
 
 Ba loại bảng sự kiện trả lời ba loại câu hỏi, và chọn sai loại là không trả lời được câu hỏi chứ chỉ chậm. Bảng giao dịch: một dòng một sự kiện xảy ra, hạt mịn nhất, trả lời câu hỏi chuyện gì đã xảy ra. Bảng ảnh chụp định kỳ: một dòng một thực thể tại một kỳ, dùng cho số dư và tồn kho tức những đại lượng không cộng được theo thời gian. Bảng ảnh chụp tích luỹ: một dòng một quy trình có nhiều mốc, mỗi mốc một cột thời gian, và dòng được cập nhật khi quy trình tiến triển; dùng cho vòng đời đơn hàng và để tính thời gian giữa các mốc. Loại thứ ba là loại khác biệt nhất vì nó cập nhật dòng đã tồn tại thay vì chỉ thêm, nên kéo theo yêu cầu về ghi bất biến và về chạy bù. Bảng sự kiện không độ đo cho việc đếm sự kiện hoặc ghi nhận quan hệ.
 
@@ -159,7 +159,7 @@ Người học phải chọn đúng loại bảng sự kiện cho bốn câu h�
 
 Cách đánh giá: Tầng *áp dụng*. Objective là chọn theo câu hỏi rồi cài đặt loại khó nhất. Kiểm bằng bốn câu hỏi cộng bài dựng; đạt khi chọn đúng cả bốn và bảng tích luỹ chạy bù cho kết quả khớp tuyệt đối.
 
-### Bài 155: Additivity - additive, semi-additive and non-additive measures
+### Lesson 155: Additivity - additive, semi-additive and non-additive measures
 
 Phân loại quyết định độ đo được phép cộng theo chiều nào, và bỏ qua nó là nguồn của những con số sai mà trông hợp lý. Cộng được hoàn toàn: doanh thu cộng được theo mọi chiều gồm cả thời gian. Cộng được một phần: số dư và tồn kho cộng được theo chiều khác nhưng không cộng được theo thời gian, vì cộng số dư của mười hai tháng không ra số dư năm; cách xử lý đúng là lấy giá trị cuối kỳ hoặc trung bình. Không cộng được: tỉ lệ và phần trăm, vì trung bình của các tỉ lệ khác tỉ lệ của các tổng. Quy tắc vàng cho loại thứ ba và là quy tắc được dùng lại ở M12: lưu tử số và mẫu số riêng, tính tỉ lệ ở bước cuối; lưu sẵn tỉ lệ rồi cộng lại là lỗi sai số liệu âm thầm phổ biến nhất trong kho dữ liệu. Đếm giá trị phân biệt cũng không cộng được, và đây là chỗ nhiều công cụ làm sai âm thầm.
 
@@ -167,7 +167,7 @@ Người học phải phân loại độ đo theo ba nhóm và chứng minh bằ
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi nhận ra một lỗi không báo lỗi, nên phải chứng minh bằng đối chứng số. Kiểm bằng ba phép cộng sai; đạt khi định lượng được mức sai ở cả ba và đề xuất cách lưu đúng.
 
-### Bài 156: Dimension patterns - role-playing, junk, degenerate and bridge
+### Lesson 156: Dimension patterns - role-playing, junk, degenerate and bridge
 
 Bốn mẫu bảng chiều giải bốn vấn đề cụ thể, học để nhận ra chứ để nhồi vào mọi thiết kế. Chiều vai trò: cùng một bảng chiều dùng ở nhiều vai trong một bảng sự kiện, ví dụ ngày đặt và ngày giao cùng trỏ bảng lịch; cách hiện thực là tạo khung nhìn đặt tên theo vai để truy vấn đọc được. Chiều rác: gom nhiều cờ và mã nhỏ lẻ vào một bảng thay vì để mỗi cái một chiều, tránh bảng sự kiện có hai mươi khoá ngoại. Chiều suy biến: khoá nghiệp vụ như mã hoá đơn nằm thẳng trong bảng sự kiện vì nó không có thuộc tính nào khác. Bảng cầu cho quan hệ nhiều nhiều và cho phân cấp có độ sâu thay đổi; đây là mẫu nguy hiểm nhất vì nó nhân dòng theo thiết kế, nên mọi phép gộp qua bảng cầu phải có hệ số phân bổ, nếu không thì đếm trùng.
 
@@ -175,7 +175,7 @@ Người học phải nhận ra bốn mẫu trong một lược đồ cho trư�
 
 Cách đánh giá: Tầng *áp dụng*. Objective gồm một ca dễ sai âm thầm là bảng cầu. Kiểm bằng bài nhận dạng cộng phép đối soát; đạt khi nhận đúng ít nhất ba mẫu và tổng qua bảng cầu khớp tổng thật.
 
-### Bài 157: Slowly changing dimensions, type 0 to type 6
+### Lesson 157: Slowly changing dimensions, type 0 to type 6
 
 Thuộc tính chiều đổi theo thời gian, và cách xử lý quyết định báo cáo lịch sử đúng hay sai. Bài toán cụ thể: khách chuyển từ vùng bắc sang vùng nam; nếu ghi đè thì toàn bộ doanh thu lịch sử của khách đó nhảy sang vùng mới và báo cáo năm ngoái đổi số dù không ai sửa dữ liệu bán hàng. Các loại và hậu quả báo cáo của từng loại: loại không giữ nguyên giá trị đầu, loại một ghi đè nên mất lịch sử, loại hai thêm dòng mới nên giữ đủ lịch sử và là loại dùng nhiều nhất, loại ba giữ một giá trị trước, loại sáu kết hợp. Cài đặt loại hai: khoá thay thế, hai cột hiệu lực, cờ bản ghi hiện hành, và quy trình tải gồm phát hiện thay đổi, đóng dòng cũ, mở dòng mới. Hai phép kiểm bắt buộc: không có khoảng hiệu lực chồng nhau, và mỗi khoá nghiệp vụ có đúng một dòng hiện hành.
 
@@ -183,7 +183,7 @@ Người học phải cài đặt chiều biến đổi chậm loại hai đạt
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cài đặt có hai bất biến kiểm được bằng truy vấn. Kiểm bằng hai phép kiểm bất biến cộng đối chứng; đạt khi cả hai bất biến giữ được qua 1000 lần cập nhật và sai lệch của loại một được định lượng.
 
-### Bài 158: Valid time, system time, corrections and restatement
+### Lesson 158: Valid time, system time, corrections and restatement
 
 Hai trục thời gian trả lời hai câu hỏi khác nhau và trộn chúng làm không trả lời được câu nào. Thời gian hiệu lực là khoảng mà sự thật đúng trong thế giới; thời gian hệ thống là khoảng mà hệ của ta tin điều đó. Ví dụ phân biệt: khách đổi địa chỉ từ ngày mùng một nhưng hệ chỉ biết vào ngày mười; hai trục cho hai câu trả lời khác nhau cho câu hỏi ngày năm khách ở đâu. Từ đó suy ra hai loại câu hỏi mà một hệ trưởng thành phải trả lời được: tình trạng thật tại một thời điểm, và báo cáo đã in ra hôm đó dựa trên dữ liệu nào; câu thứ hai là yêu cầu kiểm toán và chỉ trả lời được nếu có trục thời gian hệ thống. Hiệu chỉnh và trình bày lại: khi dữ liệu cũ sai và được sửa, báo cáo đã công bố đổi theo hay giữ nguyên là quyết định nghiệp vụ chứ kỹ thuật, và phải thoả thuận trước.
 
@@ -191,7 +191,7 @@ Người học phải trả lời được cả hai loại câu hỏi thời gia
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi phân biệt hai trục và nhận ra đây là quyết định có bên liên quan. Kiểm bằng bốn câu hỏi hai loại; đạt khi trả lời đúng ít nhất ba và chính sách hiệu chỉnh nêu rõ ai quyết.
 
-### Bài 159: Star, snowflake and the one-big-table trade-off
+### Lesson 159: Star, snowflake and the one-big-table trade-off
 
 Ba cách bố trí tầng phục vụ, so bằng bốn tiêu chí chứ bằng sở thích. Lược đồ sao: bảng chiều phi chuẩn hoá, ít phép kết, dễ hiểu với người dùng cuối, tốn dung lượng do lặp. Bông tuyết: chiều được chuẩn hoá thành nhiều bảng, tiết kiệm dung lượng, thêm phép kết và khó hiểu hơn; hiếm khi đáng ở kho hiện đại vì dung lượng rẻ còn phép kết thì không. Bảng rộng gộp tất cả vào một bảng: nhanh nhất cho người tiêu thụ và không thể kết sai, đổi lại lặp dữ liệu nhiều, khó quản trị khi một định nghĩa đổi, và mất tính linh hoạt khi cần chiều mới. Bốn tiêu chí so: tốc độ truy vấn, dung lượng, chi phí thay đổi định nghĩa, và mức dễ hiểu với người dùng. Khi nào bảng rộng là lựa chọn đúng: đường tiêu thụ cố định, số người dùng lớn, và có tầng ngữ nghĩa ở trên giữ định nghĩa, tức chính bối cảnh của M12.
 
@@ -199,7 +199,7 @@ Người học phải so ba bố trí trên cùng dữ liệu theo bốn tiêu c
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi so đa tiêu chí có số đo chứ theo quy tắc chung. Kiểm bằng bảng ba bố trí nhân bốn tiêu chí; đạt khi hai tiêu chí đầu có số đo thật và lựa chọn có hai điều kiện đảo ngược.
 
-### Bài 160: Data Vault at a level sufficient to recognise it
+### Lesson 160: Data Vault at a level sufficient to recognise it
 
 Phương pháp thứ ba, dạy ở mức nhận ra và đánh giá chứ mức triển khai, vì phần lớn đội không cần nó. Ba thành phần: trung tâm giữ khoá nghiệp vụ, liên kết giữ quan hệ giữa các trung tâm, vệ tinh giữ thuộc tính có lịch sử. Bất biến khi tải và lý do thiết kế: mọi thứ chỉ thêm chứ sửa, nên tải song song được và giữ đủ dấu vết kiểm toán. Điểm mạnh thật: chịu được nguồn đổi lược đồ thường xuyên và yêu cầu kiểm toán chặt, vì không bao giờ mất dữ liệu gốc. Điểm yếu thật và lý do ít dùng: số bảng nhân lên nhiều lần, truy vấn phải kết rất nhiều, nên luôn cần một tầng phục vụ dạng chiều ở trên và đội phải nuôi hai tầng. Hai câu hỏi quyết định có nên dùng. Ba dấu hiệu một dự án đang dùng nó vì nghe chuyên nghiệp chứ vì ràng buộc thật.
 
@@ -207,7 +207,7 @@ Người học phải nhận ra cấu trúc này trong một lược đồ và �
 
 Cách đánh giá: Tầng *đánh giá*. Objective là năng lực đánh giá chứ triển khai, đúng phạm vi bản nguồn đặt ra. Kiểm bằng ba bối cảnh; đạt khi quyết định đúng cả ba và nêu đúng chi phí kéo theo ở bối cảnh chọn dùng.
 
-### Bài 161: Domain modelling, bounded context and the canonical-model trap
+### Lesson 161: Domain modelling, bounded context and the canonical-model trap
 
 Góc nhìn thứ tư, đến từ thiết kế phần mềm và quan trọng khi dữ liệu đến từ nhiều đội. Ngữ cảnh giới hạn: cùng một từ có nghĩa khác nhau ở hai đội, và ép chúng dùng chung một định nghĩa thường thất bại; ví dụ khách hàng với đội bán hàng là người ký hợp đồng, với đội hỗ trợ là người gọi lên. Cái bẫy mô hình chuẩn chung: cố xây một mô hình duy nhất đúng cho cả công ty; nó tốn nhiều năm, không bao giờ xong, và chặn mọi đội. Cách đúng theo bản nguồn: tích hợp ở mức hợp đồng chứ ở mức mô hình chung, tức mỗi miền giữ mô hình riêng và công bố một hợp đồng ổn định ra ngoài. Sở hữu dữ liệu đi theo miền: đội sinh ra dữ liệu chịu trách nhiệm về nó. Quan hệ với M19: từ điển thuật ngữ ghi lại việc một từ có nhiều nghĩa theo ngữ cảnh thay vì ép một nghĩa.
 
@@ -215,7 +215,7 @@ Người học phải nhận ra hai ngữ cảnh giới hạn xung đột nhau t
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi nhận ra xung đột ngữ nghĩa trước khi nó thành xung đột kỹ thuật. Kiểm bằng bài phân tích; đạt khi chỉ ra đúng ít nhất hai từ mang hai nghĩa và đề xuất hợp đồng thay vì mô hình chung.
 
-### Bài 162: Late arriving data, early arriving facts and the unknown member
+### Lesson 162: Late arriving data, early arriving facts and the unknown member
 
 Ba ca biên mà mọi mô hình thật đều gặp và mọi mô hình sách giáo khoa đều bỏ qua. Sự kiện tới trước chiều: một đơn hàng tham chiếu khách hàng chưa có trong bảng chiều; ba cách xử lý và hậu quả từng cách, trong đó cách sai phổ biến là bỏ dòng sự kiện đi và làm tổng thiếu mà không ai biết. Thành viên chưa biết: một dòng chiều đặc biệt để sự kiện luôn kết được, kèm ba biến thể mang ba nghĩa khác nhau là chưa biết, không áp dụng, và lỗi; gộp ba nghĩa là mất thông tin theo đúng bài học ở Bài 114. Chiều tới muộn: thuộc tính đúng chỉ biết sau khi sự kiện đã tải, nên phải sửa lại liên kết lịch sử; đây là chỗ khó nhất và liên quan trực tiếp tới loại hai ở Bài 157. Nguyên tắc chung: không bao giờ bỏ dòng trong im lặng, quy tắc sẽ được cưỡng chế ở M18.
 
@@ -223,7 +223,7 @@ Người học phải xử lý đúng ba ca biên và chứng minh tổng không
 
 Cách đánh giá: Tầng *áp dụng*. Objective là ba ca biên có tiêu chí nghiệm thu bằng đối soát. Kiểm bằng đối soát tổng; đạt khi không dòng nào bị bỏ và ba nghĩa của thành viên chưa biết phân biệt được.
 
-### Bài 163: Modelling for handover - what the consumer needs
+### Lesson 163: Modelling for handover - what the consumer needs
 
 Mô hình tốt về kỹ thuật vẫn vô dụng nếu người dùng không hiểu, nên bài này nhìn từ phía người tiêu thụ và là cầu nối sang M13. Sáu thứ người tiêu thụ cần cùng với bảng: phát biểu hạt, định nghĩa từng độ đo gồm công thức và bộ lọc, ý nghĩa từng thuộc tính chiều, độ tươi và lịch làm mới, truy vấn mẫu cho ba câu hỏi thường gặp, và hạn chế diễn giải tức những kết luận mà dữ liệu này không cho phép rút ra. Phần cuối là phần hiếm ai viết và là phần chặn được nhiều kết luận sai nhất. Quy ước đặt tên nhất quán quan trọng hơn quy ước hoàn hảo, theo tinh thần đã nêu ở M7. Ba dấu hiệu mô hình chưa sẵn sàng bàn giao. Phép thử bàn giao ở đây là bản thu nhỏ của phép thử sẽ làm ở M13: một người khác trả lời được ba câu hỏi nghiệp vụ chỉ bằng bảng và tài liệu.
 
@@ -231,7 +231,7 @@ Người học phải nộp bộ tài liệu sáu phần cho một mô hình và
 
 Cách đánh giá: Tầng *đánh giá*. Objective đo chất lượng bàn giao bằng kết quả của người nhận. Kiểm bằng phép thử bàn giao; đạt khi người nhận trả lời đúng ít nhất hai trong ba câu hỏi mà không phải hỏi lại.
 
-### Bài 164: Modelling project - four models, one decision matrix
+### Lesson 164: Modelling project - four models, one decision matrix
 
 Bài dự án khép module. Trên cùng một miền nghiệp vụ, dựng bốn mô hình: chuẩn hoá cho hệ giao dịch, mô hình chiều cho phân tích, phác thảo Data Vault, và một bảng rộng. Với mỗi mô hình, nộp phát biểu hạt cho mọi bảng sự kiện và một truy vấn trả lời cùng một câu hỏi nghiệp vụ. Sau đó lập ma trận quyết định bốn phương án nhân bốn tiêu chí ở Bài 159, mỗi ô có số đo hoặc ước lượng có căn cứ chứ tính từ. Kết luận: chọn một phương án cho một bối cảnh cho trước và nêu ba điều kiện làm lựa chọn đó sai. Yêu cầu bắt buộc: mô hình chiều phải cài loại hai theo Bài 157, xử lý đủ ba ca biên ở Bài 162, và kèm bộ tài liệu sáu phần theo Bài 163.
 

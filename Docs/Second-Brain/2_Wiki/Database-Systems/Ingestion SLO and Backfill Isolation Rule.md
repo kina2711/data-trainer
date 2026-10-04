@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Định nghĩa ingestion SLO và cô lập backfill thế nào để phục hồi lịch sử không phá dữ liệu mới?
 source_ids:
   - src.web.google-sre-capacity-load-testing
@@ -223,7 +223,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ingestion.ingestion-slo-backfill-isolation`
+## Execution capsule: kiểm chứng `wiki.ingestion.ingestion-slo-backfill-isolation`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ingestion.ingestion-slo-backfill-isolation`, sơ đồ, ví dụ và artifact về **Ingestion SLO and Backfill Isolation Rule** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -245,7 +245,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Định nghĩa ingestion SLO và cô lập backfill thế nào để phục hồi lịch sử không phá dữ liệu mới?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Định nghĩa ingestion SLO và cô lập backfill thế nào để phục hồi lịch sử không phá dữ liệu mới? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Ingestion SLO and Backfill Isolation Rule** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

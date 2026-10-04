@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-28
 last_verified: 2026-09-28
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Thiết kế job-control API thế nào để giữ đúng trạng thái khi duplicate request, worker crash, lease expiry, database timeout và deployment?
 source_ids:
   - src.web.postgresql-concurrency-control
@@ -43,7 +43,7 @@ Response code và retry semantics phải theo HTTP contract. Timeout phía clien
 
 Core tables gồm `jobs`, `job_attempts`, idempotency record và tùy kiến trúc có outbox. Cache chỉ là derivative optimization sau khi đo. Nếu cache và DB bất đồng, DB thắng. Job payload, state transition, owner, lease expiry, generation/fencing token, attempt budget và cancellation marker phải durable.
 
-Unique constraint trên `(tenant_id, idempotency_key)` là tuyến phòng thủ concurrency. Application check rồi insert không đủ vì hai request có thể cùng thấy “chưa có”. Transaction xử lý unique conflict và đọc lại canonical record.
+Unique constraint trên `(tenant_id, idempotency_key)` là tuyến phòng thủ concurrency. Application check rồi insert không đủ vì hai request có thể cùng thấy chưa có. Transaction xử lý unique conflict và đọc lại canonical record.
 
 ## 3. State machine hữu hạn
 
@@ -105,7 +105,7 @@ Runbook trả lời: queue age tăng thì xem gì; worker crash loop; DB pool sa
 
 ## 13. Definition of done
 
-Project đạt khi năm fault test chạy lặp lại, invariants được assert từ artifact, retry/cancel/DLQ semantics được ghi rõ, capacity note có raw data, threat model có negative authorization tests và runbook có lệnh quan sát/phục hồi. “Demo happy path chạy” không đủ.
+Project đạt khi năm fault test chạy lặp lại, invariants được assert từ artifact, retry/cancel/DLQ semantics được ghi rõ, capacity note có raw data, threat model có negative authorization tests và runbook có lệnh quan sát/phục hồi. Demo happy path chạy không đủ.
 
 ## 14. Schema và invariant audit
 
@@ -117,7 +117,7 @@ Audit từng invariant theo ba tuyến: application path, direct SQL/import path
 
 Khi queue age tăng nhưng workers healthy, xem dependency latency và claim query. Khi lease expiry tăng, phân biệt worker slow, heartbeat failure và clock/config mismatch. Khi DLQ tăng, nhóm stable error class trước replay. Khi database timeout, không đoán transaction outcome; dùng idempotency key để đọc canonical state. Khi deployment gián đoạn, stop new claims, cho running attempt grace, rồi để lease recovery xử lý phần còn lại.
 
-Mỗi thao tác quản trị—pause, cancel, replay, force-release lease—cần actor, reason, timestamp và before/after state. Không sửa row thủ công ngoài audited runbook vì sẽ phá evidence chain.
+Mỗi thao tác quản trị:pause, cancel, replay, force-release lease:cần actor, reason, timestamp và before/after state. Không sửa row thủ công ngoài audited runbook vì sẽ phá evidence chain.
 
 ## 16. Câu hỏi tự kiểm tra
 
@@ -125,7 +125,7 @@ Trước khi review, dựng một timeline gồm client, API, database, worker v
 
 Đặc biệt kiểm sự khác nhau giữa job identity, attempt identity và external operation identity. Job giữ nguyên qua retry; attempt thay đổi để audit; external operation ID phải cho phép reconciliation. Dùng một UUID mới cho mọi thứ mỗi lần retry làm mất liên kết. Dùng cùng ID nhưng không scope tenant có thể tạo collision hoặc leak. Correlation field không được thay authorization predicate.
 
-Review schema bằng các phản ví dụ: hai submit đồng thời; heartbeat đến sau khi lease đã chuyển owner; cancel đến cùng lúc completion; retry sau ambiguous DB timeout; replay DLQ khi original effect đã thành công. Mỗi phản ví dụ phải đi tới một unique/conditional constraint, state transition hoặc reconciliation step. Nếu chỉ có câu “worker sẽ kiểm tra”, cần chỉ transaction và affected-row assertion cụ thể.
+Review schema bằng các phản ví dụ: hai submit đồng thời; heartbeat đến sau khi lease đã chuyển owner; cancel đến cùng lúc completion; retry sau ambiguous DB timeout; replay DLQ khi original effect đã thành công. Mỗi phản ví dụ phải đi tới một unique/conditional constraint, state transition hoặc reconciliation step. Nếu chỉ có câu worker sẽ kiểm tra, cần chỉ transaction và affected-row assertion cụ thể.
 
 1. Unique constraint tham gia idempotency dưới 50 request đồng thời thế nào?
 2. Lease expiry vì sao không đủ ngăn worker cũ hoàn tất?
@@ -144,12 +144,12 @@ Review schema bằng các phản ví dụ: hai submit đồng thời; heartbeat 
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-CONCURRENCY-CONTROL]] | transaction, lock và row claim | §§2–4, 14 | Đã giữ DB-specific scope |
+| [[SRC-POSTGRESQL-CONCURRENCY-CONTROL]] | transaction, lock và row claim | §§2-4, 14 | Đã giữ DB-specific scope |
 | [[SRC-RFC9110-HTTP-SEMANTICS]] | timeout/retry ambiguity | §§1, 5 | Đã áp vào submit contract |
-| [[SRC-STRIPE-IDEMPOTENT-REQUESTS]] | idempotency behavior | §§1–2 | Đã dùng làm practitioner pattern, không coi retention là chuẩn chung |
+| [[SRC-STRIPE-IDEMPOTENT-REQUESTS]] | idempotency behavior | §§1-2 | Đã dùng làm practitioner pattern, không coi retention là chuẩn chung |
 | [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]] | transaction/outbox | §8 | Đã giữ at-least-once |
 | [[SRC-MICROSERVICES-IO-TRANSACTIONAL-OUTBOX]] | outbox forces | §8 | Đã nối với state event |
-| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]] | resilience/observability | §§9–12 | Đã trình bày evidence vận hành |
+| [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]] | resilience/observability | §§9-12 | Đã trình bày evidence vận hành |
 
 ## Key takeaways
 - Database là source of truth; cache chỉ là bản dẫn xuất.
@@ -159,16 +159,16 @@ Review schema bằng các phản ví dụ: hai submit đồng thời; heartbeat 
 - Năm fault test, capacity note, threat model và runbook là deliverable, không phải phụ lục.
 
 ## Reference
-1. [[SRC-POSTGRESQL-CONCURRENCY-CONTROL]] — locking và claim.
-2. [[SRC-RFC9110-HTTP-SEMANTICS]] — HTTP semantics.
-3. [[SRC-STRIPE-IDEMPOTENT-REQUESTS]] — idempotent request pattern.
-4. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]] — transaction/outbox.
-5. [[SRC-MICROSERVICES-IO-TRANSACTIONAL-OUTBOX]] — outbox pattern.
-6. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]] — resilience/observability.
+1. [[SRC-POSTGRESQL-CONCURRENCY-CONTROL]]: locking và claim.
+2. [[SRC-RFC9110-HTTP-SEMANTICS]]: HTTP semantics.
+3. [[SRC-STRIPE-IDEMPOTENT-REQUESTS]]: idempotent request pattern.
+4. [[SRC-RICHARDSON-MICROSERVICES-PATTERNS-1E]]: transaction/outbox.
+5. [[SRC-MICROSERVICES-IO-TRANSACTIONAL-OUTBOX]]: outbox pattern.
+6. [[SRC-TITMUS-CLOUD-NATIVE-GO-1E]]: resilience/observability.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.backend.job-control-api-project`
+## Execution capsule: kiểm chứng `wiki.backend.job-control-api-project`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.backend.job-control-api-project`, sơ đồ, ví dụ và artifact về **Job-control API project** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

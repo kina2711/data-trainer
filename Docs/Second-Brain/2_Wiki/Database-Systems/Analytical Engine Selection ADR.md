@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Chọn analytical engine cho ba workload bằng evidence, thresholds và reversal conditions như thế nào?
 source_ids:
   - src.web.madr-templates
@@ -54,7 +54,7 @@ ADR gồm status, context, decision drivers, considered options, decision, conse
 
 ## 6. Dự án ba workloads
 
-Chạy ít nhất hai engines với representative queries; đo scan bytes, latency distributions, concurrency behavior và cost theo L213–L215. Giữ cold/warm/result-cache cells rõ ràng. Điền năm archetypes bằng evidence hoặc bounded research. Mỗi workload có một recommendation, một cost threshold và hai reversal conditions. Peer review tìm hidden hard constraints và claims không có artifact. Done khi mọi decision claim truy tới measurement hoặc labeled assumption.
+Chạy ít nhất hai engines với representative queries; đo scan bytes, latency distributions, concurrency behavior và cost theo L213-L215. Giữ cold/warm/result-cache cells rõ ràng. Điền năm archetypes bằng evidence hoặc bounded research. Mỗi workload có một recommendation, một cost threshold và hai reversal conditions. Peer review tìm hidden hard constraints và claims không có artifact. Done khi mọi decision claim truy tới measurement hoặc labeled assumption.
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
@@ -183,7 +183,7 @@ Mỗi claim cần fixture, versioned contract, counterexample và oracle ở đ�
 ## 8. Quy trình phản biện
 
 1. Tách syntax/wire, structural compatibility, generated API và business semantics.
-2. Ghi direction bằng writer–reader versions, không chỉ dùng nhãn backward/forward.
+2. Ghi direction bằng writer-reader versions, không chỉ dùng nhãn backward/forward.
 3. Khóa canonical meaning và negative fixtures trước implementation.
 4. Giữ source bytes/schema fingerprints để tái hiện.
 5. Mọi default, cache, inference hoặc registry policy đều là explicit configuration.
@@ -226,13 +226,13 @@ Mỗi claim cần fixture, versioned contract, counterexample và oracle ở đ�
 
 ## Key takeaways
 - Structural success và semantic correctness là hai gates riêng.
-- Writer–reader direction, version history và exact fixtures phải hiện trong evidence.
+- Writer-reader direction, version history và exact fixtures phải hiện trong evidence.
 - Defaults, aliases, unknown fields và registry modes có scope cụ thể; không dùng như bảo đảm chung.
 - Chưa chạy lab thì note là giáo trình/protocol, chưa phải production certification.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.olap.analytical-engine-selection-adr`
+## Execution capsule: kiểm chứng `wiki.olap.analytical-engine-selection-adr`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.olap.analytical-engine-selection-adr`, sơ đồ, ví dụ và artifact về **Analytical Engine Selection ADR** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -254,7 +254,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Chọn analytical engine cho ba workload bằng evidence, thresholds và reversal conditions như thế nào?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Chọn analytical engine cho ba workload bằng evidence, thresholds và reversal conditions như thế nào? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Analytical Engine Selection ADR** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

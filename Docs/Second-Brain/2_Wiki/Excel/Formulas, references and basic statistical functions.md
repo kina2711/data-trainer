@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Tham chiếu tương đối, tuyệt đối và hỗn hợp, cùng tiêu chí chọn giữa ba loại. Hàm tổng hợp nền: `SUM`, `AVERAGE`, `COUNT`, `COUNTA`, `MIN`, `MAX`, `MEDIAN`. Hàm có điều kiện: `SUMIF(S)`, `COUNTIF(S)`, `AVERAGEIF(S)`. Vùng đặt tên. Ba hành vi gây sai lệch không báo lỗi: `COUNT` và `COUNTA` đếm tập khác nhau, `AVERAGE` bỏ qua ô rỗng nhưng tính cả giá trị 0, và `COUNTIF` không khớp khi chuỗi điều kiện chứa khoảng trắng thừa. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L007 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Formulas, references and basic statistical functions**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Viết công thức có điều kiện nhiều tầng và sao chép nó qua một vùng mà không sai tham chiếu, kiểm chứng bằng đối chiếu với kết quả tính độc lập. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Tham chiếu tương đối, tuyệt đối và hỗn hợp, cùng tiêu chí chọn giữa ba loại. Hàm tổng hợp nền: `SUM`, `AVERAGE`, `COUNT`, `COUNTA`, `MIN`, `MAX`, `MEDIAN`. Hàm có điều kiện: `SUMIF(S)`, `COUNTIF(S)`, `AVERAGEIF(S)`. Vùng đặt tên. Ba hành vi gây sai lệch không báo lỗi: `COUNT` và `COUNTA` đếm tập khác nhau, `AVERAGE` bỏ qua ô rỗng nhưng tính cả giá trị 0, và `COUNTIF` không khớp khi chuỗi điều kiện chứa khoảng trắng thừa.
 
@@ -44,7 +44,7 @@ Cơ chế của `formulas-references-and-basic-statistical-functions` được k
 
 Lỗi cần loại trừ trong bài này là: Thiếu `$` rồi sao chép công thức ra sai vùng · dùng `AVERAGE` trên cột có ô rỗng mà không kiểm tra · `COUNTIF` không khớp vì khoảng trắng thừa trong dữ liệu. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Thiếu `$` rồi sao chép công 
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L007: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Ba bảng kết quả khớp với đáp án, và công thức sao chép được qua toàn vùng không sinh lỗi tham chiếu.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L007: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Ba bảng kết quả khớp với đáp án, và công thức sao chép được qua toàn vùng không sinh lỗi tham chiếu.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Formulas, references and basic statistical functions
+## Worked Case: Formulas, references and basic statistical functions
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Trên `DS1` xuất ra Excel: tính doanh thu theo chi nhánh, số đơn theo trạng thái, và giá trị đơn trung bình theo tháng. Toàn bộ bằng hàm, không dùng PivotTable.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Formulas, references and basic statistical functions
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L007 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Formulas, references and basic statistical functions` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L007 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Tham chiếu tương đối, tuyệt đối và hỗn hợp, cùng tiêu chí chọn giữa ba loại. Hàm tổng hợp nền: `SUM`, `AVERAGE`, `COUNT`, `COUNTA`, `MIN`, `MAX`, `MEDIAN`. Hàm có điều kiện: `SUMIF(S)`, `COUNTIF(S)`, `AVERAGEIF(S)`. Vùng đặt tên. Ba hành vi gây sai lệch không báo lỗi: `COUNT` và `COUNTA` đếm tập khác nhau, `AVERAGE` bỏ qua ô rỗng nhưng tính cả giá trị 0, và `COUNTIF` không khớp khi chuỗi điều kiện chứa khoảng trắng thừa.
+**Mệnh đề của probe 1: `population`.** Tham chiếu tương đối, tuyệt đối và hỗn hợp, cùng tiêu chí chọn giữa ba loại. Hàm tổng hợp nền: `SUM`, `AVERAGE`, `COUNT`, `COUNTA`, `MIN`, `MAX`, `MEDIAN`. Hàm có điều kiện: `SUMIF(S)`, `COUNTIF(S)`, `AVERAGEIF(S)`. Vùng đặt tên. Ba hành vi gây sai lệch không báo lỗi: `COUNT` và `COUNTA` đếm tập khác nhau, `AVERAGE` bỏ qua ô rỗng nhưng tính cả giá trị 0, và `COUNTIF` không khớp khi chuỗi điều kiện chứa khoảng trắng thừa.
 
 **Thiết kế.** Probe 1 của L007 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L007 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Viết công thức có điều kiện nhiều tầng và sao chép nó qua một vùng mà không sai tham chiếu, kiểm chứng bằng đối chiếu với kết quả tính độc lập.
+**Mệnh đề của probe 2: `grain`.** Viết công thức có điều kiện nhiều tầng và sao chép nó qua một vùng mà không sai tham chiếu, kiểm chứng bằng đối chiếu với kết quả tính độc lập.
 
 **Thiết kế.** Probe 2 của L007 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L007 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Thiếu `$` rồi sao chép công thức ra sai vùng · dùng `AVERAGE` trên cột có ô rỗng mà không kiểm tra · `COUNTIF` không khớp vì khoảng trắng thừa trong dữ liệu.
+**Mệnh đề của probe 3: `identity`.** Thiếu `$` rồi sao chép công thức ra sai vùng · dùng `AVERAGE` trên cột có ô rỗng mà không kiểm tra · `COUNTIF` không khớp vì khoảng trắng thừa trong dữ liệu.
 
 **Thiết kế.** Probe 3 của L007 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L007 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Ba bảng kết quả khớp với đáp án, và công thức sao chép được qua toàn vùng không sinh lỗi tham chiếu.
+**Mệnh đề của probe 4: `time cutoff`.** Ba bảng kết quả khớp với đáp án, và công thức sao chép được qua toàn vùng không sinh lỗi tham chiếu.
 
 **Thiết kế.** Probe 4 của L007 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L007 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Tham chiếu tương đối, tuyệt đối và hỗn hợp, cùng tiêu chí chọn giữa ba loại. Hàm tổng hợp nền: `SUM`, `AVERAGE`, `COUNT`, `COUNTA`, `MIN`, `MAX`, `MEDIAN`. Hàm có điều kiện: `SUMIF(S)`, `COUNTIF(S)`, `AVERAGEIF(S)`. Vùng đặt tên. Ba hành vi gây sai lệch không báo lỗi: `COUNT` và `COUNTA` đếm tập khác nhau, `AVERAGE` bỏ qua ô rỗng nhưng tính cả giá trị 0, và `COUNTIF` không khớp khi chuỗi điều kiện chứa khoảng trắng thừa.
+**Mệnh đề của probe 5: `missing versus zero`.** Tham chiếu tương đối, tuyệt đối và hỗn hợp, cùng tiêu chí chọn giữa ba loại. Hàm tổng hợp nền: `SUM`, `AVERAGE`, `COUNT`, `COUNTA`, `MIN`, `MAX`, `MEDIAN`. Hàm có điều kiện: `SUMIF(S)`, `COUNTIF(S)`, `AVERAGEIF(S)`. Vùng đặt tên. Ba hành vi gây sai lệch không báo lỗi: `COUNT` và `COUNTA` đếm tập khác nhau, `AVERAGE` bỏ qua ô rỗng nhưng tính cả giá trị 0, và `COUNTIF` không khớp khi chuỗi điều kiện chứa khoảng trắng thừa.
 
 **Thiết kế.** Probe 5 của L007 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L007 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Viết công thức có điều kiện nhiều tầng và sao chép nó qua một vùng mà không sai tham chiếu, kiểm chứng bằng đối chiếu với kết quả tính độc lập.
+**Mệnh đề của probe 6: `duplicate`.** Viết công thức có điều kiện nhiều tầng và sao chép nó qua một vùng mà không sai tham chiếu, kiểm chứng bằng đối chiếu với kết quả tính độc lập.
 
 **Thiết kế.** Probe 6 của L007 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L007 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Thiếu `$` rồi sao chép công thức ra sai vùng · dùng `AVERAGE` trên cột có ô rỗng mà không kiểm tra · `COUNTIF` không khớp vì khoảng trắng thừa trong dữ liệu.
+**Mệnh đề của probe 7: `join fan-out`.** Thiếu `$` rồi sao chép công thức ra sai vùng · dùng `AVERAGE` trên cột có ô rỗng mà không kiểm tra · `COUNTIF` không khớp vì khoảng trắng thừa trong dữ liệu.
 
 **Thiết kế.** Probe 7 của L007 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L007 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Ba bảng kết quả khớp với đáp án, và công thức sao chép được qua toàn vùng không sinh lỗi tham chiếu.
+**Mệnh đề của probe 8: `changed definition`.** Ba bảng kết quả khớp với đáp án, và công thức sao chép được qua toàn vùng không sinh lỗi tham chiếu.
 
 **Thiết kế.** Probe 8 của L007 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L007 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Tham chiếu tương đối, tuyệt đối và hỗn hợp, cùng tiêu chí chọn giữa ba loại. Hàm tổng hợp nền: `SUM`, `AVERAGE`, `COUNT`, `COUNTA`, `MIN`, `MAX`, `MEDIAN`. Hàm có điều kiện: `SUMIF(S)`, `COUNTIF(S)`, `AVERAGEIF(S)`. Vùng đặt tên. Ba hành vi gây sai lệch không báo lỗi: `COUNT` và `COUNTA` đếm tập khác nhau, `AVERAGE` bỏ qua ô rỗng nhưng tính cả giá trị 0, và `COUNTIF` không khớp khi chuỗi điều kiện chứa khoảng trắng thừa.
+**Mệnh đề của probe 9: `independent oracle`.** Tham chiếu tương đối, tuyệt đối và hỗn hợp, cùng tiêu chí chọn giữa ba loại. Hàm tổng hợp nền: `SUM`, `AVERAGE`, `COUNT`, `COUNTA`, `MIN`, `MAX`, `MEDIAN`. Hàm có điều kiện: `SUMIF(S)`, `COUNTIF(S)`, `AVERAGEIF(S)`. Vùng đặt tên. Ba hành vi gây sai lệch không báo lỗi: `COUNT` và `COUNTA` đếm tập khác nhau, `AVERAGE` bỏ qua ô rỗng nhưng tính cả giá trị 0, và `COUNTIF` không khớp khi chuỗi điều kiện chứa khoảng trắng thừa.
 
 **Thiết kế.** Probe 9 của L007 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L007 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Viết công thức có điều kiện nhiều tầng và sao chép nó qua một vùng mà không sai tham chiếu, kiểm chứng bằng đối chiếu với kết quả tính độc lập.
+**Mệnh đề của probe 10: `replay`.** Viết công thức có điều kiện nhiều tầng và sao chép nó qua một vùng mà không sai tham chiếu, kiểm chứng bằng đối chiếu với kết quả tính độc lập.
 
 **Thiết kế.** Probe 10 của L007 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L007 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Thiếu `$` rồi sao chép công thức ra sai vùng · dùng `AVERAGE` trên cột có ô rỗng mà không kiểm tra · `COUNTIF` không khớp vì khoảng trắng thừa trong dữ liệu.
+**Mệnh đề của probe 11: `fresh snapshot`.** Thiếu `$` rồi sao chép công thức ra sai vùng · dùng `AVERAGE` trên cột có ô rỗng mà không kiểm tra · `COUNTIF` không khớp vì khoảng trắng thừa trong dữ liệu.
 
 **Thiết kế.** Probe 11 của L007 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L007 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Ba bảng kết quả khớp với đáp án, và công thức sao chép được qua toàn vùng không sinh lỗi tham chiếu.
+**Mệnh đề của probe 12: `novel scenario`.** Ba bảng kết quả khớp với đáp án, và công thức sao chép được qua toàn vùng không sinh lỗi tham chiếu.
 
 **Thiết kế.** Probe 12 của L007 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Ba bảng kết quả khớp với đáp án, và công thức sao chép đượ
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]] — `src.web.govuk-data-analytics-tools-guidance`
-2. [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]] — `src.book.kimball-ross-data-warehouse-toolkit.3e`
+1. [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]]: `src.web.govuk-data-analytics-tools-guidance`
+2. [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]]: `src.book.kimball-ross-data-warehouse-toolkit.3e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]] — `src.web.govuk-data-analytics-tools-guidance` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Formulas, references and basic statistical functions | các mục cơ chế, case và probe | Đã phủ | ngoài objective L007 |
-| [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]] — `src.book.kimball-ross-data-warehouse-toolkit.3e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Formulas, references and basic statistical functions | các mục cơ chế, case và probe | Đã phủ | ngoài objective L007 |
+| [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]]: `src.web.govuk-data-analytics-tools-guidance` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Formulas, references and basic statistical functions | các mục cơ chế, case và probe | Đã phủ | ngoài objective L007 |
+| [[SRC-KIMBALL-ROSS-DW-TOOLKIT-3E]]: `src.book.kimball-ross-data-warehouse-toolkit.3e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Formulas, references and basic statistical functions | các mục cơ chế, case và probe | Đã phủ | ngoài objective L007 |
 
 ## Key takeaways
 - Viết công thức có điều kiện nhiều tầng và sao chép nó qua một vùng mà không sai tham chiếu, kiểm chứng bằng đối chiếu với kết quả tính độc lập.
@@ -226,7 +226,7 @@ Ba bảng kết quả khớp với đáp án, và công thức sao chép đượ
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.formulas-references-and-basic-statistical-functions`
+## Execution capsule: kiểm chứng `wiki.da.formulas-references-and-basic-statistical-functions`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.formulas-references-and-basic-statistical-functions`, sơ đồ, ví dụ và artifact về **Formulas, references and basic statistical functions** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

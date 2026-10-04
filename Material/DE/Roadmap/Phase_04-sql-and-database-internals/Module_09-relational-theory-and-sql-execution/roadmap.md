@@ -1,5 +1,9 @@
 # Mô-đun 9: Lý thuyết quan hệ và thực thi SQL
 
+## Second Brain References
+
+- [[wiki.database.relations-keys-functional-dependencies|Relations, keys and functional dependencies]]
+
 Đây là module công cụ chính của cả hai vai gộp trong chương trình: Analytics Engineer dùng SQL để mô hình hoá, Data Engineer dùng SQL để nạp và đối soát. Mức yêu cầu vì thế cao hơn mức viết được truy vấn chạy ra kết quả. Ba phần có thứ tự bắt buộc: nền quan hệ trước để biết truy vấn *nên* trả về gì, ngôn ngữ sau để viết ra, rồi mới tới thực thi để biết vì sao nó chậm. Học phần ba trước là học mẹo tối ưu mà không biết truy vấn có đúng hay không. Khái niệm hạt đặt ở Bài 120 là khái niệm được dùng lại nhiều nhất trong toàn chương trình, tới tận M11, M12 và M17.
 
 ## Điều kiện đầu vào
@@ -72,7 +76,7 @@ Nếu chưa có bằng chứng đầu vào, người học phải hoàn thành l
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M09 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M09 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -127,7 +131,7 @@ flowchart LR
   class A113,A114,A115,A116,A117,A118,A119,A120,A121,A122,A123,A124,A125,A126,A127,A128,A129,A130,A131,A132 atom;
 ```
 
-### Bài 113: Relations, keys and functional dependencies
+### Lesson 113: Relations, keys and functional dependencies
 
 Bảng trong cơ sở dữ liệu quan hệ không phải bảng tính: nó là một tập các bộ giá trị, nên về lý thuyết không có thứ tự và không có dòng trùng nhau. Hai tính chất đó giải thích nhiều hành vi gây ngạc nhiên, ví dụ vì sao không có thứ tự thì phải nêu rõ cách sắp khi cần. Khoá: khoá dự tuyển là tập thuộc tính xác định duy nhất một bộ, khoá chính là khoá được chọn, khoá ngoại nối hai quan hệ. Phụ thuộc hàm là công cụ để nói một thuộc tính được xác định bởi thuộc tính nào, và nó là nền của chuẩn hoá ở Bài 117. Ràng buộc là tri thức nghiệp vụ được phát biểu bằng máy kiểm được, và ràng buộc đặt trong cơ sở dữ liệu vẫn đúng khi có đường ghi thứ hai mà ứng dụng không biết; đây là lý do không nên dựa hoàn toàn vào kiểm tra ở tầng ứng dụng. Phân biệt khoá tự nhiên với khoá thay thế, chuẩn bị cho M11.
 
@@ -135,7 +139,7 @@ Người học phải xác định khoá dự tuyển và phụ thuộc hàm c�
 
 Cách đánh giá: Tầng *hiểu*. Bài mở module, đặt từ vựng cho toàn phần nền. Kiểm bằng bài phân tích ba bảng; đạt khi tìm đúng khoá dự tuyển ở ít nhất hai và nêu đúng ràng buộc nên đặt ở tầng cơ sở dữ liệu.
 
-### Bài 114: NULL and three-valued logic
+### Lesson 114: NULL and three-valued logic
 
 `NULL` không phải một giá trị mà là sự vắng mặt của giá trị, và nhầm hai thứ này là nguồn của những con số sai mà không báo lỗi. Logic ba trạng thái: so sánh với `NULL` cho kết quả không xác định chứ đúng hay sai, nên `WHERE cot <> 'A'` loại luôn cả dòng `NULL`, một hành vi đúng theo lý thuyết và bất ngờ với người dùng. Hành vi của `NULL` trong sáu ngữ cảnh khác nhau: số học, so sánh, nối chuỗi, danh sách giá trị, hàm tổng hợp, và sắp xếp; hàm tổng hợp bỏ qua `NULL` nên trung bình tính trên cột có `NULL` khác trung bình người dùng nghĩ. Ba nghĩa khác nhau bị gộp vào một ký hiệu: chưa nhập, không áp dụng, và bằng không; gộp ba nghĩa là mất thông tin và không lấy lại được. Cách xử lý đúng theo ngữ nghĩa chứ theo thói quen thay bằng số không.
 
@@ -143,7 +147,7 @@ Người học phải dự đoán đúng kết quả của biểu thức chứa 
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một kỹ năng dự đoán kiểm được ngay, và là nguồn lỗi âm thầm nên phải kiểm kỹ. Kiểm bằng bài dự đoán 15 biểu thức; đạt khi đúng ≥ 13 và giải thích được bằng logic ba trạng thái.
 
-### Bài 115: Relational algebra and logical equivalence
+### Lesson 115: Relational algebra and logical equivalence
 
 Đại số quan hệ là ngôn ngữ mà bộ tối ưu thật sự làm việc trên đó, nên hiểu nó là hiểu vì sao hai truy vấn viết khác nhau lại cho cùng kế hoạch. Sáu phép cơ bản và ý nghĩa: chọn, chiếu, kết, hợp, hiệu, gộp nhóm. Tương đương logic: đẩy phép chọn xuống sát nguồn không đổi kết quả nhưng đổi hẳn chi phí, và đó chính là phép biến đổi mà bộ tối ưu làm đầu tiên; viết truy vấn đúng nghĩa quan trọng hơn viết truy vấn theo thứ tự mình muốn nó chạy, vì bộ tối ưu sẽ sắp lại. Ba phép biến đổi mà bộ tối ưu không tự làm được và người viết phải tự làm: đổi truy vấn con tương quan thành phép kết, bỏ phép chọn phân biệt không cần thiết, và tránh hàm bọc quanh cột lọc. Nối tới Bài 40: ba thuật toán kết đã cài tay nay xuất hiện lại dưới dạng toán tử vật lý mà bộ tối ưu chọn.
 
@@ -151,7 +155,7 @@ Người học phải viết lại một truy vấn thành dạng tương đươ
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một phép biến đổi có kết quả kiểm được bằng kế hoạch và số đo. Kiểm bằng ba truy vấn; đạt khi ít nhất hai bản viết lại cho cùng kết quả và chi phí thấp hơn đo được.
 
-### Bài 116: ER modelling and what the database should enforce
+### Lesson 116: ER modelling and what the database should enforce
 
 Mô hình thực thể quan hệ là cầu giữa từ vựng nghiệp vụ ở Bài 89 và lược đồ vật lý. Thực thể, thuộc tính, quan hệ; bản số một một, một nhiều, nhiều nhiều và cách hiện thực từng loại. Quan hệ nhiều nhiều luôn cần bảng nối, và bảng nối thường mang thêm thuộc tính riêng mà người mới hay bỏ sót. Bốn loại ràng buộc và việc mỗi loại chặn được gì: khoá chính chặn trùng, khoá ngoại chặn tham chiếu mồ côi, duy nhất chặn trùng theo khoá nghiệp vụ, và kiểm tra chặn giá trị vô lý. Câu hỏi thiết kế đi kèm: hành vi khi xoá bản ghi cha, vì ba lựa chọn cho ba kết quả khác nhau và chọn sai gây mất dữ liệu hoặc chặn nghiệp vụ. Ba trường hợp nên cố ý không đặt khoá ngoại và lý do, thường gặp ở kho phân tích, chuẩn bị cho M11 và M14.
 
@@ -159,7 +163,7 @@ Người học phải dựng lược đồ từ mô tả nghiệp vụ với rà
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một thiết kế có tiêu chí nghiệm thu bằng phép thử chèn dữ liệu sai. Kiểm bằng tám phép thử phủ định; đạt khi cả tám bị chặn và thông báo lỗi nêu đúng ràng buộc.
 
-### Bài 117: Normalization to BCNF, and deliberate denormalization
+### Lesson 117: Normalization to BCNF, and deliberate denormalization
 
 Chuẩn hoá không phải nghi thức mà là cách loại bỏ ba dị thường cụ thể, nên dạy bằng cách gặp dị thường trước rồi mới học quy tắc. Ba dị thường: thêm không được vì thiếu dữ liệu không liên quan, sửa một chỗ mà chỗ khác còn giá trị cũ, và xoá một bản ghi làm mất luôn thông tin khác. Các dạng chuẩn từ một tới Boyce-Codd, mỗi dạng chữa một loại phụ thuộc, dựa trên phụ thuộc hàm ở Bài 113. Phi chuẩn hoá có chủ đích: lặp dữ liệu để đọc nhanh hơn, đổi lại phải tự giữ đồng bộ và chấp nhận rủi ro lệch; chỉ phi chuẩn hoá sau khi đo và sau khi biết đường ghi nào giữ đồng bộ. Đây là chỗ hai vai trong chương trình tách nhau: hệ giao dịch nghiêng về chuẩn hoá, kho phân tích cố ý phi chuẩn hoá, và lý do sẽ rõ ở M11 và M14.
 
@@ -167,7 +171,7 @@ Người học phải chuẩn hoá một bảng phẳng tới Boyce-Codd, chỉ 
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi nối mỗi bước chuẩn hoá với một dị thường cụ thể, chứ áp quy tắc. Kiểm bằng bài chuẩn hoá cộng đo; đạt khi mỗi bước gắn đúng dị thường và phần phi chuẩn hoá có số đo ba chiều.
 
-### Bài 118: Logical query processing order
+### Lesson 118: Logical query processing order
 
 Thứ tự viết một truy vấn khác thứ tự nó được xử lý về mặt logic, và biết thứ tự đó giải thích phần lớn lỗi cú pháp khó hiểu của người mới. Thứ tự logic: nguồn, lọc dòng, gộp nhóm, lọc nhóm, chọn cột, sắp xếp, giới hạn. Từ đó suy ra ngay ba hệ quả: bí danh đặt ở bước chọn cột nên không dùng được ở bước lọc dòng nhưng dùng được ở bước sắp xếp; lọc dòng chạy trước gộp nhóm còn lọc nhóm chạy sau, nên đặt điều kiện sai chỗ vừa sai nghĩa vừa chậm; và hàm cửa sổ chạy sau gộp nhóm nên không lồng trực tiếp vào điều kiện lọc được. Phân biệt thứ tự logic với thứ tự thực thi vật lý: bộ tối ưu được phép sắp lại miễn kết quả không đổi, theo Bài 115. Phạm vi tên và cách giải quyết khi hai bảng có cột cùng tên.
 
@@ -175,7 +179,7 @@ Người học phải giải thích một lỗi cú pháp hoặc một kết qu�
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết nền cho toàn phần ngôn ngữ; chưa đòi tối ưu. Kiểm bằng tám truy vấn có lỗi; đạt khi giải thích đúng ít nhất sáu bằng thứ tự xử lý chứ bằng kinh nghiệm.
 
-### Bài 119: Joins, duplicate multiplication and NULL behaviour
+### Lesson 119: Joins, duplicate multiplication and NULL behaviour
 
 Phép kết giải thích bằng tích Descartes cộng điều kiện lọc: đó là định nghĩa cho phép suy ra mọi hành vi còn lại thay vì nhớ từng trường hợp. Bốn kiểu kết cơ bản cộng hai kiểu nửa và phản, cùng bài toán mỗi kiểu giải. Nhân bản dòng là chế độ hỏng nguy hiểm nhất: khi bên phải có nhiều dòng khớp, mỗi dòng bên trái nhân lên và mọi phép tổng sau đó bị thổi phồng mà không có lỗi nào báo. Cách phát hiện bắt buộc: đếm dòng trước và sau mỗi phép kết, và đối chiếu tổng với nguồn độc lập. Kết trái rồi đặt điều kiện bảng phải vào mệnh đề lọc dòng làm nó âm thầm thành kết trong, một lỗi kinh điển. `NULL` trong khoá kết không bao giờ khớp, theo Bài 114, nên dòng có khoá thiếu biến mất khỏi kết quả. Nối tới Bài 40: ba thuật toán kết là cách engine thực hiện, còn đây là nghĩa.
 
@@ -183,7 +187,7 @@ Người học phải viết truy vấn nhiều bảng và chứng minh không m
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một quy trình kiểm chứng bắt buộc chứ chỉ viết đúng cú pháp. Kiểm bằng bài ghép năm bảng; đạt khi tổng khớp tuyệt đối với tổng tính trực tiếp từ bảng gốc.
 
-### Bài 120: Aggregation, HAVING and the grain statement
+### Lesson 120: Aggregation, HAVING and the grain statement
 
 Gộp nhóm là một phép biến đổi hạt, và cách trình bày này giải thích mọi quy tắc còn lại thay vì phải nhớ chúng rời rạc. Hạt là câu trả lời cho một dòng trong kết quả đại diện cho cái gì, phát biểu bằng một câu không mơ hồ. Từ đó suy ra: mọi cột trong danh sách chọn phải nằm trong nhóm hoặc trong hàm tổng hợp, vì cột khác không xác định ở hạt mới. Ba biến thể đếm cho ba nghĩa khác nhau và nhầm chúng là nguồn số sai. Hàm tổng hợp bỏ qua `NULL` theo Bài 114. Lọc dòng trước gộp và lọc nhóm sau gộp theo Bài 118. Gộp nhóm trên biểu thức. Quy tắc bắt buộc của chương trình: mỗi truy vấn gộp phải kèm phát biểu hạt trước và sau, và sai hạt là sai bài dù kết quả số trông hợp lý; quy tắc này được dùng lại nguyên vẹn ở M11 và M12.
 
@@ -191,7 +195,7 @@ Người học phải phát biểu hạt trước và sau mỗi phép gộp và 
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một kỷ luật phát biểu kiểm được bằng rà soát, và là nền cho toàn phần mô hình hoá sau. Kiểm bằng 20 truy vấn gộp; đạt khi mọi truy vấn có phát biểu hạt đúng và ba biến thể đếm dùng đúng chỗ.
 
-### Bài 121: Subqueries, CTEs and the materialization caveat
+### Lesson 121: Subqueries, CTEs and the materialization caveat
 
 Ba vị trí đặt truy vấn con và chi phí khác nhau của từng vị trí. Truy vấn con tương quan chạy lại cho mỗi dòng bên ngoài nên chi phí nhân lên, và phần lớn trường hợp viết lại được thành phép kết; bộ tối ưu đôi khi tự làm việc đó nhưng không phải lúc nào cũng làm. So sánh ba cách kiểm tồn tại và khác biệt ngữ nghĩa khi có `NULL`: dùng danh sách giá trị với truy vấn con chứa `NULL` trả về rỗng một cách bất ngờ, theo Bài 114. Biểu thức bảng chung làm truy vấn dài đọc được bằng cách đặt tên cho từng bước; quy tắc đặt tên là đặt theo hạt chứ theo thao tác, vì tên theo hạt cho biết một dòng là gì. Cảnh báo về vật chất hoá: ở một số hệ, biểu thức bảng chung là hàng rào tối ưu nên bộ tối ưu không đẩy điều kiện lọc xuyên qua được, và khi đó nó làm truy vấn chậm hẳn.
 
@@ -199,7 +203,7 @@ Người học phải tái cấu trúc một truy vấn lồng nhiều tầng th
 
 Cách đánh giá: Tầng *áp dụng*. Objective gồm cả một cảnh báo về hiệu năng kiểm được bằng kế hoạch. Kiểm bằng bài tái cấu trúc cộng so kế hoạch; đạt khi kết quả khớp tuyệt đối và nhận ra đúng trường hợp vật chất hoá gây chậm.
 
-### Bài 122: Recursive CTEs for hierarchies and graphs
+### Lesson 122: Recursive CTEs for hierarchies and graphs
 
 Cấu trúc phân cấp xuất hiện khắp nơi trong dữ liệu nghiệp vụ: cây tổ chức, danh mục sản phẩm, và đồ thị phụ thuộc theo Bài 38. Biểu thức bảng chung đệ quy gồm hai phần: phần neo cho mức đầu, và phần đệ quy nối tiếp cho tới khi không còn dòng mới. Ba điều kiện để nó dừng và chỉ cần thiếu một là vòng lặp vô hạn: có điều kiện dừng, dữ liệu không có chu trình, và có giới hạn độ sâu phòng khi hai điều kiện trên sai. Kỹ thuật chống chu trình bằng cách giữ đường đi đã qua, đúng ý tưởng phát hiện chu trình ở Bài 38. Ba bài toán thường giải bằng đệ quy: duyệt xuống toàn bộ con cháu, truy ngược lên tổ tiên, và tính tổng tích luỹ theo nhánh. Giới hạn hiệu năng: đệ quy trên đồ thị lớn tốn kém, nên với đồ thị rất lớn thì tính sẵn bảng đường đi là lựa chọn đúng hơn.
 
@@ -207,7 +211,7 @@ Người học phải viết truy vấn đệ quy duyệt một cấu trúc phâ
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một kỹ thuật cụ thể có ba điều kiện an toàn kiểm được. Kiểm bằng ba bài toán cộng một tập dữ liệu có chu trình; đạt khi cả ba đúng và truy vấn không treo trên dữ liệu có chu trình.
 
-### Bài 123: Window functions - partition, order and frame
+### Lesson 123: Window functions - partition, order and frame
 
 Khác biệt cơ bản với gộp nhóm phát biểu bằng một câu: gộp nhóm thu gọn dòng còn hàm cửa sổ giữ nguyên dòng và thêm một cột tính trên một nhóm dòng lân cận. Từ đó suy ra vì sao dùng được hàm cửa sổ để lấy đứng đầu mỗi nhóm mà vẫn giữ mọi cột. Giải phẫu ba phần: phân vùng chia dòng thành nhóm, sắp xếp định thứ tự trong nhóm, khung xác định dòng nào được tính. Bốn hàm xếp hạng và khác biệt chỉ lộ ra khi có giá trị trùng, nên phải thử trên dữ liệu có trùng chứ dữ liệu sạch. Mẫu lấy N dòng đầu mỗi nhóm, giải đúng bài toán đã gặp ở Bài 37 nhưng ở tầng SQL. Vì sao không dùng hàm cửa sổ trong mệnh đề lọc dòng được, theo thứ tự xử lý ở Bài 118, và cách vòng qua bằng một tầng bọc ngoài.
 
@@ -215,7 +219,7 @@ Người học phải giải bài toán lấy N đầu mỗi nhóm và chọn đ
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi chọn đúng biến thể theo ngữ nghĩa, chỗ khác biệt chỉ lộ ra ở ca biên. Kiểm bằng ba yêu cầu trên dữ liệu có trùng; đạt khi cả ba chọn đúng hàm và kết quả đúng ở ca có trùng.
 
-### Bài 124: Frames, running totals and period comparison
+### Lesson 124: Frames, running totals and period comparison
 
 Mệnh đề khung quyết định hàm cửa sổ nhìn thấy những dòng nào, và hiểu nhầm nó là nguồn của các con số luỹ kế sai. Hai cách đếm khung: theo số dòng và theo giá trị; hai cách cho kết quả khác nhau khi có giá trị trùng, và ví dụ đối chiếu làm rõ khác biệt đó. Khung mặc định khi có mệnh đề sắp xếp không phải toàn bộ phân vùng, nên một số hàm cho kết quả bất ngờ nếu không nêu khung tường minh. So kỳ trước và cùng kỳ năm trước bằng hàm lấy giá trị dòng trước và dòng sau. Vấn đề kỳ thiếu: tháng không có giao dịch biến mất khỏi kết quả nên phép so kỳ trước lấy nhầm tháng, và lời giải là kết với bảng lịch đầy đủ; đây là bài học sẽ dùng lại ở M11 khi dựng bảng chiều thời gian. Chia cho không khi kỳ trước bằng không, và cách xử lý theo nghĩa nghiệp vụ.
 
@@ -223,7 +227,7 @@ Người học phải dựng báo cáo có luỹ kế, trung bình trượt và 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có một ca biên cụ thể mà bản làm ẩu luôn sai. Kiểm bằng đối soát với bản tính độc lập; đạt khi khớp tuyệt đối kể cả ở các kỳ thiếu dữ liệu.
 
-### Bài 125: DML, DDL, constraints and views
+### Lesson 125: DML, DDL, constraints and views
 
 Phần ngôn ngữ còn lại, gắn với ranh giới giao dịch đã học ở Bài 103. Các lệnh sửa dữ liệu và mệnh đề trả về dòng đã sửa, hữu dụng để ghi nhật ký kiểm toán trong cùng một lượt. Lệnh hợp nhất và cạm bẫy khi nguồn có dòng trùng: nó không báo lỗi mà cho kết quả không xác định. Ghi bất biến theo khoá nghiệp vụ, đúng nguyên tắc ở Bài 30 và 105, nay bằng SQL. Lệnh định nghĩa cấu trúc và ràng buộc theo Bài 116; thêm ràng buộc lên bảng lớn có thể khoá bảng rất lâu, nên quy trình đổi cấu trúc an toàn là thêm ở trạng thái chưa kiểm rồi kiểm sau. Khung nhìn là truy vấn đặt tên, không lưu dữ liệu; khung nhìn vật chất hoá có lưu và phải làm mới, nên nó là một dạng bộ đệm và mang mọi vấn đề của bộ đệm, chủ đề sẽ quay lại ở M14 và M17. Ba lý do khung nhìn chồng khung nhìn thành khó gỡ, chuẩn bị cho bài toán ở M17.
 
@@ -231,7 +235,7 @@ Người học phải viết lệnh ghi bất biến theo khoá nghiệp vụ v�
 
 Cách đánh giá: Tầng *áp dụng*. Objective gồm hai thao tác có ràng buộc vận hành kiểm được. Kiểm bằng thí nghiệm ghi lặp và thí nghiệm đổi cấu trúc có tải; đạt khi ghi lặp không sinh trùng và thời gian khoá dưới ngưỡng.
 
-### Bài 126: Inside the engine - from parser to executor
+### Lesson 126: Inside the engine - from parser to executor
 
 Truy vấn đi qua năm giai đoạn trước khi có kết quả, và biết giai đoạn nào làm gì là điều kiện để đọc kế hoạch ở Bài 130. Bộ phân tích cú pháp dựng cây; bộ ràng buộc tên phân giải bảng và cột, đây là nơi lỗi tên xuất hiện; bộ viết lại áp các phép biến đổi tương đương ở Bài 115; bộ lập kế hoạch liệt kê các cách thực hiện và chọn cái rẻ nhất theo mô hình chi phí; bộ thực thi chạy kế hoạch đã chọn. Điểm quan trọng: bộ lập kế hoạch chọn dựa trên ước lượng, và ước lượng có thể sai; phần lớn truy vấn chậm bất thường là hậu quả của ước lượng sai chứ của bộ tối ưu kém. Mô hình chi phí kết hợp chi phí đọc và chi phí tính, và nó được hiệu chỉnh theo giả định về phần cứng, nên máy có đĩa thể rắn mà cấu hình mặc định cho đĩa quay thì bộ tối ưu tránh tra chỉ mục một cách không cần thiết.
 
@@ -239,7 +243,7 @@ Người học phải nêu đúng giai đoạn nào chịu trách nhiệm cho m�
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết nền cho toàn phần thực thi. Kiểm bằng sáu hiện tượng cần quy về giai đoạn; đạt khi quy đúng ít nhất bốn và giải thích đúng vai trò của ước lượng.
 
-### Bài 127: Physical operators and the three join algorithms
+### Lesson 127: Physical operators and the three join algorithms
 
 Các toán tử vật lý là những viên gạch mà kế hoạch được ghép từ đó, và ba thuật toán kết ở đây chính là ba thứ đã tự cài ở Bài 40. Toán tử quét: quét tuần tự đọc cả bảng, quét chỉ mục đi qua cây rồi lấy dòng, quét chỉ mục có phủ không cần lấy dòng vì chỉ mục đã chứa đủ cột. Toán tử sắp xếp và toán tử gộp, cùng ngưỡng bộ nhớ: vượt ngưỡng thì tràn ra đĩa và đó chính là sắp xếp ngoài ở Bài 39, nên chi phí nhảy vọt. Ba thuật toán kết và điều kiện chọn: vòng lặp lồng nhau tốt khi bên ngoài nhỏ và bên trong có chỉ mục; kết băm tốt khi một bên vừa bộ nhớ; kết trộn tốt khi cả hai đã sắp xếp. Bộ nhớ làm việc là tham số quyết định ranh giới giữa chạy trong bộ nhớ và tràn đĩa, và đo được tác động của nó.
 
@@ -247,7 +251,7 @@ Người học phải dự đoán thuật toán kết mà bộ tối ưu sẽ ch
 
 Cách đánh giá: Tầng *phân tích*. Objective nối kiến thức tự cài ở Bài 40 với lựa chọn thật của engine. Kiểm bằng bốn tình huống; đạt khi dự đoán đúng ít nhất ba và giải thích đúng trường hợp tràn đĩa.
 
-### Bài 128: Statistics, selectivity and cardinality estimation
+### Lesson 128: Statistics, selectivity and cardinality estimation
 
 Bộ lập kế hoạch chọn dựa trên ước lượng số dòng, và ước lượng dựa trên thống kê thu thập được từ dữ liệu. Ba loại thống kê: số giá trị phân biệt, biểu đồ phân bố, và danh sách giá trị phổ biến nhất. Độ chọn lọc là tỉ lệ dòng còn lại sau một điều kiện, và ước lượng số dòng là tích của các độ chọn lọc. Từ đó lộ ra giả định độc lập: engine giả định các điều kiện không liên quan nhau, nên khi hai cột tương quan thì ước lượng sai nhiều bậc. Ví dụ điển hình là lọc theo thành phố và theo mã vùng: hai điều kiện thực ra nói cùng một thứ. Ba nguyên nhân ước lượng sai: thống kê cũ, dữ liệu lệch, và tương quan giữa cột. Ba cách chữa theo thứ tự nên thử: cập nhật thống kê, khai báo thống kê mở rộng cho nhóm cột tương quan, và viết lại truy vấn. So sánh số dòng ước lượng với số dòng thật là bước chẩn đoán đầu tiên.
 
@@ -255,7 +259,7 @@ Người học phải phát hiện ước lượng sai bằng cách so số dòn
 
 Cách đánh giá: Tầng *phân tích*. Objective là chẩn đoán nguyên nhân gốc của phần lớn truy vấn chậm. Kiểm bằng ba tình huống ước lượng sai; đạt khi phát hiện cả ba và chữa được ít nhất hai với tỉ lệ sai giảm rõ rệt.
 
-### Bài 129: Indexes - structure, composite order and cost
+### Lesson 129: Indexes - structure, composite order and cost
 
 Chỉ mục là cây B theo Bài 36, và mọi quy tắc dùng chỉ mục suy ra từ cấu trúc đó. Chỉ mục tổ hợp và quy tắc tiền tố trái: chỉ mục trên ba cột dùng được cho điều kiện trên cột đầu, hai cột đầu, hoặc cả ba, nhưng không dùng được nếu điều kiện chỉ có cột thứ hai; nên thứ tự cột trong chỉ mục là quyết định thiết kế chứ chi tiết. Chỉ mục có cột phủ thêm để tránh phải lấy dòng. Chỉ mục một phần chỉ trên tập con dòng, rất hiệu quả khi truy vấn luôn lọc theo một điều kiện cố định. Chỉ mục trên biểu thức khi điều kiện lọc bọc hàm quanh cột. Cái giá của chỉ mục và phần hay bị bỏ qua: mỗi chỉ mục làm mọi lệnh ghi chậm thêm và chiếm dung lượng, nên thêm chỉ mục cho mọi cột là cách làm hệ ghi chậm mà đọc không nhanh hơn. Cách tìm chỉ mục không bao giờ được dùng và bỏ chúng đi.
 
@@ -263,7 +267,7 @@ Người học phải thiết kế bộ chỉ mục cho một khối lượng tr
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi cân hai chiều đối nghịch, chứ chỉ thêm chỉ mục. Kiểm bằng bảng đo hai chiều; đạt khi đọc nhanh lên có số, ghi chậm đi được định lượng, và không chỉ mục nào thừa.
 
-### Bài 130: Reading EXPLAIN ANALYZE with buffers
+### Lesson 130: Reading EXPLAIN ANALYZE with buffers
 
 Kế hoạch thực thi là nguồn sự thật duy nhất khi chẩn đoán truy vấn, và đọc được nó phân biệt người tối ưu có căn cứ với người thử từng cách. Đọc từ trong ra ngoài, vì nút con chạy trước nút cha. Bốn con số phải xem ở mỗi nút: số dòng ước lượng, số dòng thật, thời gian, và số khối đọc. So ước lượng với thực tế là bước đầu tiên, vì lệch nhiều bậc chỉ thẳng tới nguyên nhân ở Bài 128. Số khối đọc tách thành khối trong bộ đệm và khối đọc từ đĩa, và tỉ lệ đó cho biết truy vấn có được hưởng hồ đệm hay không, nối lại Bài 53. Cảnh báo về thời gian: bật đo thời gian từng nút làm truy vấn chậm đi, nên số thời gian trong kế hoạch không so trực tiếp với thời gian chạy thật được. Quy trình chẩn đoán bốn bước theo thứ tự cố định để không bỏ sót.
 
@@ -271,7 +275,7 @@ Người học phải đọc một kế hoạch và định vị nút tốn nh�
 
 Cách đánh giá: Tầng *phân tích*. Objective là kỹ năng đọc bằng chứng, điều kiện cho bài dự án ở Bài 132. Kiểm bằng năm kế hoạch; đạt khi định vị đúng nút tốn nhất ở ít nhất bốn và quy đúng nguyên nhân ở ít nhất ba.
 
-### Bài 131: Sargability, parameters and plan stability
+### Lesson 131: Sargability, parameters and plan stability
 
 Ba chủ đề nhỏ nhưng gây nhiều sự cố trong hệ thật. Điều kiện dùng được chỉ mục: điều kiện phải so sánh trực tiếp với cột chứ với hàm bọc quanh cột; ba cách phá chỉ mục phổ biến là bọc hàm, ép kiểu ngầm, và khớp mẫu có ký tự đại diện ở đầu. Truy vấn tham số hoá: tách giá trị khỏi câu lệnh giúp tái dùng kế hoạch và chặn lỗ hổng chèn mã, theo nguyên tắc đã nêu ở Bài 102. Nhưng nó sinh vấn đề riêng: kế hoạch lập cho giá trị đầu tiên có thể rất xấu cho giá trị sau, đặc biệt khi dữ liệu lệch; đây là hiện tượng kế hoạch bị đóng băng theo tham số và là nguyên nhân của những sự cố kiểu truy vấn đột nhiên chậm mà mã không đổi. Ba cách xử lý. Ổn định kế hoạch: vì sao kế hoạch đổi sau khi cập nhật thống kê hoặc sau khi nâng cấp, và vì sao đó vừa là tính năng vừa là rủi ro.
 
@@ -279,7 +283,7 @@ Người học phải nhận ra ba cách phá chỉ mục trong truy vấn cho t
 
 Cách đánh giá: Tầng *phân tích*. Objective gồm một hiện tượng khó tái hiện mà nhiều người chưa từng thấy. Kiểm bằng sáu truy vấn cộng một thí nghiệm; đạt khi tìm đúng ít nhất năm chỗ phá chỉ mục và tái hiện được hiện tượng kế hoạch xấu theo tham số.
 
-### Bài 132: SQL tuning project - five slow queries
+### Lesson 132: SQL tuning project - five slow queries
 
 Bài dự án khép module, và nó là bài chuẩn bị trực tiếp cho công việc thật của cả hai vai. Nhận năm truy vấn chậm trên một cơ sở dữ liệu có dữ liệu thật, mỗi truy vấn chậm vì một nguyên nhân khác nhau trong số đã học: ước lượng sai, thiếu chỉ mục, chỉ mục sai thứ tự, điều kiện phá chỉ mục, và tràn bộ nhớ làm việc. Quy trình bắt buộc theo đúng thứ tự: đọc kế hoạch trước, viết giả thuyết, sửa một thứ, đo lại, rồi lặp; cấm sửa nhiều thứ cùng lúc theo đúng kỷ luật ở Bài 60. Nộp cho mỗi truy vấn: kế hoạch trước và sau, số khối đọc, số dòng ước lượng so với thực tế, độ trễ, và một câu nêu tối ưu này dẫn về quan sát nào. Yêu cầu bổ sung quan trọng: kết quả sau khi tối ưu phải khớp tuyệt đối với kết quả ban đầu, vì tối ưu làm đổi kết quả là làm hỏng chứ tối ưu.
 

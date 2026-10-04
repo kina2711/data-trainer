@@ -1,4 +1,4 @@
-# DE Lesson 4 — Practice, feedback and retest
+# DE Lesson 4: Practice, feedback and retest
 
 ## Thực hành có hướng dẫn
 
@@ -15,10 +15,10 @@ Trong repo sandbox, học viên dự đoán sáu trạng thái rồi chạy comm
 
 ## Retrieval checks và đáp án tối thiểu
 
-- **Blob lưu gì?** — Nội dung file; tên và mode nằm trong tree.
-- **Commit trỏ trực tiếp tới gì?** — Top-level tree, parent(s) và metadata nằm trong commit object.
-- **git add thực sự làm gì?** — Ghi content hiện tại của path vào index cho snapshot kế tiếp.
-- **Branch là gì?** — Một ref có thể di chuyển trỏ tới commit.
+- **Blob lưu gì?**: Nội dung file; tên và mode nằm trong tree.
+- **Commit trỏ trực tiếp tới gì?**: Top-level tree, parent(s) và metadata nằm trong commit object.
+- **git add thực sự làm gì?**: Ghi content hiện tại của path vào index cho snapshot kế tiếp.
+- **Branch là gì?**: Một ref có thể di chuyển trỏ tới commit.
 
 ## Novel-scenario retest
 
@@ -26,7 +26,7 @@ Một commit 'mất' sau reset nhưng còn trong reflog. Giải thích reachabil
 
 **Pass condition:** câu trả lời nêu boundary, evidence, lựa chọn, ít nhất một alternative, blast radius/consumer harm và reversal trigger. Không chấm theo việc trùng wording của đáp án mẫu.
 
-## Bài làm sau buổi học
+## Post-Lesson Work
 
 - Làm `quiz.md`, ngưỡng 8/10.
 - Làm `homework.md`, ngưỡng 75/100 và không có critical failure.
@@ -43,8 +43,14 @@ Một commit 'mất' sau reset nhưng còn trong reflog. Giải thích reachabil
 
 ## Giới hạn
 
-Gói này chưa được dạy trên cohort thật; thời lượng là ước tính. Điểm quiz/homework chỉ là evidence trong scope của DE-L004, không phải chứng nhận vai trò hay kinh nghiệm production.
+Gói này chưa được dạy trên cohort thật. Điểm quiz và homework chỉ là evidence trong scope của DE-L004, không phải chứng nhận vai trò hoặc kinh nghiệm production.
 
 ## Bắc cầu
 
-DE-L005 — merge, rebase, revert và commit identity.
+DE-L005: merge, rebase, revert và commit identity.
+
+## References
+
+- [[wiki.engineering-foundation.git-object-database|Git as a content-addressed object database]]
+- [[wiki.engineering-foundation.adr-trade-offs|Trade-offs and architecture decision records]]
+- [[wiki.data-product.requirements-traceability|Requirements traceability]]

@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao phân rã một decision thành metric tree mà mỗi node có contract, mỗi leaf có owner/lever và mọi causal assumption được kiểm thay vì ngụy trang thành phép toán?
 source_ids:
   - src.web.amplitude-north-star-framework
@@ -39,7 +39,7 @@ Identity edge là phương trình định nghĩa, như revenue = orders × avera
 
 ## 3. Phân rã tới controllable leaves
 
-Leaf đạt khi một owner có quyền và mechanism tác động trong horizon của decision: pricing team đổi discount rule, lifecycle team đổi retention intervention. “Market conditions” có predictive value nhưng không controllable; nó là context/risk factor, không action leaf. Owner cần tên role/person và decision right, lever cần action, expected direction, latency và guardrail. Không ép mọi driver thành controllable; giữ external factors riêng.
+Leaf đạt khi một owner có quyền và mechanism tác động trong horizon của decision: pricing team đổi discount rule, lifecycle team đổi retention intervention. Market conditions có predictive value nhưng không controllable; nó là context/risk factor, không action leaf. Owner cần tên role/person và decision right, lever cần action, expected direction, latency và guardrail. Không ép mọi driver thành controllable; giữ external factors riêng.
 
 ## 4. Leading và lagging không phải thuộc tính tuyệt đối
 
@@ -230,7 +230,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.metric-tree`
+## Execution capsule: kiểm chứng `wiki.data-product.metric-tree`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.metric-tree`, sơ đồ, ví dụ và artifact về **Question Decomposition and the Metric Tree** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

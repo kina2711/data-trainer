@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao tối ưu năm truy vấn bằng quy trình giả thuyết–một thay đổi–đo lại mà giữ kết quả và tạo evidence có thể review?
 source_ids:
   - src.manual.postgresql-17.10
@@ -32,7 +32,7 @@ relationships:
 
 ## 1. Tuning là công việc thực nghiệm
 
-Một tối ưu hợp lệ phải chứng minh ba điều: kết quả/contract không đổi, resource/latency mục tiêu cải thiện, và cải thiện nối được với observation trong plan/runtime. “Chạy nhanh hơn máy tôi” thiếu cả ba nếu môi trường và variance không ghi.
+Một tối ưu hợp lệ phải chứng minh ba điều: kết quả/contract không đổi, resource/latency mục tiêu cải thiện, và cải thiện nối được với observation trong plan/runtime. Chạy nhanh hơn máy tôi thiếu cả ba nếu môi trường và variance không ghi.
 
 Quy trình chuẩn: capture → reproduce → inspect → hypothesize → change one variable → verify parity → measure → decide. Nếu hypothesis sai, giữ evidence và quay lại, không stack fixes.
 
@@ -40,7 +40,7 @@ Năm truy vấn trong dự án đại diện năm failure classes, nhưng workfl
 
 ## 2. Success contract trước khi sửa
 
-Mỗi query cần owner/consumer, SQL/result schema, parameters classes, freshness/isolation, ordering guarantee, expected grain, latency SLO, throughput/concurrency và resource budget. “Nhanh hơn” không có pass/fail.
+Mỗi query cần owner/consumer, SQL/result schema, parameters classes, freshness/isolation, ordering guarantee, expected grain, latency SLO, throughput/concurrency và resource budget. Nhanh hơn không có pass/fail.
 
 Ngưỡng dự án có thể là p95 giảm X%, buffers/temp giảm, hoặc hết timeout dưới representative load. Giá trị X do bài giao, không lấy từ sách. Ít nhất 4/5 đạt nhưng cả 5 phải giữ correctness.
 
@@ -66,7 +66,7 @@ Không ANALYZE production query đắt nếu risk chưa duyệt; có thể bắt
 
 Equal row count không chứng minh equal rows. Dùng multiset equality hai chiều (`EXCEPT ALL`) khi types cho phép, deterministic canonical serialization + strong hash, hoặc per-key/full column comparison. Preserve NULL, duplicates, types, scale/timezone và ordering nếu contract.
 
-`EXCEPT` không ALL che duplicate differences. Hash collision risk cần row count/schema và sampling/full diff. Floating-point cần explicit tolerance nếu domain cho phép; “khớp tuyệt đối” thì không tolerance.
+`EXCEPT` không ALL che duplicate differences. Hash collision risk cần row count/schema và sampling/full diff. Floating-point cần explicit tolerance nếu domain cho phép; khớp tuyệt đối thì không tolerance.
 
 Với non-deterministic columns như now/random, freeze/remove theo contract; không bỏ qua âm thầm.
 
@@ -122,7 +122,7 @@ Ba attempts không hỗ trợ hypothesis là tín hiệu xem lại model/problem
 
 Estimate error → inspect stats/parameters. High filtered blocks → predicate/access. High loops → outer cardinality/inner lookup. Spill → input estimate/width/memory. Heap Fetches → visibility/update regime. Lock wait → concurrency, không chỉ plan. Client gap → fetch/network.
 
-Map là routing, không prescription. Mỗi action cần predicted observation. “Hash join chậm → tắt hash join” không đạt.
+Map là routing, không prescription. Mỗi action cần predicted observation. Hash join chậm → tắt hash join không đạt.
 
 Root cause có thể nằm upstream: join fanout tạo rows làm sort spill; tăng memory chỉ che.
 
@@ -138,9 +138,9 @@ Use server execution, application end-to-end, buffers/I/O/temp/CPU. Không so co
 
 Gồm requirement; baseline SQL/plan/result fingerprint; four-number summary; hypothesis; change diff; post plan/result; measurement table; trade-offs; rollback; conclusion/limitations. Machine-readable plans và scripts được link.
 
-“Một câu dẫn chứng” có cấu trúc: “Vì node X underestimates Y× dẫn planner chọn Z và inner loops N; sau extended stats error còn A×, plan đổi B, buffers giảm C.”
+Một câu dẫn chứng có cấu trúc: Vì node X underestimates Y× dẫn planner chọn Z và inner loops N; sau extended stats error còn A×, plan đổi B, buffers giảm C.
 
-Không viết “thêm index nên nhanh”.
+Không viết thêm index nên nhanh.
 
 ## 15. Peer review
 
@@ -162,7 +162,7 @@ Không giữ unused experiment indexes/settings sau project.
 
 Correctness parity là gate. Sau đó chấm reproducibility, root-cause evidence, one-variable discipline, improvement threshold, trade-off/rollback và communication. ≥4/5 query đạt performance; 5/5 parity.
 
-Một query không đạt nhưng investigation đúng vẫn được ghi failed, không “pass vì học được”. Dự án hoàn tất học thuật có thể có bounded failure nhưng Done when cụ thể quyết định.
+Một query không đạt nhưng investigation đúng vẫn được ghi failed, không pass vì học được. Dự án hoàn tất học thuật có thể có bounded failure nhưng Done when cụ thể quyết định.
 
 Không dùng LOC hoặc số index làm điểm.
 
@@ -192,18 +192,18 @@ Artifacts nên được đóng gói theo query ID và iteration: SQL đầu vào
 - Owner approval production không nằm trong phạm vi bài học.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-10-MANUAL]] — EXPLAIN, statistics, indexes và prepared plans.
-2. [[SRC-MASTERING-POSTGRESQL-17-6E]] — cost model, plan reading, joins và indexes.
-3. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]] — physical operators, stats và index mechanisms.
+1. [[SRC-POSTGRESQL-17-10-MANUAL]]: EXPLAIN, statistics, indexes và prepared plans.
+2. [[SRC-MASTERING-POSTGRESQL-17-6E]]: cost model, plan reading, joins và indexes.
+3. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]]: physical operators, stats và index mechanisms.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 488–498, 559–580, 2018–2030, 2643–2650 | evidence fields và remediation mechanics | §§4–13 | Đã giữ measurement boundaries |
-| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 87–112, 223–270 | indexes/cost/plans | §§6–14 | Đã chuyển thành experiments |
-| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 271–407 | stats/scans/joins/spill mechanics | §§6–12 | Đã dùng cho causal model |
-| Tổng hợp DE-L132 | parity, dossier, peer review, rollback | §§2–17 | Đã thành project protocol |
+| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 488-498, 559-580, 2018-2030, 2643-2650 | evidence fields và remediation mechanics | §§4-13 | Đã giữ measurement boundaries |
+| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 87-112, 223-270 | indexes/cost/plans | §§6-14 | Đã chuyển thành experiments |
+| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 271-407 | stats/scans/joins/spill mechanics | §§6-12 | Đã dùng cho causal model |
+| Tổng hợp DE-L132 | parity, dossier, peer review, rollback | §§2-17 | Đã thành project protocol |
 
 ## Key takeaways
 - Tuning chỉ đạt khi correctness, causal evidence và performance cùng đạt.
@@ -214,7 +214,7 @@ Artifacts nên được đóng gói theo query ID và iteration: SQL đầu vào
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.sql-tuning-project-five-queries`
+## Execution capsule: kiểm chứng `wiki.database.sql-tuning-project-five-queries`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.sql-tuning-project-five-queries`, sơ đồ, ví dụ và artifact về **Dự án tối ưu SQL: năm truy vấn chậm** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -236,7 +236,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Làm sao tối ưu năm truy vấn bằng quy trình giả thuyết–một thay đổi–đo lại mà giữ kết quả và tạo evidence có thể review?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Làm sao tối ưu năm truy vấn bằng quy trình giả thuyết-một thay đổi-đo lại mà giữ kết quả và tạo evidence có thể review? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Dự án tối ưu SQL: năm truy vấn chậm** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 
@@ -266,7 +266,7 @@ Artifact của `wiki.database.sql-tuning-project-five-queries` buộc người d
 
 ### Tự kiểm tra trước khi tái sử dụng
 
-1. Bạn có thể trả lời `Làm sao tối ưu năm truy vấn bằng quy trình giả thuyết–một thay đổi–đo lại mà giữ kết quả và tạo evidence có thể review?` bằng một câu mà không kéo thêm concept thứ hai không?
+1. Bạn có thể trả lời `Làm sao tối ưu năm truy vấn bằng quy trình giả thuyết-một thay đổi-đo lại mà giữ kết quả và tạo evidence có thể review?` bằng một câu mà không kéo thêm concept thứ hai không?
 2. Source locator nào đỡ cho claim, và phần nào chỉ là synthesis trong note?
 3. Observation nào khiến bạn dừng, thu hẹp hoặc đảo quyết định?
 4. Artifact nào cho phép một reviewer độc lập tái hiện kết quả?

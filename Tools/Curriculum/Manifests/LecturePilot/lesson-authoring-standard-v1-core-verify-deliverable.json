@@ -1,0 +1,25 @@
+{
+  "task_id": "academy-audit-curriculum-quality",
+  "instance_id": "lesson-authoring-standard-v1",
+  "verified_at": "2026-10-04",
+  "result": "pass",
+  "checks": {
+    "validate_l001_editorial_and_library.py": "pass",
+    "npm run brain:test": "pass",
+    "npm run lectures:first10:test": "pass",
+    "npm run lectures:authoring:test": "pass",
+    "git diff --check": "pass"
+  },
+  "observed_counts": {
+    "approved_teaching_files": 2,
+    "indexed_notes": 645,
+    "library_books": 47,
+    "published_lessons": 10
+  },
+  "reference_chain": "lesson -> Second Brain note -> Library book",
+  "humanizer": {
+    "skill": "humanizer:humanizer",
+    "version": "3.1.0",
+    "required_position": "final editorial pass"
+  }
+}

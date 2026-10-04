@@ -38,7 +38,7 @@ Bắt đầu bằng loại thay đổi: rename, type, nullability, semantics, un
 
 ## 3. Edge qualification
 
-Mỗi hop cần provenance, confidence, current validity và transformation type; một unknown hop chặn claim completeness. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Impact analysis from a source column to a dashboard`, câu hỏi thực dụng là: Impact analysis từ source column tới dashboard cần kết hợp lineage, usage, contracts và owner evidence ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Mỗi hop cần provenance, confidence, current validity và transformation type; một unknown hop chặn claim completeness. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Impact analysis from a source column to a dashboard`, câu hỏi thực dụng là: Impact analysis từ source column tới dashboard cần kết hợp lineage, usage, contracts và owner evidence ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Consumer evidence
 
@@ -221,7 +221,7 @@ Với `wiki.metadata.source-column-dashboard-impact`, command thành công khôn
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.metadata.source-column-dashboard-impact`
+## Execution capsule: kiểm chứng `wiki.metadata.source-column-dashboard-impact`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.metadata.source-column-dashboard-impact`, sơ đồ, ví dụ và artifact về **Impact analysis from a source column to a dashboard** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

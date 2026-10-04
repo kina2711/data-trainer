@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: NULL đi qua biểu thức, bộ lọc, phép nối, tổng hợp và sắp xếp như thế nào, và khi nào việc thay NULL bằng giá trị mặc định làm sai nghĩa nghiệp vụ?
 source_ids:
   - src.course.hcmut-sql
@@ -44,7 +44,7 @@ Trong SQL, phép so sánh có toán hạng NULL thường trả `UNKNOWN`. `7 = 
 WHERE status <> 'A'
 ```
 
-không giữ row có `status IS NULL`. Nếu nghiệp vụ muốn “mọi row không phải A, kể cả chưa biết”, phải viết rõ:
+không giữ row có `status IS NULL`. Nếu nghiệp vụ muốn mọi row không phải A, kể cả chưa biết, phải viết rõ:
 
 ```sql
 WHERE status <> 'A' OR status IS NULL
@@ -72,9 +72,9 @@ Không bật `transform_null_equals` để hợp thức hóa code sai nếu có 
 
 ## 5. Số học, nối chuỗi và biểu thức
 
-Phần lớn toán tử strict truyền NULL: `price * quantity` thành NULL nếu một toán hạng NULL. Đây không phải 0 doanh thu. `COALESCE(quantity,0)` chỉ đúng nếu missing quantity có nghĩa nghiệp vụ là zero; nếu là “chưa nhận dữ liệu”, thay 0 sẽ biến chất lượng dữ liệu thành số liệu kinh doanh giả.
+Phần lớn toán tử strict truyền NULL: `price * quantity` thành NULL nếu một toán hạng NULL. Đây không phải 0 doanh thu. `COALESCE(quantity,0)` chỉ đúng nếu missing quantity có nghĩa nghiệp vụ là zero; nếu là chưa nhận dữ liệu, thay 0 sẽ biến chất lượng dữ liệu thành số liệu kinh doanh giả.
 
-Nối chuỗi cũng phụ thuộc function/operator và DBMS. Không suy từ một công cụ sang công cụ khác. Khi dựng label, quyết định rõ “thiếu middle name” thì bỏ đoạn hay toàn label unknown; test function cụ thể trên PostgreSQL 17.
+Nối chuỗi cũng phụ thuộc function/operator và DBMS. Không suy từ một công cụ sang công cụ khác. Khi dựng label, quyết định rõ thiếu middle name thì bỏ đoạn hay toàn label unknown; test function cụ thể trên PostgreSQL 17.
 
 `CASE` có thể phân loại NULL, nhưng thứ tự nhánh quan trọng. `CASE WHEN x = NULL` không match; dùng `x IS NULL`. Không dùng `ELSE 0` như một thùng chứa mọi trạng thái chưa hiểu.
 
@@ -104,13 +104,13 @@ Thứ tự hiển thị không chữa semantics thiếu. Đẩy NULL xuống cu�
 
 ## 9. JOIN với nullable key
 
-Equality join chỉ match khi `ON` predicate TRUE. `NULL = NULL` là UNKNOWN nên hai row có key NULL không match. Inner join làm chúng biến mất; left join giữ row trái và null-extend bên phải. Dùng `IS NOT DISTINCT FROM` sẽ cho NULL match NULL, nhưng có thể tạo many-to-many explosion nếu nhiều row mỗi bên NULL. Chỉ dùng nếu domain thật sự coi thiếu key là cùng equivalence class—trường hợp hiếm.
+Equality join chỉ match khi `ON` predicate TRUE. `NULL = NULL` là UNKNOWN nên hai row có key NULL không match. Inner join làm chúng biến mất; left join giữ row trái và null-extend bên phải. Dùng `IS NOT DISTINCT FROM` sẽ cho NULL match NULL, nhưng có thể tạo many-to-many explosion nếu nhiều row mỗi bên NULL. Chỉ dùng nếu domain thật sự coi thiếu key là cùng equivalence class:trường hợp hiếm.
 
 Join key đáng lẽ bắt buộc nhưng nullable là quality signal. Đếm NULL key trước join và đưa vào reconciliation thay vì im lặng coalesce sang sentinel chung.
 
 ## 10. CHECK, UNIQUE và NULL
 
-CHECK constraint đạt khi expression TRUE hoặc NULL/UNKNOWN trong PostgreSQL; muốn bắt buộc điều kiện, thường phải kết hợp `NOT NULL` hoặc viết predicate loại UNKNOWN. Unique constraint có semantics NULL riêng; PostgreSQL mặc định cho nhiều NULL vì chúng không được coi equal, và có tùy chọn `NULLS NOT DISTINCT`. Không suy “UNIQUE nghĩa chỉ một NULL” nếu chưa kiểm DBMS/version.
+CHECK constraint đạt khi expression TRUE hoặc NULL/UNKNOWN trong PostgreSQL; muốn bắt buộc điều kiện, thường phải kết hợp `NOT NULL` hoặc viết predicate loại UNKNOWN. Unique constraint có semantics NULL riêng; PostgreSQL mặc định cho nhiều NULL vì chúng không được coi equal, và có tùy chọn `NULLS NOT DISTINCT`. Không suy UNIQUE nghĩa chỉ một NULL nếu chưa kiểm DBMS/version.
 
 Ràng buộc phải phản ánh state hợp lệ. Nếu code quốc gia thiếu là invalid, dùng NOT NULL. Nếu đang onboarding cho phép thiếu tạm thời, cần workflow/status rõ và query downstream hiểu.
 
@@ -122,11 +122,11 @@ Một bảng đo có `value NULL` có thể được xử lý:
 2. thay 0: giả định missing thật sự bằng zero;
 3. impute/ước lượng: dùng model/rule và phải gắn cờ imputed.
 
-Không có lựa chọn chung “đúng”. Báo cáo phải nêu population, denominator, missing rate và reason distribution. Nếu missing not at random, average observed có bias. Bài lab chỉ so ba phép tính không đủ; phải viết câu nghiệp vụ cho từng giả định.
+Không có lựa chọn chung đúng. Báo cáo phải nêu population, denominator, missing rate và reason distribution. Nếu missing not at random, average observed có bias. Bài lab chỉ so ba phép tính không đủ; phải viết câu nghiệp vụ cho từng giả định.
 
 ## 12. Bộ 15 biểu thức kiểm tra
 
-Test nên phủ equality/inequality, AND/OR/NOT, arithmetic, CASE, IN/NOT IN, COUNT/AVG, GROUP BY, ORDER BY và JOIN. Người học ghi prediction trước khi chạy, gồm value lẫn type/state TRUE/FALSE/UNKNOWN. Sau chạy, mọi chênh lệch phải giải thích bằng rule, không ghi “PostgreSQL làm vậy”.
+Test nên phủ equality/inequality, AND/OR/NOT, arithmetic, CASE, IN/NOT IN, COUNT/AVG, GROUP BY, ORDER BY và JOIN. Người học ghi prediction trước khi chạy, gồm value lẫn type/state TRUE/FALSE/UNKNOWN. Sau chạy, mọi chênh lệch phải giải thích bằng rule, không ghi PostgreSQL làm vậy.
 
 Thêm row-valued case và `IS DISTINCT FROM` để phân biệt SQL chuẩn phổ biến với PostgreSQL-specific predicate. Lưu script và output để chạy lại khi đổi DBMS.
 
@@ -146,7 +146,7 @@ Thêm row-valued case và `IS DISTINCT FROM` để phân biệt SQL chuẩn ph�
 3. `COUNT(*)`, `COUNT(x)` và `AVG(x)` dùng mẫu số nào?
 4. Khi nào `IS NOT DISTINCT FROM` hữu ích và khi nào gây join explosion?
 5. CHECK expression UNKNOWN có ý nghĩa gì trong PostgreSQL?
-6. Ba nghĩa “chưa biết”, “không áp dụng”, “bằng 0” cần model khác nhau ra sao?
+6. Ba nghĩa chưa biết, không áp dụng, bằng 0 cần model khác nhau ra sao?
 
 ## 15. Giới hạn và điều chưa cho phép kết luận
 
@@ -156,18 +156,18 @@ Thêm row-valued case và `IS DISTINCT FROM` để phân biệt SQL chuẩn ph�
 - Null-safe equality không tự động là join key đúng.
 
 ## Reference
-1. [[SRC-HCMUT-SQL]] — PDF 49–50, 61–79.
-2. [[SRC-POSTGRESQL-17-NULL-COMPARISON]] — comparison và null predicates.
-3. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] — WHERE, GROUP BY, joins.
+1. [[SRC-HCMUT-SQL]]: PDF 49-50, 61-79.
+2. [[SRC-POSTGRESQL-17-NULL-COMPARISON]]: comparison và null predicates.
+3. [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]]: WHERE, GROUP BY, joins.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-HCMUT-SQL]], PDF 49–50, 69–79 | NULL, grouping, aggregate, ordering | §§1–3, 7–8 | Đã trình bày và bổ sung business semantics |
-| [[SRC-POSTGRESQL-17-NULL-COMPARISON]] | UNKNOWN, IS predicates, DISTINCT FROM | §§2–4 | Đã giữ cả row-valued limitation |
-| [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | filter/join/group pipeline | §§7–9 | Đã tách logical khỏi physical |
-| Tổng hợp DE-L114 | missingness, 15-expression test, decision rules | §§11–13 | Đã ghi thành synthesis kiểm được |
+| [[SRC-HCMUT-SQL]], PDF 49-50, 69-79 | NULL, grouping, aggregate, ordering | §§1-3, 7-8 | Đã trình bày và bổ sung business semantics |
+| [[SRC-POSTGRESQL-17-NULL-COMPARISON]] | UNKNOWN, IS predicates, DISTINCT FROM | §§2-4 | Đã giữ cả row-valued limitation |
+| [[SRC-POSTGRESQL-17-QUERY-EXPRESSIONS]] | filter/join/group pipeline | §§7-9 | Đã tách logical khỏi physical |
+| Tổng hợp DE-L114 | missingness, 15-expression test, decision rules | §§11-13 | Đã ghi thành synthesis kiểm được |
 
 ## Key takeaways
 - WHERE chỉ giữ TRUE; FALSE và UNKNOWN đều bị loại.
@@ -178,7 +178,7 @@ Thêm row-valued case và `IS DISTINCT FROM` để phân biệt SQL chuẩn ph�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.null-three-valued-logic`
+## Execution capsule: kiểm chứng `wiki.database.null-three-valued-logic`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.null-three-valued-logic`, sơ đồ, ví dụ và artifact về **NULL và logic ba trạng thái** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

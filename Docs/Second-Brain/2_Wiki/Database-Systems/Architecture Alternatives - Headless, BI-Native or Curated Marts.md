@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Trong điều kiện tổ chức nào nên chọn semantic layer độc lập, semantic model trong BI hoặc curated marts, và bằng chứng nào làm quyết định phải đảo?
 source_ids:
   - src.web.dbt-semantic-models
@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Ba kiến trúc, ba nơi đặt nghĩa
 
-Headless semantic layer đặt metric/entity/time semantics trong service hoặc artifact độc lập và cho nhiều clients gọi. BI-native đặt nghĩa trong model của BI platform; LookML là ví dụ project/version-controlled model được SQL generator và Explore dùng. Curated marts đưa phần lớn quyết định vào tables/views có grain và columns đã chuẩn bị. Không phương án nào “không có semantic layer”: curated mart vẫn mã hóa nghĩa trong schema/transform/documentation, chỉ không có query compiler riêng.
+Headless semantic layer đặt metric/entity/time semantics trong service hoặc artifact độc lập và cho nhiều clients gọi. BI-native đặt nghĩa trong model của BI platform; LookML là ví dụ project/version-controlled model được SQL generator và Explore dùng. Curated marts đưa phần lớn quyết định vào tables/views có grain và columns đã chuẩn bị. Không phương án nào không có semantic layer: curated mart vẫn mã hóa nghĩa trong schema/transform/documentation, chỉ không có query compiler riêng.
 
 ## 2. Headless: reuse đổi lấy vận hành
 
@@ -47,7 +47,7 @@ Một mart theo use case cho consumer schema ổn định, predictable performan
 
 ## 5. Sáu chiều chấm có bằng chứng
 
-Chấm consumer diversity, semantic change rate, query flexibility, operational capacity, governance/security và migration/portability. Mỗi điểm cần observation: số clients thực, tỷ lệ queries ngoài BI, on-call capacity, p95/freshness, count duplicated definitions, integration coverage và migration rehearsal. Không dùng “modern”, “easy”, “scalable” nếu thiếu unit và observation. Weight phản ánh decision priority và có owner; total score không được che hard constraints.
+Chấm consumer diversity, semantic change rate, query flexibility, operational capacity, governance/security và migration/portability. Mỗi điểm cần observation: số clients thực, tỷ lệ queries ngoài BI, on-call capacity, p95/freshness, count duplicated definitions, integration coverage và migration rehearsal. Không dùng modern, easy, scalable nếu thiếu unit và observation. Weight phản ánh decision priority và có owner; total score không được che hard constraints.
 
 ## 6. Ba tình huống mart là lựa chọn đúng
 
@@ -230,7 +230,7 @@ Mỗi mệnh đề dưới đây cần observation, fixture hoặc artifact có 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.architecture-alternatives`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.architecture-alternatives`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.architecture-alternatives`, sơ đồ, ví dụ và artifact về **Architecture Alternatives - Headless, BI-Native or Curated Marts** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

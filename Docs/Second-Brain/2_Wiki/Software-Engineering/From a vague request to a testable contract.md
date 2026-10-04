@@ -31,7 +31,7 @@ relationships:
 
 ## 1. Bắt đầu từ quyết định, không bắt đầu từ giải pháp
 
-Câu ‘làm dashboard doanh thu’ chưa nói ai sẽ dùng kết quả để quyết định điều gì. Trước khi chọn dữ liệu hay công cụ, người viết contract phải xác định actor, trigger và quyết định cần hỗ trợ. Nếu bỏ ba điểm này, đội kỹ thuật có thể giao đúng màn hình nhưng sai công việc.
+Câu làm dashboard doanh thu chưa nói ai sẽ dùng kết quả để quyết định điều gì. Trước khi chọn dữ liệu hay công cụ, người viết contract phải xác định actor, trigger và quyết định cần hỗ trợ. Nếu bỏ ba điểm này, đội kỹ thuật có thể giao đúng màn hình nhưng sai công việc.
 
 Một contract tốt không cố đoán mọi chi tiết ngay từ đầu. Nó khóa phần có thể quan sát: ai kích hoạt, input nào được chấp nhận, output nào xuất hiện, ràng buộc nào bắt buộc và điều gì nằm ngoài phạm vi. Phần chưa biết được ghi thành câu hỏi có owner, không được ngụy trang thành mặc định.
 
@@ -39,14 +39,14 @@ Một contract tốt không cố đoán mọi chi tiết ngay từ đầu. Nó k
 
 Sáu phần gồm user, trigger, input, output, constraints và non-goals. User là vai trò chịu hậu quả, không nhất thiết là người bấm nút. Trigger là sự kiện hoặc lịch chạy. Input phải có boundary và nguồn thẩm quyền. Output mô tả hành vi nhìn thấy được, không chỉ tên artifact.
 
-Constraints cần tách correctness, performance và operability. ‘Đúng số tiền theo sổ cái’, ‘trả trong 10 giây’ và ‘replay không tạo bản ghi kép’ dẫn tới ba loại bằng chứng khác nhau. Non-goal chặn việc phạm vi nở âm thầm; nó phải viết thành câu có thể phản biện, không nằm trong trí nhớ của người họp.
+Constraints cần tách correctness, performance và operability. Đúng số tiền theo sổ cái, trả trong 10 giây và replay không tạo bản ghi kép dẫn tới ba loại bằng chứng khác nhau. Non-goal chặn việc phạm vi nở âm thầm; nó phải viết thành câu có thể phản biện, không nằm trong trí nhớ của người họp.
 
 > [!synthesis]
 > Phần này ghép contract của roadmap DE-L001 với các lát nguồn đã khai báo. Mọi threshold và tình huống cụ thể là thiết kế giáo trình, không phải lời trích nguyên văn của tác giả.
 
 ## 3. Từ requirement tới acceptance check
 
-Acceptance check gồm trạng thái đầu, hành động, dữ liệu cụ thể và kết quả mong đợi. ‘Chạy không lỗi’ chỉ chứng minh process trả exit code thuận lợi; nó không chứng minh đúng population, đúng số tiền hay đúng thời điểm. Một check tốt sẽ thất bại khi một mệnh đề nghiệp vụ bị vi phạm.
+Acceptance check gồm trạng thái đầu, hành động, dữ liệu cụ thể và kết quả mong đợi. Chạy không lỗi chỉ chứng minh process trả exit code thuận lợi; nó không chứng minh đúng population, đúng số tiền hay đúng thời điểm. Một check tốt sẽ thất bại khi một mệnh đề nghiệp vụ bị vi phạm.
 
 Mỗi requirement cần cả positive case và boundary hoặc negative case. Nếu yêu cầu nói hỗ trợ đơn hàng hợp lệ, hãy đưa thêm đơn thiếu currency hoặc trùng identity. Hai người đọc contract phải có thể dựng cùng oracle mà không hỏi tác giả kết quả đúng là gì.
 
@@ -70,9 +70,9 @@ Nếu reviewer vẫn tạo được hai kết quả trái nhau nhưng đều h�
 
 ## 7. Tình huống xuyên suốt
 
-Một quản lý nhắn ‘mỗi sáng gửi doanh thu hôm qua’. Sau khi hỏi lại, đội xác định finance analyst là consumer, 07:00 Asia/Ho_Chi_Minh là trigger, ledger đã posted là nguồn, output là tổng gross/refund/net theo currency, dữ liệu chưa posted là non-goal, và gửi trễ hơn 07:10 là vi phạm vận hành. Hai acceptance checks dùng một fixture bình thường và một refund tới sát cutoff.
+Một quản lý nhắn mỗi sáng gửi doanh thu hôm qua. Sau khi hỏi lại, đội xác định finance analyst là consumer, 07:00 Asia/Ho_Chi_Minh là trigger, ledger đã posted là nguồn, output là tổng gross/refund/net theo currency, dữ liệu chưa posted là non-goal, và gửi trễ hơn 07:10 là vi phạm vận hành. Hai acceptance checks dùng một fixture bình thường và một refund tới sát cutoff.
 
-Tình huống của `wiki.engineering-foundation.testable-contract` phải được chạy trong sandbox hoặc fixture có version. Nếu chưa chạy, các kết quả mong đợi chỉ là protocol đánh giá; không được ghi thành observation. Người học giữ input, command, state trước–sau, raw output và một oracle độc lập đủ để reviewer tái hiện câu hỏi riêng của bài `From a vague request to a testable contract`.
+Tình huống của `wiki.engineering-foundation.testable-contract` phải được chạy trong sandbox hoặc fixture có version. Nếu chưa chạy, các kết quả mong đợi chỉ là protocol đánh giá; không được ghi thành observation. Người học giữ input, command, state trước-sau, raw output và một oracle độc lập đủ để reviewer tái hiện câu hỏi riêng của bài `From a vague request to a testable contract`.
 
 ## 8. Failure modes và ngộ nhận
 
@@ -159,7 +159,7 @@ Mỗi probe dưới đây bắt đầu bằng dự đoán viết trước. Kết
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]] — `src.book.sommerville-software-engineering.10e` | Chapter 4 PDF 103–132; Chapter 7 PDF 169–212 | requirement validation, interface, decomposition và information hiding | §§1–9 | Đã phủ | Nội dung ngoài objective DE-L001 |
+| [[SRC-SOMMERVILLE-SOFTWARE-ENGINEERING-10E]]: `src.book.sommerville-software-engineering.10e` | Chapter 4 PDF 103-132; Chapter 7 PDF 169-212 | requirement validation, interface, decomposition và information hiding | §§1-9 | Đã phủ | Nội dung ngoài objective DE-L001 |
 
 ## Key takeaways
 - Yêu cầu chỉ sẵn sàng để xây khi hành vi quan sát được, boundary và oracle đều rõ hơn tên giải pháp.
@@ -169,7 +169,7 @@ Mỗi probe dưới đây bắt đầu bằng dự đoán viết trước. Kết
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.engineering-foundation.testable-contract`
+## Execution capsule: kiểm chứng `wiki.engineering-foundation.testable-contract`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.engineering-foundation.testable-contract`, sơ đồ, ví dụ và artifact về **From a vague request to a testable contract** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

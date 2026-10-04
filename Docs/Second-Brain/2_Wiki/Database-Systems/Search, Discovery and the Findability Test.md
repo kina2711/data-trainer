@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Findability của data product được đo bằng tác vụ tìm kiếm, query logs và failed vocabulary như thế nào mà không đánh đồng catalog coverage với kết quả người dùng?
 source_ids:
   - src.web.datahub-search
@@ -39,7 +39,7 @@ Name dùng business vocabulary và tránh mã pipeline làm primary label. One-l
 
 ## 3. Thiết kế task và tập người dùng
 
-Task viết theo intent, không đưa tên product hoặc keyword mà metadata đang dùng; ví dụ “tìm nguồn trả lời tỷ lệ khách hàng quay lại theo cohort” thay vì “tìm mart customer_retention”. Bao phủ distinct roles, vocabulary và access contexts. Mỗi participant bắt đầu từ catalog/search entry point họ thực sự dùng. Với formative vòng nhỏ, báo observed rate cùng n và từng case; không biến 3/5 thành ước lượng population chính xác. Nếu so hai vòng bằng hai nhóm khác nhau, giữ task difficulty và recruitment criteria tương đương.
+Task viết theo intent, không đưa tên product hoặc keyword mà metadata đang dùng; ví dụ tìm nguồn trả lời tỷ lệ khách hàng quay lại theo cohort thay vì tìm mart customer_retention. Bao phủ distinct roles, vocabulary và access contexts. Mỗi participant bắt đầu từ catalog/search entry point họ thực sự dùng. Với formative vòng nhỏ, báo observed rate cùng n và từng case; không biến 3/5 thành ước lượng population chính xác. Nếu so hai vòng bằng hai nhóm khác nhau, giữ task difficulty và recruitment criteria tương đương.
 
 ## 4. Failed-query vocabulary là evidence
 
@@ -59,7 +59,7 @@ Người dùng có thể click đúng asset nhưng không xác nhận grain, fre
 
 ## 8. Ma trận kiểm chứng từng mệnh đề
 
-Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được. Một trang tài liệu tồn tại, catalog có search box hoặc người dùng nói ‘dễ’ không tự là bằng chứng.
+Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được. Một trang tài liệu tồn tại, catalog có search box hoặc người dùng nói dễ không tự là bằng chứng.
 
 ### 8.1. catalog coverage khác findability outcome
 
@@ -231,7 +231,7 @@ Mỗi mệnh đề dưới đây cần artifact hoặc observation lưu được
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-product.findability-test`
+## Execution capsule: kiểm chứng `wiki.data-product.findability-test`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-product.findability-test`, sơ đồ, ví dụ và artifact về **Search, Discovery and the Findability Test** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

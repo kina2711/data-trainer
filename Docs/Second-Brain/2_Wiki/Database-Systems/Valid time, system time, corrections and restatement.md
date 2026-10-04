@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Valid time và system time trả lời hai câu hỏi nào, và correction/restatement phải được quản trị ra sao để không viết lại lịch sử đã công bố một cách vô hình?
 source_ids:
   - src.book.silberschatz-database-system-concepts.7e
@@ -118,7 +118,7 @@ Mỗi mệnh đề phải chuyển thành fixture, invariant và phép đối ch
 1. Viết business question, grain, identity, time semantics và aggregation contract.
 2. Tách source fact, quyết định thiết kế và synthesis của giáo trình.
 3. Dựng ca biên nhỏ nhất có thể làm query đúng cú pháp nhưng sai số.
-4. Kiểm key, interval, cardinality và control total trước–sau transform/join.
+4. Kiểm key, interval, cardinality và control total trước-sau transform/join.
 5. Chạy replay, late data hoặc schema change phù hợp với bài; lưu failed run.
 6. Phân biệt correctness, usability, performance và governance; một trục đạt không che lấp trục khác.
 7. Ghi owner, version, policy và điều kiện làm lựa chọn hiện tại không còn đúng.
@@ -162,7 +162,7 @@ Mỗi mệnh đề phải chuyển thành fixture, invariant và phép đối ch
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-modeling.bitemporal-corrections`
+## Execution capsule: kiểm chứng `wiki.data-modeling.bitemporal-corrections`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-modeling.bitemporal-corrections`, sơ đồ, ví dụ và artifact về **Valid time, system time, corrections and restatement** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -39,7 +39,7 @@ SQL/code parser rẻ và pre-run nhưng dialect, macros, UDF, dynamic identifier
 
 ## 3. Runtime instrumentation
 
-Events/hooks thấy executed inputs/outputs và run context nhưng cần adoption, delivery và version compatibility. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Five extraction methods and their weaknesses`, câu hỏi thực dụng là: Năm phương pháp extraction lineage có coverage, freshness và failure modes khác nhau thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Events/hooks thấy executed inputs/outputs và run context nhưng cần adoption, delivery và version compatibility. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Five extraction methods and their weaknesses`, câu hỏi thực dụng là: Năm phương pháp extraction lineage có coverage, freshness và failure modes khác nhau thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Query-log inference
 
@@ -224,7 +224,7 @@ Với `wiki.metadata.lineage-extraction-methods`, command thành công không t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.metadata.lineage-extraction-methods`
+## Execution capsule: kiểm chứng `wiki.metadata.lineage-extraction-methods`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.metadata.lineage-extraction-methods`, sơ đồ, ví dụ và artifact về **Five extraction methods and their weaknesses** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Vector batches, selection vectors, late materialization và encoded execution giảm overhead ở đâu, và query shape nào làm từng cơ chế mất lợi thế?
 source_ids:
   - src.book.kleppmann-ddia.1e
@@ -230,7 +230,7 @@ Mỗi mệnh đề hiệu năng cần counterfactual, correctness oracle và cou
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.olap.vectorized-execution-late-materialization`
+## Execution capsule: kiểm chứng `wiki.olap.vectorized-execution-late-materialization`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.olap.vectorized-execution-late-materialization`, sơ đồ, ví dụ và artifact về **Vectorized Execution and Late Materialization** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

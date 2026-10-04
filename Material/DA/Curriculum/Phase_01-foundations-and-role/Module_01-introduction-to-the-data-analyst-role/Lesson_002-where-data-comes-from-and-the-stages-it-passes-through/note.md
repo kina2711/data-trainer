@@ -12,21 +12,21 @@
 
 **Tóm tắt bản chất:** Một con số phân tích là kết quả của chuỗi ghi nhận, thu thập, lưu trữ, biến đổi và diễn giải; mỗi chặng vừa thêm giá trị vừa có thể làm mất hoặc bóp méo tín hiệu ban đầu. Giá trị của mô hình này nằm ở chỗ nó làm lộ nơi một kết luận có thể sai trước khi kết luận đi vào quyết định.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
-Một yêu cầu phân tích thường đến dưới dạng câu ngắn và một bảng đã có sẵn. Với **Where data comes from and the stages it passes through**, cám dỗ lớn nhất là mở công cụ rồi thao tác ngay. Cách đó tạo output nhanh nhưng để lại câu hỏi khó hơn: con số đang đại diện cho population nào, ở grain nào, qua những biến đổi nào và có đủ bằng chứng để người khác tái hiện hay không?
+Một yêu cầu phân tích thường đến dưới dạng câu ngắn và một bảng đã có sẵn. Với **Where data comes from and the stages it passes through**, rủi ro trực tiếp là mở công cụ rồi thao tác ngay. Cách đó tạo output nhanh nhưng để lại câu hỏi khó hơn: con số đang đại diện cho population nào, ở grain nào, qua những biến đổi nào và có đủ bằng chứng để người khác tái hiện hay không?
 
 Chi phí của việc bỏ qua `vòng đời dữ liệu bảy chặng từ sự kiện nghiệp vụ tới quyết định` không nằm ở một câu lệnh lỗi. Kết quả vẫn có thể chạy, biểu đồ vẫn đẹp và người nhận vẫn ra quyết định. Lỗi chỉ lộ khi một báo cáo thứ hai cho số khác, khi dữ liệu tháng mới xuất hiện, hoặc khi reviewer hỏi một trường hợp biên mà logic hiện tại không giải thích được. Khi ấy, phần tốn kém nhất là truy lại assumption đã không được ghi.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Một con số phân tích là kết quả của chuỗi ghi nhận, thu thập, lưu trữ, biến đổi và diễn giải; mỗi chặng vừa thêm giá trị vừa có thể làm mất hoặc bóp méo tín hiệu ban đầu.
 
 Với `vòng đời dữ liệu bảy chặng từ sự kiện nghiệp vụ tới quyết định`, cơ chế được bóc thành năm lớp. Lớp thứ nhất khóa **đối tượng và population**: ai hoặc sự kiện nào được tính, ai bị loại. Lớp thứ hai khóa **identity và grain**: một dòng hay một quan sát đại diện cho điều gì. Lớp thứ ba khóa **thời gian**: event time, processing time, timezone và cutoff. Lớp thứ tư khóa **phép biến đổi**: lọc, join, aggregate, ánh xạ và xử lý thiếu. Lớp cuối cùng khóa **quyết định**: người nhận sẽ làm gì nếu kết quả cao, thấp hoặc chưa đủ chắc chắn.
 
-Phải tách sự kiện thực, bản ghi trong hệ thống nguồn và bảng phục vụ phân tích; ba thứ có thể khác nhau mà không có lỗi cú pháp nào xuất hiện. Vì vậy, trước mỗi phép tính cần viết một câu ngắn có thể bị bác bỏ. Ví dụ: “mỗi dòng đại diện cho một đơn đã thanh toán theo giờ Việt Nam, tính tại thời điểm chốt 07:00”. Câu này hữu ích hơn tên bảng vì nó cho reviewer biết phải kiểm uniqueness, status và cutoff ở đâu.
+Phải tách sự kiện thực, bản ghi trong hệ thống nguồn và bảng phục vụ phân tích; ba thứ có thể khác nhau mà không có lỗi cú pháp nào xuất hiện. Vì vậy, trước mỗi phép tính cần viết một câu ngắn có thể bị bác bỏ. Ví dụ: mỗi dòng đại diện cho một đơn đã thanh toán theo giờ Việt Nam, tính tại thời điểm chốt 07:00. Câu này hữu ích hơn tên bảng vì nó cho reviewer biết phải kiểm uniqueness, status và cutoff ở đâu.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Tình trạng bằng chứng | Hành động | Vì sao |
 |---|---|---|
@@ -34,19 +34,19 @@ Phải tách sự kiện thực, bản ghi trong hệ thống nguồn và bảng
 | Một assumption ảnh hưởng semantics chưa rõ | Dừng và hỏi owner | Tự chọn mặc định sẽ đổi nghĩa kết quả |
 | Dữ liệu thiếu nhưng ảnh hưởng định lượng được | Phân tích có điều kiện, công bố coverage | Người nhận biết giới hạn của kết luận |
 | Hai nguồn cho số khác nhau | Truy ngược boundary gần nguồn | Sửa công thức cuối chỉ che lỗi upstream |
-| Deadline ngắn hơn thời gian kiểm chứng | Co phạm vi hoặc trả lời “chưa đủ bằng chứng” | Tốc độ không thay thế correctness |
+| Deadline ngắn hơn thời gian kiểm chứng | Co phạm vi hoặc trả lời chưa đủ bằng chứng | Tốc độ không thay thế correctness |
 
 Quy tắc ưu tiên là: Khi số liệu lệch, truy ngược từng chặng và đối soát ở boundary gần nguồn nhất còn giữ được bằng chứng, thay vì sửa ngay công thức cuối. Chọn sai nhánh làm analytical debt tăng rất nhanh, vì bảng hoặc dashboard mới thường tái sử dụng assumption cũ mà không biết đó chỉ là giả định.
 
-## Case Study Thực Chiến: một chỉ số bán hàng đổi nghĩa giữa đường
+## Worked Case: một chỉ số bán hàng đổi nghĩa giữa đường
 
-Trong case của L002, một cửa hàng nhận yêu cầu giải thích vì sao “khách hàng hoạt động” giảm từ 12.400 xuống 10.900. Bảng dashboard tính khách có ít nhất một đơn tạo trong tháng. Hệ thống vận hành lại dùng khách có ít nhất một đơn **đã thanh toán**, còn CRM tính người có phiên truy cập trong 30 ngày. Ba con số đều chạy đúng theo code của mình nhưng không cùng khái niệm; `vòng đời dữ liệu bảy chặng từ sự kiện nghiệp vụ tới quyết định` là lăng kính dùng để gỡ nút thắt.
+Trong case của L002, một cửa hàng nhận yêu cầu giải thích vì sao khách hàng hoạt động giảm từ 12.400 xuống 10.900. Bảng dashboard tính khách có ít nhất một đơn tạo trong tháng. Hệ thống vận hành lại dùng khách có ít nhất một đơn **đã thanh toán**, còn CRM tính người có phiên truy cập trong 30 ngày. Ba con số đều chạy đúng theo code của mình nhưng không cùng khái niệm; `vòng đời dữ liệu bảy chặng từ sự kiện nghiệp vụ tới quyết định` là khung phân tích dùng để xác định sai lệch.
 
-Nhóm phân tích bắt đầu bằng `vòng đời dữ liệu bảy chặng từ sự kiện nghiệp vụ tới quyết định`. Họ ghi population, grain, status, timezone và cửa sổ đo; sau đó lập ba phép đếm song song trên cùng snapshot. Kết quả cho thấy số đơn tạo giảm 12%, số đơn thanh toán chỉ giảm 3%, còn lượt truy cập tăng 8%. Vấn đề không còn là “khách hoạt động giảm” mà là tỷ lệ chuyển từ tạo đơn sang thanh toán giảm ở một nhóm thiết bị.
+Nhóm phân tích bắt đầu bằng `vòng đời dữ liệu bảy chặng từ sự kiện nghiệp vụ tới quyết định`. Họ ghi population, grain, status, timezone và cửa sổ đo; sau đó lập ba phép đếm song song trên cùng snapshot. Kết quả cho thấy số đơn tạo giảm 12%, số đơn thanh toán chỉ giảm 3%, còn lượt truy cập tăng 8%. Vấn đề không còn là khách hoạt động giảm mà là tỷ lệ chuyển từ tạo đơn sang thanh toán giảm ở một nhóm thiết bị.
 
 Biến thể khó hơn của `Where data comes from and the stages it passes through` xuất hiện khi một đơn có thể thanh toán lại sau thất bại và bảng payment giữ nhiều attempt. Nếu join trực tiếp orders với payments rồi đếm khách, fan-out làm số khách tăng giả. Nhóm phải chọn attempt hợp lệ theo identity, aggregate payment về grain đơn hàng, rồi mới quay lại grain khách hàng. Case này cho thấy một metric không thể được cứu chỉ bằng tên rõ; cơ chế dữ liệu phía dưới phải khớp định nghĩa.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Có dữ liệu trong database nghĩa là sự kiện ngoài đời đã được ghi chính xác. **Thực tế:** Mất sự kiện, ghi trùng, đồng hồ lệch, ánh xạ sai, lọc nhầm population hoặc định nghĩa chỉ số đổi giữa đường đều có thể tạo dashboard hợp lý nhưng sai. **Vì sao nghe hợp lý:** database tạo cảm giác chắc chắn vì kiểu dữ liệu và truy vấn đều hợp lệ, trong khi lỗi thu thập hoặc định nghĩa không tạo syntax error.
 
@@ -58,7 +58,7 @@ Trong `Where data comes from and the stages it passes through`, một trường 
 
 ## Nếu Bạn Dạy Lại Điều Này...
 
-Khi dạy `vòng đời dữ liệu bảy chặng từ sự kiện nghiệp vụ tới quyết định`, mở đầu bằng hai bảng cho cùng một doanh thu nhưng lệch 7%, không giải thích nguồn. Yêu cầu người học viết ba giả thuyết trước khi xem SQL. Bài tập seed là đổi đúng một constraint—cutoff, population hoặc grain—rồi buộc họ dự đoán con số nào đổi và phép kiểm nào bắt được thay đổi ấy.
+Khi dạy `vòng đời dữ liệu bảy chặng từ sự kiện nghiệp vụ tới quyết định`, mở đầu bằng hai bảng cho cùng một doanh thu nhưng lệch 7%, không giải thích nguồn. Yêu cầu người học viết ba giả thuyết trước khi xem SQL. Bài tập seed là đổi đúng một constraint:cutoff, population hoặc grain:rồi buộc họ dự đoán con số nào đổi và phép kiểm nào bắt được thay đổi ấy.
 
 ## Ma trận kiểm chứng từng mệnh đề
 
@@ -98,7 +98,7 @@ Mỗi probe dưới đây là một phép thử có khả năng bác bỏ kết 
 
 ### Probe 5: Đối soát độc lập
 
-**Mệnh đề cần kiểm.** Sơ đồ lineage bảy chặng, số đếm trước–sau mỗi boundary và một cơ chế sai lệch cụ thể cho ít nhất năm chặng.
+**Mệnh đề cần kiểm.** Sơ đồ lineage bảy chặng, số đếm trước-sau mỗi boundary và một cơ chế sai lệch cụ thể cho ít nhất năm chặng.
 
 **Thiết kế phép thử.** Probe 5 tạo fixture tối thiểu cho L002 ở trục `Đối soát độc lập`, gồm một happy path và một bản ghi chỉ khác tại boundary đang xét. Khóa snapshot, timezone, identity và công thức trước execution; sau đó ghi số dòng, số identity duy nhất và tổng kiểm soát ở cả đầu vào lẫn đầu ra.
 
@@ -146,7 +146,7 @@ Mỗi probe dưới đây là một phép thử có khả năng bác bỏ kết 
 
 ### Probe 11: Reviewer tái hiện
 
-**Mệnh đề cần kiểm.** Sơ đồ lineage bảy chặng, số đếm trước–sau mỗi boundary và một cơ chế sai lệch cụ thể cho ít nhất năm chặng.
+**Mệnh đề cần kiểm.** Sơ đồ lineage bảy chặng, số đếm trước-sau mỗi boundary và một cơ chế sai lệch cụ thể cho ít nhất năm chặng.
 
 **Thiết kế phép thử.** Probe 11 tạo fixture tối thiểu cho L002 ở trục `Reviewer tái hiện`, gồm một happy path và một bản ghi chỉ khác tại boundary đang xét. Khóa snapshot, timezone, identity và công thức trước execution; sau đó ghi số dòng, số identity duy nhất và tổng kiểm soát ở cả đầu vào lẫn đầu ra.
 
@@ -170,7 +170,7 @@ Phải tách sự kiện thực, bản ghi trong hệ thống nguồn và bảng
 
 </details>
 
-2. Failure nào dễ tạo kết quả “xanh giả” nhất?
+2. Failure nào dễ tạo kết quả xanh giả nhất?
 
 <details><summary>Đáp án</summary>
 
@@ -182,7 +182,7 @@ Mất sự kiện, ghi trùng, đồng hồ lệch, ánh xạ sai, lọc nhầm 
 
 <details><summary>Đáp án</summary>
 
-Sơ đồ lineage bảy chặng, số đếm trước–sau mỗi boundary và một cơ chế sai lệch cụ thể cho ít nhất năm chặng.
+Sơ đồ lineage bảy chặng, số đếm trước-sau mỗi boundary và một cơ chế sai lệch cụ thể cho ít nhất năm chặng.
 
 </details>
 
@@ -194,20 +194,24 @@ Sơ đồ lineage bảy chặng, số đếm trước–sau mỗi boundary và m
 - Note ở trạng thái `review`; việc note tồn tại không chứng minh learner đã thành thạo.
 
 ## Reference
-1. [[SRC-REIS-HOUSLEY-FUNDAMENTALS-DATA-ENGINEERING]] — `src.book.reis-housley-fundamentals-data-engineering`
-2. [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]] — `src.web.govuk-data-analytics-tools-guidance`
+1. [[SRC-REIS-HOUSLEY-FUNDAMENTALS-DATA-ENGINEERING]]: `src.book.reis-housley-fundamentals-data-engineering`
+2. [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]]: `src.web.govuk-data-analytics-tools-guidance`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức giữ lại | Trạng thái |
 |---|---|---|---|
-| [[SRC-REIS-HOUSLEY-FUNDAMENTALS-DATA-ENGINEERING]] | Chapters 1–3: data lifecycle, source systems và data engineering lifecycle | Cơ chế, boundary và decision rule cho `vòng đời dữ liệu bảy chặng từ sự kiện nghiệp vụ tới quyết định` | Đã phủ |
+| [[SRC-REIS-HOUSLEY-FUNDAMENTALS-DATA-ENGINEERING]] | Chapters 1-3: data lifecycle, source systems và data engineering lifecycle | Cơ chế, boundary và decision rule cho `vòng đời dữ liệu bảy chặng từ sự kiện nghiệp vụ tới quyết định` | Đã phủ |
 | [[SRC-GOVUK-DATA-ANALYTICS-TOOLS-GUIDANCE]] | Problem framing, validation and responsible analytical delivery; accessed 2026-10-02 | Cơ chế, boundary và decision rule cho `vòng đời dữ liệu bảy chặng từ sự kiện nghiệp vụ tới quyết định` | Đã phủ |
 
 ## Key takeaways
 - Khi số liệu lệch, truy ngược từng chặng và đối soát ở boundary gần nguồn nhất còn giữ được bằng chứng, thay vì sửa ngay công thức cuối.
-- Sơ đồ lineage bảy chặng, số đếm trước–sau mỗi boundary và một cơ chế sai lệch cụ thể cho ít nhất năm chặng.
+- Sơ đồ lineage bảy chặng, số đếm trước-sau mỗi boundary và một cơ chế sai lệch cụ thể cho ít nhất năm chặng.
 - Kết luận chỉ có nghĩa trong population, grain, thời gian và version đã ghi.
 - Khi constraint đổi, phải chạy lại probe liên quan thay vì tái sử dụng kết luận cũ.
 
 Note tiếp theo mở rộng chuỗi bằng quan hệ `prerequisite_of` đã khai báo trong front matter.
+
+## References
+
+- [[wiki.da-foundation.data-lifecycle-seven-stages|Where data comes from and the stages it passes through]]

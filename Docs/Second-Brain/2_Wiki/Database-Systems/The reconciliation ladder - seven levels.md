@@ -38,7 +38,7 @@ Row/event counts theo partition và status phát hiện loss/gain nhưng không 
 
 ## 3. Control totals
 
-Sum/min/max/distinct theo dimensions tăng sensitivity nhưng type, currency và null policy phải đồng nhất. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `The reconciliation ladder - seven levels`, câu hỏi thực dụng là: Bảy mức reconciliation tăng độ mạnh từ presence tới record semantics như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Sum/min/max/distinct theo dimensions tăng sensitivity nhưng type, currency và null policy phải đồng nhất. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `The reconciliation ladder - seven levels`, câu hỏi thực dụng là: Bảy mức reconciliation tăng độ mạnh từ presence tới record semantics như thế nào? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Key sets
 
@@ -221,7 +221,7 @@ Với `wiki.data-quality.reconciliation-ladder`, command thành công không t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.data-quality.reconciliation-ladder`
+## Execution capsule: kiểm chứng `wiki.data-quality.reconciliation-ladder`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.data-quality.reconciliation-ladder`, sơ đồ, ví dụ và artifact về **The reconciliation ladder - seven levels** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

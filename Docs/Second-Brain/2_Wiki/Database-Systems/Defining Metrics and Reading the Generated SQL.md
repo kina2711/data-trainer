@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Generated SQL cần được đọc theo checklist nào để chứng minh metric implementation khớp contract, graph và aggregation semantics?
 source_ids:
   - src.web.dbt-semantic-models
@@ -59,7 +59,7 @@ MetricFlow compile/dataflow plan giải thích logical construction; warehouse E
 
 ## 8. Hồ sơ review bốn metrics
 
-Mỗi simple, ratio, derived và cumulative metric có checklist 4 điểm, compiled SQL, oracle values và plan snapshot nếu an toàn. Review matrix có pass/fail/evidence locator, không dùng “looks good”. Tool command hiện hành có `--compile` hoặc `--explain` tùy engine/version; dùng help/docs đúng environment thay vì copy command cũ.
+Mỗi simple, ratio, derived và cumulative metric có checklist 4 điểm, compiled SQL, oracle values và plan snapshot nếu an toàn. Review matrix có pass/fail/evidence locator, không dùng looks good. Tool command hiện hành có `--compile` hoặc `--explain` tùy engine/version; dùng help/docs đúng environment thay vì copy command cũ.
 
 ## 8. Ma trận kiểm chứng từng mệnh đề
 
@@ -209,7 +209,7 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 - Chưa chạy MetricFlow, warehouse queries, execution plans hoặc labs; note mô tả protocol và expected evidence.
 - dbt/MetricFlow docs được kiểm ngày 2026-10-01; commands và YAML phụ thuộc engine/version/environment.
 - Thuật ngữ fan/chasm có thể khác giữa sản phẩm; invariant của bài là grain, multiplicity, population và semantic path.
-- Kimball–Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
+- Kimball-Ross và PostgreSQL hỗ trợ modeling/SQL mechanics; compatibility/certification workflow là curriculum synthesis.
 - Owner chưa phê duyệt semantic meaning nên note giữ trạng thái `review`.
 
 ## Reference
@@ -227,14 +227,14 @@ Mọi mệnh đề dưới đây cần fixture, invariant, independent oracle v�
 
 ## Key takeaways
 - Join correctness phải được chứng minh bằng grain, multiplicity, unmatched ledger và independent oracle.
-- Metric–dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
+- Metric-dimension compatibility là rule ba trạng thái có lý do, không phải danh sách field tùy ý.
 - Parse/validate/compile không thay reconciliation với business contract.
 - Generated SQL phải được đọc theo population, path, aggregation và time/filter semantics.
 - Chưa chạy protocol thì note là tài liệu học thuật có truy nguồn, không phải chứng nhận production.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.semantic-layer.read-generated-sql`
+## Execution capsule: kiểm chứng `wiki.semantic-layer.read-generated-sql`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.semantic-layer.read-generated-sql`, sơ đồ, ví dụ và artifact về **Defining Metrics and Reading the Generated SQL** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -256,7 +256,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Generated SQL cần được đọc theo checklist nào để chứng minh metric implementation khớp contract, graph và aggregation semantics?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Generated SQL cần được đọc theo checklist nào để chứng minh metric implementation khớp contract, graph và aggregation semantics? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Defining Metrics and Reading the Generated SQL** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

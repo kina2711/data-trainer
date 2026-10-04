@@ -1,62 +1,111 @@
 ---
 loai: authentic-homework
-lesson: 1
 lesson_id: DE-L001
-tieu_de: "From a vague request to a testable contract"
-thoi_gian_uoc_tinh_gio: 2.5
 trang_thai: ready-for-owner-review
 nguong_dat: 75
 ---
 
-# Homework — DE Lesson 1: From a vague request to a testable contract
+# Homework: Contract before code
 
-**Thời gian ước tính:** 2–3 giờ · **Làm cá nhân** · **Nộp:** một thư mục chứa artifact, evidence và reflection.
+## Bối cảnh cố định
 
-## Bối cảnh và input cố định
+Một API đối tác nhận order qua POST, trả 202 khi request được accepted và xử lý bất đồng bộ. Client có timeout 5 giây. Cùng order có thể được gửi lại; update cũ có thể đến muộn; hai đối tác có thể dùng cùng order_id.
 
-Requirement thô: 'Đồng bộ orders từ API sang warehouse nhanh, không mất, không trùng; API có pagination, rate limit và timeout sau khi đã nhận request'.
+Yêu cầu ban đầu:
 
-Không tự bổ sung dữ kiện làm đổi semantics. Nếu cần assumption, ghi vào assumption ledger và nêu impact-if-wrong.
+> Đồng bộ order nhanh, không trùng, có lỗi thì retry.
 
-## Phần A — Build artifact (50 điểm)
+Không được chọn framework trước khi khóa contract. Assumption phải nằm trong assumption ledger cùng impact-if-wrong và owner xác nhận.
 
-Contract có scope/non-goal, schema/identity/time, success/failure semantics, 8 acceptance checks và traceability matrix.
+## Artifact phải nộp
 
-Artifact phải đủ để một reviewer không dự buổi học tái hiện decision path. Mọi con số/command phải kèm source hoặc raw evidence.
+Một thư mục gồm:
 
-## Phần B — Adversarial review (30 điểm)
+- contract.md
+- examples.feature
+- fixture.json
+- oracle.sql
+- traceability.md
+- operations-note.md
 
-1. Nêu hai failure mode có thể làm artifact trông đúng nhưng conclusion sai.
-2. Tạo một counterexample hoặc fault injection cho mỗi failure mode.
-3. Ghi expected observation **trước** khi chạy/đối chiếu.
-4. Nêu oracle độc lập và kết quả sẽ khiến bạn bác bỏ recommendation.
+### Phần A: Testable contract, 30 điểm
 
-## Phần C — Changed constraint và handoff (20 điểm)
+Contract phải khóa:
 
-Constraint đổi như sau: Khi SLO từ 10 phút xuống 30 giây, contract buộc lộ thay đổi kiến trúc thay vì coi đây là tuning nhỏ.
+1. consumer và decision
+2. in-scope và out-of-scope boundary
+3. identity, event time, processing time và state model
+4. invariants cho current state và history
+5. behavior cho invalid input, out-of-order event, timeout và partial failure
+6. evidence location, retention và owner
 
-Viết memo 250–400 từ: phần nào của artifact còn đúng, phần nào phải thay, affected consumer, rollback/recovery và owner tiếp theo.
+### Phần B: Example Mapping và executable specification, 25 điểm
+
+Viết ít nhất:
+
+- bốn rules
+- tám examples
+- năm open questions
+- sáu Given/When/Then scenarios
+
+Scenario bắt buộc gồm happy path, duplicate retry, same key with conflicting payload, late older update, invalid record và timeout after commit.
+
+### Phần C: Oracle và traceability, 25 điểm
+
+Tạo fixture tối thiểu 12 records và các check cho:
+
+- uniqueness của current state
+- source-to-curated completeness
+- monotonic state hoặc source version
+- quarantine isolation
+- idempotency ledger
+- freshness distribution
+
+Mỗi check nối tới requirement ID, expected result, observed evidence và owner. Ít nhất một oracle phải độc lập với phép biến đổi đang kiểm.
+
+### Phần D: Changed constraint, 20 điểm
+
+**Changed constraint:** freshness SLO đổi từ 10 phút xuống 30 giây, trong khi source contract chỉ cho poll mỗi 2 phút.
+
+Nộp decision record:
+
+- hard constraint
+- ít nhất ba option
+- chosen và rejected option
+- cost, consumer harm và blast radius
+- rollback hoặc recovery
+- approval owner
+- condition làm quyết định đảo
 
 ## Rubric chấm điểm
 
 | Tiêu chí | Điểm | Full-credit evidence |
 |---|---:|---|
-| Semantics và boundary | 20 | Population/identity/time/state hoặc responsibility được nêu đủ; không có mặc định ẩn |
-| Cơ chế và correctness | 20 | Lập luận theo đúng mental model; phép tính/graph/contract tái hiện được |
-| Evidence và oracle | 20 | Raw evidence, expected result, independent check và discrepancy được giữ |
-| Failure/edge paths | 15 | Hai counterexample thật; không chỉ lặp happy path |
-| Decision và trade-off | 15 | Chosen/rejected option, limitation và reversal trigger rõ |
-| Handoff và khả năng đọc | 10 | Cấu trúc gọn, owner/next action rõ, reviewer không phải đoán |
+| Boundary và semantics | 20 | Identity, time, state, population và exclusions tạo expected result duy nhất |
+| Invariants và failure behavior | 20 | Happy path cùng timeout, conflict, late và invalid path rõ |
+| Fixture và oracle | 20 | Expected result viết trước; có independent control và discrepancy handling |
+| Idempotency và recovery | 15 | Key scope, conflict, status lookup, retry và replay an toàn |
+| SLI, SLO và change control | 15 | Formula, threshold, window, hard constraint và owner rõ |
+| Traceability và handoff | 10 | Requirement, test, evidence, owner nối được end to end |
 
-**Ngưỡng đạt:** ≥ 75/100 và không có critical failure.
+**Ngưỡng đạt:** từ 75/100 và không có critical failure.
 
 ## Critical-failure rules
 
-- Viết acceptance bằng từ mơ hồ như nhanh/ổn định, hoặc để implementation tự quyết semantics.
-- Expected result được sửa sau khi nhìn output mà không ghi discrepancy.
-- Không có evidence gốc hoặc dùng implementation đang kiểm làm oracle duy nhất.
-- Khẳng định production/mastery vượt quá evidence của bài.
+- Timeout được coi là bằng chứng server chưa commit.
+- Retry bằng key mới mà không phân tích side effect.
+- Duplicate được định nghĩa khi chưa khóa identity và state.
+- Oracle dùng cùng logic lỗi với implementation mà không có independent control.
+- Expected result bị sửa sau khi xem output mà không ghi discrepancy.
+- Bỏ hard source constraint để hứa đạt SLO 30 giây.
+- Khẳng định production readiness chỉ từ fixture của bài.
 
 ## Remediation và retest
 
-Nếu trượt, reviewer chỉ rõ rubric row và failed invariant. Người học nộp lại phần sai cùng một changed scenario; không cần làm lại phần đã có bằng chứng đạt. Retest phải dùng fixture/scenario khác để tránh học thuộc đáp án.
+Reviewer gắn lỗi với requirement ID và rubric row. Người học sửa đúng phần lỗi rồi retest trên scenario khác: file ingestion có checksum, partial upload và replay sau crash. Bản gốc, feedback, patch và retest phải được giữ tách biệt.
+
+## References
+
+- [[wiki.engineering-foundation.testable-contract|From a vague request to a testable contract]]
+- [[wiki.data-product.requirements-traceability|Requirements traceability]]
+- [[wiki.data-quality.sli-slo-design|Data SLI and SLO design]]

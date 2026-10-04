@@ -30,13 +30,13 @@ reference_path: Material/DA/Reference/Library/Knowledge-Notes/PACK-DA-CURRICULUM
 
 **Tóm tắt bản chất:** Trực quan hoá dựng sẵn và điều kiện cần tuỳ biến. Slicer, bookmark, drill-through, tooltip tuỳ biến. Định dạng có điều kiện. Ba đòn bẩy hiệu năng theo thứ tự hiệu quả: giảm dữ liệu ở tầng nguồn, tránh tính toán nặng trong công cụ, đo bằng Performance Analyzer trước khi tối ưu. Xuất bản và chia sẻ; quyền truy cập theo hàng ở mức nhận biết. Điểm quyết định là giữ đúng population, grain, thời gian và oracle trước khi tin output.
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 L053 bắt đầu từ một lỗi rất thực dụng: analyst có thể tạo được file, query hoặc dashboard đúng cú pháp nhưng không trả lời đúng câu hỏi. Với **Building a dashboard in Power BI**, hậu quả xuất hiện ở người ra quyết định; họ hành động trên một con số không còn truy được về population, grain hoặc assumption ban đầu.
 
 Roadmap đặt chuẩn đầu ra như sau: Dựng một dashboard hoàn chỉnh theo bản phác thảo ở lesson 52 và đưa thời gian tải xuống dưới ngưỡng đo được. Đây là năng lực quan sát được, không phải yêu cầu nhớ thuật ngữ. Nếu bằng chứng không cho reviewer tái hiện cùng kết luận, bài vẫn chưa đạt dù output nhìn hợp lý.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Trực quan hoá dựng sẵn và điều kiện cần tuỳ biến. Slicer, bookmark, drill-through, tooltip tuỳ biến. Định dạng có điều kiện. Ba đòn bẩy hiệu năng theo thứ tự hiệu quả: giảm dữ liệu ở tầng nguồn, tránh tính toán nặng trong công cụ, đo bằng Performance Analyzer trước khi tối ưu. Xuất bản và chia sẻ; quyền truy cập theo hàng ở mức nhận biết.
 
@@ -44,7 +44,7 @@ Cơ chế của `building-a-dashboard-in-power-bi` được kiểm qua năm lớ
 
 Lỗi cần loại trừ trong bài này là: Kéo toàn bộ bảng chi tiết vào mô hình thay vì gộp ở nguồn · tối ưu trước khi đo nên tối ưu nhầm chỗ · thêm thành phần không có trong bản phác thảo đã bảo vệ. Tách các lỗi ấy thành fixture riêng giúp chẩn đoán nguyên nhân thay vì sửa nhiều biến cùng lúc.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Dấu hiệu | Quyết định | Bằng chứng bắt buộc |
 |---|---|---|
@@ -54,9 +54,9 @@ Lỗi cần loại trừ trong bài này là: Kéo toàn bộ bảng chi tiết 
 | Hai đường tính không khớp | Truy ngược boundary | Snapshot và reconciliation |
 | Deadline không đủ cho phép kiểm | Co phạm vi | Non-goal và câu trả lời tạm thời |
 
-Quy tắc của L053: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành “Dashboard khớp bản phác thảo đã bảo vệ, và thời gian tải đo bằng Performance Analyzer dưới 3 giây trên `DS2`.”. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
+Quy tắc của L053: chọn phương án đơn giản nhất vẫn giữ được điều kiện hoàn thành Dashboard khớp bản phác thảo đã bảo vệ, và thời gian tải đo bằng Performance Analyzer dưới 3 giây trên `DS2`.. Không dùng độ phức tạp để che một câu hỏi chưa rõ.
 
-## Case Study Thực Chiến: Building a dashboard in Power BI
+## Worked Case: Building a dashboard in Power BI
 
 Bài thực hành dùng nhiệm vụ thật của roadmap: Dựng dashboard bán hàng trên `DS2` theo bản phác thảo ở lesson 52. Đo thời gian tải bằng Performance Analyzer và tối ưu xuống dưới 3 giây.
 
@@ -64,7 +64,7 @@ Trước khi thao tác ở `Building a dashboard in Power BI`, learner ghi expec
 
 Biến thể khó hơn đổi một constraint: dữ liệu có bản ghi trùng, đến muộn, thiếu khóa hoặc có nhiều dòng con cho một thực thể. L053 chỉ được xem là transfer khi learner tự nhận ra phép tính nào không còn hợp lệ và thiết kế lại boundary mà không cần chép case mẫu.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Output của `Building a dashboard in Power BI` chạy được nghĩa là kết luận đúng. **Thực tế:** syntax không kiểm population, grain, cutoff hay định nghĩa nghiệp vụ. **Vì sao nghe hợp lý:** công cụ trả kết quả cụ thể và không hiển thị assumption đã bị bỏ qua.
 
@@ -80,7 +80,7 @@ Mở đầu L053 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 1: population
 
-**Mệnh đề của probe 1 — `population`.** Trực quan hoá dựng sẵn và điều kiện cần tuỳ biến. Slicer, bookmark, drill-through, tooltip tuỳ biến. Định dạng có điều kiện. Ba đòn bẩy hiệu năng theo thứ tự hiệu quả: giảm dữ liệu ở tầng nguồn, tránh tính toán nặng trong công cụ, đo bằng Performance Analyzer trước khi tối ưu. Xuất bản và chia sẻ; quyền truy cập theo hàng ở mức nhận biết.
+**Mệnh đề của probe 1: `population`.** Trực quan hoá dựng sẵn và điều kiện cần tuỳ biến. Slicer, bookmark, drill-through, tooltip tuỳ biến. Định dạng có điều kiện. Ba đòn bẩy hiệu năng theo thứ tự hiệu quả: giảm dữ liệu ở tầng nguồn, tránh tính toán nặng trong công cụ, đo bằng Performance Analyzer trước khi tối ưu. Xuất bản và chia sẻ; quyền truy cập theo hàng ở mức nhận biết.
 
 **Thiết kế.** Probe 1 của L053 tạo fixture nhỏ cho `population` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -88,7 +88,7 @@ Mở đầu L053 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 2: grain
 
-**Mệnh đề của probe 2 — `grain`.** Dựng một dashboard hoàn chỉnh theo bản phác thảo ở lesson 52 và đưa thời gian tải xuống dưới ngưỡng đo được.
+**Mệnh đề của probe 2: `grain`.** Dựng một dashboard hoàn chỉnh theo bản phác thảo ở lesson 52 và đưa thời gian tải xuống dưới ngưỡng đo được.
 
 **Thiết kế.** Probe 2 của L053 tạo fixture nhỏ cho `grain` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -96,7 +96,7 @@ Mở đầu L053 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 3: identity
 
-**Mệnh đề của probe 3 — `identity`.** Kéo toàn bộ bảng chi tiết vào mô hình thay vì gộp ở nguồn · tối ưu trước khi đo nên tối ưu nhầm chỗ · thêm thành phần không có trong bản phác thảo đã bảo vệ.
+**Mệnh đề của probe 3: `identity`.** Kéo toàn bộ bảng chi tiết vào mô hình thay vì gộp ở nguồn · tối ưu trước khi đo nên tối ưu nhầm chỗ · thêm thành phần không có trong bản phác thảo đã bảo vệ.
 
 **Thiết kế.** Probe 3 của L053 tạo fixture nhỏ cho `identity` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -104,7 +104,7 @@ Mở đầu L053 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 4: time cutoff
 
-**Mệnh đề của probe 4 — `time cutoff`.** Dashboard khớp bản phác thảo đã bảo vệ, và thời gian tải đo bằng Performance Analyzer dưới 3 giây trên `DS2`.
+**Mệnh đề của probe 4: `time cutoff`.** Dashboard khớp bản phác thảo đã bảo vệ, và thời gian tải đo bằng Performance Analyzer dưới 3 giây trên `DS2`.
 
 **Thiết kế.** Probe 4 của L053 tạo fixture nhỏ cho `time cutoff` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -112,7 +112,7 @@ Mở đầu L053 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 5: missing versus zero
 
-**Mệnh đề của probe 5 — `missing versus zero`.** Trực quan hoá dựng sẵn và điều kiện cần tuỳ biến. Slicer, bookmark, drill-through, tooltip tuỳ biến. Định dạng có điều kiện. Ba đòn bẩy hiệu năng theo thứ tự hiệu quả: giảm dữ liệu ở tầng nguồn, tránh tính toán nặng trong công cụ, đo bằng Performance Analyzer trước khi tối ưu. Xuất bản và chia sẻ; quyền truy cập theo hàng ở mức nhận biết.
+**Mệnh đề của probe 5: `missing versus zero`.** Trực quan hoá dựng sẵn và điều kiện cần tuỳ biến. Slicer, bookmark, drill-through, tooltip tuỳ biến. Định dạng có điều kiện. Ba đòn bẩy hiệu năng theo thứ tự hiệu quả: giảm dữ liệu ở tầng nguồn, tránh tính toán nặng trong công cụ, đo bằng Performance Analyzer trước khi tối ưu. Xuất bản và chia sẻ; quyền truy cập theo hàng ở mức nhận biết.
 
 **Thiết kế.** Probe 5 của L053 tạo fixture nhỏ cho `missing versus zero` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -120,7 +120,7 @@ Mở đầu L053 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 6: duplicate
 
-**Mệnh đề của probe 6 — `duplicate`.** Dựng một dashboard hoàn chỉnh theo bản phác thảo ở lesson 52 và đưa thời gian tải xuống dưới ngưỡng đo được.
+**Mệnh đề của probe 6: `duplicate`.** Dựng một dashboard hoàn chỉnh theo bản phác thảo ở lesson 52 và đưa thời gian tải xuống dưới ngưỡng đo được.
 
 **Thiết kế.** Probe 6 của L053 tạo fixture nhỏ cho `duplicate` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -128,7 +128,7 @@ Mở đầu L053 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 7: join fan-out
 
-**Mệnh đề của probe 7 — `join fan-out`.** Kéo toàn bộ bảng chi tiết vào mô hình thay vì gộp ở nguồn · tối ưu trước khi đo nên tối ưu nhầm chỗ · thêm thành phần không có trong bản phác thảo đã bảo vệ.
+**Mệnh đề của probe 7: `join fan-out`.** Kéo toàn bộ bảng chi tiết vào mô hình thay vì gộp ở nguồn · tối ưu trước khi đo nên tối ưu nhầm chỗ · thêm thành phần không có trong bản phác thảo đã bảo vệ.
 
 **Thiết kế.** Probe 7 của L053 tạo fixture nhỏ cho `join fan-out` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -136,7 +136,7 @@ Mở đầu L053 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 8: changed definition
 
-**Mệnh đề của probe 8 — `changed definition`.** Dashboard khớp bản phác thảo đã bảo vệ, và thời gian tải đo bằng Performance Analyzer dưới 3 giây trên `DS2`.
+**Mệnh đề của probe 8: `changed definition`.** Dashboard khớp bản phác thảo đã bảo vệ, và thời gian tải đo bằng Performance Analyzer dưới 3 giây trên `DS2`.
 
 **Thiết kế.** Probe 8 của L053 tạo fixture nhỏ cho `changed definition` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -144,7 +144,7 @@ Mở đầu L053 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 9: independent oracle
 
-**Mệnh đề của probe 9 — `independent oracle`.** Trực quan hoá dựng sẵn và điều kiện cần tuỳ biến. Slicer, bookmark, drill-through, tooltip tuỳ biến. Định dạng có điều kiện. Ba đòn bẩy hiệu năng theo thứ tự hiệu quả: giảm dữ liệu ở tầng nguồn, tránh tính toán nặng trong công cụ, đo bằng Performance Analyzer trước khi tối ưu. Xuất bản và chia sẻ; quyền truy cập theo hàng ở mức nhận biết.
+**Mệnh đề của probe 9: `independent oracle`.** Trực quan hoá dựng sẵn và điều kiện cần tuỳ biến. Slicer, bookmark, drill-through, tooltip tuỳ biến. Định dạng có điều kiện. Ba đòn bẩy hiệu năng theo thứ tự hiệu quả: giảm dữ liệu ở tầng nguồn, tránh tính toán nặng trong công cụ, đo bằng Performance Analyzer trước khi tối ưu. Xuất bản và chia sẻ; quyền truy cập theo hàng ở mức nhận biết.
 
 **Thiết kế.** Probe 9 của L053 tạo fixture nhỏ cho `independent oracle` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -152,7 +152,7 @@ Mở đầu L053 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 10: replay
 
-**Mệnh đề của probe 10 — `replay`.** Dựng một dashboard hoàn chỉnh theo bản phác thảo ở lesson 52 và đưa thời gian tải xuống dưới ngưỡng đo được.
+**Mệnh đề của probe 10: `replay`.** Dựng một dashboard hoàn chỉnh theo bản phác thảo ở lesson 52 và đưa thời gian tải xuống dưới ngưỡng đo được.
 
 **Thiết kế.** Probe 10 của L053 tạo fixture nhỏ cho `replay` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -160,7 +160,7 @@ Mở đầu L053 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 11: fresh snapshot
 
-**Mệnh đề của probe 11 — `fresh snapshot`.** Kéo toàn bộ bảng chi tiết vào mô hình thay vì gộp ở nguồn · tối ưu trước khi đo nên tối ưu nhầm chỗ · thêm thành phần không có trong bản phác thảo đã bảo vệ.
+**Mệnh đề của probe 11: `fresh snapshot`.** Kéo toàn bộ bảng chi tiết vào mô hình thay vì gộp ở nguồn · tối ưu trước khi đo nên tối ưu nhầm chỗ · thêm thành phần không có trong bản phác thảo đã bảo vệ.
 
 **Thiết kế.** Probe 11 của L053 tạo fixture nhỏ cho `fresh snapshot` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -168,7 +168,7 @@ Mở đầu L053 bằng một output trông hợp lý nhưng sai đúng một in
 
 ### Probe 12: novel scenario
 
-**Mệnh đề của probe 12 — `novel scenario`.** Dashboard khớp bản phác thảo đã bảo vệ, và thời gian tải đo bằng Performance Analyzer dưới 3 giây trên `DS2`.
+**Mệnh đề của probe 12: `novel scenario`.** Dashboard khớp bản phác thảo đã bảo vệ, và thời gian tải đo bằng Performance Analyzer dưới 3 giây trên `DS2`.
 
 **Thiết kế.** Probe 12 của L053 tạo fixture nhỏ cho `novel scenario` với một control và một bản ghi chỉ khác tại boundary đang xét. Expected result được khóa trước execution; snapshot, version, identity và state ban đầu đi cùng artifact.
 
@@ -208,15 +208,15 @@ Dashboard khớp bản phác thảo đã bảo vệ, và thời gian tải đo b
 - Note tồn tại không phải bằng chứng learner đã thành thạo.
 
 ## Reference
-1. [[SRC-STORYTELLING-WITH-DATA]] — `src.book.knaflic-storytelling-with-data.1e`
-2. [[SRC-DEFINITIVE-GUIDE-DAX-3E]] — `src.book.ferrari-russo-definitive-guide-dax.3e`
+1. [[SRC-STORYTELLING-WITH-DATA]]: `src.book.knaflic-storytelling-with-data.1e`
+2. [[SRC-DEFINITIVE-GUIDE-DAX-3E]]: `src.book.ferrari-russo-definitive-guide-dax.3e`
 
 ## Source coverage
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-STORYTELLING-WITH-DATA]] — `src.book.knaflic-storytelling-with-data.1e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Building a dashboard in Power BI | các mục cơ chế, case và probe | Đã phủ | ngoài objective L053 |
-| [[SRC-DEFINITIVE-GUIDE-DAX-3E]] — `src.book.ferrari-russo-definitive-guide-dax.3e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Building a dashboard in Power BI | các mục cơ chế, case và probe | Đã phủ | ngoài objective L053 |
+| [[SRC-STORYTELLING-WITH-DATA]]: `src.book.knaflic-storytelling-with-data.1e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Building a dashboard in Power BI | các mục cơ chế, case và probe | Đã phủ | ngoài objective L053 |
+| [[SRC-DEFINITIVE-GUIDE-DAX-3E]]: `src.book.ferrari-russo-definitive-guide-dax.3e` | Source record và phạm vi đọc đã đăng ký | Cơ chế liên quan tới Building a dashboard in Power BI | các mục cơ chế, case và probe | Đã phủ | ngoài objective L053 |
 
 ## Key takeaways
 - Dựng một dashboard hoàn chỉnh theo bản phác thảo ở lesson 52 và đưa thời gian tải xuống dưới ngưỡng đo được.
@@ -226,7 +226,7 @@ Dashboard khớp bản phác thảo đã bảo vệ, và thời gian tải đo b
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.da.building-a-dashboard-in-power-bi`
+## Execution capsule: kiểm chứng `wiki.da.building-a-dashboard-in-power-bi`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.da.building-a-dashboard-in-power-bi`, sơ đồ, ví dụ và artifact về **Building a dashboard in Power BI** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

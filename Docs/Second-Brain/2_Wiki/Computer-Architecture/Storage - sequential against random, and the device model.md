@@ -33,19 +33,19 @@ reference_path: Material/DE/Reference/Library/Knowledge-Notes/PACK-ENGINEERING-F
 > [!abstract] Câu hỏi trung tâm
 > Làm thế nào mô hình, đo và ra quyết định đúng về Storage - sequential against random, and the device model?
 
-## Nỗi Đau & Động Lực
+## Problem Definition and Operational Relevance
 
 Đo với tệp nhỏ hơn bộ đệm trang nên chỉ đo RAM · đo ở một độ sâu hàng đợi rồi kết luận · gộp ba đại lượng làm một · tin thông số nhà sản xuất mà không đo. Đây không phải danh sách lỗi cú pháp. Mỗi lỗi làm người vận hành chọn nhầm owner hoặc chữa symptom ở layer sau, khiến thời gian phục hồi tăng dù command vừa chạy trả về thành công.
 
 Năng lực cần giữ sau bài là: Đo được ba đại lượng của thiết bị lưu trữ và chỉ ra chênh lệch giữa đọc tuần tự với đọc ngẫu nhiên trên chính máy mình. Nếu learner chỉ nhắc lại định nghĩa nhưng không phân biệt được hai state gần nhau trên số đo, bài chưa đạt.
 
-## Cơ Chế Tác Động
+## Mechanism
 
 Đĩa quay và đĩa thể rắn khác nhau về cơ chế nên khác nhau về hình dạng chi phí, và biết khác biệt đó quyết định nhiều thiết kế. Đĩa quay phải quay và dịch đầu đọc nên đọc ngẫu nhiên đắt hơn tuần tự nhiều bậc độ lớn; tỉ số cụ thể do tốc độ quay và thời gian dịch đầu đọc của từng thiết bị quyết định, và lab bài này đo trên thiết bị đang có. Đĩa thể rắn không có bộ phận cơ nên đọc ngẫu nhiên rẻ hơn nhiều, nhưng vẫn có ba đặc tính phải biết: đơn vị đọc là trang còn đơn vị xoá là khối lớn hơn nhiều, nên ghi đè sinh ra khuếch đại ghi; hiệu năng phụ thuộc độ sâu hàng đợi nên một luồng không khai thác hết; và ghi liên tục lâu dài làm tốc độ tụt khi bộ gom rác bên trong phải chạy. Ba đại lượng đo khác nhau và hay bị gộp: số thao tác mỗi giây, thông lượng byte, và độ trễ; một thiết bị có thể tốt ở đại lượng này và tệ ở đại lượng kia. Nối tới M15: đây là lý do tệp nhỏ đắt và tệp lớn rẻ trên kho đối tượng.
 
 Tách ba lớp khi đọc cơ chế `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`: declared state là điều cấu hình hoặc API yêu cầu; executed state là việc runtime thực sự làm; consumer-visible state là điều client hay operator quan sát. Ba lớp có thể lệch nhau vì cache, buffering, retry, scheduling, queue hoặc failure giữa hai transition. Evidence phải chỉ ra lớp nào đang được đo.
 
-## Bản Đồ Quyết Định
+## Decision Framework
 
 | Bước | Câu hỏi phải khóa | Điều kiện đạt |
 |---|---|---|
@@ -56,15 +56,15 @@ Tách ba lớp khi đọc cơ chế `wiki.de-foundation.storage-sequential-again
 
 Quy tắc mặc định là chọn phép giải thích đơn giản nhất qua được hard constraints, rồi viết trước reversal trigger. Với `Storage - sequential against random, and the device model`, absence of error không phải pass; pass cần observation đúng grain, một oracle độc lập và changed-constraint case đủ làm model có cơ hội thất bại.
 
-## Case Study Thực Chiến: Storage - sequential against random, and the device model
+## Worked Case: Storage - sequential against random, and the device model
 
 Đo đọc tuần tự và đọc ngẫu nhiên ở hai độ sâu hàng đợi, ghi cả ba đại lượng cho mỗi cấu hình. Tính tỉ lệ chênh lệch. Chạy ghi liên tục 10 phút và vẽ tốc độ theo thời gian để quan sát mức tụt. So kết quả với thông số nhà sản xuất công bố.
 
-Trong case `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, learner ghi expected transition, input snapshot, version và giới hạn an toàn trước khi chạy. Sau execution, họ giữ raw counter, timestamp, exit status, state trước–sau và giải thích delta bằng mechanism ở trên. Đánh giá không cho phép sửa expected result sau khi nhìn output mà không ghi change record.
+Trong case `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, learner ghi expected transition, input snapshot, version và giới hạn an toàn trước khi chạy. Sau execution, họ giữ raw counter, timestamp, exit status, state trước-sau và giải thích delta bằng mechanism ở trên. Đánh giá không cho phép sửa expected result sau khi nhìn output mà không ghi change record.
 
 Biến thể khó hơn đổi một constraint có khả năng đảo kết luận: workload shape, memory pressure, connection reuse, retry budget, permission hoặc dependency direction. Tầng *áp dụng*. Objective là một phép đo theo quy trình cộng đọc kết quả đúng. Kiểm bằng bảng đo bốn cấu hình; đạt khi cả ba đại lượng có số và chênh lệch tuần tự so với ngẫu nhiên đúng chiều.
 
-## Góc Khuất & Ngộ Nhận
+## Limits and Common Errors
 
 **Hiểu lầm:** Đo với tệp nhỏ hơn bộ đệm trang nên chỉ đo RAM. **Thực tế:** tín hiệu chỉ chứng minh điều nó đo trong đúng scope; state ở layer khác vẫn có thể trái ngược. **Vì sao nghe hợp lý:** happy path nhỏ thường không chạm queue, cache, partial progress hoặc restart.
 
@@ -88,7 +88,7 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 **Thiết kế phép thử cho `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, tạo positive và negative control chỉ khác một điều kiện; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P1 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P1 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 2: identity, ownership và boundary
 
@@ -96,7 +96,7 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 **Thiết kế phép thử cho `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, tạo boundary case ngay trước và sau ngưỡng; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P2 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P2 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 3: failure path và recovery
 
@@ -104,7 +104,7 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 **Thiết kế phép thử cho `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, tạo replay cùng identity nhưng đổi state; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P3 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P3 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 4: decision trade-off và reversal trigger
 
@@ -112,7 +112,7 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 **Thiết kế phép thử cho `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, tạo failure inject trước và sau transition bền vững; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P4 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P4 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 5: evidence package và oracle
 
@@ -120,7 +120,7 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 **Thiết kế phép thử cho `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, tạo changed scale làm cost model đổi; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P5 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P5 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 6: changed-constraint transfer
 
@@ -128,7 +128,7 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 **Thiết kế phép thử cho `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, tạo adversarial order, skew hoặc packet timing; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P6 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P6 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 7: state transition và invariant
 
@@ -136,7 +136,7 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 **Thiết kế phép thử cho `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, tạo fresh environment không cache; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P7 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P7 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 8: identity, ownership và boundary
 
@@ -144,7 +144,7 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 **Thiết kế phép thử cho `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, tạo independent oracle không dùng chung implementation; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P8 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P8 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 9: failure path và recovery
 
@@ -152,7 +152,7 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 **Thiết kế phép thử cho `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, tạo partial progress rồi restart; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P9 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P9 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 10: decision trade-off và reversal trigger
 
@@ -160,7 +160,7 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 **Thiết kế phép thử cho `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, tạo missing evidence phải abstain; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P10 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P10 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 11: evidence package và oracle
 
@@ -168,7 +168,7 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 **Thiết kế phép thử cho `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, tạo reviewer tái hiện từ evidence package; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P11 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P11 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ### Probe 12: changed-constraint transfer
 
@@ -176,7 +176,7 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 **Thiết kế phép thử cho `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, tạo constraint đổi đủ để quyết định đảo; khóa workload, version, identity, permission, clock và state ban đầu. Expected result được viết trước execution để tiêu chí không trôi theo output.
 
-**Bằng chứng P12 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước–sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
+**Bằng chứng P12 cần giữ.** Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, lưu command hoặc harness, raw observation, transition trước-sau, coverage và limitation. Kết luận chỉ đạt khi oracle độc lập khớp đúng grain; nếu chưa chạy thì đây vẫn là protocol, không phải observation.
 
 ## Tự Kiểm Tra Nhanh
 
@@ -208,8 +208,8 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 | Source slice | Locator | Kiến thức phải giữ | Vị trí | Trạng thái | Ngoài phạm vi |
 |---|---|---|---|---|---|
-| [[SRC-TLPI-2010]] — `src.book.tlpi.2010` | Chapters 4–39, 49–50, 61 và 63 theo scope record; PDF 113–1418 | mechanism và boundary liên quan trực tiếp tới `Storage - sequential against random, and the device model` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L052 |
-| [[SRC-PATTERSON-HENNESSY-COD-5E]] — `src.book.patterson-hennessy-cod.5e` | Chapter 5 và §6.3; PDF 397–538 | mechanism và boundary liên quan trực tiếp tới `Storage - sequential against random, and the device model` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L052 |
+| [[SRC-TLPI-2010]]: `src.book.tlpi.2010` | Chapters 4-39, 49-50, 61 và 63 theo scope record; PDF 113-1418 | mechanism và boundary liên quan trực tiếp tới `Storage - sequential against random, and the device model` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L052 |
+| [[SRC-PATTERSON-HENNESSY-COD-5E]]: `src.book.patterson-hennessy-cod.5e` | Chapter 5 và §6.3; PDF 397-538 | mechanism và boundary liên quan trực tiếp tới `Storage - sequential against random, and the device model` | cơ chế, quyết định, case và probe | Đã phủ | phần ngoài objective DE-L052 |
 
 ## Key takeaways
 - Đo được ba đại lượng của thiết bị lưu trữ và chỉ ra chênh lệch giữa đọc tuần tự với đọc ngẫu nhiên trên chính máy mình.
@@ -219,7 +219,7 @@ Protocol riêng của `Storage - sequential against random, and the device model
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`
+## Execution capsule: kiểm chứng `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.de-foundation.storage-sequential-against-random-and-the-device-model`, sơ đồ, ví dụ và artifact về **Storage - sequential against random, and the device model** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

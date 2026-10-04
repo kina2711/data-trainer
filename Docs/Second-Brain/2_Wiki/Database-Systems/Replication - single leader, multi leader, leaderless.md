@@ -37,7 +37,7 @@ Nhiều regions nhận write giảm local latency/offline constraints nhưng t�
 
 ## 3. Leaderless
 
-Client/coordinator gửi nhiều replicas và resolve versions; sloppy quorum, hinted handoff và read repair đổi semantics. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Replication - single leader, multi leader, leaderless`, câu hỏi thực dụng là: Single-leader, multi-leader và leaderless replication phân bổ write authority, conflicts và failure recovery khác nhau ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Client/coordinator gửi nhiều replicas và resolve versions; sloppy quorum, hinted handoff và read repair đổi semantics. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Replication - single leader, multi leader, leaderless`, câu hỏi thực dụng là: Single-leader, multi-leader và leaderless replication phân bổ write authority, conflicts và failure recovery khác nhau ra sao? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Replication lag
 
@@ -218,7 +218,7 @@ Với `wiki.distributed.replication-topologies`, command thành công không t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.distributed.replication-topologies`
+## Execution capsule: kiểm chứng `wiki.distributed.replication-topologies`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.distributed.replication-topologies`, sơ đồ, ví dụ và artifact về **Replication - single leader, multi leader, leaderless** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

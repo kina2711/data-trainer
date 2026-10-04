@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-02
 last_verified: 2026-10-02
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Pagination nào giữ completeness khi collection thay đổi và checkpoint/retry phải mang trạng thái gì?
 source_ids:
   - src.standard.google-aip-158-pagination
@@ -47,7 +47,7 @@ HTTP success status can carry business error, partial results, warning or per-it
 
 ## 5. Mutable collection test
 
-Create API simulator with stable IDs/order and operations between pages. Run offset, keyset and cursor clients under same schedule; compare extracted key multiset with snapshot or event-boundary oracle defined in advance. Inject duplicate sort values, deletes, updates, token expiry, 200-with-error and lost response. Record whether contract targets moving-current view or snapshot-at-start; without boundary “complete” is undefined.
+Create API simulator with stable IDs/order and operations between pages. Run offset, keyset and cursor clients under same schedule; compare extracted key multiset with snapshot or event-boundary oracle defined in advance. Inject duplicate sort values, deletes, updates, token expiry, 200-with-error and lost response. Record whether contract targets moving-current view or snapshot-at-start; without boundary complete is undefined.
 
 ## 6. Checkpoint and recovery
 
@@ -223,7 +223,7 @@ Mỗi claim phải gắn source/entity boundary, exact fixture, checkpoint/input
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.ingestion.api-offset-keyset-cursor-pagination`
+## Execution capsule: kiểm chứng `wiki.ingestion.api-offset-keyset-cursor-pagination`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.ingestion.api-offset-keyset-cursor-pagination`, sơ đồ, ví dụ và artifact về **API Offset Keyset and Cursor Pagination** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -245,7 +245,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Pagination nào giữ completeness khi collection thay đổi và checkpoint/retry phải mang trạng thái gì?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Pagination nào giữ completeness khi collection thay đổi và checkpoint/retry phải mang trạng thái gì? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **API Offset Keyset and Cursor Pagination** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

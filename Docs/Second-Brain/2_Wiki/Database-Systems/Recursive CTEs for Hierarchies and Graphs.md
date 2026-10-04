@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-09-29
 last_verified: 2026-09-29
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: Làm sao duyệt hierarchy hoặc graph bằng recursive CTE mà có termination, cycle protection, depth budget và bằng chứng kết quả?
 source_ids:
   - src.web.postgresql-17-with-queries
@@ -32,7 +32,7 @@ relationships:
 
 Hierarchy là graph có ràng buộc mạnh hơn: thường mỗi node có tối đa một parent, có root và không có cycle. Graph tổng quát có thể nhiều parent, nhiều path và cycle. Một bảng adjacency list `edge(parent_id, child_id)` không tự đảm bảo đó là cây.
 
-Trước khi viết recursion, xác định node identity, edge direction, loại graph, semantics của path, có cho phép node xuất hiện qua nhiều path hay không, và output grain. “Một row mỗi node” khác “một row mỗi path tới node”. Dùng `UNION` để deduplicate node có thể làm mất các path hợp lệ; dùng `UNION ALL` giữ path nhưng có thể nổ tổ hợp.
+Trước khi viết recursion, xác định node identity, edge direction, loại graph, semantics của path, có cho phép node xuất hiện qua nhiều path hay không, và output grain. Một row mỗi node khác một row mỗi path tới node. Dùng `UNION` để deduplicate node có thể làm mất các path hợp lệ; dùng `UNION ALL` giữ path nhưng có thể nổ tổ hợp.
 
 Hierarchy tổ chức, bill of materials, category tree, dependency graph và lineage graph có rule khác nhau. Không tái sử dụng query nếu chưa đối chiếu semantics.
 
@@ -88,7 +88,7 @@ Path làm row rộng dần và membership check có chi phí. Với graph lớn,
 
 `UNION` loại duplicate complete rows giữa các iterations. Nếu row gồm `(node_id, depth)`, quay lại cùng node ở depth mới vẫn là row khác; cycle tiếp tục. Nếu row chỉ có node ID, UNION có thể dừng nhưng mất multiple-path information và các accumulated attributes.
 
-Do đó không ghi “đổi UNION ALL thành UNION là hết cycle” như quy tắc chung. Cycle detection phải dựa vào visited identity/path hoặc dùng `CYCLE` clause phù hợp.
+Do đó không ghi đổi UNION ALL thành UNION là hết cycle như quy tắc chung. Cycle detection phải dựa vào visited identity/path hoặc dùng `CYCLE` clause phù hợp.
 
 Trong PostgreSQL, cycle detection có thể viết thủ công hoặc dùng cú pháp `CYCLE`; vẫn cần hiểu cột mark/path được sinh và output semantics.
 
@@ -110,7 +110,7 @@ DBMS portability của `SEARCH`/`CYCLE` không đồng nhất. Nếu chương tr
 
 ## 11. Thử nghiệm query không an toàn
 
-Không chạy recursion không termination trong session không giới hạn. Trong lab, dùng database/container cô lập, transaction read-only nếu có thể, `SET LOCAL statement_timeout` ngắn, fixture rất nhỏ và giám sát. Expected result là query bị cancel bởi timeout, không phải “đợi xem có treo”.
+Không chạy recursion không termination trong session không giới hạn. Trong lab, dùng database/container cô lập, transaction read-only nếu có thể, `SET LOCAL statement_timeout` ngắn, fixture rất nhỏ và giám sát. Expected result là query bị cancel bởi timeout, không phải đợi xem có treo.
 
 Pattern parent `LIMIT` đôi khi giúp kiểm tra nhưng không phải bảo vệ production; outer sort/join có thể buộc lấy toàn bộ output trước limit. Timeout là lớp cuối, không thay cycle/depth guard.
 
@@ -126,7 +126,7 @@ Theo dõi rows per iteration, max frontier, temp spill và execution time. Execu
 
 ## 13. Closure table và materialized path
 
-Closure table lưu mọi cặp ancestor–descendant cùng depth. Read descendants/ancestors nhanh và dễ constrain, nhưng update cây phải duy trì nhiều rows. Materialized path lưu đường dẫn trong node, hỗ trợ prefix query nhưng move subtree cần update paths.
+Closure table lưu mọi cặp ancestor-descendant cùng depth. Read descendants/ancestors nhanh và dễ constrain, nhưng update cây phải duy trì nhiều rows. Materialized path lưu đường dẫn trong node, hỗ trợ prefix query nhưng move subtree cần update paths.
 
 Adjacency list + recursive CTE phù hợp khi write đơn giản, graph vừa và traversal linh hoạt. Closure phù hợp read-heavy, stable hierarchy. Không chọn mô hình chỉ vì query demo ngắn.
 
@@ -172,14 +172,14 @@ Một lỗi khác là trả path đã cắt mà không báo truncation, khiến 
 - Knowledge note không chạy query unsafe; việc đó chỉ được phép trong lab cô lập có timeout.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-WITH-QUERIES]] — recursive evaluation, search order, cycle detection và materialization.
+1. [[SRC-POSTGRESQL-17-WITH-QUERIES]]: recursive evaluation, search order, cycle detection và materialization.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-WITH-QUERIES]] | anchor/recursive term, working table, SEARCH, CYCLE | §§2, 7–11 | Đã giữ semantics PostgreSQL 17 |
-| Tổng hợp DE-L122 | descendants, ancestors, budget, safe lab | §§3–6, 12–16 | Đã chuyển thành quy trình kiểm được |
+| [[SRC-POSTGRESQL-17-WITH-QUERIES]] | anchor/recursive term, working table, SEARCH, CYCLE | §§2, 7-11 | Đã giữ semantics PostgreSQL 17 |
+| Tổng hợp DE-L122 | descendants, ancestors, budget, safe lab | §§3-6, 12-16 | Đã chuyển thành quy trình kiểm được |
 
 ## Key takeaways
 - Trước recursion phải chốt output grain là node hay path.
@@ -190,7 +190,7 @@ Một lỗi khác là trả path đã cắt mà không báo truncation, khiến 
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.recursive-ctes-hierarchies-graphs`
+## Execution capsule: kiểm chứng `wiki.database.recursive-ctes-hierarchies-graphs`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.recursive-ctes-hierarchies-graphs`, sơ đồ, ví dụ và artifact về **Recursive CTE cho hierarchy và graph** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -212,7 +212,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “Làm sao duyệt hierarchy hoặc graph bằng recursive CTE mà có termination, cycle protection, depth budget và bằng chứng kết quả?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: Làm sao duyệt hierarchy hoặc graph bằng recursive CTE mà có termination, cycle protection, depth budget và bằng chứng kết quả? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Recursive CTE cho hierarchy và graph** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

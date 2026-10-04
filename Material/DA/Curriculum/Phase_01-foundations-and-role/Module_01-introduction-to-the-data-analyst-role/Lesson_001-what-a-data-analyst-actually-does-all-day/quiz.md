@@ -1,193 +1,179 @@
 ---
-loai: formative-quiz
-lesson: 1
+loai: diagnostic-quiz
 lesson_id: DA-L001
-tieu_de: "What a Data Analyst actually does all day"
 so_cau: 10
-thoi_gian_phut: 18
-trang_thai: ready-for-owner-review
 nguong_dat: 8
+trang_thai: ready-for-owner-review
 ---
 
-# Quiz — DA Lesson 1: What a Data Analyst actually does all day
+# Quiz: DA-L001
 
-**Mục đích:** kiểm mental model và khả năng áp dụng, không dùng điểm danh làm bằng chứng.  
-**Đạt:** ≥ 8/10. Câu 7-10 là critical transfer set; sai câu nào phải remediation và retest câu tương đương.
+Chọn đáp án tốt nhất. Mỗi câu kiểm một failure mode khác nhau. Sau khi làm, đối chiếu không chỉ đáp án mà cả lý do.
 
 ### Câu 1
 
-Phần giá trị cao nhất của DA là gì?
+Stakeholder nói: Làm dashboard doanh thu giúp tôi. Câu hỏi đầu tiên tốt nhất là gì?
 
-- [ ] A. Một thay đổi có thể đến từ thiếu dữ liệu hoặc khác định nghĩa, không phải hành vi kinh doanh.
-- [ ] B. Khi cần theo dõi chỉ số ổn định, lặp lại và có trạng thái tương tác rõ.
-- [ ] C. Là mốc định hướng có thể đổi theo tuần và tổ chức, không phải chuẩn đánh giá cá nhân.
-- [ ] D. Biến câu hỏi thành kết luận kiểm chứng được và hành động cụ thể.
+A. Anh/chị thích màu nào?<br>
+B. Anh/chị sẽ thay đổi quyết định gì nếu kết quả cao, thấp hoặc chưa chắc chắn?<br>
+C. Dùng Power BI hay Tableau?<br>
+D. Cần bao nhiêu biểu đồ?
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**D. Biến câu hỏi thành kết luận kiểm chứng được và hành động cụ thể.**
+**Đáp án: B.** Output chỉ có nghĩa khi nối với consumer và decision. Chọn C cho thấy đang khóa công cụ trước vấn đề.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 2
 
-Vì sao phải kiểm chứng con số trước khi giải thích?
+Dashboard báo revenue giảm 12%, nhưng một chi nhánh thiếu 11 ngày dữ liệu. Claim mạnh nhất hiện có là gì?
 
-- [ ] A. Lỗi hệ thống sinh ra sửa gần pipeline; cách hiểu nghiệp vụ xử lý ở lớp phân tích/semantic.
-- [ ] B. Hỏi người nhận sẽ dùng câu trả lời để quyết định điều gì và 12% được so với mốc nào.
-- [ ] C. Một thay đổi có thể đến từ thiếu dữ liệu hoặc khác định nghĩa, không phải hành vi kinh doanh.
-- [ ] D. Mô hình dữ liệu và định nghĩa chỉ số dùng chung.
+A. Marketing làm revenue giảm 12%<br>
+B. Revenue chắc chắn không giảm<br>
+C. Dashboard quan sát giảm 12%, nhưng business change chưa đủ bằng chứng trước reconciliation<br>
+D. Chi nhánh đó gây toàn bộ mức giảm
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**C. Một thay đổi có thể đến từ thiếu dữ liệu hoặc khác định nghĩa, không phải hành vi kinh doanh.**
+**Đáp án: C.** A và D vượt quá evidence; B cũng là khẳng định chưa kiểm chứng.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 3
 
-Artifact điển hình của AE là gì?
+Ai nên là owner chính khi pipeline không ingest file của một chi nhánh?
 
-- [ ] A. Bảng phân vai 15 nhiệm vụ kèm lý do dựa trên outcome và artifact, không dựa trên tên công cụ.
-- [ ] B. Mô hình dữ liệu và định nghĩa chỉ số dùng chung.
-- [ ] C. Khi cần theo dõi chỉ số ổn định, lặp lại và có trạng thái tương tác rõ.
-- [ ] D. Là mốc định hướng có thể đổi theo tuần và tổ chức, không phải chuẩn đánh giá cá nhân.
+A. Data Engineer, với DA cung cấp evidence về ảnh hưởng tới phân tích<br>
+B. Data Analyst vì người này phát hiện lỗi<br>
+C. BI Developer vì lỗi xuất hiện trên dashboard<br>
+D. Stakeholder vì họ xem báo cáo
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**B. Mô hình dữ liệu và định nghĩa chỉ số dùng chung.**
+**Đáp án: A.** Vai phát hiện không nhất thiết là vai sở hữu cơ chế hỏng.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 4
 
-Khi nào một yêu cầu gần với BI Analyst?
+Sau reconciliation, revenue giảm 4%; khách mới giảm 140 triệu còn khách cũ tăng 20 triệu. Kết luận nào hợp lệ?
 
-- [ ] A. Khi cần theo dõi chỉ số ổn định, lặp lại và có trạng thái tương tác rõ.
-- [ ] B. Lỗi hệ thống sinh ra sửa gần pipeline; cách hiểu nghiệp vụ xử lý ở lớp phân tích/semantic.
-- [ ] C. Hỏi người nhận sẽ dùng câu trả lời để quyết định điều gì và 12% được so với mốc nào.
-- [ ] D. Nếu công ty chỉ có một người dữ liệu, phạm vi thực thi rộng lên nhưng tiêu chí bàn giao của từng vai không biến mất.
+A. Campaign acquisition chắc chắn gây ra giảm<br>
+B. Mức giảm tập trung ở khách mới; campaign là một giả thuyết cần kiểm thêm<br>
+C. Khách cũ bù hoàn toàn mức giảm<br>
+D. Không cần kiểm tracking vì tổng đã reconcile
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**A. Khi cần theo dõi chỉ số ổn định, lặp lại và có trạng thái tương tác rõ.**
+**Đáp án: B.** Decomposition xác định nơi chênh lệch tập trung, không tự chứng minh nguyên nhân.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 5
 
-Nguyên tắc phân chia lỗi dữ liệu giữa DA và DE là gì?
+Tại sao query coverage không tự chứng minh completeness?
 
-- [ ] A. Là mốc định hướng có thể đổi theo tuần và tổ chức, không phải chuẩn đánh giá cá nhân.
-- [ ] B. Bảng phân vai 15 nhiệm vụ kèm lý do dựa trên outcome và artifact, không dựa trên tên công cụ.
-- [ ] C. Gán vai theo công cụ, hoặc gửi output không nói quyết định nào sẽ thay đổi.
-- [ ] D. Lỗi hệ thống sinh ra sửa gần pipeline; cách hiểu nghiệp vụ xử lý ở lớp phân tích/semantic.
+A. SQL không dùng được cho data quality<br>
+B. Query chỉ thấy record đã vào bảng và có thể cùng mất dữ liệu với hệ thống đang kiểm<br>
+C. Coverage chỉ dành cho Data Engineer<br>
+D. Completeness không thể đo
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**D. Lỗi hệ thống sinh ra sửa gần pipeline; cách hiểu nghiệp vụ xử lý ở lớp phân tích/semantic.**
+**Đáp án: B.** Cần oracle độc lập như settlement control total.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 6
 
-Tỉ lệ 20/40/20/15/5 nên được hiểu thế nào?
+Một startup có một người làm ingestion, model, dashboard và analysis. Phát biểu đúng nhất là:
 
-- [ ] A. Nếu công ty chỉ có một người dữ liệu, phạm vi thực thi rộng lên nhưng tiêu chí bàn giao của từng vai không biến mất.
-- [ ] B. Biến câu hỏi thành kết luận kiểm chứng được và hành động cụ thể.
-- [ ] C. Là mốc định hướng có thể đổi theo tuần và tổ chức, không phải chuẩn đánh giá cá nhân.
-- [ ] D. Hỏi người nhận sẽ dùng câu trả lời để quyết định điều gì và 12% được so với mốc nào.
+A. Người đó chỉ có một vai vì chức danh chỉ có một<br>
+B. Không cần phân ranh giới vì đội nhỏ<br>
+C. Một người có thể đội nhiều mũ, nhưng invariant và artifact của từng mũ vẫn phải rõ<br>
+D. Mọi lỗi đều thuộc Data Analyst
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**C. Là mốc định hướng có thể đổi theo tuần và tổ chức, không phải chuẩn đánh giá cá nhân.**
+**Đáp án: C.** Phạm vi người làm thay đổi, trách nhiệm của từng loại artifact không biến mất.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 7
 
-Trong tình huống mở bài, hành động đầu tiên tốt nhất là gì?
+Decision memo nào có reversal trigger tốt nhất?
 
-- [ ] A. Một thay đổi có thể đến từ thiếu dữ liệu hoặc khác định nghĩa, không phải hành vi kinh doanh.
-- [ ] B. Hỏi người nhận sẽ dùng câu trả lời để quyết định điều gì và 12% được so với mốc nào.
-- [ ] C. Bảng phân vai 15 nhiệm vụ kèm lý do dựa trên outcome và artifact, không dựa trên tên công cụ.
-- [ ] D. Gán vai theo công cụ, hoặc gửi output không nói quyết định nào sẽ thay đổi.
+A. Theo dõi thêm khi cần.<br>
+B. Nếu reconciliation lệch trên 0,5% hoặc coverage dưới 98%, dừng quyết định ngân sách.<br>
+C. Nếu dashboard xấu, kiểm tra lại.<br>
+D. Chúng tôi khá chắc chắn.
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**B. Hỏi người nhận sẽ dùng câu trả lời để quyết định điều gì và 12% được so với mốc nào.**
+**Đáp án: B.** Trigger có observable condition và action.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 8
 
-Bằng chứng nào trực tiếp nhất để xác nhận năng lực của bài này?
+Vì sao Act nối ngược về Ask?
 
-- [ ] A. Bảng phân vai 15 nhiệm vụ kèm lý do dựa trên outcome và artifact, không dựa trên tên công cụ.
-- [ ] B. Nếu công ty chỉ có một người dữ liệu, phạm vi thực thi rộng lên nhưng tiêu chí bàn giao của từng vai không biến mất.
-- [ ] C. Biến câu hỏi thành kết luận kiểm chứng được và hành động cụ thể.
-- [ ] D. Mô hình dữ liệu và định nghĩa chỉ số dùng chung.
+A. Vì phân tích luôn sai<br>
+B. Vì hành động tạo kết quả và bằng chứng mới, có thể thay đổi câu hỏi hoặc giả thuyết<br>
+C. Vì dashboard cần refresh<br>
+D. Vì stakeholder luôn đổi ý
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**A. Bảng phân vai 15 nhiệm vụ kèm lý do dựa trên outcome và artifact, không dựa trên tên công cụ.**
+**Đáp án: B.** Vòng phản hồi là cơ chế học, không phải dấu hiệu thất bại.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 9
 
-Khi constraint thay đổi, nguyên tắc xử lý đúng là gì?
+Trường hợp nào gần nhất với BI ownership?
 
-- [ ] A. Gán vai theo công cụ, hoặc gửi output không nói quyết định nào sẽ thay đổi.
-- [ ] B. Một thay đổi có thể đến từ thiếu dữ liệu hoặc khác định nghĩa, không phải hành vi kinh doanh.
-- [ ] C. Khi cần theo dõi chỉ số ổn định, lặp lại và có trạng thái tương tác rõ.
-- [ ] D. Nếu công ty chỉ có một người dữ liệu, phạm vi thực thi rộng lên nhưng tiêu chí bàn giao của từng vai không biến mất.
+A. Dự báo xác suất churn<br>
+B. Vận hành dashboard chỉ số đã thống nhất, có refresh và trạng thái tương tác rõ<br>
+C. Sửa retry semantics của API<br>
+D. Đặc tả quy trình duyệt hoàn tiền
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**D. Nếu công ty chỉ có một người dữ liệu, phạm vi thực thi rộng lên nhưng tiêu chí bàn giao của từng vai không biến mất.**
+**Đáp án: B.** A gần DS, C gần DE, D gần BA.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
-
----
 
 ### Câu 10
 
-Phát biểu nào mô tả critical failure của bài?
+DA đã reconcile revenue giảm 4% và xác định phần giảm tập trung ở khách mới. Claim nào vượt quá bằng chứng?
 
-- [ ] A. Mô hình dữ liệu và định nghĩa chỉ số dùng chung.
-- [ ] B. Lỗi hệ thống sinh ra sửa gần pipeline; cách hiểu nghiệp vụ xử lý ở lớp phân tích/semantic.
-- [ ] C. Gán vai theo công cụ, hoặc gửi output không nói quyết định nào sẽ thay đổi.
-- [ ] D. Biến câu hỏi thành kết luận kiểm chứng được và hành động cụ thể.
+A. Revenue trong boundary đã nêu giảm 4%<br>
+B. Chênh lệch tập trung ở khách mới<br>
+C. Marketing là nguyên nhân gây ra toàn bộ mức giảm<br>
+D. Cần kiểm thêm campaign, stock và tracking
 
 <details><summary>Đáp án và phản hồi</summary>
 
-**C. Gán vai theo công cụ, hoặc gửi output không nói quyết định nào sẽ thay đổi.**
+**Đáp án: C.** Decomposition chưa tạo causal evidence. Chọn C cho thấy người học đã nâng diagnostic claim thành causal claim.
 
-Đây là phát biểu trả lời đúng **boundary của câu hỏi**. Ba lựa chọn còn lại có thể là mệnh đề hợp lệ ở phần khác của bài nhưng không trả lời điều đang được hỏi — lỗi thường gặp khi nhớ nhiều thuật ngữ mà không phân biệt vai trò của chúng. Nếu chọn sai, đọc lại scene S02/S05 rồi làm novel-scenario retest trong `after-note.md`.
 </details>
+
+## Chẩn đoán và remediation
+
+| Câu sai | Lỗ hổng | Quay lại |
+|---|---|---|
+| 1, 8 | decision loop | S01, S02 |
+| 2, 4, 5 | claim và evidence | S03, S07 |
+| 3, 6, 9 | role boundary | S04, S05, S06 |
+| 7 | decision memo | S08 |
+| 10 | claim ladder | phần Claim ladder |
+
+Retest dùng scenario mới, không đổi thứ tự đáp án rồi làm lại cùng câu.
+
+## References
+
+- [[wiki.da.operating-as-a-data-analyst|Operating as a Data Analyst]]
+- [[wiki.data-product.decision-first-discovery|Decision-First Discovery]]
+- [[wiki.da.revenue-and-commerce-analytics|Revenue and commerce analytics]]

@@ -47,28 +47,28 @@ Biến câu dữ liệu đúng thành hợp đồng, bất biến, cam kết d�
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L275 · Quality dimensions defined operationally | LT | Chuyển bảy chiều thành định nghĩa quan sát được cho một tài sản thật và chỉ ra chiều nào không tự kiểm được. | Bảy chiều đều có phép quan sát cụ thể, và chiều chính xác được nêu rõ nguồn đối chiếu hoặc nêu rõ đại lượng thay thế cùng giới hạn. | M18: M17 |
-| L276 · Rule anatomy - seven parts | TH | Viết sổ đăng ký quy tắc đủ bảy phần cho bốn tầng dữ liệu và chỉ ra hậu quả của từng phần bị thiếu. | 20 quy tắc đủ bảy phần, phép kiểm tự động chặn quy tắc thiếu phần, và mọi ngoại lệ đều có ngày hết hạn. | L275 |
-| L277 · Layered controls - where each check belongs | LT | Ánh xạ 20 phép kiểm vào đúng tầng và giải thích ba phép kiểm không thể đặt sớm hơn. | Ánh xạ đúng ≥ 16/20 phép kiểm, ba ca đặt muộn có lý do dựa trên ngữ cảnh, và không còn chỗ nào bỏ dữ liệu im lặng. | L276 |
-| L278 · Schema and contract tests at the boundary | TH | Cài phép kiểm hợp đồng ở cả hai phía và chặn được một thay đổi phá vỡ trước khi nó tới môi trường chạy. | Ba thay đổi phá vỡ bị chặn ở phía sản xuất kèm danh sách bên tiêu thụ ảnh hưởng, và mọi miễn trừ đủ bốn phần. | L277 |
-| L279 · Row, aggregate and relationship tests | TH | Chứng minh bằng dữ liệu rằng kiểm theo dòng bỏ sót hai loại lỗi, và bịt chúng bằng hai nhóm còn lại. | Hai lỗi tiêm lọt qua kiểm theo dòng và bị hai nhóm còn lại bắt, và bảng ánh xạ loại lỗi với nhóm phép kiểm đầy đủ. | L278 |
-| L280 · Temporal tests - late, out of order and overlap | TH | Cài bốn phép kiểm thời gian và bắt được ca dịch múi giờ mà mọi phép kiểm khác bỏ qua. | Bốn lỗi thời gian đều bị bắt, ca dịch múi giờ được chứng minh lọt qua ba nhóm kia, và hai bất biến chạy không dung sai. | L279 |
-| L281 · Metamorphic and property tests for pipelines | TH | Viết bốn phép kiểm biến hình cho một đường dẫn và bắt được một lỗi logic thầm lặng tiêm sẵn. | Bốn quan hệ chạy tự động, lỗi logic thầm lặng bị ít nhất một quan hệ phát hiện, và nhóm này có lịch chạy phù hợp thời gian đo được. | L280 |
-| L282 · Statistical anomaly detection and its cost | TH | Cấu hình phát hiện bất thường cho ba chỉ số với độ chính xác và độ phủ được đo, không dùng nó thay bất biến. | Ba chỉ số có cặp độ chính xác với độ phủ ở ba mức ngưỡng, và ba trường hợp viết lại được thành bất biến đã được chuyển. | L281 |
-| L283 · Backtesting rules against known incidents | TH | Kiểm ngược bộ quy tắc trên sáu tháng dữ liệu có nhãn và nộp bảng ánh xạ rủi ro với quy tắc. | Mọi rủi ro trọng yếu có quy tắc phủ, ba sự cố lịch sử đều bị bắt sau khi sửa, và tỉ lệ báo giả dưới ngưỡng thoả thuận. | L282 |
-| L284 · The reconciliation ladder - seven levels | TH | Chạy bảy bậc đối soát qua bốn chốt kiểm soát và quy được mọi chênh lệch về một đoạn cụ thể. | Ba lỗi tiêm được quy đúng đoạn gây ra, và tuyên bố đối soát nêu đủ tổng thể, cửa sổ, phép kiểm và dung sai. | L283 |
-| L285 · Normalization before comparison | TH | Loại hết chênh lệch giả trên một cặp đối soát và chứng minh chênh lệch còn lại đều có nguyên nhân thật. | Số chênh lệch giả về không sau khi chuẩn hoá, mọi chênh lệch còn lại có nguyên nhân nêu tên, và thư viện chuẩn hoá dùng chung cho hai phía. | L284 |
-| L286 · Data SLI and SLO design | TH | Định nghĩa ba cam kết theo hành trình người dùng với tử số, mẫu số, cửa sổ và loại trừ tường minh. | Ba cam kết cho cùng con số khi hai người tính độc lập, mỗi cam kết dẫn về một hành trình người dùng, và tình huống công việc xanh mà cam kết vỡ được tái hiện. | L285 |
-| L287 · Low-noise alerting and the error budget | TH | Dựng bộ cảnh báo có bốn thuộc tính bắt buộc và giảm được số cảnh báo không hành động được sau một vòng rà. | Ba sự cố phát lại đều sinh cảnh báo đúng người, mọi cảnh báo có đủ bốn thuộc tính, và tỉ lệ không hành động được giảm có số đo. | L286 |
-| L288 · The incident lifecycle - eight steps | LT | Chạy đúng thứ tự tám bước trên một sự cố mô phỏng và nêu quyết định của từng bước. | Tám bước có quyết định ghi lại theo đúng thứ tự, bằng chứng được giữ nguyên, và danh sách bên tiêu thụ lập trước khi sửa. | L287 |
-| L289 · Repair, backfill and restatement | TH | Sửa hai sự cố qua đủ bốn bước, đối soát đạt trước khi công bố lại, và không tạo hỏng lần hai. | Hai sự cố đều đối soát đạt ở đích cách ly trước khi thăng cấp, quay lại thực hiện được, và dấu vết sửa được ghi đầy đủ. | L288 |
-| L290 · False positives, coverage and quality debt | TH | Đo ba chỉ số sức khoẻ của bộ quy tắc và tìm được phép kiểm có phạm vi che dữ liệu hỏng. | Ba chỉ số sức khoẻ có số đo, mọi phép kiểm có bộ lọc được đối chiếu số dòng xét, và sổ nợ chất lượng có chủ cùng hạn. | L289 |
-| L291 · The quality failure matrix | TH | Lập ma trận bảy chế độ hỏng có chốt kiểm soát tự động cho từng dòng và chứng minh bằng phép thử tiêm. | ≥ 6/7 lỗi tiêm bị phát hiện tự động kèm thời gian phát hiện, và cả bảy chốt kiểm soát nằm trong bộ kiểm hồi quy. | L290 |
-| L292 · Reliability capstone - twenty seeded defects | DA | Nộp lớp kiểm soát tin cậy đủ bảy hạng mục, đạt ngưỡng phát hiện trên 20 lỗi gieo sẵn và không vi phạm sáu điều kiện. | Phát hiện ≥ 16/20 lỗi gieo với tỉ lệ báo giả dưới ngưỡng, hai sự cố được sửa và đối soát và ghi lại, và không vi phạm sáu điều kiện tự động chưa đạt. | L291 |
+| L275 · [[wiki.data-quality.dimensions-operational|Quality dimensions defined operationally]]| LT | Chuyển bảy chiều thành định nghĩa quan sát được cho một tài sản thật và chỉ ra chiều nào không tự kiểm được. | Bảy chiều đều có phép quan sát cụ thể, và chiều chính xác được nêu rõ nguồn đối chiếu hoặc nêu rõ đại lượng thay thế cùng giới hạn. | M18: M17 |
+| L276 · [[wiki.data-quality.rule-anatomy|Rule anatomy - seven parts]]| TH | Viết sổ đăng ký quy tắc đủ bảy phần cho bốn tầng dữ liệu và chỉ ra hậu quả của từng phần bị thiếu. | 20 quy tắc đủ bảy phần, phép kiểm tự động chặn quy tắc thiếu phần, và mọi ngoại lệ đều có ngày hết hạn. | L275 |
+| L277 · [[wiki.data-quality.layered-controls|Layered controls - where each check belongs]]| LT | Ánh xạ 20 phép kiểm vào đúng tầng và giải thích ba phép kiểm không thể đặt sớm hơn. | Ánh xạ đúng ≥ 16/20 phép kiểm, ba ca đặt muộn có lý do dựa trên ngữ cảnh, và không còn chỗ nào bỏ dữ liệu im lặng. | L276 |
+| L278 · [[wiki.data-quality.schema-contract-boundary|Schema and contract tests at the boundary]]| TH | Cài phép kiểm hợp đồng ở cả hai phía và chặn được một thay đổi phá vỡ trước khi nó tới môi trường chạy. | Ba thay đổi phá vỡ bị chặn ở phía sản xuất kèm danh sách bên tiêu thụ ảnh hưởng, và mọi miễn trừ đủ bốn phần. | L277 |
+| L279 · [[wiki.data-quality.row-aggregate-relationship-tests|Row, aggregate and relationship tests]]| TH | Chứng minh bằng dữ liệu rằng kiểm theo dòng bỏ sót hai loại lỗi, và bịt chúng bằng hai nhóm còn lại. | Hai lỗi tiêm lọt qua kiểm theo dòng và bị hai nhóm còn lại bắt, và bảng ánh xạ loại lỗi với nhóm phép kiểm đầy đủ. | L278 |
+| L280 · [[wiki.data-quality.temporal-tests|Temporal tests - late, out of order and overlap]]| TH | Cài bốn phép kiểm thời gian và bắt được ca dịch múi giờ mà mọi phép kiểm khác bỏ qua. | Bốn lỗi thời gian đều bị bắt, ca dịch múi giờ được chứng minh lọt qua ba nhóm kia, và hai bất biến chạy không dung sai. | L279 |
+| L281 · [[wiki.data-quality.metamorphic-property-tests|Metamorphic and property tests for pipelines]]| TH | Viết bốn phép kiểm biến hình cho một đường dẫn và bắt được một lỗi logic thầm lặng tiêm sẵn. | Bốn quan hệ chạy tự động, lỗi logic thầm lặng bị ít nhất một quan hệ phát hiện, và nhóm này có lịch chạy phù hợp thời gian đo được. | L280 |
+| L282 · [[wiki.data-quality.statistical-anomaly-cost|Statistical anomaly detection and its cost]]| TH | Cấu hình phát hiện bất thường cho ba chỉ số với độ chính xác và độ phủ được đo, không dùng nó thay bất biến. | Ba chỉ số có cặp độ chính xác với độ phủ ở ba mức ngưỡng, và ba trường hợp viết lại được thành bất biến đã được chuyển. | L281 |
+| L283 · [[wiki.data-quality.backtesting-known-incidents|Backtesting rules against known incidents]]| TH | Kiểm ngược bộ quy tắc trên sáu tháng dữ liệu có nhãn và nộp bảng ánh xạ rủi ro với quy tắc. | Mọi rủi ro trọng yếu có quy tắc phủ, ba sự cố lịch sử đều bị bắt sau khi sửa, và tỉ lệ báo giả dưới ngưỡng thoả thuận. | L282 |
+| L284 · [[wiki.data-quality.reconciliation-ladder|The reconciliation ladder - seven levels]]| TH | Chạy bảy bậc đối soát qua bốn chốt kiểm soát và quy được mọi chênh lệch về một đoạn cụ thể. | Ba lỗi tiêm được quy đúng đoạn gây ra, và tuyên bố đối soát nêu đủ tổng thể, cửa sổ, phép kiểm và dung sai. | L283 |
+| L285 · [[wiki.data-quality.normalization-before-comparison|Normalization before comparison]]| TH | Loại hết chênh lệch giả trên một cặp đối soát và chứng minh chênh lệch còn lại đều có nguyên nhân thật. | Số chênh lệch giả về không sau khi chuẩn hoá, mọi chênh lệch còn lại có nguyên nhân nêu tên, và thư viện chuẩn hoá dùng chung cho hai phía. | L284 |
+| L286 · [[wiki.data-quality.sli-slo-design|Data SLI and SLO design]]| TH | Định nghĩa ba cam kết theo hành trình người dùng với tử số, mẫu số, cửa sổ và loại trừ tường minh. | Ba cam kết cho cùng con số khi hai người tính độc lập, mỗi cam kết dẫn về một hành trình người dùng, và tình huống công việc xanh mà cam kết vỡ được tái hiện. | L285 |
+| L287 · [[wiki.data-quality.alerting-error-budget|Low-noise alerting and the error budget]]| TH | Dựng bộ cảnh báo có bốn thuộc tính bắt buộc và giảm được số cảnh báo không hành động được sau một vòng rà. | Ba sự cố phát lại đều sinh cảnh báo đúng người, mọi cảnh báo có đủ bốn thuộc tính, và tỉ lệ không hành động được giảm có số đo. | L286 |
+| L288 · [[wiki.data-quality.incident-lifecycle|The incident lifecycle - eight steps]]| LT | Chạy đúng thứ tự tám bước trên một sự cố mô phỏng và nêu quyết định của từng bước. | Tám bước có quyết định ghi lại theo đúng thứ tự, bằng chứng được giữ nguyên, và danh sách bên tiêu thụ lập trước khi sửa. | L287 |
+| L289 · [[wiki.data-quality.repair-backfill-restatement|Repair, backfill and restatement]]| TH | Sửa hai sự cố qua đủ bốn bước, đối soát đạt trước khi công bố lại, và không tạo hỏng lần hai. | Hai sự cố đều đối soát đạt ở đích cách ly trước khi thăng cấp, quay lại thực hiện được, và dấu vết sửa được ghi đầy đủ. | L288 |
+| L290 · [[wiki.data-quality.false-positive-coverage-debt|False positives, coverage and quality debt]]| TH | Đo ba chỉ số sức khoẻ của bộ quy tắc và tìm được phép kiểm có phạm vi che dữ liệu hỏng. | Ba chỉ số sức khoẻ có số đo, mọi phép kiểm có bộ lọc được đối chiếu số dòng xét, và sổ nợ chất lượng có chủ cùng hạn. | L289 |
+| L291 · [[wiki.data-quality.failure-matrix|The quality failure matrix]]| TH | Lập ma trận bảy chế độ hỏng có chốt kiểm soát tự động cho từng dòng và chứng minh bằng phép thử tiêm. | ≥ 6/7 lỗi tiêm bị phát hiện tự động kèm thời gian phát hiện, và cả bảy chốt kiểm soát nằm trong bộ kiểm hồi quy. | L290 |
+| L292 · [[wiki.data-quality.capstone-seeded-defects|Reliability capstone - twenty seeded defects]]| DA | Nộp lớp kiểm soát tin cậy đủ bảy hạng mục, đạt ngưỡng phát hiện trên 20 lỗi gieo sẵn và không vi phạm sáu điều kiện. | Phát hiện ≥ 16/20 lỗi gieo với tỉ lệ báo giả dưới ngưỡng, hai sự cố được sửa và đối soát và ghi lại, và không vi phạm sáu điều kiện tự động chưa đạt. | L291 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DE-M18 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DE-M18 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -119,7 +119,7 @@ flowchart LR
   class A275,A276,A277,A278,A279,A280,A281,A282,A283,A284,A285,A286,A287,A288,A289,A290,A291,A292 atom;
 ```
 
-### Bài 275: Quality dimensions defined operationally
+### Lesson 275: Quality dimensions defined operationally
 
 Bài mở module bằng việc đổi bảy tính từ mơ hồ thành bảy định nghĩa quan sát được, vì không quan sát được thì không kiểm được. Đầy đủ: đủ bản ghi và đủ trường đã kỳ vọng cho một phân vùng. Hợp lệ: đúng miền giá trị, kiểu, khoảng và định dạng. Duy nhất: một thực thể hoặc sự kiện xuất hiện đúng số lần quy định. Nhất quán: các biểu diễn tuân thủ quy tắc xuyên hệ. Kịp thời: sẵn sàng trước một thời điểm nghiệp vụ. Toàn vẹn: quan hệ và chuyển trạng thái được giữ. Chính xác: giá trị khớp thực tế đáng tin cậy, và đây là chiều khác hẳn sáu chiều kia. Tính chính xác thường không chứng minh được chỉ từ dữ liệu ở đích, vì đích không biết thế giới thật; muốn chứng minh phải có một nguồn có thẩm quyền để đối chiếu, còn không thì phải nói rõ đang dùng một đại lượng thay thế. Phân biệt hợp lệ với chính xác bằng ví dụ: một số tiền đúng định dạng và đúng khoảng vẫn có thể sai.
 
@@ -127,7 +127,7 @@ Người học phải chuyển bảy chiều thành định nghĩa quan sát đ�
 
 Cách đánh giá: Tầng *hiểu*. Bài mở module, đặt từ vựng và đặt một giới hạn nhận thức. Kiểm bằng bài định nghĩa bảy chiều; đạt khi mỗi chiều có một phép quan sát cụ thể và chiều chính xác được nêu rõ cần nguồn đối chiếu nào.
 
-### Bài 276: Rule anatomy - seven parts
+### Lesson 276: Rule anatomy - seven parts
 
 Một quy tắc chất lượng thiếu phần nào thì hỏng theo một kiểu tương ứng, nên bài này đặt ra bảy phần bắt buộc. Tài sản, trường và phân vùng cùng bối cảnh nghiệp vụ. Bất biến hoặc truy vấn hoặc kỳ vọng thống kê. Ngưỡng, cửa sổ và đường cơ sở. Mức nghiêm trọng và hành động, chọn một trong bốn: cảnh báo, cách ly, chặn, hoặc quay lui. Chủ sở hữu và đường leo thang cùng ảnh hưởng tới bên tiêu thụ. Ngoại lệ có thời hạn và cách khắc phục. Bằng chứng được giữ lại cùng chi phí chạy. Phần thứ tư là phần hay bị bỏ nhất và bỏ nó gây hậu quả cụ thể: một quy tắc không nói rõ hành động thì khi nó đỏ không ai biết phải chặn hay chỉ ghi nhận, nên sau vài tuần nó bị tắt. Ngoại lệ phải có ngày hết hạn, nếu không thì danh sách miễn trừ chỉ dài thêm. Sổ đăng ký quy tắc nằm trong kho mã và được rà soát cùng mã.
 
@@ -135,7 +135,7 @@ Người học phải viết sổ đăng ký quy tắc đủ bảy phần cho b�
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một chuẩn tài liệu có thể rà soát máy móc. Kiểm bằng rà soát sổ đăng ký; đạt khi mọi quy tắc đủ bảy phần và mỗi quy tắc có hành động nằm trong bốn lựa chọn cho phép.
 
-### Bài 277: Layered controls - where each check belongs
+### Lesson 277: Layered controls - where each check belongs
 
 Đặt phép kiểm sai tầng vừa tốn vừa bắt muộn, nên bài này ánh xạ từng loại kiểm vào từng tầng. Trước khi nạp: hợp đồng nguồn, lược đồ, khoá, ngữ nghĩa thay đổi, khối lượng và lịch kỳ vọng. Vùng thô: tổng kiểm tra tệp, giải mã được lược đồ, trùng lặp, dữ liệu hỏng hoặc cụt; giữ lại tải trọng bị từ chối cùng xuất xứ, không bỏ im lặng. Tầng chuẩn hoá: kiểu, miền giá trị, giá trị rỗng, khử trùng, toàn vẹn tham chiếu, quy tắc thời gian và thứ tự, kèm vùng cách ly có lý do và đường phát lại. Tầng phục vụ: tính duy nhất theo hạt, quan hệ, khoảng hiệu lực của chiều biến đổi chậm, đối soát tổng hợp, bất biến chỉ số và tương thích với tầng ngữ nghĩa. Tầng tiêu thụ: độ tươi, đầy đủ, bảo mật, đối soát giữa bảng điều khiển với chỉ số, và trạng thái suy giảm hiển thị cho người dùng. Nguyên tắc chọn tầng: bắt càng sớm càng rẻ, nhưng bất biến nghiệp vụ chỉ kiểm được ở tầng có đủ ngữ cảnh.
 
@@ -143,7 +143,7 @@ Người học phải ánh xạ 20 phép kiểm vào đúng tầng và giải th
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết đặt bản đồ cho tám bài thực hành sau. Kiểm bằng bài ánh xạ; đạt khi đặt đúng ít nhất 16 và ba ca không đặt sớm được có lý do dựa trên ngữ cảnh cần thiết.
 
-### Bài 278: Schema and contract tests at the boundary
+### Lesson 278: Schema and contract tests at the boundary
 
 Tầng kiểm rẻ nhất và bắt sớm nhất, chạy ngay tại ranh giới giữa hai hệ. Bốn nhóm: tên và kiểu trường; trường bắt buộc và giá trị mặc định; tương thích giữa phiên bản bên ghi và bên đọc theo ma trận bốn ô ở Bài 220; và ngữ nghĩa khoá cùng cách thay đổi. Hợp đồng bên sản xuất khai báo lược đồ, khoá, ngữ nghĩa thay đổi và xoá, cam kết dịch vụ cùng chủ sở hữu; hợp đồng bên tiêu thụ khai báo hạt, ý nghĩa, độ tươi, mức tương thích cần và yêu cầu bảo mật. Hai hợp đồng gặp nhau ở một điểm và chênh lệch giữa chúng là thứ phải phát hiện trước khi chạy. Chạy phép kiểm hợp đồng ở cả hai phía khi thẩm quyền cho phép: bên sản xuất chạy để biết mình sắp phá vỡ ai, bên tiêu thụ chạy để biết mình đang dựa vào gì. Miễn trừ phải có chủ sở hữu, lý do, hạn và một biện pháp bù, nếu không thì nó là một cách tắt phép kiểm có giấy tờ.
 
@@ -151,7 +151,7 @@ Người học phải cài phép kiểm hợp đồng ở cả hai phía và ch�
 
 Cách đánh giá: Tầng *áp dụng*. Objective là một cửa chặn hai phía có tiêu chí nghiệm thu bằng phép thử tiêm. Kiểm bằng ba thay đổi phá vỡ; đạt khi cả ba bị chặn ở phía sản xuất và mọi miễn trừ đang có đều đủ bốn phần.
 
-### Bài 279: Row, aggregate and relationship tests
+### Lesson 279: Row, aggregate and relationship tests
 
 Ba nhóm phép kiểm phủ ba loại lỗi khác nhau, và dùng một nhóm thay cho nhóm khác là nguồn của lỗ hổng. Kiểm theo dòng xét từng bản ghi: miền giá trị, khoảng, mẫu, giá trị rỗng và ràng buộc có điều kiện; nó bắt được bản ghi xấu nhưng không bắt được lỗi mà mọi dòng đều hợp lệ. Kiểm tổng hợp xét phân bố theo phân vùng hoặc theo nhóm: số dòng, tổng, và hình dạng phân bố; đây là nhóm duy nhất bắt được lỗi nhân dòng do phép kết, vì từng dòng vẫn hợp lệ còn tổng thì gấp đôi. Kiểm quan hệ xét khoá mồ côi, bản số và phân bổ trong quan hệ nhiều nhiều theo Bài 156. Ví dụ đối chiếu bắt buộc chạy: một phép kết sai làm chỉ số gấp đôi thì kiểm theo dòng xanh hết, chỉ đối soát tổng mới thấy; và một phân vùng thiếu hoàn toàn thì kiểm theo dòng không chạy lần nào nên cũng xanh.
 
@@ -159,7 +159,7 @@ Người học phải chứng minh bằng dữ liệu rằng kiểm theo dòng b
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi nhận ra giới hạn của nhóm phép kiểm quen dùng nhất. Kiểm bằng hai lỗi tiêm; đạt khi cả hai lọt qua kiểm theo dòng, bị nhóm khác bắt, và độ phủ được ánh xạ theo loại lỗi chứ theo số lượng.
 
-### Bài 280: Temporal tests - late, out of order and overlap
+### Lesson 280: Temporal tests - late, out of order and overlap
 
 Nhóm phép kiểm thứ tư, dành riêng cho lỗi về thời gian, vì chúng không lộ ra trong bất kỳ nhóm nào ở bài trước. Bốn loại kiểm: dữ liệu tới muộn vượt cửa sổ đã thoả thuận ở Bài 251; sự kiện tới sai thứ tự so với thời gian sự kiện; khoảng hiệu lực chồng nhau ở chiều biến đổi chậm theo Bài 157; và chuyển trạng thái đi ngược chiều trong một vòng đời. Loại thứ ba và thứ tư là bất biến chứ ngưỡng, nên chúng phải đỏ tuyệt đối chứ có dung sai. Một ca hỏng đặc trưng và bắt buộc tái hiện: toàn bộ dữ liệu bị dịch múi giờ thì mọi kiểm kiểu và kiểm khoảng đều xanh, vì giá trị vẫn hợp lệ, chỉ là thuộc sai ngày; cách bắt là một bộ dữ liệu đối chứng có mốc thời gian biết trước cùng một phép kiểm ranh giới ngày. Bộ đối chứng cố định là công cụ chính của nhóm này.
 
@@ -167,7 +167,7 @@ Người học phải cài bốn phép kiểm thời gian và bắt được ca 
 
 Cách đánh giá: Tầng *phân tích*. Objective nhắm vào một lỗi đi qua được toàn bộ phép kiểm thông thường. Kiểm bằng bốn lỗi tiêm gồm ca dịch múi giờ; đạt khi cả bốn bị bắt và hai bất biến không có dung sai.
 
-### Bài 281: Metamorphic and property tests for pipelines
+### Lesson 281: Metamorphic and property tests for pipelines
 
 Nhóm phép kiểm không cần biết kết quả đúng là gì, chỉ cần biết quan hệ giữa hai lần chạy phải đúng; nhờ vậy nó kiểm được cả những chỗ không có kết quả kỳ vọng. Bốn quan hệ biến hình dùng được cho đường dẫn dữ liệu: đảo thứ tự bản ghi đầu vào không được đổi kết quả; chia đầu vào thành nhiều phân vùng rồi gộp phải cho cùng kết quả với chạy một lần; chạy lại với cùng đầu vào phải cho trạng thái tương đương, tức chính tính luỹ đẳng ở Bài 250; và nhân đôi một bản ghi phải làm kết quả đổi theo đúng cách đã khai báo chứ tuỳ. Kiểm theo tính chất sinh dữ liệu ngẫu nhiên có ràng buộc rồi khẳng định bất biến, nên nó tìm ra ca biên mà con người không nghĩ tới. Giá trị lớn nhất của nhóm này là nó bắt lỗi logic thầm lặng, loại lỗi mà kết quả vẫn hợp lệ và vẫn trông hợp lý.
 
@@ -175,7 +175,7 @@ Người học phải viết bốn phép kiểm biến hình cho một đường
 
 Cách đánh giá: Tầng *áp dụng*. Objective nhắm vào loại lỗi mà mọi phép kiểm giá trị đều bỏ qua. Kiểm bằng lỗi logic tiêm; đạt khi bốn quan hệ chạy tự động và lỗi tiêm bị ít nhất một quan hệ phát hiện.
 
-### Bài 282: Statistical anomaly detection and its cost
+### Lesson 282: Statistical anomaly detection and its cost
 
 Phát hiện bất thường bằng thống kê phủ được phần mà quy tắc tất định không phủ, nhưng nó có bản chất khác và phải dùng khác. Bốn yếu tố cấu hình: đường cơ sở, cửa sổ, tính mùa vụ, và cách phân đoạn dữ liệu trước khi so. Thống kê bền vững trước giá trị ngoại lai tốt hơn trung bình và độ lệch chuẩn, vì chính giá trị ngoại lai là thứ ta đang tìm. Nhận biết điểm đổi để phân biệt một thay đổi thật với một bất thường. Đánh đổi trung tâm phải định lượng: ngưỡng chặt cho nhiều báo giả và người trực sẽ bỏ qua cảnh báo, ngưỡng lỏng cho lỗi lọt; nên phải tính độ chính xác và độ phủ chứ chọn ngưỡng theo cảm giác. Bất thường là tín hiệu để phân loại, không phải bằng chứng dữ liệu sai, và nhầm điều này biến mọi thay đổi nghiệp vụ hợp lệ thành sự cố. Quy tắc tất định luôn được ưu tiên khi biểu diễn được bằng bất biến.
 
@@ -183,7 +183,7 @@ Người học phải cấu hình phát hiện bất thường cho ba chỉ số
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi cân hai loại sai lầm và biết ranh giới dùng của phương pháp. Kiểm bằng cặp số độ chính xác với độ phủ; đạt khi cả ba chỉ số có cặp số đo trên dữ liệu lịch sử và không bất biến nào bị thay bằng phát hiện thống kê.
 
-### Bài 283: Backtesting rules against known incidents
+### Lesson 283: Backtesting rules against known incidents
 
 Một quy tắc chưa chạy lại trên quá khứ là một quy tắc chưa biết có dùng được không, nên bài này đặt ra nghĩa vụ kiểm ngược. Quy trình bốn bước: gắn nhãn một tập lịch sử gồm cả khoảng có sự cố đã biết và khoảng bình thường có thay đổi nghiệp vụ hợp lệ; chạy bộ quy tắc trên toàn bộ tập; đếm bốn ô gồm bắt đúng, bỏ sót, báo giả và im đúng; rồi điều chỉnh ngưỡng cùng phạm vi. Hai kết quả phải xử lý khác nhau: quy tắc bỏ sót một sự cố đã biết là quy tắc chưa phủ rủi ro đó, cần thêm hoặc sửa; quy tắc báo giả ở một thay đổi nghiệp vụ hợp lệ là quy tắc sẽ bị tắt, cần thu hẹp phạm vi hoặc đổi mức nghiêm trọng. Độ phủ phải ánh xạ theo rủi ro chứ đếm theo số quy tắc, nên đầu ra của bài là một bảng rủi ro với quy tắc phủ nó chứ một con số.
 
@@ -191,7 +191,7 @@ Người học phải kiểm ngược bộ quy tắc trên sáu tháng dữ li�
 
 Cách đánh giá: Tầng *đánh giá*. Objective thay phép đếm quy tắc bằng phép đo độ phủ rủi ro. Kiểm bằng bảng bốn ô cộng bảng rủi ro; đạt khi mọi rủi ro trọng yếu có ít nhất một quy tắc phủ và tỉ lệ báo giả nằm dưới ngưỡng thoả thuận.
 
-### Bài 284: The reconciliation ladder - seven levels
+### Lesson 284: The reconciliation ladder - seven levels
 
 Bài mở rộng thang đối soát bốn bậc ở Bài 242 thành bảy bậc phủ toàn tuyến. Bậc một là kê khai tệp cùng tổng kiểm tra byte. Bậc hai là số dòng theo một ranh giới bất biến. Bậc ba là so tập khoá để biết thiếu, thừa hay trùng cụ thể. Bậc bốn là tổng kiểm soát theo lát cắt có nghĩa nghiệp vụ. Bậc năm là băm dòng trên giá trị đã chuẩn hoá. Bậc sáu là bất biến của quy trình nghiệp vụ xuyên nhiều tài sản. Bậc bảy là đối soát chỉ số hoặc báo cáo mà người dùng nhìn thấy, và đây là bậc duy nhất trả lời được câu người dùng có thấy đúng không. Chốt kiểm soát đặt ở bốn điểm: nguồn, vùng thô, tầng chuẩn hoá, tầng phục vụ; chênh lệch ở mỗi chốt quy được về một đoạn cụ thể thay vì một chênh lệch tổng không biết ở đâu. Lấy mẫu hỗ trợ chẩn đoán nhưng không chứng minh được không mất và không trùng, nên mọi tuyên bố phải nêu tổng thể, cửa sổ, phép kiểm và dung sai.
 
@@ -199,7 +199,7 @@ Người học phải chạy bảy bậc đối soát qua bốn chốt kiểm so
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi định vị chênh lệch chứ chỉ phát hiện. Kiểm bằng ba lỗi tiêm ở ba đoạn khác nhau; đạt khi cả ba được quy đúng đoạn và mọi tuyên bố đối soát nêu đủ bốn yếu tố phạm vi.
 
-### Bài 285: Normalization before comparison
+### Lesson 285: Normalization before comparison
 
 Hai hệ cùng đúng vẫn cho hai kết quả đối soát khác nhau nếu chưa chuẩn hoá, nên chuẩn hoá là điều kiện để phép so có nghĩa. Bảy nhóm phải quy về một dạng trước khi so hoặc băm: giá trị rỗng so với thiếu so với chuỗi rỗng; khoảng trắng, chữ hoa chữ thường và dạng chuẩn ký tự; múi giờ và độ phân giải thời gian; số thập phân, cách làm tròn và đơn vị tiền tệ; thứ tự bản ghi và chính sách trùng lặp; thời điểm tham chiếu khi so với dữ liệu có lịch sử; và hiệu chỉnh từ nguồn cùng dung sai về độ trễ được chấp nhận. Nhóm thứ nhất và nhóm thứ tư gây nhiều chênh lệch giả nhất. Chênh lệch giả nguy hiểm vì nó làm người vận hành quen với việc đối soát không khớp, và khi có chênh lệch thật thì không ai để ý. Bộ quy tắc chuẩn hoá phải là mã dùng chung cho cả hai phía, chứ mỗi bên tự viết một bản.
 
@@ -207,7 +207,7 @@ Người học phải loại hết chênh lệch giả trên một cặp đối 
 
 Cách đánh giá: Tầng *phân tích*. Objective đòi tách chênh lệch giả khỏi chênh lệch thật. Kiểm bằng phép đối soát trước và sau chuẩn hoá; đạt khi số chênh lệch giả về không và mọi chênh lệch còn lại được nêu tên nguyên nhân.
 
-### Bài 286: Data SLI and SLO design
+### Lesson 286: Data SLI and SLO design
 
 Cam kết chất lượng phải phát biểu được bằng số, nếu không thì nó là một lời hứa. Sáu chỉ số phục vụ: độ trễ tới khi sẵn sàng và thời điểm sẵn sàng cam kết; tỉ lệ phân vùng thành công và đầy đủ; tỉ lệ bản ghi hợp lệ và đã đối soát; tỉ lệ trùng, mồ côi và bị cách ly; thời gian phát hiện cùng thời gian phục hồi sự cố; và bằng chứng về tính đúng của truy vấn hoặc chỉ số đã chứng nhận. Thiết kế cam kết theo hành trình người dùng và mức trọng yếu nghiệp vụ trước, chứ theo công việc chạy; cam kết đặt theo công việc không nói gì cho người dùng, vì một công việc xanh vẫn có thể phục vụ dữ liệu cũ. Tử số, mẫu số, cửa sổ và phần loại trừ phải định nghĩa tường minh, nếu không hai người tính ra hai con số. Ngân sách sai sót nối cam kết với quyết định phát hành.
 
@@ -215,7 +215,7 @@ Người học phải định nghĩa ba cam kết theo hành trình người dù
 
 Cách đánh giá: Tầng *áp dụng*. Objective đòi đặt cam kết theo người dùng chứ theo công việc. Kiểm bằng phép thử hai người tính độc lập; đạt khi ba cam kết cho cùng con số ở hai người và mỗi cam kết dẫn được về một hành trình người dùng.
 
-### Bài 287: Low-noise alerting and the error budget
+### Lesson 287: Low-noise alerting and the error budget
 
 Cảnh báo ồn tệ hơn không có cảnh báo, vì nó dạy người trực bỏ qua. Nguyên tắc chọn cái gì đáng cảnh báo: cảnh báo trên triệu chứng người dùng chịu chứ trên mọi quy tắc theo dòng; một quy tắc dòng đỏ là một sự kiện cần ghi nhận, còn một cam kết sắp vỡ mới là một cảnh báo. Cảnh báo theo tốc độ tiêu ngân sách sai sót cho hai mức: tiêu nhanh thì gọi ngay, tiêu chậm nhưng bền thì mở việc. Bốn thuộc tính bắt buộc của một cảnh báo: có chủ sở hữu, có sổ tay xử lý, có mô tả ảnh hưởng tới bên tiêu thụ, và có hành động cụ thể; thiếu một trong bốn thì nó là thông báo chứ cảnh báo. Chống ồn bằng gộp theo nguyên nhân gốc, im lặng có thời hạn khi đang xử lý, và phụ thuộc giữa các cảnh báo. Chọn ngưỡng sao cho bảng theo dõi luôn xanh là một chế độ hỏng tự động chưa đạt.
 
@@ -223,7 +223,7 @@ Người học phải dựng bộ cảnh báo có bốn thuộc tính bắt bu�
 
 Cách đánh giá: Tầng *đánh giá*. Objective đo chất lượng cảnh báo bằng tỉ lệ hành động được, chứ bằng độ phủ. Kiểm bằng phát lại sự cố cũ; đạt khi ba sự cố đều sinh cảnh báo đúng chủ sở hữu và tỉ lệ cảnh báo không hành động được giảm có số đo.
 
-### Bài 288: The incident lifecycle - eight steps
+### Lesson 288: The incident lifecycle - eight steps
 
 Sự cố dữ liệu khác sự cố hệ thống ở một điểm quyết định: dữ liệu sai đã công bố thì người ta đã ra quyết định dựa trên nó, nên dừng lan rộng quan trọng hơn khôi phục nhanh. Tám bước theo thứ tự: phát hiện và phân loại mức nghiêm trọng cùng phạm vi ảnh hưởng; dừng công bố tiếp hoặc đánh dấu suy giảm, và giữ nguyên bằng chứng; xác định phân vùng hỏng, bên tiêu thụ bị ảnh hưởng và trạng thái tốt gần nhất; giảm thiểu bằng quay lui, cách ly, chặn truy cập hoặc thông báo; truy nguyên nhân gốc xuyên nguồn, mã, cấu hình, nền tảng và vận hành; sửa, nạp bù hoặc trình bày lại trong luồng cách ly; đối soát và lấy chấp thuận trước khi công bố lại; rồi phân tích sau sự cố. Bước hai chứa một quy tắc hay bị vi phạm khi dọn dẹp vội: ghi đè bằng chứng sự cố là mất khả năng truy nguyên nhân.
 
@@ -231,7 +231,7 @@ Người học phải chạy đúng thứ tự tám bước trên một sự c�
 
 Cách đánh giá: Tầng *hiểu*. Bài lý thuyết đặt quy trình cho hai bài thực hành sau. Kiểm bằng bài chạy quy trình; đạt khi tám bước có quyết định ghi lại, bằng chứng được giữ nguyên, và bên tiêu thụ bị ảnh hưởng được liệt kê trước khi sửa.
 
-### Bài 289: Repair, backfill and restatement
+### Lesson 289: Repair, backfill and restatement
 
 Sửa dữ liệu hỏng là thao tác dễ tạo ra hỏng lần hai, nên nó có quy trình riêng. Bốn bước bắt buộc: chạy thử không ghi để biết phạm vi sẽ chạm; chạy vào đích cách ly theo Bài 252; đối soát đích cách ly với nguồn; rồi mới thăng cấp bằng hoán đổi nguyên tử và giữ đường quay lại. Sửa mà không cách ly tạo hỏng lần hai, và đó là ô nguy hiểm nhất trong ma trận chế độ hỏng của module. Trình bày lại là quyết định nghiệp vụ theo Bài 158: số đã công bố có đổi hay giữ nguyên, ai duyệt, và bên tiêu thụ được báo ra sao. Sửa dữ liệu lịch sử phải giữ dấu vết đã sửa gì, vào lúc nào, bởi ai. Ba tình huống không nên sửa mà nên đánh dấu suy giảm rồi sửa gốc trước, vì sửa hạ nguồn khi gốc còn sai chỉ tạo hai nguồn sự thật.
 
@@ -239,7 +239,7 @@ Người học phải sửa hai sự cố qua đủ bốn bước, đối soát 
 
 Cách đánh giá: Tầng *áp dụng*. Objective có tiêu chí nghiệm thu là đối soát đạt trước công bố và quay lại được sau đó. Kiểm bằng hai sự cố sửa đầy đủ; đạt khi cả hai đối soát đạt ở đích cách ly trước khi thăng cấp và quay lại thực hiện được.
 
-### Bài 290: False positives, coverage and quality debt
+### Lesson 290: False positives, coverage and quality debt
 
 Bộ quy tắc là tài sản phải bảo trì, và không bảo trì thì nó tự mục theo ba cách. Báo giả tích luỹ làm người trực mất tin, và cách đo là tỉ lệ cảnh báo bị đóng với lý do không phải vấn đề. Độ phủ suy giảm khi hệ đổi mà quy tắc không đổi, và cách đo là ánh xạ rủi ro với quy tắc theo Bài 283 chạy lại định kỳ. Nợ chất lượng tích luỹ dưới dạng miễn trừ hết hạn, quy tắc bị tắt và chênh lệch được chấp nhận; nó phải có sổ, có chủ và có hạn giống nợ kỹ thuật. Một chế độ hỏng tinh vi phải nhận ra: phép kiểm có bộ lọc thu hẹp sẽ che đúng phần dữ liệu hỏng, vì người viết đã loại ca gây đỏ ra khỏi phạm vi; cách phát hiện là đối chiếu số dòng phép kiểm thực sự xét với số dòng của bảng. Rà soát định kỳ bộ quy tắc và điều kiện gỡ một quy tắc.
 
@@ -247,7 +247,7 @@ Người học phải đo ba chỉ số sức khoẻ của bộ quy tắc và t�
 
 Cách đánh giá: Tầng *đánh giá*. Objective đòi đánh giá chính hệ kiểm chứ dữ liệu. Kiểm bằng ba chỉ số cộng bài rà phạm vi; đạt khi ba chỉ số có số đo và mọi phép kiểm có bộ lọc thu hẹp đều được đối chiếu số dòng xét.
 
-### Bài 291: The quality failure matrix
+### Lesson 291: The quality failure matrix
 
 Bài gom bảy chế độ hỏng mà hợp đồng nguồn liệt kê thành một bảng dùng được khi trực, mỗi dòng gồm hiện tượng, lý do phép kiểm thông thường bỏ sót, và chốt kiểm soát tốt hơn. Toàn bộ dữ liệu lệch múi giờ thì kiểu và khoảng đều hợp lệ, cần bộ đối chứng và kiểm ranh giới thời gian. Phép kết nhân dòng làm chỉ số sai thì kiểm theo dòng xanh, cần đối soát theo hạt và tổng kiểm soát. Phân vùng thiếu thì phép kiểm theo dòng không chạy lần nào, cần kiểm đầy đủ theo phân vùng kỳ vọng. Quy tắc tốt chặn nhầm dữ liệu tốt vì ngưỡng hoặc bối cảnh sai, cần kiểm ngược và cách ly thay vì chặn. Phép kiểm loại trừ chính phần hỏng, cần đối chiếu số dòng xét. Đường dẫn xanh trên nguồn cũ vì mọi việc chạy xong trên đầu vào cũ, cần chỉ số độ tươi của nguồn. Sửa tạo hỏng lần hai, cần chạy thử, cách ly và đối soát trước khi thăng cấp.
 
@@ -255,7 +255,7 @@ Người học phải lập ma trận bảy chế độ hỏng có chốt kiểm
 
 Cách đánh giá: Tầng *đánh giá*. Objective tổng hợp toàn module thành một hệ phòng vệ có bằng chứng. Kiểm bằng bảy lỗi tiêm; đạt khi ít nhất sáu bị chốt kiểm soát tương ứng phát hiện tự động.
 
-### Bài 292: Reliability capstone - twenty seeded defects
+### Lesson 292: Reliability capstone - twenty seeded defects
 
 Bài dự án khép module, lấy đúng yêu cầu capstone của hợp đồng nguồn: bổ sung lớp kiểm soát tin cậy vào nền tảng đã dựng ở M17. Nộp gồm bảy hạng mục: hợp đồng dữ liệu và sổ đăng ký quy tắc đủ bảy phần; bộ kiểm cài trên một nền được chọn; đối soát bảy bậc từ nguồn tới tầng phục vụ; vùng cách ly cùng đường phát lại và một cửa chặn công bố có chứng nhận; cam kết dịch vụ, bảng theo dõi, cảnh báo, trạng thái và sổ tay vận hành; ma trận bảy chế độ hỏng có chốt tự động; và kết quả diễn tập ba tình huống gồm hồi quy logic thầm lặng, phân vùng thiếu, và một lần nạp bù hỏng. Nghiệm thu bằng 20 lỗi gieo sẵn: đo độ phủ phát hiện và tỉ lệ báo giả. Sáu điều kiện tự động chưa đạt lấy từ phần *Critical failures* của nguồn, gồm dùng số lượng phép kiểm làm bằng chứng độ phủ, tuyên bố chính xác không có nguồn đối chiếu, bỏ lỗi chất lượng im lặng, công bố bản sửa trước khi đối soát, cảnh báo không có chủ hoặc sổ tay, và ghi đè bằng chứng sự cố khi dọn dẹp.
 

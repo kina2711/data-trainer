@@ -6,10 +6,21 @@ const { pathToFileURL } = require("node:url");
 const appRoot = path.resolve(__dirname, "..");
 const webRoot = path.join(appRoot, "web");
 const indexPath = path.join(webRoot, "data", "brain-index.json");
+const manifestPath = path.resolve(appRoot, "..", "..", "Docs", "Second-Brain", "second-brain-manifest.json");
 const appUrl = pathToFileURL(path.join(webRoot, "index.html")).href;
 const smokeMode = process.env.SECOND_BRAIN_SMOKE === "1";
 
 ipcMain.handle("brain:load-index", async () => JSON.parse(await fs.readFile(indexPath, "utf8")));
+ipcMain.handle("brain:open-book", async (_event, sourceId) => {
+  if (typeof sourceId !== "string" || !sourceId.startsWith("src.book.")) {
+    return { ok: false, error: "Source ID không hợp lệ." };
+  }
+  const manifest = JSON.parse(await fs.readFile(manifestPath, "utf8"));
+  const source = manifest.source_registry.find((item) => item.source_id === sourceId);
+  if (!source?.canonical_path) return { ok: false, error: "Không tìm thấy tệp sách cục bộ." };
+  const result = await shell.openPath(source.canonical_path);
+  return result ? { ok: false, error: result } : { ok: true };
+});
 
 function createWindow() {
   const window = new BrowserWindow({

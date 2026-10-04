@@ -55,7 +55,7 @@ For each adapter candidate, record supported strategies, unique-key needs, predi
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
-Trong `Incremental Strategies by Adapter`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước–sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dùng project tối thiểu và fixture có mutations đã biết; compile exact node/branch, execute trong sandbox nếu có, lưu artifacts rồi so key set, typed hashes và business invariants với full/reference computation.
+Trong `Incremental Strategies by Adapter`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước-sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dùng project tối thiểu và fixture có mutations đã biết; compile exact node/branch, execute trong sandbox nếu có, lưu artifacts rồi so key set, typed hashes và business invariants với full/reference computation.
 
 ### 7.1. Adapter-strategy probe 1: compiled operation, key/partition scope, transaction window, recovery và equivalence phải rõ
 
@@ -71,7 +71,7 @@ Trong `Incremental Strategies by Adapter`, mỗi claim phải nối được t�
 
 **Thiết kế phép thử cho `wiki.transformation.dbt-incremental-strategies-adapter`.** Với `Adapter-strategy probe 2: compiled operation, key/partition scope, transaction window, recovery và equivalence phải rõ`, Giữ nguyên input rồi đổi đúng một tham số cấu hình liên quan. Nếu output đổi theo nhiều hướng cùng lúc, phép thử chưa cô lập được nguyên nhân và phải thu hẹp lại. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Adapter-strategy probe 2: compiled operation, key/partition scope, transaction window, recovery và equivalence phải rõ` phải cho thấy: Báo cả giá trị trước–sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Adapter-strategy probe 2: compiled operation, key/partition scope, transaction window, recovery và equivalence phải rõ` phải cho thấy: Báo cả giá trị trước-sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.3. Adapter-strategy probe 3: compiled operation, key/partition scope, transaction window, recovery và equivalence phải rõ
 
@@ -119,7 +119,7 @@ Trong `Incremental Strategies by Adapter`, mỗi claim phải nối được t�
 
 **Thiết kế phép thử cho `wiki.transformation.dbt-incremental-strategies-adapter`.** Với `Adapter-strategy probe 8: compiled operation, key/partition scope, transaction window, recovery và equivalence phải rõ`, Dùng một schema change tương thích và một thay đổi phá vỡ key, type hoặc meaning. Kết quả phải chỉ ra khác biệt giữa parse được, chạy được và vẫn giữ đúng semantics. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Adapter-strategy probe 8: compiled operation, key/partition scope, transaction window, recovery và equivalence phải rõ` phải cho thấy: Lưu schema trước–sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Adapter-strategy probe 8: compiled operation, key/partition scope, transaction window, recovery và equivalence phải rõ` phải cho thấy: Lưu schema trước-sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.9. Adapter-strategy probe 9: compiled operation, key/partition scope, transaction window, recovery và equivalence phải rõ
 
@@ -226,7 +226,7 @@ Trong `Incremental Strategies by Adapter`, mỗi claim phải nối được t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.transformation.dbt-incremental-strategies-adapter`
+## Execution capsule: kiểm chứng `wiki.transformation.dbt-incremental-strategies-adapter`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.transformation.dbt-incremental-strategies-adapter`, sơ đồ, ví dụ và artifact về **Incremental Strategies by Adapter** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

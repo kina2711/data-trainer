@@ -54,7 +54,7 @@ Start with semantic waste: accidental full refresh, unbounded scan, repeated fan
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
-Trong `dbt Performance and Cost per Model`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước–sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dựng artifact/workflow fixture có exact versions và intervals; inject one failure or changed assumption; capture resolved graph/state/query IDs or scheduler context and compare with independent coverage oracle.
+Trong `dbt Performance and Cost per Model`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước-sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dựng artifact/workflow fixture có exact versions và intervals; inject one failure or changed assumption; capture resolved graph/state/query IDs or scheduler context and compare with independent coverage oracle.
 
 ### 7.1. Performance probe 1: model-query identity, controlled workload, physical counter, cost rule và correctness gate phải rõ
 
@@ -70,7 +70,7 @@ Trong `dbt Performance and Cost per Model`, mỗi claim phải nối được t�
 
 **Thiết kế phép thử cho `wiki.transformation.dbt-performance-cost-per-model`.** Với `Performance probe 2: model-query identity, controlled workload, physical counter, cost rule và correctness gate phải rõ`, Giữ nguyên input rồi đổi đúng một tham số cấu hình liên quan. Nếu output đổi theo nhiều hướng cùng lúc, phép thử chưa cô lập được nguyên nhân và phải thu hẹp lại. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Performance probe 2: model-query identity, controlled workload, physical counter, cost rule và correctness gate phải rõ` phải cho thấy: Báo cả giá trị trước–sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Performance probe 2: model-query identity, controlled workload, physical counter, cost rule và correctness gate phải rõ` phải cho thấy: Báo cả giá trị trước-sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.3. Performance probe 3: model-query identity, controlled workload, physical counter, cost rule và correctness gate phải rõ
 
@@ -118,7 +118,7 @@ Trong `dbt Performance and Cost per Model`, mỗi claim phải nối được t�
 
 **Thiết kế phép thử cho `wiki.transformation.dbt-performance-cost-per-model`.** Với `Performance probe 8: model-query identity, controlled workload, physical counter, cost rule và correctness gate phải rõ`, Dùng một schema change tương thích và một thay đổi phá vỡ key, type hoặc meaning. Kết quả phải chỉ ra khác biệt giữa parse được, chạy được và vẫn giữ đúng semantics. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Performance probe 8: model-query identity, controlled workload, physical counter, cost rule và correctness gate phải rõ` phải cho thấy: Lưu schema trước–sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Performance probe 8: model-query identity, controlled workload, physical counter, cost rule và correctness gate phải rõ` phải cho thấy: Lưu schema trước-sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.9. Performance probe 9: model-query identity, controlled workload, physical counter, cost rule và correctness gate phải rõ
 
@@ -223,7 +223,7 @@ Trong `dbt Performance and Cost per Model`, mỗi claim phải nối được t�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.transformation.dbt-performance-cost-per-model`
+## Execution capsule: kiểm chứng `wiki.transformation.dbt-performance-cost-per-model`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.transformation.dbt-performance-cost-per-model`, sơ đồ, ví dụ và artifact về **dbt Performance and Cost per Model** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

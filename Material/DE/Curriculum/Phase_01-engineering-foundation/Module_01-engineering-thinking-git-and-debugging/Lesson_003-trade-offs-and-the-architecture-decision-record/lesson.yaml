@@ -5,7 +5,6 @@ status: ready-for-owner-review
 lifecycle_profile: learning
 risk_tier: R2-standard
 target_level: Foundation
-duration_minutes_estimate: 120
 central_question: Làm sao lưu reasoning để quyết định kỹ thuật có thể được tái tạo và xét lại?
 objective: Viết ADR ngắn nhưng đủ context, drivers, options, evidence, consequences, decision và revisit signal.
 prerequisites:
@@ -14,65 +13,61 @@ prerequisites:
 learner_memory:
   resolved: false
   assumption: No prior mastery claimed; teach and assess the named prerequisites.
+editorial:
+  standard: lesson-authoring-v1
+  humanizer: blader/humanizer@3.1.0
+  status: pass
 scenes:
 - id: S01
   type: explain
-  minutes: 10
   claim: ADR chỉ ghi 'chọn Parquet' khiến đội sau không biết workload nào, option nào bị loại hay constraint nào
     đã đổi.
-  source_span: note.md — heading '1. ADR lưu reasoning, không chỉ lưu kết luận'
+  source_span: 'note.md: heading 1. ADR lưu reasoning, không chỉ lưu kết luận'
   misconception_displaced: Có thể bắt đầu bằng công cụ/output trước khi khóa câu hỏi và boundary.
 - id: S02
   type: explain
-  minutes: 18
   claim: ADR lưu context và reasoning tại thời điểm quyết định; chất lượng nằm ở option thật, hard constraints,
     evidence phân biệt và điều kiện đảo quyết định.
-  source_span: note.md — heading '2. Khóa tiêu chí trước khi so phương án'
+  source_span: 'note.md: heading 2. Khóa tiêu chí trước khi so phương án'
   misconception_displaced: Viết ADR sau khi đã chọn để hợp thức hóa, dùng strawman hoặc không ghi consequence/revisit
     signal.
 - id: S03
   type: check
-  minutes: 7
   question: ADR lưu gì quan trọng nhất?
   answer: Context và reasoning đủ để tái tạo quyết định khi constraint thay đổi.
   wrong_answer_reveals: Người học nhớ từ khóa nhưng chưa nắm claim trung tâm.
-  source_span: note.md — heading '2. Khóa tiêu chí trước khi so phương án'
+  source_span: 'note.md: heading 2. Khóa tiêu chí trước khi so phương án'
 - id: S04
   type: practice
-  minutes: 18
   task: Điền ADR one-page cho format trao đổi dữ liệu từ evidence packet; mỗi nhóm đóng vai reviewer tấn công một
     assumption.
   success_condition: ADR dưới hai trang, có ≥2 option thật, hard constraints, evidence, consequence owner và measurable
     revisit signal.
-  source_span: UNSOURCED — guided practice synthesized from the lesson objective and source-backed mechanism
+  source_span: 'UNSOURCED: guided practice synthesized from the lesson objective and source-backed mechanism'
 - id: S05
   type: explain
-  minutes: 15
   claim: Loại option vi phạm hard constraint trước; trong số option còn lại ưu tiên evidence, reversibility và total
     cost, không dùng weighted score để bù vi phạm cấm.
-  source_span: note.md — heading '3. Phương án bị loại là tài sản'
+  source_span: 'note.md: heading 3. Phương án bị loại là tài sản'
   misconception_displaced: Một rule hoặc tool luôn đúng bất kể changed constraint.
 - id: S06
   type: decide
-  minutes: 12
   situation: Nếu consumer chính chuyển sang spreadsheet không hỗ trợ Parquet, compatibility gate có thể đảo quyết
     định dù benchmark không đổi.
   trade_off: ADR không thay thế benchmark, spike hay approval; nó liên kết evidence đó với quyết định phiên bản
     cụ thể.
   defensible_choices: Lựa chọn phải giữ hard constraints, nêu evidence và reversal trigger.
-  source_span: UNSOURCED — changed-constraint decision scenario synthesized for transfer
+  source_span: 'UNSOURCED: changed-constraint decision scenario synthesized for transfer'
 - id: S07
   type: explain
-  minutes: 15
   claim: 'Worked example: So CSV, JSONL và Parquet cho batch analytical exchange. Hard gate: schema/type fidelity
     và reader compatibility; optimize scan cost sau gate. Spike đo file size, scan latency, schema evolution và
     operability trên fixture thật. Chọn Parquet, nhận debt inspection tooling; revisit nếu consumer không đọc được
     hoặc volume giảm dưới threshold.'
-  source_span: note.md — heading '4. Consequence gồm cả khoản nợ được chấp nhận'
+  source_span: 'note.md: heading 4. Consequence gồm cả khoản nợ được chấp nhận'
   misconception_displaced: Một case thành công tự chứng minh cơ chế tổng quát.
 - id: S08
   type: apply
-  minutes: 18
   task: Option rẻ nhất vi phạm RPO nhưng có tổng điểm cao nhất. Giải thích vì sao scoring sai và sửa decision rule.
   assumes:
   - S02
@@ -82,14 +77,13 @@ scenes:
   - S07
   success_condition: Artifact nêu boundary, evidence, lựa chọn, rejected alternative và condition làm quyết định
     đảo.
-  source_span: UNSOURCED — curriculum transfer scenario synthesized from the lesson contract
+  source_span: 'UNSOURCED: curriculum transfer scenario synthesized from the lesson contract'
 - id: S09
   type: check
-  minutes: 7
   question: Tại sao phương án bị loại vẫn là tài sản?
   answer: Nó lưu constraint/evidence đã xét, tránh lặp tranh luận và cho biết khi nào option có thể hợp lệ trở lại.
   wrong_answer_reveals: Người học chưa chuyển mental model sang tình huống mới.
-  source_span: note.md — heading '6. Revisit signal phải kiểm được'
+  source_span: 'note.md: heading 6. Revisit signal phải kiểm được'
 assessment:
   formative: quiz.md — 10 questions, pass >= 8/10; failed concepts receive targeted remediation and one retest.
   authentic: homework.md — artifact scored on a 100-point analytic rubric; pass >= 75 and no critical failure.
@@ -102,5 +96,4 @@ publish:
   after_note: true
   answer_key: true
 unused_source_spans:
-- Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension/remediation; the 120-minute session
-  samples rather than recites every probe.
+- Ma trận kiểm chứng chi tiết and Source coverage remain in note.md for extension and remediation.

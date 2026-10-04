@@ -26,31 +26,31 @@ relationships:
 # Offset commit - the two failure windows
 
 > [!abstract] Câu hỏi trung tâm
-> Hai thứ tự process–commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì?
+> Hai thứ tự process-commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì?
 
 ## 1. Commit meaning
 
-Committed offset là next position group sẽ resume, không phải bằng chứng external side effect completed. Đừng bắt đầu bằng tên công cụ. Hãy bắt đầu bằng đối tượng được bảo vệ, boundary quan sát được và hậu quả nếu kết luận sai. Trong bài `Offset commit - the two failure windows`, câu hỏi thực dụng là: Hai thứ tự process–commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Committed offset là next position group sẽ resume, không phải bằng chứng external side effect completed. Đừng bắt đầu bằng tên công cụ. Hãy bắt đầu bằng đối tượng được bảo vệ, boundary quan sát được và hậu quả nếu kết luận sai. Trong bài `Offset commit - the two failure windows`, câu hỏi thực dụng là: Hai thứ tự process-commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 2. Process then commit
 
-Crash sau side effect trước commit gây replay/duplicate; idempotent sink hoặc dedup ledger hấp thụ. Điểm khó không nằm ở cú pháp mà ở identity và scope. Hai phép đo cùng tên vẫn có thể nói về hai population hoặc hai thời điểm khác nhau. Trong bài `Offset commit - the two failure windows`, câu hỏi thực dụng là: Hai thứ tự process–commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Crash sau side effect trước commit gây replay/duplicate; idempotent sink hoặc dedup ledger hấp thụ. Điểm khó không nằm ở cú pháp mà ở identity và scope. Hai phép đo cùng tên vẫn có thể nói về hai population hoặc hai thời điểm khác nhau. Trong bài `Offset commit - the two failure windows`, câu hỏi thực dụng là: Hai thứ tự process-commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 3. Commit then process
 
-Crash sau commit trước side effect gây skipped/lost outcome; thường không chấp nhận cho at-least-once processing. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước–sau và cách tính độc lập. Trong bài `Offset commit - the two failure windows`, câu hỏi thực dụng là: Hai thứ tự process–commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Crash sau commit trước side effect gây skipped/lost outcome; thường không chấp nhận cho at-least-once processing. Một dashboard xanh chỉ là tín hiệu. Muốn biến nó thành bằng chứng phải giữ input, phiên bản, rule, trạng thái trước-sau và cách tính độc lập. Trong bài `Offset commit - the two failure windows`, câu hỏi thực dụng là: Hai thứ tự process-commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 4. Batch granularity
 
-Commit highest safely completed contiguous offset; parallel processing có holes nên max-seen commit nguy hiểm. Thiết kế tốt phải chịu được counterexample. Hãy chủ động tạo case sát boundary, case thiếu dữ liệu và case replay thay vì chỉ chạy happy path. Trong bài `Offset commit - the two failure windows`, câu hỏi thực dụng là: Hai thứ tự process–commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Commit highest safely completed contiguous offset; parallel processing có holes nên max-seen commit nguy hiểm. Thiết kế tốt phải chịu được counterexample. Hãy chủ động tạo case sát boundary, case thiếu dữ liệu và case replay thay vì chỉ chạy happy path. Trong bài `Offset commit - the two failure windows`, câu hỏi thực dụng là: Hai thứ tự process-commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 5. Atomic coupling
 
-Kafka transaction couple output+offset trong Kafka; external sink cần local transaction/outbox/checkpoint protocol riêng. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `Offset commit - the two failure windows`, câu hỏi thực dụng là: Hai thứ tự process–commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Kafka transaction couple output+offset trong Kafka; external sink cần local transaction/outbox/checkpoint protocol riêng. Chi phí vận hành thuộc contract. Một rule đúng nhưng quá đắt, quá ồn hoặc không có owner sẽ nhanh chóng bị tắt và mất tác dụng. Trong bài `Offset commit - the two failure windows`, câu hỏi thực dụng là: Hai thứ tự process-commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 6. Kill-point proof
 
-Crash tại từng boundary, restart with rebalance and compare source offsets, sink keys, duplicates and missing outcomes. Kết luận cần có điều kiện đảo chiều. Khi volume, latency, nguồn thẩm quyền hoặc topology đổi, quyết định cũ phải được xem xét lại bằng cùng một oracle. Trong bài `Offset commit - the two failure windows`, câu hỏi thực dụng là: Hai thứ tự process–commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
+Crash tại từng boundary, restart with rebalance and compare source offsets, sink keys, duplicates and missing outcomes. Kết luận cần có điều kiện đảo chiều. Khi volume, latency, nguồn thẩm quyền hoặc topology đổi, quyết định cũ phải được xem xét lại bằng cùng một oracle. Trong bài `Offset commit - the two failure windows`, câu hỏi thực dụng là: Hai thứ tự process-commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì? Ta ghi rõ grain, population, time window, owner và hành động sau failure; nếu một trường chưa biết thì đánh dấu unknown thay vì lấp bằng mặc định. Bằng chứng tối thiểu gồm fixture có version, cấu hình hoặc rule đã resolve, raw observation, expected result và limitation. Phần này là curriculum synthesis dựa trên các nguồn đã định danh, không phải lời hứa rằng mọi adapter hay deployment đều có cùng hành vi.
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
@@ -215,13 +215,13 @@ Với `wiki.streaming.kafka-offset-commit-failure-windows`, command thành công
 ## Key takeaways
 - Process-before-commit duplicates; commit-before-process loses outcomes unless state is atomically coupled.
 - Với `wiki.streaming.kafka-offset-commit-failure-windows`, quality của kết luận phụ thuộc identity, coverage và oracle chứ không phụ thuộc màu dashboard.
-- Câu hỏi `Hai thứ tự process–commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì?` chỉ được trả lời trong scope và version đã ghi.
+- Câu hỏi `Hai thứ tự process-commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì?` chỉ được trả lời trong scope và version đã ghi.
 - Các source IDs `src.web.apache-kafka-consumer-config, src.web.apache-kafka-design` đặt ranh giới cho source fact; phần còn lại là synthesis có nhãn.
 - Trước khi lab chạy, đây là note đã kiểm cấu trúc và provenance, chưa phải chứng nhận production.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.streaming.kafka-offset-commit-failure-windows`
+## Execution capsule: kiểm chứng `wiki.streaming.kafka-offset-commit-failure-windows`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.streaming.kafka-offset-commit-failure-windows`, sơ đồ, ví dụ và artifact về **Offset commit - the two failure windows** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -265,7 +265,7 @@ Artifact của `wiki.streaming.kafka-offset-commit-failure-windows` buộc ngư�
 
 ### Tự kiểm tra trước khi tái sử dụng
 
-1. Bạn có thể trả lời `Hai thứ tự process–commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì?` bằng một câu mà không kéo thêm concept thứ hai không?
+1. Bạn có thể trả lời `Hai thứ tự process-commit offset tạo duplicate hoặc loss window ra sao, và state coupling sửa được gì?` bằng một câu mà không kéo thêm concept thứ hai không?
 2. Source locator nào đỡ cho claim, và phần nào chỉ là synthesis trong note?
 3. Observation nào khiến bạn dừng, thu hẹp hoặc đảo quyết định?
 4. Artifact nào cho phép một reviewer độc lập tái hiện kết quả?

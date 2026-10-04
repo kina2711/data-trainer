@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: PostgreSQL tổ chức row trong page/heap ra sao, shared buffer phối hợp OS cache thế nào, và cache experiment được diễn giải đúng bằng gì?
 source_ids:
   - src.manual.postgresql-17.10
@@ -36,13 +36,13 @@ PostgreSQL tổ chức relations thành blocks/pages có kích thước build-ti
 
 Executor yêu cầu tuple nhưng storage/buffer manager làm việc theo pages. Một row nhỏ vẫn kéo page chứa nó vào cache. Locality vì vậy quyết định pages đọc. Sequential scan đi qua heap pages; index lookup tìm TID rồi fetch heap page nếu cần.
 
-Không nói “database không đọc theo row” tuyệt đối ở mọi tầng: executor trao tuples, còn storage I/O/caching theo pages.
+Không nói database không đọc theo row tuyệt đối ở mọi tầng: executor trao tuples, còn storage I/O/caching theo pages.
 
 ## 2. Relation, segment và forks
 
 Heap relation là tập pages không ordered theo logical key. File relation lớn được chia segments theo size convention. Mỗi relation có main fork và có thể FSM, VM, init forks; indexes là relations riêng.
 
-Main fork chứa heap/index data. Free Space Map giúp tìm pages có free space cho inserts/updates. Visibility Map ghi all-visible/all-frozen page-level facts, hỗ trợ vacuum/index-only scans. Chúng không “nằm ngay trong mỗi data page”; chúng là forks/structures riêng. Đây là hiệu chỉnh quan trọng so với mô tả giản lược.
+Main fork chứa heap/index data. Free Space Map giúp tìm pages có free space cho inserts/updates. Visibility Map ghi all-visible/all-frozen page-level facts, hỗ trợ vacuum/index-only scans. Chúng không nằm ngay trong mỗi data page; chúng là forks/structures riêng. Đây là hiệu chỉnh quan trọng so với mô tả giản lược.
 
 File path/relfilenode có thể đổi khi rewrite; không dựa path như stable identity.
 
@@ -76,13 +76,13 @@ Heap-Only Tuple optimization có thể tránh new index entries khi indexed colu
 
 Fillfactor để free room tăng cơ hội HOT nhưng làm table lớn hơn/read more pages. Nhiều indexes hoặc update indexed columns giảm HOT. Theo dõi `n_tup_hot_upd` cùng workload.
 
-HOT không có nghĩa update “in place”; vẫn có tuple version theo MVCC.
+HOT không có nghĩa update in place; vẫn có tuple version theo MVCC.
 
 ## 7. Heap không có logical ordering
 
 Heap pages/tuples không bảo đảm primary-key order. Seq scan trả physical traversal order nhưng SQL output không có contract nếu thiếu ORDER BY. CLUSTER/rewrite có thể reorder physical heap theo index tại thời điểm chạy, rồi subsequent writes làm correlation drift.
 
-Tìm row không có usable access path thường scan candidate pages, nhưng partition pruning/BRIN/other paths có thể giảm. Tránh khẩu quyết “không index = mọi page” trong mọi query.
+Tìm row không có usable access path thường scan candidate pages, nhưng partition pruning/BRIN/other paths có thể giảm. Tránh khẩu quyết không index = mọi page trong mọi query.
 
 Physical locality hỗ trợ range I/O nhưng không thay ORDER BY semantics.
 
@@ -106,7 +106,7 @@ Temporary relations có local buffers; temp work files khác shared buffer path.
 
 PostgreSQL shared buffers nằm trên filesystem; OS page cache có thể giữ file blocks. `shared read` nghĩa miss trong PostgreSQL cache và request read, nhưng kernel có thể phục vụ RAM. Vì vậy read block không đồng nghĩa physical device I/O.
 
-Double caching không chỉ “lãng phí”: OS thực hiện filesystem/I/O/readahead và PostgreSQL cần page-aware locking/dirty/visibility. Direct I/O developments/version specifics cần tra riêng.
+Double caching không chỉ lãng phí: OS thực hiện filesystem/I/O/readahead và PostgreSQL cần page-aware locking/dirty/visibility. Direct I/O developments/version specifics cần tra riêng.
 
 Đo server buffers cùng `track_io_timing`, pg_stat_io, OS/storage metrics. Không suy storage latency chỉ từ hit ratio.
 
@@ -140,7 +140,7 @@ Chạy query nhiều lần, capture EXPLAIN ANALYZE BUFFERS, pg_stat_io/track_io
 
 Không `echo drop_caches` trên shared machine. `pg_buffercache_evict` restricted và snapshot immediately stale. Ghi method.
 
-Lần hai không “luôn” nhanh: variance/concurrency/JIT/checkpoint. Report distribution và blocks.
+Lần hai không luôn nhanh: variance/concurrency/JIT/checkpoint. Report distribution và blocks.
 
 ## 15. Working set và capacity
 
@@ -154,7 +154,7 @@ Capacity change là production-controlled task, không kết luận từ classro
 
 Giả sử query lần một báo `shared read=12.000`, `shared hit=800`; lần hai `shared read=0`, `shared hit=12.800`. Điều có thể kết luận là lần hai các database blocks cần thiết đã có trong PostgreSQL shared buffers tại thời điểm truy cập. Không được kết luận lần một đọc 12.000 blocks từ thiết bị: kernel page cache có thể đã giữ chúng. Cũng không được kết luận cache size tối ưu vì query có thể đọc quá nhiều pages do predicate sai.
 
-Muốn đi xa hơn, bật/kiểm `track_io_timing` trong môi trường phù hợp, đọc pg_stat_io và OS device metrics, giữ cùng result/plan/load, lặp nhiều runs. Nếu warm elapsed vẫn cao với all hits, kiểm CPU, tuple filtering, decompression, locks và output volume. Nếu cold read timing thấp, OS/storage cache có thể phục vụ. Một cache report tốt tách observation ở từng layer và ghi uncertainty, thay vì gán mọi chênh lệch cho “disk”.
+Muốn đi xa hơn, bật/kiểm `track_io_timing` trong môi trường phù hợp, đọc pg_stat_io và OS device metrics, giữ cùng result/plan/load, lặp nhiều runs. Nếu warm elapsed vẫn cao với all hits, kiểm CPU, tuple filtering, decompression, locks và output volume. Nếu cold read timing thấp, OS/storage cache có thể phục vụ. Một cache report tốt tách observation ở từng layer và ghi uncertainty, thay vì gán mọi chênh lệch cho disk.
 
 ## 16. Câu hỏi tự kiểm tra
 
@@ -174,18 +174,18 @@ Muốn đi xa hơn, bật/kiểm `track_io_timing` trong môi trường phù h�
 - Lab page/cache chưa chạy; evidence thuộc `after-note.md`.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-10-MANUAL]] — page layout, HOT, pageinspect và pg_buffercache.
-2. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]] — pages/tuples/buffer cache/WAL mechanisms.
-3. [[SRC-MASTERING-POSTGRESQL-17-6E]] — runtime I/O/cache statistics.
+1. [[SRC-POSTGRESQL-17-10-MANUAL]]: page layout, HOT, pageinspect và pg_buffercache.
+2. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]]: pages/tuples/buffer cache/WAL mechanisms.
+3. [[SRC-MASTERING-POSTGRESQL-17-6E]]: runtime I/O/cache statistics.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 2623–2630, 2888–2910 | page layout, HOT, inspection/cache views | §§2–14 | Đã giữ privilege/snapshot caveat |
-| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 60–82, 156–176 | tuples, clock cache, dirty pages | §§3–11 | Đã neo vào manual 17.10 |
-| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 198–202 | runtime table/index/I/O stats | §§10–15 | Đã tách DB cache khỏi OS cache |
-| Tổng hợp DE-L133 | page lab, warm/cold protocol | §§12–15 | Đã sửa hit-ratio overclaim |
+| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 2623-2630, 2888-2910 | page layout, HOT, inspection/cache views | §§2-14 | Đã giữ privilege/snapshot caveat |
+| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 60-82, 156-176 | tuples, clock cache, dirty pages | §§3-11 | Đã neo vào manual 17.10 |
+| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 198-202 | runtime table/index/I/O stats | §§10-15 | Đã tách DB cache khỏi OS cache |
+| Tổng hợp DE-L133 | page lab, warm/cold protocol | §§12-15 | Đã sửa hit-ratio overclaim |
 
 ## Key takeaways
 - PostgreSQL storage I/O/cache theo pages, còn executor xử lý tuples.
@@ -196,7 +196,7 @@ Muốn đi xa hơn, bật/kiểm `track_io_timing` trong môi trường phù h�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.pages-heap-files-buffer-pool`
+## Execution capsule: kiểm chứng `wiki.database.pages-heap-files-buffer-pool`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.pages-heap-files-buffer-pool`, sơ đồ, ví dụ và artifact về **Trang dữ liệu, heap files và buffer pool** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -218,7 +218,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “PostgreSQL tổ chức row trong page/heap ra sao, shared buffer phối hợp OS cache thế nào, và cache experiment được diễn giải đúng bằng gì?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: PostgreSQL tổ chức row trong page/heap ra sao, shared buffer phối hợp OS cache thế nào, và cache experiment được diễn giải đúng bằng gì? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **Trang dữ liệu, heap files và buffer pool** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

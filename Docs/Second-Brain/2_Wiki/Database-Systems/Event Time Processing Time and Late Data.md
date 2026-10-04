@@ -54,7 +54,7 @@ Fixture tạo ordered, out-of-order, duplicate, clock-skewed và too-late events
 
 ## 7. Ma trận kiểm chứng từng mệnh đề
 
-Trong `Event Time Processing Time and Late Data`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước–sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dựng fixture và project tối thiểu có exact graph/input boundary; chạy command hoặc protocol theo thứ tự, rồi đối soát relation, key set, typed hash và business invariant với full/reference computation.
+Trong `Event Time Processing Time and Late Data`, mỗi claim phải nối được tới input boundary, compiled hoặc executed artifact, trạng thái trước-sau, failure signal và independent oracle. Một command kết thúc với exit code 0 không tự chứng minh dữ liệu đúng, đầy đủ hoặc phù hợp với consumer contract. Protocol nền của bài này: Dựng fixture và project tối thiểu có exact graph/input boundary; chạy command hoặc protocol theo thứ tự, rồi đối soát relation, key set, typed hash và business invariant với full/reference computation.
 
 ### 7.1. Time-semantics probe 1: clock, window, watermark, pane identity và correction oracle phải rõ
 
@@ -70,7 +70,7 @@ Trong `Event Time Processing Time and Late Data`, mỗi claim phải nối đư�
 
 **Thiết kế phép thử cho `wiki.transformation.event-processing-time-late-data`.** Với `Time-semantics probe 2: clock, window, watermark, pane identity và correction oracle phải rõ`, Giữ nguyên input rồi đổi đúng một tham số cấu hình liên quan. Nếu output đổi theo nhiều hướng cùng lúc, phép thử chưa cô lập được nguyên nhân và phải thu hẹp lại. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Time-semantics probe 2: clock, window, watermark, pane identity và correction oracle phải rõ` phải cho thấy: Báo cả giá trị trước–sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Time-semantics probe 2: clock, window, watermark, pane identity và correction oracle phải rõ` phải cho thấy: Báo cả giá trị trước-sau của tham số, compiled artifact và diff đầu ra để reviewer thấy biến nào thực sự đổi. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.3. Time-semantics probe 3: clock, window, watermark, pane identity và correction oracle phải rõ
 
@@ -118,7 +118,7 @@ Trong `Event Time Processing Time and Late Data`, mỗi claim phải nối đư�
 
 **Thiết kế phép thử cho `wiki.transformation.event-processing-time-late-data`.** Với `Time-semantics probe 8: clock, window, watermark, pane identity và correction oracle phải rõ`, Dùng một schema change tương thích và một thay đổi phá vỡ key, type hoặc meaning. Kết quả phải chỉ ra khác biệt giữa parse được, chạy được và vẫn giữ đúng semantics. Khóa versions, target và input boundary có liên quan; lưu command, compiled SQL hoặc scheduler context cùng query IDs và timestamps.
 
-**Bằng chứng cần giữ.** Hồ sơ của `Time-semantics probe 8: clock, window, watermark, pane identity và correction oracle phải rõ` phải cho thấy: Lưu schema trước–sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
+**Bằng chứng cần giữ.** Hồ sơ của `Time-semantics probe 8: clock, window, watermark, pane identity và correction oracle phải rõ` phải cho thấy: Lưu schema trước-sau, classification, compiled SQL và target state; một migration chạy xong nhưng đổi meaning vẫn fail. Nếu sandbox chưa chạy, mục này vẫn là protocol; không đổi expected result thành observation.
 
 ### 7.9. Time-semantics probe 9: clock, window, watermark, pane identity và correction oracle phải rõ
 
@@ -223,7 +223,7 @@ Trong `Event Time Processing Time and Late Data`, mỗi claim phải nối đư�
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.transformation.event-processing-time-late-data`
+## Execution capsule: kiểm chứng `wiki.transformation.event-processing-time-late-data`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.transformation.event-processing-time-late-data`, sơ đồ, ví dụ và artifact về **Event Time Processing Time and Late Data** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.

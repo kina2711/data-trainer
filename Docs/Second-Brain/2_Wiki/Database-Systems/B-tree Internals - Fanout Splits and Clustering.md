@@ -9,7 +9,7 @@ canonical_since: 2026-10-03
 language: vi
 created: 2026-10-01
 last_verified: 2026-10-01
-editorial_pass: humanized-v1
+editorial_pass: humanized-v3
 primary_question: PostgreSQL B-tree giữ cân bằng, tách trang, deduplicate và liên hệ heap clustering thế nào, và thí nghiệm insert/delete được đo đúng ra sao?
 source_ids:
   - src.manual.postgresql-17.10
@@ -34,7 +34,7 @@ relationships:
 
 PostgreSQL B-tree gồm metapage, internal pages và leaf pages. Tất cả leaves cùng level; internal entries phân hướng tới child; leaf entries giữ keys + heap TIDs/payload. Sibling links hỗ trợ range traversal và concurrent algorithms.
 
-Search đi root → internal → leaf rồi binary search/page traversal. Cost chiều cao nhỏ vì mỗi page chứa nhiều entries. Nhưng “một triệu keys luôn cao 3–4” không universal: key width, INCLUDE, fillfactor, dedup, page size và version ảnh hưởng.
+Search đi root → internal → leaf rồi binary search/page traversal. Cost chiều cao nhỏ vì mỗi page chứa nhiều entries. Nhưng một triệu keys luôn cao 3-4 không universal: key width, INCLUDE, fillfactor, dedup, page size và version ảnh hưởng.
 
 Đo bằng `bt_metap` level/root và `bt_page_stats`, không suy chỉ từ row count.
 
@@ -48,7 +48,7 @@ Estimate fanout là model; pageinspect measurement mới là evidence. Ghi page 
 
 ## 3. Metapage và levels
 
-Page zero là metapage chứa root block, level và metadata. Level numbering trong `bt_metap` bắt đầu leaf level 0; nếu root level 2 thì đường root→internal→leaf có ba page levels. Phân biệt “level value”, “tree height” và “pages visited”.
+Page zero là metapage chứa root block, level và metadata. Level numbering trong `bt_metap` bắt đầu leaf level 0; nếu root level 2 thì đường root→internal→leaf có ba page levels. Phân biệt level value, tree height và pages visited.
 
 Root có thể đổi block sau splits; metapage dẫn current root. Caching fast root/internal implementation details version-sensitive.
 
@@ -82,7 +82,7 @@ Entry placement theo key order. Sequential keys đi rightmost leaf path; random 
 
 Khi leaf không đủ chỗ sau cleanup/dedup, page split phân entries, tạo sibling và insert separator vào parent. Parent đầy có thể split lan; root split tạo new root và tăng level.
 
-Split gây WAL, page writes và temporary lower density. PostgreSQL B-tree pages thường không merge tự động đơn giản sau delete; empty pages có deletion/recycling mechanisms, nhưng không mô tả “không bao giờ merge” vượt version/source.
+Split gây WAL, page writes và temporary lower density. PostgreSQL B-tree pages thường không merge tự động đơn giản sau delete; empty pages có deletion/recycling mechanisms, nhưng không mô tả không bao giờ merge vượt version/source.
 
 Đo split gián tiếp qua page counts/extension/stats/WAL; không suy fragmentation chỉ từ index size.
 
@@ -94,7 +94,7 @@ Random keys phân tán contention nhưng chạm nhiều pages, gây cache misses
 
 Thí nghiệm phải tăng concurrency đủ để hot spot xuất hiện; single-thread result không chứng minh contention.
 
-## 9. Random inserts và “fragmentation”
+## 9. Random inserts và fragmentation
 
 Fragmentation là thuật ngữ mơ hồ. Tách thành leaf density/free space, physical page order vs logical order, number of pages, bloat/dead entries và heap correlation. Random inserts không tự đồng nghĩa bloat.
 
@@ -154,7 +154,7 @@ Không expose production raw pages. Extension permissions/test database.
 
 Hai tables cùng schema/fillfactor, same rows, controlled concurrency. One uses monotonic keys; other randomized keys with same type/width if possible. Measure rows/s, latency distribution, WAL, index size, leaf density, pages/splits proxy, buffer I/O và contention waits.
 
-Run single-thread và multi-thread. Expected result là measurement, không “sequential chắc chậm”. Randomizing values must not change key width/storage.
+Run single-thread và multi-thread. Expected result là measurement, không sequential chắc chậm. Randomizing values must not change key width/storage.
 
 Repeat multiple runs/seed; report variance.
 
@@ -190,29 +190,29 @@ Trước mỗi run, xác định cache regime và reset bằng recreate dataset,
 - Ba lab chưa chạy; measurements thuộc `after-note.md`.
 
 ## Reference
-1. [[SRC-POSTGRESQL-17-10-MANUAL]] — pageinspect/B-tree inspection và index behavior.
-2. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]] — B-tree search, splits, metapage, dedup và page structure.
-3. [[SRC-MASTERING-POSTGRESQL-17-6E]] — index cost, build/rebuild và clustering context.
+1. [[SRC-POSTGRESQL-17-10-MANUAL]]: pageinspect/B-tree inspection và index behavior.
+2. [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]]: B-tree search, splits, metapage, dedup và page structure.
+3. [[SRC-MASTERING-POSTGRESQL-17-6E]]: index cost, build/rebuild và clustering context.
 
 ## Source coverage
 
 | Source slice | Nội dung phải giữ | Vị trí trong note | Trạng thái |
 |---|---|---|---|
-| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 488–498, 2888–2910 | index/pageinspect behavior | §§1–17 | Đã giữ privilege/version caveat |
-| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 419–458 | B-tree internals, split, dedup | §§1–13 | Đã đối chiếu 17.10 |
-| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 87–112 | index cost/build/clustering | §§12–17 | Đã gắn measurement |
-| Tổng hợp DE-L134 | sequential/random/delete experiments | §§15–17 | Đã bỏ expected-result bias |
+| [[SRC-POSTGRESQL-17-10-MANUAL]], PDF 488-498, 2888-2910 | index/pageinspect behavior | §§1-17 | Đã giữ privilege/version caveat |
+| [[SRC-ROGOV-POSTGRESQL-14-INTERNALS]], PDF 419-458 | B-tree internals, split, dedup | §§1-13 | Đã đối chiếu 17.10 |
+| [[SRC-MASTERING-POSTGRESQL-17-6E]], PDF 87-112 | index cost/build/clustering | §§12-17 | Đã gắn measurement |
+| Tổng hợp DE-L134 | sequential/random/delete experiments | §§15-17 | Đã bỏ expected-result bias |
 
 ## Key takeaways
 - B-tree thấp nhờ fanout, nhưng height/page reads không suy chỉ từ row count.
 - Splits giữ cân bằng và có WAL/space/contention cost; root split tăng level.
-- Sequential keys tập trung right edge nhưng có locality; random keys phân tán và chạm nhiều pages—phải đo.
+- Sequential keys tập trung right edge nhưng có locality; random keys phân tán và chạm nhiều pages:phải đo.
 - Delete, reusable free space, bloat và physical fragmentation là các khái niệm khác.
 - CLUSTER tạo physical correlation tại một thời điểm và không tự duy trì.
 
 <!-- ATOMIC-EXECUTION-CAPSULE:START -->
 
-## Execution capsule — kiểm chứng `wiki.database.btree-fanout-splits-clustering`
+## Execution capsule: kiểm chứng `wiki.database.btree-fanout-splits-clustering`
 
 > [!important] Phân loại mệnh đề
 > Với `wiki.database.btree-fanout-splits-clustering`, sơ đồ, ví dụ và artifact về **B-tree bên trong: fanout, tách trang và clustering** là **synthesis để kiểm chứng**; chúng không phải trích dẫn hay case nguyên văn của nguồn.
@@ -234,7 +234,7 @@ flowchart LR
 
 ### Ví dụ làm việc có thể bác bỏ
 
-**Input.** Một đội cần trả lời: “PostgreSQL B-tree giữ cân bằng, tách trang, deduplicate và liên hệ heap clustering thế nào, và thí nghiệm insert/delete được đo đúng ra sao?” cho một phạm vi nhỏ, có owner và deadline rõ.
+**Input.** Một đội cần trả lời: PostgreSQL B-tree giữ cân bằng, tách trang, deduplicate và liên hệ heap clustering thế nào, và thí nghiệm insert/delete được đo đúng ra sao? cho một phạm vi nhỏ, có owner và deadline rõ.
 
 **Decision.** Đội áp dụng **B-tree bên trong: fanout, tách trang và clustering** trên control và variant chỉ khác một assumption; expected result và hard constraints được khóa trước khi chạy.
 

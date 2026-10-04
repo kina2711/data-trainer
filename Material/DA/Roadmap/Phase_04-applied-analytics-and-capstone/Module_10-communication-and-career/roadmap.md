@@ -35,16 +35,16 @@ Trình bày một kết luận phân tích cho người nhận không có nền 
 
 | Bài | Dạng | Đầu ra | Bằng chứng | Điều kiện tiên quyết |
 |---|---|---|---|---|
-| L077 · Storytelling with data | LT | Sắp xếp lại một báo cáo viết theo trình tự thời gian thành cấu trúc kim tự tháp và rút xuống một trang, giữ nguyên kết luận và bằng chứng. | Ba bản viết lại đều trong một trang, và người đọc trong 2 phút nêu lại đúng kết luận của cả ba. | M10: M07 |
-| L078 · Writing an analytical report | TH | Viết một báo cáo mà người quản lý đọc trong 2 phút ra được quyết định, và ba phiên bản của cùng kết quả cho ba nhóm người đọc khác nhau. | Người đọc đóng vai quản lý nêu được quyết định cụ thể sau 2 phút đọc bản một trang, và ba phiên bản nhất quán về kết luận và số liệu. | L077 |
-| L079 · Presenting and handling challenge | TH | Bảo vệ một kết luận bất lợi trước hội đồng, giữ được phần có bằng chứng và nhượng bộ đúng phần chưa đủ bằng chứng. | Giữ được phần kết luận có bằng chứng qua cả năm câu phản biện, và nhượng bộ đúng câu nêu giới hạn có thật. | L078 |
-| L080 · Operating as a Data Analyst | LT | Xử lý một dòng 12 yêu cầu đến cùng lúc: phân loại, ước lượng, từ chối có lý do, và thương lượng hạn, không để yêu cầu nào rơi. | Cả 12 yêu cầu đều có trạng thái xác định, hai yêu cầu bị từ chối đều kèm lý do và phương án thay thế, và không yêu cầu nào không được xử lý. | L079 |
-| L081 · Portfolio and CV | TH | Đóng gói ba dự án đã làm trong chương trình thành portfolio có README theo cấu trúc, và viết một CV một trang gửi được ngay. | Ba README đều mở đầu bằng bài toán nghiệp vụ và quyết định phục vụ, và người chấm chéo nêu đúng năng lực ứng viên sau 30 giây đọc CV. | L080 |
-| L082 · Data Analyst interviews | TH | Hoàn thành một buổi phỏng vấn thử đủ bốn vòng đạt ngưỡng theo rubric của người đóng vai nhà tuyển dụng. | Đạt ngưỡng ở cả bốn vòng phỏng vấn thử, và vòng case study có thực hiện bước kiểm chứng dữ liệu trước khi phân tích. Đây là exit criterion của Mô-đun 10. | L081 |
+| L077 · [[wiki.da.storytelling-with-data|Storytelling with data]]| LT | Sắp xếp lại một báo cáo viết theo trình tự thời gian thành cấu trúc kim tự tháp và rút xuống một trang, giữ nguyên kết luận và bằng chứng. | Ba bản viết lại đều trong một trang, và người đọc trong 2 phút nêu lại đúng kết luận của cả ba. | M10: M07 |
+| L078 · [[wiki.da.writing-an-analytical-report|Writing an analytical report]]| TH | Viết một báo cáo mà người quản lý đọc trong 2 phút ra được quyết định, và ba phiên bản của cùng kết quả cho ba nhóm người đọc khác nhau. | Người đọc đóng vai quản lý nêu được quyết định cụ thể sau 2 phút đọc bản một trang, và ba phiên bản nhất quán về kết luận và số liệu. | L077 |
+| L079 · [[wiki.da.presenting-and-handling-challenge|Presenting and handling challenge]]| TH | Bảo vệ một kết luận bất lợi trước hội đồng, giữ được phần có bằng chứng và nhượng bộ đúng phần chưa đủ bằng chứng. | Giữ được phần kết luận có bằng chứng qua cả năm câu phản biện, và nhượng bộ đúng câu nêu giới hạn có thật. | L078 |
+| L080 · [[wiki.da.operating-as-a-data-analyst|Operating as a Data Analyst]]| LT | Xử lý một dòng 12 yêu cầu đến cùng lúc: phân loại, ước lượng, từ chối có lý do, và thương lượng hạn, không để yêu cầu nào rơi. | Cả 12 yêu cầu đều có trạng thái xác định, hai yêu cầu bị từ chối đều kèm lý do và phương án thay thế, và không yêu cầu nào không được xử lý. | L079 |
+| L081 · [[wiki.da.portfolio-and-cv|Portfolio and CV]]| TH | Đóng gói ba dự án đã làm trong chương trình thành portfolio có README theo cấu trúc, và viết một CV một trang gửi được ngay. | Ba README đều mở đầu bằng bài toán nghiệp vụ và quyết định phục vụ, và người chấm chéo nêu đúng năng lực ứng viên sau 30 giây đọc CV. | L080 |
+| L082 · [[wiki.da.data-analyst-interviews|Data Analyst interviews]]| TH | Hoàn thành một buổi phỏng vấn thử đủ bốn vòng đạt ngưỡng theo rubric của người đóng vai nhà tuyển dụng. | Đạt ngưỡng ở cả bốn vòng phỏng vấn thử, và vòng case study có thực hiện bước kiểm chứng dữ liệu trước khi phân tích. Đây là exit criterion của Mô-đun 10. | L081 |
 
 ## Nội dung từng bài
 
-> **Sơ đồ đề xuất — DA-M10 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
+> **Sơ đồ đề xuất: DA-M10 v0.1.0.** Mỗi nhánh đi từ một bài học đến các nội dung nguyên tử bắt buộc. Thứ tự dạy lấy từ bảng `Các bài trong mô-đun`.
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 720, "nodeSpacing": 64, "rankSpacing": 160}}}%%
@@ -71,7 +71,7 @@ flowchart LR
   class A077,A078,A079,A080,A081,A082 atom;
 ```
 
-### Bài 77: Storytelling with data
+### Lesson 77: Storytelling with data
 
 Cấu trúc kim tự tháp: kết luận trước, lý do sau, chi tiết cuối. Lý do cấu trúc này ngược với trình tự thực hiện công việc, và vì sao vẫn dùng nó khi trình bày. Ba thành phần của một trình bày dựa trên dữ liệu: bối cảnh, mâu thuẫn, giải pháp. Nguyên tắc một thông điệp chính cho mỗi báo cáo. Xác định điều gì làm người nhận thay đổi quyết định.
 
@@ -79,7 +79,7 @@ Người học phải sắp xếp lại một báo cáo viết theo trình tự 
 
 Cách đánh giá: Tầng *áp dụng*. Kiểm bằng ràng buộc đo được: bản viết lại phải trong một trang, và một người đọc chỉ trong 2 phút phải nêu lại đúng kết luận. Ràng buộc thứ hai kiểm bằng thử trên bạn học, không bằng đánh giá của giảng viên.
 
-### Bài 78: Writing an analytical report
+### Lesson 78: Writing an analytical report
 
 Cấu trúc báo cáo phân tích: tóm tắt điều hành, câu hỏi, phương pháp, kết quả, khuyến nghị, giả định và giới hạn, phụ lục. Viết tóm tắt điều hành trong năm gạch đầu dòng. Quy ước trình bày số: mức làm tròn theo độ chính xác thực của phép đo, luôn kèm mốc so sánh, tránh phần trăm của phần trăm. Viết phần giới hạn sao cho nó định rõ phạm vi áp dụng thay vì làm mất giá trị kết quả.
 
@@ -87,7 +87,7 @@ Người học phải viết một báo cáo mà người quản lý đọc tron
 
 Cách đánh giá: Tầng *áp dụng*. Kiểm bằng thử với người đọc: bản một trang phải đủ để một bạn học đóng vai quản lý nêu ra quyết định cụ thể. Ba phiên bản được chấm theo tính nhất quán về kết luận và về số liệu giữa chúng.
 
-### Bài 79: Presenting and handling challenge
+### Lesson 79: Presenting and handling challenge
 
 Thiết kế slide cho buổi họp 15 phút. Nói rõ chuỗi suy luận thay vì chỉ nêu kết quả. Ba loại câu hỏi và cách xử lý từng loại: câu hỏi tìm thông tin, câu hỏi thử thách phương pháp, câu hỏi bảo vệ một lập trường có sẵn. Trình bày kết quả đi ngược kỳ vọng của người nghe. Cách phát biểu rằng dữ liệu hiện có không trả lời được câu hỏi được đặt ra.
 
@@ -95,7 +95,7 @@ Người học phải bảo vệ một kết luận bất lợi trước hội �
 
 Cách đánh giá: Tầng *đánh giá*. Hội đồng chuẩn bị trước năm câu phản biện nhắm vào điểm yếu nhất của phân tích, trong đó ít nhất một câu chỉ ra một giới hạn có thật. Tiêu chí đạt gồm cả việc nhượng bộ đúng câu đó; giữ nguyên lập trường trước mọi câu hỏi là không đạt.
 
-### Bài 80: Operating as a Data Analyst
+### Lesson 80: Operating as a Data Analyst
 
 Quản lý dòng yêu cầu: phân loại theo giá trị và chi phí, đóng hộp thời gian, từ chối kèm lý do và phương án thay thế. Xây thư viện phân tích dùng lại được. Ghi chép đủ để chính người viết đọc lại sau sáu tháng vẫn dùng được. Ranh giới làm việc với đội kỹ thuật: điều kiện yêu cầu một bảng mới thay vì tự vá bằng truy vấn, theo ranh giới vai trò trong roadmap nguồn. Đạo đức dữ liệu: quyền riêng tư, dữ liệu cá nhân, giới hạn của việc phân khúc người dùng.
 
@@ -103,7 +103,7 @@ Người học phải xử lý một dòng 12 yêu cầu đến cùng lúc: phâ
 
 Cách đánh giá: Tầng *đánh giá*. Objective là một chuỗi quyết định ưu tiên dưới ràng buộc nguồn lực, không có phương án đúng duy nhất. Kiểm bằng mô phỏng: bài đặt ra 12 yêu cầu trong đó có ít nhất hai yêu cầu nên bị từ chối, và người học phải từ chối chúng kèm lý do và phương án thay thế.
 
-### Bài 81: Portfolio and CV
+### Lesson 81: Portfolio and CV
 
 Ba dự án portfolio và năng lực mỗi dự án chứng minh: một dự án dữ liệu có lỗi chứng minh kỷ luật kiểm chứng, một dự án dashboard chứng minh trình bày, một dự án điều tra chứng minh tư duy phân tích. Cấu trúc README cho dự án portfolio: mở đầu bằng bài toán nghiệp vụ và quyết định mà kết quả phục vụ. Lý do dự án dùng bộ dữ liệu phổ biến trên các nền tảng công khai ít có giá trị phân biệt. CV cho vị trí Data Analyst: viết thành tích có số đo thay vì liệt kê công cụ. Hồ sơ LinkedIn và GitHub.
 
@@ -111,7 +111,7 @@ Người học phải đóng gói ba dự án đã làm trong chương trình th
 
 Cách đánh giá: Tầng *áp dụng*. Kiểm bằng chấm chéo theo góc nhìn nhà tuyển dụng: bạn học đọc CV trong 30 giây và phải nêu được ứng viên làm được gì. Portfolio chấm theo việc README có mở đầu bằng bài toán nghiệp vụ hay bằng danh sách công cụ.
 
-### Bài 82: Data Analyst interviews
+### Lesson 82: Data Analyst interviews
 
 Bốn vòng phỏng vấn thường gặp: sàng lọc, SQL, case study phân tích, phỏng vấn hành vi. Làm bài SQL không có công cụ chạy thử. Quy trình bốn bước trả lời case study: làm rõ câu hỏi, nêu cấu trúc phân tích, kiểm chứng dữ liệu trước, nêu giới hạn. Phỏng vấn hành vi theo cấu trúc STAR, lấy nguyên liệu từ nhật ký lỗi. Câu hỏi nên đặt ngược cho nhà tuyển dụng. Đàm phán lương ở mức cơ bản.
 
